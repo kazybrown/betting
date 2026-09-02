@@ -805,6 +805,7 @@ def publish(generated_iso, data_status):
             "spread": "home perspective, negative = home favored",
             "rounding": "half-up to .0/.5 per §8",
             "nfelo_total_derivation": "league_total_prior + 0.35*(home pts_vs_avg + away pts_vs_avg) per §3.2 fallback",
+            "section5_team_total_adjustments": "§5 adjustments filed against a team total are applied to the game total and allocated by the identity (T/2 ± S/2); a one-sided allocation requires the category's linked spread leg or a §6 reallocation (auditor convention, v3)",
             "tpt_sleeve": "spec default weights renormalized over present systems (no inverse-MAE reweighting: no YTD error data pre-Week-1), weighted median then 40% shrink toward the unweighted median; single-computer clamp (1.0/1.5 pts per system) on sleeves with <=2 systems",
         },
         "games": games,
