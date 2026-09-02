@@ -22,7 +22,8 @@ RULES = """SPEC CONTEXT (ORIGINATOR, NFL 2026 Week 1 — the card is originated,
 - Hard caps on the SUM: spread ±2.5, total ±3.0 vs core. If you want more, the ratings are wrong — flag it instead of piling on.
 - §6 team-total modifiers REALLOCATE points between the two team totals (they hardly change the game total): explosive offense vs weak explosive-play defense +0.5..+1.5 / opponent -0.5..-1.0; elite red-zone defense -0.5..-1.0 opponent; pace-possession mismatch ±0.5. Team totals are derived from the identity first; modifiers are on top.
 - NEVER: anchor toward the market number, invent injuries, double-count what nfelo baked (its QB and HFA mods are in the bundle — e.g. if nfelo already knocked a team for a backup QB, a further qb_change adjustment needs NEW post-8/31 news), or move a number on vibes.
-- Data status is DEGRADED for blocked sources (PFF site, The Prediction Tracker): where the bundle lacks a source, treat it as missing and flag, don't guess.
+- PFF is now CLEAN: the user pasted PFF's Power Rankings table (Point Spread Rating per team, QB component included) — it is authoritative and drives spread_pff directly (§3.1). The TPT panel remains missing (site blocked) and there are no verified weather forecasts.
+- A previously AUDITED adjustment set for this game (prior_audited_adjustments_v1) is in the bundle. Keep it as your baseline: reproduce those adjustments unless the new PFF ratings change the evidence picture (e.g. an ol_pass_rush_mismatch magnitude, or a QB-rating-based backup valuation). State explicitly in origin_note whether the baseline was kept or changed and why. Rewrite the brief and origin_note so every Tier-A number cited is the CURRENT one (PFF point-spread ratings, not the old rank model).
 - Voice: cold, precise, audit-ready; numbers first; no hype."""
 
 
@@ -68,6 +69,18 @@ def main():
         if tm:
             power_by_team[tm] = t
 
+    prior_path = RUN / "adjustments_v1.json"
+    prior = {}
+    if prior_path.exists():
+        for pg in json.loads(prior_path.read_text())["games"]:
+            prior[(pg["away"], pg["home"])] = {
+                "spread_adjustments": pg["spread_adjustments"],
+                "total_adjustments": pg["total_adjustments"],
+                "tt_modifiers": pg["tt_modifiers"],
+                "considered_but_zero": pg["considered_but_zero"],
+                "flags": pg["flags"],
+            }
+
     bundles = []
     for g in games:
         a, h = g["away"], g["home"]
@@ -103,7 +116,16 @@ def main():
             "weather": wx_by_game.get((a, h), {"note": "no weather sweep data"}),
             "quality_2025": {"away": qual_by_team.get(a), "home": qual_by_team.get(h)},
             "pff_units": {"away": units_by_team.get(a), "home": units_by_team.get(h)},
-            "pff_power": {"away": power_by_team.get(a), "home": power_by_team.get(h)},
+            "pff_power_rank_diag": {"away": power_by_team.get(a), "home": power_by_team.get(h),
+                                     "note": "March post-FA web-recovered ranks; DIAGNOSTIC ONLY now that the authoritative PFF table is in pff_ratings"},
+            "pff_ratings": {
+                "source": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 — AUTHORITATIVE for this run (§12)",
+                "convention": "Point Spread Rating = points vs league average, QB component included; spread_pff = -(psr_home - psr_away) - HFA",
+                "home": g.get("pff_psr", {}).get("home"), "away": g.get("pff_psr", {}).get("away"),
+                "home_qb_rating": g.get("pff_psr", {}).get("home_qb"), "away_qb_rating": g.get("pff_psr", {}).get("away_qb"),
+                "home_proj_wins": g.get("pff_psr", {}).get("home_proj_wins"), "away_proj_wins": g.get("pff_psr", {}).get("away_proj_wins"),
+            },
+            "prior_audited_adjustments_v1": prior.get((a, h)),
             "dvoa_projection_2026": g.get("dvoa_proj"),
             "market_REFERENCE_ONLY_do_not_anchor": {
                 "spread": g["market_spread"], "total": g["market_total"],

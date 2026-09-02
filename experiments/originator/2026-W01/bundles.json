@@ -1,5 +1,5 @@
 {
- "rules": "SPEC CONTEXT (ORIGINATOR, NFL 2026 Week 1 \u2014 the card is originated, market lines are reference only, never an input):\n- Spread convention: home perspective, NEGATIVE = home favored. Team totals: home_tt + away_tt = game_total.\n- The blended cores already contain: nfelo's published spread (which itself bakes in HFA, rest, travel, surface, divisional history, AND per-QB starter adjustments \u2014 the per-game nfelo QB adjustment in points is provided) and, where present, a PFF/structural spread and a light TPT panel.\n- \u00a75 context adjustments are applied AFTER the blend, in this order, each needing a NAMED evidence item with a source. Allowed categories and ranges:\n  1. qb_change: only for news the ratings did NOT bake (new injury/benching after 2026-08-31). Starter->backup: -2.0..-4.5 on that team. A WR1/skill absence is -0.5..-1.5 on that team's TEAM TOTAL, not automatically the spread.\n  2. ol_pass_rush_mismatch: elite rush vs injured/weak OT: -1.0..-2.0 victim team total, -0.5..-1.5 spread toward the rush team.\n  3. rest_short_week: Week 1 = everyone on 7 days; no adjustment unless evidence says otherwise.\n  4. travel_international: west-to-east 10am-local kicks: -0.4..-0.8 visitor. International HFA already handled by nfelo \u2014 do not re-add.\n  5. motivation: Weeks 15-18 only \u2014 NOT applicable in Week 1.\n  6. weather: totals mostly; spread tweak only if wind/rain clearly hits one offense more (-0.5..-1.0). No verified forecast => no weather adjustment (climatology alone doesn't move numbers; flag instead).\n- Hard caps on the SUM: spread \u00b12.5, total \u00b13.0 vs core. If you want more, the ratings are wrong \u2014 flag it instead of piling on.\n- \u00a76 team-total modifiers REALLOCATE points between the two team totals (they hardly change the game total): explosive offense vs weak explosive-play defense +0.5..+1.5 / opponent -0.5..-1.0; elite red-zone defense -0.5..-1.0 opponent; pace-possession mismatch \u00b10.5. Team totals are derived from the identity first; modifiers are on top.\n- NEVER: anchor toward the market number, invent injuries, double-count what nfelo baked (its QB and HFA mods are in the bundle \u2014 e.g. if nfelo already knocked a team for a backup QB, a further qb_change adjustment needs NEW post-8/31 news), or move a number on vibes.\n- Data status is DEGRADED for blocked sources (PFF site, The Prediction Tracker): where the bundle lacks a source, treat it as missing and flag, don't guess.\n- Voice: cold, precise, audit-ready; numbers first; no hype.",
+ "rules": "SPEC CONTEXT (ORIGINATOR, NFL 2026 Week 1 \u2014 the card is originated, market lines are reference only, never an input):\n- Spread convention: home perspective, NEGATIVE = home favored. Team totals: home_tt + away_tt = game_total.\n- The blended cores already contain: nfelo's published spread (which itself bakes in HFA, rest, travel, surface, divisional history, AND per-QB starter adjustments \u2014 the per-game nfelo QB adjustment in points is provided) and, where present, a PFF/structural spread and a light TPT panel.\n- \u00a75 context adjustments are applied AFTER the blend, in this order, each needing a NAMED evidence item with a source. Allowed categories and ranges:\n  1. qb_change: only for news the ratings did NOT bake (new injury/benching after 2026-08-31). Starter->backup: -2.0..-4.5 on that team. A WR1/skill absence is -0.5..-1.5 on that team's TEAM TOTAL, not automatically the spread.\n  2. ol_pass_rush_mismatch: elite rush vs injured/weak OT: -1.0..-2.0 victim team total, -0.5..-1.5 spread toward the rush team.\n  3. rest_short_week: Week 1 = everyone on 7 days; no adjustment unless evidence says otherwise.\n  4. travel_international: west-to-east 10am-local kicks: -0.4..-0.8 visitor. International HFA already handled by nfelo \u2014 do not re-add.\n  5. motivation: Weeks 15-18 only \u2014 NOT applicable in Week 1.\n  6. weather: totals mostly; spread tweak only if wind/rain clearly hits one offense more (-0.5..-1.0). No verified forecast => no weather adjustment (climatology alone doesn't move numbers; flag instead).\n- Hard caps on the SUM: spread \u00b12.5, total \u00b13.0 vs core. If you want more, the ratings are wrong \u2014 flag it instead of piling on.\n- \u00a76 team-total modifiers REALLOCATE points between the two team totals (they hardly change the game total): explosive offense vs weak explosive-play defense +0.5..+1.5 / opponent -0.5..-1.0; elite red-zone defense -0.5..-1.0 opponent; pace-possession mismatch \u00b10.5. Team totals are derived from the identity first; modifiers are on top.\n- NEVER: anchor toward the market number, invent injuries, double-count what nfelo baked (its QB and HFA mods are in the bundle \u2014 e.g. if nfelo already knocked a team for a backup QB, a further qb_change adjustment needs NEW post-8/31 news), or move a number on vibes.\n- PFF is now CLEAN: the user pasted PFF's Power Rankings table (Point Spread Rating per team, QB component included) \u2014 it is authoritative and drives spread_pff directly (\u00a73.1). The TPT panel remains missing (site blocked) and there are no verified weather forecasts.\n- A previously AUDITED adjustment set for this game (prior_audited_adjustments_v1) is in the bundle. Keep it as your baseline: reproduce those adjustments unless the new PFF ratings change the evidence picture (e.g. an ol_pass_rush_mismatch magnitude, or a QB-rating-based backup valuation). State explicitly in origin_note whether the baseline was kept or changed and why. Rewrite the brief and origin_note so every Tier-A number cited is the CURRENT one (PFF point-spread ratings, not the old rank model).\n- Voice: cold, precise, audit-ready; numbers first; no hype.",
  "games": [
   {
    "away": "NE",
@@ -16,17 +16,19 @@
    },
    "cores": {
     "spread_nfelo": -4.0,
-    "spread_pff": -6.375,
+    "spread_pff": -5.607,
     "pff_meta": {
-     "basis": "unit/rank z-model (\u00a73.1), ST edge unavailable",
-     "off_edge": 0.598,
-     "def_edge": 0.598,
-     "ol_edge": 0.0,
-     "hfa_pts": 3.69
+     "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+     "psr_home": 4.8147923,
+     "psr_away": 2.89291,
+     "psr_qb_home": 3.5,
+     "psr_qb_away": 5.5,
+     "hfa_pts": 3.69,
+     "rank_model_diag": -6.38
     },
     "spread_tpt": null,
     "tpt_spread_detail": {},
-    "spread_core": -5.09,
+    "spread_core": -4.737,
     "spread_weights": {
      "nfelo": 0.541,
      "pff": 0.459,
@@ -149,7 +151,7 @@
      "def_grade": 84.8
     }
    },
-   "pff_power": {
+   "pff_power_rank_diag": {
     "away": {
      "team": "NE",
      "verbatim": true,
@@ -164,7 +166,93 @@
      "verbatim": true,
      "source": "pff.com \u2014 'Post-Free Agency Power Rankings' (rank); centraloregondaily.com \u2014 'Seahawks win total projection for 2026 by PFF' quoting pff.com 'NFL Betting 2026: PFF's projected win totals for all 32 teams' (rating)",
      "note": "Defending Super Bowl champs. PFF sims: 10.96 wins, 56.7% cover prob on over 10.5 (10.7% EV at -105). Lost SB MVP Kenneth Walker III, 3 defensive starters, OC Klint Kubiak, but 'maintains a strong foundation in all three phases'."
-    }
+    },
+    "note": "March post-FA web-recovered ranks; DIAGNOSTIC ONLY now that the authoritative PFF table is in pff_ratings"
+   },
+   "pff_ratings": {
+    "source": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 \u2014 AUTHORITATIVE for this run (\u00a712)",
+    "convention": "Point Spread Rating = points vs league average, QB component included; spread_pff = -(psr_home - psr_away) - HFA",
+    "home": 4.8147923,
+    "away": 2.89291,
+    "home_qb_rating": 3.5,
+    "away_qb_rating": 5.5,
+    "home_proj_wins": 10.811,
+    "away_proj_wins": 9.9128
+   },
+   "prior_audited_adjustments_v1": {
+    "spread_adjustments": [],
+    "total_adjustments": [],
+    "tt_modifiers": [
+     {
+      "team": "SEA",
+      "points": 0.5,
+      "reason": "pace_possession mismatch: SEA is the NFL's most run-heavy team (52.9% pass rate, 32nd; 58.6 plays/g) behind the No. 1 EPA/play defense \u2014 ball-control home favorite compresses visitor possessions and tilts scoring share home. Source: quality_2025 pace_note (pbp2025+circa0711)."
+     },
+     {
+      "team": "NE",
+      "points": -0.5,
+      "reason": "mirror of the pace_possession reallocation (game total unchanged): NE's 61.2% pass rate (14th) and below-average 59.8 plays/g volume meet the league-slowest opponent possession profile. Source: quality_2025 pace_note (pbp2025+circa0711)."
+     }
+    ],
+    "considered_but_zero": [
+     {
+      "item": "NE EDGE Harold Landry III \u2014 QUESTIONABLE, roster code A02, demoted to WLB3 behind rookie Elijah Ponder (8/31 depth chart)",
+      "why_zero": "A02 decode is unverified (30 players league-wide carry it, incl. Micah Parsons) and official game-week injury reports do not exist yet; spec classifies unverified roster codes as WEAK evidence \u2014 at most a flag, never a spread/TT move. The WLB3 demotion may be a depth-chart artifact. Flagged for Appendix C. Source: nflverse roster_weekly_2026.csv + depth_charts_2026.csv snapshot 2026-08-31."
+     },
+     {
+      "item": "qb_change (both teams)",
+      "why_zero": "Drake Maye and Sam Darnold both confirmed ACT/A01 QB1 with settled depth; no post-2026-08-31 news exists in the bundle, and nfelo already bakes per-QB adjustments (NE +0.12, SEA -0.09 pts). Source: injuries.notes + nfelo_baked_in."
+     },
+     {
+      "item": "NE WR1 A.J. Brown",
+      "why_zero": "Roster-verified ACT/A01 \u2014 a presence, not an absence; the acquisition is inside the season-long ratings. Source: injuries.notes + qb_context.away (roster_2026.csv, values.csv 2026-08-28)."
+     },
+     {
+      "item": "SEA premium positions (Cross LT1, Lucas RT1, Smith-Njigba WR1, Witherspoon CB1)",
+      "why_zero": "All ACT/A01 per the W1 roster file \u2014 no absence to price. Source: injuries.notes."
+     },
+     {
+      "item": "ol_pass_rush_mismatch \u2014 SEA pass rush (PFF rank 5) vs NE OL",
+      "why_zero": "Category requires an injured/weak OT; no NE OT injury exists in the bundle and NE added Alijah Vera-Tucker and drafted OL Caleb Lomu #28. NE OL rank is only ESPN exec votes 11th-23rd (not PFF) \u2014 insufficient. Sources: pff_units.home, qb_context.away, pff_units.away note."
+     },
+     {
+      "item": "rest_short_week",
+      "why_zero": "Both teams on 7 days (Week 1); no specific evidence permits a rest adjustment. Source: bundle rest."
+     },
+     {
+      "item": "travel_international",
+      "why_zero": "NE travels east-to-west for a night kick \u2014 not the penalized west-to-east 10am-body-clock spot; nfelo already bakes travel and HFA (3.685 pts). Sources: kick/venue fields + nfelo_baked_in."
+     },
+     {
+      "item": "motivation \u2014 Super Bowl LX rematch (SEA beat NE 29-13)",
+      "why_zero": "Motivation category is restricted to Weeks 15-18; inadmissible in Week 1. Source: qb_context.home (games.csv 2025_22_SEA_NE)."
+     },
+     {
+      "item": "weather (outdoor Lumen Field, Wed night)",
+      "why_zero": "forecast_available=false; spec forbids numeric weather adjustments without a verified forecast \u2014 climatology in the bundle is explicitly unsourced. Flagged instead. Source: weather block (confidence LOW)."
+     },
+     {
+      "item": "SEA depth-only absences (WR Jake Bobo RES/R36, RB2 Zach Charbonnet A02, swing T Mason Richman RES/R36, S Bud Clark RES/R36)",
+      "why_zero": "Depth pieces, not premium-position starters; Charbonnet's A02 is decode-unverified (weak evidence). Source: injuries.notes."
+     },
+     {
+      "item": "NE ST/S Brenden Schooler code A03",
+      "why_zero": "Special-teams role; code decode unverified; no pricing path. Source: injuries.notes."
+     },
+     {
+      "item": "NE No. 1 PFF secondary vs Darnold (PFF QB rank 14)",
+      "why_zero": "Not an allowed \u00a76 category, and the coverage/QB unit gap is already inside the PFF structural spread's def_edge (0.598). Sources: pff_units.away, pff_units.home, cores.pff_meta."
+     }
+    ],
+    "flags": [
+     "TPT spread panel unrecovered (Prediction Tracker blocked) \u2014 spread core rests on 2 sources (nfelo + PFF structural), spread_sd 1.68",
+     "TPT total is a single computer (Dokter Entropy 41.83), clamped per single-computer rule; 6.7-pt gap vs nfelo 48.51, total_sd 4.73 \u2014 total confidence LOW",
+     "PFF game total unavailable (total_pff null); NE PFF power rank is a post-FA backfill (rank 7) with no current PFF rating number recovered",
+     "NE PFF pass-rush rank missing; NE OL rank is ESPN exec votes 11th-23rd, not a PFF number; SEA pass_rush_rank 5 is 'top five' with exact position uncertain",
+     "Roster code A02 decode unverified: NE EDGE Harold Landry III (QUESTIONABLE, demoted WLB3) and SEA RB2 Zach Charbonnet; official game-week injury reports do not exist yet (snapshot 2026-08-31)",
+     "No verified weather forecast for outdoor Lumen Field Wed 9/9 night kick \u2014 climatology qualitative and unsourced; no numeric weather adjustment permitted",
+     "EPA discrepancy: nfelo snapshot EPA/play values diverge from nflfastR pbp-computed REG-season values for both teams (model and/or playoff-inclusion difference)"
+    ]
    },
    "dvoa_projection_2026": {
     "home": 0.22,
@@ -175,7 +263,7 @@
     "total": 44.5
    },
    "uncertainty": {
-    "spread_sd": 1.679,
+    "spread_sd": 1.136,
     "total_sd": 4.726,
     "n_spread_sources": 2,
     "n_total_sources": 2
@@ -196,17 +284,19 @@
    },
    "cores": {
     "spread_nfelo": -2.0,
-    "spread_pff": -4.975,
+    "spread_pff": -3.707,
     "pff_meta": {
-     "basis": "unit/rank z-model (\u00a73.1), ST edge unavailable",
-     "off_edge": 1.146,
-     "def_edge": 1.146,
-     "ol_edge": 0.0,
-     "hfa_pts": -0.18
+     "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+     "psr_home": 6.4368208,
+     "psr_away": 2.5483541,
+     "psr_qb_home": 5.5,
+     "psr_qb_away": 3.5,
+     "hfa_pts": -0.18,
+     "rank_model_diag": -4.976
     },
     "spread_tpt": null,
     "tpt_spread_detail": {},
-    "spread_core": -3.365,
+    "spread_core": -2.783,
     "spread_weights": {
      "nfelo": 0.541,
      "pff": 0.459,
@@ -351,7 +441,7 @@
      "def_grade": 87.6
     }
    },
-   "pff_power": {
+   "pff_power_rank_diag": {
     "away": {
      "team": "SF",
      "rank": 10,
@@ -366,7 +456,101 @@
      "verbatim": true,
      "source": "pff.com \u2014 'Post-Free Agency Power Rankings: Rams, Seahawks pace the NFL' (rank); Yahoo Sports \u2014 'Rams projected to have most wins in 2026, per PFF' (rating)",
      "note": "Rank 1 in PFF post-free-agency power rankings (Mason Cameron). Rating = PFF sim projected wins 11.13, highest in league, despite NFL's 3rd-toughest SOS per PFF. PFF: Rams led NFL in both offensive AND defensive team grading in 2025 (first team ever in PFF era); added Myles Garrett, Trent McDuffie, Jaylen Watson. #1 in PFF 2026 DL rankings."
-    }
+    },
+    "note": "March post-FA web-recovered ranks; DIAGNOSTIC ONLY now that the authoritative PFF table is in pff_ratings"
+   },
+   "pff_ratings": {
+    "source": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 \u2014 AUTHORITATIVE for this run (\u00a712)",
+    "convention": "Point Spread Rating = points vs league average, QB component included; spread_pff = -(psr_home - psr_away) - HFA",
+    "home": 6.4368208,
+    "away": 2.5483541,
+    "home_qb_rating": 5.5,
+    "away_qb_rating": 3.5,
+    "home_proj_wins": 11.5515,
+    "away_proj_wins": 9.7978
+   },
+   "prior_audited_adjustments_v1": {
+    "spread_adjustments": [],
+    "total_adjustments": [],
+    "tt_modifiers": [
+     {
+      "team": "LA",
+      "points": 1,
+      "reason": "Explosive offense vs weak explosive-play defense: PFF 93.6 offense grade, No. 1 in 2025 (first team to lead both offense and defense grading in PFF era), Stafford PFF QB5 / led NFL in passing grade and WAR, off EPA/play 0.149 (pff_units.home: pff.com via Yahoo/Athlon; quality_2025.home pbp2025) against SF coverage rank No. 24, 52.8 team defense grade with 3rd-lowest-graded secondary of 2025, def EPA/play +0.066 (24th) (pff_units.away: 49ersWebzone PFF position rankings; quality_2025.away pbp2025)."
+     },
+     {
+      "team": "SF",
+      "points": -1,
+      "reason": "Opponent side of the same reallocation (game total unchanged): SF is the unit conceding it \u2014 coverage rank 24 / 52.8 def grade vs the league's top-graded offense. Net-zero pair with the LA +1.0 entry."
+     }
+    ],
+    "considered_but_zero": [
+     {
+      "item": "qb_change (both teams)",
+      "why_zero": "Purdy and Stafford both ACT/A01 and depth-chart QB1 on 8/31, confirmed=true; nfelo already bakes per-QB adjustments (home -0.15, away +0.07; 538_qb_adj SF +1.76 / LAR -3.64). No post-2026-08-31 news in bundle. Adjusting would double-count nfelo_baked_in."
+     },
+     {
+      "item": "SF WR Ricky Pearsall, IR (RES/R36, nflverse weekly_rosters 2026 W1)",
+      "why_zero": "Premium-position check: not WR1 \u2014 depth rank 14 on the 8/31 chart; SF two-deep is Mike Evans WR1 / Deebo Samuel WR2, both roster-verified ACT/A01. WR1-absence team-total deduction does not apply."
+     },
+     {
+      "item": "SF EDGE Mykel Williams, QUESTIONABLE (code A02, decode unverified)",
+      "why_zero": "Weak evidence per spec \u2014 A02 decode unverified is at most a flag; he sits at SLB rank 4 on the 8/31 depth chart, with Bosa (WLB1) and White (SLB1) ACT/A01. Flagged, not priced."
+     },
+     {
+      "item": "SF EDGE Victor Dimukeje, IR (RES/R36)",
+      "why_zero": "Rotational pass rusher per bundle detail, not a premium starter; below the adjustment bar."
+     },
+     {
+      "item": "LA CB Zech McPhearson, IR (RES/R36)",
+      "why_zero": "Depth CB / special-teamer; LA CB1s McDuffie and Watson are ACT/A01. Not a CB1 absence."
+     },
+     {
+      "item": "LA OT Rob Havenstein absent from entire 2026 W1 roster file (RT1 now Warren McClendon Jr.)",
+      "why_zero": "Departure/retirement unverified \u2014 no news access; and the counterpart rush is not elite (SF pass rush rank 20 per PFF), so ol_pass_rush_mismatch fails its elite-rush condition. Flagged for Appendix C."
+     },
+     {
+      "item": "ol_pass_rush_mismatch: LA No. 1 PFF pass rush (Garrett/Young/Turner, 227 pressures) vs SF OL",
+      "why_zero": "SF OL ranks ~12 (PFF, with a 12-vs-13 source conflict) with no injured OT in the bundle \u2014 fails the injured/weak-OT condition; the unit edge is already inside the PFF structural spread (spread_pff -4.975, unit z-model)."
+     },
+     {
+      "item": "travel_international / neutral site (Melbourne Cricket Ground)",
+      "why_zero": "Both teams travel trans-Pacific from California \u2014 symmetric burden; neutral/international HFA is already inside nfelo (hfa_points -0.181, mirrored by PFF hfa_pts -0.18). Spec forbids re-adding. Not a 10am-body-clock kick pattern."
+     },
+     {
+      "item": "rest_short_week",
+      "why_zero": "Week 1, both teams on 7 days per bundle rest block; no specific evidence."
+     },
+     {
+      "item": "weather",
+      "why_zero": "forecast_available=false and roof state itself unconfirmed ('dome/covered' listing vs MCG historically open-air). Spec bars any numeric weather adjustment without a verified forecast \u2014 flag only."
+     },
+     {
+      "item": "Aaron Donald RET/R02 roster row",
+      "why_zero": "Bundle marks it stale retirement bookkeeping, not news."
+     },
+     {
+      "item": "elite red-zone defense (LA)",
+      "why_zero": "No red-zone-specific evidence in bundle \u2014 DL No. 1 and secondary No. 4 are already in the structural spread; TT modifier requires RZ evidence."
+     },
+     {
+      "item": "pace-possession mismatch",
+      "why_zero": "SF 62.6 plays/g (t-10th) vs LA 62.1 (13th) \u2014 no mismatch."
+     },
+     {
+      "item": "SF RB2 Isaac Guerendo, code A02 (decode unverified)",
+      "why_zero": "Not a premium position (RB2); McCaffrey ACT/A01. Roster-code uncertainty flagged, not priced."
+     }
+    ],
+    "flags": [
+     "TPT panel unrecovered (sites egress-blocked): spread blend runs on 2 sources (nfelo, PFF; spread_sd 2.104), total on nfelo alone (n_total_sources 1, no PFF or TPT total)",
+     "PFF OL rank conflict for SF: 12th (2026 snippet) vs 13th (older 2025 SI piece), with LAC also listed 12th - OL rank treated as approximate",
+     "Venue/roof unverified: bundle lists MCG as dome/covered but this COULD NOT be verified and the MCG is historically open-air; no verified weather forecast exists - treat as outdoor-uncertain, no numeric weather adjustment taken",
+     "Roster status code A02 decode unverified (SF EDGE Mykel Williams, SF RB Isaac Guerendo) - weak evidence, flagged not priced",
+     "LA RT Rob Havenstein absent from entire 2026 W1 roster file; departure/retirement unverified (no news access), Warren McClendon Jr. listed RT1",
+     "Stale roster row: Aaron Donald RET/R02 is retirement bookkeeping, not news",
+     "First regular-season game at Melbourne Cricket Ground - nfelo neutral-site handling baked (hfa -0.181) but no historical precedent for this venue/travel profile"
+    ]
    },
    "dvoa_projection_2026": {
     "home": 0.213,
@@ -377,7 +561,7 @@
     "total": 48.5
    },
    "uncertainty": {
-    "spread_sd": 2.104,
+    "spread_sd": 1.207,
     "total_sd": null,
     "n_spread_sources": 2,
     "n_total_sources": 1
@@ -398,17 +582,19 @@
    },
    "cores": {
     "spread_nfelo": 2.5,
-    "spread_pff": 0.604,
+    "spread_pff": 1.837,
     "pff_meta": {
-     "basis": "unit/rank z-model (\u00a73.1), ST edge unavailable",
-     "off_edge": -0.671,
-     "def_edge": -0.671,
-     "ol_edge": 0.0,
-     "hfa_pts": 2.41
+     "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+     "psr_home": -2.8552547,
+     "psr_away": 1.394558,
+     "psr_qb_home": 1.5,
+     "psr_qb_away": 4.0,
+     "hfa_pts": 2.41,
+     "rank_model_diag": 0.607
     },
     "spread_tpt": null,
     "tpt_spread_detail": {},
-    "spread_core": 1.63,
+    "spread_core": 2.196,
     "spread_weights": {
      "nfelo": 0.541,
      "pff": 0.459,
@@ -569,7 +755,7 @@
      "note": "NO NUMBERS RECOVERED. OL qualitative: 'would have ranked inside the top 12 with their starting tackles, but they are without both Ikem Ekwonu and Taylor Moton, at least to start the year' - major Week 1 downgrade signal for CHI@CAR. QB Bryce Young: fantasy ~25 (NOT PFF). Pass rush/coverage missing."
     }
    },
-   "pff_power": {
+   "pff_power_rank_diag": {
     "away": {
      "team": "CHI",
      "rank": 15,
@@ -584,7 +770,107 @@
      "verbatim": true,
      "source": "si.com Panthers \u2014 'Panthers Totally Dissed in PFF's Post-Free Agency Power Rankings' (rank); si.com Buccaneers \u2014 PFF NFC South win projections (rating)",
      "note": "No. 26 in PFF post-FA rankings despite winning NFC South in 2025 (PFF sim 7.01 wins). Added Devin Lloyd, Jaelan Phillips; Bryce Young + OROY Tetairoa McMillan core."
-    }
+    },
+    "note": "March post-FA web-recovered ranks; DIAGNOSTIC ONLY now that the authoritative PFF table is in pff_ratings"
+   },
+   "pff_ratings": {
+    "source": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 \u2014 AUTHORITATIVE for this run (\u00a712)",
+    "convention": "Point Spread Rating = points vs league average, QB component included; spread_pff = -(psr_home - psr_away) - HFA",
+    "home": -2.8552547,
+    "away": 1.394558,
+    "home_qb_rating": 1.5,
+    "away_qb_rating": 4.0,
+    "home_proj_wins": 7.0011,
+    "away_proj_wins": 9.2466
+   },
+   "prior_audited_adjustments_v1": {
+    "spread_adjustments": [
+     {
+      "category": "ol_pass_rush_mismatch",
+      "points": 0.75,
+      "evidence": "Both CAR starting tackles unavailable: LT Ikem Ekwonu (QUESTIONABLE, code A02, demoted to LT4) and RT Taylor Moton (QUESTIONABLE, code A06 \u2014 only A06 in the league W1 file), with rookie Monroe Freeling (#19 overall) listed as both LT1 and RT1 on the 8/31 depth chart. PFF OL note: 'would have ranked inside the top 12 with their starting tackles, but they are without both Ikem Ekwonu and Taylor Moton, at least to start the year.' Unpriced in either core (pff_meta ol_edge forced 0.0; nfelo bakes only HFA/QB). +0.75 toward CHI (home number moves more positive), held under the +1.5 ceiling because both statuses are QUESTIONABLE, sub-code decodes are unverified, and CHI's pass-rush rank was not recovered (no documented elite rush).",
+      "source": "PFF 2026 OL rankings snippet via SI (si.com All Panthers 'pff-carolina-panthers-dont-top-10-offensive-line'); nflverse-data weekly_rosters roster_weekly_2026.csv (2026 W1 REG, codes A02/A06) + depth_charts_2026.csv snapshot 2026-08-31"
+     }
+    ],
+    "total_adjustments": [
+     {
+      "category": "ol_pass_rush_mismatch",
+      "points": -1.5,
+      "evidence": "Same named item: both CAR starting tackles (Ekwonu A02/QUESTIONABLE, Moton A06/QUESTIONABLE) out per PFF OL note, rookie Freeling at both tackle spots on the 8/31 depth chart, Rasheed Walker LT2. -1.5 taken entirely off CAR's team total (victim of the protection downgrade); mid-range, not ceiling, because statuses are QUESTIONABLE, code decodes unverified, and CHI's rush quality is undocumented (pass-rush rank unrecovered). Not double-counted: pff_meta ol_edge = 0.0 and nfelo_baked_in lists HFA/QB only.",
+      "source": "PFF 2026 OL rankings snippet via SI (si.com All Panthers 'pff-carolina-panthers-dont-top-10-offensive-line'); nflverse-data weekly_rosters roster_weekly_2026.csv (2026 W1 REG, codes A02/A06) + depth_charts_2026.csv snapshot 2026-08-31"
+     }
+    ],
+    "tt_modifiers": [
+     {
+      "team": "CHI",
+      "points": 0.5,
+      "reason": "Pace-possession mismatch: CHI 64.5 offensive plays/g (2nd in NFL) vs CAR 58.6 plays/g (23rd); reallocates 0.5 toward CHI, game total unchanged. Source: pbp2025+circa0711 pace notes in quality_2025."
+     },
+     {
+      "team": "CAR",
+      "points": -0.5,
+      "reason": "Mirror of the pace-possession reallocation: CAR bottom-third pace (58.6 plays/g, 23rd) cedes 0.5 to the league's 2nd-fastest offense. Source: pbp2025+circa0711 pace notes in quality_2025."
+     }
+    ],
+    "considered_but_zero": [
+     {
+      "item": "CAR EDGE Nic Scourton (IR, RES/R36) \u2014 premium position",
+      "why_zero": "2025 R2 pick but WLB rank 4 on the 8/31 depth chart; starters Jaelan Phillips (SLB1) and Patrick Jones II (WLB1) are ACT/A01. Depth loss, not a starter absence. Source: nflverse-data weekly_rosters roster_weekly_2026.csv (2026 W1 REG)."
+     },
+     {
+      "item": "CHI CB Kyler Gordon (QUESTIONABLE, A02) \u2014 premium position (CB)",
+      "why_zero": "Nickel CB, not CB1; listed NB2 behind Josh Blackwell (NB1) on 8/31, and outside CB1s Jaylon Johnson/Tyrique Stevenson are ACT/A01. A02 decode unverified = weak evidence per spec; flagged, no number. Source: nflverse-data weekly_rosters + depth_charts_2026.csv 2026-08-31."
+     },
+     {
+      "item": "CAR DT Tershawn Wharton (QUESTIONABLE, A02)",
+      "why_zero": "Rotation interior DL still listed RDE2 on the 8/31 depth chart; A02 decode unverified = weak evidence, sub-starter impact. Flag only. Source: nflverse-data weekly_rosters roster_weekly_2026.csv (2026 W1 REG)."
+     },
+     {
+      "item": "CHI DL Shemar Turner (QUESTIONABLE, A02)",
+      "why_zero": "RDT rank 3 depth piece; A02 decode unverified. No starter-level impact. Source: nflverse-data weekly_rosters roster_weekly_2026.csv (2026 W1 REG)."
+     },
+     {
+      "item": "CAR WR Chris Brazzell II (IR, RES/R36)",
+      "why_zero": "2026 R3 rookie depth WR; WR1 Tetairoa McMillan is ACT/A01, so no WR1-absence team-total case. Source: nflverse-data weekly_rosters roster_weekly_2026.csv (2026 W1 REG)."
+     },
+     {
+      "item": "qb_change (either side)",
+      "why_zero": "Both starters confirmed ACT/A01 QB1 on 8/31 (Williams, Young); no post-2026-08-31 news in bundle. nfelo already bakes per-QB adjustments (CHI +0.2, CAR +0.12). Source: injuries + nfelo_baked_in."
+     },
+     {
+      "item": "CHI loss of WR DJ Moore (traded to BUF 2026-03-05)",
+      "why_zero": "Offseason move dated March; already inside preseason nfelo/PFF/DVOA cores. Not a post-data-date \u00a75 event. Source: qb_context notable_changes (trades.csv 2026-03-05)."
+     },
+     {
+      "item": "CAR loss of RB Rico Dowdle to PIT",
+      "why_zero": "Offseason roster movement, priced by preseason ratings; not a \u00a75 news item. Source: qb_context notable_changes."
+     },
+     {
+      "item": "weather adjustment",
+      "why_zero": "Outdoors in Charlotte with forecast_available=false; spec forbids numeric weather moves without a verified forecast. Climatology in bundle is unsourced/qualitative. Flagged instead. Source: weather block."
+     },
+     {
+      "item": "travel_international / rest",
+      "why_zero": "Both teams on 7 days rest; CHI (Central) at 1:00 ET is a 12:00 body-clock kick, not a west-to-east 10am case. HFA (2.41) already inside nfelo. Source: rest block + nfelo_baked_in."
+     },
+     {
+      "item": "explosive offense vs weak explosive-play defense TT modifier",
+      "why_zero": "CHI off EPA/play 0.076 vs CAR def EPA/play 0.060 suggests a lean, but the bundle carries no explosive-play-specific data and the efficiency gap is already in the cores; only the pace modifier has direct evidence. Source: quality_2025 (pbp2025+circa0711)."
+     },
+     {
+      "item": "CAR ILB Bobby Okereke discrepancy",
+      "why_zero": "Listed ILB1 on the 8/31 depth chart but absent from the league-wide W1 roster file; unresolved with no news access. Cannot be an evidence item \u2014 flagged only. Source: injuries notes."
+     }
+    ],
+    "flags": [
+     "TPT panel unrecovered (Prediction Tracker blocked): spread blend is 2-source (nfelo + PFF structural), total is single-source nfelo (n_total_sources=1, total_sd null)",
+     "CAR PFF unit ranks: no numbers recovered \u2014 OL evidence qualitative only; structural pff_meta ol_edge forced to 0.0",
+     "CHI PFF pass-rush rank missing; CHI OL rank ambiguity ('Top 5' headline vs 'fourth' snippet, one snippet attributed to 2025 rankings)",
+     "Roster sub-codes decode unverified: Ekwonu A02, Moton A06 (only A06 in the entire league W1 file \u2014 could be injury/suspension/absence), Wharton/Gordon/Turner/Sewell A02",
+     "CAR depth chart artifact: rookie Monroe Freeling listed as BOTH LT1 and RT1 on the 8/31 snapshot",
+     "Bobby Okereke listed ILB1 on 8/31 CAR depth chart but absent from the league-wide 2026 W1 roster file \u2014 unresolved, no news access",
+     "Outdoor game (Bank of America Stadium, grass), no verified forecast \u2014 climatology only, no numeric weather adjustment permitted"
+    ]
    },
    "dvoa_projection_2026": {
     "home": -0.084,
@@ -595,7 +881,7 @@
     "total": 47.5
    },
    "uncertainty": {
-    "spread_sd": 1.341,
+    "spread_sd": 0.469,
     "total_sd": null,
     "n_spread_sources": 2,
     "n_total_sources": 1
@@ -616,16 +902,22 @@
    },
    "cores": {
     "spread_nfelo": -3.5,
-    "spread_pff": null,
+    "spread_pff": -3.132,
     "pff_meta": {
-     "basis": "PFF unavailable for this game"
+     "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+     "psr_home": -0.1789818,
+     "psr_away": -0.9136384,
+     "psr_qb_home": 6.0,
+     "psr_qb_away": 3.5,
+     "hfa_pts": 2.4,
+     "rank_model_diag": null
     },
     "spread_tpt": null,
     "tpt_spread_detail": {},
-    "spread_core": -3.5,
+    "spread_core": -3.331,
     "spread_weights": {
-     "nfelo": 1.0,
-     "pff": 0.0,
+     "nfelo": 0.541,
+     "pff": 0.459,
      "tpt": 0.0
     },
     "total_nfelo": 45.764,
@@ -727,7 +1019,7 @@
      "note": "QB Burrow No. 2 (order via search-summary echo; tier verbatim). OL: among bottom-5 PROJECTED run-blocking lines (4for4, not PFF); with primary 5 on field, RBs averaged 1.4 YBC (30th of 48 qualifying OL combos). DL lost Trey Hendrickson (to BAL), added Boye Mafe - no rank. Coverage rank missing."
     }
    },
-   "pff_power": {
+   "pff_power_rank_diag": {
     "away": {
      "team": "TB",
      "rank": 20,
@@ -741,7 +1033,76 @@
      "verbatim": false,
      "source": "pff.com \u2014 'Cincinnati Bengals 2026 preview: Joe Burrow leads a revamped roster following major offseason additions'",
      "note": "No PFF rank/rating number recovered. Qualitative: lost Trey Hendrickson (to BAL); added Boye Mafe, Bryan Cook, Jonathan Allen (and Dexter Lawrence per Yahoo); 31st in passing success rate allowed in 2025. Burrow 94.2 PFF passing grade over past two seasons \u2014 highest among all QBs."
-    }
+    },
+    "note": "March post-FA web-recovered ranks; DIAGNOSTIC ONLY now that the authoritative PFF table is in pff_ratings"
+   },
+   "pff_ratings": {
+    "source": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 \u2014 AUTHORITATIVE for this run (\u00a712)",
+    "convention": "Point Spread Rating = points vs league average, QB component included; spread_pff = -(psr_home - psr_away) - HFA",
+    "home": -0.1789818,
+    "away": -0.9136384,
+    "home_qb_rating": 6.0,
+    "away_qb_rating": 3.5,
+    "home_proj_wins": 8.9757,
+    "away_proj_wins": 8.2273
+   },
+   "prior_audited_adjustments_v1": {
+    "spread_adjustments": [],
+    "total_adjustments": [],
+    "tt_modifiers": [],
+    "considered_but_zero": [
+     {
+      "item": "qb_change \u2014 both starters",
+      "why_zero": "Mayfield and Baker/Burrow both ACT/A01 and depth-chart QB1 on 8/31, both 2025 Week 18 starters of record, confidence HIGH (nflverse games.csv + depth_charts_2026.csv). No injury/benching news after 2026-08-31, so nothing outside the nfelo bake (home_qb_adj +0.26, away +0.09; 538_qb_adj CIN +6.4546 / TB +2.2242 already inside spread_nfelo)."
+     },
+     {
+      "item": "Premium-position absences (spec rule 7 sweep)",
+      "why_zero": "key_absences is empty and the bundle verifies both teams CLEAN at every premium position: TB Wirfs LT1/Goedeke RT1, Egbuka WR1/Godwin WR2, Vea, Winfield, McCollum CB1 all ACT/A01; CIN Chase WR1/Higgins WR2, Orlando Brown Jr. LT1, Mims RT1, Hill/Turner CBs all ACT/A01 (injuries.notes). Nothing to price."
+     },
+     {
+      "item": "CIN loss of EDGE Trey Hendrickson to BAL",
+      "why_zero": "Offseason roster change, not a Week 1 absence \u2014 2026 W1 roster file shows him on BAL and the 8/31 nfelo rating already reflects the current roster (nfelo_baked_in note). Adding a spread point for it would double-count; CIN DL1s are now Dexter Lawrence and Jonathan Allen (roster-verified)."
+     },
+     {
+      "item": "ol_pass_rush_mismatch (either direction)",
+      "why_zero": "Category requires elite rush vs injured/weak OT. TB fields the PFF #3 OL against a CIN rush that lost Hendrickson (no pass-rush rank recovered); CIN's OTs Brown Jr./Mims are ACT and TB's pass-rush rank is missing from the bundle. No qualifying pairing, no adjustment."
+     },
+     {
+      "item": "\u00a76 TB TT bump for CIN weak defense",
+      "why_zero": "CIN defense is genuinely poor (0.124 def EPA/play, 29th, pbp2025; 31st passing success rate allowed, pff.com preview), but TB's offense is league-average (0.002 off EPA/play), failing the explosive-offense half of the trigger. Evidence supports one side of the mismatch only; zeroed rather than stretched."
+     },
+     {
+      "item": "\u00a76 CIN TT bump for Burrow/Chase vs TB coverage",
+      "why_zero": "CIN offense qualifies (Burrow PFF QB2, 94.2 two-year passing grade; pass rate 66.2%, 3rd), but TB's defense is league-average (0.013 def EPA/play; PFF coverage rank 15) \u2014 not a weak explosive-play defense. Burrow's value is also already in nfelo's QB adjustment."
+     },
+     {
+      "item": "\u00a76 pace-possession mismatch",
+      "why_zero": "TB 62.6 plays/g (t-10th) vs CIN 61.7 (15th); both pass-lean (61.4% / 66.2%). No slow-vs-fast mismatch (quality_2025 pace notes)."
+     },
+     {
+      "item": "CIN depth CB Ceyair Wright exempt list (code E08)",
+      "why_zero": "Sub-premium rookie depth CB and the E08 decode is unverified \u2014 weak evidence per spec; flagged, not priced."
+     },
+     {
+      "item": "TB WR Dennis Houston RES/R34, DE Deshawn McKnight RES/R36; CIN OT Cody Ford cut",
+      "why_zero": "All sub-premium depth pieces (injuries.notes); no team-total impact evidenced."
+     },
+     {
+      "item": "weather",
+      "why_zero": "Outdoor game, forecast_available=false, confidence LOW; climatology is unsourced/qualitative. Spec bars any numeric weather adjustment without a verified forecast \u2014 flagged instead."
+     },
+     {
+      "item": "rest/travel",
+      "why_zero": "Both teams on 7 days; TB-to-CIN is intra-Eastern-time, 1pm ET kick \u2014 no body-clock case. HFA 2.397 already baked into spread_nfelo."
+     }
+    ],
+    "flags": [
+     "TPT panel unrecovered for TB@CIN (sites egress-blocked) \u2014 spread and total cores are single-source nfelo (n_sources=1, no dispersion estimate)",
+     "No PFF power rank/rating or structural spread recovered for CIN; PFF spread weight 0.0 for this game",
+     "PFF unit gaps: TB pass-rush rank and CIN coverage rank missing; CIN OL run-blocking note is 4for4-sourced, not PFF",
+     "No verified weather forecast for outdoor game at Paycor Stadium (Sun 9/13 1:00 ET); climatology only, no numeric adjustment taken",
+     "CIN depth CB Ceyair Wright on exempt list, roster code E08 decode unverified \u2014 weak evidence, not priced"
+    ]
    },
    "dvoa_projection_2026": {
     "home": 0.037,
@@ -752,9 +1113,9 @@
     "total": 51.5
    },
    "uncertainty": {
-    "spread_sd": null,
+    "spread_sd": 0.26,
     "total_sd": null,
-    "n_spread_sources": 1,
+    "n_spread_sources": 2,
     "n_total_sources": 1
    }
   },
@@ -773,17 +1134,19 @@
    },
    "cores": {
     "spread_nfelo": -7.0,
-    "spread_pff": -7.731,
+    "spread_pff": -8.046,
     "pff_meta": {
-     "basis": "unit/rank z-model (\u00a73.1), ST edge unavailable",
-     "off_edge": 1.182,
-     "def_edge": 1.182,
-     "ol_edge": 0.0,
-     "hfa_pts": 2.41
+     "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+     "psr_home": 2.6180831,
+     "psr_away": -3.0151095,
+     "psr_qb_home": 3.5,
+     "psr_qb_away": 2.0,
+     "hfa_pts": 2.41,
+     "rank_model_diag": -7.728
     },
     "spread_tpt": null,
     "tpt_spread_detail": {},
-    "spread_core": -7.335,
+    "spread_core": -7.48,
     "spread_weights": {
      "nfelo": 0.541,
      "pff": 0.459,
@@ -937,7 +1300,7 @@
      "note": "CAUTION: 82.8/81.9 grades (both 5th) surfaced under a 2025-final query but snippet year not explicit. OL slipped from typical top-5 to 'middle of the pack' (17th clean-pocket rate, 20th adjusted line yards - stat ranks, not unit rank). Missed playoffs first time in 3 seasons in 2025. QB Goff PFF rank not found (fantasy ~17, NOT PFF). Pass-rush rank missing."
     }
    },
-   "pff_power": {
+   "pff_power_rank_diag": {
     "away": {
      "team": "NO",
      "rank": 25,
@@ -953,7 +1316,85 @@
      "source": "ninernoise.com (BAL 4/GB 5/DET 6 listing matching anchors) + pff.com canonical snippet",
      "note": "PFF sim ~10.6 expected wins (highest NFC North). No PFF 1-32 rank recovered. PFF post-FA article: Lions ranked 5th in NFL in BOTH PFF team offensive (82.8) and defensive (81.9) grading in 2025 despite missing playoffs. Source attribution slightly weaker than other rows (aggregated snippet); treat with medium confidence.",
      "rank": 6
-    }
+    },
+    "note": "March post-FA web-recovered ranks; DIAGNOSTIC ONLY now that the authoritative PFF table is in pff_ratings"
+   },
+   "pff_ratings": {
+    "source": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 \u2014 AUTHORITATIVE for this run (\u00a712)",
+    "convention": "Point Spread Rating = points vs league average, QB component included; spread_pff = -(psr_home - psr_away) - HFA",
+    "home": 2.6180831,
+    "away": -3.0151095,
+    "home_qb_rating": 3.5,
+    "away_qb_rating": 2.0,
+    "home_proj_wins": 10.6994,
+    "away_proj_wins": 7.7332
+   },
+   "prior_audited_adjustments_v1": {
+    "spread_adjustments": [],
+    "total_adjustments": [],
+    "tt_modifiers": [
+     {
+      "team": "DET",
+      "points": 0.5,
+      "reason": "Explosive/efficient offense vs weakened interior defensive line: PFF-graded 82.8 offense (5th, 2025-vintage) faces a NO interior DL that PFF's 2026 DL rankings call a 'clear weakness' (no projected interior starter graded above 65.0), further degraded by starting DT Bryan Bresee to IR (RES/R36, nflverse roster_2026.csv week-1 snapshot) \u2014 an absence that post-dates the PFF unit projection. Minimum-range reallocation (+0.5)."
+     },
+     {
+      "team": "NO",
+      "points": -0.5,
+      "reason": "Opponent side of the same reallocation \u2014 game total unchanged. Bresee IR + PFF interior-DL weakness lets DET's scoring come easier; the 0.5 is moved from NO's team total, not added to the game total."
+     }
+    ],
+    "considered_but_zero": [
+     {
+      "item": "NO QB Tyler Shough unconfirmed as starter (qb_change)",
+      "why_zero": "Shough is QB1 on the 8/31 nflverse/ESPN depth chart and ACT/A01 on the roster; the 'unconfirmed' tag reflects no news corroboration (web blocked), not any injury/benching news after 2026-08-31. nfelo already bakes a +0.15 away-QB adjustment for him. No new information the ratings missed \u2014 flagged, not adjusted."
+     },
+     {
+      "item": "NO DT Bryan Bresee IR \u2014 spread",
+      "why_zero": "A starting interior DL to IR fits no allowed \u00a75 spread category (not qb_change; ol_pass_rush_mismatch runs the other direction \u2014 elite rush vs weak OT). Handled instead as a \u00a76 team-total reallocation (0.5 to DET); zero on the spread."
+     },
+     {
+      "item": "NO OL depth: Dillon Radunz IR + Nick Saldiveri IR vs Aidan Hutchinson (ol_pass_rush_mismatch)",
+      "why_zero": "Hutchinson (ACT/A01 verified) qualifies as elite rush, but the category requires an injured/weak starting OT. NO's tackles Kelvin Banks Jr. and Taliese Fuaga are both verified ACT/A01 per the nflverse week-1 roster snapshot; Radunz/Saldiveri are interior/swing depth only. Depth thinning alone does not meet the trigger."
+     },
+     {
+      "item": "DET FS Kerby Joseph \u2014 A02 code, listed FS3 behind Chuck Clark on 8/31 depth chart",
+      "why_zero": "Weak evidence per spec: A02 decode unverified, availability unresolved. No \u00a75 category covers a safety, and the \u00a76 explosive-play counter fails on the other side \u2014 NO's offense is not explosive (2025 off EPA/play -0.079, PFF power rank 25, ECR QB20.6). Flagged to Appendix C rather than moved."
+     },
+     {
+      "item": "DET S Brian Branch \u2014 A02 code, listed SS4 behind Avonte Maddox on 8/31 depth chart",
+      "why_zero": "Same basis as Joseph: decode-unverified roster code plus a depth-chart anomaly, the slate's biggest availability cluster, but no confirmed absence and no eligible category with NO's non-explosive offense. Flag only."
+     },
+     {
+      "item": "DET EDGE Payton Turner IR",
+      "why_zero": "Rotational depth behind Hutchinson, who is verified ACT/A01. A depth EDGE absence moves no eligible category. Premium-position box checked per rule 7; zero."
+     },
+     {
+      "item": "NO minor cluster: WR Ja'Lynn Polk (Reserve/Retired), RB Ty Chandler (IR), TE Moliki Matavao (IR), WR Mason Tipton (A02)",
+      "why_zero": "None is a premium starter \u2014 WR1 Chris Olave is verified ACT/A01. Depth/backend roster churn already reflected nowhere the engines would misprice; no category, no move."
+     },
+     {
+      "item": "Travel/body-clock (travel_international)",
+      "why_zero": "New Orleans (Central) to Detroit (Eastern), 1:00 ET kick = noon body clock. Not a west-to-east 10am-body-clock case; nfelo already carries travel in its spread."
+     },
+     {
+      "item": "Rest (rest_short_week)",
+      "why_zero": "Both teams on 7 days per bundle. Week 1 baseline; no evidence of differential."
+     },
+     {
+      "item": "Weather",
+      "why_zero": "Ford Field dome; bundle marks weather not a factor. No adjustment and no outdoor-forecast flag needed."
+     }
+    ],
+    "flags": [
+     "TPT panel unrecovered for NO@DET (spread_tpt and total_tpt null; sites egress-blocked)",
+     "Total is single-source: nfelo only (n_total_sources=1, total_sd null); PFF total null",
+     "DET PFF 1-32 power rank reconstructed from aggregated snippet (rank 6, medium confidence per bundle); DET 82.8/81.9 team grades carry season-year ambiguity",
+     "NO PFF unit numbers unrecovered \u2014 OL/DL notes only, partly non-PFF sources (4for4)",
+     "NO QB Tyler Shough unconfirmed as Week 1 starter (depth-chart/roster basis only; no news corroboration available this session)",
+     "DET safeties Kerby Joseph and Brian Branch on unverifiable A02 roster codes with depth-chart anomalies (FS3/SS4 on 8/31 snapshot) \u2014 Week 1 availability unresolved, not priced",
+     "DET roster-file anomaly (critic finding): longtime LT Taylor Decker absent from the entire 2026 roster file, rookie Blake Miller listed RT1, OL Giovanni Manu on A03 (Active/NFI-type) \u2014 unexplained hole at a premium OL position; roster feed decode unverified"
+    ]
    },
    "dvoa_projection_2026": {
     "home": 0.103,
@@ -964,7 +1405,7 @@
     "total": 49.5
    },
    "uncertainty": {
-    "spread_sd": 0.517,
+    "spread_sd": 0.74,
     "total_sd": null,
     "n_spread_sources": 2,
     "n_total_sources": 1
@@ -985,16 +1426,22 @@
    },
    "cores": {
     "spread_nfelo": 1.5,
-    "spread_pff": null,
+    "spread_pff": 0.324,
     "pff_meta": {
-     "basis": "PFF unavailable for this game"
+     "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+     "psr_home": 3.1459421,
+     "psr_away": 4.610869,
+     "psr_qb_home": 3.5,
+     "psr_qb_away": 7.0,
+     "hfa_pts": 1.14,
+     "rank_model_diag": null
     },
     "spread_tpt": null,
     "tpt_spread_detail": {},
-    "spread_core": 1.5,
+    "spread_core": 0.96,
     "spread_weights": {
-     "nfelo": 1.0,
-     "pff": 0.0,
+     "nfelo": 0.541,
+     "pff": 0.459,
      "tpt": 0.0
     },
     "total_nfelo": 47.721,
@@ -1139,7 +1586,7 @@
      "note": "Elite defense both levels; 2025: No. 1 EPA/play allowed (-0.16), 277.2 total yds/gm allowed (best), 228 PA (fewest). OL was 'arguably the worst in the NFL last year'; three new starters (Wyatt Teller, Braden Smith, R1 Keylan Rutledge) - no 2026 number, likely bottom third. BUF@HOU: strong D vs weak OL angle."
     }
    },
-   "pff_power": {
+   "pff_power_rank_diag": {
     "away": {
      "team": "BUF",
      "rank": 3,
@@ -1152,7 +1599,108 @@
      "verbatim": false,
      "source": "pff.com \u2014 'Houston Texans 2026 preview: Elite pass rush fuels postseason hopes'",
      "note": "No PFF rank/rating number recovered. Qualitative: #2 in PFF 2026 DL rankings (Will Anderson Jr., Danielle Hunter), #2 in PFF 2026 secondary rankings. C.J. Stroud ranked 17th in PFF 2026 QB rankings (62.0 passing grade in 2025, 34th/43; career-high 23 TWPs). Traded for RB David Montgomery."
-    }
+    },
+    "note": "March post-FA web-recovered ranks; DIAGNOSTIC ONLY now that the authoritative PFF table is in pff_ratings"
+   },
+   "pff_ratings": {
+    "source": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 \u2014 AUTHORITATIVE for this run (\u00a712)",
+    "convention": "Point Spread Rating = points vs league average, QB component included; spread_pff = -(psr_home - psr_away) - HFA",
+    "home": 3.1459421,
+    "away": 4.610869,
+    "home_qb_rating": 3.5,
+    "away_qb_rating": 7.0,
+    "home_proj_wins": 10.064,
+    "away_proj_wins": 10.7932
+   },
+   "prior_audited_adjustments_v1": {
+    "spread_adjustments": [],
+    "total_adjustments": [
+     {
+      "category": "qb_change",
+      "points": -0.5,
+      "evidence": "HOU WR Jayden Higgins on IR (RES/R36) \u2014 2025 second-round pick, projected top-3 receiver; 8/31 WR room behind Nico Collins is Xavier Hutchinson/Jaylin Noel/Kayshon Boutte, with Tank Dell listed WR9 and not a projected contributor. \u00a75.1 skill-absence applied at range minimum (-0.5, allowed -0.5..-1.5), attributed to HOU's team total. Timing caveat: the IR appears at the 8/31 week-1 snapshot rather than as post-8/31 news, but nfelo's only roster input is QB (see nfelo_baked_in), so this absence is structurally unpriced in the core.",
+      "source": "nflverse-data rosters release, roster_2026.csv week-1 snapshot + depth_charts_2026.csv 2026-08-31"
+     }
+    ],
+    "tt_modifiers": [
+     {
+      "team": "HOU",
+      "points": -0.25,
+      "reason": "Allocation of the \u00a75.1 Higgins deduction: net-zero pair with BUF +0.25 so the full -0.5 lands on HOU's team total instead of splitting evenly through the T/2 \u00b1 S/2 identity. Not an independent signal; game total unchanged by this pair."
+     },
+     {
+      "team": "BUF",
+      "points": 0.25,
+      "reason": "Offsetting half of the net-zero Higgins allocation pair (see HOU entry); keeps game total unchanged per \u00a76."
+     }
+    ],
+    "considered_but_zero": [
+     {
+      "item": "BUF CB Dorian Strong (IR, RES/R46)",
+      "why_zero": "Depth CB behind Christian Benford/Maxwell Hairston per nflverse roster_2026.csv week-1 snapshot; not CB1, no starter displacement \u2014 no spread or TT impact."
+     },
+     {
+      "item": "HOU EDGE Dylan Horton (IR, RES/R36)",
+      "why_zero": "Rotational DE depth behind Will Anderson Jr./Danielle Hunter (nflverse rosters); PFF 2026 DL rank #2 is built on the intact Anderson/Hunter duo \u2014 premium position but non-starter, zero."
+     },
+     {
+      "item": "HOU LB E.J. Speed (status A02, SLB3 on 8/31 depth chart)",
+      "why_zero": "A02 roster code decode unverified per spec \u2014 weak evidence at most; LB is also not a premium position under rule 7. Flagged, not adjusted."
+     },
+     {
+      "item": "HOU WR Tank Dell (healthy-concern, WR9 on 8/31 depth chart)",
+      "why_zero": "No official designation (ACT/A01); not a projected contributor on the 8/31 depth chart, so no incremental loss beyond the Higgins deduction. Context for the thin WR room only."
+     },
+     {
+      "item": "HOU QB3 Graham Mertz (IR, RES/R36)",
+      "why_zero": "Starter C.J. Stroud confirmed and baked by nfelo (-0.13); Davis Mills is a healthy QB2. Backup-depth contingency flag only, no Week 1 impact."
+     },
+     {
+      "item": "ol_pass_rush_mismatch \u2014 HOU rush (PFF DL #2, Anderson/Hunter both 90+ pass-rush grades) vs BUF OL",
+      "why_zero": "Victim precondition fails: BUF OTs Dawkins/Brown are ACT/A01 and characterized 'strong outside' in the PFF unit note \u2014 no injured/weak OT to exploit."
+     },
+     {
+      "item": "ol_pass_rush_mismatch \u2014 BUF rush vs HOU OL ('arguably the worst in the NFL last year' per PFF, three new starters)",
+      "why_zero": "Rush precondition fails: bundle carries no elite ranking for BUF's rush (Rousseau/Oliver/Chubb, 'no rank'); an unranked rush cannot trigger the -1.0..-2.0/-0.5..-1.5 category."
+     },
+     {
+      "item": "travel_international",
+      "why_zero": "BUF travels east-to-central for a 1:00 ET / noon-local kick; the west-to-east 10am-body-clock condition does not apply, and nfelo already bakes HFA/travel (1.141 pts)."
+     },
+     {
+      "item": "rest_short_week",
+      "why_zero": "Both teams on 7 days (Week 1); no specific evidence per spec."
+     },
+     {
+      "item": "weather",
+      "why_zero": "No verified forecast exists (forecast_available: false); NRG retractable roof expected closed per unsourced operational norm \u2014 numeric weather adjustment forbidden, flagged instead."
+     },
+     {
+      "item": "qb_change (spread)",
+      "why_zero": "Both starters confirmed (Allen HIGH, Stroud HIGH confidence) and already inside spread_nfelo per nfelo_baked_in (Allen +0.28, Stroud -0.13) \u2014 any spread move would double-count."
+     },
+     {
+      "item": "TT modifier: explosive offense vs weak explosive-play defense (either direction)",
+      "why_zero": "BUF's 3rd-ranked offense (0.14 EPA/play, 83.3 PFF grade) faces HOU's No. 1 EPA/play defense \u2014 not a weak explosive-play defense; HOU's offense (-0.012 EPA/play, below avg) is not explosive even against BUF's rebuilt secondary (lost 5 of top 7 coverage players). Preconditions fail both ways."
+     },
+     {
+      "item": "TT modifier: elite red-zone defense (HOU)",
+      "why_zero": "HOU allowed fewest points (228 PA) and led EPA/play allowed in 2025, but the bundle contains no red-zone-specific evidence, and general defensive quality is already inside the nfelo total."
+     },
+     {
+      "item": "TT modifier: pace-possession mismatch",
+      "why_zero": "No mismatch: BUF 62.6 plays/g (10th), HOU 63.4 plays/g (6th) \u2014 both top-10 pace per pbp2025 notes."
+     }
+    ],
+    "flags": [
+     "TPT panel unrecovered (Prediction Tracker egress-blocked): n=1 spread source, n=1 total source, no SD \u2014 single-engine core.",
+     "PFF structural spread missing for this game and no PFF power rank/rating recovered for HOU (unit-level/qualitative PFF content only).",
+     "No verified weather forecast (forecast_available: false); NRG retractable roof expected closed per operational norm, unsourced for this specific game \u2014 no numeric weather adjustment taken.",
+     "Roster code A02 decode unverified (HOU LB E.J. Speed, HOU S M.J. Stewart, BUF WR Tyrell Shavers) \u2014 treated as weak evidence, no adjustment.",
+     "Higgins IR dates to the 8/31 week-1 snapshot, not post-8/31 news; \u00a75.1 adjustment held at range minimum (-0.5) with timing caveat on record.",
+     "HOU QB depth thin: QB3 Graham Mertz on IR, Davis Mills the only healthy backup \u2014 contingency flag only.",
+     "Bundle venue field reads 'Reliant Stadium' (outdated name; weather notes say NRG Stadium) \u2014 data inconsistency, no numeric impact."
+    ]
    },
    "dvoa_projection_2026": {
     "home": 0.179,
@@ -1163,9 +1711,9 @@
     "total": 44.5
    },
    "uncertainty": {
-    "spread_sd": null,
+    "spread_sd": 0.832,
     "total_sd": null,
-    "n_spread_sources": 1,
+    "n_spread_sources": 2,
     "n_total_sources": 1
    }
   },
@@ -1184,17 +1732,19 @@
    },
    "cores": {
     "spread_nfelo": 1.5,
-    "spread_pff": 2.662,
+    "spread_pff": 2.458,
     "pff_meta": {
-     "basis": "unit/rank z-model (\u00a73.1), ST edge unavailable",
-     "off_edge": -1.124,
-     "def_edge": -1.124,
-     "ol_edge": 0.0,
-     "hfa_pts": 2.4
+     "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+     "psr_home": -1.2491307,
+     "psr_away": 3.6057492,
+     "psr_qb_home": 2.0,
+     "psr_qb_away": 7.0,
+     "hfa_pts": 2.4,
+     "rank_model_diag": 2.659
     },
     "spread_tpt": null,
     "tpt_spread_detail": {},
-    "spread_core": 2.033,
+    "spread_core": 1.94,
     "spread_weights": {
      "nfelo": 0.541,
      "pff": 0.459,
@@ -1322,7 +1872,7 @@
      "note": "NO NUMBERS RECOVERED. OL: 'steady... one of the healthiest units,' 4 of 5 starters back; among top-5 PROJECTED run-blocking (4for4, not PFF). Secondary: 'A full season of Sauce Gardner sets a high ceiling' (Gardner acquired mid-2025). DL ceiling depends on Laiatu Latu (84.1 grade, 61 pressures last yr). QB starter/rank not found."
     }
    },
-   "pff_power": {
+   "pff_power_rank_diag": {
     "away": {
      "team": "BAL",
      "rank": 4,
@@ -1336,7 +1886,71 @@
      "source": "atozsports.com \u2014 Colts 21st post-FA (URL slug pff-21st)",
      "note": "No PFF rank/rating number recovered. Qualitative from PFF: 'boom-or-bust' cap outlay on injured Daniel Jones (Achilles tear Week 14 2025 after 7-1 start and 7-game season-ending skid); improvement hinges on in-house depth and mid/late-round picks.",
      "rank": 21
-    }
+    },
+    "note": "March post-FA web-recovered ranks; DIAGNOSTIC ONLY now that the authoritative PFF table is in pff_ratings"
+   },
+   "pff_ratings": {
+    "source": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 \u2014 AUTHORITATIVE for this run (\u00a712)",
+    "convention": "Point Spread Rating = points vs league average, QB component included; spread_pff = -(psr_home - psr_away) - HFA",
+    "home": -1.2491307,
+    "away": 3.6057492,
+    "home_qb_rating": 2.0,
+    "away_qb_rating": 7.0,
+    "home_proj_wins": 7.935,
+    "away_proj_wins": 10.7739
+   },
+   "prior_audited_adjustments_v1": {
+    "spread_adjustments": [],
+    "total_adjustments": [],
+    "tt_modifiers": [],
+    "considered_but_zero": [
+     {
+      "item": "qb_change \u2014 IND QB Daniel Jones unconfirmed (Anthony Richardson demoted to QB3)",
+      "why_zero": "2026-08-31 nflverse/ESPN depth chart lists Jones QB1, Leonard QB2, Richardson QB3, all ACT/A01; no injury/benching news after the 2026-08-31 nfelo data date, and nfelo_baked_in already carries home_qb_adj +0.03 for Jones. Category only covers post-data-date news. Flagged unconfirmed, no points."
+     },
+     {
+      "item": "OT Kendall Lamm (BAL) OUT \u2014 Reserve/Retired (RET/R02)",
+      "why_zero": "Premium-position absence, but he is a veteran swing tackle; both BAL starting OTs (Stanley, Rosengarten) are ACT/A01 per roster_2026.csv W1 snapshot. Depth-only loss; ol_pass_rush_mismatch requires an injured/weak starting OT, which does not exist here."
+     },
+     {
+      "item": "OL Danny Pinter (BAL) IR (RES/R36)",
+      "why_zero": "Interior OL depth only per nflverse roster_2026.csv; no starting-five impact identified in the bundle. No category applies."
+     },
+     {
+      "item": "CB Cameron Mitchell (IND) IR (RES/R34)",
+      "why_zero": "Depth CB behind Sauce Gardner and Charvarius Ward, both verified ACT/A01 CB1s per roster_2026.csv. Not a CB1 absence; no adjustment."
+     },
+     {
+      "item": "ol_pass_rush_mismatch \u2014 BAL EDGE Trey Hendrickson (90+ PFF pass-rush grade 4 straight yrs) vs IND OL",
+      "why_zero": "Elite rusher is present but the victim unit is not weak/injured: IND OL described as 'one of the healthiest units,' 4 of 5 starters back, top-5 projected run-blocking (4for4), Raimann/Travis ACT/A01. Category trigger requires an injured/weak OT; not met."
+     },
+     {
+      "item": "tt reallocation \u2014 IND pass offense (Keenan Allen added, 60.4% pass rate) vs BAL secondary 2025 struggles (Humphrey 900+ coverage yds allowed, PFF)",
+      "why_zero": "Evidence is qualitative and 2025-only; no 2026 BAL secondary rank recovered, and PFF notes the BAL front 'improved significantly' (Hendrickson, Madubuike), which changes the pass-defense context. Below the named-metric bar for an explosive-vs-weak-explosive-play-defense reallocation."
+     },
+     {
+      "item": "tt reallocation \u2014 pace-possession mismatch (BAL 56.2 plays/g 29th vs IND 59.5 plays/g 20th, pbp2025)",
+      "why_zero": "Both teams bottom-half pace; no mismatch between them, and BAL's ball-control profile compresses the game total (already nfelo's job), not the split."
+     },
+     {
+      "item": "weather \u2014 Lucas Oil retractable roof, Sun 9/13 1:00 ET",
+      "why_zero": "forecast_available=false and roof state is a game-day decision; spec forbids numeric weather adjustments without a verified forecast. Likely controlled environment; flagged only."
+     },
+     {
+      "item": "rest_short_week / travel_international",
+      "why_zero": "Both teams on 7 days rest; BAL-to-IND is an intra-Eastern-time 1pm kick with no body-clock angle, and HFA 2.397 is already inside spread_nfelo."
+     }
+    ],
+    "flags": [
+     "TPT panel unrecovered for BAL@IND (spread_tpt/total_tpt null; sites egress-blocked) \u2014 spread rests on 2 sources, SD 0.822",
+     "Total is single-source (nfelo 46.56; PFF total null, n_total_sources=1, total_sd null); DVOA diagnostic 46.31 is the only cross-check",
+     "IND QB Daniel Jones UNCONFIRMED: decisive 2026-08-31 depth-chart signal (Jones QB1, Richardson QB3) but no press-conference corroboration",
+     "No first-party PFF numeric power rank for IND \u2014 21st sourced from atozsports.com URL slug; BAL QB No. 3 order confirmed only via search-engine summary echo",
+     "Roster-status codes (RET/R02, RES/R36, RES/R34) decoded from nflverse roster_2026.csv snapshot, not press-verified",
+     "Retractable roof at Lucas Oil: roof state is a game-day decision and no verified forecast exists \u2014 no weather adjustment permitted either way",
+     "IND 2026 win-total book split (Circa 7/11 = 7.5 vs Bookmaker 7/03 = 8.5) \u2014 market disagreement on IND baseline quality",
+     "dvoa_projection_2026 identical for both teams (0.044/0.044) \u2014 possible placeholder/collision in bundle field, treated as non-informative"
+    ]
    },
    "dvoa_projection_2026": {
     "home": 0.044,
@@ -1347,7 +1961,7 @@
     "total": 48.5
    },
    "uncertainty": {
-    "spread_sd": 0.822,
+    "spread_sd": 0.677,
     "total_sd": null,
     "n_spread_sources": 2,
     "n_total_sources": 1
@@ -1368,16 +1982,22 @@
    },
    "cores": {
     "spread_nfelo": -7.5,
-    "spread_pff": null,
+    "spread_pff": -9.196,
     "pff_meta": {
-     "basis": "PFF unavailable for this game"
+     "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+     "psr_home": 1.6578403,
+     "psr_away": -5.7611884,
+     "psr_qb_home": 4.5,
+     "psr_qb_away": 0.5,
+     "hfa_pts": 1.78,
+     "rank_model_diag": null
     },
     "spread_tpt": null,
     "tpt_spread_detail": {},
-    "spread_core": -7.5,
+    "spread_core": -8.278,
     "spread_weights": {
-     "nfelo": 1.0,
-     "pff": 0.0,
+     "nfelo": 0.541,
+     "pff": 0.459,
      "tpt": 0.0
     },
     "total_nfelo": 45.948,
@@ -1509,7 +2129,7 @@
      "note": "NO NUMBERS RECOVERED. OL placed 'way down in the bad tier' by one analyst (non-PFF). No PFF pass-rush/coverage/QB rank surfaced for CLE@JAX pricing. Biggest single-team gap in this recovery."
     }
    },
-   "pff_power": {
+   "pff_power_rank_diag": {
     "away": {
      "team": "CLE",
      "verbatim": true,
@@ -1522,7 +2142,87 @@
      "verbatim": false,
      "source": "pff.com \u2014 'Jacksonville Jaguars 2026 preview: Trevor Lawrence leads AFC South favorites'",
      "note": "No PFF rank/rating number recovered. Qualitative: PFF calls Jaguars AFC South favorites; Trevor Lawrence NFL's highest-graded QB from Week 13 2025 through playoffs; won AFC South 2025, 8-game win streak to close season; ran continuity offseason (lost Etienne)."
-    }
+    },
+    "note": "March post-FA web-recovered ranks; DIAGNOSTIC ONLY now that the authoritative PFF table is in pff_ratings"
+   },
+   "pff_ratings": {
+    "source": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 \u2014 AUTHORITATIVE for this run (\u00a712)",
+    "convention": "Point Spread Rating = points vs league average, QB component included; spread_pff = -(psr_home - psr_away) - HFA",
+    "home": 1.6578403,
+    "away": -5.7611884,
+    "home_qb_rating": 4.5,
+    "away_qb_rating": 0.5,
+    "home_proj_wins": 9.4144,
+    "away_proj_wins": 5.8971
+   },
+   "prior_audited_adjustments_v1": {
+    "spread_adjustments": [
+     {
+      "category": "ol_pass_rush_mismatch",
+      "points": -0.5,
+      "evidence": "PFF 2026 preseason: CLE 'still have a bottom-five offensive line' despite four new starters; LT1 is rookie Spencer Fano (R1 #9) making his NFL debut. JAX edge duo Josh Hines-Allen and Travon Walker both ACT/A01, behind a defense 5th in 2025 EPA/play. PFF/structural spread absent from the core (nfelo weight 1.0), so this unit mismatch is not otherwise priced. Applied at the minimum of the -0.5..-1.5 range because the JAX rush carries no recovered PFF grade this session \u2014 'elite' is inferred from personnel and unit EPA, and that uncertainty is named here.",
+      "source": "PFF 2026 OL rankings snippet; nflverse-data roster_2026.csv week-1 snapshot / depth_charts_2026.csv 2026-08-31; pbp2025+circa0711 (JAX def EPA/play -0.080, 5th)"
+     }
+    ],
+    "total_adjustments": [
+     {
+      "category": "ol_pass_rush_mismatch",
+      "points": -1,
+      "evidence": "Same evidence chain: CLE bottom-five OL per PFF with a rookie LT in his first start vs healthy Hines-Allen/Walker and a top-5 EPA defense; hit lands on the CLE (victim) team total. Minimum of the -1.0..-2.0 range for the same reason \u2014 the rush half of the mismatch is roster/EPA-sourced, not PFF-graded.",
+      "source": "PFF 2026 OL rankings snippet; nflverse-data roster_2026.csv week-1 snapshot; pbp2025+circa0711"
+     }
+    ],
+    "tt_modifiers": [],
+    "considered_but_zero": [
+     {
+      "item": "CLE QB Deshaun Watson unconfirmed (qb_change)",
+      "why_zero": "Watson is QB1 on the 2026-08-31 nflverse/ESPN depth chart and ACT/A01 on the W1 roster after missing all of 2025; no independent corroboration and no post-2026-08-31 injury/benching news exists in the bundle. nfelo already bakes a -0.35 away-QB adjustment for him. qb_change is reserved for news the ratings did NOT bake; adjusting on 'unconfirmed' alone would be speculation. Flagged for re-verification; Shedeur Sanders QB2 competition risk noted."
+     },
+     {
+      "item": "CLE LB Jeremiah Owusu-Koramoah \u2014 Reserve/PUP (code R41, decoded)",
+      "why_zero": "Elite defender out to open the season, but the status rests on a reserve-code decode (anchored to his 2025 Reserve/PUP coding \u2014 moderately reliable, still a decode), and no \u00a75/\u00a76 category covers an off-ball LB loss. Folded into the CLE-defense-overrated flag rather than priced."
+     },
+     {
+      "item": "CLE EDGE Alex Wright \u2014 IR (RES/R36)",
+      "why_zero": "Premium position by rule 7, but bundle lists him as rotational (rank-3 LDE on last depth chart). Sub-threshold impact; source: nflverse-data roster_2026.csv."
+     },
+     {
+      "item": "CLE CB Damarri Mathis \u2014 IR (RES/R36)",
+      "why_zero": "Depth CB, not CB1 (Denzel Ward ACT). No adjustment category applies to depth losses."
+     },
+     {
+      "item": "JAX CB Keith Taylor \u2014 IR (RES/R36)",
+      "why_zero": "Depth CB behind Brown/Hunter/Lewis; not CB1. JAX otherwise clean at every premium position per bundle."
+     },
+     {
+      "item": "Myles Garrett traded to LA Rams (CLE defensive downgrade)",
+      "why_zero": "A trade, not an injury \u2014 roster data unambiguous (Garrett on LA roster, Jared Verse CLE RDE1), transaction details unverified. An offseason transaction is presumptively inside 2026 team assessments, and whether nfelo's rating fully carries it is unknowable from the bundle; per hard-cap rule this is a ratings-quality concern to flag, not a \u00a75 category to price. Partial offset: Verse and Quincy Williams added."
+     },
+     {
+      "item": "Weather / September Jacksonville heat-humidity",
+      "why_zero": "forecast_available=false; climatology note is explicitly unsourced and qualitative. Spec forbids numeric weather adjustments without a verified forecast \u2014 outdoor flag only."
+     },
+     {
+      "item": "rest_short_week / travel_international",
+      "why_zero": "Both teams on 7 days; ET-to-ET travel, 1:00 ET kick \u2014 no body-clock trigger. HFA (1.777) already baked into nfelo."
+     },
+     {
+      "item": "Pace-possession tt reallocation (\u00b10.5)",
+      "why_zero": "CLE 60.5 plays/g (18th) vs JAX 63.1 (8th) is a modest volume gap, and CLE's low-total profile (elite D, 31st O) is already inside the EPA-based total (nfelo 45.9, DVOA diagnostic 45.3). No reallocation earned."
+     },
+     {
+      "item": "Reverse mismatch: CLE rush vs JAX OL",
+      "why_zero": "JAX OL 'way down in the bad tier' comes from a single non-PFF analyst, and CLE's post-Garrett edge room (McGuire/Verse/Barnett/Okwara) is not established as elite by anything in the bundle. Fails the evidence bar on both halves."
+     }
+    ],
+    "flags": [
+     "TPT panel unrecovered \u2014 spread and total are single-source (nfelo only, n=1 each); no dispersion estimate available",
+     "PFF spread/rank missing for both teams; JAX unit grades are the biggest single-team gap in the recovery (bundle's own note) \u2014 ol_pass_rush_mismatch applied at minimum range partly for this reason",
+     "CLE QB unconfirmed: Watson QB1 per 2026-08-31 depth chart only, zero independent corroboration after missing all of 2025 (Achilles); re-verify before pricing/kick \u2014 Sanders QB2 benching risk",
+     "CLE roster-structure anomaly: Myles Garrett on LA (Rams) roster in 2026 nflverse file, Jared Verse CLE RDE1 \u2014 transaction unverified in detail; 2025-based CLE defensive inputs (4th in EPA) likely overstate current unit with Garrett gone and JOK on PUP",
+     "JOK status derived from reserve-code decode (R41 -> Reserve/PUP, anchored to his 2025 coding) \u2014 decode unverified per roster-code rule",
+     "No weather forecast for outdoor EverBank Stadium game; September Jacksonville heat/humidity and nonzero tropical-system risk noted from unsourced climatology \u2014 re-check near kick, no numeric adjustment taken"
+    ]
    },
    "dvoa_projection_2026": {
     "home": 0.053,
@@ -1533,9 +2233,9 @@
     "total": 40.5
    },
    "uncertainty": {
-    "spread_sd": null,
+    "spread_sd": 1.199,
     "total_sd": null,
-    "n_spread_sources": 1,
+    "n_spread_sources": 2,
     "n_total_sources": 1
    }
   },
@@ -1554,17 +2254,19 @@
    },
    "cores": {
     "spread_nfelo": -3.0,
-    "spread_pff": -3.186,
+    "spread_pff": -4.674,
     "pff_meta": {
-     "basis": "unit/rank z-model (\u00a73.1), ST edge unavailable",
-     "off_edge": 0.175,
-     "def_edge": 0.175,
-     "ol_edge": 0.0,
-     "hfa_pts": 2.4
+     "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+     "psr_home": -0.4983411,
+     "psr_away": -2.7755763,
+     "psr_qb_home": 2.5,
+     "psr_qb_away": 1.5,
+     "hfa_pts": 2.4,
+     "rank_model_diag": -3.189
     },
     "spread_tpt": null,
     "tpt_spread_detail": {},
-    "spread_core": -3.085,
+    "spread_core": -3.768,
     "spread_weights": {
      "nfelo": 0.541,
      "pff": 0.459,
@@ -1704,7 +2406,7 @@
      "off_grade": 69.8
     }
    },
-   "pff_power": {
+   "pff_power_rank_diag": {
     "away": {
      "team": "ATL",
      "rank": 22,
@@ -1719,7 +2421,89 @@
      "source": "roundtable.io Vikings reaction snippet (Steelers 19)",
      "note": "No 2026 PFF power rank recovered. CAUTION: 'Steelers No. 14 in PFF post-FA power rankings' found at steelersdepot.com is dated 2025/03 (2025 edition, DK Metcalf/Darius Slay moves) \u2014 EXCLUDED as stale. 2026 qualitative: top-3 in PFF 2026 DL rankings; Aaron Rodgers reunited with new HC Mike McCarthy for final season; traded for Michael Pittman Jr.",
      "rank": 19
-    }
+    },
+    "note": "March post-FA web-recovered ranks; DIAGNOSTIC ONLY now that the authoritative PFF table is in pff_ratings"
+   },
+   "pff_ratings": {
+    "source": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 \u2014 AUTHORITATIVE for this run (\u00a712)",
+    "convention": "Point Spread Rating = points vs league average, QB component included; spread_pff = -(psr_home - psr_away) - HFA",
+    "home": -0.4983411,
+    "away": -2.7755763,
+    "home_qb_rating": 2.5,
+    "away_qb_rating": 1.5,
+    "home_proj_wins": 8.398,
+    "away_proj_wins": 7.2111
+   },
+   "prior_audited_adjustments_v1": {
+    "spread_adjustments": [
+     {
+      "category": "ol_pass_rush_mismatch",
+      "points": -0.5,
+      "evidence": "PFF 2026 DL rankings: PIT pass rush No. 3 (Watt/Herbig/Highsmith all 75+ pass-rush grades, 40+ pressures) vs ATL OL described verbatim as 'one of the worst units in the NFL' (no numeric rank). The structural core could not price the OL side: \u00a73.1 pff_meta shows ol_edge = 0.0 because ATL's OL carried no rank number. Floor of the -0.5..-1.5 range taken because PIT's DL rank 3 vs ATL DL rank 32 is already partially inside def_edge (0.175) of spread_pff \u2014 only the unpriced OL-side interaction is charged.",
+      "source": "PFF 2026 DL rankings (pff.com/news/nfl-defensive-line-rankings-2026) search snippet, bundle pff_units + cores.pff_meta (ol_edge 0.0)"
+     }
+    ],
+    "total_adjustments": [
+     {
+      "category": "ol_pass_rush_mismatch",
+      "points": -1,
+      "evidence": "Victim-side team-total reduction on ATL: PFF No. 3 PIT pass rush vs ATL OL 'one of the worst units in the NFL,' with the OL edge confirmed unpriced in the structural core (ol_edge 0.0). Floor of the -1.0..-2.0 range for the same double-count guard (DL ranks partially inside def_edge). Reduction attributed to ATL's team total; game total falls from 45.8 to 44.8, consistent with the DVOA diagnostic 45.3.",
+      "source": "PFF 2026 DL rankings (pff.com) snippet in bundle pff_units; cores.pff_meta ol_edge=0.0; total_dvoa_diagnostic 45.304"
+     }
+    ],
+    "tt_modifiers": [],
+    "considered_but_zero": [
+     {
+      "item": "PIT CB1 Joey Porter Jr. \u2014 PUP (roster status A02)",
+      "why_zero": "A02 = Active/PUP decode comes from an unofficial GSIS code map (tobiascoleman/ai-atl player.go), which the spec classifies as WEAK evidence; no official injury reports exist yet and the 8/31 depth chart still lists him LCB1. PIT depth behind him is real (Asante Samuel Jr. LCB2, Jamel Dean RCB1, Jalen Ramsey nickel), and CB absence fits no \u00a75 category. Flagged, not moved.",
+      "source_note": "nflverse-data roster_2026.csv + depth_charts_2026.csv 2026-08-31"
+     },
+     {
+      "item": "ATL NB1 Billy Bowman Jr. \u2014 PUP (roster status A02)",
+      "why_zero": "Same unverified A02 decode; starting nickel, not a boundary CB1, with Darnay Holmes listed NB2. Weak evidence plus non-premium slot role = flag only, no team-total tweak.",
+      "source_note": "nflverse-data roster_2026.csv + depth_charts_2026.csv 2026-08-31"
+     },
+     {
+      "item": "ATL EDGE Jalon Walker \u2014 IR/reserve (RES, R36) and EDGE James Pearce Jr. \u2014 suspended first 8 games",
+      "why_zero": "Both are explicitly cited by PFF as the reason ATL's pass rush is ranked 32nd (last), and that rank feeds the structural spread via def_edge. Adjusting again would double-count the Tier-A core. nfelo's ratings date (2026-08-31) also precedes no new news here.",
+      "source_note": "PFF 2026 DL rankings snippet in bundle pff_units (away.note); roster_2026.csv RES/R36"
+     },
+     {
+      "item": "ATL RT Kaleb McGary \u2014 Reserve/Retired (RET, R02)",
+      "why_zero": "Offseason roster item, not a game-week injury: Jawaan Taylor (ACT/A01) is RT1 on the 8/31 depth chart. His absence is part of why PFF calls the ATL OL 'one of the worst,' which is already the basis of the ol_pass_rush_mismatch adjustment \u2014 a separate line would double-count.",
+      "source_note": "nflverse-data roster_2026.csv (RET/R02) + depth_charts_2026.csv 2026-08-31"
+     },
+     {
+      "item": "qb_change \u2014 either team",
+      "why_zero": "Both starters confirmed as of the nfelo data date: Tua Tagovailoa ATL QB1 (single-source depth chart, but consistent with nfelo's +4.60 Elo ATL QB adj) and Aaron Rodgers PIT QB1. nfelo already bakes per-QB points (PIT +0.56, ATL +0.18); no post-2026-08-31 injury or benching news exists in the bundle.",
+      "source_note": "bundle nfelo_baked_in + qb_context (depth_charts_2026.csv 2026-08-31)"
+     },
+     {
+      "item": "weather \u2014 outdoor Acrisure Stadium",
+      "why_zero": "forecast_available = false; climatology is unsourced and qualitative. Spec forbids numeric weather adjustments without a verified forecast. Flagged instead.",
+      "source_note": "bundle weather (confidence LOW)"
+     },
+     {
+      "item": "rest_short_week / travel_international",
+      "why_zero": "Both teams on 7 days rest; ATL-to-PIT is an Eastern-time trip to a 1pm ET kick \u2014 no body-clock or rest evidence exists.",
+      "source_note": "bundle rest (7/7), kick 13:00 ET"
+     },
+     {
+      "item": "ATL OT Storm Norton (depth) \u2014 RES/R41 (Reserve/PUP-type)",
+      "why_zero": "Depth tackle behind Jake Matthews and Jawaan Taylor (both ACT/A01); no starter displacement, so no pricing path. Logged post-audit per completeness-critic rule-7 finding (entry added by critic remediation)."
+     }
+    ],
+    "flags": [
+     "TPT panel unrecovered for ATL@PIT (The Prediction Tracker egress-blocked); spread blend runs on 2 sources, tpt weight 0.0",
+     "Total core is single-source (nfelo 45.8; n_total_sources=1); PFF total unavailable \u2014 DVOA diagnostic 45.3 is the only cross-check",
+     "PIT 2026 PFF power rank weakly sourced (roundtable.io snippet, 'Steelers 19'); a No. 14 result was excluded as a stale 2025 edition",
+     "Joey Porter Jr. (PIT CB1) and Billy Bowman Jr. (ATL NB1) carry roster status A02 decoded as Active/PUP via an unofficial GSIS code map \u2014 decode unverified, no official injury reports filed yet; game status unresolved at press time",
+     "ATL QB1 ordering (Tua Tagovailoa over Michael Penix Jr.) is single-source (Ourlads/nflverse depth chart 2026-08-31); no news corroboration obtainable this session",
+     "Roster/depth-chart conflict: Gervon Dexter Sr. listed ATL RDE1 on the 8/31 depth chart but appears on CHI's active roster in the week-1 roster file \u2014 ATL DL treated as Dorlus/Harrison/Ebukam",
+     "Outdoor game at Acrisure Stadium with no retrievable forecast; no weather adjustment permitted or taken",
+     "ATL pass_rush/coverage/QB PFF unit ranks incomplete (only DL rank 32 recovered); PIT OL 'ascending' has no rank number \u2014 structural ol_edge forced to 0.0",
+     "Critic remediation: Storm Norton (depth OT, RES/R41) initially unlogged; documented as seen-and-dismissed at 0 points"
+    ]
    },
    "dvoa_projection_2026": {
     "home": -0.05,
@@ -1730,7 +2514,7 @@
     "total": 42.5
    },
    "uncertainty": {
-    "spread_sd": 0.132,
+    "spread_sd": 1.184,
     "total_sd": null,
     "n_spread_sources": 2,
     "n_total_sources": 1
@@ -1751,16 +2535,22 @@
    },
    "cores": {
     "spread_nfelo": -2.5,
-    "spread_pff": null,
+    "spread_pff": -3.874,
     "pff_meta": {
-     "basis": "PFF unavailable for this game"
+     "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+     "psr_home": -4.1252534,
+     "psr_away": -6.2383748,
+     "psr_qb_home": 1.5,
+     "psr_qb_away": 3.0,
+     "hfa_pts": 1.76,
+     "rank_model_diag": null
     },
     "spread_tpt": null,
     "tpt_spread_detail": {},
-    "spread_core": -2.5,
+    "spread_core": -3.13,
     "spread_weights": {
-     "nfelo": 1.0,
-     "pff": 0.0,
+     "nfelo": 0.541,
+     "pff": 0.459,
      "tpt": 0.0
     },
     "total_nfelo": 43.185,
@@ -1860,7 +2650,7 @@
      "note": "NO UNIT RANK NUMBERS RECOVERED. OL: 'not much to like'... Skoronski star LG, 'rest of this group is substandard' (Volson/Schlottmann backup-caliber) - reads bottom-5. DL: interior elite - Jeffery Simmons 2025: led NFL in sacks (12), stops (42), pressure rate (14.8%), PRWR (19.8%), 91.4 pass-rush grade, 1st-team All-Pro; JFM solid; both projected EDGEs below 65.0. QB Cam Ward: 56.4 passing grade as rookie (39th of 43) - no 2026 rank number. NYJ@TEN."
     }
    },
-   "pff_power": {
+   "pff_power_rank_diag": {
     "away": {
      "team": "NYJ",
      "rank": 32,
@@ -1873,7 +2663,77 @@
      "verbatim": false,
      "source": "pff.com \u2014 'Post-Free Agency Power Rankings' article snippet (Titans section)",
      "note": "No PFF rank/rating number recovered. Qualitative from PFF: most active FA team \u2014 league-high $311M total contract value on 15 additions; new HC Robert Saleh, OC Brian Daboll."
-    }
+    },
+    "note": "March post-FA web-recovered ranks; DIAGNOSTIC ONLY now that the authoritative PFF table is in pff_ratings"
+   },
+   "pff_ratings": {
+    "source": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 \u2014 AUTHORITATIVE for this run (\u00a712)",
+    "convention": "Point Spread Rating = points vs league average, QB component included; spread_pff = -(psr_home - psr_away) - HFA",
+    "home": -4.1252534,
+    "away": -6.2383748,
+    "home_qb_rating": 1.5,
+    "away_qb_rating": 3.0,
+    "home_proj_wins": 6.3479,
+    "away_proj_wins": 5.5108
+   },
+   "prior_audited_adjustments_v1": {
+    "spread_adjustments": [],
+    "total_adjustments": [],
+    "tt_modifiers": [],
+    "considered_but_zero": [
+     {
+      "item": "qb_change (either team)",
+      "why_zero": "Both starters confirmed on the 2026-08-31 depth chart (NYJ Geno Smith QB1, TEN Cam Ward QB1, both away_qb_confirmed/home_qb_confirmed=true; source: depth_charts_2026.csv 2026-08-31). No post-2026-08-31 news exists, and nfelo already bakes per-QB adjustments (TEN +0.03, NYJ -0.09 per nfelo_baked_in). Category requires unbaked news; none."
+     },
+     {
+      "item": "ol_pass_rush_mismatch: TEN Jeffery Simmons vs NYJ OL",
+      "why_zero": "Simmons is elite (2025: led NFL in sacks 12, stops 42, pressure rate 14.8%, PRWR 19.8%, 91.4 pass-rush grade, 1st-team All-Pro; source: PFF 2026 DL rankings snippets / PFF 2025 highest-graded players), but the category requires an injured/weak OT victim. NYJ OL is PFF 17th and anchored by the Fashanu-Membou tackle duo, both ACT/A01 (PFF 2026 OL rankings; week-1 roster file). No qualifying victim."
+     },
+     {
+      "item": "ol_pass_rush_mismatch: NYJ rush vs TEN bottom-5 OL",
+      "why_zero": "TEN OL reads bottom-5 ('not much to like', Skoronski the lone star, Volson/Schlottmann backup-caliber; source: PFF 2026 OL rankings snippets), but NYJ has no elite rush to exploit it: edges Ossai/Enagbare/McDonald all below 65.0 PFF grades (PFF 2026 DL note). Category requires an elite rush; none."
+     },
+     {
+      "item": "weather (outdoors, Nissan Stadium)",
+      "why_zero": "forecast_available=false, confidence LOW; only unsourced climatology (hot, low wind, isolated storm chance). Spec: no verified forecast means no numeric weather adjustment \u2014 flagged instead. Source: bundle weather block."
+     },
+     {
+      "item": "rest_short_week / travel_international",
+      "why_zero": "Both teams on 7 days rest (bundle rest block). NYJ travels east-to-central for a 1:00 ET / noon-local kick \u2014 not a west-to-east 10am-body-clock spot. HFA (1.761) already inside spread_nfelo per nfelo_baked_in."
+     },
+     {
+      "item": "Premium-position absences (QB/OT/WR1/EDGE/CB1, both teams)",
+      "why_zero": "key_absences=[] \u2014 every rank-1 player at QB/LT/RT/WR/EDGE/CB/S for both teams is ACT/A01 on the week-1 roster file (NYJ: Wilson, Fashanu, Membou, McDonald, Enagbare, Stephens, Fitzpatrick; TEN: Tate, Moore, Latham, Johnson, Franklin-Myers, Simmons, Flott, Hooker). Source: bundle injuries notes, week-1 roster file. Nothing to price."
+     },
+     {
+      "item": "Depth-level roster codes: NYJ EDGE Tyler Baron (RDE5) A02 Active/PUP, NYJ DL Kingsley Jonathan (LDE4) RES/R34; TEN EDGE Jaylen Harrell (RDE4) RES/R36, LB Eifler RES/R36, LB Hampton RES/R34, DB Johnson RES/R36",
+      "why_zero": "All are depth pieces (4th/5th string or special-teams tier), no premium starter affected; roster-status codes are weak evidence (decode unverified) and no official injury reports exist yet (nflverse injuries_2026 404 as of 2026-09-01). Flagged, not priced. Source: bundle injuries notes."
+     },
+     {
+      "item": "TEN CB room exodus (Sneed and Elam to KC) vs NYJ passing game",
+      "why_zero": "Offseason personnel change already visible to the season-long ratings (nfelo, DVOA projection), not post-rating news; no \u00a75 category covers it. Source: qb_context.home notable_changes."
+     },
+     {
+      "item": "\u00a76 explosive-offense reallocation (either direction)",
+      "why_zero": "Neither offense qualifies as explosive: 2025 off EPA/play NYJ -0.124, TEN -0.148 \u2014 both bottom-3 (source: quality_2025, pbp2025+circa0711). No evidence item supports the category."
+     },
+     {
+      "item": "\u00a76 pace-possession mismatch",
+      "why_zero": "No mismatch: both slow \u2014 NYJ 59.4 plays/g (21st), TEN 58.5 (t-24th) (source: quality_2025 pace notes). Symmetric slowness affects level, not the split."
+     },
+     {
+      "item": "\u00a76 elite red-zone defense",
+      "why_zero": "No red-zone data of any kind in the bundle for either defense; both defenses graded bottom-5/bottom-3 by 2025 EPA anyway (quality_2025). No evidence, no reallocation."
+     }
+    ],
+    "flags": [
+     "TPT panel unrecovered for NYJ@TEN \u2014 spread and total are single-source (nfelo weight 1.0; n_spread_sources=1, n_total_sources=1, no SD available)",
+     "PFF spread unavailable; no PFF power-rank or unit-rank NUMBERS recovered for TEN (qualitative snippets only); NYJ PFF power rank (32) sourced via Yahoo republication of the PFF article",
+     "PFF preseason note for NYJ is stale on QB ('2026 starter not identified') \u2014 superseded by 2026-08-31 depth chart confirming Geno Smith QB1",
+     "No official injury reports exist yet: nflverse injuries_2026 returns 404 as of 2026-09-01; premium-position clean bill rests on roster/depth-chart files only",
+     "NYJ EDGE Tyler Baron roster code A02 Active/PUP \u2014 decode unverified; depth-level only, not priced",
+     "Outdoor game (Nissan Stadium, grass) with no verified weather forecast; climatology in bundle is unsourced and qualitative \u2014 no numeric weather adjustment permitted"
+    ]
    },
    "dvoa_projection_2026": {
     "home": -0.129,
@@ -1884,9 +2744,9 @@
     "total": 38.5
    },
    "uncertainty": {
-    "spread_sd": null,
+    "spread_sd": 0.972,
     "total_sd": null,
-    "n_spread_sources": 1,
+    "n_spread_sources": 2,
     "n_total_sources": 1
    }
   },
@@ -1905,17 +2765,19 @@
    },
    "cores": {
     "spread_nfelo": -7.5,
-    "spread_pff": -10.035,
+    "spread_pff": -12.0,
     "pff_meta": {
-     "basis": "unit/rank z-model (\u00a73.1), ST edge unavailable",
-     "off_edge": 1.697,
-     "def_edge": 1.697,
-     "ol_edge": 0.0,
-     "hfa_pts": 2.4
+     "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+     "psr_home": 3.2324328,
+     "psr_away": -7.1203301,
+     "psr_qb_home": 6.5,
+     "psr_qb_away": 1.5,
+     "hfa_pts": 2.4,
+     "rank_model_diag": -10.038
     },
     "spread_tpt": null,
     "tpt_spread_detail": {},
-    "spread_core": -8.663,
+    "spread_core": -9.565,
     "spread_weights": {
      "nfelo": 0.541,
      "pff": 0.459,
@@ -2029,7 +2891,7 @@
      "note": "DL: edge solid (Mack 80.7 run-def grade; Tuipulotu 74.4 pass-rush) but 'middle of the defensive line is a clear weakness' - no rank. Secondary: strong 2025 pass-defense numbers, elevated by pass rush - no rank. LAC ended Mahomes' 2025 season Week 15."
     }
    },
-   "pff_power": {
+   "pff_power_rank_diag": {
     "away": {
      "team": "ARI",
      "rank": 31,
@@ -2043,7 +2905,65 @@
      "verbatim": true,
      "source": "si.com Chargers \u2014 \"No. 8 Bolts ranked ahead of Denver (12th), Kansas City (13th), Las Vegas (29th)\" (anchor-matched, supersedes earlier LAC=6 claim)",
      "note": "Reported as No. 6 overall (1st among AFC West teams in PFF post-FA rankings). CONFLICT: a Commanders article also reports WAS at No. 6 \u2014 likely different PFF edition (first-wave-of-FA vs post-FA). PFF win totals article: bearish, 'prime under candidate' at 9.5 wins \u2014 7th-toughest SOS, league-worst rest differential (24 fewer days rest than opponents)."
-    }
+    },
+    "note": "March post-FA web-recovered ranks; DIAGNOSTIC ONLY now that the authoritative PFF table is in pff_ratings"
+   },
+   "pff_ratings": {
+    "source": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 \u2014 AUTHORITATIVE for this run (\u00a712)",
+    "convention": "Point Spread Rating = points vs league average, QB component included; spread_pff = -(psr_home - psr_away) - HFA",
+    "home": 3.2324328,
+    "away": -7.1203301,
+    "home_qb_rating": 6.5,
+    "away_qb_rating": 1.5,
+    "home_proj_wins": 9.8079,
+    "away_proj_wins": 4.1753
+   },
+   "prior_audited_adjustments_v1": {
+    "spread_adjustments": [],
+    "total_adjustments": [],
+    "tt_modifiers": [],
+    "considered_but_zero": [
+     {
+      "item": "qb_change ARI (Jacoby Brissett QB1, Kyler Murray to MIN)",
+      "why_zero": "Confirmed starter, no news after 2026-08-31; downgrade already baked into nfelo (away_qb_adj_points -0.45; -11.31 Elo in W01 snapshot per nfelo_2026_w1.csv + depth_charts_2026.csv 2026-08-31). Adjusting again would double-count."
+     },
+     {
+      "item": "LAC C Tyler Biadasz IR (RES/R36, nflverse roster_2026.csv + depth_charts_2026.csv)",
+      "why_zero": "Interior OL, outside the premium list (QB/OT/WR1/EDGE/CB1); both LAC tackles healthy (Slater LT1, Alt RT1, ACT/A01), Slaughter listed C1; ol_pass_rush_mismatch requires an injured/weak OT and bundle has no ARI pass-rush rank to establish elite interior rush. Reserve subtype not decodable \u2014 weak evidence per spec."
+     },
+     {
+      "item": "ol_pass_rush_mismatch: LAC edge (Mack 80.7 run-def, Tuipulotu 74.4 pass-rush per PFF unit notes) vs ARI OL rank 22",
+      "why_zero": "ARI OT Paris Johnson Jr. is ACT/A01 \u2014 no injured OT trigger; unit-quality gaps are already inside the PFF structural spread (off/def edges 1.697 each)."
+     },
+     {
+      "item": "ARI RB Trey Benson RES/R34; WR9 Xavier Weaver RES/R36; G Chase Bisontis RES/R36; TE Tip Reiman A02 Active/PUP (decode unverified); DT Kaleb Proctor RES/R36",
+      "why_zero": "Depth-level, none premium-position starters; A02/R3x codes are weak evidence per spec \u2014 flag-level only."
+     },
+     {
+      "item": "LAC OT Isaiah World A03 Active/NFI",
+      "why_zero": "LT5 depth only; both starting tackles ACT."
+     },
+     {
+      "item": "rest_short_week / travel_international",
+      "why_zero": "Both teams 7 days rest; ARI-to-LA is intra-Pacific travel with a 1:25pm local kick \u2014 no 10am-body-clock condition; nfelo HFA 2.397 already baked."
+     },
+     {
+      "item": "weather",
+      "why_zero": "SoFi Stadium fixed roof (dome); forecast_available false and not a factor."
+     },
+     {
+      "item": "pace-possession mismatch (\u00a76)",
+      "why_zero": "Both teams top-7 pace in 2025 (ARI 63.2 plays/g 7th, LAC 63.5 3rd, pbp2025) \u2014 agreement, not mismatch; no explosive-play or red-zone evidence in bundle for the other \u00a76 categories."
+     }
+    ],
+    "flags": [
+     "TPT panel unrecovered (sites egress-blocked): spread built from 2 Tier-A sources only, spread_sd 1.79",
+     "Total is single-source (nfelo only, n_total_sources=1); no PFF or TPT total \u2014 DVOA diagnostic 45.92 is a sanity check, not an input",
+     "PFF power-rank edition conflict for LAC (No. 8 anchor-matched vs No. 6 in a different post-FA edition)",
+     "PFF unit gaps: no ARI pass-rush or secondary rank; no LAC DL or secondary rank; no PFF game total basis",
+     "Roster reserve codes not fully decodable (R34/R36 subtype unknown; ARI TE Reiman A02 Active/PUP decode unverified) \u2014 treated as weak evidence per spec",
+     "Kyler Murray ARI-to-MIN mechanism unverified (absent from nfldata trades.csv); departure itself confirmed via MIN week-1 roster file and already baked into nfelo"
+    ]
    },
    "dvoa_projection_2026": {
     "home": 0.032,
@@ -2054,7 +2974,7 @@
     "total": 46.5
    },
    "uncertainty": {
-    "spread_sd": 1.793,
+    "spread_sd": 3.182,
     "total_sd": null,
     "n_spread_sources": 2,
     "n_total_sources": 1
@@ -2075,17 +2995,19 @@
    },
    "cores": {
     "spread_nfelo": -3.5,
-    "spread_pff": -3.647,
+    "spread_pff": -6.882,
     "pff_meta": {
-     "basis": "unit/rank z-model (\u00a73.1), ST edge unavailable",
-     "off_edge": 0.133,
-     "def_edge": 0.133,
-     "ol_edge": 0.0,
-     "hfa_pts": 3.05
+     "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+     "psr_home": -4.3212006,
+     "psr_away": -8.1539288,
+     "psr_qb_home": 1.5,
+     "psr_qb_away": 2.0,
+     "hfa_pts": 3.05,
+     "rank_model_diag": -3.648
     },
     "spread_tpt": null,
     "tpt_spread_detail": {},
-    "spread_core": -3.567,
+    "spread_core": -5.052,
     "spread_weights": {
      "nfelo": 0.541,
      "pff": 0.459,
@@ -2206,7 +3128,7 @@
      "note": "OL was worst in football 2025 (32nd rushing EPA, 32.5% success rate); signed Tyler Linderbaum as highest-paid center. DL: Maxx Crosby elite (77+ grades both phases) but other 3 projected starters all below 60.0 - no rank. Secondary was PFF's LOWEST-ranked a year ago (2025 basis); 2026 number not found. QB starter/rank not found. MIA@LV: two bottom-tier units colliding."
     }
    },
-   "pff_power": {
+   "pff_power_rank_diag": {
     "away": {
      "team": "MIA",
      "rank": 30,
@@ -2220,7 +3142,82 @@
      "verbatim": true,
      "source": "milehighsports.com / roundtable.io \u2014 Broncos post-FA article quoting PFF (rank)",
      "note": "No. 29 in PFF post-FA power rankings. Spent $218M+ total guarantees incl. Tyler Linderbaum (highest-paid interior OL ever); new HC Klint Kubiak; QB Fernando Mendoza (No. 1 overall pick)."
-    }
+    },
+    "note": "March post-FA web-recovered ranks; DIAGNOSTIC ONLY now that the authoritative PFF table is in pff_ratings"
+   },
+   "pff_ratings": {
+    "source": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 \u2014 AUTHORITATIVE for this run (\u00a712)",
+    "convention": "Point Spread Rating = points vs league average, QB component included; spread_pff = -(psr_home - psr_away) - HFA",
+    "home": -4.3212006,
+    "away": -8.1539288,
+    "home_qb_rating": 1.5,
+    "away_qb_rating": 2.0,
+    "home_proj_wins": 6.1528,
+    "away_proj_wins": 3.9615
+   },
+   "prior_audited_adjustments_v1": {
+    "spread_adjustments": [],
+    "total_adjustments": [],
+    "tt_modifiers": [],
+    "considered_but_zero": [
+     {
+      "item": "qb_change MIA (Malik Willis, new starter)",
+      "why_zero": "Willis is the confirmed QB1 (depth_charts_2026.csv 2026-08-31, away_qb_confirmed=true) and is already baked into spread_nfelo at -0.29 pts (nfelo_baked_in.away_qb_adj_points; -7.23 Elo). No injury/benching news after 2026-08-31, so a qb_change adjustment would double-count."
+     },
+     {
+      "item": "qb_change LV (Kirk Cousins)",
+      "why_zero": "Confirmed QB1 (home_qb_confirmed=true) with +0.89 pts already inside spread_nfelo (nfelo_baked_in.home_qb_adj_points). No.1 pick Fernando Mendoza at QB2 is a volatility point, not news \u2014 flagged, not adjusted."
+     },
+     {
+      "item": "MIA CB Storm Duck, PUP (key_absences)",
+      "why_zero": "RCB3 depth corner, not CB1 \u2014 CB1s Jason Marshall Jr. and JuJu Brents are ACT (nflverse roster_2026.csv + depth_charts_2026.csv). Status rests on code A02 with decode unverified \u2014 weak evidence; no starter impact."
+     },
+     {
+      "item": "MIA CB Darrell Baker Jr., PUP (key_absences)",
+      "why_zero": "LCB4 depth corner, same basis and same A02 decode caveat; no starter impact (nflverse roster_2026.csv)."
+     },
+     {
+      "item": "MIA swing OT Carter Warren, RES/R34",
+      "why_zero": "RT4 depth tackle; starting OL unaffected and MIA drafted OL Kadyn Proctor #12 (injuries.notes, qb_context). Not an OT-starter absence."
+     },
+     {
+      "item": "LV depth reserves \u2014 CB Chigozie Anusiem (RCB3), WR Justin Shorter (WR12), LB Brennan Jackson, all RES/R36",
+      "why_zero": "Depth-level only; every LV rank-1 premium player (Crosby, Paye, Miller, Glaze, Tucker, Stokes, Porter, Chinn) is ACT/A01 per injuries.notes. Shorter is WR12, not WR1."
+     },
+     {
+      "item": "ol_pass_rush_mismatch \u2014 Maxx Crosby vs MIA OL (27th)",
+      "why_zero": "Category requires an injured/weak OT starter; MIA lost only swing OT Warren, and the 27th-ranked OL (pff_units, verbatim) is already inside the PFF structural core (pff_meta ol_edge 0.0). LV's other three projected DL starters all grade below 60.0 (pff_units.home.note) \u2014 no clean elite-rush-vs-injured-OT setup."
+     },
+     {
+      "item": "travel_international",
+      "why_zero": "MIA travels east-to-west to a 16:25 ET / 1:25 PM local kick; the category covers west-to-east 10am body-clock kicks only. Neutral/HFA effects already in nfelo."
+     },
+     {
+      "item": "rest_short_week",
+      "why_zero": "Both teams on 7 days (bundle rest 7/7); Week 1 baseline, no evidence of deviation."
+     },
+     {
+      "item": "weather",
+      "why_zero": "Allegiant Stadium dome (weather.roof=dome, forecast_available=false, 'Weather not a factor'). No numeric weather adjustment permitted and none needed."
+     },
+     {
+      "item": "pace-possession mismatch (\u00a76)",
+      "why_zero": "No mismatch \u2014 both teams in the identical slowest tier, 55.4 plays/g, t-31st (quality_2025 pace_note both sides)."
+     },
+     {
+      "item": "explosive-offense reallocation (\u00a76)",
+      "why_zero": "Neither offense qualifies: MIA -0.022 and LV -0.192 (32nd) off EPA/play in 2025 (quality_2025, pbp2025); no explosive profile to reallocate toward."
+     }
+    ],
+    "flags": [
+     "TPT panel unrecovered (sites egress-blocked): spread_tpt and total_tpt null; spread rests on 2 sources, total on nfelo alone (n_total_sources=1, total_sd null).",
+     "PFF total unavailable; PFF structural spread lacks the ST edge (pff_meta: 'ST edge unavailable').",
+     "MIA QB1 Malik Willis is single-source (depth chart 2026-08-31) and that chart is internally stale \u2014 its listed QB2 Kyle McCord is on GB's week-1 roster; real MIA backups are Ewers/Gronowski/Miller per roster file.",
+     "MIA PUP designations (Duck, Baker) rest on roster code A02 with decode unverified \u2014 weak evidence by spec.",
+     "No official injury reports published (injuries_2026 file 404 as of 2026-09-01).",
+     "PFF numeric ranks incomplete: MIA coverage rank not shown (described only as among the league's worst); LV secondary rank is 2025-basis with no 2026 number found.",
+     "LV QB volatility: No.1 overall pick Fernando Mendoza sits QB2 behind bridge starter Cousins \u2014 a pre-kick switch would invalidate the +0.89 baked nfelo QB adjustment."
+    ]
    },
    "dvoa_projection_2026": {
     "home": -0.141,
@@ -2231,7 +3228,7 @@
     "total": 40.5
    },
    "uncertainty": {
-    "spread_sd": 0.104,
+    "spread_sd": 2.391,
     "total_sd": null,
     "n_spread_sources": 2,
     "n_total_sources": 1
@@ -2252,17 +3249,19 @@
    },
    "cores": {
     "spread_nfelo": -3.0,
-    "spread_pff": 1.5,
+    "spread_pff": 0.85,
     "pff_meta": {
-     "basis": "unit/rank z-model (\u00a73.1), ST edge unavailable",
-     "off_edge": -0.845,
-     "def_edge": -0.845,
-     "ol_edge": 0.0,
-     "hfa_pts": 1.6
+     "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+     "psr_home": -0.0821766,
+     "psr_away": 2.3641953,
+     "psr_qb_home": 3.5,
+     "psr_qb_away": 4.5,
+     "hfa_pts": 1.6,
+     "rank_model_diag": 2.203
     },
     "spread_tpt": null,
     "tpt_spread_detail": {},
-    "spread_core": -0.935,
+    "spread_core": -1.234,
     "spread_weights": {
      "nfelo": 0.541,
      "pff": 0.459,
@@ -2385,7 +3384,7 @@
      "note": "QB (presumably J.J. McCarthy) PFF rank not found - cut off in search results. Pass-rush rank missing. GB@MIN: both QB ranks incomplete on MIN side."
     }
    },
-   "pff_power": {
+   "pff_power_rank_diag": {
     "away": {
      "team": "GB",
      "rating": 9.92,
@@ -2401,7 +3400,75 @@
      "source": "roundtable.io Vikings reaction \u2014 MIN 18, above PIT 19/IND 21/ATL 22/NYG 24",
      "note": "PFF sim 8.41 wins. No PFF rank recovered. Kyler Murray now Vikings QB (left ARI). PFF gave Vikings best FA grade of all 32 teams (A+). Medium confidence on attribution.",
      "rank": 18
-    }
+    },
+    "note": "March post-FA web-recovered ranks; DIAGNOSTIC ONLY now that the authoritative PFF table is in pff_ratings"
+   },
+   "pff_ratings": {
+    "source": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 \u2014 AUTHORITATIVE for this run (\u00a712)",
+    "convention": "Point Spread Rating = points vs league average, QB component included; spread_pff = -(psr_home - psr_away) - HFA",
+    "home": -0.0821766,
+    "away": 2.3641953,
+    "home_qb_rating": 3.5,
+    "away_qb_rating": 4.5,
+    "home_proj_wins": 8.5115,
+    "away_proj_wins": 9.7131
+   },
+   "prior_audited_adjustments_v1": {
+    "spread_adjustments": [],
+    "total_adjustments": [],
+    "tt_modifiers": [],
+    "considered_but_zero": [
+     {
+      "item": "GB EDGE Micah Parsons (A02 Active/PUP, depth chart demotes to SLB3; premium-position absence)",
+      "why_zero": "Already priced, not new: PFF's GB pass-rush rank 27 explicitly conditions on Parsons opening on PUP ('with Parsons would rank inside top 15'), so the PFF core carries the absence; nfelo's 2025-based GB rating never credited the 2026 trade acquisition, so there is nothing to remove on that leg. Adjusting would double-count. A02 decode also rests on an unofficial status-code map \u2014 flagged, not adjusted. Sources: nflverse weekly rosters 2026 W1 (A02) + depth charts 2026-08-31; PFF 2026 DL rankings note."
+     },
+     {
+      "item": "MIN QB Kyler Murray unconfirmed (home_qb_confirmed=false) \u2014 qb_change screen",
+      "why_zero": "qb_change applies only to news the ratings did not bake (injury/benching after 2026-08-31). Murray is depth-chart QB1, ACT/A01, and nfelo already bakes +1.25 pts of home QB uplift for him; the bundle contains no post-8/31 news, only an uncorroborated depth-chart feed (media scan not run, search budget exhausted). Flag, no number. Sources: nflverse depth_charts_2026.csv (2026-08-31), nfelo_baked_in home_qb_adj_points=1.25."
+     },
+     {
+      "item": "MIN LB/S Jamal Adams OUT (RES/R36)",
+      "why_zero": "Depth-role player in 2026 (RILB rank 4 on 8/31 depth chart); not a premium-position starter, market impact minimal. Source: nflverse weekly rosters 2026 W1 (RES/R36) + nflreadr dictionary_roster_status.csv."
+     },
+     {
+      "item": "GB TE Luke Musgrave A02 (Active/PUP)",
+      "why_zero": "Non-premium position, listed TE5; no measurable line impact. Source: nflverse weekly rosters 2026 W1 injuries notes."
+     },
+     {
+      "item": "ol_pass_rush_mismatch, either direction",
+      "why_zero": "GB pass rush is 27th (weak, not elite) with Parsons on PUP; MIN LT Darrisaw is ACT/A01 (no injured OT). MIN's pass-rush rank was not recovered, so a MIN-rush-vs-struggling-GB-OL case has no named rank evidence. Category requires elite rush vs injured/weak OT \u2014 unmet. Sources: PFF 2026 DL rankings (GB 27th), pff_units MIN note (pass-rush rank missing), nflverse rosters (Darrisaw ACT/A01)."
+     },
+     {
+      "item": "rest_short_week",
+      "why_zero": "Both teams on 7 days (bundle rest: away 7 / home 7); Week 1 baseline, no evidence of deviation."
+     },
+     {
+      "item": "travel_international",
+      "why_zero": "Divisional GB-to-MIN trip, 16:25 ET dome kick; no west-to-east body-clock leg, no international/neutral site (neutral_site=false). Dome/HFA already inside nfelo (hfa_points 1.596)."
+     },
+     {
+      "item": "weather",
+      "why_zero": "U.S. Bank Stadium fixed roof; weather not a factor per bundle (forecast_available=false, roof=dome). No numeric weather adjustment permitted anywhere this week regardless."
+     },
+     {
+      "item": "GB WR-room turnover (Doubs to NE, Wicks to PHI, Willis to MIA; Jonnu Smith added)",
+      "why_zero": "Offseason moves completed by March-April 2026, inside both 2026-preseason PFF ratings and nfelo's current GB rating; not a post-8/31 absence. Source: qb_context notable_changes (trades.csv dates)."
+     },
+     {
+      "item": "\u00a76 explosive/red-zone/pace reallocation",
+      "why_zero": "No explosive-play-defense or red-zone-specific evidence in the bundle (only overall EPA ranks); pace is aligned, not mismatched \u2014 GB 58.4 plays/g (26th) and MIN 55.5 (30th) are both bottom-7 slow. Source: quality_2025 pace_note both teams."
+     }
+    ],
+    "flags": [
+     "TPT panel unrecovered for GB@MIN (egress-blocked): spread_tpt and total_tpt null, tpt weight 0.",
+     "Total is single-source: nfelo 46.81 only (PFF total missing, n_total_sources=1, total_sd null); DVOA diagnostic 46.10 is the only cross-check.",
+     "Spread engine disagreement: nfelo MIN -3.0 vs PFF z-model GB -1.5; spread_sd 3.18 on n=2 sources \u2014 widest-variance profile, do not tighten by hand.",
+     "PFF unit panel incomplete: GB coverage rank missing; MIN QB rank and pass-rush rank missing; PFF power ranks/ratings recovered via secondary outlets (medium-confidence attribution).",
+     "MIN QB Kyler Murray unconfirmed: depth-chart QB1 and ACT/A01 but no news corroboration (web search budget exhausted); acquisition mechanism unverified (not in nfldata trades.csv).",
+     "GB EDGE Micah Parsons A02 (Active/PUP): Week 1 availability unclear; A02 decode via unofficial status-code map (corroborated by 8/31 depth-chart demotion and PFF PUP note); treated as already priced, monitor for activation before kick.",
+     "MIN LB/S Jamal Adams reserve type (IR/PUP/NFI) not decodable from feed (RES/R36).",
+     "Dome game (U.S. Bank Stadium, fixed roof): weather structurally excluded, no forecast required."
+    ]
    },
    "dvoa_projection_2026": {
     "home": -0.041,
@@ -2412,7 +3479,7 @@
     "total": 45.5
    },
    "uncertainty": {
-    "spread_sd": 3.182,
+    "spread_sd": 2.722,
     "total_sd": null,
     "n_spread_sources": 2,
     "n_total_sources": 1
@@ -2433,16 +3500,22 @@
    },
    "cores": {
     "spread_nfelo": -4.5,
-    "spread_pff": null,
+    "spread_pff": -5.44,
     "pff_meta": {
-     "basis": "PFF unavailable for this game"
+     "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+     "psr_home": 3.0922026,
+     "psr_away": -1.3718652,
+     "psr_qb_home": 4.0,
+     "psr_qb_away": 3.5,
+     "hfa_pts": 0.98,
+     "rank_model_diag": null
     },
     "spread_tpt": null,
     "tpt_spread_detail": {},
-    "spread_core": -4.5,
+    "spread_core": -4.931,
     "spread_weights": {
-     "nfelo": 1.0,
-     "pff": 0.0,
+     "nfelo": 0.541,
+     "pff": 0.459,
      "tpt": 0.0
     },
     "total_nfelo": 46.493,
@@ -2571,7 +3644,7 @@
      "note": "DL interior elite: Carter/Davis/Ojomo (Davis & Ojomo 90+ grades in 2025). Secondary: added Tariq Woolen (from SEA) to DeJean/Mitchell - one summary claimed 'top three' but conflicts with PFF top-3 of NE/HOU/DEN; treat rank as MISSING, qualitatively strong but thin at safety (lost Blankenship). 2025 D: 'down year' yet best comp% allowed (56.8) and fewest pass TD (14). Hurts 15th is a notably bearish PFF signal for WAS@PHI."
     }
    },
-   "pff_power": {
+   "pff_power_rank_diag": {
     "away": {
      "team": "WAS",
      "verbatim": true,
@@ -2584,7 +3657,84 @@
      "verbatim": false,
      "source": "DERIVED from si.com Cowboys article quoting PFF season simulator ('Cowboys projected to finish with 9.5 wins, one game behind the Philadelphia Eagles')",
      "note": "DERIVED, not verbatim: PFF simulator implies ~10.5 wins for PHI. No PFF 1-32 rank recovered. PFF post-FA notes: added Riq Woolen and Arnold Ebiketie. #2 in PFF 2026 OL rankings."
-    }
+    },
+    "note": "March post-FA web-recovered ranks; DIAGNOSTIC ONLY now that the authoritative PFF table is in pff_ratings"
+   },
+   "pff_ratings": {
+    "source": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 \u2014 AUTHORITATIVE for this run (\u00a712)",
+    "convention": "Point Spread Rating = points vs league average, QB component included; spread_pff = -(psr_home - psr_away) - HFA",
+    "home": 3.0922026,
+    "away": -1.3718652,
+    "home_qb_rating": 4.0,
+    "away_qb_rating": 3.5,
+    "home_proj_wins": 10.2287,
+    "away_proj_wins": 7.6331
+   },
+   "prior_audited_adjustments_v1": {
+    "spread_adjustments": [
+     {
+      "category": "ol_pass_rush_mismatch",
+      "points": -0.5,
+      "evidence": "PFF 2026 preseason ranks WAS OL 32nd (verbatim) against PHI DL 4th (interior Carter/Davis/Ojomo; Davis and Ojomo 90+ 2025 grades); bundle names it the sharpest unit mismatch on the Week 1 slate and the nfelo-only core carries no unit-level read (PFF spread weight 0.0). Held to the range floor because OL-32 conflicts with WAS 2025 line metrics (4th rush ypg, 2.54s top-10 time-to-pressure, Tunsil/Cosmi) and PHI starting EDGE Greenard is A02/PUP-flagged.",
+      "source": "PFF on X 2026 OL rankings (WAS 32nd); PFF 2026 DL rankings search summary (PHI No. 4); nflverse weekly rosters 2026 W1 (Greenard status=A02)"
+     }
+    ],
+    "total_adjustments": [
+     {
+      "category": "ol_pass_rush_mismatch",
+      "points": -1,
+      "evidence": "Victim-team-total hit at the range floor (-1.0 of -1.0..-2.0): WAS OL ranked 32nd by PFF facing PHI's No. 4 DL; the hit is charged to the WAS side of the total. Floor chosen for the same two caveats as the spread leg (disputed OL rank, Greenard A02 uncertainty).",
+      "source": "PFF on X 2026 OL rankings (WAS 32nd); PFF 2026 DL rankings search summary (PHI No. 4)"
+     }
+    ],
+    "tt_modifiers": [],
+    "considered_but_zero": [
+     {
+      "item": "PHI EDGE Jonathan Greenard - PUP, roster status A02 (starting SLB1 on 8/31 depth chart)",
+      "why_zero": "A02 decode sourced from an unofficial third-party status-code map = weak evidence per spec, never a max-range mover; availability unresolved. Reflected by holding the ol_pass_rush_mismatch at its floor rather than as a separate adjustment; flagged for Appendix C."
+     },
+     {
+      "item": "WAS DL/EDGE Deatrich Wise - PUP, A02",
+      "why_zero": "Rotational veteran, not a rank-1 starter; bundle labels impact minor; no category reaches a depth-rotation piece."
+     },
+     {
+      "item": "WAS EDGE Drake Jackson - RES/R36, OUT",
+      "why_zero": "Depth edge (SLB3 on 8/31 chart), off the active 53; minor impact per bundle; no measurable line effect."
+     },
+     {
+      "item": "PHI WR1 A.J. Brown departed to NE (DynastyProcess value 5580)",
+      "why_zero": "Offseason roster move predating the 2026-08-31 nfelo data date; the WR1-absence clause covers only post-8/31 news, so it is ineligible and presumed inside season-long inputs. Noted as context, not moved."
+     },
+     {
+      "item": "qb_change (both teams)",
+      "why_zero": "Daniels and Hurts both confirmed QB1, ACT/A01, no post-8/31 news; nfelo already bakes per-QB adjustments (+0.15 WAS, +0.10 PHI per nfelo_baked_in)."
+     },
+     {
+      "item": "weather (outdoor, Lincoln Financial Field)",
+      "why_zero": "No verified forecast retrievable; spec forbids numeric weather adjustment without one; flagged instead."
+     },
+     {
+      "item": "rest_short_week / travel_international",
+      "why_zero": "Both teams on 7 days; WAS-to-PHI is a short intra-division trip with a 4:25 ET kick - no body-clock or rest evidence. HFA (0.976) already inside nfelo."
+     },
+     {
+      "item": "WAS WR1 Terry McLaurin hold-in risk",
+      "why_zero": "ACT/A01 with no holdout signal in feed; hold-in status is not detectable from roster data and no news scan was possible - zero, flagged."
+     },
+     {
+      "item": "Section 6 reallocation (explosive, red-zone, pace)",
+      "why_zero": "No explosive-play-rate or red-zone-specific evidence in bundle (PHI 2025 56.8 comp% / 14 pass TD is pass defense, not red zone); both offenses bottom-third pace (57.5 and 58.5 plays/g), so no pace-possession mismatch."
+     }
+    ],
+    "flags": [
+     "TPT panel unrecovered for WAS@PHI (sites egress-blocked); spread and total cores are single-source nfelo (n_spread_sources=1, n_total_sources=1)",
+     "PFF structural spread unavailable for this game; WAS PFF power rank ambiguous (No. 6 is the first-wave-of-FA edition, final post-FA slot unverified); PHI PFF power rank not recovered (only a derived ~10.5-win simulator figure)",
+     "PHI EDGE Jonathan Greenard roster status A02 (Active/PUP) - decode from an unofficial third-party status-code map, Week 1 availability unresolved",
+     "No weather forecast retrievable for outdoor game at Lincoln Financial Field; climatology only, unsourced - no numeric adjustment taken",
+     "WAS Terry McLaurin holdout/hold-in status not detectable from roster feeds; no news scan possible",
+     "PHI secondary rank treated as MISSING (a 'top three' claim conflicts with PFF's stated top-3 of NE/HOU/DEN)",
+     "Cause of Daniels' 2025 10-game absence unverified (injuries_2026.csv empty)"
+    ]
    },
    "dvoa_projection_2026": {
     "home": 0.052,
@@ -2595,9 +3745,9 @@
     "total": 45.5
    },
    "uncertainty": {
-    "spread_sd": null,
+    "spread_sd": 0.665,
     "total_sd": null,
-    "n_spread_sources": 1,
+    "n_spread_sources": 2,
     "n_total_sources": 1
    }
   },
@@ -2616,17 +3766,19 @@
    },
    "cores": {
     "spread_nfelo": 1.0,
-    "spread_pff": 1.777,
+    "spread_pff": 2.58,
     "pff_meta": {
-     "basis": "unit/rank z-model (\u00a73.1), ST edge unavailable",
-     "off_edge": -0.47,
-     "def_edge": -0.47,
-     "ol_edge": 0.0,
-     "hfa_pts": 0.34
+     "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+     "psr_home": -2.0791048,
+     "psr_away": 0.8411877,
+     "psr_qb_home": 2.0,
+     "psr_qb_away": 5.5,
+     "hfa_pts": 0.34,
+     "rank_model_diag": 1.777
     },
     "spread_tpt": null,
     "tpt_spread_detail": {},
-    "spread_core": 1.357,
+    "spread_core": 1.725,
     "spread_weights": {
      "nfelo": 0.541,
      "pff": 0.459,
@@ -2740,7 +3892,7 @@
      "note": "DL 21st for 2026 (SI disputes it). OL No. 9 is 2025 FINAL, not 2026 preseason - no 2026 number found. Secondary: 'practically the same underwhelming group' plus Greg Newsome II; 2nd-most DB penalties last yr - no rank. QB rookie-year Jaxson Dart: 487 rush yds (3rd among QBs), 9 rush TD, 5.2% BTT rate (8th) - no PFF 2026 rank number recovered. DAL@NYG SNF."
     }
    },
-   "pff_power": {
+   "pff_power_rank_diag": {
     "away": {
      "team": "DAL",
      "rank": 16,
@@ -2755,7 +3907,87 @@
      "source": "roundtable.io Vikings reaction snippet (Giants 24)",
      "note": "No PFF rank/rating number recovered. Qualitative from PFF: John Harbaugh's first offseason as Giants HC; significant turnover incl. ex-Ravens Isaiah Likely, Patrick Ricard, Ar'Darius Washington. Hosts DAL Week 1 SNF.",
      "rank": 24
-    }
+    },
+    "note": "March post-FA web-recovered ranks; DIAGNOSTIC ONLY now that the authoritative PFF table is in pff_ratings"
+   },
+   "pff_ratings": {
+    "source": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 \u2014 AUTHORITATIVE for this run (\u00a712)",
+    "convention": "Point Spread Rating = points vs league average, QB component included; spread_pff = -(psr_home - psr_away) - HFA",
+    "home": -2.0791048,
+    "away": 0.8411877,
+    "home_qb_rating": 2.0,
+    "away_qb_rating": 5.5,
+    "home_proj_wins": 7.3333,
+    "away_proj_wins": 8.6501
+   },
+   "prior_audited_adjustments_v1": {
+    "spread_adjustments": [],
+    "total_adjustments": [],
+    "tt_modifiers": [
+     {
+      "team": "DAL",
+      "points": 0.5,
+      "reason": "explosive_offense_vs_weak_explosive_defense: DAL 0.111 off EPA/play (2025) at league-fastest pace (64.9 plays/g, 1st; pass rate 63.2%, 10th) with Prescott PFF QB8 (85.4 passing grade, 4th in 2025) vs NYG defense 27th in EPA/play (0.100 def EPA) and a secondary PFF describes as 'practically the same underwhelming group' with 2nd-most DB penalties. Sources: pbp2025+circa0711 quality panel; PFF QB Rankings 2026; SI/PFF Giants unit notes.",
+      "audited": "corrected"
+     },
+     {
+      "team": "NYG",
+      "points": -0.5,
+      "reason": "opponent side of the same modifier: NYG team total docked -0.5 (allowed opponent range -0.5..-1.0) for facing DAL's explosive-pace offense; kept at the minimum because the defensive evidence is 2025-vintage and NYG added Greg Newsome II plus three top-40 defensive picks. Sources: pbp2025+circa0711; SI/PFF Giants secondary note; qb_context notable_changes."
+     }
+    ],
+    "considered_but_zero": [
+     {
+      "item": "NYG DL Roy Robertson-Harris OUT (RES/R36)",
+      "why_zero": "Only listed absence in the bundle; rotational DL, LDE depth rank 5 on 8/31 chart, bundle itself tags 'minor impact'; not a premium position (QB/OT/WR1/EDGE/CB1) and the reserve code is not decodable from the feed \u2014 weak evidence, flag only. Source: nflverse weekly rosters 2026 W1 (RES/R36)."
+     },
+     {
+      "item": "qb_change (either team)",
+      "why_zero": "Dak Prescott and Jaxson Dart both confirmed QB1 ACT/A01 on the 8/31 depth chart/roster; nfelo already bakes per-QB adjustments (DAL +0.21, NYG -0.13); no post-2026-08-31 news exists in the bundle (news scan not possible). Source: nflverse depth_charts_2026 + nfelo_baked_in."
+     },
+     {
+      "item": "ol_pass_rush_mismatch: NYG rush vs DAL LT Tyler Guyton (57.5 PFF grade)",
+      "why_zero": "Category requires an ELITE rush; PFF ranks the NYG defensive line 21st for 2026 \u2014 fails the elite bar despite Guyton's weak grade. Guyton is verified ACT/A01, not absent. Source: SI 'PFF Ranked the Giants' Defensive Line 21st' + PFF DAL OL note."
+     },
+     {
+      "item": "ol_pass_rush_mismatch: DAL rush vs NYG OL",
+      "why_zero": "DAL traded Micah Parsons; Rashan Gary added but no elite unit rank recovered, and NYG OL was PFF No. 9 in final 2025 with LT Andrew Thomas at 90.3 and verified active \u2014 no weak-OT victim. Source: SI Giants Country PFF 2025 OL rankings; nflverse rosters."
+     },
+     {
+      "item": "rest_short_week / travel",
+      "why_zero": "Both teams on 7 days rest (bundle rest 7/7); Dallas (Central) traveling east for an 8:20pm ET kick is not a 10am-body-clock spot; no international/neutral component (neutral_site=false). Source: bundle rest + kick fields."
+     },
+     {
+      "item": "weather",
+      "why_zero": "Outdoor MetLife night game but forecast_available=false and climatology note is unsourced/qualitative \u2014 spec forbids numeric weather adjustment without a verified forecast; flagged instead. Source: bundle weather block."
+     },
+     {
+      "item": "NYG offense boost vs DAL defense (32nd EPA/play 2025)",
+      "why_zero": "NYG offense at 0.044 EPA/play does not clear the 'explosive' bar, and DAL's weak-defense evidence is 2025-vintage against a documented rebuild (Caleb Downs R1, Quinnen Williams, Rashan Gary; PFF secondary now 13th) \u2014 contradictory evidence, no reallocation. Source: pbp2025+circa0711; PFF/SI DAL secondary rank 13."
+     },
+     {
+      "item": "pace_possession mismatch",
+      "why_zero": "No mismatch to reallocate: both teams top-5 in pace (DAL 64.9 plays/g 1st, NYG 63.5 t-4th). Source: pbp2025+circa0711 pace notes."
+     },
+     {
+      "item": "Harbaugh HC change / roster turnover (both teams)",
+      "why_zero": "No \u00a75 category covers coaching or offseason turnover; nfelo and the PFF structural core already carry the current ratings. Source: qb_context + cores."
+     },
+     {
+      "item": "All other premium starters",
+      "why_zero": "DAL CeeDee Lamb, George Pickens, Tyler Guyton, Rashan Gary, Quinnen Williams and NYG Andrew Thomas, Malik Nabers, Paulson Adebo/Greg Newsome II, Andru Phillips all verified ACT/A01 \u2014 no absence to price. Source: nflverse rosters/depth charts 8/31 note."
+     }
+    ],
+    "flags": [
+     "TPT panel unrecovered (spread_tpt and total_tpt null); total rests on a single source (nfelo), total_sd unavailable",
+     "PFF total and total basis unavailable; total weights 100% nfelo",
+     "NYG PFF power rating missing \u2014 rank 24 recovered only via a secondary roundtable.io snippet, no rating value",
+     "NYG OL rank (No. 9) is PFF FINAL 2025, not 2026 preseason; no 2026 OL number recovered",
+     "Roster reserve codes not decodable from feed (NYG Robertson-Harris RES/R36 exact reserve type unverified) \u2014 weak evidence per spec",
+     "No news scan possible after 2026-08-31 (search budget exhausted); QB/holdout status verified only as of the 8/31 depth chart",
+     "Outdoor game at MetLife with no retrievable forecast \u2014 no numeric weather adjustment allowed; climatology note is unsourced",
+     "Spread core built from only 2 sources (nfelo, PFF structural), spread_sd 0.549"
+    ]
    },
    "dvoa_projection_2026": {
     "home": -0.106,
@@ -2766,7 +3998,7 @@
     "total": 48.5
    },
    "uncertainty": {
-    "spread_sd": 0.549,
+    "spread_sd": 1.117,
     "total_sd": null,
     "n_spread_sources": 2,
     "n_total_sources": 1
@@ -2787,17 +4019,19 @@
    },
    "cores": {
     "spread_nfelo": -1.0,
-    "spread_pff": -0.078,
+    "spread_pff": 0.091,
     "pff_meta": {
-     "basis": "unit/rank z-model (\u00a73.1), ST edge unavailable",
-     "off_edge": -0.058,
-     "def_edge": -0.058,
-     "ol_edge": 0.0,
-     "hfa_pts": 0.34
+     "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+     "psr_home": 2.3968873,
+     "psr_away": 2.8283189,
+     "psr_qb_home": 7.0,
+     "psr_qb_away": 3.0,
+     "hfa_pts": 0.34,
+     "rank_model_diag": -0.078
     },
     "spread_tpt": null,
     "tpt_spread_detail": {},
-    "spread_core": -0.577,
+    "spread_core": -0.499,
     "spread_weights": {
      "nfelo": 0.541,
      "pff": 0.459,
@@ -2921,7 +4155,7 @@
      "note": "CRITICAL Week 1 (DEN@KC MNF): Mahomes tore ACL+LCL Week 15 2025 (vs LAC), cleared July, no preseason snaps, 'on track to start Week 1 vs Broncos' per Schefter. OL 7th (secondary-source attribution). DL: no rank; Chris Jones pass-rush grade 90.7 (2nd among DI) but 43.4 run-def grade (career low), overall 70.5 (29th). Secondary: no rank; allowed 76% completion when no pressure (30th). 2025: 268 PA (5th fewest)."
     }
    },
-   "pff_power": {
+   "pff_power_rank_diag": {
     "away": {
      "team": "DEN",
      "rank": 12,
@@ -2935,7 +4169,74 @@
      "verbatim": true,
      "source": "milehighsports.com / roundtable.io \u2014 Broncos post-FA power rankings article quoting PFF",
      "note": "No. 13 in PFF post-FA power rankings (3rd in AFC West). Traded CB Trent McDuffie to Rams; PFF notes ample draft capital. Market context (non-PFF): Mahomes recovering from ACL/LCL tear is the key Week 1 subplot vs DEN."
-    }
+    },
+    "note": "March post-FA web-recovered ranks; DIAGNOSTIC ONLY now that the authoritative PFF table is in pff_ratings"
+   },
+   "pff_ratings": {
+    "source": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 \u2014 AUTHORITATIVE for this run (\u00a712)",
+    "convention": "Point Spread Rating = points vs league average, QB component included; spread_pff = -(psr_home - psr_away) - HFA",
+    "home": 2.3968873,
+    "away": 2.8283189,
+    "home_qb_rating": 7.0,
+    "away_qb_rating": 3.0,
+    "home_proj_wins": 9.7226,
+    "away_proj_wins": 9.8083
+   },
+   "prior_audited_adjustments_v1": {
+    "spread_adjustments": [],
+    "total_adjustments": [],
+    "tt_modifiers": [],
+    "considered_but_zero": [
+     {
+      "item": "qb_change \u2014 KC QB Patrick Mahomes (ACL+LCL tear Week 15 2025, zero preseason snaps)",
+      "why_zero": "Injury predates the 2026-08-31 nfelo data date; cleared in July and 'on track to start Week 1 vs Broncos' per Schefter (ESPN/BR, pff_units.home.note). Confirmed QB1 ACT/A01 on 8/31 depth chart. nfelo_baked_in already carries home_qb_adj_points +0.58 \u2014 any further move double-counts. Residual recovery risk flagged, not priced."
+     },
+     {
+      "item": "KC OT Matt Waletzko \u2014 OUT (RES/R34), premium position",
+      "why_zero": "Swing/backup offensive lineman (listed RG rank 3 on 8/31 depth chart), not a starting tackle; KC starting OL intact at PFF #7. Reserve-type code not decodable from feed \u2014 weak evidence per spec; flag only. Source: nflverse weekly rosters 2026 W1."
+     },
+     {
+      "item": "KC DT Omarr Norman-Lott \u2014 PUP (A02)",
+      "why_zero": "Rotational interior DL, not a rank-1 starter; roster-status code from snapshot, decode-grade evidence. No measurable line impact. Source: nflverse weekly rosters 2026 W1."
+     },
+     {
+      "item": "ol_pass_rush_mismatch \u2014 DEN elite rush vs KC OL",
+      "why_zero": "DEN rush clears the elite bar (NFL-leading 68 sacks 2025; Bonitto 81 pressures, Zach Allen 83 \u2014 PFF via pff_units.away.note), but the category requires an injured/weak OT on the victim: KC OL is PFF #7 and the only OL absence is a backup. Reverse direction fails outright \u2014 DEN OL is PFF #1."
+     },
+     {
+      "item": "\u00a76 reallocation toward DEN TT \u2014 Waddle (88th pct YPRR) + KC 76% completion allowed when unpressured (30th) + DEN OL #1 limiting pressure",
+      "why_zero": "Coverage-efficiency stat, not an explosive-play-defense metric; DEN offense (0.037 off EPA/play, Nix PFF QB19) is not evidenced as explosive. Evidence chain incomplete for the named category \u2014 no reallocation."
+     },
+     {
+      "item": "\u00a76 elite red-zone defense (either direction)",
+      "why_zero": "No red-zone data for DEN or KC anywhere in the bundle; DEN's #3 coverage rank and 261 PA are season-level, not red-zone-specific."
+     },
+     {
+      "item": "\u00a76 pace-possession mismatch",
+      "why_zero": "DEN 63.5 plays/g (4th) and 63.3% pass (8th); KC 66.9% pass (2nd), 61.6 plays/g (16th). Both up-tempo/pass-leaning \u2014 no possession-style mismatch that skews scoring share."
+     },
+     {
+      "item": "rest_short_week / travel",
+      "why_zero": "Both teams on 7 days; Mountain-to-Central Monday night kick \u2014 no 10am-body-clock scenario. Week 1 baseline, no evidence."
+     },
+     {
+      "item": "weather",
+      "why_zero": "Outdoor grass at Arrowhead, forecast_available=false, climatology qualitative and unsourced \u2014 numeric adjustment prohibited by spec; flagged for Appendix C."
+     },
+     {
+      "item": "Premium starters verified active (no adjustment basis)",
+      "why_zero": "DEN Surtain II (CB1), Moss, Bonitto (EDGE); KC Chris Jones, Rashee Rice, Worthy, Sneed (CB1) all ACT/A01 per 8/31 depth chart + roster \u2014 no premium-position absences for DEN at all."
+     }
+    ],
+    "flags": [
+     "TPT panel unrecovered (sites egress-blocked): spread from 2 sources, total single-source nfelo (n_total_sources=1, total_sd=null)",
+     "No PFF total for this game; total_core is nfelo-only (DVOA diagnostic 46.5 is the only cross-check, within ~0.9)",
+     "KC PFF unit coverage incomplete: no DL or secondary rank; OL #7 and power ranks attributed via secondary outlets (Arrowhead Addict, milehighsports quoting PFF)",
+     "No verified weather forecast for outdoor Monday-night game at Arrowhead (climatology qualitative/unsourced) \u2014 no numeric weather adjustment permitted",
+     "KC OT Matt Waletzko RES/R34 \u2014 exact reserve type not decodable from feed; roster-code evidence unverified",
+     "KC DT Omarr Norman-Lott A02 (Active/PUP) from roster snapshot \u2014 decode-grade evidence only",
+     "Mahomes zero preseason snaps post ACL+LCL reconstruction; start confirmed and priced by nfelo (+0.58 QB adj) but residual recovery risk is unquantified"
+    ]
    },
    "dvoa_projection_2026": {
     "home": 0.079,
@@ -2946,7 +4247,7 @@
     "total": 42.5
    },
    "uncertainty": {
-    "spread_sd": 0.652,
+    "spread_sd": 0.771,
     "total_sd": null,
     "n_spread_sources": 2,
     "n_total_sources": 1

@@ -21,11 +21,14 @@ lines are reference only (Appendix B), never an input.
   2026-08-31 automated-update commit — published Week 1 spreads/win probs,
   QB-adjusted Elo snapshot, per-game HFA/QB modifiers. Raw copies under
   `data/raw/2026-W01/`.
-- **PFF** (Tier A1, partial): pff.com is blocked by the network egress
-  allowlist; team power ranks (26/32 verbatim) and scattered unit ranks /
-  2025-final team grades were recovered from web-search snippets with per-item
-  citations (see `sweep.json`). Spread contribution built via the §3.1
-  rank/unit z-model; PFF-implied totals unavailable.
+- **PFF** (Tier A1, clean for spreads): the user supplied PFF's Power
+  Rankings table (pff.com/betting/nfl-power-rankings, `data/raw/2026-W01/
+  pff_power_ratings.csv`) — authoritative per §12. Its Point Spread Rating
+  (points vs league average, QB component included) drives `spread_pff`
+  directly per §3.1: `-(PSR_home - PSR_away) - site HFA`. The earlier
+  web-recovered post-FA power ranks (`sweep.json`) are kept as a diagnostic.
+  PFF off/def unit grades were not available, so PFF-implied totals remain
+  missing and the §4 missing-source protocol governs totals.
 - **TPT panel** (Tier B, effectively missing): thepredictiontracker.com and
   all member-system sites blocked. One verbatim number recovered (Dokter
   Entropy 41.83 total, NE@SEA), applied under the single-computer clamp.
@@ -50,4 +53,6 @@ python3 originator_engine.py --stage publish --generated <ISO> --data-status DEG
 
 Intermediate artifacts checked in: `sweep.json` (recovery results),
 `cores.json`, `bundles.json`, `adjustments.json` (post-audit), `briefs.json`,
-`final.json`.
+`final.json`. The `*_v1.json` files are the pre-PFF-table pass (rank-model
+PFF spreads), retained for the audit trail; the v2 adjust/verify pass used
+the audited v1 adjustment set as its baseline.

@@ -28,6 +28,7 @@ ELO_PER_POINT = 25.0
 
 TEAM_FIX = {
     "LAR": "LA", "OAK": "LV", "JAC": "JAX", "WSH": "WAS", "SD": "LAC", "STL": "LA",
+    "BLT": "BAL", "HST": "HOU", "CLV": "CLE", "ARZ": "ARI",  # PFF abbreviations
 }
 VALID = set("ARI ATL BAL BUF CAR CHI CIN CLE DAL DEN DET GB HOU IND JAX KC LA LAC LV MIA MIN NE NO NYG NYJ PHI PIT SEA SF TB TEN WAS".split())
 
@@ -154,6 +155,27 @@ def load_nfelo():
     return spreads, pts, mods
 
 
+def load_pff_ratings():
+    """PFF Power Rankings table (pasted by the user 2026-09-01 — authoritative
+    for this run per §12). Point Spread Rating = points vs league average, QB
+    component included (column sums to ~0)."""
+    p = RAW / "pff_power_ratings.csv"
+    if not p.exists():
+        return {}
+    out = {}
+    for r in csv.DictReader(open(p)):
+        tm = norm_team(r["Team"])
+        if tm:
+            out[tm] = {
+                "psr": float(r["Point Spread Rating Points"]),
+                "psr_qb": float(r["Point Spread Rating QB"]),
+                "proj_wins": float(r["Projections Avg. Wins"]),
+                "proj_playoffs_pct": float(r["Projections Make Playoffs"]),
+                "sos_remaining_rank": int(r["Strength of Schedule Remaining"]),
+            }
+    return out
+
+
 def load_dvoa():
     dv = {}
     for r in csv.DictReader(open(RAW / "dvoa_projections_2026.csv")):
@@ -266,6 +288,7 @@ def build_cores():
     slate = load_slate()
     nf_spreads, nf_pts, nf_mods = load_nfelo()
     dvoa = load_dvoa()
+    pffr = load_pff_ratings()
     sweep = load_sweep()
     units, power, explicit_pff = pff_tables(sweep)
     tpt_s, tpt_t = tpt_panels(sweep)
@@ -301,7 +324,17 @@ def build_cores():
 
         # ---- PFF spread path
         pff_meta = {"basis": None}
-        if key in explicit_pff:
+        unit_diag = None
+        if a in pffr and h in pffr:
+            # §3.1: PFF publishes an explicit point-spread rating -> use it;
+            # the unit/rank model is kept only as a diagnostic (computed below)
+            hfa = hfa_pts if hfa_pts is not None else 1.6
+            spread_pff = -(pffr[h]["psr"] - pffr[a]["psr"]) - hfa
+            pff_meta = {"basis": "explicit PFF point-spread rating (pasted table, authoritative per §12)",
+                        "psr_home": pffr[h]["psr"], "psr_away": pffr[a]["psr"],
+                        "psr_qb_home": pffr[h]["psr_qb"], "psr_qb_away": pffr[a]["psr_qb"],
+                        "hfa_pts": round(hfa, 2)}
+        elif key in explicit_pff:
             spread_pff = explicit_pff[key]["home_spread"]
             pff_meta = {"basis": "explicit PFF Week 1 spread",
                         "source": explicit_pff[key]["source"], "quote": explicit_pff[key]["quote"]}
@@ -335,6 +368,13 @@ def build_cores():
             else:
                 spread_pff = None
                 pff_meta = {"basis": "PFF unavailable for this game"}
+        if pff_meta.get("psr_home") is not None:
+            # unit/rank z-model diagnostic alongside the explicit rating
+            oh, oa = power_z.get(h), power_z.get(a)
+            if oh is not None and oa is not None:
+                hfa = pff_meta["hfa_pts"]
+                unit_diag = round(-(4.5 / math.sqrt(2)) * (oh - oa) - hfa, 3)
+            pff_meta["rank_model_diag"] = unit_diag
 
         # §3.1: clamp any single PFF-vs-nfelo disagreement above 4.5 points and
         # note it as a structural flag (usually QB or OL)
@@ -390,6 +430,10 @@ def build_cores():
             "total_tpt": total_tpt, "total_tpt_systems": t_sys,
             "tpt_total_detail": {s: d["v"] for s, d in tpt_t.get(key, {}).items()},
             "structural_flag": structural_flag,
+            "pff_psr": {"home": pffr.get(h, {}).get("psr"), "away": pffr.get(a, {}).get("psr"),
+                        "home_qb": pffr.get(h, {}).get("psr_qb"), "away_qb": pffr.get(a, {}).get("psr_qb"),
+                        "home_proj_wins": pffr.get(h, {}).get("proj_wins"),
+                        "away_proj_wins": pffr.get(a, {}).get("proj_wins")},
             "hfa_pts_nfelo": None if hfa_pts is None else round(hfa_pts, 3),
             "nfelo_qb_adj": {"home_elo": mods.get("home_qb_adj_elo"),
                               "away_elo": mods.get("away_qb_adj_elo")},
@@ -717,7 +761,7 @@ def publish(generated_iso, data_status):
         "sources": {
             "nfelo": "greerreNFL/nfelo output_data (commit 2026-08-31, automated update): prediction_tracker.csv, elo_snapshot.csv, nfelo_games.csv",
             "schedule_market": "nflverse/nfldata games.csv (market snapshot for Appendix B only)",
-            "pff": "web-search snippet recovery (pff.com egress-blocked)",
+            "pff": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 — authoritative per §12: Point Spread Rating (points vs avg, QB included) used directly per §3.1; earlier web-search rank recovery retained as diagnostic",
             "tpt": "web-search snippet recovery (thepredictiontracker.com egress-blocked)",
             "dvoa_diag": "greerreNFL/nfelo dvoa_projections.csv 2026 (diagnostic only, not blended)",
         },
