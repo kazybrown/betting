@@ -1,5 +1,5 @@
 # NFL ORIGIN CARD — 2026 Week 1
-Generated: 2026-09-02T01:03:57Z
+Generated: 2026-09-02T01:10:30Z
 Data status: DEGRADED
 Weights (modal game): spread nfelo 0.541 / PFF 0.459 / TPT 0.0 | total PFF 0.0 / nfelo 0.5 / TPT 0.5 (per-game missing-source renormalization applies; see Appendix C)
 

@@ -759,7 +759,7 @@ def publish(generated_iso, data_status):
         "league_total_prior": LEAGUE_TOTAL_PRIOR,
         "league_total_prior_basis": "2025 REG realized mean total 46.03 (nflverse games.csv), per §3.2 update rule",
         "sources": {
-            "nfelo": "greerreNFL/nfelo output_data (commit 2026-08-31, automated update): prediction_tracker.csv, elo_snapshot.csv, nfelo_games.csv",
+            "nfelo": "greerreNFL/nfelo output_data (automated update committed 2026-09-01 15:40 PT; Week 1 projected spreads identical to the 2026-08-31 file, Elo snapshot refreshed): prediction_tracker.csv, elo_snapshot.csv, nfelo_games.csv",
             "schedule_market": "nflverse/nfldata games.csv (market snapshot for Appendix B only)",
             "pff": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 — authoritative per §12: Point Spread Rating (points vs avg, QB included) used directly per §3.1; earlier web-search rank recovery retained as diagnostic",
             "tpt": "web-search snippet recovery (thepredictiontracker.com egress-blocked)",

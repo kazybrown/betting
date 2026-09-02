@@ -193,7 +193,7 @@
   "spread_tpt": null,
   "spread_tpt_systems": [],
   "tpt_spread_detail": {},
-  "total_nfelo": 45.804,
+  "total_nfelo": 45.805,
   "total_pff": null,
   "total_pff_basis": null,
   "total_dvoa_diag": 45.827,
@@ -225,7 +225,7 @@
    "pff": 0.459,
    "tpt": 0.0
   },
-  "total_core": 45.804,
+  "total_core": 45.805,
   "total_weights": {
    "pff": 0.0,
    "nfelo": 1.0,
@@ -817,7 +817,7 @@
   "spread_tpt": null,
   "spread_tpt_systems": [],
   "tpt_spread_detail": {},
-  "total_nfelo": 44.744,
+  "total_nfelo": 44.745,
   "total_pff": null,
   "total_pff_basis": null,
   "total_dvoa_diag": 45.918,
@@ -849,7 +849,7 @@
    "pff": 0.459,
    "tpt": 0.0
   },
-  "total_core": 44.744,
+  "total_core": 44.745,
   "total_weights": {
    "pff": 0.0,
    "nfelo": 1.0,
