@@ -362,7 +362,7 @@
      "DONC": 47.77578,
      "FFW": 42.5
     },
-    "total_core": 46.556,
+    "total_core": 47.166,
     "total_weights": {
      "pff": 0.0,
      "nfelo": 0.5,
@@ -648,14 +648,7 @@
       "DOK"
      ]
     },
-    "system_clamps": [
-     {
-      "kind": "total",
-      "system": "DONC",
-      "drift": 2.11,
-      "limit": 1.5
-     }
-    ]
+    "system_clamps": []
    },
    "uncertainty": {
     "spread_sd": 3.029,
@@ -1066,7 +1059,7 @@
      "DONC": -3.3,
      "FFW": 9.4
     },
-    "spread_core": -2.421,
+    "spread_core": -2.945,
     "spread_weights": {
      "nfelo": 0.46,
      "pff": 0.39,
@@ -1080,7 +1073,7 @@
      "DONC": 50.74316,
      "FFW": 54.4
     },
-    "total_core": 48.619,
+    "total_core": 48.597,
     "total_weights": {
      "pff": 0.0,
      "nfelo": 0.5,
@@ -1303,10 +1296,12 @@
     },
     "system_clamps": [
      {
-      "kind": "spread",
+      "kind": "total",
       "system": "DONC",
-      "drift": -1.52,
-      "limit": 1.0
+      "share": 1.51,
+      "limit": 1.5,
+      "sleeve_effect_before": 2.86,
+      "sleeve_effect_after": 2.83
      }
     ]
    },
@@ -2995,7 +2990,7 @@
      "DONC": 38.94652,
      "FFW": 47.4
     },
-    "total_core": 42.566,
+    "total_core": 41.911,
     "total_weights": {
      "pff": 0.0,
      "nfelo": 0.5,
@@ -3222,20 +3217,7 @@
       "DOK"
      ]
     },
-    "system_clamps": [
-     {
-      "kind": "total",
-      "system": "DONC",
-      "drift": -3.38,
-      "limit": 1.5
-     },
-     {
-      "kind": "total",
-      "system": "FFW",
-      "drift": 2.73,
-      "limit": 1.5
-     }
-    ]
+    "system_clamps": []
    },
    "uncertainty": {
     "spread_sd": 3.207,
@@ -3274,7 +3256,7 @@
      "DONC": -12.3,
      "FFW": -3.0
     },
-    "spread_core": -9.58,
+    "spread_core": -9.696,
     "spread_weights": {
      "nfelo": 0.46,
      "pff": 0.39,
@@ -3288,7 +3270,7 @@
      "DONC": 46.12638,
      "FFW": 39.3
     },
-    "total_core": 43.936,
+    "total_core": 44.753,
     "total_weights": {
      "pff": 0.0,
      "nfelo": 0.5,
@@ -3528,26 +3510,7 @@
       "DOK"
      ]
     },
-    "system_clamps": [
-     {
-      "kind": "spread",
-      "system": "DONC",
-      "drift": -1.12,
-      "limit": 1.0
-     },
-     {
-      "kind": "total",
-      "system": "DONC",
-      "drift": 2.73,
-      "limit": 1.5
-     },
-     {
-      "kind": "total",
-      "system": "FFW",
-      "drift": -1.91,
-      "limit": 1.5
-     }
-    ]
+    "system_clamps": []
    },
    "uncertainty": {
     "spread_sd": 4.389,
@@ -3600,7 +3563,7 @@
      "DONC": 41.40564,
      "FFW": 49.1
     },
-    "total_core": 44.3,
+    "total_core": 43.569,
     "total_weights": {
      "pff": 0.0,
      "nfelo": 0.5,
@@ -3861,20 +3824,7 @@
       "DOK"
      ]
     },
-    "system_clamps": [
-     {
-      "kind": "total",
-      "system": "DONC",
-      "drift": -3.08,
-      "limit": 1.5
-     },
-     {
-      "kind": "total",
-      "system": "FFW",
-      "drift": 2.35,
-      "limit": 1.5
-     }
-    ]
+    "system_clamps": []
    },
    "uncertainty": {
     "spread_sd": 3.851,
@@ -4216,7 +4166,7 @@
      "DONC": 47.1402,
      "FFW": 43.2
     },
-    "total_core": 46.347,
+    "total_core": 46.423,
     "total_weights": {
      "pff": 0.0,
      "nfelo": 0.5,
@@ -4473,14 +4423,7 @@
       "DOK"
      ]
     },
-    "system_clamps": [
-     {
-      "kind": "total",
-      "system": "DONC",
-      "drift": 1.58,
-      "limit": 1.5
-     }
-    ]
+    "system_clamps": []
    },
    "uncertainty": {
     "spread_sd": 1.831,
@@ -4533,7 +4476,7 @@
      "DONC": 48.6375,
      "FFW": 42.9
     },
-    "total_core": 45.686,
+    "total_core": 46.481,
     "total_weights": {
      "pff": 0.0,
      "nfelo": 0.5,
@@ -4789,14 +4732,7 @@
       "DOK"
      ]
     },
-    "system_clamps": [
-     {
-      "kind": "total",
-      "system": "DONC",
-      "drift": 2.3,
-      "limit": 1.5
-     }
-    ]
+    "system_clamps": []
    },
    "uncertainty": {
     "spread_sd": 1.314,

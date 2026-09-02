@@ -518,27 +518,31 @@ def build_cores():
             g["total_weights"] = {"pff": 0.0, "nfelo": 1.0, "tpt": 0.0}
 
         # §1 Tier-B rule: no single TPT computer may move the origin number more
-        # than 1.0 (spread) / 1.5 (total) vs the blend without it (leave-one-out)
-        for kind, detail_key, wdict, limit, core_key, tier in (
-                ("spread", "tpt_spread_detail", TPT_SPREAD_W, 1.0, "spread_core", (sn, sp)),
-                ("total", "tpt_total_detail", TPT_TOTAL_W, 1.5, "total_core", (tn, tp))):
+        # than 1.0 (spread) / 1.5 (total) vs the Tier-A blend. Each system's share
+        # of the sleeve's effect E = core - tierA is E * (its renormalized sleeve
+        # weight); if any share exceeds the limit, E is scaled down so the largest
+        # share equals the limit (order-independent, monotone).
+        for kind, detail_key, wdict, limit, core_key, tier, wkey in (
+                ("spread", "tpt_spread_detail", TPT_SPREAD_W, 1.0, "spread_core", (sn, sp), "spread_weights"),
+                ("total", "tpt_total_detail", TPT_TOTAL_W, 1.5, "total_core", (tn, tp), "total_weights")):
             detail = g[detail_key]
-            if len(detail) < 2:
+            wt = g[wkey]
+            if not detail or wt["tpt"] == 0:
                 continue
             n1, p1 = tier
-            wt = g["spread_weights"] if kind == "spread" else g["total_weights"]
-            for sysname in list(detail):
-                rest = {k: {"v": v} for k, v in detail.items() if k != sysname}
-                loo, _ = tpt_blend(rest, wdict)
-                if kind == "spread":
-                    core_wo = wt["nfelo"] * n1 + wt["pff"] * (p1 if p1 is not None else 0) + wt["tpt"] * loo
-                else:
-                    core_wo = wt["nfelo"] * n1 + wt["pff"] * (p1 if p1 is not None else 0) + wt["tpt"] * loo
-                drift = g[core_key] - core_wo
-                if abs(drift) > limit:
-                    g[core_key] = core_wo + math.copysign(limit, drift)
-                    g.setdefault("tpt_system_clamps", []).append(
-                        {"kind": kind, "system": sysname, "drift": round(drift, 2), "limit": limit})
+            wa = wt["nfelo"] + wt["pff"]
+            tier_a = (wt["nfelo"] * n1 + wt["pff"] * (p1 if p1 is not None else 0)) / wa
+            E = g[core_key] - tier_a
+            present = {k: wdict[k] for k in detail if k in wdict}
+            tot = sum(present.values())
+            shares = {k: E * v / tot for k, v in present.items()}
+            worst = max(shares, key=lambda k: abs(shares[k]))
+            if abs(shares[worst]) > limit:
+                scale = limit / abs(shares[worst])
+                g[core_key] = tier_a + E * scale
+                g.setdefault("tpt_system_clamps", []).append(
+                    {"kind": kind, "system": worst, "share": round(shares[worst], 2),
+                     "limit": limit, "sleeve_effect_before": round(E, 2), "sleeve_effect_after": round(E * scale, 2)})
 
         g["spread_core"] = round(g["spread_core"], 3)
         g["total_core"] = round(g["total_core"], 3)
