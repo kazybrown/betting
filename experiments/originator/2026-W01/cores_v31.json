@@ -17,14 +17,8 @@
   "market_total": 44.5,
   "away_ml": "150",
   "home_ml": "-180",
-  "spread_nfelo": -3.5,
-  "home_wp_nfelo": 0.621,
-  "nfelo_provenance": {
-   "spread_nfelo_repo_snapshot": -4.0,
-   "nfelo_site_delta": 0.5,
-   "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
-   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
-  },
+  "spread_nfelo": -4.0,
+  "home_wp_nfelo": 0.636,
   "spread_pff": -5.607,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -80,7 +74,7 @@
    "away_elo": 3.0012
   },
   "nfelo_vs_market_close": -0.5,
-  "spread_core": -4.193,
+  "spread_core": -4.423,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
@@ -94,7 +88,7 @@
   },
   "spread_range": 3.31,
   "total_range": 4.51,
-  "spread_sd": 1.37,
+  "spread_sd": 1.35,
   "total_sd": 2.534,
   "n_spread_sources": 4,
   "n_total_sources": 3
@@ -119,12 +113,6 @@
   "home_ml": "-198",
   "spread_nfelo": -2.0,
   "home_wp_nfelo": 0.572,
-  "nfelo_provenance": {
-   "spread_nfelo_repo_snapshot": -2.0,
-   "nfelo_site_delta": 0.0,
-   "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
-   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
-  },
   "spread_pff": -3.707,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -217,14 +205,8 @@
   "market_total": 47.5,
   "away_ml": "-142",
   "home_ml": "120",
-  "spread_nfelo": 1.5,
-  "home_wp_nfelo": 0.446,
-  "nfelo_provenance": {
-   "spread_nfelo_repo_snapshot": 2.5,
-   "nfelo_site_delta": -1.0,
-   "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
-   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
-  },
+  "spread_nfelo": 2.5,
+  "home_wp_nfelo": 0.413,
   "spread_pff": 1.837,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -280,7 +262,7 @@
    "away_elo": 4.9933
   },
   "nfelo_vs_market_close": 0.0,
-  "spread_core": 1.79,
+  "spread_core": 2.25,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
@@ -292,9 +274,9 @@
    "nfelo": 0.5,
    "tpt": 0.5
   },
-  "spread_range": 1.2,
+  "spread_range": 0.86,
   "total_range": 3.09,
-  "spread_sd": 0.505,
+  "spread_sd": 0.407,
   "total_sd": 1.559,
   "n_spread_sources": 4,
   "n_total_sources": 3
@@ -319,12 +301,6 @@
   "home_ml": "-198",
   "spread_nfelo": -3.5,
   "home_wp_nfelo": 0.621,
-  "nfelo_provenance": {
-   "spread_nfelo_repo_snapshot": -3.5,
-   "nfelo_site_delta": 0.0,
-   "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
-   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
-  },
   "spread_pff": -3.132,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -429,12 +405,6 @@
   "home_ml": "-305",
   "spread_nfelo": -7.0,
   "home_wp_nfelo": 0.729,
-  "nfelo_provenance": {
-   "spread_nfelo_repo_snapshot": -7.0,
-   "nfelo_site_delta": 0.0,
-   "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
-   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
-  },
   "spread_pff": -8.046,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -529,12 +499,6 @@
   "home_ml": "-102",
   "spread_nfelo": 1.5,
   "home_wp_nfelo": 0.447,
-  "nfelo_provenance": {
-   "spread_nfelo_repo_snapshot": 1.5,
-   "nfelo_site_delta": 0.0,
-   "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
-   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
-  },
   "spread_pff": 0.324,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -629,12 +593,6 @@
   "home_ml": "145",
   "spread_nfelo": 1.5,
   "home_wp_nfelo": 0.444,
-  "nfelo_provenance": {
-   "spread_nfelo_repo_snapshot": 1.5,
-   "nfelo_site_delta": 0.0,
-   "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
-   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
-  },
   "spread_pff": 2.458,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -727,14 +685,8 @@
   "market_total": 40.5,
   "away_ml": "300",
   "home_ml": "-380",
-  "spread_nfelo": -6.0,
-  "home_wp_nfelo": 0.699,
-  "nfelo_provenance": {
-   "spread_nfelo_repo_snapshot": -7.5,
-   "nfelo_site_delta": 1.5,
-   "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
-   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
-  },
+  "spread_nfelo": -7.5,
+  "home_wp_nfelo": 0.741,
   "spread_pff": -9.196,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -790,7 +742,7 @@
    "away_elo": -8.8037
   },
   "nfelo_vs_market_close": 0.0,
-  "spread_core": -7.867,
+  "spread_core": -8.557,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
@@ -804,7 +756,7 @@
   },
   "spread_range": 8.3,
   "total_range": 4.24,
-  "spread_sd": 3.631,
+  "spread_sd": 3.482,
   "total_sd": 2.273,
   "n_spread_sources": 4,
   "n_total_sources": 3
@@ -829,12 +781,6 @@
   "home_ml": "-175",
   "spread_nfelo": -3.0,
   "home_wp_nfelo": 0.604,
-  "nfelo_provenance": {
-   "spread_nfelo_repo_snapshot": -3.0,
-   "nfelo_site_delta": 0.0,
-   "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
-   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
-  },
   "spread_pff": -4.674,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -927,14 +873,8 @@
   "market_total": 38.5,
   "away_ml": "110",
   "home_ml": "-130",
-  "spread_nfelo": -3.0,
-  "home_wp_nfelo": 0.603,
-  "nfelo_provenance": {
-   "spread_nfelo_repo_snapshot": -2.5,
-   "nfelo_site_delta": -0.5,
-   "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
-   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
-  },
+  "spread_nfelo": -2.5,
+  "home_wp_nfelo": 0.587,
   "spread_pff": -3.874,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -990,7 +930,7 @@
    "away_elo": -2.2518
   },
   "nfelo_vs_market_close": 0.0,
-  "spread_core": -3.356,
+  "spread_core": -3.126,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
@@ -1004,7 +944,7 @@
   },
   "spread_range": 8.0,
   "total_range": 8.45,
-  "spread_sd": 3.646,
+  "spread_sd": 3.612,
   "total_sd": 4.227,
   "n_spread_sources": 4,
   "n_total_sources": 3
@@ -1027,15 +967,9 @@
   "market_total": 46.5,
   "away_ml": "425",
   "home_ml": "-575",
-  "spread_nfelo": -9.0,
-  "home_wp_nfelo": 0.801,
-  "nfelo_provenance": {
-   "spread_nfelo_repo_snapshot": -7.5,
-   "nfelo_site_delta": -1.5,
-   "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
-   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
-  },
-  "spread_pff": -12.75,
+  "spread_nfelo": -7.5,
+  "home_wp_nfelo": 0.753,
+  "spread_pff": -12.0,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
    "psr_home": 3.2324328,
@@ -1071,7 +1005,7 @@
    "DONC": 46.12638,
    "FFW": 39.3
   },
-  "structural_flag": null,
+  "structural_flag": "PFF/nfelo disagreement -5.25 pts exceeds 4.5; spread_pff clamped -12.75 -> -12.00 (structural \u2014 usually QB or OL)",
   "market_open_spread": -10.5,
   "market_open_total": 45.5,
   "market_tpt_spread": -10.0,
@@ -1090,7 +1024,7 @@
    "away_elo": -11.3121
   },
   "nfelo_vs_market_close": 3.0,
-  "spread_core": -10.679,
+  "spread_core": -9.696,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
@@ -1102,9 +1036,9 @@
    "nfelo": 0.5,
    "tpt": 0.5
   },
-  "spread_range": 9.75,
+  "spread_range": 9.3,
   "total_range": 6.83,
-  "spread_sd": 4.497,
+  "spread_sd": 4.389,
   "total_sd": 3.609,
   "n_spread_sources": 4,
   "n_total_sources": 3
@@ -1129,12 +1063,6 @@
   "home_ml": "-198",
   "spread_nfelo": -3.5,
   "home_wp_nfelo": 0.621,
-  "nfelo_provenance": {
-   "spread_nfelo_repo_snapshot": -3.5,
-   "nfelo_site_delta": 0.0,
-   "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
-   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
-  },
   "spread_pff": -6.882,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -1227,14 +1155,8 @@
   "market_total": 45.5,
   "away_ml": "-102",
   "home_ml": "-118",
-  "spread_nfelo": -1.0,
-  "home_wp_nfelo": 0.531,
-  "nfelo_provenance": {
-   "spread_nfelo_repo_snapshot": -3.0,
-   "nfelo_site_delta": 2.0,
-   "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
-   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
-  },
+  "spread_nfelo": -3.0,
+  "home_wp_nfelo": 0.603,
   "spread_pff": 0.85,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -1288,7 +1210,7 @@
    "away_elo": 0.887
   },
   "nfelo_vs_market_close": -1.5,
-  "spread_core": -0.21,
+  "spread_core": -1.13,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
@@ -1302,7 +1224,7 @@
   },
   "spread_range": 8.2,
   "total_range": 1.39,
-  "spread_sd": 3.825,
+  "spread_sd": 3.862,
   "total_sd": 0.98,
   "n_spread_sources": 4,
   "n_total_sources": 2
@@ -1325,14 +1247,8 @@
   "market_total": 45.5,
   "away_ml": "170",
   "home_ml": "-205",
-  "spread_nfelo": -3.5,
-  "home_wp_nfelo": 0.621,
-  "nfelo_provenance": {
-   "spread_nfelo_repo_snapshot": -4.5,
-   "nfelo_site_delta": 1.0,
-   "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
-   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
-  },
+  "spread_nfelo": -4.5,
+  "home_wp_nfelo": 0.654,
   "spread_pff": -5.44,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -1388,7 +1304,7 @@
    "away_elo": 3.639
   },
   "nfelo_vs_market_close": 0.0,
-  "spread_core": -4.374,
+  "spread_core": -4.834,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
@@ -1402,7 +1318,7 @@
   },
   "spread_range": 4.04,
   "total_range": 3.94,
-  "spread_sd": 1.823,
+  "spread_sd": 1.831,
   "total_sd": 2.113,
   "n_spread_sources": 4,
   "n_total_sources": 3
@@ -1427,12 +1343,6 @@
   "home_ml": "124",
   "spread_nfelo": 1.0,
   "home_wp_nfelo": 0.456,
-  "nfelo_provenance": {
-   "spread_nfelo_repo_snapshot": 1.0,
-   "nfelo_site_delta": 0.0,
-   "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
-   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
-  },
   "spread_pff": 2.58,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -1527,12 +1437,6 @@
   "home_ml": "-148",
   "spread_nfelo": -1.0,
   "home_wp_nfelo": 0.531,
-  "nfelo_provenance": {
-   "spread_nfelo_repo_snapshot": -1.0,
-   "nfelo_site_delta": 0.0,
-   "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
-   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
-  },
   "spread_pff": 0.091,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",

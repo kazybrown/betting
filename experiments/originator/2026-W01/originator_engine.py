@@ -133,7 +133,45 @@ def load_nfelo():
         spreads[(a, h)] = {
             "spread_nfelo": float(r["nfelo_projected_home_spread"]),
             "home_wp": float(r["nfelo_projected_home_win_probability"]),
+            "spread_nfelo_repo_snapshot": float(r["nfelo_projected_home_spread"]),
+            "home_wp_repo_snapshot": float(r["nfelo_projected_home_win_probability"]),
+            "nfelo_source": "greerreNFL/nfelo prediction_tracker.csv (repo snapshot)",
         }
+    # §12: nfelo site spreads pasted by the user are authoritative for the run.
+    # Win probability: kept from the snapshot where the spread is unchanged,
+    # otherwise interpolated on nfelo's own published (line -> WP) pairs.
+    site = RAW / "nfelo_site_week1_pasted.csv"
+    if site.exists():
+        pairs = {}
+        for v in spreads.values():
+            pairs.setdefault(v["spread_nfelo_repo_snapshot"], []).append(v["home_wp_repo_snapshot"])
+        xs = sorted(pairs)
+        ys = [statistics.mean(pairs[x]) for x in xs]
+
+        def interp(x):
+            if x <= xs[0]:
+                i = 0
+            elif x >= xs[-1]:
+                i = len(xs) - 2
+            else:
+                i = max(j for j in range(len(xs) - 1) if xs[j] <= x)
+            x0, x1, y0, y1 = xs[i], xs[i + 1], ys[i], ys[i + 1]
+            return y0 + (y1 - y0) * (x - x0) / (x1 - x0)
+
+        for r in csv.DictReader(open(site)):
+            key = (norm_team(r["away"]), norm_team(r["home"]))
+            if key not in spreads:
+                continue
+            new = float(r["home_spread"])
+            e = spreads[key]
+            if abs(new - e["spread_nfelo_repo_snapshot"]) > 1e-9:
+                e["home_wp"] = round(interp(new), 3)
+                e["home_wp_basis"] = "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)"
+            else:
+                e["home_wp_basis"] = "nfelo published WP (snapshot; spread unchanged on site)"
+            e["spread_nfelo"] = new
+            e["nfelo_site_delta"] = round(new - e["spread_nfelo_repo_snapshot"], 2)
+            e["nfelo_source"] = "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per §12)"
     pts = {}
     for r in csv.DictReader(open(RAW / "elo_snapshot.csv")):
         pts[norm_team(r["team"])] = float(r["pts_vs_avg"])
@@ -321,6 +359,8 @@ def build_cores():
         mods = nf_mods.get(key, {})
         spread_nfelo = nf["spread_nfelo"] if nf else None
         home_wp = nf["home_wp"] if nf else None
+        nfelo_prov = {k: nf.get(k) for k in ("spread_nfelo_repo_snapshot", "nfelo_site_delta",
+                                              "home_wp_basis", "nfelo_source")} if nf else {}
 
         hfa_pts = None
         if mods:
@@ -421,7 +461,7 @@ def build_cores():
 
         games.append({
             **g,
-            "spread_nfelo": spread_nfelo, "home_wp_nfelo": home_wp,
+            "spread_nfelo": spread_nfelo, "home_wp_nfelo": home_wp, "nfelo_provenance": nfelo_prov,
             "spread_pff": None if spread_pff is None else round(spread_pff, 3),
             "pff_meta": pff_meta,
             "spread_tpt": spread_tpt, "spread_tpt_systems": s_sys,
@@ -754,7 +794,11 @@ def publish(generated_iso, data_status):
         L.append("")
     L.append("## Appendix A — Source matrix")
     L.append("")
-    L.append("| Game | nfelo | PFF | DONC | FFW | PIR | STJ | RPXL | RWP | DOK | TPT med (S/T) | Market (S/T) |")
+    L.append("nfelo publishes model spreads and win probabilities only — no game total or projected score. "
+             "Every 'nfelo-implied total' on this card is derived per §3.2 from nfelo's team ratings "
+             "(league prior + 0.35 × combined points-vs-average) and is labelled as such; nfelo team totals do not exist.")
+    L.append("")
+    L.append("| Game | nfelo S | PFF S | DONC | FFW | PIR | STJ | RPXL | RWP | DOK | TPT med (S/T) | Market (S/T) |")
     L.append("|------|-------|-----|------|-----|-----|-----|------|-----|-----|---------------|--------------|")
     for g in games:
         sd, td = g["tpt_spread_detail"], g["tpt_total_detail"]

@@ -109,7 +109,11 @@ def main():
                                         if qb_adj.get("home_elo") is not None else None),
                 "away_qb_adj_points": (round(qb_adj["away_elo"] / ELO_PER_POINT, 2)
                                         if qb_adj.get("away_elo") is not None else None),
-                "note": "positive = that team's current QB rates above its team baseline; already inside spread_nfelo",
+                "note": "positive = that team's current QB rates above its team baseline; from the 2026-09-01 repo snapshot",
+                "spread_nfelo_repo_snapshot": g.get("nfelo_provenance", {}).get("spread_nfelo_repo_snapshot"),
+                "spread_nfelo_site_pasted": g["spread_nfelo"],
+                "site_minus_snapshot": g.get("nfelo_provenance", {}).get("nfelo_site_delta"),
+                "WARNING": "spread_nfelo is the nfeloapp.com site value pasted 2026-09-02 (authoritative). The QB/HFA modifiers above are from the 09-01 repo snapshot; where site_minus_snapshot is non-zero the site has moved since the snapshot (possible QB/roster news nfelo has now baked) -- reason about what is baked from the site number, and never double count. nfelo publishes NO total; total_nfelo is a §3.2-derived nfelo-IMPLIED total.",
             },
             "injuries": inj_by_game.get((a, h), {"note": "no injury sweep data for this game"}),
             "qb_context": {"away": qb_by_team.get(a), "home": qb_by_team.get(h)},

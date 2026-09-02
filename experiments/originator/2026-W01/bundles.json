@@ -15,7 +15,7 @@
     "home": 7
    },
    "cores": {
-    "spread_nfelo": -4.0,
+    "spread_nfelo": -3.5,
     "spread_pff": -5.607,
     "pff_meta": {
      "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -31,7 +31,7 @@
      "DONC": -2.3,
      "FFW": -4.0
     },
-    "spread_core": -4.423,
+    "spread_core": -4.193,
     "spread_weights": {
      "nfelo": 0.46,
      "pff": 0.39,
@@ -52,13 +52,17 @@
      "tpt": 0.5
     },
     "total_dvoa_diagnostic": 47.041,
-    "home_wp_nfelo": 0.636
+    "home_wp_nfelo": 0.621
    },
    "nfelo_baked_in": {
     "hfa_points": 3.685,
     "home_qb_adj_points": -0.09,
     "away_qb_adj_points": 0.12,
-    "note": "positive = that team's current QB rates above its team baseline; already inside spread_nfelo"
+    "note": "positive = that team's current QB rates above its team baseline; from the 2026-09-01 repo snapshot",
+    "spread_nfelo_repo_snapshot": -4.0,
+    "spread_nfelo_site_pasted": -3.5,
+    "site_minus_snapshot": 0.5,
+    "WARNING": "spread_nfelo is the nfeloapp.com site value pasted 2026-09-02 (authoritative). The QB/HFA modifiers above are from the 09-01 repo snapshot; where site_minus_snapshot is non-zero the site has moved since the snapshot (possible QB/roster news nfelo has now baked) -- reason about what is baked from the site number, and never double count. nfelo publishes NO total; total_nfelo is a \u00a73.2-derived nfelo-IMPLIED total."
    },
    "injuries": {
     "away": "NE",
@@ -317,7 +321,7 @@
     }
    },
    "uncertainty": {
-    "spread_sd": 1.35,
+    "spread_sd": 1.37,
     "total_sd": 2.534,
     "n_spread_sources": 4,
     "n_total_sources": 3
@@ -380,7 +384,11 @@
     "hfa_points": -0.181,
     "home_qb_adj_points": -0.15,
     "away_qb_adj_points": 0.07,
-    "note": "positive = that team's current QB rates above its team baseline; already inside spread_nfelo"
+    "note": "positive = that team's current QB rates above its team baseline; from the 2026-09-01 repo snapshot",
+    "spread_nfelo_repo_snapshot": -2.0,
+    "spread_nfelo_site_pasted": -2.0,
+    "site_minus_snapshot": 0.0,
+    "WARNING": "spread_nfelo is the nfeloapp.com site value pasted 2026-09-02 (authoritative). The QB/HFA modifiers above are from the 09-01 repo snapshot; where site_minus_snapshot is non-zero the site has moved since the snapshot (possible QB/roster news nfelo has now baked) -- reason about what is baked from the site number, and never double count. nfelo publishes NO total; total_nfelo is a \u00a73.2-derived nfelo-IMPLIED total."
    },
    "injuries": {
     "away": "SF",
@@ -681,7 +689,7 @@
     "home": 7
    },
    "cores": {
-    "spread_nfelo": 2.5,
+    "spread_nfelo": 1.5,
     "spread_pff": 1.837,
     "pff_meta": {
      "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -697,7 +705,7 @@
      "DONC": 2.7,
      "FFW": 2.0
     },
-    "spread_core": 2.25,
+    "spread_core": 1.79,
     "spread_weights": {
      "nfelo": 0.46,
      "pff": 0.39,
@@ -718,13 +726,17 @@
      "tpt": 0.5
     },
     "total_dvoa_diagnostic": 45.827,
-    "home_wp_nfelo": 0.413
+    "home_wp_nfelo": 0.446
    },
    "nfelo_baked_in": {
     "hfa_points": 2.413,
     "home_qb_adj_points": 0.12,
     "away_qb_adj_points": 0.2,
-    "note": "positive = that team's current QB rates above its team baseline; already inside spread_nfelo"
+    "note": "positive = that team's current QB rates above its team baseline; from the 2026-09-01 repo snapshot",
+    "spread_nfelo_repo_snapshot": 2.5,
+    "spread_nfelo_site_pasted": 1.5,
+    "site_minus_snapshot": -1.0,
+    "WARNING": "spread_nfelo is the nfeloapp.com site value pasted 2026-09-02 (authoritative). The QB/HFA modifiers above are from the 09-01 repo snapshot; where site_minus_snapshot is non-zero the site has moved since the snapshot (possible QB/roster news nfelo has now baked) -- reason about what is baked from the site number, and never double count. nfelo publishes NO total; total_nfelo is a \u00a73.2-derived nfelo-IMPLIED total."
    },
    "injuries": {
     "away": "CHI",
@@ -1038,7 +1050,7 @@
     }
    },
    "uncertainty": {
-    "spread_sd": 0.407,
+    "spread_sd": 0.505,
     "total_sd": 1.559,
     "n_spread_sources": 4,
     "n_total_sources": 3
@@ -1101,7 +1113,11 @@
     "hfa_points": 2.397,
     "home_qb_adj_points": 0.26,
     "away_qb_adj_points": 0.09,
-    "note": "positive = that team's current QB rates above its team baseline; already inside spread_nfelo"
+    "note": "positive = that team's current QB rates above its team baseline; from the 2026-09-01 repo snapshot",
+    "spread_nfelo_repo_snapshot": -3.5,
+    "spread_nfelo_site_pasted": -3.5,
+    "site_minus_snapshot": 0.0,
+    "WARNING": "spread_nfelo is the nfeloapp.com site value pasted 2026-09-02 (authoritative). The QB/HFA modifiers above are from the 09-01 repo snapshot; where site_minus_snapshot is non-zero the site has moved since the snapshot (possible QB/roster news nfelo has now baked) -- reason about what is baked from the site number, and never double count. nfelo publishes NO total; total_nfelo is a \u00a73.2-derived nfelo-IMPLIED total."
    },
    "injuries": {
     "away": "TB",
@@ -1389,7 +1405,11 @@
     "hfa_points": 2.413,
     "home_qb_adj_points": 0.13,
     "away_qb_adj_points": 0.15,
-    "note": "positive = that team's current QB rates above its team baseline; already inside spread_nfelo"
+    "note": "positive = that team's current QB rates above its team baseline; from the 2026-09-01 repo snapshot",
+    "spread_nfelo_repo_snapshot": -7.0,
+    "spread_nfelo_site_pasted": -7.0,
+    "site_minus_snapshot": 0.0,
+    "WARNING": "spread_nfelo is the nfeloapp.com site value pasted 2026-09-02 (authoritative). The QB/HFA modifiers above are from the 09-01 repo snapshot; where site_minus_snapshot is non-zero the site has moved since the snapshot (possible QB/roster news nfelo has now baked) -- reason about what is baked from the site number, and never double count. nfelo publishes NO total; total_nfelo is a \u00a73.2-derived nfelo-IMPLIED total."
    },
    "injuries": {
     "away": "NO",
@@ -1735,7 +1755,11 @@
     "hfa_points": 1.141,
     "home_qb_adj_points": -0.13,
     "away_qb_adj_points": 0.28,
-    "note": "positive = that team's current QB rates above its team baseline; already inside spread_nfelo"
+    "note": "positive = that team's current QB rates above its team baseline; from the 2026-09-01 repo snapshot",
+    "spread_nfelo_repo_snapshot": 1.5,
+    "spread_nfelo_site_pasted": 1.5,
+    "site_minus_snapshot": 0.0,
+    "WARNING": "spread_nfelo is the nfeloapp.com site value pasted 2026-09-02 (authoritative). The QB/HFA modifiers above are from the 09-01 repo snapshot; where site_minus_snapshot is non-zero the site has moved since the snapshot (possible QB/roster news nfelo has now baked) -- reason about what is baked from the site number, and never double count. nfelo publishes NO total; total_nfelo is a \u00a73.2-derived nfelo-IMPLIED total."
    },
    "injuries": {
     "away": "BUF",
@@ -2089,7 +2113,11 @@
     "hfa_points": 2.397,
     "home_qb_adj_points": 0.03,
     "away_qb_adj_points": 0.4,
-    "note": "positive = that team's current QB rates above its team baseline; already inside spread_nfelo"
+    "note": "positive = that team's current QB rates above its team baseline; from the 2026-09-01 repo snapshot",
+    "spread_nfelo_repo_snapshot": 1.5,
+    "spread_nfelo_site_pasted": 1.5,
+    "site_minus_snapshot": 0.0,
+    "WARNING": "spread_nfelo is the nfeloapp.com site value pasted 2026-09-02 (authoritative). The QB/HFA modifiers above are from the 09-01 repo snapshot; where site_minus_snapshot is non-zero the site has moved since the snapshot (possible QB/roster news nfelo has now baked) -- reason about what is baked from the site number, and never double count. nfelo publishes NO total; total_nfelo is a \u00a73.2-derived nfelo-IMPLIED total."
    },
    "injuries": {
     "away": "BAL",
@@ -2350,7 +2378,7 @@
     "home": 7
    },
    "cores": {
-    "spread_nfelo": -7.5,
+    "spread_nfelo": -6.0,
     "spread_pff": -9.196,
     "pff_meta": {
      "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -2366,7 +2394,7 @@
      "DONC": -11.8,
      "FFW": -3.5
     },
-    "spread_core": -8.557,
+    "spread_core": -7.867,
     "spread_weights": {
      "nfelo": 0.46,
      "pff": 0.39,
@@ -2387,13 +2415,17 @@
      "tpt": 0.5
     },
     "total_dvoa_diagnostic": 45.304,
-    "home_wp_nfelo": 0.741
+    "home_wp_nfelo": 0.699
    },
    "nfelo_baked_in": {
     "hfa_points": 1.777,
     "home_qb_adj_points": 0.15,
     "away_qb_adj_points": -0.35,
-    "note": "positive = that team's current QB rates above its team baseline; already inside spread_nfelo"
+    "note": "positive = that team's current QB rates above its team baseline; from the 2026-09-01 repo snapshot",
+    "spread_nfelo_repo_snapshot": -7.5,
+    "spread_nfelo_site_pasted": -6.0,
+    "site_minus_snapshot": 1.5,
+    "WARNING": "spread_nfelo is the nfeloapp.com site value pasted 2026-09-02 (authoritative). The QB/HFA modifiers above are from the 09-01 repo snapshot; where site_minus_snapshot is non-zero the site has moved since the snapshot (possible QB/roster news nfelo has now baked) -- reason about what is baked from the site number, and never double count. nfelo publishes NO total; total_nfelo is a \u00a73.2-derived nfelo-IMPLIED total."
    },
    "injuries": {
     "away": "CLE",
@@ -2656,7 +2688,7 @@
     }
    },
    "uncertainty": {
-    "spread_sd": 3.482,
+    "spread_sd": 3.631,
     "total_sd": 2.273,
     "n_spread_sources": 4,
     "n_total_sources": 3
@@ -2719,7 +2751,11 @@
     "hfa_points": 2.397,
     "home_qb_adj_points": 0.56,
     "away_qb_adj_points": 0.18,
-    "note": "positive = that team's current QB rates above its team baseline; already inside spread_nfelo"
+    "note": "positive = that team's current QB rates above its team baseline; from the 2026-09-01 repo snapshot",
+    "spread_nfelo_repo_snapshot": -3.0,
+    "spread_nfelo_site_pasted": -3.0,
+    "site_minus_snapshot": 0.0,
+    "WARNING": "spread_nfelo is the nfeloapp.com site value pasted 2026-09-02 (authoritative). The QB/HFA modifiers above are from the 09-01 repo snapshot; where site_minus_snapshot is non-zero the site has moved since the snapshot (possible QB/roster news nfelo has now baked) -- reason about what is baked from the site number, and never double count. nfelo publishes NO total; total_nfelo is a \u00a73.2-derived nfelo-IMPLIED total."
    },
    "injuries": {
     "away": "ATL",
@@ -3005,7 +3041,7 @@
     "home": 7
    },
    "cores": {
-    "spread_nfelo": -2.5,
+    "spread_nfelo": -3.0,
     "spread_pff": -3.874,
     "pff_meta": {
      "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -3021,7 +3057,7 @@
      "DONC": -4.7,
      "FFW": 3.3
     },
-    "spread_core": -3.126,
+    "spread_core": -3.356,
     "spread_weights": {
      "nfelo": 0.46,
      "pff": 0.39,
@@ -3042,13 +3078,17 @@
      "tpt": 0.5
     },
     "total_dvoa_diagnostic": 44.992,
-    "home_wp_nfelo": 0.587
+    "home_wp_nfelo": 0.603
    },
    "nfelo_baked_in": {
     "hfa_points": 1.761,
     "home_qb_adj_points": 0.03,
     "away_qb_adj_points": -0.09,
-    "note": "positive = that team's current QB rates above its team baseline; already inside spread_nfelo"
+    "note": "positive = that team's current QB rates above its team baseline; from the 2026-09-01 repo snapshot",
+    "spread_nfelo_repo_snapshot": -2.5,
+    "spread_nfelo_site_pasted": -3.0,
+    "site_minus_snapshot": -0.5,
+    "WARNING": "spread_nfelo is the nfeloapp.com site value pasted 2026-09-02 (authoritative). The QB/HFA modifiers above are from the 09-01 repo snapshot; where site_minus_snapshot is non-zero the site has moved since the snapshot (possible QB/roster news nfelo has now baked) -- reason about what is baked from the site number, and never double count. nfelo publishes NO total; total_nfelo is a \u00a73.2-derived nfelo-IMPLIED total."
    },
    "injuries": {
     "away": "NYJ",
@@ -3270,7 +3310,7 @@
     }
    },
    "uncertainty": {
-    "spread_sd": 3.612,
+    "spread_sd": 3.646,
     "total_sd": 4.227,
     "n_spread_sources": 4,
     "n_total_sources": 3
@@ -3290,8 +3330,8 @@
     "home": 7
    },
    "cores": {
-    "spread_nfelo": -7.5,
-    "spread_pff": -12.0,
+    "spread_nfelo": -9.0,
+    "spread_pff": -12.75,
     "pff_meta": {
      "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
      "psr_home": 3.2324328,
@@ -3306,7 +3346,7 @@
      "DONC": -12.3,
      "FFW": -3.0
     },
-    "spread_core": -9.696,
+    "spread_core": -10.679,
     "spread_weights": {
      "nfelo": 0.46,
      "pff": 0.39,
@@ -3327,13 +3367,17 @@
      "tpt": 0.5
     },
     "total_dvoa_diagnostic": 45.918,
-    "home_wp_nfelo": 0.753
+    "home_wp_nfelo": 0.801
    },
    "nfelo_baked_in": {
     "hfa_points": 2.397,
     "home_qb_adj_points": 0.02,
     "away_qb_adj_points": -0.45,
-    "note": "positive = that team's current QB rates above its team baseline; already inside spread_nfelo"
+    "note": "positive = that team's current QB rates above its team baseline; from the 2026-09-01 repo snapshot",
+    "spread_nfelo_repo_snapshot": -7.5,
+    "spread_nfelo_site_pasted": -9.0,
+    "site_minus_snapshot": -1.5,
+    "WARNING": "spread_nfelo is the nfeloapp.com site value pasted 2026-09-02 (authoritative). The QB/HFA modifiers above are from the 09-01 repo snapshot; where site_minus_snapshot is non-zero the site has moved since the snapshot (possible QB/roster news nfelo has now baked) -- reason about what is baked from the site number, and never double count. nfelo publishes NO total; total_nfelo is a \u00a73.2-derived nfelo-IMPLIED total."
    },
    "injuries": {
     "away": "ARI",
@@ -3568,7 +3612,7 @@
     }
    },
    "uncertainty": {
-    "spread_sd": 4.389,
+    "spread_sd": 4.497,
     "total_sd": 3.609,
     "n_spread_sources": 4,
     "n_total_sources": 3
@@ -3631,7 +3675,11 @@
     "hfa_points": 3.049,
     "home_qb_adj_points": 0.89,
     "away_qb_adj_points": -0.29,
-    "note": "positive = that team's current QB rates above its team baseline; already inside spread_nfelo"
+    "note": "positive = that team's current QB rates above its team baseline; from the 2026-09-01 repo snapshot",
+    "spread_nfelo_repo_snapshot": -3.5,
+    "spread_nfelo_site_pasted": -3.5,
+    "site_minus_snapshot": 0.0,
+    "WARNING": "spread_nfelo is the nfeloapp.com site value pasted 2026-09-02 (authoritative). The QB/HFA modifiers above are from the 09-01 repo snapshot; where site_minus_snapshot is non-zero the site has moved since the snapshot (possible QB/roster news nfelo has now baked) -- reason about what is baked from the site number, and never double count. nfelo publishes NO total; total_nfelo is a \u00a73.2-derived nfelo-IMPLIED total."
    },
    "injuries": {
     "away": "MIA",
@@ -3907,7 +3955,7 @@
     "home": 7
    },
    "cores": {
-    "spread_nfelo": -3.0,
+    "spread_nfelo": -1.0,
     "spread_pff": 0.85,
     "pff_meta": {
      "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -3923,7 +3971,7 @@
      "DONC": 1.1,
      "FFW": -7.1
     },
-    "spread_core": -1.13,
+    "spread_core": -0.21,
     "spread_weights": {
      "nfelo": 0.46,
      "pff": 0.39,
@@ -3943,13 +3991,17 @@
      "tpt": 0.5
     },
     "total_dvoa_diagnostic": 46.101,
-    "home_wp_nfelo": 0.603
+    "home_wp_nfelo": 0.531
    },
    "nfelo_baked_in": {
     "hfa_points": 1.596,
     "home_qb_adj_points": 1.25,
     "away_qb_adj_points": 0.04,
-    "note": "positive = that team's current QB rates above its team baseline; already inside spread_nfelo"
+    "note": "positive = that team's current QB rates above its team baseline; from the 2026-09-01 repo snapshot",
+    "spread_nfelo_repo_snapshot": -3.0,
+    "spread_nfelo_site_pasted": -1.0,
+    "site_minus_snapshot": 2.0,
+    "WARNING": "spread_nfelo is the nfeloapp.com site value pasted 2026-09-02 (authoritative). The QB/HFA modifiers above are from the 09-01 repo snapshot; where site_minus_snapshot is non-zero the site has moved since the snapshot (possible QB/roster news nfelo has now baked) -- reason about what is baked from the site number, and never double count. nfelo publishes NO total; total_nfelo is a \u00a73.2-derived nfelo-IMPLIED total."
    },
    "injuries": {
     "away": "GB",
@@ -4181,7 +4233,7 @@
     }
    },
    "uncertainty": {
-    "spread_sd": 3.862,
+    "spread_sd": 3.825,
     "total_sd": 0.98,
     "n_spread_sources": 4,
     "n_total_sources": 2
@@ -4201,7 +4253,7 @@
     "home": 7
    },
    "cores": {
-    "spread_nfelo": -4.5,
+    "spread_nfelo": -3.5,
     "spread_pff": -5.44,
     "pff_meta": {
      "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
@@ -4217,7 +4269,7 @@
      "DONC": -5.0,
      "FFW": -1.4
     },
-    "spread_core": -4.834,
+    "spread_core": -4.374,
     "spread_weights": {
      "nfelo": 0.46,
      "pff": 0.39,
@@ -4238,13 +4290,17 @@
      "tpt": 0.5
     },
     "total_dvoa_diagnostic": 46.081,
-    "home_wp_nfelo": 0.654
+    "home_wp_nfelo": 0.621
    },
    "nfelo_baked_in": {
     "hfa_points": 0.976,
     "home_qb_adj_points": 0.1,
     "away_qb_adj_points": 0.15,
-    "note": "positive = that team's current QB rates above its team baseline; already inside spread_nfelo"
+    "note": "positive = that team's current QB rates above its team baseline; from the 2026-09-01 repo snapshot",
+    "spread_nfelo_repo_snapshot": -4.5,
+    "spread_nfelo_site_pasted": -3.5,
+    "site_minus_snapshot": 1.0,
+    "WARNING": "spread_nfelo is the nfeloapp.com site value pasted 2026-09-02 (authoritative). The QB/HFA modifiers above are from the 09-01 repo snapshot; where site_minus_snapshot is non-zero the site has moved since the snapshot (possible QB/roster news nfelo has now baked) -- reason about what is baked from the site number, and never double count. nfelo publishes NO total; total_nfelo is a \u00a73.2-derived nfelo-IMPLIED total."
    },
    "injuries": {
     "away": "WAS",
@@ -4496,7 +4552,7 @@
     }
    },
    "uncertainty": {
-    "spread_sd": 1.831,
+    "spread_sd": 1.823,
     "total_sd": 2.113,
     "n_spread_sources": 4,
     "n_total_sources": 3
@@ -4559,7 +4615,11 @@
     "hfa_points": 0.34,
     "home_qb_adj_points": -0.13,
     "away_qb_adj_points": 0.21,
-    "note": "positive = that team's current QB rates above its team baseline; already inside spread_nfelo"
+    "note": "positive = that team's current QB rates above its team baseline; from the 2026-09-01 repo snapshot",
+    "spread_nfelo_repo_snapshot": 1.0,
+    "spread_nfelo_site_pasted": 1.0,
+    "site_minus_snapshot": 0.0,
+    "WARNING": "spread_nfelo is the nfeloapp.com site value pasted 2026-09-02 (authoritative). The QB/HFA modifiers above are from the 09-01 repo snapshot; where site_minus_snapshot is non-zero the site has moved since the snapshot (possible QB/roster news nfelo has now baked) -- reason about what is baked from the site number, and never double count. nfelo publishes NO total; total_nfelo is a \u00a73.2-derived nfelo-IMPLIED total."
    },
    "injuries": {
     "away": "DAL",
@@ -4873,7 +4933,11 @@
     "hfa_points": 0.34,
     "home_qb_adj_points": 0.58,
     "away_qb_adj_points": 0.17,
-    "note": "positive = that team's current QB rates above its team baseline; already inside spread_nfelo"
+    "note": "positive = that team's current QB rates above its team baseline; from the 2026-09-01 repo snapshot",
+    "spread_nfelo_repo_snapshot": -1.0,
+    "spread_nfelo_site_pasted": -1.0,
+    "site_minus_snapshot": 0.0,
+    "WARNING": "spread_nfelo is the nfeloapp.com site value pasted 2026-09-02 (authoritative). The QB/HFA modifiers above are from the 09-01 repo snapshot; where site_minus_snapshot is non-zero the site has moved since the snapshot (possible QB/roster news nfelo has now baked) -- reason about what is baked from the site number, and never double count. nfelo publishes NO total; total_nfelo is a \u00a73.2-derived nfelo-IMPLIED total."
    },
    "injuries": {
     "away": "DEN",
