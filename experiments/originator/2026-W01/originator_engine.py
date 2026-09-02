@@ -823,6 +823,9 @@ def publish(generated_iso, data_status):
     L.append("")
     L.append("## Appendix C — Data issues")
     L.append("")
+    adj_blob = json.loads((RUN / "adjustments.json").read_text())
+    for note in adj_blob.get("card_notes", []):
+        L.append(f"- CARD-WIDE: {note}")
     seen = set()
     for g in games:
         for fl in g.get("flags", []):
