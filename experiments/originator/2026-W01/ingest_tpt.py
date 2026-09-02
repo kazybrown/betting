@@ -42,8 +42,8 @@ def main():
     kind = args[args.index("--kind") + 1] if "--kind" in args else "auto"
     sign = args[args.index("--sign") + 1] if "--sign" in args else "home-margin"
     text = Path(path).read_text()
-    dialect = csv.Sniffer().sniff(text[:2000], delimiters=",\t;|")
-    rows = list(csv.DictReader(text.splitlines(), dialect=dialect))
+    delim = "\t" if "\t" in text.splitlines()[0] else ","
+    rows = list(csv.DictReader(text.splitlines(), delimiter=delim))
     cols = rows[0].keys()
     home_col = next(c for c in cols if c.lower().strip() in ("home", "home team", "hometeam"))
     road_col = next(c for c in cols if c.lower().strip() in ("road", "away", "visitor", "road team", "away team"))
@@ -53,7 +53,11 @@ def main():
     sweep = json.loads((RUN / "sweep.json").read_text())
     key = "tptTotals" if kind == "totals" else "tptSpreads"
     blob = sweep.setdefault(key, {"values": [], "systems_missing": [], "sources": [], "notes": ""})
-    blob["values"] = [v for v in blob["values"] if v.get("source", "").startswith("dokterentropy") and kind == "spreads"]
+    if blob["values"]:
+        blob["notes"] += f" | {len(blob['values'])} earlier web-recovered value(s) SUPERSEDED by the pasted TPT file (authoritative per §12)"
+    blob["values"] = []
+    blob["data_errors"] = []
+    mkt = sweep.setdefault("tptMarket", {"games": [], "source": f"pasted TPT file {Path(path).name}"})
     nf, _, _ = load_nfelo()
     seen_sys, n = set(), 0
     print(f"kind={kind} sign={sign} | home col '{home_col}' road col '{road_col}'")
@@ -70,6 +74,11 @@ def main():
             if raw in ("", "NA", "-", "null"):
                 continue
             v = float(raw)
+            if (kind == "totals" and not 30 <= v <= 65) or (kind == "spreads" and abs(v) > 28):
+                blob["data_errors"].append({"away": a, "home": h, "system": code, "value": v, "column": c,
+                                            "action": "dropped as data error (implausible magnitude); not replaced"})
+                print(f"  ! {a}@{h} {code} {c}={raw} dropped as data error")
+                continue
             if kind == "spreads":
                 hs = -v if sign == "home-margin" else v
                 blob["values"].append({"away": a, "home": h, "system": code, "home_spread": hs,
@@ -80,6 +89,16 @@ def main():
                                        "quote": f"{c}={raw}", "source": f"pasted TPT table {Path(path).name}"})
                 line.append(f"{code} {v:.1f}")
             seen_sys.add(code); n += 1
+        lo, li = (r.get("lineopen") or "").strip(), (r.get("line") or "").strip()
+        entry = next((m for m in mkt["games"] if m["away"] == a and m["home"] == h), None)
+        if entry is None:
+            entry = {"away": a, "home": h}; mkt["games"].append(entry)
+        if kind == "spreads":
+            if lo: entry["open_spread"] = -float(lo)
+            if li: entry["current_spread"] = -float(li)
+        else:
+            if lo: entry["open_total"] = float(lo)
+            if li: entry["current_total"] = float(li)
         nfs = nf.get((a, h), {}).get("spread_nfelo")
         print(f"  {a}@{h}: " + ", ".join(line) + (f"   | nfelo {nfs:+.1f}" if nfs is not None and kind == "spreads" else ""))
     blob["systems_missing"] = sorted(want - seen_sys)

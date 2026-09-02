@@ -29,15 +29,9 @@
    "hfa_pts": 3.69,
    "rank_model_diag": -6.38
   },
-  "spread_tpt": -2.6399999999999997,
-  "spread_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_spread_detail": {
-   "DONC": -2.3,
-   "FFW": -4.0
-  },
+  "spread_tpt": null,
+  "spread_tpt_systems": [],
+  "tpt_spread_detail": {},
   "total_nfelo": 48.514,
   "total_pff": null,
   "total_pff_basis": null,
@@ -46,20 +40,14 @@
    "home": 0.22,
    "away": 0.079
   },
-  "total_tpt": 44.21064,
+  "total_tpt": 41.83,
   "total_tpt_systems": [
-   "DONC",
-   "FFW"
+   "DOK"
   ],
   "tpt_total_detail": {
-   "DONC": 44.2633,
-   "FFW": 44.0
+   "DOK": 41.83
   },
   "structural_flag": null,
-  "market_open_spread": -4.0,
-  "market_open_total": 45.0,
-  "market_tpt_spread": -3.5,
-  "market_tpt_total": 44.5,
   "pff_psr": {
    "home": 4.8147923,
    "away": 2.89291,
@@ -74,24 +62,25 @@
    "away_elo": 3.0012
   },
   "nfelo_vs_market_close": -0.5,
-  "spread_core": -4.423,
+  "spread_core": -4.737,
   "spread_weights": {
-   "nfelo": 0.46,
-   "pff": 0.39,
-   "tpt": 0.15
+   "nfelo": 0.541,
+   "pff": 0.459,
+   "tpt": 0.0
   },
-  "total_core": 46.362,
+  "total_core": 47.014,
   "total_weights": {
    "pff": 0.0,
    "nfelo": 0.5,
    "tpt": 0.5
   },
-  "spread_range": 3.31,
-  "total_range": 4.51,
-  "spread_sd": 1.35,
-  "total_sd": 2.534,
-  "n_spread_sources": 4,
-  "n_total_sources": 3
+  "tpt_total_clamped": -3.34,
+  "spread_range": 1.61,
+  "total_range": 6.68,
+  "spread_sd": 1.136,
+  "total_sd": 4.726,
+  "n_spread_sources": 2,
+  "n_total_sources": 2
  },
  {
   "game_id": "2026_01_SF_LA",
@@ -123,15 +112,9 @@
    "hfa_pts": -0.18,
    "rank_model_diag": -4.976
   },
-  "spread_tpt": -2.9599999999999995,
-  "spread_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_spread_detail": {
-   "DONC": -4.3,
-   "FFW": 2.4
-  },
+  "spread_tpt": null,
+  "spread_tpt_systems": [],
+  "tpt_spread_detail": {},
   "total_nfelo": 47.612,
   "total_pff": null,
   "total_pff_basis": null,
@@ -140,20 +123,10 @@
    "home": 0.213,
    "away": 0.054
   },
-  "total_tpt": 46.720624,
-  "total_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_total_detail": {
-   "DONC": 47.77578,
-   "FFW": 42.5
-  },
+  "total_tpt": null,
+  "total_tpt_systems": [],
+  "tpt_total_detail": {},
   "structural_flag": null,
-  "market_open_spread": -2.5,
-  "market_open_total": 48.5,
-  "market_tpt_spread": -3.5,
-  "market_tpt_total": 48.0,
   "pff_psr": {
    "home": 6.4368208,
    "away": 2.5483541,
@@ -168,32 +141,24 @@
    "away_elo": 1.7608
   },
   "nfelo_vs_market_close": 1.5,
-  "spread_core": -2.81,
+  "spread_core": -2.783,
   "spread_weights": {
-   "nfelo": 0.46,
-   "pff": 0.39,
-   "tpt": 0.15
+   "nfelo": 0.541,
+   "pff": 0.459,
+   "tpt": 0.0
   },
-  "total_core": 46.556,
+  "total_core": 47.612,
   "total_weights": {
    "pff": 0.0,
-   "nfelo": 0.5,
-   "tpt": 0.5
+   "nfelo": 1.0,
+   "tpt": 0.0
   },
-  "tpt_system_clamps": [
-   {
-    "kind": "total",
-    "system": "DONC",
-    "drift": 2.11,
-    "limit": 1.5
-   }
-  ],
-  "spread_range": 6.7,
-  "total_range": 5.28,
-  "spread_sd": 3.029,
-  "total_sd": 3.0,
-  "n_spread_sources": 4,
-  "n_total_sources": 3
+  "spread_range": 1.71,
+  "total_range": null,
+  "spread_sd": 1.207,
+  "total_sd": null,
+  "n_spread_sources": 2,
+  "n_total_sources": 1
  },
  {
   "game_id": "2026_01_CHI_CAR",
@@ -225,15 +190,9 @@
    "hfa_pts": 2.41,
    "rank_model_diag": 0.607
   },
-  "spread_tpt": 2.56,
-  "spread_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_spread_detail": {
-   "DONC": 2.7,
-   "FFW": 2.0
-  },
+  "spread_tpt": null,
+  "spread_tpt_systems": [],
+  "tpt_spread_detail": {},
   "total_nfelo": 45.805,
   "total_pff": null,
   "total_pff_basis": null,
@@ -242,20 +201,10 @@
    "home": -0.084,
    "away": 0.033
   },
-  "total_tpt": 46.372096,
-  "total_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_total_detail": {
-   "DONC": 46.99012,
-   "FFW": 43.9
-  },
+  "total_tpt": null,
+  "total_tpt_systems": [],
+  "tpt_total_detail": {},
   "structural_flag": null,
-  "market_open_spread": 2.5,
-  "market_open_total": 45.5,
-  "market_tpt_spread": 2.5,
-  "market_tpt_total": 47.0,
   "pff_psr": {
    "home": -2.8552547,
    "away": 1.394558,
@@ -270,24 +219,24 @@
    "away_elo": 4.9933
   },
   "nfelo_vs_market_close": 0.0,
-  "spread_core": 2.25,
+  "spread_core": 2.196,
   "spread_weights": {
-   "nfelo": 0.46,
-   "pff": 0.39,
-   "tpt": 0.15
+   "nfelo": 0.541,
+   "pff": 0.459,
+   "tpt": 0.0
   },
-  "total_core": 46.089,
+  "total_core": 45.805,
   "total_weights": {
    "pff": 0.0,
-   "nfelo": 0.5,
-   "tpt": 0.5
+   "nfelo": 1.0,
+   "tpt": 0.0
   },
-  "spread_range": 0.86,
-  "total_range": 3.09,
-  "spread_sd": 0.407,
-  "total_sd": 1.559,
-  "n_spread_sources": 4,
-  "n_total_sources": 3
+  "spread_range": 0.66,
+  "total_range": null,
+  "spread_sd": 0.469,
+  "total_sd": null,
+  "n_spread_sources": 2,
+  "n_total_sources": 1
  },
  {
   "game_id": "2026_01_TB_CIN",
@@ -319,15 +268,9 @@
    "hfa_pts": 2.4,
    "rank_model_diag": null
   },
-  "spread_tpt": -0.7599999999999996,
-  "spread_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_spread_detail": {
-   "DONC": -3.3,
-   "FFW": 9.4
-  },
+  "spread_tpt": null,
+  "spread_tpt_systems": [],
+  "tpt_spread_detail": {},
   "total_nfelo": 45.764,
   "total_pff": null,
   "total_pff_basis": null,
@@ -336,20 +279,10 @@
    "home": 0.037,
    "away": 0.012
   },
-  "total_tpt": 51.47452800000001,
-  "total_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_total_detail": {
-   "DONC": 50.74316,
-   "FFW": 54.4
-  },
+  "total_tpt": null,
+  "total_tpt_systems": [],
+  "tpt_total_detail": {},
   "structural_flag": null,
-  "market_open_spread": -2.5,
-  "market_open_total": 52.5,
-  "market_tpt_spread": -4.0,
-  "market_tpt_total": 50.5,
   "pff_psr": {
    "home": -0.1789818,
    "away": -0.9136384,
@@ -364,32 +297,24 @@
    "away_elo": 2.2242
   },
   "nfelo_vs_market_close": 0.0,
-  "spread_core": -2.421,
+  "spread_core": -3.331,
   "spread_weights": {
-   "nfelo": 0.46,
-   "pff": 0.39,
-   "tpt": 0.15
+   "nfelo": 0.541,
+   "pff": 0.459,
+   "tpt": 0.0
   },
-  "total_core": 48.619,
+  "total_core": 45.764,
   "total_weights": {
    "pff": 0.0,
-   "nfelo": 0.5,
-   "tpt": 0.5
+   "nfelo": 1.0,
+   "tpt": 0.0
   },
-  "tpt_system_clamps": [
-   {
-    "kind": "spread",
-    "system": "DONC",
-    "drift": -1.52,
-    "limit": 1.0
-   }
-  ],
-  "spread_range": 12.9,
-  "total_range": 8.64,
-  "spread_sd": 6.357,
-  "total_sd": 4.335,
-  "n_spread_sources": 4,
-  "n_total_sources": 3
+  "spread_range": 0.37,
+  "total_range": null,
+  "spread_sd": 0.26,
+  "total_sd": null,
+  "n_spread_sources": 2,
+  "n_total_sources": 1
  },
  {
   "game_id": "2026_01_NO_DET",
@@ -421,15 +346,9 @@
    "hfa_pts": 2.41,
    "rank_model_diag": -7.728
   },
-  "spread_tpt": -7.4,
-  "spread_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_spread_detail": {
-   "DONC": -8.5,
-   "FFW": -3.0
-  },
+  "spread_tpt": null,
+  "spread_tpt_systems": [],
+  "tpt_spread_detail": {},
   "total_nfelo": 46.271,
   "total_pff": null,
   "total_pff_basis": null,
@@ -438,20 +357,10 @@
    "home": 0.103,
    "away": -0.209
   },
-  "total_tpt": 48.70656,
-  "total_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_total_detail": {
-   "DONC": 49.1332,
-   "FFW": 47.0
-  },
+  "total_tpt": null,
+  "total_tpt_systems": [],
+  "tpt_total_detail": {},
   "structural_flag": null,
-  "market_open_spread": -6.5,
-  "market_open_total": 49.0,
-  "market_tpt_spread": -7.0,
-  "market_tpt_total": 50.5,
   "pff_psr": {
    "home": 2.6180831,
    "away": -3.0151095,
@@ -466,24 +375,24 @@
    "away_elo": 3.8182
   },
   "nfelo_vs_market_close": 0.0,
-  "spread_core": -7.468,
+  "spread_core": -7.48,
   "spread_weights": {
-   "nfelo": 0.46,
-   "pff": 0.39,
-   "tpt": 0.15
+   "nfelo": 0.541,
+   "pff": 0.459,
+   "tpt": 0.0
   },
-  "total_core": 47.489,
+  "total_core": 46.271,
   "total_weights": {
    "pff": 0.0,
-   "nfelo": 0.5,
-   "tpt": 0.5
+   "nfelo": 1.0,
+   "tpt": 0.0
   },
-  "spread_range": 5.5,
-  "total_range": 2.86,
-  "spread_sd": 2.504,
-  "total_sd": 1.487,
-  "n_spread_sources": 4,
-  "n_total_sources": 3
+  "spread_range": 1.05,
+  "total_range": null,
+  "spread_sd": 0.74,
+  "total_sd": null,
+  "n_spread_sources": 2,
+  "n_total_sources": 1
  },
  {
   "game_id": "2026_01_BUF_HOU",
@@ -515,15 +424,9 @@
    "hfa_pts": 1.14,
    "rank_model_diag": null
   },
-  "spread_tpt": 1.32,
-  "spread_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_spread_detail": {
-   "DONC": 1.7,
-   "FFW": -0.2
-  },
+  "spread_tpt": null,
+  "spread_tpt_systems": [],
+  "tpt_spread_detail": {},
   "total_nfelo": 47.721,
   "total_pff": null,
   "total_pff_basis": null,
@@ -532,20 +435,10 @@
    "home": 0.179,
    "away": 0.122
   },
-  "total_tpt": 45.58488,
-  "total_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_total_detail": {
-   "DONC": 45.2311,
-   "FFW": 47.0
-  },
+  "total_tpt": null,
+  "total_tpt_systems": [],
+  "tpt_total_detail": {},
   "structural_flag": null,
-  "market_open_spread": 2.5,
-  "market_open_total": 44.5,
-  "market_tpt_spread": -1.0,
-  "market_tpt_total": 44.5,
   "pff_psr": {
    "home": 3.1459421,
    "away": 4.610869,
@@ -560,24 +453,24 @@
    "away_elo": 6.8981
   },
   "nfelo_vs_market_close": 0.0,
-  "spread_core": 1.014,
+  "spread_core": 0.96,
   "spread_weights": {
-   "nfelo": 0.46,
-   "pff": 0.39,
-   "tpt": 0.15
+   "nfelo": 0.541,
+   "pff": 0.459,
+   "tpt": 0.0
   },
-  "total_core": 46.653,
+  "total_core": 47.721,
   "total_weights": {
    "pff": 0.0,
-   "nfelo": 0.5,
-   "tpt": 0.5
+   "nfelo": 1.0,
+   "tpt": 0.0
   },
-  "spread_range": 1.9,
-  "total_range": 2.49,
-  "spread_sd": 0.917,
-  "total_sd": 1.281,
-  "n_spread_sources": 4,
-  "n_total_sources": 3
+  "spread_range": 1.18,
+  "total_range": null,
+  "spread_sd": 0.832,
+  "total_sd": null,
+  "n_spread_sources": 2,
+  "n_total_sources": 1
  },
  {
   "game_id": "2026_01_BAL_IND",
@@ -609,15 +502,9 @@
    "hfa_pts": 2.4,
    "rank_model_diag": 2.659
   },
-  "spread_tpt": 2.88,
-  "spread_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_spread_detail": {
-   "DONC": 4.5,
-   "FFW": -3.6
-  },
+  "spread_tpt": null,
+  "spread_tpt_systems": [],
+  "tpt_spread_detail": {},
   "total_nfelo": 46.56,
   "total_pff": null,
   "total_pff_basis": null,
@@ -626,20 +513,10 @@
    "home": 0.044,
    "away": 0.044
   },
-  "total_tpt": 50.8912,
-  "total_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_total_detail": {
-   "DONC": 51.414,
-   "FFW": 48.8
-  },
+  "total_tpt": null,
+  "total_tpt_systems": [],
+  "tpt_total_detail": {},
   "structural_flag": null,
-  "market_open_spread": 3.5,
-  "market_open_total": 48.5,
-  "market_tpt_spread": 3.5,
-  "market_tpt_total": 48.0,
   "pff_psr": {
    "home": -1.2491307,
    "away": 3.6057492,
@@ -654,24 +531,24 @@
    "away_elo": 10.0991
   },
   "nfelo_vs_market_close": -2.0,
-  "spread_core": 2.081,
+  "spread_core": 1.94,
   "spread_weights": {
-   "nfelo": 0.46,
-   "pff": 0.39,
-   "tpt": 0.15
+   "nfelo": 0.541,
+   "pff": 0.459,
+   "tpt": 0.0
   },
-  "total_core": 48.726,
+  "total_core": 46.56,
   "total_weights": {
    "pff": 0.0,
-   "nfelo": 0.5,
-   "tpt": 0.5
+   "nfelo": 1.0,
+   "tpt": 0.0
   },
-  "spread_range": 8.1,
-  "total_range": 4.85,
-  "spread_sd": 3.445,
-  "total_sd": 2.429,
-  "n_spread_sources": 4,
-  "n_total_sources": 3
+  "spread_range": 0.96,
+  "total_range": null,
+  "spread_sd": 0.677,
+  "total_sd": null,
+  "n_spread_sources": 2,
+  "n_total_sources": 1
  },
  {
   "game_id": "2026_01_CLE_JAX",
@@ -703,15 +580,9 @@
    "hfa_pts": 1.78,
    "rank_model_diag": null
   },
-  "spread_tpt": -10.14,
-  "spread_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_spread_detail": {
-   "DONC": -11.8,
-   "FFW": -3.5
-  },
+  "spread_tpt": null,
+  "spread_tpt_systems": [],
+  "tpt_spread_detail": {},
   "total_nfelo": 45.948,
   "total_pff": null,
   "total_pff_basis": null,
@@ -720,20 +591,10 @@
    "home": 0.053,
    "away": -0.255
   },
-  "total_tpt": 41.849936,
-  "total_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_total_detail": {
-   "DONC": 41.71242,
-   "FFW": 42.4
-  },
+  "total_tpt": null,
+  "total_tpt_systems": [],
+  "tpt_total_detail": {},
   "structural_flag": null,
-  "market_open_spread": -7.5,
-  "market_open_total": 40.5,
-  "market_tpt_spread": -8.0,
-  "market_tpt_total": 40.5,
   "pff_psr": {
    "home": 1.6578403,
    "away": -5.7611884,
@@ -748,24 +609,24 @@
    "away_elo": -8.8037
   },
   "nfelo_vs_market_close": 0.0,
-  "spread_core": -8.557,
+  "spread_core": -8.278,
   "spread_weights": {
-   "nfelo": 0.46,
-   "pff": 0.39,
-   "tpt": 0.15
+   "nfelo": 0.541,
+   "pff": 0.459,
+   "tpt": 0.0
   },
-  "total_core": 43.899,
+  "total_core": 45.948,
   "total_weights": {
    "pff": 0.0,
-   "nfelo": 0.5,
-   "tpt": 0.5
+   "nfelo": 1.0,
+   "tpt": 0.0
   },
-  "spread_range": 8.3,
-  "total_range": 4.24,
-  "spread_sd": 3.482,
-  "total_sd": 2.273,
-  "n_spread_sources": 4,
-  "n_total_sources": 3
+  "spread_range": 1.7,
+  "total_range": null,
+  "spread_sd": 1.199,
+  "total_sd": null,
+  "n_spread_sources": 2,
+  "n_total_sources": 1
  },
  {
   "game_id": "2026_01_ATL_PIT",
@@ -797,15 +658,9 @@
    "hfa_pts": 2.4,
    "rank_model_diag": -3.189
   },
-  "spread_tpt": -2.38,
-  "spread_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_spread_detail": {
-   "DONC": -3.1,
-   "FFW": 0.5
-  },
+  "spread_tpt": null,
+  "spread_tpt_systems": [],
+  "tpt_spread_detail": {},
   "total_nfelo": 45.798,
   "total_pff": null,
   "total_pff_basis": null,
@@ -814,20 +669,10 @@
    "home": -0.05,
    "away": -0.152
   },
-  "total_tpt": 42.322239999999994,
-  "total_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_total_detail": {
-   "DONC": 42.4278,
-   "FFW": 41.9
-  },
+  "total_tpt": null,
+  "total_tpt_systems": [],
+  "tpt_total_detail": {},
   "structural_flag": null,
-  "market_open_spread": -2.0,
-  "market_open_total": 41.5,
-  "market_tpt_spread": -3.0,
-  "market_tpt_total": 42.5,
   "pff_psr": {
    "home": -0.4983411,
    "away": -2.7755763,
@@ -842,24 +687,24 @@
    "away_elo": 4.6028
   },
   "nfelo_vs_market_close": 0.0,
-  "spread_core": -3.56,
+  "spread_core": -3.768,
   "spread_weights": {
-   "nfelo": 0.46,
-   "pff": 0.39,
-   "tpt": 0.15
+   "nfelo": 0.541,
+   "pff": 0.459,
+   "tpt": 0.0
   },
-  "total_core": 44.06,
+  "total_core": 45.798,
   "total_weights": {
    "pff": 0.0,
-   "nfelo": 0.5,
-   "tpt": 0.5
+   "nfelo": 1.0,
+   "tpt": 0.0
   },
-  "spread_range": 5.17,
-  "total_range": 3.9,
-  "spread_sd": 2.185,
-  "total_sd": 2.115,
-  "n_spread_sources": 4,
-  "n_total_sources": 3
+  "spread_range": 1.67,
+  "total_range": null,
+  "spread_sd": 1.184,
+  "total_sd": null,
+  "n_spread_sources": 2,
+  "n_total_sources": 1
  },
  {
   "game_id": "2026_01_NYJ_TEN",
@@ -891,15 +736,9 @@
    "hfa_pts": 1.76,
    "rank_model_diag": null
   },
-  "spread_tpt": -1.4200000000000002,
-  "spread_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_spread_detail": {
-   "DONC": -2.6,
-   "FFW": 3.3
-  },
+  "spread_tpt": null,
+  "spread_tpt_systems": [],
+  "tpt_spread_detail": {},
   "total_nfelo": 43.185,
   "total_pff": null,
   "total_pff_basis": null,
@@ -908,20 +747,10 @@
    "home": -0.129,
    "away": -0.163
   },
-  "total_tpt": 40.637216,
-  "total_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_total_detail": {
-   "DONC": 38.94652,
-   "FFW": 47.4
-  },
+  "total_tpt": null,
+  "total_tpt_systems": [],
+  "tpt_total_detail": {},
   "structural_flag": null,
-  "market_open_spread": -2.5,
-  "market_open_total": 38.5,
-  "market_tpt_spread": -2.0,
-  "market_tpt_total": 39.5,
   "pff_psr": {
    "home": -4.1252534,
    "away": -6.2383748,
@@ -936,38 +765,24 @@
    "away_elo": -2.2518
   },
   "nfelo_vs_market_close": 0.0,
-  "spread_core": -2.874,
+  "spread_core": -3.13,
   "spread_weights": {
-   "nfelo": 0.46,
-   "pff": 0.39,
-   "tpt": 0.15
+   "nfelo": 0.541,
+   "pff": 0.459,
+   "tpt": 0.0
   },
-  "total_core": 42.566,
+  "total_core": 43.185,
   "total_weights": {
    "pff": 0.0,
-   "nfelo": 0.5,
-   "tpt": 0.5
+   "nfelo": 1.0,
+   "tpt": 0.0
   },
-  "tpt_system_clamps": [
-   {
-    "kind": "total",
-    "system": "DONC",
-    "drift": -3.38,
-    "limit": 1.5
-   },
-   {
-    "kind": "total",
-    "system": "FFW",
-    "drift": 2.73,
-    "limit": 1.5
-   }
-  ],
-  "spread_range": 7.17,
-  "total_range": 8.45,
-  "spread_sd": 3.207,
-  "total_sd": 4.227,
-  "n_spread_sources": 4,
-  "n_total_sources": 3
+  "spread_range": 1.37,
+  "total_range": null,
+  "spread_sd": 0.972,
+  "total_sd": null,
+  "n_spread_sources": 2,
+  "n_total_sources": 1
  },
  {
   "game_id": "2026_01_ARI_LAC",
@@ -999,15 +814,9 @@
    "hfa_pts": 2.4,
    "rank_model_diag": -10.038
   },
-  "spread_tpt": -10.440000000000001,
-  "spread_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_spread_detail": {
-   "DONC": -12.3,
-   "FFW": -3.0
-  },
+  "spread_tpt": null,
+  "spread_tpt_systems": [],
+  "tpt_spread_detail": {},
   "total_nfelo": 44.745,
   "total_pff": null,
   "total_pff_basis": null,
@@ -1016,20 +825,10 @@
    "home": 0.032,
    "away": -0.057
   },
-  "total_tpt": 44.761104,
-  "total_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_total_detail": {
-   "DONC": 46.12638,
-   "FFW": 39.3
-  },
+  "total_tpt": null,
+  "total_tpt_systems": [],
+  "tpt_total_detail": {},
   "structural_flag": "PFF/nfelo disagreement -5.25 pts exceeds 4.5; spread_pff clamped -12.75 -> -12.00 (structural \u2014 usually QB or OL)",
-  "market_open_spread": -10.5,
-  "market_open_total": 45.5,
-  "market_tpt_spread": -10.0,
-  "market_tpt_total": 47.5,
   "pff_psr": {
    "home": 3.2324328,
    "away": -7.1203301,
@@ -1044,44 +843,24 @@
    "away_elo": -11.3121
   },
   "nfelo_vs_market_close": 3.0,
-  "spread_core": -9.58,
+  "spread_core": -9.565,
   "spread_weights": {
-   "nfelo": 0.46,
-   "pff": 0.39,
-   "tpt": 0.15
+   "nfelo": 0.541,
+   "pff": 0.459,
+   "tpt": 0.0
   },
-  "total_core": 43.936,
+  "total_core": 44.745,
   "total_weights": {
    "pff": 0.0,
-   "nfelo": 0.5,
-   "tpt": 0.5
+   "nfelo": 1.0,
+   "tpt": 0.0
   },
-  "tpt_system_clamps": [
-   {
-    "kind": "spread",
-    "system": "DONC",
-    "drift": -1.12,
-    "limit": 1.0
-   },
-   {
-    "kind": "total",
-    "system": "DONC",
-    "drift": 2.73,
-    "limit": 1.5
-   },
-   {
-    "kind": "total",
-    "system": "FFW",
-    "drift": -1.91,
-    "limit": 1.5
-   }
-  ],
-  "spread_range": 9.3,
-  "total_range": 6.83,
-  "spread_sd": 4.389,
-  "total_sd": 3.609,
-  "n_spread_sources": 4,
-  "n_total_sources": 3
+  "spread_range": 4.5,
+  "total_range": null,
+  "spread_sd": 3.182,
+  "total_sd": null,
+  "n_spread_sources": 2,
+  "n_total_sources": 1
  },
  {
   "game_id": "2026_01_MIA_LV",
@@ -1113,15 +892,9 @@
    "hfa_pts": 3.05,
    "rank_model_diag": -3.648
   },
-  "spread_tpt": -3.1599999999999997,
-  "spread_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_spread_detail": {
-   "DONC": -4.5,
-   "FFW": 2.2
-  },
+  "spread_tpt": null,
+  "spread_tpt_systems": [],
+  "tpt_spread_detail": {},
   "total_nfelo": 44.194,
   "total_pff": null,
   "total_pff_basis": null,
@@ -1130,20 +903,10 @@
    "home": -0.141,
    "away": -0.121
   },
-  "total_tpt": 42.944511999999996,
-  "total_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_total_detail": {
-   "DONC": 41.40564,
-   "FFW": 49.1
-  },
+  "total_tpt": null,
+  "total_tpt_systems": [],
+  "tpt_total_detail": {},
   "structural_flag": null,
-  "market_open_spread": -3.0,
-  "market_open_total": 39.5,
-  "market_tpt_spread": -3.5,
-  "market_tpt_total": 40.5,
   "pff_psr": {
    "home": -4.3212006,
    "away": -8.1539288,
@@ -1158,38 +921,24 @@
    "away_elo": -7.2276
   },
   "nfelo_vs_market_close": 0.0,
-  "spread_core": -4.768,
+  "spread_core": -5.052,
   "spread_weights": {
-   "nfelo": 0.46,
-   "pff": 0.39,
-   "tpt": 0.15
+   "nfelo": 0.541,
+   "pff": 0.459,
+   "tpt": 0.0
   },
-  "total_core": 44.3,
+  "total_core": 44.194,
   "total_weights": {
    "pff": 0.0,
-   "nfelo": 0.5,
-   "tpt": 0.5
+   "nfelo": 1.0,
+   "tpt": 0.0
   },
-  "tpt_system_clamps": [
-   {
-    "kind": "total",
-    "system": "DONC",
-    "drift": -3.08,
-    "limit": 1.5
-   },
-   {
-    "kind": "total",
-    "system": "FFW",
-    "drift": 2.35,
-    "limit": 1.5
-   }
-  ],
-  "spread_range": 9.08,
-  "total_range": 7.69,
-  "spread_sd": 3.851,
-  "total_sd": 3.895,
-  "n_spread_sources": 4,
-  "n_total_sources": 3
+  "spread_range": 3.38,
+  "total_range": null,
+  "spread_sd": 2.391,
+  "total_sd": null,
+  "n_spread_sources": 2,
+  "n_total_sources": 1
  },
  {
   "game_id": "2026_01_GB_MIN",
@@ -1221,15 +970,9 @@
    "hfa_pts": 1.6,
    "rank_model_diag": 2.203
   },
-  "spread_tpt": -0.5400000000000001,
-  "spread_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_spread_detail": {
-   "DONC": 1.1,
-   "FFW": -7.1
-  },
+  "spread_tpt": null,
+  "spread_tpt_systems": [],
+  "tpt_spread_detail": {},
   "total_nfelo": 46.812,
   "total_pff": null,
   "total_pff_basis": null,
@@ -1238,18 +981,10 @@
    "home": -0.041,
    "away": 0.069
   },
-  "total_tpt": 45.4255,
-  "total_tpt_systems": [
-   "DONC"
-  ],
-  "tpt_total_detail": {
-   "DONC": 45.4255
-  },
+  "total_tpt": null,
+  "total_tpt_systems": [],
+  "tpt_total_detail": {},
   "structural_flag": null,
-  "market_open_spread": 1.5,
-  "market_open_total": 45.5,
-  "market_tpt_spread": -1.5,
-  "market_tpt_total": 46.0,
   "pff_psr": {
    "home": -0.0821766,
    "away": 2.3641953,
@@ -1264,24 +999,24 @@
    "away_elo": 0.887
   },
   "nfelo_vs_market_close": -1.5,
-  "spread_core": -1.13,
+  "spread_core": -1.234,
   "spread_weights": {
-   "nfelo": 0.46,
-   "pff": 0.39,
-   "tpt": 0.15
+   "nfelo": 0.541,
+   "pff": 0.459,
+   "tpt": 0.0
   },
-  "total_core": 46.119,
+  "total_core": 46.812,
   "total_weights": {
    "pff": 0.0,
-   "nfelo": 0.5,
-   "tpt": 0.5
+   "nfelo": 1.0,
+   "tpt": 0.0
   },
-  "spread_range": 8.2,
-  "total_range": 1.39,
-  "spread_sd": 3.862,
-  "total_sd": 0.98,
-  "n_spread_sources": 4,
-  "n_total_sources": 2
+  "spread_range": 3.85,
+  "total_range": null,
+  "spread_sd": 2.722,
+  "total_sd": null,
+  "n_spread_sources": 2,
+  "n_total_sources": 1
  },
  {
   "game_id": "2026_01_WAS_PHI",
@@ -1313,15 +1048,9 @@
    "hfa_pts": 0.98,
    "rank_model_diag": null
   },
-  "spread_tpt": -4.28,
-  "spread_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_spread_detail": {
-   "DONC": -5.0,
-   "FFW": -1.4
-  },
+  "spread_tpt": null,
+  "spread_tpt_systems": [],
+  "tpt_spread_detail": {},
   "total_nfelo": 46.493,
   "total_pff": null,
   "total_pff_basis": null,
@@ -1330,20 +1059,10 @@
    "home": 0.052,
    "away": -0.03
   },
-  "total_tpt": 46.35216,
-  "total_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_total_detail": {
-   "DONC": 47.1402,
-   "FFW": 43.2
-  },
+  "total_tpt": null,
+  "total_tpt_systems": [],
+  "tpt_total_detail": {},
   "structural_flag": null,
-  "market_open_spread": -4.0,
-  "market_open_total": 47.5,
-  "market_tpt_spread": -4.5,
-  "market_tpt_total": 45.5,
   "pff_psr": {
    "home": 3.0922026,
    "away": -1.3718652,
@@ -1358,32 +1077,24 @@
    "away_elo": 3.639
   },
   "nfelo_vs_market_close": 0.0,
-  "spread_core": -4.834,
+  "spread_core": -4.931,
   "spread_weights": {
-   "nfelo": 0.46,
-   "pff": 0.39,
-   "tpt": 0.15
+   "nfelo": 0.541,
+   "pff": 0.459,
+   "tpt": 0.0
   },
-  "total_core": 46.347,
+  "total_core": 46.493,
   "total_weights": {
    "pff": 0.0,
-   "nfelo": 0.5,
-   "tpt": 0.5
+   "nfelo": 1.0,
+   "tpt": 0.0
   },
-  "tpt_system_clamps": [
-   {
-    "kind": "total",
-    "system": "DONC",
-    "drift": 1.58,
-    "limit": 1.5
-   }
-  ],
-  "spread_range": 4.04,
-  "total_range": 3.94,
-  "spread_sd": 1.831,
-  "total_sd": 2.113,
-  "n_spread_sources": 4,
-  "n_total_sources": 3
+  "spread_range": 0.94,
+  "total_range": null,
+  "spread_sd": 0.665,
+  "total_sd": null,
+  "n_spread_sources": 2,
+  "n_total_sources": 1
  },
  {
   "game_id": "2026_01_DAL_NYG",
@@ -1415,15 +1126,9 @@
    "hfa_pts": 0.34,
    "rank_model_diag": 1.777
   },
-  "spread_tpt": 2.7399999999999998,
-  "spread_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_spread_detail": {
-   "DONC": 3.3,
-   "FFW": 0.5
-  },
+  "spread_tpt": null,
+  "spread_tpt_systems": [],
+  "tpt_spread_detail": {},
   "total_nfelo": 45.472,
   "total_pff": null,
   "total_pff_basis": null,
@@ -1432,20 +1137,10 @@
    "home": -0.106,
    "away": 0.028
   },
-  "total_tpt": 47.49,
-  "total_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_total_detail": {
-   "DONC": 48.6375,
-   "FFW": 42.9
-  },
+  "total_tpt": null,
+  "total_tpt_systems": [],
+  "tpt_total_detail": {},
   "structural_flag": null,
-  "market_open_spread": 2.5,
-  "market_open_total": 48.0,
-  "market_tpt_spread": 3.0,
-  "market_tpt_total": 48.5,
   "pff_psr": {
    "home": -2.0791048,
    "away": 0.8411877,
@@ -1460,32 +1155,24 @@
    "away_elo": 5.3303
   },
   "nfelo_vs_market_close": -1.5,
-  "spread_core": 1.877,
+  "spread_core": 1.725,
   "spread_weights": {
-   "nfelo": 0.46,
-   "pff": 0.39,
-   "tpt": 0.15
+   "nfelo": 0.541,
+   "pff": 0.459,
+   "tpt": 0.0
   },
-  "total_core": 45.686,
+  "total_core": 45.472,
   "total_weights": {
    "pff": 0.0,
-   "nfelo": 0.5,
-   "tpt": 0.5
+   "nfelo": 1.0,
+   "tpt": 0.0
   },
-  "tpt_system_clamps": [
-   {
-    "kind": "total",
-    "system": "DONC",
-    "drift": 2.3,
-    "limit": 1.5
-   }
-  ],
-  "spread_range": 2.8,
-  "total_range": 5.74,
-  "spread_sd": 1.314,
-  "total_sd": 2.874,
-  "n_spread_sources": 4,
-  "n_total_sources": 3
+  "spread_range": 1.58,
+  "total_range": null,
+  "spread_sd": 1.117,
+  "total_sd": null,
+  "n_spread_sources": 2,
+  "n_total_sources": 1
  },
  {
   "game_id": "2026_01_DEN_KC",
@@ -1517,15 +1204,9 @@
    "hfa_pts": 0.34,
    "rank_model_diag": -0.078
   },
-  "spread_tpt": -2.04,
-  "spread_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_spread_detail": {
-   "DONC": -3.1,
-   "FFW": 2.2
-  },
+  "spread_tpt": null,
+  "spread_tpt_systems": [],
+  "tpt_spread_detail": {},
   "total_nfelo": 47.403,
   "total_pff": null,
   "total_pff_basis": null,
@@ -1534,20 +1215,10 @@
    "home": 0.079,
    "away": 0.065
   },
-  "total_tpt": 44.542640000000006,
-  "total_tpt_systems": [
-   "DONC",
-   "FFW"
-  ],
-  "tpt_total_detail": {
-   "DONC": 43.8033,
-   "FFW": 47.5
-  },
+  "total_tpt": null,
+  "total_tpt_systems": [],
+  "tpt_total_detail": {},
   "structural_flag": null,
-  "market_open_spread": -2.5,
-  "market_open_total": 42.5,
-  "market_tpt_spread": -2.5,
-  "market_tpt_total": 43.0,
   "pff_psr": {
    "home": 2.3968873,
    "away": 2.8283189,
@@ -1562,23 +1233,23 @@
    "away_elo": 4.2348
   },
   "nfelo_vs_market_close": 2.0,
-  "spread_core": -0.731,
+  "spread_core": -0.499,
   "spread_weights": {
-   "nfelo": 0.46,
-   "pff": 0.39,
-   "tpt": 0.15
+   "nfelo": 0.541,
+   "pff": 0.459,
+   "tpt": 0.0
   },
-  "total_core": 45.973,
+  "total_core": 47.403,
   "total_weights": {
    "pff": 0.0,
-   "nfelo": 0.5,
-   "tpt": 0.5
+   "nfelo": 1.0,
+   "tpt": 0.0
   },
-  "spread_range": 5.3,
-  "total_range": 3.7,
-  "spread_sd": 2.209,
-  "total_sd": 2.107,
-  "n_spread_sources": 4,
-  "n_total_sources": 3
+  "spread_range": 1.09,
+  "total_range": null,
+  "spread_sd": 0.771,
+  "total_sd": null,
+  "n_spread_sources": 2,
+  "n_total_sources": 1
  }
 ]

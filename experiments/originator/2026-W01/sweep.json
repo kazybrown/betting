@@ -650,10 +650,265 @@
   "notes": "METHOD: PFF.com direct fetch blocked; all data mined from ~25 WebSearch result snippets/summaries (2026-09-01). Every number above appeared in search-result text; nothing extrapolated. verbatim=false entries (CAR, CLE, IND, JAX, NO, TEN) have qualitative-only signals.\n\nCOVERAGE SCORECARD (2026 preseason PFF unless noted): OL rank: 16/32 (DEN 1, PHI 2, TB 3, CHI ~4, KC 7, SF ~12, LAC 12, MIN 13, SEA 15, NYJ 17, ARI 22, LV 24, MIA 27, WAS 32; NYG 9 is 2025-final). Pass rush/DL rank: 10/32 (LA 1, HOU 2, PIT 3, PHI 4, SEA 5, SF 20, NYG 21, GB 27, ATL 32). Coverage rank: 12/32 (NE 1, HOU 2, DEN 3, LA 4, SEA 12, DAL 13, DET 14, TB 15, PIT 16, MIN 22, SF 24; MIA described as worst but numeral unshown). QB rank: 17/32 recovered (1 Allen BUF, 2 Burrow CIN, 3 Jackson BAL, 4 Mahomes KC, 5 Stafford LA, 6 Love GB, 7 Herbert LAC, 8 Prescott DAL, 9 Maye NE, 10 Purdy SF, 12 Daniels WAS, 13 Williams CHI, 14 Darnold SEA, 15 Hurts PHI, 17 Stroud HOU, 19 Nix DEN, 22 Rodgers PIT; slots 11, 16, 18, 20-21, 23-32 unrecovered). Team off/def grades: sparse - only LA off 93.6 (2025 #1), BUF off 83.3 (2025 #3), DET 82.8/81.9 (year caveat).\n\nKNOWN CONFLICTS / CAUTIONS: (1) SF vs LAC both surfaced as OL '12th' - one is likely 11th or 13th. (2) CHI OL 'top 5'/'fourth' snippets partially attributed to a 2025-labeled article. (3) Burrow-2/Jackson-3 ordering confirmed only by a search-engine summary echoing the query; tier membership (Allen/Burrow/Jackson/Mahomes + Stafford 5th, Mahomes 4th) is independently verbatim. (4) One summary claimed PHI/TB secondaries 'top three,' contradicting PFF's NE/HOU/DEN top three - discarded. (5) A 'Jayden Daniels No. 6' snippet was from the prior-year rankings - discarded in favor of the No. 12 derivation. (6) Fantasy QB rankings (Maye 2, Tua 30-32, Lawrence 10, Young 25, Ward 26, Murray 16, Goff 17, Mayfield 21, Dart 9) are NOT PFF unit signals - excluded from qb_rank.\n\nFICTIONAL-WORLD FACTS MATERIAL TO WEEK 1 PRICING (all from result text): Mahomes (ACL/LCL, Week 15 2025) on track to start DEN@KC MNF, zero preseason snaps; Parsons now GB, expected PUP to open season (GB pass rush 27th without him, top-15 with); Myles Garrett traded CLE->LA; Trey Hendrickson CIN->BAL; Trent McDuffie KC->LA; Sauce Gardner NYJ->IND; Quinnen Williams ->DAL; Tyler Linderbaum BAL->LV; Tariq Woolen SEA->PHI; Tua ATL (competing with Penix); Rodgers PIT farewell season with McCarthy; Stefanski+Callahan to ATL; CAR opens without both starting tackles (Ekwonu, Moton) - direct CHI@CAR input; ATL missing Pearce (8-game suspension) + Walker (ACL) - ATL@PIT input; Jets Fields expected to depart, 2026 NYJ/MIA/LV/NO/CLE/IND starting QBs unidentified in snippets; SEA is defending champion; DEN went 14-3, lost AFC title game; NE earned No. 1 seed in 2025; DET missed playoffs. SF@LA at Melbourne Cricket Ground (neutral).\n\nBIGGEST GAPS: JAX (nothing numeric), TEN/NO/CLE/IND/CAR (qualitative only), KC/BAL/BUF/DAL/DET/CHI/MIN/DEN pass-rush ranks, most team-level 2025 off/def grades (PFF premium table unreachable), QB ranks 18-32 tail."
  },
  "tptSpreads": {
-  "values": [],
+  "values": [
+   {
+    "away": "NE",
+    "home": "SEA",
+    "system": "DONC",
+    "home_spread": -2.3,
+    "quote": "linedonchess=2.3",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "NE",
+    "home": "SEA",
+    "system": "FFW",
+    "home_spread": -4.0,
+    "quote": "lineffw=4",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "SF",
+    "home": "LA",
+    "system": "DONC",
+    "home_spread": -4.3,
+    "quote": "linedonchess=4.3",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "SF",
+    "home": "LA",
+    "system": "FFW",
+    "home_spread": 2.4,
+    "quote": "lineffw=-2.4",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "CHI",
+    "home": "CAR",
+    "system": "DONC",
+    "home_spread": 2.7,
+    "quote": "linedonchess=-2.7",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "CHI",
+    "home": "CAR",
+    "system": "FFW",
+    "home_spread": 2.0,
+    "quote": "lineffw=-2",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "TB",
+    "home": "CIN",
+    "system": "DONC",
+    "home_spread": -3.3,
+    "quote": "linedonchess=3.3",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "TB",
+    "home": "CIN",
+    "system": "FFW",
+    "home_spread": 9.4,
+    "quote": "lineffw=-9.4",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "NO",
+    "home": "DET",
+    "system": "DONC",
+    "home_spread": -8.5,
+    "quote": "linedonchess=8.5",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "NO",
+    "home": "DET",
+    "system": "FFW",
+    "home_spread": -3.0,
+    "quote": "lineffw=3",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "BUF",
+    "home": "HOU",
+    "system": "DONC",
+    "home_spread": 1.7,
+    "quote": "linedonchess=-1.7",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "BUF",
+    "home": "HOU",
+    "system": "FFW",
+    "home_spread": -0.2,
+    "quote": "lineffw=0.2",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "BAL",
+    "home": "IND",
+    "system": "DONC",
+    "home_spread": 4.5,
+    "quote": "linedonchess=-4.5",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "BAL",
+    "home": "IND",
+    "system": "FFW",
+    "home_spread": -3.6,
+    "quote": "lineffw=3.6",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "CLE",
+    "home": "JAX",
+    "system": "DONC",
+    "home_spread": -11.8,
+    "quote": "linedonchess=11.8",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "CLE",
+    "home": "JAX",
+    "system": "FFW",
+    "home_spread": -3.5,
+    "quote": "lineffw=3.5",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "ATL",
+    "home": "PIT",
+    "system": "DONC",
+    "home_spread": -3.1,
+    "quote": "linedonchess=3.1",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "ATL",
+    "home": "PIT",
+    "system": "FFW",
+    "home_spread": 0.5,
+    "quote": "lineffw=-0.5",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "NYJ",
+    "home": "TEN",
+    "system": "DONC",
+    "home_spread": -2.6,
+    "quote": "linedonchess=2.6",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "NYJ",
+    "home": "TEN",
+    "system": "FFW",
+    "home_spread": 3.3,
+    "quote": "lineffw=-3.3",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "ARI",
+    "home": "LAC",
+    "system": "DONC",
+    "home_spread": -12.3,
+    "quote": "linedonchess=12.3",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "ARI",
+    "home": "LAC",
+    "system": "FFW",
+    "home_spread": -3.0,
+    "quote": "lineffw=3",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "MIA",
+    "home": "LV",
+    "system": "DONC",
+    "home_spread": -4.5,
+    "quote": "linedonchess=4.5",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "MIA",
+    "home": "LV",
+    "system": "FFW",
+    "home_spread": 2.2,
+    "quote": "lineffw=-2.2",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "GB",
+    "home": "MIN",
+    "system": "DONC",
+    "home_spread": 1.1,
+    "quote": "linedonchess=-1.1",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "GB",
+    "home": "MIN",
+    "system": "FFW",
+    "home_spread": -7.1,
+    "quote": "lineffw=7.1",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "WAS",
+    "home": "PHI",
+    "system": "DONC",
+    "home_spread": -5.0,
+    "quote": "linedonchess=5",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "WAS",
+    "home": "PHI",
+    "system": "FFW",
+    "home_spread": -1.4,
+    "quote": "lineffw=1.4",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "DAL",
+    "home": "NYG",
+    "system": "DONC",
+    "home_spread": 3.3,
+    "quote": "linedonchess=-3.3",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "DAL",
+    "home": "NYG",
+    "system": "FFW",
+    "home_spread": 0.5,
+    "quote": "lineffw=-0.5",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "DEN",
+    "home": "KC",
+    "system": "DONC",
+    "home_spread": -3.1,
+    "quote": "linedonchess=3.1",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   },
+   {
+    "away": "DEN",
+    "home": "KC",
+    "system": "FFW",
+    "home_spread": 2.2,
+    "quote": "lineffw=-2.2",
+    "source": "pasted TPT table tpt_nflpredictions.csv"
+   }
+  ],
   "systems_missing": [
-   "DONC",
-   "FFW",
    "PIR",
    "STJ"
   ],
@@ -666,28 +921,267 @@
    "ff-winners.com - 2026-27 NFL Computer Predictions and Rankings homepage (https://www.ff-winners.com/)",
    "ff-winners.com - Do Betting Trends Make You Feel Jumpy? (https://www.ff-winners.com/nfl-week-1-betting-trends/)",
    "thepredictiontracker.com - NFL Prediction Tracker (https://www.thepredictiontracker.com/prednfl.html) [EGRESS BLOCKED - not fetchable]",
-   "GitHub code search: cmaronchick/pythonautomation nflpredictions (dratings scraper, snapshots end at 2025regweek17picks.csv); wagerlab/model-aggregator (fetches thepredictiontracker live, commits no snapshots); theonealgo/underdogs-bet scrape dated 2025-10-06"
+   "GitHub code search: cmaronchick/pythonautomation nflpredictions (dratings scraper, snapshots end at 2025regweek17picks.csv); wagerlab/model-aggregator (fetches thepredictiontracker live, commits no snapshots); theonealgo/underdogs-bet scrape dated 2025-10-06",
+   "pasted TPT table tpt_nflpredictions.csv (authoritative per \u00a712)"
   ],
-  "notes": "RECOVERY FAILED FOR ALL FOUR SYSTEMS - zero verbatim Week 1 2026 numbers found; per the no-invented-numbers rule, values is empty. Channel status: (1) direct HTTPS to thepredictiontracker.com, dratings.com, piratings.wordpress.com, ff-winners.com, and web.archive.org all rejected at proxy (CONNECT 403, verified via curl and __agentproxy/status relay-failure log). (2) WebSearch: ~17 varied queries run (per-system, per-game, domain-restricted via allowed_domains, Donchess/'Lou St. John'/prediction-tracker/reddit/tagteam phrasings); the session then hit the hard 200-call WebSearch budget cap (mostly consumed by earlier workflow phases), ending snippet mining. No snippet ever quoted a DONC/FFW/PIR/STJ number for 2026 W1. (3) GitHub mirror hunt: code searches for thepredictiontracker/nflpredictions.csv/linedonc/dratings found only scraper code and 2025-season snapshots (cmaronchick/pythonautomation stops at 2025regweek17picks.csv; guessed raw URL nflpredictions/2026regweek1picks.csv returned 404 on main and master). (4) Local disk: NOTE for parent - /home/user/originator-2026-w01/data/raw/2026-W01/prediction_tracker.csv is NOT Prediction Tracker data; it is nfelo output (columns nfelo_projected_home_spread etc., from greerreNFL/nfelo) - do not treat it as TPT system input. QUALITATIVE/TIMING FINDINGS (no numbers, labeled directional): PIR - piratings.wordpress.com's newest indexed posts as of 2026-09-01 are college-football only ('Week 0, August 29, 2026' posted 8/23 and 'September 3-7, 2026' posted 8/30); no NFL Week 1 2026 post exists in the index, consistent with their pattern of posting NFL forecasts during game week, so PIR W1 numbers likely not yet published. FFW - ff-winners.com homepage is branded '2026-27 NFL Computer Predictions and Rankings' and states 'Each Week's Picks are Available Monday 10PM PST' (search snippet), i.e. ~2026-09-07 for Week 1, after today's run date. STJ - no public web presence found for Lou St. John outside the blocked thepredictiontracker.com; a search snippet confirmed 'JOHN' appears as a column header on the Prediction Tracker NFL page but no game values were exposed. DONC - dratings.com's rolling NFL predictions page (and pagination /upcoming/4) is live and indexed, so numbers almost certainly exist behind the block, but neither dratings.com snippets nor any third-party citation surfaced a Week 1 2026 predicted score. RETRY GUIDANCE: re-run after 2026-09-07 with a fresh WebSearch budget (or unblocked egress to the four hosts + thepredictiontracker.com/nflpredictions.csv); DONC could also be recovered any time egress to dratings.com opens."
+  "notes": "RECOVERY FAILED FOR ALL FOUR SYSTEMS - zero verbatim Week 1 2026 numbers found; per the no-invented-numbers rule, values is empty. Channel status: (1) direct HTTPS to thepredictiontracker.com, dratings.com, piratings.wordpress.com, ff-winners.com, and web.archive.org all rejected at proxy (CONNECT 403, verified via curl and __agentproxy/status relay-failure log). (2) WebSearch: ~17 varied queries run (per-system, per-game, domain-restricted via allowed_domains, Donchess/'Lou St. John'/prediction-tracker/reddit/tagteam phrasings); the session then hit the hard 200-call WebSearch budget cap (mostly consumed by earlier workflow phases), ending snippet mining. No snippet ever quoted a DONC/FFW/PIR/STJ number for 2026 W1. (3) GitHub mirror hunt: code searches for thepredictiontracker/nflpredictions.csv/linedonc/dratings found only scraper code and 2025-season snapshots (cmaronchick/pythonautomation stops at 2025regweek17picks.csv; guessed raw URL nflpredictions/2026regweek1picks.csv returned 404 on main and master). (4) Local disk: NOTE for parent - /home/user/originator-2026-w01/data/raw/2026-W01/prediction_tracker.csv is NOT Prediction Tracker data; it is nfelo output (columns nfelo_projected_home_spread etc., from greerreNFL/nfelo) - do not treat it as TPT system input. QUALITATIVE/TIMING FINDINGS (no numbers, labeled directional): PIR - piratings.wordpress.com's newest indexed posts as of 2026-09-01 are college-football only ('Week 0, August 29, 2026' posted 8/23 and 'September 3-7, 2026' posted 8/30); no NFL Week 1 2026 post exists in the index, consistent with their pattern of posting NFL forecasts during game week, so PIR W1 numbers likely not yet published. FFW - ff-winners.com homepage is branded '2026-27 NFL Computer Predictions and Rankings' and states 'Each Week's Picks are Available Monday 10PM PST' (search snippet), i.e. ~2026-09-07 for Week 1, after today's run date. STJ - no public web presence found for Lou St. John outside the blocked thepredictiontracker.com; a search snippet confirmed 'JOHN' appears as a column header on the Prediction Tracker NFL page but no game values were exposed. DONC - dratings.com's rolling NFL predictions page (and pagination /upcoming/4) is live and indexed, so numbers almost certainly exist behind the block, but neither dratings.com snippets nor any third-party citation surfaced a Week 1 2026 predicted score. RETRY GUIDANCE: re-run after 2026-09-07 with a fresh WebSearch budget (or unblocked egress to the four hosts + thepredictiontracker.com/nflpredictions.csv); DONC could also be recovered any time egress to dratings.com opens. | 32 values ingested from pasted table; missing systems: ['PIR', 'STJ']",
+  "data_errors": []
  },
  "tptTotals": {
   "values": [
    {
     "away": "NE",
     "home": "SEA",
-    "system": "DOK",
-    "total": 41.83,
-    "quote": "Search result for query '\"41.83\" dokterentropy': \"The search results show that '41.83' appears on the Entropy NFL Totals page from dokterentropy.com, where it's listed as the home total for Seattle against New England.\" Corroborated by two earlier independent searches of the same page: \"the totals page contains entries with home team totals and road team information, with an example showing Seattle 41.83 against New England\" and \"The page displays home total road line data and is updated Thursday afternoons, with an example showing Seattle at 41.83 against New England.\"",
-    "source": "dokterentropy.com \u2014 Entropy NFL Totals, http://www.dokterentropy.com/totNFL.html (search-engine cached snippet)",
-    "as_of": "2026-09-01 (search retrieved today; cache/publish date of totNFL.html unknown \u2014 page states it updates Thursday afternoons)"
+    "system": "DONC",
+    "total": 44.2633,
+    "quote": "totdonchess=44.2633",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "NE",
+    "home": "SEA",
+    "system": "FFW",
+    "total": 44.0,
+    "quote": "totffw=44",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "SF",
+    "home": "LA",
+    "system": "DONC",
+    "total": 47.77578,
+    "quote": "totdonchess=47.77578",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "SF",
+    "home": "LA",
+    "system": "FFW",
+    "total": 42.5,
+    "quote": "totffw=42.5",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "CHI",
+    "home": "CAR",
+    "system": "DONC",
+    "total": 46.99012,
+    "quote": "totdonchess=46.99012",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "CHI",
+    "home": "CAR",
+    "system": "FFW",
+    "total": 43.9,
+    "quote": "totffw=43.9",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "TB",
+    "home": "CIN",
+    "system": "DONC",
+    "total": 50.74316,
+    "quote": "totdonchess=50.74316",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "TB",
+    "home": "CIN",
+    "system": "FFW",
+    "total": 54.4,
+    "quote": "totffw=54.4",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "NO",
+    "home": "DET",
+    "system": "DONC",
+    "total": 49.1332,
+    "quote": "totdonchess=49.1332",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "NO",
+    "home": "DET",
+    "system": "FFW",
+    "total": 47.0,
+    "quote": "totffw=47",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "BUF",
+    "home": "HOU",
+    "system": "DONC",
+    "total": 45.2311,
+    "quote": "totdonchess=45.2311",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "BUF",
+    "home": "HOU",
+    "system": "FFW",
+    "total": 47.0,
+    "quote": "totffw=47",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "BAL",
+    "home": "IND",
+    "system": "DONC",
+    "total": 51.414,
+    "quote": "totdonchess=51.414",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "BAL",
+    "home": "IND",
+    "system": "FFW",
+    "total": 48.8,
+    "quote": "totffw=48.8",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "CLE",
+    "home": "JAX",
+    "system": "DONC",
+    "total": 41.71242,
+    "quote": "totdonchess=41.71242",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "CLE",
+    "home": "JAX",
+    "system": "FFW",
+    "total": 42.4,
+    "quote": "totffw=42.4",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "ARI",
+    "home": "LAC",
+    "system": "DONC",
+    "total": 46.12638,
+    "quote": "totdonchess=46.12638",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "ARI",
+    "home": "LAC",
+    "system": "FFW",
+    "total": 39.3,
+    "quote": "totffw=39.3",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "MIA",
+    "home": "LV",
+    "system": "DONC",
+    "total": 41.40564,
+    "quote": "totdonchess=41.40564",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "MIA",
+    "home": "LV",
+    "system": "FFW",
+    "total": 49.1,
+    "quote": "totffw=49.1",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "GB",
+    "home": "MIN",
+    "system": "DONC",
+    "total": 45.4255,
+    "quote": "totdonchess=45.4255",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "DAL",
+    "home": "NYG",
+    "system": "DONC",
+    "total": 48.6375,
+    "quote": "totdonchess=48.6375",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "DAL",
+    "home": "NYG",
+    "system": "FFW",
+    "total": 42.9,
+    "quote": "totffw=42.9",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "WAS",
+    "home": "PHI",
+    "system": "DONC",
+    "total": 47.1402,
+    "quote": "totdonchess=47.1402",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "WAS",
+    "home": "PHI",
+    "system": "FFW",
+    "total": 43.2,
+    "quote": "totffw=43.2",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "ATL",
+    "home": "PIT",
+    "system": "DONC",
+    "total": 42.4278,
+    "quote": "totdonchess=42.4278",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "ATL",
+    "home": "PIT",
+    "system": "FFW",
+    "total": 41.9,
+    "quote": "totffw=41.9",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "NYJ",
+    "home": "TEN",
+    "system": "DONC",
+    "total": 38.94652,
+    "quote": "totdonchess=38.94652",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "NYJ",
+    "home": "TEN",
+    "system": "FFW",
+    "total": 47.4,
+    "quote": "totffw=47.4",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "DEN",
+    "home": "KC",
+    "system": "DONC",
+    "total": 43.8033,
+    "quote": "totdonchess=43.8033",
+    "source": "pasted TPT table tpt_nfltotals.csv"
+   },
+   {
+    "away": "DEN",
+    "home": "KC",
+    "system": "FFW",
+    "total": 47.5,
+    "quote": "totffw=47.5",
+    "source": "pasted TPT table tpt_nfltotals.csv"
    }
   ],
   "systems_missing": [
-   "RPXL \u2014 no Week 1 2026 numbers recoverable; publishing page identified (https://rp-excel.com/f-nfl-predictions.php) but no cached values surfaced in any snippet",
-   "FFW \u2014 no Week 1 2026 numbers recoverable; publishing page identified (https://www.ff-winners.com/nfl-computer-game-picks/); site states weekly picks post 'Monday 10PM PST' (i.e. ~Sept 7 for Week 1), so likely not yet published/indexed as of 2026-09-01",
-   "RWP \u2014 no Week 1 2026 numbers recoverable; outlet identified as Pat Laffaye's RWP (Retro) Team Ranks (https://teamranks.blogspot.com/p/nfl-predictions.html); no 2026 Week 1 data in cached previews",
-   "DONC \u2014 no Week 1 2026 predicted scores recoverable; dratings.com predictor page and per-game 2026 Week 1 pages not indexed with score cells yet; only 2025-2026 season-preview win-total projections surfaced (not game-level)",
-   "DOK \u2014 15 of 16 Week 1 games missing (only NE@SEA total recovered); dokterentropy.com/predNFL.html cache explicitly showed '2026 Week 1 ... Coming Soon'"
+   "DOK",
+   "RPXL",
+   "RWP"
   ],
   "sources": [
    "http://www.dokterentropy.com/totNFL.html (Entropy NFL Totals \u2014 source of the SEA/NE 41.83 total, via cached search snippets)",
@@ -698,9 +1192,20 @@
    "https://www.dratings.com/2025-2026-nfl-season-preview/ (DRatings season preview \u2014 season win-total projections only, e.g. SEA 8.3-8.7, NE 7.2-9.8; not game-level, not emitted)",
    "https://rp-excel.com/f-nfl-predictions.php (RP Excel NFL Weekly Predictions page \u2014 identified, no cached numbers)",
    "https://www.ff-winners.com/nfl-computer-game-picks/ (FF-Winners 2026-27 NFL Computer Game Picks \u2014 identified, no cached numbers; picks post Monday 10PM PST)",
-   "https://teamranks.blogspot.com/p/nfl-predictions.html (RWP (Retro) Team Ranks: NFL Predictions \u2014 Pat Laffaye's RWP outlet, identified, no cached Week 1 numbers)"
+   "https://teamranks.blogspot.com/p/nfl-predictions.html (RWP (Retro) Team Ranks: NFL Predictions \u2014 Pat Laffaye's RWP outlet, identified, no cached Week 1 numbers)",
+   "pasted TPT table tpt_nfltotals.csv (authoritative per \u00a712)"
   ],
-  "notes": "RECOVERY CONDITIONS: Direct fetches egress-blocked (curl to thepredictiontracker.com returned 403 CONNECT; only raw.githubusercontent.com reachable). All data mined from WebSearch result snippets. The session-wide WebSearch budget (200 calls) was exhausted mid-run after ~20 of my queries, hard-stopping further recovery. GitHub was searched for mirrored prediction tracker CSVs (nflpredictions.csv / nfltotals.csv snapshots) \u2014 none exist with 2026 data. TIMING CAVEAT: run date 2026-09-01, games 2026-09-09 to 09-14; multiple target systems had not yet published Week 1 2026 numbers (Dokter Entropy predictions page said 'Coming Soon'; FF-Winners posts Mondays 10PM PST; DRatings Week 1 game pages unindexed), so missingness is substantially a publication-timing issue \u2014 a re-run after ~Sept 8 should recover far more. DOK ENTRY AUDIT: the single emitted value (DOK NE@SEA total 41.83) comes from the 'Entropy NFL Totals' page whose cached table has columns described as 'home total road line'; 41.83 sits in the total column with Seattle as home and New England as road \u2014 consistent with an Entropy predicted GAME TOTAL of 41.83 for NE@SEA (market total on this game is 44.5 per covers.com/CBS snippets, so 41.83 reads as an Under lean). Risk flag: the snippet phrasing 'home total' could in principle mean a Seattle-only team total; downstream should treat 41.83 as the game total (page purpose is game totals) but keep this flag. NO SPREADS EMITTED: no per-system home_spread values for the five target systems appeared in any snippet; the prediction tracker's cached SEA-NE row showed aggregate spread stats only (min 2.30 / max 9.07 / avg ~4.00-4.90 home-favored, i.e. SEA favored \u2014 directional only, not system-attributable, so not emitted as values). DIRECTIONAL/QUALITATIVE ONLY (not from target systems, for context, all from cached snippets): market NE@SEA SEA -3.5 total 44.5 (covers.com); SF@LA Rams -3.5 (Melbourne neutral site); DEN@KC KC -2.5 total 42.5 (SportsLine); WAS@PHI PHI -4.5/-5.5 total 46.5; DAL@NYG DAL -2.5 total 48.5; CLE@JAX JAX -7.5; ARI@LAC LAC -10.5 (largest line of week); 9 of 16 games at a field goal or less."
+  "notes": "RECOVERY CONDITIONS: Direct fetches egress-blocked (curl to thepredictiontracker.com returned 403 CONNECT; only raw.githubusercontent.com reachable). All data mined from WebSearch result snippets. The session-wide WebSearch budget (200 calls) was exhausted mid-run after ~20 of my queries, hard-stopping further recovery. GitHub was searched for mirrored prediction tracker CSVs (nflpredictions.csv / nfltotals.csv snapshots) \u2014 none exist with 2026 data. TIMING CAVEAT: run date 2026-09-01, games 2026-09-09 to 09-14; multiple target systems had not yet published Week 1 2026 numbers (Dokter Entropy predictions page said 'Coming Soon'; FF-Winners posts Mondays 10PM PST; DRatings Week 1 game pages unindexed), so missingness is substantially a publication-timing issue \u2014 a re-run after ~Sept 8 should recover far more. DOK ENTRY AUDIT: the single emitted value (DOK NE@SEA total 41.83) comes from the 'Entropy NFL Totals' page whose cached table has columns described as 'home total road line'; 41.83 sits in the total column with Seattle as home and New England as road \u2014 consistent with an Entropy predicted GAME TOTAL of 41.83 for NE@SEA (market total on this game is 44.5 per covers.com/CBS snippets, so 41.83 reads as an Under lean). Risk flag: the snippet phrasing 'home total' could in principle mean a Seattle-only team total; downstream should treat 41.83 as the game total (page purpose is game totals) but keep this flag. NO SPREADS EMITTED: no per-system home_spread values for the five target systems appeared in any snippet; the prediction tracker's cached SEA-NE row showed aggregate spread stats only (min 2.30 / max 9.07 / avg ~4.00-4.90 home-favored, i.e. SEA favored \u2014 directional only, not system-attributable, so not emitted as values). DIRECTIONAL/QUALITATIVE ONLY (not from target systems, for context, all from cached snippets): market NE@SEA SEA -3.5 total 44.5 (covers.com); SF@LA Rams -3.5 (Melbourne neutral site); DEN@KC KC -2.5 total 42.5 (SportsLine); WAS@PHI PHI -4.5/-5.5 total 46.5; DAL@NYG DAL -2.5 total 48.5; CLE@JAX JAX -7.5; ARI@LAC LAC -10.5 (largest line of week); 9 of 16 games at a field goal or less. | 1 earlier web-recovered value(s) SUPERSEDED by the pasted TPT file (authoritative per \u00a712) | 31 values ingested from pasted table; missing systems: ['DOK', 'RPXL', 'RWP']",
+  "data_errors": [
+   {
+    "away": "GB",
+    "home": "MIN",
+    "system": "FFW",
+    "value": 19.4,
+    "column": "totffw",
+    "action": "dropped as data error (implausible magnitude); not replaced"
+   }
+  ]
  },
  "injuries": [
   {
@@ -2241,5 +2746,138 @@
    "/home/user/originator-2026-w01/originator_engine.py (confirms nfelo home_line_close is parsed as market_line_close_nfelo, i.e. a market line, negative-favored convention)"
   ],
   "notes": "RECOVERY PATH DEVIATION: WebSearch was unusable \u2014 the session's web search budget was already exhausted (200/200 calls) before this task ran, and direct fetches to sports sites are egress-blocked. Therefore the May 2026 ESPN/FOX/Covers schedule-release articles could NOT be mined; NO numbers here come from news snippets. All numbers come from two machine-readable sources: (1) nflverse/nfldata games.csv fetched LIVE from raw.githubusercontent.com on 2026-09-01 (the only reachable host) \u2014 used for every current_home_spread/current_total; and (2) the run's local nfelo market snapshot (data/raw/2026-W01/nfelo_games_2026w1.csv) \u2014 used for every open_home_spread via its market 'home_line_open' column. CAVEATS: (a) open_home_spread is nfelo's recorded market OPEN; whether that capture equals the May schedule-release opener is UNVERIFIED (the snapshot has no capture timestamp) \u2014 treat as 'market open per nfelo', reference-only; note open==close in nfelo for all 16 games, suggesting the snapshot's open may simply mirror its close rather than a true May opener \u2014 do not treat open-to-current deltas as verified line movement. (b) open_total is MISSING for all 16 games (nfelo total_line_open column empty; no other reachable source). (c) Sign conventions verified two ways: nfelo negative=home-favored confirmed by originator_engine.py parsing and by nfelo model line matching prediction_tracker.csv; nflverse positive-spread_line=home-favored confirmed against same-row moneylines for all 16 games (every conversion quote includes the moneyline). (d) Book disagreement between the two sources: NYJ@TEN spread (nfelo close TEN -2.5 vs nflverse current TEN -1.5 \u2014 only spread discrepancy) and totals off by 0.5-1.0 pt in TB@CIN, NO@DET, BAL@IND, ARI@LAC, DEN@KC, NYJ@TEN; nflverse (live 9/1) chosen as the authoritative 'current'. (e) Team-code aliases normalized: nfelo LAR->LA, OAK->LV. (f) No predicted-score systems reported here (market task); nfelo model spreads exist in prediction_tracker.csv if needed downstream. Every reported number appears verbatim in the quoted CSV fragments."
+ },
+ "tptMarket": {
+  "games": [
+   {
+    "away": "NE",
+    "home": "SEA",
+    "open_spread": -4.0,
+    "current_spread": -3.5,
+    "open_total": 45.0,
+    "current_total": 44.5
+   },
+   {
+    "away": "SF",
+    "home": "LA",
+    "open_spread": -2.5,
+    "current_spread": -3.5,
+    "open_total": 48.5,
+    "current_total": 48.0
+   },
+   {
+    "away": "CHI",
+    "home": "CAR",
+    "open_spread": 2.5,
+    "current_spread": 2.5,
+    "open_total": 45.5,
+    "current_total": 47.0
+   },
+   {
+    "away": "TB",
+    "home": "CIN",
+    "open_spread": -2.5,
+    "current_spread": -4.0,
+    "open_total": 52.5,
+    "current_total": 50.5
+   },
+   {
+    "away": "NO",
+    "home": "DET",
+    "open_spread": -6.5,
+    "current_spread": -7.0,
+    "open_total": 49.0,
+    "current_total": 50.5
+   },
+   {
+    "away": "BUF",
+    "home": "HOU",
+    "open_spread": 2.5,
+    "current_spread": -1.0,
+    "open_total": 44.5,
+    "current_total": 44.5
+   },
+   {
+    "away": "BAL",
+    "home": "IND",
+    "open_spread": 3.5,
+    "current_spread": 3.5,
+    "open_total": 48.5,
+    "current_total": 48.0
+   },
+   {
+    "away": "CLE",
+    "home": "JAX",
+    "open_spread": -7.5,
+    "current_spread": -8.0,
+    "open_total": 40.5,
+    "current_total": 40.5
+   },
+   {
+    "away": "ATL",
+    "home": "PIT",
+    "open_spread": -2.0,
+    "current_spread": -3.0,
+    "open_total": 41.5,
+    "current_total": 42.5
+   },
+   {
+    "away": "NYJ",
+    "home": "TEN",
+    "open_spread": -2.5,
+    "current_spread": -2.0,
+    "open_total": 38.5,
+    "current_total": 39.5
+   },
+   {
+    "away": "ARI",
+    "home": "LAC",
+    "open_spread": -10.5,
+    "current_spread": -10.0,
+    "open_total": 45.5,
+    "current_total": 47.5
+   },
+   {
+    "away": "MIA",
+    "home": "LV",
+    "open_spread": -3.0,
+    "current_spread": -3.5,
+    "open_total": 39.5,
+    "current_total": 40.5
+   },
+   {
+    "away": "GB",
+    "home": "MIN",
+    "open_spread": 1.5,
+    "current_spread": -1.5,
+    "open_total": 45.5,
+    "current_total": 46.0
+   },
+   {
+    "away": "WAS",
+    "home": "PHI",
+    "open_spread": -4.0,
+    "current_spread": -4.5,
+    "open_total": 47.5,
+    "current_total": 45.5
+   },
+   {
+    "away": "DAL",
+    "home": "NYG",
+    "open_spread": 2.5,
+    "current_spread": 3.0,
+    "open_total": 48.0,
+    "current_total": 48.5
+   },
+   {
+    "away": "DEN",
+    "home": "KC",
+    "open_spread": -2.5,
+    "current_spread": -2.5,
+    "open_total": 42.5,
+    "current_total": 43.0
+   }
+  ],
+  "source": "pasted TPT file tpt_nflpredictions.csv"
  }
 }

@@ -279,7 +279,9 @@ def tpt_blend(game_systems, default_w):
         tot = sum(capped.values())
         w = {s: x / tot for s, x in capped.items()}
     vals = [present[s]["v"] for s in w]
-    return weighted_median(vals, [w[s] for s in w]), sorted(w)
+    wm = weighted_median(vals, [w[s] for s in w])
+    # §2 step 5: shrink 40% toward the unweighted median so one system cannot dominate
+    return 0.6 * wm + 0.4 * statistics.median(vals), sorted(w)
 
 
 # ---------------------------------------------------------------- core builder
@@ -292,6 +294,8 @@ def build_cores():
     sweep = load_sweep()
     units, power, explicit_pff = pff_tables(sweep)
     tpt_s, tpt_t = tpt_panels(sweep)
+    tpt_mkt = {(norm_team(m["away"]), norm_team(m["home"])): m
+               for m in (sweep.get("tptMarket") or {}).get("games", [])}
 
     dvoa_z = zmap(dvoa)
     power_z = {t: rank_to_z(d["rank"]) for t, d in power.items()}
@@ -430,6 +434,10 @@ def build_cores():
             "total_tpt": total_tpt, "total_tpt_systems": t_sys,
             "tpt_total_detail": {s: d["v"] for s, d in tpt_t.get(key, {}).items()},
             "structural_flag": structural_flag,
+            "market_open_spread": tpt_mkt.get(key, {}).get("open_spread"),
+            "market_open_total": tpt_mkt.get(key, {}).get("open_total"),
+            "market_tpt_spread": tpt_mkt.get(key, {}).get("current_spread"),
+            "market_tpt_total": tpt_mkt.get(key, {}).get("current_total"),
             "pff_psr": {"home": pffr.get(h, {}).get("psr"), "away": pffr.get(a, {}).get("psr"),
                         "home_qb": pffr.get(h, {}).get("psr_qb"), "away_qb": pffr.get(a, {}).get("psr_qb"),
                         "home_proj_wins": pffr.get(h, {}).get("proj_wins"),
@@ -508,6 +516,29 @@ def build_cores():
         else:
             g["total_core"] = tn
             g["total_weights"] = {"pff": 0.0, "nfelo": 1.0, "tpt": 0.0}
+
+        # §1 Tier-B rule: no single TPT computer may move the origin number more
+        # than 1.0 (spread) / 1.5 (total) vs the blend without it (leave-one-out)
+        for kind, detail_key, wdict, limit, core_key, tier in (
+                ("spread", "tpt_spread_detail", TPT_SPREAD_W, 1.0, "spread_core", (sn, sp)),
+                ("total", "tpt_total_detail", TPT_TOTAL_W, 1.5, "total_core", (tn, tp))):
+            detail = g[detail_key]
+            if len(detail) < 2:
+                continue
+            n1, p1 = tier
+            wt = g["spread_weights"] if kind == "spread" else g["total_weights"]
+            for sysname in list(detail):
+                rest = {k: {"v": v} for k, v in detail.items() if k != sysname}
+                loo, _ = tpt_blend(rest, wdict)
+                if kind == "spread":
+                    core_wo = wt["nfelo"] * n1 + wt["pff"] * (p1 if p1 is not None else 0) + wt["tpt"] * loo
+                else:
+                    core_wo = wt["nfelo"] * n1 + wt["pff"] * (p1 if p1 is not None else 0) + wt["tpt"] * loo
+                drift = g[core_key] - core_wo
+                if abs(drift) > limit:
+                    g[core_key] = core_wo + math.copysign(limit, drift)
+                    g.setdefault("tpt_system_clamps", []).append(
+                        {"kind": kind, "system": sysname, "drift": round(drift, 2), "limit": limit})
 
         g["spread_core"] = round(g["spread_core"], 3)
         g["total_core"] = round(g["total_core"], 3)
@@ -731,14 +762,15 @@ def publish(generated_iso, data_status):
     L.append("")
     L.append("## Appendix B — Market delta (not an input)")
     L.append("")
-    L.append("| Game | Origin S | Mkt S | ΔS | Origin T | Mkt T | ΔT | Origin TTh/TTa | Mkt TTh/TTa |")
-    L.append("|------|----------|-------|----|----------|-------|----|----------------|-------------|")
+    L.append("| Game | Origin S | Open S | Mkt S | ΔS vs mkt | Origin T | Open T | Mkt T | ΔT vs mkt | Origin TTh/TTa | Mkt TTh/TTa |")
+    L.append("|------|----------|--------|-------|-----------|----------|--------|-------|-----------|----------------|-------------|")
     for g in games:
         mh, ma = implied_tt(g["market_spread"], g["market_total"])
         ds = g["spread_origin"] - g["market_spread"]
         dt = g["total_origin"] - g["market_total"]
-        L.append(f"| {g['away']}@{g['home']} | {g['spread_origin']:+.1f} | {g['market_spread']:+.1f} "
-                 f"| {ds:+.1f} | {g['total_origin']:.1f} | {g['market_total']:.1f} | {dt:+.1f} "
+        os_, ot = g.get("market_open_spread"), g.get("market_open_total")
+        L.append(f"| {g['away']}@{g['home']} | {g['spread_origin']:+.1f} | {fmt(os_) if os_ is None else f'{os_:+.1f}'} | {g['market_spread']:+.1f} "
+                 f"| {ds:+.1f} | {g['total_origin']:.1f} | {fmt(ot)} | {g['market_total']:.1f} | {dt:+.1f} "
                  f"| {g['tt_home']:.1f}/{g['tt_away']:.1f} | {mh}/{ma} |")
     L.append("")
     L.append("## Appendix C — Data issues")
@@ -762,14 +794,14 @@ def publish(generated_iso, data_status):
             "nfelo": "greerreNFL/nfelo output_data (automated update committed 2026-09-01 15:40 PT; Week 1 projected spreads identical to the 2026-08-31 file, Elo snapshot refreshed): prediction_tracker.csv, elo_snapshot.csv, nfelo_games.csv",
             "schedule_market": "nflverse/nfldata games.csv (market snapshot for Appendix B only)",
             "pff": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 — authoritative per §12: Point Spread Rating (points vs avg, QB included) used directly per §3.1; earlier web-search rank recovery retained as diagnostic",
-            "tpt": "web-search snippet recovery (thepredictiontracker.com egress-blocked)",
+            "tpt": "The Prediction Tracker nflpredictions.csv + nfltotals.csv (Week 1) pasted by the user 2026-09-02 — authoritative per §12; Donchess and FF-Winners populated, Pi-Rate/Lou St. John/RP Excel/Laffaye/Dokter blank in TPT's file; opening lines from the same files feed Appendix B",
             "dvoa_diag": "greerreNFL/nfelo dvoa_projections.csv 2026 (diagnostic only, not blended)",
         },
         "conventions": {
             "spread": "home perspective, negative = home favored",
             "rounding": "half-up to .0/.5 per §8",
             "nfelo_total_derivation": "league_total_prior + 0.35*(home pts_vs_avg + away pts_vs_avg) per §3.2 fallback",
-            "tpt_sleeve": "spec default weights renormalized over recovered systems; no error-shrink step (no YTD error data available pre-Week-1)",
+            "tpt_sleeve": "spec default weights renormalized over present systems (no inverse-MAE reweighting: no YTD error data pre-Week-1), weighted median then 40% shrink toward the unweighted median; single-computer clamp (1.0/1.5 pts per system) on sleeves with <=2 systems",
         },
         "games": games,
         "sweep": load_sweep(),
