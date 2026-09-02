@@ -1,7 +1,7 @@
 {
  "season": 2026,
  "week": 1,
- "generated": "2026-09-02T01:59:34Z",
+ "generated": "2026-09-02T04:25:49Z",
  "data_status": "DEGRADED",
  "league_total_prior": 46.0,
  "league_total_prior_basis": "2025 REG realized mean total 46.03 (nflverse games.csv), per \u00a73.2 update rule",
@@ -1281,13 +1281,13 @@
     "hfa_pts": 1.76,
     "rank_model_diag": null
    },
-   "spread_tpt": -1.4200000000000002,
+   "spread_tpt": -3.1,
    "spread_tpt_systems": [
     "DONC",
     "FFW"
    ],
    "tpt_spread_detail": {
-    "DONC": -2.6,
+    "DONC": -4.7,
     "FFW": 3.3
    },
    "total_nfelo": 43.185,
@@ -1326,7 +1326,7 @@
     "away_elo": -2.2518
    },
    "nfelo_vs_market_close": 0.0,
-   "spread_core": -2.874,
+   "spread_core": -3.126,
    "spread_weights": {
     "nfelo": 0.46,
     "pff": 0.39,
@@ -1338,9 +1338,9 @@
     "nfelo": 0.5,
     "tpt": 0.5
    },
-   "spread_range": 7.17,
+   "spread_range": 8.0,
    "total_range": 8.45,
-   "spread_sd": 3.207,
+   "spread_sd": 3.612,
    "total_sd": 4.227,
    "n_spread_sources": 4,
    "n_total_sources": 3,
@@ -1349,30 +1349,30 @@
    "spread_adjustment_log": [],
    "total_adjustment_log": [],
    "tt_modifier_log": [],
-   "spread_raw": -2.874,
+   "spread_raw": -3.126,
    "total_raw": 41.911,
    "spread_origin": -3.0,
    "total_origin": 42.0,
-   "tt_home_raw": 22.393,
-   "tt_away_raw": 19.518,
+   "tt_home_raw": 22.518,
+   "tt_away_raw": 19.393,
    "tt_home": 22.5,
    "tt_away": 19.5,
    "conf_spread": "LOW",
    "conf_total": "LOW",
-   "origin_note": "Baseline (prior_audited_adjustments_v2: zero \u00a75 adjustments, zero \u00a76 modifiers) kept; the only new evidence since that pass is the arrival of the two-computer TPT panel (DONC TEN -2.6 / 38.95, FFW +3.3 / 47.4 -> panel -1.42 / 40.64), which enters through the blend weights (.15 spread, .50 total) rather than \u00a75 and pulls the core 0.26 toward NYJ on the spread and 1.27 below nfelo on the total. Core stands at TEN -2.874 / total 41.911 with no context movement: both QBs confirmed, key_absences empty, no forecast, nothing in the bundle post-dates the 2026-08-31 ratings date.",
-   "tt_split_note": "Identity only (T/2 \u00b1 S/2): TEN receives the 2.874-point spread skew (about 22.4 / 19.5 at core) and nothing else, because no explosive-offense, red-zone or pace evidence in the bundle supports moving points between the two totals.",
+   "origin_note": "Baseline prior_audited_adjustments_v2 (empty \u00a75/\u00a76 set) KEPT: no post-2026-08-31 QB or premium-position news, no qualifying OL/rush victim, no verified forecast; net adjustment 0.0 spread / 0.0 total / 0.0 team-total reallocation. The only change since the prior pass is the TPT panel going partly live (DONC TEN -4.7 / 38.95, FFW NYJ +3.3 / 47.4 -> shrunk weighted median -3.1 / 40.64), which enters only through the core weights (spread 0.15, total 0.5): spread_core moves to TEN -3.126 (nfelo -2.5 at 0.46, PFF -3.874 at 0.39) and total_core to 41.911 (nfelo 43.185 / TPT 40.637 at 0.5 each). Identity split TEN 22.52 / NYJ 19.39.",
+   "tt_split_note": "Identity split T/2 +/- S/2 on the core (41.911 / -3.126) assigns TEN 22.5 and NYJ 19.4; no \u00a76 reallocation because neither offense is explosive (both bottom-3 2025 EPA/play), pace is symmetric-slow, and no red-zone data exists in the bundle.",
    "flags": [
-    "TPT panel is LIGHT for NYJ@TEN: only DONC and FF-Winners populated; Pi-Rate (PIR) and Lou St. John (STJ) blank on spreads, RP Excel (RPXL), Laffaye RWP and Dokter Entropy (DOK) blank on totals in TPT's own file; sleeve weights renormalized over DONC/FFW (spread .586/.414, total .529/.471)",
-    "FF-Winners is the outlier on both numbers (spread +3.3 = NYJ favored, 5.9 from DONC -2.6 and 6.4 from the Tier-A blend -3.13; total 47.4, 8.45 from DONC 38.95) and tpt_panel.system_clamps is empty, so no single-computer clamp was recorded for this game despite the gap; the 40% shrink toward the unweighted median is the only damping (panel -1.42 / 40.64)",
-    "Spread SD 3.207 across n=4 sources (nfelo -2.5, PFF -3.874, DONC -2.6, FFW +3.3) is FFW-driven; the three non-FFW sources sit within 1.4 points of each other",
-    "No PFF total (total_pff null): total_core 41.911 is nfelo .50 / two-computer TPT .50 (total_sd 4.227, n=3); the panel total 40.64 sits 2.55 below nfelo 43.185 and DVOA diagnostic 44.992 is not blended",
-    "No official injury reports exist yet: nflverse injuries_2026 returns 404 as of 2026-09-01; the premium-position clean bill (key_absences empty) rests on roster/depth-chart files dated 2026-08-31 only",
-    "NYJ EDGE Tyler Baron roster code A02 Active/PUP: decode unverified; depth-level (RDE5) only, not priced; other RES/R34/R36 codes (NYJ Kingsley Jonathan; TEN Jaylen Harrell, Milo Eifler, Dominique Hampton, Nazeeh Johnson) are depth-only and unverified",
-    "Outdoor game (Nissan Stadium, grass, Sun 9/13 1:00 ET) with no verified weather forecast (forecast_available=false, confidence LOW); bundle climatology is unsourced and qualitative; no numeric weather adjustment permitted",
+    "TPT panel PARTLY LIVE for NYJ@TEN: only DONC and FFW populated; Pi-Rate (PIR) and Lou St. John (STJ) blank on spreads, RP Excel (RPXL), Laffaye RWP and Dokter Entropy (DOK) blank on totals in TPT's own file; panel is 2-of-7 systems on a renormalized DONC/FFW sleeve at low weight (spread 0.15, total 0.5)",
+    "FF-Winners is the outlier: NYJ +3.3 vs DONC TEN -4.7 and Tier A blend TEN -3.13 (8.0 from DONC, ~6.4 from Tier A); total 47.4 vs DONC 38.9 (8.5 gap); inflates uncertainty spread_sd 3.612 / total_sd 4.227 (n_spread_sources 4, n_total_sources 3)",
+    "DONC value is the user-pasted DRatings Week 1 projection (2026-09-02, authoritative per \u00a712) and supersedes the TPT snapshot value of -2.6",
+    "No PFF total (total_pff null); total_core is nfelo 0.5 / TPT 0.5 at 41.911; DVOA diagnostic 44.992 (+3.1 vs core) is not blended",
+    "No official injury reports exist: nflverse injuries_2026 returns 404 as of 2026-09-01; the premium-position clean bill rests on roster/depth-chart files only",
+    "NYJ EDGE Tyler Baron roster code A02 Active/PUP: decode unverified; depth-level (RDE5) only, not priced",
+    "Outdoor game (Nissan Stadium, grass, Sun 9/13 1:00 ET) with no verified weather forecast; bundle climatology is unsourced and qualitative; no numeric weather adjustment permitted",
     "PFF unit-rank NUMBERS for TEN (OL/DL/secondary) unrecovered, qualitative snippets only; diagnostic, not an input now that pff_ratings is authoritative",
     "Web-recovered PFF power ranks (NYJ 32, TEN none) and the stale PFF preseason NYJ QB note ('2026 starter not identified') are superseded by the pasted PFF table and the 2026-08-31 depth chart; diagnostic only",
-    "Prior-pass flag 'TPT panel unrecovered for NYJ@TEN' is retired: the panel is now populated from TPT's Week 1 file (DONC/FFW) and the total is no longer nfelo-only",
-    "PFF unit gaps (critic): NYJ pass-rush, coverage and QB ranks absent from pff_units (only OL 17); the NYJ edge-grade note is qualitative"
+    "Prior-pass flag 'TPT panel unrecovered (two-source spread, single-source total)' is retired: panel is now partly live per tpt_panel",
+    "No single-computer clamp triggered (tpt_panel.system_clamps empty) despite the FFW sign flip; disagreement is carried in the 40% shrink and the uncertainty block only"
    ]
   },
   {
@@ -2942,9 +2942,10 @@
      "away": "NYJ",
      "home": "TEN",
      "system": "DONC",
-     "home_spread": -2.6,
-     "quote": "linedonchess=2.6",
-     "source": "pasted TPT table tpt_nflpredictions.csv"
+     "home_spread": -4.7,
+     "quote": "NYJ 17.1 / TEN 21.8 -> TEN -4.7",
+     "source": "DRatings Week 1 projections pasted by the user 2026-09-02 (authoritative per \u00a712; supersedes TPT snapshot value -2.6)",
+     "home_spread_tpt_snapshot": -2.6
     },
     {
      "away": "NYJ",
@@ -3067,7 +3068,7 @@
     "GitHub code search: cmaronchick/pythonautomation nflpredictions (dratings scraper, snapshots end at 2025regweek17picks.csv); wagerlab/model-aggregator (fetches thepredictiontracker live, commits no snapshots); theonealgo/underdogs-bet scrape dated 2025-10-06",
     "pasted TPT table tpt_nflpredictions.csv (authoritative per \u00a712)"
    ],
-   "notes": "RECOVERY FAILED FOR ALL FOUR SYSTEMS - zero verbatim Week 1 2026 numbers found; per the no-invented-numbers rule, values is empty. Channel status: (1) direct HTTPS to thepredictiontracker.com, dratings.com, piratings.wordpress.com, ff-winners.com, and web.archive.org all rejected at proxy (CONNECT 403, verified via curl and __agentproxy/status relay-failure log). (2) WebSearch: ~17 varied queries run (per-system, per-game, domain-restricted via allowed_domains, Donchess/'Lou St. John'/prediction-tracker/reddit/tagteam phrasings); the session then hit the hard 200-call WebSearch budget cap (mostly consumed by earlier workflow phases), ending snippet mining. No snippet ever quoted a DONC/FFW/PIR/STJ number for 2026 W1. (3) GitHub mirror hunt: code searches for thepredictiontracker/nflpredictions.csv/linedonc/dratings found only scraper code and 2025-season snapshots (cmaronchick/pythonautomation stops at 2025regweek17picks.csv; guessed raw URL nflpredictions/2026regweek1picks.csv returned 404 on main and master). (4) Local disk: NOTE for parent - /home/user/originator-2026-w01/data/raw/2026-W01/prediction_tracker.csv is NOT Prediction Tracker data; it is nfelo output (columns nfelo_projected_home_spread etc., from greerreNFL/nfelo) - do not treat it as TPT system input. QUALITATIVE/TIMING FINDINGS (no numbers, labeled directional): PIR - piratings.wordpress.com's newest indexed posts as of 2026-09-01 are college-football only ('Week 0, August 29, 2026' posted 8/23 and 'September 3-7, 2026' posted 8/30); no NFL Week 1 2026 post exists in the index, consistent with their pattern of posting NFL forecasts during game week, so PIR W1 numbers likely not yet published. FFW - ff-winners.com homepage is branded '2026-27 NFL Computer Predictions and Rankings' and states 'Each Week's Picks are Available Monday 10PM PST' (search snippet), i.e. ~2026-09-07 for Week 1, after today's run date. STJ - no public web presence found for Lou St. John outside the blocked thepredictiontracker.com; a search snippet confirmed 'JOHN' appears as a column header on the Prediction Tracker NFL page but no game values were exposed. DONC - dratings.com's rolling NFL predictions page (and pagination /upcoming/4) is live and indexed, so numbers almost certainly exist behind the block, but neither dratings.com snippets nor any third-party citation surfaced a Week 1 2026 predicted score. RETRY GUIDANCE: re-run after 2026-09-07 with a fresh WebSearch budget (or unblocked egress to the four hosts + thepredictiontracker.com/nflpredictions.csv); DONC could also be recovered any time egress to dratings.com opens. | 32 values ingested from pasted table; missing systems: ['PIR', 'STJ']",
+   "notes": "RECOVERY FAILED FOR ALL FOUR SYSTEMS - zero verbatim Week 1 2026 numbers found; per the no-invented-numbers rule, values is empty. Channel status: (1) direct HTTPS to thepredictiontracker.com, dratings.com, piratings.wordpress.com, ff-winners.com, and web.archive.org all rejected at proxy (CONNECT 403, verified via curl and __agentproxy/status relay-failure log). (2) WebSearch: ~17 varied queries run (per-system, per-game, domain-restricted via allowed_domains, Donchess/'Lou St. John'/prediction-tracker/reddit/tagteam phrasings); the session then hit the hard 200-call WebSearch budget cap (mostly consumed by earlier workflow phases), ending snippet mining. No snippet ever quoted a DONC/FFW/PIR/STJ number for 2026 W1. (3) GitHub mirror hunt: code searches for thepredictiontracker/nflpredictions.csv/linedonc/dratings found only scraper code and 2025-season snapshots (cmaronchick/pythonautomation stops at 2025regweek17picks.csv; guessed raw URL nflpredictions/2026regweek1picks.csv returned 404 on main and master). (4) Local disk: NOTE for parent - /home/user/originator-2026-w01/data/raw/2026-W01/prediction_tracker.csv is NOT Prediction Tracker data; it is nfelo output (columns nfelo_projected_home_spread etc., from greerreNFL/nfelo) - do not treat it as TPT system input. QUALITATIVE/TIMING FINDINGS (no numbers, labeled directional): PIR - piratings.wordpress.com's newest indexed posts as of 2026-09-01 are college-football only ('Week 0, August 29, 2026' posted 8/23 and 'September 3-7, 2026' posted 8/30); no NFL Week 1 2026 post exists in the index, consistent with their pattern of posting NFL forecasts during game week, so PIR W1 numbers likely not yet published. FFW - ff-winners.com homepage is branded '2026-27 NFL Computer Predictions and Rankings' and states 'Each Week's Picks are Available Monday 10PM PST' (search snippet), i.e. ~2026-09-07 for Week 1, after today's run date. STJ - no public web presence found for Lou St. John outside the blocked thepredictiontracker.com; a search snippet confirmed 'JOHN' appears as a column header on the Prediction Tracker NFL page but no game values were exposed. DONC - dratings.com's rolling NFL predictions page (and pagination /upcoming/4) is live and indexed, so numbers almost certainly exist behind the block, but neither dratings.com snippets nor any third-party citation surfaced a Week 1 2026 predicted score. RETRY GUIDANCE: re-run after 2026-09-07 with a fresh WebSearch budget (or unblocked egress to the four hosts + thepredictiontracker.com/nflpredictions.csv); DONC could also be recovered any time egress to dratings.com opens. | 32 values ingested from pasted table; missing systems: ['PIR', 'STJ'] | 2026-09-02: NYJ@TEN DONC updated from pasted DRatings table (-2.6 -> -4.7); other 15 confirmed within rounding",
    "data_errors": []
   },
   "tptTotals": {
@@ -5022,6 +5023,140 @@
     }
    ],
    "source": "pasted TPT file tpt_nflpredictions.csv"
+  },
+  "dratingsPasted": {
+   "source": "DRatings Week 1 projections pasted by the user 2026-09-02 (team totals -> total, spread)",
+   "cross_check": "15/16 games agree with TPT's Donchess columns within the 0.1-rounding of the pasted team totals (TPT precision retained); NYJ@TEN spread updated to -4.7 (TPT snapshot -2.6)",
+   "games": [
+    {
+     "away": "NE",
+     "home": "SEA",
+     "total": 43.9,
+     "home_spread": -2.3,
+     "tt_away": 20.8,
+     "tt_home": 23.1
+    },
+    {
+     "away": "SF",
+     "home": "LA",
+     "total": 47.7,
+     "home_spread": -4.5,
+     "tt_away": 21.6,
+     "tt_home": 26.1
+    },
+    {
+     "away": "CHI",
+     "home": "CAR",
+     "total": 47.0,
+     "home_spread": 2.8,
+     "tt_away": 24.9,
+     "tt_home": 22.1
+    },
+    {
+     "away": "BAL",
+     "home": "IND",
+     "total": 51.3,
+     "home_spread": 4.3,
+     "tt_away": 27.8,
+     "tt_home": 23.5
+    },
+    {
+     "away": "ATL",
+     "home": "PIT",
+     "total": 42.4,
+     "home_spread": -3.2,
+     "tt_away": 19.6,
+     "tt_home": 22.8
+    },
+    {
+     "away": "CLE",
+     "home": "JAX",
+     "total": 41.4,
+     "home_spread": -11.8,
+     "tt_away": 14.8,
+     "tt_home": 26.6
+    },
+    {
+     "away": "TB",
+     "home": "CIN",
+     "total": 50.7,
+     "home_spread": -3.3,
+     "tt_away": 23.7,
+     "tt_home": 27.0
+    },
+    {
+     "away": "NYJ",
+     "home": "TEN",
+     "total": 38.9,
+     "home_spread": -4.7,
+     "tt_away": 17.1,
+     "tt_home": 21.8
+    },
+    {
+     "away": "NO",
+     "home": "DET",
+     "total": 49.1,
+     "home_spread": -8.5,
+     "tt_away": 20.3,
+     "tt_home": 28.8
+    },
+    {
+     "away": "BUF",
+     "home": "HOU",
+     "total": 45.2,
+     "home_spread": 1.6,
+     "tt_away": 23.4,
+     "tt_home": 21.8
+    },
+    {
+     "away": "ARI",
+     "home": "LAC",
+     "total": 46.1,
+     "home_spread": -12.3,
+     "tt_away": 16.9,
+     "tt_home": 29.2
+    },
+    {
+     "away": "GB",
+     "home": "MIN",
+     "total": 45.4,
+     "home_spread": 1.0,
+     "tt_away": 23.2,
+     "tt_home": 22.2
+    },
+    {
+     "away": "MIA",
+     "home": "LV",
+     "total": 41.4,
+     "home_spread": -4.6,
+     "tt_away": 18.4,
+     "tt_home": 23.0
+    },
+    {
+     "away": "WAS",
+     "home": "PHI",
+     "total": 47.1,
+     "home_spread": -5.1,
+     "tt_away": 21.0,
+     "tt_home": 26.1
+    },
+    {
+     "away": "DAL",
+     "home": "NYG",
+     "total": 48.6,
+     "home_spread": 3.2,
+     "tt_away": 25.9,
+     "tt_home": 22.7
+    },
+    {
+     "away": "DEN",
+     "home": "KC",
+     "total": 43.8,
+     "home_spread": -3.2,
+     "tt_away": 20.3,
+     "tt_home": 23.5
+    }
+   ]
   }
  }
 }
