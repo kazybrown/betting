@@ -86,9 +86,18 @@ def main(path):
                        "brief_problems": audit.get("brief_problems", "")})
 
     critic = res.get("critic") or {}
-    (RUN / "adjustments.json").write_text(json.dumps(
-        {"games": out_games, "critic": critic}, indent=1))
-    (RUN / "briefs.json").write_text(json.dumps({"games": briefs}, indent=1))
+    if "--merge" in sys.argv:
+        A = json.loads((RUN / "adjustments.json").read_text()); B = json.loads((RUN / "briefs.json").read_text())
+        upd = {(g["away"], g["home"]): g for g in out_games}; ub = {(b["away"], b["home"]): b for b in briefs}
+        A["games"] = [upd.get((g["away"], g["home"]), g) for g in A["games"]]
+        B["games"] = [ub.get((b["away"], b["home"]), b) for b in B["games"]]
+        A.setdefault("critic_partial_reruns", []).append({"games": [f"{a}@{h}" for a, h in upd], "critic": critic})
+        (RUN / "adjustments.json").write_text(json.dumps(A, indent=1)); (RUN / "briefs.json").write_text(json.dumps(B, indent=1))
+        print(f"MERGED {len(upd)} game(s) into adjustments.json/briefs.json")
+    else:
+        (RUN / "adjustments.json").write_text(json.dumps(
+            {"games": out_games, "critic": critic}, indent=1))
+        (RUN / "briefs.json").write_text(json.dumps({"games": briefs}, indent=1))
 
     print(f"adjustments.json + briefs.json written for {len(out_games)} games")
     print(f"\n--- audit interventions ({len(problems)}) ---")

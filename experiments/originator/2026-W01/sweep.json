@@ -799,9 +799,10 @@
     "away": "NYJ",
     "home": "TEN",
     "system": "DONC",
-    "home_spread": -2.6,
-    "quote": "linedonchess=2.6",
-    "source": "pasted TPT table tpt_nflpredictions.csv"
+    "home_spread": -4.7,
+    "quote": "NYJ 17.1 / TEN 21.8 -> TEN -4.7",
+    "source": "DRatings Week 1 projections pasted by the user 2026-09-02 (authoritative per \u00a712; supersedes TPT snapshot value -2.6)",
+    "home_spread_tpt_snapshot": -2.6
    },
    {
     "away": "NYJ",
@@ -924,7 +925,7 @@
    "GitHub code search: cmaronchick/pythonautomation nflpredictions (dratings scraper, snapshots end at 2025regweek17picks.csv); wagerlab/model-aggregator (fetches thepredictiontracker live, commits no snapshots); theonealgo/underdogs-bet scrape dated 2025-10-06",
    "pasted TPT table tpt_nflpredictions.csv (authoritative per \u00a712)"
   ],
-  "notes": "RECOVERY FAILED FOR ALL FOUR SYSTEMS - zero verbatim Week 1 2026 numbers found; per the no-invented-numbers rule, values is empty. Channel status: (1) direct HTTPS to thepredictiontracker.com, dratings.com, piratings.wordpress.com, ff-winners.com, and web.archive.org all rejected at proxy (CONNECT 403, verified via curl and __agentproxy/status relay-failure log). (2) WebSearch: ~17 varied queries run (per-system, per-game, domain-restricted via allowed_domains, Donchess/'Lou St. John'/prediction-tracker/reddit/tagteam phrasings); the session then hit the hard 200-call WebSearch budget cap (mostly consumed by earlier workflow phases), ending snippet mining. No snippet ever quoted a DONC/FFW/PIR/STJ number for 2026 W1. (3) GitHub mirror hunt: code searches for thepredictiontracker/nflpredictions.csv/linedonc/dratings found only scraper code and 2025-season snapshots (cmaronchick/pythonautomation stops at 2025regweek17picks.csv; guessed raw URL nflpredictions/2026regweek1picks.csv returned 404 on main and master). (4) Local disk: NOTE for parent - /home/user/originator-2026-w01/data/raw/2026-W01/prediction_tracker.csv is NOT Prediction Tracker data; it is nfelo output (columns nfelo_projected_home_spread etc., from greerreNFL/nfelo) - do not treat it as TPT system input. QUALITATIVE/TIMING FINDINGS (no numbers, labeled directional): PIR - piratings.wordpress.com's newest indexed posts as of 2026-09-01 are college-football only ('Week 0, August 29, 2026' posted 8/23 and 'September 3-7, 2026' posted 8/30); no NFL Week 1 2026 post exists in the index, consistent with their pattern of posting NFL forecasts during game week, so PIR W1 numbers likely not yet published. FFW - ff-winners.com homepage is branded '2026-27 NFL Computer Predictions and Rankings' and states 'Each Week's Picks are Available Monday 10PM PST' (search snippet), i.e. ~2026-09-07 for Week 1, after today's run date. STJ - no public web presence found for Lou St. John outside the blocked thepredictiontracker.com; a search snippet confirmed 'JOHN' appears as a column header on the Prediction Tracker NFL page but no game values were exposed. DONC - dratings.com's rolling NFL predictions page (and pagination /upcoming/4) is live and indexed, so numbers almost certainly exist behind the block, but neither dratings.com snippets nor any third-party citation surfaced a Week 1 2026 predicted score. RETRY GUIDANCE: re-run after 2026-09-07 with a fresh WebSearch budget (or unblocked egress to the four hosts + thepredictiontracker.com/nflpredictions.csv); DONC could also be recovered any time egress to dratings.com opens. | 32 values ingested from pasted table; missing systems: ['PIR', 'STJ']",
+  "notes": "RECOVERY FAILED FOR ALL FOUR SYSTEMS - zero verbatim Week 1 2026 numbers found; per the no-invented-numbers rule, values is empty. Channel status: (1) direct HTTPS to thepredictiontracker.com, dratings.com, piratings.wordpress.com, ff-winners.com, and web.archive.org all rejected at proxy (CONNECT 403, verified via curl and __agentproxy/status relay-failure log). (2) WebSearch: ~17 varied queries run (per-system, per-game, domain-restricted via allowed_domains, Donchess/'Lou St. John'/prediction-tracker/reddit/tagteam phrasings); the session then hit the hard 200-call WebSearch budget cap (mostly consumed by earlier workflow phases), ending snippet mining. No snippet ever quoted a DONC/FFW/PIR/STJ number for 2026 W1. (3) GitHub mirror hunt: code searches for thepredictiontracker/nflpredictions.csv/linedonc/dratings found only scraper code and 2025-season snapshots (cmaronchick/pythonautomation stops at 2025regweek17picks.csv; guessed raw URL nflpredictions/2026regweek1picks.csv returned 404 on main and master). (4) Local disk: NOTE for parent - /home/user/originator-2026-w01/data/raw/2026-W01/prediction_tracker.csv is NOT Prediction Tracker data; it is nfelo output (columns nfelo_projected_home_spread etc., from greerreNFL/nfelo) - do not treat it as TPT system input. QUALITATIVE/TIMING FINDINGS (no numbers, labeled directional): PIR - piratings.wordpress.com's newest indexed posts as of 2026-09-01 are college-football only ('Week 0, August 29, 2026' posted 8/23 and 'September 3-7, 2026' posted 8/30); no NFL Week 1 2026 post exists in the index, consistent with their pattern of posting NFL forecasts during game week, so PIR W1 numbers likely not yet published. FFW - ff-winners.com homepage is branded '2026-27 NFL Computer Predictions and Rankings' and states 'Each Week's Picks are Available Monday 10PM PST' (search snippet), i.e. ~2026-09-07 for Week 1, after today's run date. STJ - no public web presence found for Lou St. John outside the blocked thepredictiontracker.com; a search snippet confirmed 'JOHN' appears as a column header on the Prediction Tracker NFL page but no game values were exposed. DONC - dratings.com's rolling NFL predictions page (and pagination /upcoming/4) is live and indexed, so numbers almost certainly exist behind the block, but neither dratings.com snippets nor any third-party citation surfaced a Week 1 2026 predicted score. RETRY GUIDANCE: re-run after 2026-09-07 with a fresh WebSearch budget (or unblocked egress to the four hosts + thepredictiontracker.com/nflpredictions.csv); DONC could also be recovered any time egress to dratings.com opens. | 32 values ingested from pasted table; missing systems: ['PIR', 'STJ'] | 2026-09-02: NYJ@TEN DONC updated from pasted DRatings table (-2.6 -> -4.7); other 15 confirmed within rounding",
   "data_errors": []
  },
  "tptTotals": {
@@ -2879,5 +2880,139 @@
    }
   ],
   "source": "pasted TPT file tpt_nflpredictions.csv"
+ },
+ "dratingsPasted": {
+  "source": "DRatings Week 1 projections pasted by the user 2026-09-02 (team totals -> total, spread)",
+  "cross_check": "15/16 games agree with TPT's Donchess columns within the 0.1-rounding of the pasted team totals (TPT precision retained); NYJ@TEN spread updated to -4.7 (TPT snapshot -2.6)",
+  "games": [
+   {
+    "away": "NE",
+    "home": "SEA",
+    "total": 43.9,
+    "home_spread": -2.3,
+    "tt_away": 20.8,
+    "tt_home": 23.1
+   },
+   {
+    "away": "SF",
+    "home": "LA",
+    "total": 47.7,
+    "home_spread": -4.5,
+    "tt_away": 21.6,
+    "tt_home": 26.1
+   },
+   {
+    "away": "CHI",
+    "home": "CAR",
+    "total": 47.0,
+    "home_spread": 2.8,
+    "tt_away": 24.9,
+    "tt_home": 22.1
+   },
+   {
+    "away": "BAL",
+    "home": "IND",
+    "total": 51.3,
+    "home_spread": 4.3,
+    "tt_away": 27.8,
+    "tt_home": 23.5
+   },
+   {
+    "away": "ATL",
+    "home": "PIT",
+    "total": 42.4,
+    "home_spread": -3.2,
+    "tt_away": 19.6,
+    "tt_home": 22.8
+   },
+   {
+    "away": "CLE",
+    "home": "JAX",
+    "total": 41.4,
+    "home_spread": -11.8,
+    "tt_away": 14.8,
+    "tt_home": 26.6
+   },
+   {
+    "away": "TB",
+    "home": "CIN",
+    "total": 50.7,
+    "home_spread": -3.3,
+    "tt_away": 23.7,
+    "tt_home": 27.0
+   },
+   {
+    "away": "NYJ",
+    "home": "TEN",
+    "total": 38.9,
+    "home_spread": -4.7,
+    "tt_away": 17.1,
+    "tt_home": 21.8
+   },
+   {
+    "away": "NO",
+    "home": "DET",
+    "total": 49.1,
+    "home_spread": -8.5,
+    "tt_away": 20.3,
+    "tt_home": 28.8
+   },
+   {
+    "away": "BUF",
+    "home": "HOU",
+    "total": 45.2,
+    "home_spread": 1.6,
+    "tt_away": 23.4,
+    "tt_home": 21.8
+   },
+   {
+    "away": "ARI",
+    "home": "LAC",
+    "total": 46.1,
+    "home_spread": -12.3,
+    "tt_away": 16.9,
+    "tt_home": 29.2
+   },
+   {
+    "away": "GB",
+    "home": "MIN",
+    "total": 45.4,
+    "home_spread": 1.0,
+    "tt_away": 23.2,
+    "tt_home": 22.2
+   },
+   {
+    "away": "MIA",
+    "home": "LV",
+    "total": 41.4,
+    "home_spread": -4.6,
+    "tt_away": 18.4,
+    "tt_home": 23.0
+   },
+   {
+    "away": "WAS",
+    "home": "PHI",
+    "total": 47.1,
+    "home_spread": -5.1,
+    "tt_away": 21.0,
+    "tt_home": 26.1
+   },
+   {
+    "away": "DAL",
+    "home": "NYG",
+    "total": 48.6,
+    "home_spread": 3.2,
+    "tt_away": 25.9,
+    "tt_home": 22.7
+   },
+   {
+    "away": "DEN",
+    "home": "KC",
+    "total": 43.8,
+    "home_spread": -3.2,
+    "tt_away": 20.3,
+    "tt_home": 23.5
+   }
+  ]
  }
 }

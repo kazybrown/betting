@@ -885,13 +885,13 @@
    "hfa_pts": 1.76,
    "rank_model_diag": null
   },
-  "spread_tpt": -1.4200000000000002,
+  "spread_tpt": -3.1,
   "spread_tpt_systems": [
    "DONC",
    "FFW"
   ],
   "tpt_spread_detail": {
-   "DONC": -2.6,
+   "DONC": -4.7,
    "FFW": 3.3
   },
   "total_nfelo": 43.185,
@@ -930,7 +930,7 @@
    "away_elo": -2.2518
   },
   "nfelo_vs_market_close": 0.0,
-  "spread_core": -2.874,
+  "spread_core": -3.126,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
@@ -942,9 +942,9 @@
    "nfelo": 0.5,
    "tpt": 0.5
   },
-  "spread_range": 7.17,
+  "spread_range": 8.0,
   "total_range": 8.45,
-  "spread_sd": 3.207,
+  "spread_sd": 3.612,
   "total_sd": 4.227,
   "n_spread_sources": 4,
   "n_total_sources": 3

@@ -136,6 +136,10 @@ def main():
                 "total_systems": g["tpt_total_detail"], "total_panel_value": g["total_tpt"],
                 "systems_blank_in_tpt_file": {"spreads": ["PIR", "STJ"], "totals": ["RPXL", "RWP", "DOK"]},
                 "system_clamps": g.get("tpt_system_clamps", []),
+                "donc_source": next((v.get("source") for v in sweep.get("tptSpreads", {}).get("values", [])
+                                     if v.get("system") == "DONC" and norm_team(v.get("away")) == a and norm_team(v.get("home")) == h), None),
+                "dratings_team_totals_diag": next(({"tt_away": d["tt_away"], "tt_home": d["tt_home"]} for d in sweep.get("dratingsPasted", {}).get("games", [])
+                                                   if d["away"] == a and d["home"] == h), None),
             },
             "uncertainty": {"spread_sd": g["spread_sd"], "total_sd": g["total_sd"],
                              "n_spread_sources": g["n_spread_sources"],

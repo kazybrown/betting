@@ -309,7 +309,12 @@
       "DOK"
      ]
     },
-    "system_clamps": []
+    "system_clamps": [],
+    "donc_source": "pasted TPT table tpt_nflpredictions.csv",
+    "dratings_team_totals_diag": {
+     "tt_away": 20.8,
+     "tt_home": 23.1
+    }
    },
    "uncertainty": {
     "spread_sd": 1.35,
@@ -648,7 +653,12 @@
       "DOK"
      ]
     },
-    "system_clamps": []
+    "system_clamps": [],
+    "donc_source": "pasted TPT table tpt_nflpredictions.csv",
+    "dratings_team_totals_diag": {
+     "tt_away": 21.6,
+     "tt_home": 26.1
+    }
    },
    "uncertainty": {
     "spread_sd": 3.029,
@@ -1020,7 +1030,12 @@
       "DOK"
      ]
     },
-    "system_clamps": []
+    "system_clamps": [],
+    "donc_source": "pasted TPT table tpt_nflpredictions.csv",
+    "dratings_team_totals_diag": {
+     "tt_away": 24.9,
+     "tt_home": 22.1
+    }
    },
    "uncertainty": {
     "spread_sd": 0.407,
@@ -1303,7 +1318,12 @@
       "sleeve_effect_before": 2.86,
       "sleeve_effect_after": 2.83
      }
-    ]
+    ],
+    "donc_source": "pasted TPT table tpt_nflpredictions.csv",
+    "dratings_team_totals_diag": {
+     "tt_away": 23.7,
+     "tt_home": 27.0
+    }
    },
    "uncertainty": {
     "spread_sd": 6.357,
@@ -1644,7 +1664,12 @@
       "DOK"
      ]
     },
-    "system_clamps": []
+    "system_clamps": [],
+    "donc_source": "pasted TPT table tpt_nflpredictions.csv",
+    "dratings_team_totals_diag": {
+     "tt_away": 20.3,
+     "tt_home": 28.8
+    }
    },
    "uncertainty": {
     "spread_sd": 2.504,
@@ -1993,7 +2018,12 @@
       "DOK"
      ]
     },
-    "system_clamps": []
+    "system_clamps": [],
+    "donc_source": "pasted TPT table tpt_nflpredictions.csv",
+    "dratings_team_totals_diag": {
+     "tt_away": 23.4,
+     "tt_home": 21.8
+    }
    },
    "uncertainty": {
     "spread_sd": 0.917,
@@ -2292,7 +2322,12 @@
       "DOK"
      ]
     },
-    "system_clamps": []
+    "system_clamps": [],
+    "donc_source": "pasted TPT table tpt_nflpredictions.csv",
+    "dratings_team_totals_diag": {
+     "tt_away": 27.8,
+     "tt_home": 23.5
+    }
    },
    "uncertainty": {
     "spread_sd": 3.445,
@@ -2613,7 +2648,12 @@
       "DOK"
      ]
     },
-    "system_clamps": []
+    "system_clamps": [],
+    "donc_source": "pasted TPT table tpt_nflpredictions.csv",
+    "dratings_team_totals_diag": {
+     "tt_away": 14.8,
+     "tt_home": 26.6
+    }
    },
    "uncertainty": {
     "spread_sd": 3.482,
@@ -2937,7 +2977,12 @@
       "DOK"
      ]
     },
-    "system_clamps": []
+    "system_clamps": [],
+    "donc_source": "pasted TPT table tpt_nflpredictions.csv",
+    "dratings_team_totals_diag": {
+     "tt_away": 19.6,
+     "tt_home": 22.8
+    }
    },
    "uncertainty": {
     "spread_sd": 2.185,
@@ -2971,12 +3016,12 @@
      "hfa_pts": 1.76,
      "rank_model_diag": null
     },
-    "spread_tpt": -1.4200000000000002,
+    "spread_tpt": -3.1,
     "tpt_spread_detail": {
-     "DONC": -2.6,
+     "DONC": -4.7,
      "FFW": 3.3
     },
-    "spread_core": -2.874,
+    "spread_core": -3.126,
     "spread_weights": {
      "nfelo": 0.46,
      "pff": 0.39,
@@ -3197,10 +3242,10 @@
    },
    "tpt_panel": {
     "spread_systems": {
-     "DONC": -2.6,
+     "DONC": -4.7,
      "FFW": 3.3
     },
-    "spread_panel_value": -1.4200000000000002,
+    "spread_panel_value": -3.1,
     "total_systems": {
      "DONC": 38.94652,
      "FFW": 47.4
@@ -3217,10 +3262,15 @@
       "DOK"
      ]
     },
-    "system_clamps": []
+    "system_clamps": [],
+    "donc_source": "DRatings Week 1 projections pasted by the user 2026-09-02 (authoritative per \u00a712; supersedes TPT snapshot value -2.6)",
+    "dratings_team_totals_diag": {
+     "tt_away": 17.1,
+     "tt_home": 21.8
+    }
    },
    "uncertainty": {
-    "spread_sd": 3.207,
+    "spread_sd": 3.612,
     "total_sd": 4.227,
     "n_spread_sources": 4,
     "n_total_sources": 3
@@ -3510,7 +3560,12 @@
       "DOK"
      ]
     },
-    "system_clamps": []
+    "system_clamps": [],
+    "donc_source": "pasted TPT table tpt_nflpredictions.csv",
+    "dratings_team_totals_diag": {
+     "tt_away": 16.9,
+     "tt_home": 29.2
+    }
    },
    "uncertainty": {
     "spread_sd": 4.389,
@@ -3824,7 +3879,12 @@
       "DOK"
      ]
     },
-    "system_clamps": []
+    "system_clamps": [],
+    "donc_source": "pasted TPT table tpt_nflpredictions.csv",
+    "dratings_team_totals_diag": {
+     "tt_away": 18.4,
+     "tt_home": 23.0
+    }
    },
    "uncertainty": {
     "spread_sd": 3.851,
@@ -4113,7 +4173,12 @@
       "DOK"
      ]
     },
-    "system_clamps": []
+    "system_clamps": [],
+    "donc_source": "pasted TPT table tpt_nflpredictions.csv",
+    "dratings_team_totals_diag": {
+     "tt_away": 23.2,
+     "tt_home": 22.2
+    }
    },
    "uncertainty": {
     "spread_sd": 3.862,
@@ -4423,7 +4488,12 @@
       "DOK"
      ]
     },
-    "system_clamps": []
+    "system_clamps": [],
+    "donc_source": "pasted TPT table tpt_nflpredictions.csv",
+    "dratings_team_totals_diag": {
+     "tt_away": 21.0,
+     "tt_home": 26.1
+    }
    },
    "uncertainty": {
     "spread_sd": 1.831,
@@ -4732,7 +4802,12 @@
       "DOK"
      ]
     },
-    "system_clamps": []
+    "system_clamps": [],
+    "donc_source": "pasted TPT table tpt_nflpredictions.csv",
+    "dratings_team_totals_diag": {
+     "tt_away": 25.9,
+     "tt_home": 22.7
+    }
    },
    "uncertainty": {
     "spread_sd": 1.314,
@@ -5035,7 +5110,12 @@
       "DOK"
      ]
     },
-    "system_clamps": []
+    "system_clamps": [],
+    "donc_source": "pasted TPT table tpt_nflpredictions.csv",
+    "dratings_team_totals_diag": {
+     "tt_away": 20.3,
+     "tt_home": 23.5
+    }
    },
    "uncertainty": {
     "spread_sd": 2.209,
