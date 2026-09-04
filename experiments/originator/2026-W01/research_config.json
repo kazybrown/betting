@@ -1,0 +1,79 @@
+{
+ "_status": "PLACEHOLDER values from expert findings \u2014 pending critic/synthesis verdicts",
+ "spreads": {
+  "weights": {
+   "nfelo": 0.46,
+   "pff": 0.39,
+   "cole": 0.15
+  },
+  "hfa_rating_paths": 1.75,
+  "structural_clamp": 4.5,
+  "sleeve_clamp": 1.0,
+  "hfa_neutral": 0.5
+ },
+ "totals": {
+  "model": "v3",
+  "league_prior": 46.0,
+  "b_elo": 0.1,
+  "b_pf": 0.34,
+  "b_pa": 0.27,
+  "b_qb": 0.72,
+  "b_div": -1.36,
+  "b_eff": 0.0,
+  "eff_cap": 3.0,
+  "env": {
+   "dome": 2.0,
+   "outdoor_base": -0.5,
+   "per_mph": 0.2,
+   "mean_wind": 8.4
+  }
+ },
+ "team_totals": {
+  "realloc_cap": 0.5
+ },
+ "schedule": {
+  "rest_per_day": 0.15
+ },
+ "caps": {
+  "spread": 2.5,
+  "total": 3.0,
+  "scale": 1.0
+ },
+ "week1_caps": {
+  "spread": 1.5,
+  "total": 2.0,
+  "scale": 0.6
+ },
+ "uncertainty": {
+  "base_spread": 12.72,
+  "base_total": 12.96,
+  "c": 1.0,
+  "spread_thresholds": [
+   1.0,
+   2.5
+  ],
+  "total_thresholds": [
+   1.5,
+   3.5
+  ]
+ },
+ "market": {
+  "mass": {
+   "1": 0.022,
+   "2": 0.028,
+   "3": 0.088,
+   "4": 0.03,
+   "5": 0.027,
+   "6": 0.041,
+   "7": 0.062,
+   "8": 0.032,
+   "9": 0.006,
+   "10": 0.037,
+   "11": 0.014,
+   "12": 0.016,
+   "13": 0.033,
+   "14": 0.052,
+   "15": 0.02
+  }
+ }
+}
