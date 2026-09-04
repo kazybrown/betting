@@ -65,10 +65,11 @@ for g in games:
         for x in g.get("total_adjustment_log", []):
             items.append(f"<li><span class=\"num\">{x['points']:+.2f}</span> total — {esc(x['category'])}: {esc(x['evidence'][:220])}</li>")
         for x in g.get("tt_modifier_log", []):
-            items.append(f"<li><span class=\"num\">{x['points']:+.2f}</span> {esc(x['team'])} team total — {esc(x['reason'][:220])}</li>")
+            items.append(f"<li><span class=\"num\">{x.get('applied_points', x['points']):+.2f}</span> {esc(x['team'])} team total — "
+                         f"{'proposed ' + format(x['points'], '+.2f') + ', zeroed by the research panel (identity only): ' if x.get('zeroed_by') else ''}{esc(x['reason'][:220])}</li>")
         adj_lines = "<h4>Adjustment log</h4><ul class=\"adj\">" + "".join(items) + "</ul>"
     else:
-        adj_lines = "<p class=\"mut small\">No §5 adjustments or §6 modifiers cleared the evidence bar.</p>"
+        adj_lines = "<p class=\"mut small\">No §5 adjustments cleared the evidence bar; team totals by identity.</p>"
     flags = "".join(f"<li>{esc(fl)}</li>" for fl in g.get("flags", []))
     brief_blocks.append(f"""<details id="b-{g['away']}-{g['home']}">
 <summary><span class="g">{g['away']} @ {g['home']}</span>
@@ -91,6 +92,7 @@ for g in games:
 <td class="num mut">{f2(g['pff_psr']['home'], plus=True)} / {f2(g['pff_psr']['away'], plus=True)}</td>
 <td class="num mut">{f1(g['cole_meta'].get('pr_home'), plus=True)} / {f1(g['cole_meta'].get('pr_away'), plus=True)}</td>
 <td class="num">{f1(g['total_nfelo'])} / {f1(g['total_pff_implied'])} / {f1(g['total_cole_implied'])}</td>
+<td class="num mut">{f2(g['totals_detail']['DIV'], plus=True)} / {f1(g['totals_detail']['ENV'], plus=True)} / {f2(g['eff_adj'], plus=True)}</td>
 <td class="num">{f1(sd.get('DONC'), plus=True)} / {f1(td.get('DONC'))}</td>
 <td class="num">{f1(sd.get('FFW'), plus=True)} / {f1(td.get('FFW'))}</td>
 <td class="num mut">{f1(g['market_spread'], plus=True)} / {f1(g['market_total'])}</td></tr>""")
@@ -114,6 +116,10 @@ for g in games:
         if line not in seen:
             seen.add(line)
             issues.append(line)
+
+method_rows = "".join(
+    f"<dt>{esc(k.replace('_', ' '))}</dt><dd>{esc(v)}</dd>"
+    for k, v in (games[0].get("method") or {}).items() if k != "version")
 
 page = f"""<title>Week 1 Origin Card</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap">
@@ -193,6 +199,10 @@ ul.adj li, ul.flags li {{ margin:4px 0; font-size:13.5px; }}
 ul.flags li {{ color:var(--mut); }}
 ul.issues {{ margin:10px 0; padding-left:18px; }}
 ul.issues li {{ margin:6px 0; font-size:13.5px; color:var(--mut); }}
+dl.method {{ display:grid; grid-template-columns:max-content 1fr; gap:7px 18px; margin:14px 0 0; font-size:13.5px; }}
+dl.method dt {{ font:600 11.5px/1.7 "IBM Plex Mono", monospace; color:var(--accent); text-transform:uppercase; letter-spacing:.04em; }}
+dl.method dd {{ margin:0; color:var(--mut); line-height:1.5; }}
+@media (max-width:640px) {{ dl.method {{ grid-template-columns:1fr; gap:2px 0; }} dl.method dd {{ margin-bottom:8px; }} }}
 footer {{ margin-top:52px; padding-top:16px; border-top:1px solid var(--rule);
   font:12.5px/1.6 "IBM Plex Mono", monospace; color:var(--mut); }}
 footer .num {{ color:var(--ink); }}
@@ -203,28 +213,32 @@ footer .num {{ color:var(--ink); }}
 <h1>NFL Origin Card — 2026 Week&nbsp;1</h1>
 <div class="meta">
 <span class="status">DATA STATUS: DEGRADED</span>
-<span>Build: nfelo + PFF + Kevin Cole · TPT panel diagnostic only · totals: implied (derived) — no engine publishes a total · weather: no forecasts</span>
+<span>Build v6 (research-calibrated): nfelo + PFF + Kevin Cole · TPT diagnostic only · HFA 1.75 on the rating paths · totals on the panel formula (Week-1 prior 45.0 + DIV + ENV + EFF), implied (derived) · team totals by identity only · weather: no forecasts</span>
 <span>Generated {GEN}</span>
-<span>Spread wts (modal): nfelo .541 / PFF .459 / TPT 0</span>
-<span>Total wts (modal): nfelo .50 / TPT .50 / PFF 0</span>
+<span>Spread wts: nfelo .46 / PFF .39 / Cole .15</span>
+<span>Total wts: PFF .38 / nfelo .32 / Cole .30 · Week-1 caps ±2.0 / ±2.5</span>
 </div>
 </header>
 
 <h2>Slate</h2>
-<p class="lede">Spread is home-team perspective, negative = home favored. Conf chips are spread / total. Δ mkt is reference only — the market is never an input to the origin number.</p>
+<p class="lede">Spread is home-team perspective, negative = home favored. Conf chips (spread / total) are the distance to the latest market line — HIGH under 1.5 / 2.5, MED under 3.0 / 5.0, LOW beyond — a diagnostic of expected excess error, not an input. Δ mkt is reference only; the market never enters the origin number.</p>
 <div class="tblwrap"><table>
 <thead><tr><th>Game</th><th>Kick</th><th>Origin spread</th><th>Total</th><th>TT H / A</th><th>Home WP</th><th>Conf S·T</th><th>Δ mkt S / T</th></tr></thead>
 <tbody>{''.join(rows)}</tbody>
 </table></div>
+
+<h2>Method — v6 research calibration</h2>
+<p class="lede">Parameters the 10-expert adversarial panel upheld (fit ≤2021, tested 2022–25 against the closing line; 61 theories: 35 upheld, 25 downgraded, 1 overturned). Everything below is inside the cores; the analysts and auditors worked on top of it. Full report linked in the footer.</p>
+<dl class="method">{method_rows}</dl>
 
 <h2>Game briefs</h2>
 <p class="lede">Tier-A read, panel status, adjustment log with named evidence, and the team-total split rationale for each game.</p>
 {''.join(brief_blocks)}
 
 <h2>Appendix A — Source matrix</h2>
-<p class="lede">Three-engine build: nfelo (nfeloapp.com site model spreads), PFF point-spread ratings (PSR, points vs average, QB included), and Kevin Cole's Unexpected Points power ratings (PR, as of 9/1/26). No engine publishes a game total, so every total on this card is an implied total derived per §3.2 from net ratings and carries LOW confidence by policy. TPT panel systems (Donchess/DRatings, FF-Winners, Pi-Rate, Lou St. John, RP Excel, Laffaye RWP) were unrecoverable — the one recovered number is Dokter Entropy's NE@SEA total, applied under the single-computer clamp.</p>
+<p class="lede">Three-engine build: nfelo (nfeloapp.com site model spreads), PFF point-spread ratings (PSR, points vs average, QB included) and Kevin Cole's Unexpected Points power ratings (PR, as of 9/1/26); PFF and Cole spreads use HFA 1.75 (v6). No engine publishes a game total: every total is an implied total derived from net ratings on the panel formula — Week-1 prior 45.0 + rating term + DIV (−0.85 divisional / +0.45 non-divisional) + ENV (dome +2.0 / outdoor −0.5), blended .38/.32/.30, plus the efficiency term EFF. The TPT panel (Donchess/DRatings and FF-Winners; Pi-Rate, Lou St. John, RP Excel, Laffaye and Dokter blank in TPT's Week 1 file) is diagnostic only at weight 0.</p>
 <div class="tblwrap"><table>
-<thead><tr><th>Game</th><th>nfelo S</th><th>PFF S</th><th>Cole S</th><th>PSR H / A</th><th>Cole PR H / A</th><th>Implied T nfelo / PFF / Cole</th><th>DONC S / T (diag)</th><th>FFW S / T (diag)</th><th>Market S / T</th></tr></thead>
+<thead><tr><th>Game</th><th>nfelo S</th><th>PFF S</th><th>Cole S</th><th>PSR H / A</th><th>Cole PR H / A</th><th>Implied T nfelo / PFF / Cole</th><th>DIV / ENV / EFF</th><th>DONC S / T (diag)</th><th>FFW S / T (diag)</th><th>Market S / T</th></tr></thead>
 <tbody>{''.join(srcm)}</tbody>
 </table></div>
 
@@ -239,11 +253,12 @@ footer .num {{ color:var(--ink); }}
 <ul class="issues">{''.join(issues)}</ul>
 
 <footer>
-<p>Engines: <span class="num">nfelo</span> (nfeloapp.com Week 1 model spreads supplied 2026-09-02; modifiers from the greerreNFL/nfelo 2026-09-01 update) ·
-<span class="num">Kevin Cole</span> (Unexpected Points power rankings as of 9/1/26, via Google Drive 2026-09-04; sleeve slot .15/.30) ·
-<span class="num">PFF</span> (Power Rankings point-spread ratings, pff.com/betting/nfl-power-rankings, table supplied 2026-09-01 — authoritative per §12; spread_pff = −(PSR<sub>home</sub> − PSR<sub>away</sub>) − site HFA) ·
-<span class="num">TPT</span> panel (Donchess/DRatings + FF-Winners) diagnostic only in this build — weight 0. No engine publishes a total: all totals are §3.2-derived implied totals.
-League total prior <span class="num">46.0</span> (2025 realized mean).
+<p>Engines: <span class="num">nfelo</span> (nfeloapp.com Week 1 model spreads supplied 2026-09-02, confirmed 2026-09-04; QB/HFA modifiers from the greerreNFL/nfelo 2026-09-01 update) ·
+<span class="num">PFF</span> (Power Rankings point-spread ratings, pff.com/betting/nfl-power-rankings, table supplied 2026-09-04 — authoritative per §12; spread_pff = −(PSR<sub>home</sub> − PSR<sub>away</sub>) − 1.75) ·
+<span class="num">Kevin Cole</span> (Unexpected Points power rankings as of 9/1/26, via Google Drive 2026-09-04; spread_cole = −(PR<sub>home</sub> − PR<sub>away</sub>) − 1.75; sleeve slot .15/.30) ·
+<span class="num">TPT</span> panel (Donchess/DRatings + FF-Winners) diagnostic only — weight 0. No engine publishes a total: all totals are implied (derived) on the v6 formula.
+Week-1 league prior <span class="num">45.0</span> (2025 realized mean 46.0 − 1.0 early-season offset).
+v6 parameters: research_config.json; panel report: <a href="https://claude.ai/code/artifact/6386852a-b0ab-41cb-b87e-8fb3bbe237d2">Originator Research Panel</a>.
 Full audit trail: <span class="num">betting/experiments/originator/2026-W01/</span> on branch claude/new-session-xoaxrh.</p>
 </footer>
 </div>

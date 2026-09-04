@@ -705,7 +705,8 @@ CSV_COLS = ("season,week,game_id,away,home,kickoff,venue,roof,"
             "total_nfelo,total_pff,total_tpt,total_rpxl,total_ffw,total_rwp,total_donc,total_dok,"
             "spread_core,total_core,adj_spread,adj_total,conf_spread,conf_total,"
             "market_spread,market_total,market_tt_home,market_tt_away,"
-            "data_status,notes,spread_cole,total_pff_implied,total_cole_implied").split(",")
+            "data_status,notes,spread_cole,total_pff_implied,total_cole_implied,"
+            "hfa_rating_paths,eff_adj,D_spread_mkt,D_total_mkt,sigma_spread,sigma_total").split(",")
 
 
 def implied_tt(spread, total):
@@ -759,6 +760,9 @@ def publish(generated_iso, data_status):
                 "data_status": data_status, "notes": note,
                 "spread_cole": fmt(g["spread_cole"], 2), "total_pff_implied": fmt(g["total_pff_implied"], 2),
                 "total_cole_implied": fmt(g["total_cole_implied"], 2),
+                "hfa_rating_paths": g.get("hfa_rating_paths"), "eff_adj": fmt(g.get("eff_adj"), 2),
+                "D_spread_mkt": (g.get("conf_basis") or {}).get("D_spread"), "D_total_mkt": (g.get("conf_basis") or {}).get("D_total"),
+                "sigma_spread": (g.get("conf_basis") or {}).get("sigma_spread"), "sigma_total": (g.get("conf_basis") or {}).get("sigma_total"),
             })
 
     # ---------- Markdown card
@@ -771,7 +775,14 @@ def publish(generated_iso, data_status):
     L.append(f"Build: {games[0]['build']}")
     L.append(f"Weights: spread nfelo {wts['nfelo']} / PFF {wts['pff']} / Kevin Cole {wts['cole']}"
              f" | total PFF-implied {twts['pff_implied']} / nfelo-implied {twts['nfelo_implied']} / Cole-implied {twts['cole_implied']}"
-             " — all totals are §3.2-derived implied totals (no engine publishes a total); TPT panel diagnostic only")
+             " — all totals are implied (derived) totals: no engine publishes a total; TPT panel diagnostic only")
+    method = games[0].get("method")
+    if method:
+        L.append("")
+        L.append(f"Method ({method['version']}, expert-panel synthesis applied):")
+        for k, v in method.items():
+            if k != "version":
+                L.append(f"- {k}: {v}")
     L.append("")
     L.append("## Slate table")
     L.append("")
@@ -795,9 +806,11 @@ def publish(generated_iso, data_status):
         L.append("")
     L.append("## Appendix A — Source matrix")
     L.append("")
+    nf_formula = (games[0].get("method") or {}).get("total_nfelo_implied", "league prior + 0.35 × combined points-vs-average")
     L.append("nfelo publishes model spreads and win probabilities only — no game total or projected score. "
-             "Every 'nfelo-implied total' on this card is derived per §3.2 from nfelo's team ratings "
-             "(league prior + 0.35 × combined points-vs-average) and is labelled as such; nfelo team totals do not exist.")
+             "Every 'nfelo-implied total' on this card is derived from nfelo's team ratings "
+             f"({nf_formula}) and is labelled as such; nfelo team totals do not exist. "
+             "PFF- and Cole-implied totals are derived the same way from their net ratings.")
     L.append("")
     L.append("| Game | nfelo S | PFF S | Cole S | nfelo-impl T | PFF-impl T | Cole-impl T | DONC S/T (diag) | FFW S/T (diag) | Market (S/T) |")
     L.append("|------|---------|-------|--------|--------------|------------|-------------|-----------------|----------------|--------------|")
@@ -839,21 +852,26 @@ def publish(generated_iso, data_status):
     audit = {
         "season": SEASON, "week": WEEK, "generated": generated_iso,
         "data_status": data_status,
-        "league_total_prior": LEAGUE_TOTAL_PRIOR,
-        "league_total_prior_basis": "2025 REG realized mean total 46.03 (nflverse games.csv), per §3.2 update rule",
+        "league_total_prior": (games[0].get("totals_detail") or {}).get("LG", LEAGUE_TOTAL_PRIOR),
+        "league_total_prior_basis": ("2025 REG realized mean total 46.03 (nflverse games.csv) -1.0 Week-1 offset (research panel: early-season)"
+                                     if games[0].get("totals_detail") else "2025 REG realized mean total 46.03 (nflverse games.csv), per §3.2 update rule"),
+        "method": games[0].get("method"),
         "sources": {
             "nfelo": "greerreNFL/nfelo output_data (automated update committed 2026-09-01 15:40 PT; Week 1 projected spreads identical to the 2026-08-31 file, Elo snapshot refreshed): prediction_tracker.csv, elo_snapshot.csv, nfelo_games.csv",
             "schedule_market": "nflverse/nfldata games.csv (market snapshot for Appendix B only)",
             "pff": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 — authoritative per §12: Point Spread Rating (points vs avg, QB included) used directly per §3.1; earlier web-search rank recovery retained as diagnostic",
             "tpt": "The Prediction Tracker nflpredictions.csv + nfltotals.csv (Week 1) pasted by the user 2026-09-02 — authoritative per §12; Donchess and FF-Winners populated, Pi-Rate/Lou St. John/RP Excel/Laffaye/Dokter blank in TPT's file; opening lines from the same files feed Appendix B",
             "kevin_cole": "Unexpected Points Subscriber Data workbook (Kevin Cole), '2026 Power Rankings' tab as of 9/1/26, read via the Google Drive connector 2026-09-04: power_ranking used as the third rating engine in the sleeve slot; betting_power_ranking diagnostic",
-            "build_note": "User instruction 2026-09-04: build only with PFF, nfelo and Kevin Cole; TPT panel retained as diagnostic (weight 0). Totals: no engine publishes a total -> all totals are §3.2-derived implied totals from net ratings",
+            "build_note": "User instruction 2026-09-04: build only with PFF, nfelo and Kevin Cole; TPT panel retained as diagnostic (weight 0). Totals: no engine publishes a total -> all totals are derived implied totals from net ratings. v6 (2026-09-04): expert-panel synthesis parameters applied (research_config.json, research/synthesis.json) — see 'method'",
+            "research_panel": "10-expert / 10-critic adversarial panel, fit <=2021 / test 2022-2025 vs the closing line: 61 theories, 35 upheld, 25 downgraded, 1 overturned; research/synthesis.json, research/panel_results_raw.json",
             "dvoa_diag": "greerreNFL/nfelo dvoa_projections.csv 2026 (diagnostic only, not blended)",
         },
         "conventions": {
             "spread": "home perspective, negative = home favored",
             "rounding": "half-up to .0/.5 per §8",
-            "nfelo_total_derivation": "league_total_prior + 0.35*(home pts_vs_avg + away pts_vs_avg) per §3.2 fallback",
+            "nfelo_total_derivation": (games[0].get("method") or {}).get("total_nfelo_implied", "league_total_prior + 0.35*(home pts_vs_avg + away pts_vs_avg) per §3.2 fallback"),
+            "confidence_tags": (games[0].get("method") or {}).get("confidence", "§7 source-dispersion tags"),
+            "team_totals": (games[0].get("method") or {}).get("team_totals", "§6 identity plus audited reallocation modifiers"),
             "section5_team_total_adjustments": "§5 adjustments filed against a team total are applied to the game total and allocated by the identity (T/2 ± S/2); a one-sided allocation requires the category's linked spread leg or a §6 reallocation (auditor convention, v3)",
             "tpt_sleeve": "spec default weights renormalized over present systems (no inverse-MAE reweighting: no YTD error data pre-Week-1), weighted median then 40% shrink toward the unweighted median; single-computer clamp (1.0/1.5 pts per system) on sleeves with <=2 systems",
         },

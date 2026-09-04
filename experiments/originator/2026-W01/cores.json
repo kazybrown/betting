@@ -25,7 +25,7 @@
    "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
    "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
   },
-  "spread_pff": -5.607,
+  "spread_pff": -3.672,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
    "psr_home": 4.81475,
@@ -33,9 +33,12 @@
    "psr_qb_home": 3.5,
    "psr_qb_away": 5.5,
    "hfa_pts": 3.69,
-   "rank_model_diag": -6.38
+   "rank_model_diag": -6.38,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)",
+   "spread_unclamped": -3.672
   },
-  "spread_cole": -4.185,
+  "spread_cole": -2.25,
   "cole_meta": {
    "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
    "pr_home": 3.9,
@@ -43,10 +46,12 @@
    "betting_pr_home": 5.4,
    "betting_pr_away": 3.5,
    "spread_betting_pr_diag": -5.585,
-   "hfa_pts": 3.69
+   "hfa_pts": 3.69,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)"
   },
-  "total_pff_implied": 48.698,
-  "total_cole_implied": 48.555,
+  "total_pff_implied": 47.262,
+  "total_cole_implied": 47.14,
   "market_nfelo_open": -3.5,
   "market_nfelo_current": -3.5,
   "spread_tpt": -2.6399999999999997,
@@ -58,7 +63,7 @@
    "DONC": -2.3,
    "FFW": -4.0
   },
-  "total_nfelo": 48.514,
+  "total_nfelo": 46.373,
   "total_pff": null,
   "total_pff_basis": null,
   "total_dvoa_diag": 47.041,
@@ -94,33 +99,82 @@
    "away_elo": 3.0012
   },
   "nfelo_vs_market_close": -0.5,
-  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
-  "spread_core": -4.424,
+  "build": "v6 research-calibrated three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -3.38,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
    "cole": 0.15,
    "tpt": 0.0
   },
-  "total_core": 48.596,
+  "total_core": 46.324,
   "total_weights": {
    "pff_implied": 0.38,
    "nfelo_implied": 0.32,
    "cole_implied": 0.3,
    "tpt": 0.0
   },
-  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
-  "spread_range": 2.11,
-  "total_range": 0.18,
-  "spread_sd": 1.075,
-  "total_sd": 0.097,
+  "total_basis": "all three totals are \u00a73.2-derived implied totals on the research (v6) formula: LG 45.0 + rating term + DIV +0.45 + ENV -0.5; nfelo path adds GT_dev and QB terms; blend .38/.32/.30 + EFF -0.62; no engine publishes a total",
+  "spread_range": 1.42,
+  "total_range": 0.89,
+  "spread_sd": 0.634,
+  "total_sd": 0.394,
   "n_spread_sources": 3,
   "n_total_sources": 3,
   "tpt_diag": {
    "spread_panel": -2.6399999999999997,
    "total_panel": 44.21064,
-   "spread_gap_vs_core": 1.78,
-   "total_gap_vs_core": -4.39
+   "spread_gap_vs_core": 0.74,
+   "total_gap_vs_core": -2.11
+  },
+  "method": {
+   "version": "v6 (research-calibrated, 2026-09-04)",
+   "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
+   "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
+   "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
+   "total_pff_implied": "LG + 0.30\u00b7(PSR_home + PSR_away) + DIV + ENV",
+   "total_cole_implied": "LG + 0.30\u00b7(PR_home + PR_away) + DIV + ENV",
+   "div_env": "DIV -0.85 divisional / +0.45 non-divisional; ENV dome/closed +2.0, outdoor -0.5 at league-average wind (-0.18/mph above 8.4 only with a verified forecast), <20\u00b0F -1.0, precipitation 0",
+   "total_blend": "total_core = .38 PFF-implied + .32 nfelo-implied + .30 Cole-implied + EFF, EFF = clip(3.0\u00b7epa_sum_dev, \u00b12.0) (prior-season EPA/play efficiency, both teams, vs league); pace and style adjustments 0 (panel: pace)",
+   "caps": "\u00a75 caps Week 1: spread \u00b12.0, total \u00b12.5 (in-season \u00b12.5/\u00b13.0)",
+   "team_totals": "identity only (home = T/2 - S/2, away = T/2 + S/2); \u00a76 matchup reallocations (explosive, red-zone, pace, PF/PA profile) zeroed by the panel (team totals: overturned); any future reallocation capped \u00b10.5 with spread coherence",
+   "qb": "stint penalty 2.5 (1st start) / 1.5 (2nd-3rd) / 0.5 (4th+) applied NET of what the inputs embed; planned offseason starters 0",
+   "confidence": "tags = distance of the published number to the latest market line (diagnostic; the market is never an input): spread HIGH <1.5, MED to 3.0, LOW beyond; total HIGH <2.5, MED to 5.0, LOW beyond; sigma = sqrt(BASE\u00b2 + D\u00b2), BASE 12.65/13.1; expected real share of a gap \u03bb = 0.27",
+   "rounding": "half-up to .0/.5 (\u00a78); no key-number rounding, no steam lean (panel: market)"
+  },
+  "hfa_rating_paths": 1.75,
+  "hfa_kind": "home",
+  "spread_pff_unclamped": -3.672,
+  "spread_core_before_rest": -3.38,
+  "rest_adj": 0.0,
+  "rest_note": "Week 1: exempt (panel: schedule)",
+  "sleeve_clamp_note": null,
+  "eff_adj": -0.617,
+  "totals_detail": {
+   "LG": 45.0,
+   "DIV": 0.45,
+   "ENV": -0.5,
+   "roof": "outdoors",
+   "R_home_qbfree": 5.016,
+   "R_away_qbfree": 2.278,
+   "GT_home_prior": 45.59,
+   "GT_away_prior": 47.64,
+   "GT_dev": 2.23,
+   "qb_sum_pts": 0.034,
+   "epa_sum_dev": -0.2058,
+   "eff_adj": -0.617,
+   "t_nfelo": 46.373,
+   "t_pff": 47.262,
+   "t_cole": 47.14
+  },
+  "spec_reference": {
+   "spread_pff_spec": -5.607,
+   "spread_cole_spec": -4.185,
+   "spread_core_spec": -4.424,
+   "total_core_spec": 48.596,
+   "hfa_pts_nfelo_spec": 3.685
   }
  },
  {
@@ -149,7 +203,7 @@
    "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
    "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
   },
-  "spread_pff": -3.707,
+  "spread_pff": -4.638,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
    "psr_home": 6.4368175,
@@ -157,9 +211,12 @@
    "psr_qb_home": 5.5,
    "psr_qb_away": 3.5,
    "hfa_pts": -0.18,
-   "rank_model_diag": -4.976
+   "rank_model_diag": -4.976,
+   "hfa_used": 0.75,
+   "hfa_basis": "research HFA on rating paths (v6)",
+   "spread_unclamped": -4.638
   },
-  "spread_cole": -3.819,
+  "spread_cole": -4.75,
   "cole_meta": {
    "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
    "pr_home": 5.7,
@@ -167,10 +224,12 @@
    "betting_pr_home": 4.5,
    "betting_pr_away": 2.7,
    "spread_betting_pr_diag": -1.619,
-   "hfa_pts": -0.18
+   "hfa_pts": -0.18,
+   "hfa_used": 0.75,
+   "hfa_basis": "research HFA on rating paths (v6)"
   },
-  "total_pff_implied": 49.145,
-  "total_cole_implied": 48.59,
+  "total_pff_implied": 48.846,
+  "total_cole_implied": 48.37,
   "market_nfelo_open": -3.5,
   "market_nfelo_current": -3.5,
   "spread_tpt": -2.9599999999999995,
@@ -182,7 +241,7 @@
    "DONC": -4.3,
    "FFW": 2.4
   },
-  "total_nfelo": 47.612,
+  "total_nfelo": 48.784,
   "total_pff": null,
   "total_pff_basis": null,
   "total_dvoa_diag": 46.93,
@@ -218,33 +277,82 @@
    "away_elo": 1.7608
   },
   "nfelo_vs_market_close": 1.5,
-  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
-  "spread_core": -2.939,
+  "build": "v6 research-calibrated three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -3.442,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
    "cole": 0.15,
    "tpt": 0.0
   },
-  "total_core": 48.488,
+  "total_core": 49.615,
   "total_weights": {
    "pff_implied": 0.38,
    "nfelo_implied": 0.32,
    "cole_implied": 0.3,
    "tpt": 0.0
   },
-  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
-  "spread_range": 1.82,
-  "total_range": 1.53,
-  "spread_sd": 1.019,
-  "total_sd": 0.776,
+  "total_basis": "all three totals are \u00a73.2-derived implied totals on the research (v6) formula: LG 45.0 + rating term + DIV -0.85 + ENV +2.0; nfelo path adds GT_dev and QB terms; blend .38/.32/.30 + EFF +0.93; no engine publishes a total",
+  "spread_range": 2.75,
+  "total_range": 0.48,
+  "spread_sd": 1.271,
+  "total_sd": 0.211,
   "n_spread_sources": 3,
   "n_total_sources": 3,
   "tpt_diag": {
    "spread_panel": -2.9599999999999995,
    "total_panel": 46.720624,
-   "spread_gap_vs_core": -0.02,
-   "total_gap_vs_core": -1.77
+   "spread_gap_vs_core": 0.48,
+   "total_gap_vs_core": -2.89
+  },
+  "method": {
+   "version": "v6 (research-calibrated, 2026-09-04)",
+   "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
+   "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
+   "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
+   "total_pff_implied": "LG + 0.30\u00b7(PSR_home + PSR_away) + DIV + ENV",
+   "total_cole_implied": "LG + 0.30\u00b7(PR_home + PR_away) + DIV + ENV",
+   "div_env": "DIV -0.85 divisional / +0.45 non-divisional; ENV dome/closed +2.0, outdoor -0.5 at league-average wind (-0.18/mph above 8.4 only with a verified forecast), <20\u00b0F -1.0, precipitation 0",
+   "total_blend": "total_core = .38 PFF-implied + .32 nfelo-implied + .30 Cole-implied + EFF, EFF = clip(3.0\u00b7epa_sum_dev, \u00b12.0) (prior-season EPA/play efficiency, both teams, vs league); pace and style adjustments 0 (panel: pace)",
+   "caps": "\u00a75 caps Week 1: spread \u00b12.0, total \u00b12.5 (in-season \u00b12.5/\u00b13.0)",
+   "team_totals": "identity only (home = T/2 - S/2, away = T/2 + S/2); \u00a76 matchup reallocations (explosive, red-zone, pace, PF/PA profile) zeroed by the panel (team totals: overturned); any future reallocation capped \u00b10.5 with spread coherence",
+   "qb": "stint penalty 2.5 (1st start) / 1.5 (2nd-3rd) / 0.5 (4th+) applied NET of what the inputs embed; planned offseason starters 0",
+   "confidence": "tags = distance of the published number to the latest market line (diagnostic; the market is never an input): spread HIGH <1.5, MED to 3.0, LOW beyond; total HIGH <2.5, MED to 5.0, LOW beyond; sigma = sqrt(BASE\u00b2 + D\u00b2), BASE 12.65/13.1; expected real share of a gap \u03bb = 0.27",
+   "rounding": "half-up to .0/.5 (\u00a78); no key-number rounding, no steam lean (panel: market)"
+  },
+  "hfa_rating_paths": 0.75,
+  "hfa_kind": "neutral-international",
+  "spread_pff_unclamped": -4.638,
+  "spread_core_before_rest": -3.442,
+  "rest_adj": 0.0,
+  "rest_note": "Week 1: exempt (panel: schedule)",
+  "sleeve_clamp_note": null,
+  "eff_adj": 0.931,
+  "totals_detail": {
+   "LG": 45.0,
+   "DIV": -0.85,
+   "ENV": 2.0,
+   "roof": "dome",
+   "R_home_qbfree": 3.157,
+   "R_away_qbfree": 1.669,
+   "GT_home_prior": 50.82,
+   "GT_away_prior": 47.53,
+   "GT_dev": 7.35,
+   "qb_sum_pts": -0.075,
+   "epa_sum_dev": 0.3105,
+   "eff_adj": 0.931,
+   "t_nfelo": 48.784,
+   "t_pff": 48.846,
+   "t_cole": 48.37
+  },
+  "spec_reference": {
+   "spread_pff_spec": -3.707,
+   "spread_cole_spec": -3.819,
+   "spread_core_spec": -2.939,
+   "total_core_spec": 48.488,
+   "hfa_pts_nfelo_spec": -0.181
   }
  },
  {
@@ -273,7 +381,7 @@
    "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
    "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
   },
-  "spread_pff": 1.837,
+  "spread_pff": 2.5,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
    "psr_home": -2.8553546,
@@ -281,9 +389,12 @@
    "psr_qb_home": 1.5,
    "psr_qb_away": 4.0,
    "hfa_pts": 2.41,
-   "rank_model_diag": 0.607
+   "rank_model_diag": 0.607,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)",
+   "spread_unclamped": 2.5
   },
-  "spread_cole": 1.387,
+  "spread_cole": 2.05,
   "cole_meta": {
    "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
    "pr_home": -2.0,
@@ -291,10 +402,12 @@
    "betting_pr_home": -0.5,
    "betting_pr_away": 3.7,
    "spread_betting_pr_diag": 1.787,
-   "hfa_pts": 2.41
+   "hfa_pts": 2.41,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)"
   },
-  "total_pff_implied": 45.489,
-  "total_cole_implied": 45.93,
+  "total_pff_implied": 44.512,
+  "total_cole_implied": 44.89,
   "market_nfelo_open": 2.5,
   "market_nfelo_current": 2.5,
   "spread_tpt": 2.56,
@@ -306,7 +419,7 @@
    "DONC": 2.7,
    "FFW": 2.0
   },
-  "total_nfelo": 45.805,
+  "total_nfelo": 45.104,
   "total_pff": null,
   "total_pff_basis": null,
   "total_dvoa_diag": 45.827,
@@ -342,33 +455,82 @@
    "away_elo": 4.9933
   },
   "nfelo_vs_market_close": 0.0,
-  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
-  "spread_core": 1.614,
+  "build": "v6 research-calibrated three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": 1.972,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
    "cole": 0.15,
    "tpt": 0.0
   },
-  "total_core": 45.722,
+  "total_core": 45.382,
   "total_weights": {
    "pff_implied": 0.38,
    "nfelo_implied": 0.32,
    "cole_implied": 0.3,
    "tpt": 0.0
   },
-  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
-  "spread_range": 0.45,
-  "total_range": 0.44,
-  "spread_sd": 0.234,
-  "total_sd": 0.227,
+  "total_basis": "all three totals are \u00a73.2-derived implied totals on the research (v6) formula: LG 45.0 + rating term + DIV +0.45 + ENV -0.5; nfelo path adds GT_dev and QB terms; blend .38/.32/.30 + EFF +0.57; no engine publishes a total",
+  "spread_range": 1.0,
+  "total_range": 0.59,
+  "spread_sd": 0.409,
+  "total_sd": 0.245,
   "n_spread_sources": 3,
   "n_total_sources": 3,
   "tpt_diag": {
    "spread_panel": 2.56,
    "total_panel": 46.372096,
-   "spread_gap_vs_core": 0.95,
-   "total_gap_vs_core": 0.65
+   "spread_gap_vs_core": 0.59,
+   "total_gap_vs_core": 0.99
+  },
+  "method": {
+   "version": "v6 (research-calibrated, 2026-09-04)",
+   "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
+   "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
+   "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
+   "total_pff_implied": "LG + 0.30\u00b7(PSR_home + PSR_away) + DIV + ENV",
+   "total_cole_implied": "LG + 0.30\u00b7(PR_home + PR_away) + DIV + ENV",
+   "div_env": "DIV -0.85 divisional / +0.45 non-divisional; ENV dome/closed +2.0, outdoor -0.5 at league-average wind (-0.18/mph above 8.4 only with a verified forecast), <20\u00b0F -1.0, precipitation 0",
+   "total_blend": "total_core = .38 PFF-implied + .32 nfelo-implied + .30 Cole-implied + EFF, EFF = clip(3.0\u00b7epa_sum_dev, \u00b12.0) (prior-season EPA/play efficiency, both teams, vs league); pace and style adjustments 0 (panel: pace)",
+   "caps": "\u00a75 caps Week 1: spread \u00b12.0, total \u00b12.5 (in-season \u00b12.5/\u00b13.0)",
+   "team_totals": "identity only (home = T/2 - S/2, away = T/2 + S/2); \u00a76 matchup reallocations (explosive, red-zone, pace, PF/PA profile) zeroed by the panel (team totals: overturned); any future reallocation capped \u00b10.5 with spread coherence",
+   "qb": "stint penalty 2.5 (1st start) / 1.5 (2nd-3rd) / 0.5 (4th+) applied NET of what the inputs embed; planned offseason starters 0",
+   "confidence": "tags = distance of the published number to the latest market line (diagnostic; the market is never an input): spread HIGH <1.5, MED to 3.0, LOW beyond; total HIGH <2.5, MED to 5.0, LOW beyond; sigma = sqrt(BASE\u00b2 + D\u00b2), BASE 12.65/13.1; expected real share of a gap \u03bb = 0.27",
+   "rounding": "half-up to .0/.5 (\u00a78); no key-number rounding, no steam lean (panel: market)"
+  },
+  "hfa_rating_paths": 1.75,
+  "hfa_kind": "home",
+  "spread_pff_unclamped": 2.5,
+  "spread_core_before_rest": 1.972,
+  "rest_adj": 0.0,
+  "rest_note": "Week 1: exempt (panel: schedule)",
+  "sleeve_clamp_note": null,
+  "eff_adj": 0.568,
+  "totals_detail": {
+   "LG": 45.0,
+   "DIV": 0.45,
+   "ENV": -0.5,
+   "roof": "outdoors",
+   "R_home_qbfree": -1.753,
+   "R_away_qbfree": 1.021,
+   "GT_home_prior": 40.64,
+   "GT_away_prior": 50.35,
+   "GT_dev": -0.01,
+   "qb_sum_pts": 0.32,
+   "epa_sum_dev": 0.1892,
+   "eff_adj": 0.568,
+   "t_nfelo": 45.104,
+   "t_pff": 44.512,
+   "t_cole": 44.89
+  },
+  "spec_reference": {
+   "spread_pff_spec": 1.837,
+   "spread_cole_spec": 1.387,
+   "spread_core_spec": 1.614,
+   "total_core_spec": 45.722,
+   "hfa_pts_nfelo_spec": 2.413
   }
  },
  {
@@ -397,7 +559,7 @@
    "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
    "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
   },
-  "spread_pff": -3.132,
+  "spread_pff": -2.485,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
    "psr_home": -0.1789223,
@@ -405,9 +567,12 @@
    "psr_qb_home": 6.0,
    "psr_qb_away": 3.5,
    "hfa_pts": 2.4,
-   "rank_model_diag": null
+   "rank_model_diag": null,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)",
+   "spread_unclamped": -2.485
   },
-  "spread_cole": -3.897,
+  "spread_cole": -3.25,
   "cole_meta": {
    "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
    "pr_home": 1.4,
@@ -415,10 +580,12 @@
    "betting_pr_home": -0.1,
    "betting_pr_away": -1.8,
    "spread_betting_pr_diag": -4.097,
-   "hfa_pts": 2.4
+   "hfa_pts": 2.4,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)"
   },
-  "total_pff_implied": 45.618,
-  "total_cole_implied": 46.455,
+  "total_pff_implied": 44.622,
+  "total_cole_implied": 45.34,
   "market_nfelo_open": -3.5,
   "market_nfelo_current": -3.5,
   "spread_tpt": -0.7599999999999996,
@@ -430,7 +597,7 @@
    "DONC": -3.3,
    "FFW": 9.4
   },
-  "total_nfelo": 45.764,
+  "total_nfelo": 47.758,
   "total_pff": null,
   "total_pff_basis": null,
   "total_dvoa_diag": 46.174,
@@ -466,33 +633,82 @@
    "away_elo": 2.2242
   },
   "nfelo_vs_market_close": 0.0,
-  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
-  "spread_core": -3.416,
+  "build": "v6 research-calibrated three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -3.067,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
    "cole": 0.15,
    "tpt": 0.0
   },
-  "total_core": 45.916,
+  "total_core": 46.036,
   "total_weights": {
    "pff_implied": 0.38,
    "nfelo_implied": 0.32,
    "cole_implied": 0.3,
    "tpt": 0.0
   },
-  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
-  "spread_range": 0.76,
-  "total_range": 0.84,
-  "spread_sd": 0.383,
-  "total_sd": 0.447,
+  "total_basis": "all three totals are \u00a73.2-derived implied totals on the research (v6) formula: LG 45.0 + rating term + DIV +0.45 + ENV -0.5; nfelo path adds GT_dev and QB terms; blend .38/.32/.30 + EFF +0.19; no engine publishes a total",
+  "spread_range": 1.02,
+  "total_range": 3.14,
+  "spread_sd": 0.432,
+  "total_sd": 1.342,
   "n_spread_sources": 3,
   "n_total_sources": 3,
   "tpt_diag": {
    "spread_panel": -0.7599999999999996,
    "total_panel": 51.47452800000001,
-   "spread_gap_vs_core": 2.66,
-   "total_gap_vs_core": 5.56
+   "spread_gap_vs_core": 2.31,
+   "total_gap_vs_core": 5.44
+  },
+  "method": {
+   "version": "v6 (research-calibrated, 2026-09-04)",
+   "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
+   "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
+   "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
+   "total_pff_implied": "LG + 0.30\u00b7(PSR_home + PSR_away) + DIV + ENV",
+   "total_cole_implied": "LG + 0.30\u00b7(PR_home + PR_away) + DIV + ENV",
+   "div_env": "DIV -0.85 divisional / +0.45 non-divisional; ENV dome/closed +2.0, outdoor -0.5 at league-average wind (-0.18/mph above 8.4 only with a verified forecast), <20\u00b0F -1.0, precipitation 0",
+   "total_blend": "total_core = .38 PFF-implied + .32 nfelo-implied + .30 Cole-implied + EFF, EFF = clip(3.0\u00b7epa_sum_dev, \u00b12.0) (prior-season EPA/play efficiency, both teams, vs league); pace and style adjustments 0 (panel: pace)",
+   "caps": "\u00a75 caps Week 1: spread \u00b12.0, total \u00b12.5 (in-season \u00b12.5/\u00b13.0)",
+   "team_totals": "identity only (home = T/2 - S/2, away = T/2 + S/2); \u00a76 matchup reallocations (explosive, red-zone, pace, PF/PA profile) zeroed by the panel (team totals: overturned); any future reallocation capped \u00b10.5 with spread coherence",
+   "qb": "stint penalty 2.5 (1st start) / 1.5 (2nd-3rd) / 0.5 (4th+) applied NET of what the inputs embed; planned offseason starters 0",
+   "confidence": "tags = distance of the published number to the latest market line (diagnostic; the market is never an input): spread HIGH <1.5, MED to 3.0, LOW beyond; total HIGH <2.5, MED to 5.0, LOW beyond; sigma = sqrt(BASE\u00b2 + D\u00b2), BASE 12.65/13.1; expected real share of a gap \u03bb = 0.27",
+   "rounding": "half-up to .0/.5 (\u00a78); no key-number rounding, no steam lean (panel: market)"
+  },
+  "hfa_rating_paths": 1.75,
+  "hfa_kind": "home",
+  "spread_pff_unclamped": -2.485,
+  "spread_core_before_rest": -3.067,
+  "rest_adj": 0.0,
+  "rest_note": "Week 1: exempt (panel: schedule)",
+  "sleeve_clamp_note": null,
+  "eff_adj": 0.195,
+  "totals_detail": {
+   "LG": 45.0,
+   "DIV": 0.45,
+   "ENV": -0.5,
+   "roof": "outdoors",
+   "R_home_qbfree": -0.205,
+   "R_away_qbfree": -0.67,
+   "GT_home_prior": 53.29,
+   "GT_away_prior": 46.53,
+   "GT_dev": 8.82,
+   "qb_sum_pts": 0.347,
+   "epa_sum_dev": 0.0649,
+   "eff_adj": 0.195,
+   "t_nfelo": 47.758,
+   "t_pff": 44.622,
+   "t_cole": 45.34
+  },
+  "spec_reference": {
+   "spread_pff_spec": -3.132,
+   "spread_cole_spec": -3.897,
+   "spread_core_spec": -3.416,
+   "total_core_spec": 45.916,
+   "hfa_pts_nfelo_spec": 2.397
   }
  },
  {
@@ -521,7 +737,7 @@
    "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
    "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
   },
-  "spread_pff": -8.046,
+  "spread_pff": -7.383,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
    "psr_home": 2.6181462,
@@ -529,9 +745,12 @@
    "psr_qb_home": 3.5,
    "psr_qb_away": 2.0,
    "hfa_pts": 2.41,
-   "rank_model_diag": -7.728
+   "rank_model_diag": -7.728,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)",
+   "spread_unclamped": -7.383
   },
-  "spread_cole": -6.813,
+  "spread_cole": -6.15,
   "cole_meta": {
    "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
    "pr_home": 3.3,
@@ -539,10 +758,12 @@
    "betting_pr_home": 2.3,
    "betting_pr_away": -3.1,
    "spread_betting_pr_diag": -7.813,
-   "hfa_pts": 2.41
+   "hfa_pts": 2.41,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)"
   },
-  "total_pff_implied": 45.861,
-  "total_cole_implied": 46.77,
+  "total_pff_implied": 47.331,
+  "total_cole_implied": 48.11,
   "market_nfelo_open": -7.0,
   "market_nfelo_current": -7.0,
   "spread_tpt": -7.4,
@@ -554,7 +775,7 @@
    "DONC": -8.5,
    "FFW": -3.0
   },
-  "total_nfelo": 46.271,
+  "total_nfelo": 48.35,
   "total_pff": null,
   "total_pff_basis": null,
   "total_dvoa_diag": 45.637,
@@ -590,33 +811,82 @@
    "away_elo": 3.8182
   },
   "nfelo_vs_market_close": 0.0,
-  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
-  "spread_core": -7.38,
+  "build": "v6 research-calibrated three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -7.022,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
    "cole": 0.15,
    "tpt": 0.0
   },
-  "total_core": 46.265,
+  "total_core": 47.435,
   "total_weights": {
    "pff_implied": 0.38,
    "nfelo_implied": 0.32,
    "cole_implied": 0.3,
    "tpt": 0.0
   },
-  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "total_basis": "all three totals are \u00a73.2-derived implied totals on the research (v6) formula: LG 45.0 + rating term + DIV +0.45 + ENV +2.0; nfelo path adds GT_dev and QB terms; blend .38/.32/.30 + EFF -0.46; no engine publishes a total",
   "spread_range": 1.23,
-  "total_range": 0.91,
-  "spread_sd": 0.665,
-  "total_sd": 0.455,
+  "total_range": 1.02,
+  "spread_sd": 0.515,
+  "total_sd": 0.435,
   "n_spread_sources": 3,
   "n_total_sources": 3,
   "tpt_diag": {
    "spread_panel": -7.4,
    "total_panel": 48.70656,
-   "spread_gap_vs_core": -0.02,
-   "total_gap_vs_core": 2.44
+   "spread_gap_vs_core": -0.38,
+   "total_gap_vs_core": 1.27
+  },
+  "method": {
+   "version": "v6 (research-calibrated, 2026-09-04)",
+   "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
+   "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
+   "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
+   "total_pff_implied": "LG + 0.30\u00b7(PSR_home + PSR_away) + DIV + ENV",
+   "total_cole_implied": "LG + 0.30\u00b7(PR_home + PR_away) + DIV + ENV",
+   "div_env": "DIV -0.85 divisional / +0.45 non-divisional; ENV dome/closed +2.0, outdoor -0.5 at league-average wind (-0.18/mph above 8.4 only with a verified forecast), <20\u00b0F -1.0, precipitation 0",
+   "total_blend": "total_core = .38 PFF-implied + .32 nfelo-implied + .30 Cole-implied + EFF, EFF = clip(3.0\u00b7epa_sum_dev, \u00b12.0) (prior-season EPA/play efficiency, both teams, vs league); pace and style adjustments 0 (panel: pace)",
+   "caps": "\u00a75 caps Week 1: spread \u00b12.0, total \u00b12.5 (in-season \u00b12.5/\u00b13.0)",
+   "team_totals": "identity only (home = T/2 - S/2, away = T/2 + S/2); \u00a76 matchup reallocations (explosive, red-zone, pace, PF/PA profile) zeroed by the panel (team totals: overturned); any future reallocation capped \u00b10.5 with spread coherence",
+   "qb": "stint penalty 2.5 (1st start) / 1.5 (2nd-3rd) / 0.5 (4th+) applied NET of what the inputs embed; planned offseason starters 0",
+   "confidence": "tags = distance of the published number to the latest market line (diagnostic; the market is never an input): spread HIGH <1.5, MED to 3.0, LOW beyond; total HIGH <2.5, MED to 5.0, LOW beyond; sigma = sqrt(BASE\u00b2 + D\u00b2), BASE 12.65/13.1; expected real share of a gap \u03bb = 0.27",
+   "rounding": "half-up to .0/.5 (\u00a78); no key-number rounding, no steam lean (panel: market)"
+  },
+  "hfa_rating_paths": 1.75,
+  "hfa_kind": "home",
+  "spread_pff_unclamped": -7.383,
+  "spread_core_before_rest": -7.022,
+  "rest_adj": 0.0,
+  "rest_note": "Week 1: exempt (panel: schedule)",
+  "sleeve_clamp_note": null,
+  "eff_adj": -0.456,
+  "totals_detail": {
+   "LG": 45.0,
+   "DIV": 0.45,
+   "ENV": 2.0,
+   "roof": "dome",
+   "R_home_qbfree": 2.419,
+   "R_away_qbfree": -1.779,
+   "GT_home_prior": 52.58,
+   "GT_away_prior": 40.53,
+   "GT_dev": 2.11,
+   "qb_sum_pts": 0.282,
+   "epa_sum_dev": -0.1519,
+   "eff_adj": -0.456,
+   "t_nfelo": 48.35,
+   "t_pff": 47.331,
+   "t_cole": 48.11
+  },
+  "spec_reference": {
+   "spread_pff_spec": -8.046,
+   "spread_cole_spec": -6.813,
+   "spread_core_spec": -7.38,
+   "total_core_spec": 46.265,
+   "hfa_pts_nfelo_spec": 2.413
   }
  },
  {
@@ -645,7 +915,7 @@
    "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
    "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
   },
-  "spread_pff": 0.324,
+  "spread_pff": -0.285,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
    "psr_home": 3.1460139,
@@ -653,9 +923,12 @@
    "psr_qb_home": 3.5,
    "psr_qb_away": 7.0,
    "hfa_pts": 1.14,
-   "rank_model_diag": null
+   "rank_model_diag": null,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)",
+   "spread_unclamped": -0.285
   },
-  "spread_cole": 0.359,
+  "spread_cole": -0.25,
   "cole_meta": {
    "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
    "pr_home": 2.3,
@@ -663,10 +936,12 @@
    "betting_pr_home": 0.7,
    "betting_pr_away": 3.8,
    "spread_betting_pr_diag": 1.959,
-   "hfa_pts": 1.14
+   "hfa_pts": 1.14,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)"
   },
-  "total_pff_implied": 48.715,
-  "total_cole_implied": 48.135,
+  "total_pff_implied": 49.777,
+  "total_cole_implied": 49.28,
   "market_nfelo_open": 1.5,
   "market_nfelo_current": 1.5,
   "spread_tpt": 1.32,
@@ -678,7 +953,7 @@
    "DONC": 1.7,
    "FFW": -0.2
   },
-  "total_nfelo": 47.721,
+  "total_nfelo": 48.009,
   "total_pff": null,
   "total_pff_basis": null,
   "total_dvoa_diag": 47.048,
@@ -714,33 +989,82 @@
    "away_elo": 6.8981
   },
   "nfelo_vs_market_close": 0.0,
-  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
-  "spread_core": 0.87,
+  "build": "v6 research-calibrated three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": 0.541,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
    "cole": 0.15,
    "tpt": 0.0
   },
-  "total_core": 48.223,
+  "total_core": 48.595,
   "total_weights": {
    "pff_implied": 0.38,
    "nfelo_implied": 0.32,
    "cole_implied": 0.3,
    "tpt": 0.0
   },
-  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
-  "spread_range": 1.18,
-  "total_range": 0.99,
-  "spread_sd": 0.669,
-  "total_sd": 0.499,
+  "total_basis": "all three totals are \u00a73.2-derived implied totals on the research (v6) formula: LG 45.0 + rating term + DIV +0.45 + ENV +2.0; nfelo path adds GT_dev and QB terms; blend .38/.32/.30 + EFF -0.47; no engine publishes a total",
+  "spread_range": 1.79,
+  "total_range": 1.77,
+  "spread_sd": 0.833,
+  "total_sd": 0.745,
   "n_spread_sources": 3,
   "n_total_sources": 3,
   "tpt_diag": {
    "spread_panel": 1.32,
    "total_panel": 45.58488,
-   "spread_gap_vs_core": 0.45,
-   "total_gap_vs_core": -2.64
+   "spread_gap_vs_core": 0.78,
+   "total_gap_vs_core": -3.01
+  },
+  "method": {
+   "version": "v6 (research-calibrated, 2026-09-04)",
+   "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
+   "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
+   "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
+   "total_pff_implied": "LG + 0.30\u00b7(PSR_home + PSR_away) + DIV + ENV",
+   "total_cole_implied": "LG + 0.30\u00b7(PR_home + PR_away) + DIV + ENV",
+   "div_env": "DIV -0.85 divisional / +0.45 non-divisional; ENV dome/closed +2.0, outdoor -0.5 at league-average wind (-0.18/mph above 8.4 only with a verified forecast), <20\u00b0F -1.0, precipitation 0",
+   "total_blend": "total_core = .38 PFF-implied + .32 nfelo-implied + .30 Cole-implied + EFF, EFF = clip(3.0\u00b7epa_sum_dev, \u00b12.0) (prior-season EPA/play efficiency, both teams, vs league); pace and style adjustments 0 (panel: pace)",
+   "caps": "\u00a75 caps Week 1: spread \u00b12.0, total \u00b12.5 (in-season \u00b12.5/\u00b13.0)",
+   "team_totals": "identity only (home = T/2 - S/2, away = T/2 + S/2); \u00a76 matchup reallocations (explosive, red-zone, pace, PF/PA profile) zeroed by the panel (team totals: overturned); any future reallocation capped \u00b10.5 with spread coherence",
+   "qb": "stint penalty 2.5 (1st start) / 1.5 (2nd-3rd) / 0.5 (4th+) applied NET of what the inputs embed; planned offseason starters 0",
+   "confidence": "tags = distance of the published number to the latest market line (diagnostic; the market is never an input): spread HIGH <1.5, MED to 3.0, LOW beyond; total HIGH <2.5, MED to 5.0, LOW beyond; sigma = sqrt(BASE\u00b2 + D\u00b2), BASE 12.65/13.1; expected real share of a gap \u03bb = 0.27",
+   "rounding": "half-up to .0/.5 (\u00a78); no key-number rounding, no steam lean (panel: market)"
+  },
+  "hfa_rating_paths": 1.75,
+  "hfa_kind": "home",
+  "spread_pff_unclamped": -0.285,
+  "spread_core_before_rest": 0.541,
+  "rest_adj": 0.0,
+  "rest_note": "Week 1: exempt (panel: schedule)",
+  "sleeve_clamp_note": null,
+  "eff_adj": -0.467,
+  "totals_detail": {
+   "LG": 45.0,
+   "DIV": 0.45,
+   "ENV": 2.0,
+   "roof": "retractable",
+   "R_home_qbfree": 1.89,
+   "R_away_qbfree": 3.027,
+   "GT_home_prior": 41.11,
+   "GT_away_prior": 49.76,
+   "GT_dev": -0.13,
+   "qb_sum_pts": 0.147,
+   "epa_sum_dev": -0.1558,
+   "eff_adj": -0.467,
+   "t_nfelo": 48.009,
+   "t_pff": 49.777,
+   "t_cole": 49.28
+  },
+  "spec_reference": {
+   "spread_pff_spec": 0.324,
+   "spread_cole_spec": 0.359,
+   "spread_core_spec": 0.87,
+   "total_core_spec": 48.223,
+   "hfa_pts_nfelo_spec": 1.141
   }
  },
  {
@@ -769,7 +1093,7 @@
    "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
    "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
   },
-  "spread_pff": 2.458,
+  "spread_pff": 3.105,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
    "psr_home": -1.2491012,
@@ -777,9 +1101,12 @@
    "psr_qb_home": 2.0,
    "psr_qb_away": 7.0,
    "hfa_pts": 2.4,
-   "rank_model_diag": 2.659
+   "rank_model_diag": 2.659,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)",
+   "spread_unclamped": 3.105
   },
-  "spread_cole": 1.003,
+  "spread_cole": 1.65,
   "cole_meta": {
    "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
    "pr_home": -0.8,
@@ -787,10 +1114,12 @@
    "betting_pr_home": -2.6,
    "betting_pr_away": 2.7,
    "spread_betting_pr_diag": 2.903,
-   "hfa_pts": 2.4
+   "hfa_pts": 2.4,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)"
   },
-  "total_pff_implied": 46.825,
-  "total_cole_implied": 46.63,
+  "total_pff_implied": 48.157,
+  "total_cole_implied": 47.99,
   "market_nfelo_open": 3.5,
   "market_nfelo_current": 3.5,
   "spread_tpt": 2.88,
@@ -802,7 +1131,7 @@
    "DONC": 4.5,
    "FFW": -3.6
   },
-  "total_nfelo": 46.56,
+  "total_nfelo": 50.592,
   "total_pff": null,
   "total_pff_basis": null,
   "total_dvoa_diag": 46.31,
@@ -838,33 +1167,82 @@
    "away_elo": 10.0991
   },
   "nfelo_vs_market_close": -2.0,
-  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
-  "spread_core": 1.799,
+  "build": "v6 research-calibrated three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": 2.148,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
    "cole": 0.15,
    "tpt": 0.0
   },
-  "total_core": 46.682,
+  "total_core": 48.863,
   "total_weights": {
    "pff_implied": 0.38,
    "nfelo_implied": 0.32,
    "cole_implied": 0.3,
    "tpt": 0.0
   },
-  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
-  "spread_range": 1.46,
-  "total_range": 0.27,
-  "spread_sd": 0.74,
-  "total_sd": 0.137,
+  "total_basis": "all three totals are \u00a73.2-derived implied totals on the research (v6) formula: LG 45.0 + rating term + DIV +0.45 + ENV +2.0; nfelo path adds GT_dev and QB terms; blend .38/.32/.30 + EFF -0.02; no engine publishes a total",
+  "spread_range": 1.6,
+  "total_range": 2.6,
+  "spread_sd": 0.724,
+  "total_sd": 1.189,
   "n_spread_sources": 3,
   "n_total_sources": 3,
   "tpt_diag": {
    "spread_panel": 2.88,
    "total_panel": 50.8912,
-   "spread_gap_vs_core": 1.08,
-   "total_gap_vs_core": 4.21
+   "spread_gap_vs_core": 0.73,
+   "total_gap_vs_core": 2.03
+  },
+  "method": {
+   "version": "v6 (research-calibrated, 2026-09-04)",
+   "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
+   "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
+   "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
+   "total_pff_implied": "LG + 0.30\u00b7(PSR_home + PSR_away) + DIV + ENV",
+   "total_cole_implied": "LG + 0.30\u00b7(PR_home + PR_away) + DIV + ENV",
+   "div_env": "DIV -0.85 divisional / +0.45 non-divisional; ENV dome/closed +2.0, outdoor -0.5 at league-average wind (-0.18/mph above 8.4 only with a verified forecast), <20\u00b0F -1.0, precipitation 0",
+   "total_blend": "total_core = .38 PFF-implied + .32 nfelo-implied + .30 Cole-implied + EFF, EFF = clip(3.0\u00b7epa_sum_dev, \u00b12.0) (prior-season EPA/play efficiency, both teams, vs league); pace and style adjustments 0 (panel: pace)",
+   "caps": "\u00a75 caps Week 1: spread \u00b12.0, total \u00b12.5 (in-season \u00b12.5/\u00b13.0)",
+   "team_totals": "identity only (home = T/2 - S/2, away = T/2 + S/2); \u00a76 matchup reallocations (explosive, red-zone, pace, PF/PA profile) zeroed by the panel (team totals: overturned); any future reallocation capped \u00b10.5 with spread coherence",
+   "qb": "stint penalty 2.5 (1st start) / 1.5 (2nd-3rd) / 0.5 (4th+) applied NET of what the inputs embed; planned offseason starters 0",
+   "confidence": "tags = distance of the published number to the latest market line (diagnostic; the market is never an input): spread HIGH <1.5, MED to 3.0, LOW beyond; total HIGH <2.5, MED to 5.0, LOW beyond; sigma = sqrt(BASE\u00b2 + D\u00b2), BASE 12.65/13.1; expected real share of a gap \u03bb = 0.27",
+   "rounding": "half-up to .0/.5 (\u00a78); no key-number rounding, no steam lean (panel: market)"
+  },
+  "hfa_rating_paths": 1.75,
+  "hfa_kind": "home",
+  "spread_pff_unclamped": 3.105,
+  "spread_core_before_rest": 2.148,
+  "rest_adj": 0.0,
+  "rest_note": "Week 1: exempt (panel: schedule)",
+  "sleeve_clamp_note": null,
+  "eff_adj": -0.023,
+  "totals_detail": {
+   "LG": 45.0,
+   "DIV": 0.45,
+   "ENV": 2.0,
+   "roof": "retractable",
+   "R_home_qbfree": -0.51,
+   "R_away_qbfree": 1.825,
+   "GT_home_prior": 51.65,
+   "GT_away_prior": 48.35,
+   "GT_dev": 9.0,
+   "qb_sum_pts": 0.431,
+   "epa_sum_dev": -0.0077,
+   "eff_adj": -0.023,
+   "t_nfelo": 50.592,
+   "t_pff": 48.157,
+   "t_cole": 47.99
+  },
+  "spec_reference": {
+   "spread_pff_spec": 2.458,
+   "spread_cole_spec": 1.003,
+   "spread_core_spec": 1.799,
+   "total_core_spec": 46.682,
+   "hfa_pts_nfelo_spec": 2.397
   }
  },
  {
@@ -893,7 +1271,7 @@
    "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
    "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
   },
-  "spread_pff": -9.196,
+  "spread_pff": -9.169,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
    "psr_home": 1.6578419,
@@ -901,9 +1279,12 @@
    "psr_qb_home": 4.5,
    "psr_qb_away": 0.5,
    "hfa_pts": 1.78,
-   "rank_model_diag": null
+   "rank_model_diag": null,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)",
+   "spread_unclamped": -9.169
   },
-  "spread_cole": -7.577,
+  "spread_cole": -7.55,
   "cole_meta": {
    "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
    "pr_home": 2.0,
@@ -911,10 +1292,12 @@
    "betting_pr_home": 0.3,
    "betting_pr_away": -5.6,
    "spread_betting_pr_diag": -7.677,
-   "hfa_pts": 1.78
+   "hfa_pts": 1.78,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)"
   },
-  "total_pff_implied": 44.564,
-  "total_cole_implied": 45.37,
+  "total_pff_implied": 43.719,
+  "total_cole_implied": 44.41,
   "market_nfelo_open": -7.5,
   "market_nfelo_current": -7.5,
   "spread_tpt": -10.14,
@@ -926,7 +1309,7 @@
    "DONC": -11.8,
    "FFW": -3.5
   },
-  "total_nfelo": 45.948,
+  "total_nfelo": 43.427,
   "total_pff": null,
   "total_pff_basis": null,
   "total_dvoa_diag": 45.304,
@@ -962,33 +1345,82 @@
    "away_elo": -8.8037
   },
   "nfelo_vs_market_close": 0.0,
-  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
-  "spread_core": -7.483,
+  "build": "v6 research-calibrated three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -7.468,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
    "cole": 0.15,
    "tpt": 0.0
   },
-  "total_core": 45.249,
+  "total_core": 42.613,
   "total_weights": {
    "pff_implied": 0.38,
    "nfelo_implied": 0.32,
    "cole_implied": 0.3,
    "tpt": 0.0
   },
-  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
-  "spread_range": 3.2,
-  "total_range": 1.38,
-  "spread_sd": 1.598,
-  "total_sd": 0.695,
+  "total_basis": "all three totals are \u00a73.2-derived implied totals on the research (v6) formula: LG 45.0 + rating term + DIV +0.45 + ENV -0.5; nfelo path adds GT_dev and QB terms; blend .38/.32/.30 + EFF -1.22; no engine publishes a total",
+  "spread_range": 3.17,
+  "total_range": 0.98,
+  "spread_sd": 1.294,
+  "total_sd": 0.412,
   "n_spread_sources": 3,
   "n_total_sources": 3,
   "tpt_diag": {
    "spread_panel": -10.14,
    "total_panel": 41.849936,
-   "spread_gap_vs_core": -2.66,
-   "total_gap_vs_core": -3.4
+   "spread_gap_vs_core": -2.67,
+   "total_gap_vs_core": -0.76
+  },
+  "method": {
+   "version": "v6 (research-calibrated, 2026-09-04)",
+   "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
+   "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
+   "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
+   "total_pff_implied": "LG + 0.30\u00b7(PSR_home + PSR_away) + DIV + ENV",
+   "total_cole_implied": "LG + 0.30\u00b7(PR_home + PR_away) + DIV + ENV",
+   "div_env": "DIV -0.85 divisional / +0.45 non-divisional; ENV dome/closed +2.0, outdoor -0.5 at league-average wind (-0.18/mph above 8.4 only with a verified forecast), <20\u00b0F -1.0, precipitation 0",
+   "total_blend": "total_core = .38 PFF-implied + .32 nfelo-implied + .30 Cole-implied + EFF, EFF = clip(3.0\u00b7epa_sum_dev, \u00b12.0) (prior-season EPA/play efficiency, both teams, vs league); pace and style adjustments 0 (panel: pace)",
+   "caps": "\u00a75 caps Week 1: spread \u00b12.0, total \u00b12.5 (in-season \u00b12.5/\u00b13.0)",
+   "team_totals": "identity only (home = T/2 - S/2, away = T/2 + S/2); \u00a76 matchup reallocations (explosive, red-zone, pace, PF/PA profile) zeroed by the panel (team totals: overturned); any future reallocation capped \u00b10.5 with spread coherence",
+   "qb": "stint penalty 2.5 (1st start) / 1.5 (2nd-3rd) / 0.5 (4th+) applied NET of what the inputs embed; planned offseason starters 0",
+   "confidence": "tags = distance of the published number to the latest market line (diagnostic; the market is never an input): spread HIGH <1.5, MED to 3.0, LOW beyond; total HIGH <2.5, MED to 5.0, LOW beyond; sigma = sqrt(BASE\u00b2 + D\u00b2), BASE 12.65/13.1; expected real share of a gap \u03bb = 0.27",
+   "rounding": "half-up to .0/.5 (\u00a78); no key-number rounding, no steam lean (panel: market)"
+  },
+  "hfa_rating_paths": 1.75,
+  "hfa_kind": "home",
+  "spread_pff_unclamped": -9.169,
+  "spread_core_before_rest": -7.468,
+  "rest_adj": 0.0,
+  "rest_note": "Week 1: exempt (panel: schedule)",
+  "sleeve_clamp_note": null,
+  "eff_adj": -1.22,
+  "totals_detail": {
+   "LG": 45.0,
+   "DIV": 0.45,
+   "ENV": -0.5,
+   "roof": "outdoors",
+   "R_home_qbfree": 1.765,
+   "R_away_qbfree": -1.566,
+   "GT_home_prior": 47.64,
+   "GT_away_prior": 38.7,
+   "GT_dev": -4.66,
+   "qb_sum_pts": -0.201,
+   "epa_sum_dev": -0.4068,
+   "eff_adj": -1.22,
+   "t_nfelo": 43.427,
+   "t_pff": 43.719,
+   "t_cole": 44.41
+  },
+  "spec_reference": {
+   "spread_pff_spec": -9.196,
+   "spread_cole_spec": -7.577,
+   "spread_core_spec": -7.483,
+   "total_core_spec": 45.249,
+   "hfa_pts_nfelo_spec": 1.777
   }
  },
  {
@@ -1017,7 +1449,7 @@
    "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
    "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
   },
-  "spread_pff": -4.674,
+  "spread_pff": -4.027,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
    "psr_home": -0.4983081,
@@ -1025,9 +1457,12 @@
    "psr_qb_home": 2.5,
    "psr_qb_away": 1.5,
    "hfa_pts": 2.4,
-   "rank_model_diag": -3.189
+   "rank_model_diag": -3.189,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)",
+   "spread_unclamped": -4.027
   },
-  "spread_cole": -2.297,
+  "spread_cole": -1.65,
   "cole_meta": {
    "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
    "pr_home": -1.3,
@@ -1035,10 +1470,12 @@
    "betting_pr_home": 0.7,
    "betting_pr_away": -0.6,
    "spread_betting_pr_diag": -3.697,
-   "hfa_pts": 2.4
+   "hfa_pts": 2.4,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)"
   },
-  "total_pff_implied": 44.854,
-  "total_cole_implied": 45.125,
+  "total_pff_implied": 43.968,
+  "total_cole_implied": 44.2,
   "market_nfelo_open": -3.0,
   "market_nfelo_current": -3.0,
   "spread_tpt": -2.38,
@@ -1050,7 +1487,7 @@
    "DONC": -3.1,
    "FFW": 0.5
   },
-  "total_nfelo": 45.798,
+  "total_nfelo": 45.204,
   "total_pff": null,
   "total_pff_basis": null,
   "total_dvoa_diag": 45.304,
@@ -1086,33 +1523,82 @@
    "away_elo": 4.6028
   },
   "nfelo_vs_market_close": 0.0,
-  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
-  "spread_core": -3.547,
+  "build": "v6 research-calibrated three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -3.198,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
    "cole": 0.15,
    "tpt": 0.0
   },
-  "total_core": 45.237,
+  "total_core": 44.279,
   "total_weights": {
    "pff_implied": 0.38,
    "nfelo_implied": 0.32,
    "cole_implied": 0.3,
    "tpt": 0.0
   },
-  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "total_basis": "all three totals are \u00a73.2-derived implied totals on the research (v6) formula: LG 45.0 + rating term + DIV +0.45 + ENV -0.5; nfelo path adds GT_dev and QB terms; blend .38/.32/.30 + EFF -0.15; no engine publishes a total",
   "spread_range": 2.38,
-  "total_range": 0.94,
-  "spread_sd": 1.221,
-  "total_sd": 0.486,
+  "total_range": 1.24,
+  "spread_sd": 0.973,
+  "total_sd": 0.537,
   "n_spread_sources": 3,
   "n_total_sources": 3,
   "tpt_diag": {
    "spread_panel": -2.38,
    "total_panel": 42.322239999999994,
-   "spread_gap_vs_core": 1.17,
-   "total_gap_vs_core": -2.91
+   "spread_gap_vs_core": 0.82,
+   "total_gap_vs_core": -1.96
+  },
+  "method": {
+   "version": "v6 (research-calibrated, 2026-09-04)",
+   "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
+   "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
+   "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
+   "total_pff_implied": "LG + 0.30\u00b7(PSR_home + PSR_away) + DIV + ENV",
+   "total_cole_implied": "LG + 0.30\u00b7(PR_home + PR_away) + DIV + ENV",
+   "div_env": "DIV -0.85 divisional / +0.45 non-divisional; ENV dome/closed +2.0, outdoor -0.5 at league-average wind (-0.18/mph above 8.4 only with a verified forecast), <20\u00b0F -1.0, precipitation 0",
+   "total_blend": "total_core = .38 PFF-implied + .32 nfelo-implied + .30 Cole-implied + EFF, EFF = clip(3.0\u00b7epa_sum_dev, \u00b12.0) (prior-season EPA/play efficiency, both teams, vs league); pace and style adjustments 0 (panel: pace)",
+   "caps": "\u00a75 caps Week 1: spread \u00b12.0, total \u00b12.5 (in-season \u00b12.5/\u00b13.0)",
+   "team_totals": "identity only (home = T/2 - S/2, away = T/2 + S/2); \u00a76 matchup reallocations (explosive, red-zone, pace, PF/PA profile) zeroed by the panel (team totals: overturned); any future reallocation capped \u00b10.5 with spread coherence",
+   "qb": "stint penalty 2.5 (1st start) / 1.5 (2nd-3rd) / 0.5 (4th+) applied NET of what the inputs embed; planned offseason starters 0",
+   "confidence": "tags = distance of the published number to the latest market line (diagnostic; the market is never an input): spread HIGH <1.5, MED to 3.0, LOW beyond; total HIGH <2.5, MED to 5.0, LOW beyond; sigma = sqrt(BASE\u00b2 + D\u00b2), BASE 12.65/13.1; expected real share of a gap \u03bb = 0.27",
+   "rounding": "half-up to .0/.5 (\u00a78); no key-number rounding, no steam lean (panel: market)"
+  },
+  "hfa_rating_paths": 1.75,
+  "hfa_kind": "home",
+  "spread_pff_unclamped": -4.027,
+  "spread_core_before_rest": -3.198,
+  "rest_adj": 0.0,
+  "rest_note": "Week 1: exempt (panel: schedule)",
+  "sleeve_clamp_note": null,
+  "eff_adj": -0.154,
+  "totals_detail": {
+   "LG": 45.0,
+   "DIV": 0.45,
+   "ENV": -0.5,
+   "roof": "outdoors",
+   "R_home_qbfree": -0.325,
+   "R_away_qbfree": -0.846,
+   "GT_home_prior": 46.11,
+   "GT_away_prior": 44.35,
+   "GT_dev": -0.54,
+   "qb_sum_pts": 0.741,
+   "epa_sum_dev": -0.0513,
+   "eff_adj": -0.154,
+   "t_nfelo": 45.204,
+   "t_pff": 43.968,
+   "t_cole": 44.2
+  },
+  "spec_reference": {
+   "spread_pff_spec": -4.674,
+   "spread_cole_spec": -2.297,
+   "spread_core_spec": -3.547,
+   "total_core_spec": 45.237,
+   "hfa_pts_nfelo_spec": 2.397
   }
  },
  {
@@ -1141,7 +1627,7 @@
    "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
    "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
   },
-  "spread_pff": -3.874,
+  "spread_pff": -3.863,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
    "psr_home": -4.1254688,
@@ -1149,9 +1635,12 @@
    "psr_qb_home": 1.5,
    "psr_qb_away": 3.0,
    "hfa_pts": 1.76,
-   "rank_model_diag": null
+   "rank_model_diag": null,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)",
+   "spread_unclamped": -3.863
   },
-  "spread_cole": -1.761,
+  "spread_cole": -1.75,
   "cole_meta": {
    "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
    "pr_home": -5.9,
@@ -1159,10 +1648,12 @@
    "betting_pr_home": -4.3,
    "betting_pr_away": -5.1,
    "spread_betting_pr_diag": -2.561,
-   "hfa_pts": 1.76
+   "hfa_pts": 1.76,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)"
   },
-  "total_pff_implied": 42.373,
-  "total_cole_implied": 41.87,
+  "total_pff_implied": 41.841,
+  "total_cole_implied": 41.41,
   "market_nfelo_open": -3.0,
   "market_nfelo_current": -3.0,
   "spread_tpt": -3.1,
@@ -1174,7 +1665,7 @@
    "DONC": -4.7,
    "FFW": 3.3
   },
-  "total_nfelo": 43.185,
+  "total_nfelo": 44.445,
   "total_pff": null,
   "total_pff_basis": null,
   "total_dvoa_diag": 44.992,
@@ -1210,33 +1701,82 @@
    "away_elo": -2.2518
   },
   "nfelo_vs_market_close": 0.0,
-  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
-  "spread_core": -3.155,
+  "build": "v6 research-calibrated three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -3.149,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
    "cole": 0.15,
    "tpt": 0.0
   },
-  "total_core": 42.482,
+  "total_core": 42.418,
   "total_weights": {
    "pff_implied": 0.38,
    "nfelo_implied": 0.32,
    "cole_implied": 0.3,
    "tpt": 0.0
   },
-  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "total_basis": "all three totals are \u00a73.2-derived implied totals on the research (v6) formula: LG 45.0 + rating term + DIV +0.45 + ENV -0.5; nfelo path adds GT_dev and QB terms; blend .38/.32/.30 + EFF -0.13; no engine publishes a total",
   "spread_range": 2.11,
-  "total_range": 1.32,
-  "spread_sd": 1.062,
-  "total_sd": 0.664,
+  "total_range": 3.04,
+  "spread_sd": 0.867,
+  "total_sd": 1.341,
   "n_spread_sources": 3,
   "n_total_sources": 3,
   "tpt_diag": {
    "spread_panel": -3.1,
    "total_panel": 40.637216,
    "spread_gap_vs_core": 0.05,
-   "total_gap_vs_core": -1.84
+   "total_gap_vs_core": -1.78
+  },
+  "method": {
+   "version": "v6 (research-calibrated, 2026-09-04)",
+   "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
+   "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
+   "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
+   "total_pff_implied": "LG + 0.30\u00b7(PSR_home + PSR_away) + DIV + ENV",
+   "total_cole_implied": "LG + 0.30\u00b7(PR_home + PR_away) + DIV + ENV",
+   "div_env": "DIV -0.85 divisional / +0.45 non-divisional; ENV dome/closed +2.0, outdoor -0.5 at league-average wind (-0.18/mph above 8.4 only with a verified forecast), <20\u00b0F -1.0, precipitation 0",
+   "total_blend": "total_core = .38 PFF-implied + .32 nfelo-implied + .30 Cole-implied + EFF, EFF = clip(3.0\u00b7epa_sum_dev, \u00b12.0) (prior-season EPA/play efficiency, both teams, vs league); pace and style adjustments 0 (panel: pace)",
+   "caps": "\u00a75 caps Week 1: spread \u00b12.0, total \u00b12.5 (in-season \u00b12.5/\u00b13.0)",
+   "team_totals": "identity only (home = T/2 - S/2, away = T/2 + S/2); \u00a76 matchup reallocations (explosive, red-zone, pace, PF/PA profile) zeroed by the panel (team totals: overturned); any future reallocation capped \u00b10.5 with spread coherence",
+   "qb": "stint penalty 2.5 (1st start) / 1.5 (2nd-3rd) / 0.5 (4th+) applied NET of what the inputs embed; planned offseason starters 0",
+   "confidence": "tags = distance of the published number to the latest market line (diagnostic; the market is never an input): spread HIGH <1.5, MED to 3.0, LOW beyond; total HIGH <2.5, MED to 5.0, LOW beyond; sigma = sqrt(BASE\u00b2 + D\u00b2), BASE 12.65/13.1; expected real share of a gap \u03bb = 0.27",
+   "rounding": "half-up to .0/.5 (\u00a78); no key-number rounding, no steam lean (panel: market)"
+  },
+  "hfa_rating_paths": 1.75,
+  "hfa_kind": "home",
+  "spread_pff_unclamped": -3.863,
+  "spread_core_before_rest": -3.149,
+  "rest_adj": 0.0,
+  "rest_note": "Week 1: exempt (panel: schedule)",
+  "sleeve_clamp_note": null,
+  "eff_adj": -0.127,
+  "totals_detail": {
+   "LG": 45.0,
+   "DIV": 0.45,
+   "ENV": -0.5,
+   "roof": "outdoors",
+   "R_home_qbfree": -3.533,
+   "R_away_qbfree": -4.305,
+   "GT_home_prior": 44.83,
+   "GT_away_prior": 47.24,
+   "GT_dev": 1.07,
+   "qb_sum_pts": -0.058,
+   "epa_sum_dev": -0.0422,
+   "eff_adj": -0.127,
+   "t_nfelo": 44.445,
+   "t_pff": 41.841,
+   "t_cole": 41.41
+  },
+  "spec_reference": {
+   "spread_pff_spec": -3.874,
+   "spread_cole_spec": -1.761,
+   "spread_core_spec": -3.155,
+   "total_core_spec": 42.482,
+   "hfa_pts_nfelo_spec": 1.761
   }
  },
  {
@@ -1265,7 +1805,7 @@
    "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
    "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
   },
-  "spread_pff": -12.75,
+  "spread_pff": -12.103,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
    "psr_home": 3.2323818,
@@ -1273,9 +1813,12 @@
    "psr_qb_home": 6.5,
    "psr_qb_away": 1.5,
    "hfa_pts": 2.4,
-   "rank_model_diag": -10.038
+   "rank_model_diag": -10.038,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)",
+   "spread_unclamped": -12.103
   },
-  "spread_cole": -8.997,
+  "spread_cole": -8.35,
   "cole_meta": {
    "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
    "pr_home": 0.9,
@@ -1283,10 +1826,12 @@
    "betting_pr_home": 2.5,
    "betting_pr_away": -6.3,
    "spread_betting_pr_diag": -11.197,
-   "hfa_pts": 2.4
+   "hfa_pts": 2.4,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)"
   },
-  "total_pff_implied": 44.639,
-  "total_cole_implied": 44.32,
+  "total_pff_implied": 46.284,
+  "total_cole_implied": 46.01,
   "market_nfelo_open": -11.5,
   "market_nfelo_current": -11.5,
   "spread_tpt": -10.440000000000001,
@@ -1298,7 +1843,7 @@
    "DONC": -12.3,
    "FFW": -3.0
   },
-  "total_nfelo": 44.745,
+  "total_nfelo": 46.913,
   "total_pff": null,
   "total_pff_basis": null,
   "total_dvoa_diag": 45.918,
@@ -1334,33 +1879,82 @@
    "away_elo": -11.3121
   },
   "nfelo_vs_market_close": 3.0,
-  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
-  "spread_core": -10.462,
+  "build": "v6 research-calibrated three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -10.113,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
    "cole": 0.15,
    "tpt": 0.0
   },
-  "total_core": 44.577,
+  "total_core": 46.081,
   "total_weights": {
    "pff_implied": 0.38,
    "nfelo_implied": 0.32,
    "cole_implied": 0.3,
    "tpt": 0.0
   },
-  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "total_basis": "all three totals are \u00a73.2-derived implied totals on the research (v6) formula: LG 45.0 + rating term + DIV +0.45 + ENV +2.0; nfelo path adds GT_dev and QB terms; blend .38/.32/.30 + EFF -0.32; no engine publishes a total",
   "spread_range": 3.75,
-  "total_range": 0.42,
-  "spread_sd": 2.166,
-  "total_sd": 0.221,
+  "total_range": 0.9,
+  "spread_sd": 1.637,
+  "total_sd": 0.378,
   "n_spread_sources": 3,
   "n_total_sources": 3,
   "tpt_diag": {
    "spread_panel": -10.440000000000001,
    "total_panel": 44.761104,
-   "spread_gap_vs_core": 0.02,
-   "total_gap_vs_core": 0.18
+   "spread_gap_vs_core": -0.33,
+   "total_gap_vs_core": -1.32
+  },
+  "method": {
+   "version": "v6 (research-calibrated, 2026-09-04)",
+   "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
+   "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
+   "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
+   "total_pff_implied": "LG + 0.30\u00b7(PSR_home + PSR_away) + DIV + ENV",
+   "total_cole_implied": "LG + 0.30\u00b7(PR_home + PR_away) + DIV + ENV",
+   "div_env": "DIV -0.85 divisional / +0.45 non-divisional; ENV dome/closed +2.0, outdoor -0.5 at league-average wind (-0.18/mph above 8.4 only with a verified forecast), <20\u00b0F -1.0, precipitation 0",
+   "total_blend": "total_core = .38 PFF-implied + .32 nfelo-implied + .30 Cole-implied + EFF, EFF = clip(3.0\u00b7epa_sum_dev, \u00b12.0) (prior-season EPA/play efficiency, both teams, vs league); pace and style adjustments 0 (panel: pace)",
+   "caps": "\u00a75 caps Week 1: spread \u00b12.0, total \u00b12.5 (in-season \u00b12.5/\u00b13.0)",
+   "team_totals": "identity only (home = T/2 - S/2, away = T/2 + S/2); \u00a76 matchup reallocations (explosive, red-zone, pace, PF/PA profile) zeroed by the panel (team totals: overturned); any future reallocation capped \u00b10.5 with spread coherence",
+   "qb": "stint penalty 2.5 (1st start) / 1.5 (2nd-3rd) / 0.5 (4th+) applied NET of what the inputs embed; planned offseason starters 0",
+   "confidence": "tags = distance of the published number to the latest market line (diagnostic; the market is never an input): spread HIGH <1.5, MED to 3.0, LOW beyond; total HIGH <2.5, MED to 5.0, LOW beyond; sigma = sqrt(BASE\u00b2 + D\u00b2), BASE 12.65/13.1; expected real share of a gap \u03bb = 0.27",
+   "rounding": "half-up to .0/.5 (\u00a78); no key-number rounding, no steam lean (panel: market)"
+  },
+  "hfa_rating_paths": 1.75,
+  "hfa_kind": "home",
+  "spread_pff_unclamped": -12.103,
+  "spread_core_before_rest": -10.113,
+  "rest_adj": 0.0,
+  "rest_note": "Week 1: exempt (panel: schedule)",
+  "sleeve_clamp_note": null,
+  "eff_adj": -0.322,
+  "totals_detail": {
+   "LG": 45.0,
+   "DIV": 0.45,
+   "ENV": 2.0,
+   "roof": "dome",
+   "R_home_qbfree": -0.702,
+   "R_away_qbfree": -2.311,
+   "GT_home_prior": 41.65,
+   "GT_away_prior": 49.59,
+   "GT_dev": 0.24,
+   "qb_sum_pts": -0.428,
+   "epa_sum_dev": -0.1074,
+   "eff_adj": -0.322,
+   "t_nfelo": 46.913,
+   "t_pff": 46.284,
+   "t_cole": 46.01
+  },
+  "spec_reference": {
+   "spread_pff_spec": -12.75,
+   "spread_cole_spec": -8.997,
+   "spread_core_spec": -10.462,
+   "total_core_spec": 44.577,
+   "hfa_pts_nfelo_spec": 2.397
   }
  },
  {
@@ -1389,7 +1983,7 @@
    "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
    "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
   },
-  "spread_pff": -6.882,
+  "spread_pff": -5.583,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
    "psr_home": -4.3212071,
@@ -1397,9 +1991,12 @@
    "psr_qb_home": 1.5,
    "psr_qb_away": 2.0,
    "hfa_pts": 3.05,
-   "rank_model_diag": -3.648
+   "rank_model_diag": -3.648,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)",
+   "spread_unclamped": -5.583
   },
-  "spread_cole": -0.249,
+  "spread_cole": 1.05,
   "cole_meta": {
    "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
    "pr_home": -6.3,
@@ -1407,10 +2004,12 @@
    "betting_pr_home": -4.3,
    "betting_pr_away": -6.1,
    "spread_betting_pr_diag": -4.849,
-   "hfa_pts": 3.05
+   "hfa_pts": 3.05,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)"
   },
-  "total_pff_implied": 41.634,
-  "total_cole_implied": 42.57,
+  "total_pff_implied": 43.707,
+  "total_cole_implied": 44.51,
   "market_nfelo_open": -3.5,
   "market_nfelo_current": -3.5,
   "spread_tpt": -3.1599999999999997,
@@ -1422,7 +2021,7 @@
    "DONC": -4.5,
    "FFW": 2.2
   },
-  "total_nfelo": 44.194,
+  "total_nfelo": 45.503,
   "total_pff": null,
   "total_pff_basis": null,
   "total_dvoa_diag": 45.096,
@@ -1458,33 +2057,82 @@
    "away_elo": -7.2276
   },
   "nfelo_vs_market_close": 0.0,
-  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
-  "spread_core": -4.331,
+  "build": "v6 research-calibrated three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -3.63,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
    "cole": 0.15,
    "tpt": 0.0
   },
-  "total_core": 42.734,
+  "total_core": 43.895,
   "total_weights": {
    "pff_implied": 0.38,
    "nfelo_implied": 0.32,
    "cole_implied": 0.3,
    "tpt": 0.0
   },
-  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "total_basis": "all three totals are \u00a73.2-derived implied totals on the research (v6) formula: LG 45.0 + rating term + DIV +0.45 + ENV +2.0; nfelo path adds GT_dev and QB terms; blend .38/.32/.30 + EFF -0.63; no engine publishes a total",
   "spread_range": 6.63,
-  "total_range": 2.56,
-  "spread_sd": 3.317,
-  "total_sd": 1.295,
+  "total_range": 1.8,
+  "spread_sd": 2.77,
+  "total_sd": 0.734,
   "n_spread_sources": 3,
   "n_total_sources": 3,
   "tpt_diag": {
    "spread_panel": -3.1599999999999997,
    "total_panel": 42.944511999999996,
-   "spread_gap_vs_core": 1.17,
-   "total_gap_vs_core": 0.21
+   "spread_gap_vs_core": 0.47,
+   "total_gap_vs_core": -0.95
+  },
+  "method": {
+   "version": "v6 (research-calibrated, 2026-09-04)",
+   "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
+   "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
+   "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
+   "total_pff_implied": "LG + 0.30\u00b7(PSR_home + PSR_away) + DIV + ENV",
+   "total_cole_implied": "LG + 0.30\u00b7(PR_home + PR_away) + DIV + ENV",
+   "div_env": "DIV -0.85 divisional / +0.45 non-divisional; ENV dome/closed +2.0, outdoor -0.5 at league-average wind (-0.18/mph above 8.4 only with a verified forecast), <20\u00b0F -1.0, precipitation 0",
+   "total_blend": "total_core = .38 PFF-implied + .32 nfelo-implied + .30 Cole-implied + EFF, EFF = clip(3.0\u00b7epa_sum_dev, \u00b12.0) (prior-season EPA/play efficiency, both teams, vs league); pace and style adjustments 0 (panel: pace)",
+   "caps": "\u00a75 caps Week 1: spread \u00b12.0, total \u00b12.5 (in-season \u00b12.5/\u00b13.0)",
+   "team_totals": "identity only (home = T/2 - S/2, away = T/2 + S/2); \u00a76 matchup reallocations (explosive, red-zone, pace, PF/PA profile) zeroed by the panel (team totals: overturned); any future reallocation capped \u00b10.5 with spread coherence",
+   "qb": "stint penalty 2.5 (1st start) / 1.5 (2nd-3rd) / 0.5 (4th+) applied NET of what the inputs embed; planned offseason starters 0",
+   "confidence": "tags = distance of the published number to the latest market line (diagnostic; the market is never an input): spread HIGH <1.5, MED to 3.0, LOW beyond; total HIGH <2.5, MED to 5.0, LOW beyond; sigma = sqrt(BASE\u00b2 + D\u00b2), BASE 12.65/13.1; expected real share of a gap \u03bb = 0.27",
+   "rounding": "half-up to .0/.5 (\u00a78); no key-number rounding, no steam lean (panel: market)"
+  },
+  "hfa_rating_paths": 1.75,
+  "hfa_kind": "home",
+  "spread_pff_unclamped": -5.583,
+  "spread_core_before_rest": -3.63,
+  "rest_adj": 0.0,
+  "rest_note": "Week 1: exempt (panel: schedule)",
+  "sleeve_clamp_note": null,
+  "eff_adj": -0.628,
+  "totals_detail": {
+   "LG": 45.0,
+   "DIV": 0.45,
+   "ENV": 2.0,
+   "roof": "dome",
+   "R_home_qbfree": -3.635,
+   "R_away_qbfree": -1.979,
+   "GT_home_prior": 39.59,
+   "GT_away_prior": 45.35,
+   "GT_dev": -6.06,
+   "qb_sum_pts": 0.6,
+   "epa_sum_dev": -0.2093,
+   "eff_adj": -0.628,
+   "t_nfelo": 45.503,
+   "t_pff": 43.707,
+   "t_cole": 44.51
+  },
+  "spec_reference": {
+   "spread_pff_spec": -6.882,
+   "spread_cole_spec": -0.249,
+   "spread_core_spec": -4.331,
+   "total_core_spec": 42.734,
+   "hfa_pts_nfelo_spec": 3.049
   }
  },
  {
@@ -1513,7 +2161,7 @@
    "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
    "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
   },
-  "spread_pff": 0.85,
+  "spread_pff": 0.696,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
    "psr_home": -0.0821976,
@@ -1521,9 +2169,12 @@
    "psr_qb_home": 3.5,
    "psr_qb_away": 4.5,
    "hfa_pts": 1.6,
-   "rank_model_diag": 2.203
+   "rank_model_diag": 2.203,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)",
+   "spread_unclamped": 0.696
   },
-  "spread_cole": 0.704,
+  "spread_cole": 0.55,
   "cole_meta": {
    "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
    "pr_home": -0.1,
@@ -1531,10 +2182,12 @@
    "betting_pr_home": 1.9,
    "betting_pr_away": 2.0,
    "spread_betting_pr_diag": -1.496,
-   "hfa_pts": 1.6
+   "hfa_pts": 1.6,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)"
   },
-  "total_pff_implied": 46.799,
-  "total_cole_implied": 46.735,
+  "total_pff_implied": 46.835,
+  "total_cole_implied": 46.78,
   "market_nfelo_open": 1.5,
   "market_nfelo_current": 1.5,
   "spread_tpt": -0.5400000000000001,
@@ -1546,7 +2199,7 @@
    "DONC": 1.1,
    "FFW": -7.1
   },
-  "total_nfelo": 46.812,
+  "total_nfelo": 45.097,
   "total_pff": null,
   "total_pff_basis": null,
   "total_dvoa_diag": 46.101,
@@ -1580,33 +2233,82 @@
    "away_elo": 0.887
   },
   "nfelo_vs_market_close": -1.5,
-  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
-  "spread_core": -0.023,
+  "build": "v6 research-calibrated three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -0.106,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
    "cole": 0.15,
    "tpt": 0.0
   },
-  "total_core": 46.784,
+  "total_core": 45.583,
   "total_weights": {
    "pff_implied": 0.38,
    "nfelo_implied": 0.32,
    "cole_implied": 0.3,
    "tpt": 0.0
   },
-  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
-  "spread_range": 1.85,
-  "total_range": 0.08,
-  "spread_sd": 1.029,
-  "total_sd": 0.041,
+  "total_basis": "all three totals are \u00a73.2-derived implied totals on the research (v6) formula: LG 45.0 + rating term + DIV -0.85 + ENV +2.0; nfelo path adds GT_dev and QB terms; blend .38/.32/.30 + EFF -0.68; no engine publishes a total",
+  "spread_range": 1.7,
+  "total_range": 1.74,
+  "spread_sd": 0.768,
+  "total_sd": 0.807,
   "n_spread_sources": 3,
   "n_total_sources": 3,
   "tpt_diag": {
    "spread_panel": -0.5400000000000001,
    "total_panel": 45.4255,
-   "spread_gap_vs_core": -0.52,
-   "total_gap_vs_core": -1.36
+   "spread_gap_vs_core": -0.43,
+   "total_gap_vs_core": -0.16
+  },
+  "method": {
+   "version": "v6 (research-calibrated, 2026-09-04)",
+   "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
+   "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
+   "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
+   "total_pff_implied": "LG + 0.30\u00b7(PSR_home + PSR_away) + DIV + ENV",
+   "total_cole_implied": "LG + 0.30\u00b7(PR_home + PR_away) + DIV + ENV",
+   "div_env": "DIV -0.85 divisional / +0.45 non-divisional; ENV dome/closed +2.0, outdoor -0.5 at league-average wind (-0.18/mph above 8.4 only with a verified forecast), <20\u00b0F -1.0, precipitation 0",
+   "total_blend": "total_core = .38 PFF-implied + .32 nfelo-implied + .30 Cole-implied + EFF, EFF = clip(3.0\u00b7epa_sum_dev, \u00b12.0) (prior-season EPA/play efficiency, both teams, vs league); pace and style adjustments 0 (panel: pace)",
+   "caps": "\u00a75 caps Week 1: spread \u00b12.0, total \u00b12.5 (in-season \u00b12.5/\u00b13.0)",
+   "team_totals": "identity only (home = T/2 - S/2, away = T/2 + S/2); \u00a76 matchup reallocations (explosive, red-zone, pace, PF/PA profile) zeroed by the panel (team totals: overturned); any future reallocation capped \u00b10.5 with spread coherence",
+   "qb": "stint penalty 2.5 (1st start) / 1.5 (2nd-3rd) / 0.5 (4th+) applied NET of what the inputs embed; planned offseason starters 0",
+   "confidence": "tags = distance of the published number to the latest market line (diagnostic; the market is never an input): spread HIGH <1.5, MED to 3.0, LOW beyond; total HIGH <2.5, MED to 5.0, LOW beyond; sigma = sqrt(BASE\u00b2 + D\u00b2), BASE 12.65/13.1; expected real share of a gap \u03bb = 0.27",
+   "rounding": "half-up to .0/.5 (\u00a78); no key-number rounding, no steam lean (panel: market)"
+  },
+  "hfa_rating_paths": 1.75,
+  "hfa_kind": "home",
+  "spread_pff_unclamped": 0.696,
+  "spread_core_before_rest": -0.106,
+  "rest_adj": 0.0,
+  "rest_note": "Week 1: exempt (panel: schedule)",
+  "sleeve_clamp_note": null,
+  "eff_adj": -0.679,
+  "totals_detail": {
+   "LG": 45.0,
+   "DIV": -0.85,
+   "ENV": 2.0,
+   "roof": "dome",
+   "R_home_qbfree": 1.121,
+   "R_away_qbfree": 0.058,
+   "GT_home_prior": 39.83,
+   "GT_away_prior": 44.18,
+   "GT_dev": -6.99,
+   "qb_sum_pts": 1.286,
+   "epa_sum_dev": -0.2264,
+   "eff_adj": -0.679,
+   "t_nfelo": 45.097,
+   "t_pff": 46.835,
+   "t_cole": 46.78
+  },
+  "spec_reference": {
+   "spread_pff_spec": 0.85,
+   "spread_cole_spec": 0.704,
+   "spread_core_spec": -0.023,
+   "total_core_spec": 46.784,
+   "hfa_pts_nfelo_spec": 1.596
   }
  },
  {
@@ -1635,7 +2337,7 @@
    "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
    "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
   },
-  "spread_pff": -5.44,
+  "spread_pff": -6.214,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
    "psr_home": 3.0922084,
@@ -1643,9 +2345,12 @@
    "psr_qb_home": 4.0,
    "psr_qb_away": 3.5,
    "hfa_pts": 0.98,
-   "rank_model_diag": null
+   "rank_model_diag": null,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)",
+   "spread_unclamped": -6.214
   },
-  "spread_cole": -2.776,
+  "spread_cole": -3.55,
   "cole_meta": {
    "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
    "pr_home": 0.6,
@@ -1653,10 +2358,12 @@
    "betting_pr_home": 1.9,
    "betting_pr_away": -1.0,
    "spread_betting_pr_diag": -3.876,
-   "hfa_pts": 0.98
+   "hfa_pts": 0.98,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)"
   },
-  "total_pff_implied": 46.602,
-  "total_cole_implied": 45.79,
+  "total_pff_implied": 44.166,
+  "total_cole_implied": 43.47,
   "market_nfelo_open": -4.5,
   "market_nfelo_current": -4.5,
   "spread_tpt": -4.28,
@@ -1668,7 +2375,7 @@
    "DONC": -5.0,
    "FFW": -1.4
   },
-  "total_nfelo": 46.493,
+  "total_nfelo": 43.324,
   "total_pff": null,
   "total_pff_basis": null,
   "total_dvoa_diag": 46.081,
@@ -1704,33 +2411,82 @@
    "away_elo": 3.639
   },
   "nfelo_vs_market_close": 0.0,
-  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
-  "spread_core": -4.148,
+  "build": "v6 research-calibrated three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -4.566,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
    "cole": 0.15,
    "tpt": 0.0
   },
-  "total_core": 46.324,
+  "total_core": 43.881,
   "total_weights": {
    "pff_implied": 0.38,
    "nfelo_implied": 0.32,
    "cole_implied": 0.3,
    "tpt": 0.0
   },
-  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
-  "spread_range": 2.66,
-  "total_range": 0.81,
-  "spread_sd": 1.377,
-  "total_sd": 0.441,
+  "total_basis": "all three totals are \u00a73.2-derived implied totals on the research (v6) formula: LG 45.0 + rating term + DIV -0.85 + ENV -0.5; nfelo path adds GT_dev and QB terms; blend .38/.32/.30 + EFF +0.19; no engine publishes a total",
+  "spread_range": 2.71,
+  "total_range": 0.84,
+  "spread_sd": 1.268,
+  "total_sd": 0.367,
   "n_spread_sources": 3,
   "n_total_sources": 3,
   "tpt_diag": {
    "spread_panel": -4.28,
    "total_panel": 46.35216,
-   "spread_gap_vs_core": -0.13,
-   "total_gap_vs_core": 0.03
+   "spread_gap_vs_core": 0.29,
+   "total_gap_vs_core": 2.47
+  },
+  "method": {
+   "version": "v6 (research-calibrated, 2026-09-04)",
+   "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
+   "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
+   "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
+   "total_pff_implied": "LG + 0.30\u00b7(PSR_home + PSR_away) + DIV + ENV",
+   "total_cole_implied": "LG + 0.30\u00b7(PR_home + PR_away) + DIV + ENV",
+   "div_env": "DIV -0.85 divisional / +0.45 non-divisional; ENV dome/closed +2.0, outdoor -0.5 at league-average wind (-0.18/mph above 8.4 only with a verified forecast), <20\u00b0F -1.0, precipitation 0",
+   "total_blend": "total_core = .38 PFF-implied + .32 nfelo-implied + .30 Cole-implied + EFF, EFF = clip(3.0\u00b7epa_sum_dev, \u00b12.0) (prior-season EPA/play efficiency, both teams, vs league); pace and style adjustments 0 (panel: pace)",
+   "caps": "\u00a75 caps Week 1: spread \u00b12.0, total \u00b12.5 (in-season \u00b12.5/\u00b13.0)",
+   "team_totals": "identity only (home = T/2 - S/2, away = T/2 + S/2); \u00a76 matchup reallocations (explosive, red-zone, pace, PF/PA profile) zeroed by the panel (team totals: overturned); any future reallocation capped \u00b10.5 with spread coherence",
+   "qb": "stint penalty 2.5 (1st start) / 1.5 (2nd-3rd) / 0.5 (4th+) applied NET of what the inputs embed; planned offseason starters 0",
+   "confidence": "tags = distance of the published number to the latest market line (diagnostic; the market is never an input): spread HIGH <1.5, MED to 3.0, LOW beyond; total HIGH <2.5, MED to 5.0, LOW beyond; sigma = sqrt(BASE\u00b2 + D\u00b2), BASE 12.65/13.1; expected real share of a gap \u03bb = 0.27",
+   "rounding": "half-up to .0/.5 (\u00a78); no key-number rounding, no steam lean (panel: market)"
+  },
+  "hfa_rating_paths": 1.75,
+  "hfa_kind": "home",
+  "spread_pff_unclamped": -6.214,
+  "spread_core_before_rest": -4.566,
+  "rest_adj": 0.0,
+  "rest_note": "Week 1: exempt (panel: schedule)",
+  "sleeve_clamp_note": null,
+  "eff_adj": 0.193,
+  "totals_detail": {
+   "LG": 45.0,
+   "DIV": -0.85,
+   "ENV": -0.5,
+   "roof": "outdoors",
+   "R_home_qbfree": 1.634,
+   "R_away_qbfree": -0.331,
+   "GT_home_prior": 41.41,
+   "GT_away_prior": 47.47,
+   "GT_dev": -2.12,
+   "qb_sum_pts": 0.25,
+   "epa_sum_dev": 0.0642,
+   "eff_adj": 0.193,
+   "t_nfelo": 43.324,
+   "t_pff": 44.166,
+   "t_cole": 43.47
+  },
+  "spec_reference": {
+   "spread_pff_spec": -5.44,
+   "spread_cole_spec": -2.776,
+   "spread_core_spec": -4.148,
+   "total_core_spec": 46.324,
+   "hfa_pts_nfelo_spec": 0.976
   }
  },
  {
@@ -1759,7 +2515,7 @@
    "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
    "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
   },
-  "spread_pff": 2.58,
+  "spread_pff": 1.17,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
    "psr_home": -2.0791124,
@@ -1767,9 +2523,12 @@
    "psr_qb_home": 2.0,
    "psr_qb_away": 5.5,
    "hfa_pts": 0.34,
-   "rank_model_diag": 1.777
+   "rank_model_diag": 1.777,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)",
+   "spread_unclamped": 1.17
   },
-  "spread_cole": 1.96,
+  "spread_cole": 0.55,
   "cole_meta": {
    "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
    "pr_home": -2.1,
@@ -1777,10 +2536,12 @@
    "betting_pr_home": -2.3,
    "betting_pr_away": 1.9,
    "spread_betting_pr_diag": 3.86,
-   "hfa_pts": 0.34
+   "hfa_pts": 0.34,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)"
   },
-  "total_pff_implied": 45.567,
-  "total_cole_implied": 45.335,
+  "total_pff_implied": 43.279,
+  "total_cole_implied": 43.08,
   "market_nfelo_open": 2.5,
   "market_nfelo_current": 2.5,
   "spread_tpt": 2.7399999999999998,
@@ -1792,7 +2553,7 @@
    "DONC": 3.3,
    "FFW": 0.5
   },
-  "total_nfelo": 45.472,
+  "total_nfelo": 48.068,
   "total_pff": null,
   "total_pff_basis": null,
   "total_dvoa_diag": 45.734,
@@ -1828,33 +2589,82 @@
    "away_elo": 5.3303
   },
   "nfelo_vs_market_close": -1.5,
-  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
-  "spread_core": 1.76,
+  "build": "v6 research-calibrated three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": 0.999,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
    "cole": 0.15,
    "tpt": 0.0
   },
-  "total_core": 45.467,
+  "total_core": 45.671,
   "total_weights": {
    "pff_implied": 0.38,
    "nfelo_implied": 0.32,
    "cole_implied": 0.3,
    "tpt": 0.0
   },
-  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
-  "spread_range": 1.58,
-  "total_range": 0.23,
-  "spread_sd": 0.796,
-  "total_sd": 0.117,
+  "total_basis": "all three totals are \u00a73.2-derived implied totals on the research (v6) formula: LG 45.0 + rating term + DIV -0.85 + ENV -0.5; nfelo path adds GT_dev and QB terms; blend .38/.32/.30 + EFF +0.92; no engine publishes a total",
+  "spread_range": 0.62,
+  "total_range": 4.99,
+  "spread_sd": 0.262,
+  "total_sd": 2.306,
   "n_spread_sources": 3,
   "n_total_sources": 3,
   "tpt_diag": {
    "spread_panel": 2.7399999999999998,
    "total_panel": 47.49,
-   "spread_gap_vs_core": 0.98,
-   "total_gap_vs_core": 2.02
+   "spread_gap_vs_core": 1.74,
+   "total_gap_vs_core": 1.82
+  },
+  "method": {
+   "version": "v6 (research-calibrated, 2026-09-04)",
+   "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
+   "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
+   "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
+   "total_pff_implied": "LG + 0.30\u00b7(PSR_home + PSR_away) + DIV + ENV",
+   "total_cole_implied": "LG + 0.30\u00b7(PR_home + PR_away) + DIV + ENV",
+   "div_env": "DIV -0.85 divisional / +0.45 non-divisional; ENV dome/closed +2.0, outdoor -0.5 at league-average wind (-0.18/mph above 8.4 only with a verified forecast), <20\u00b0F -1.0, precipitation 0",
+   "total_blend": "total_core = .38 PFF-implied + .32 nfelo-implied + .30 Cole-implied + EFF, EFF = clip(3.0\u00b7epa_sum_dev, \u00b12.0) (prior-season EPA/play efficiency, both teams, vs league); pace and style adjustments 0 (panel: pace)",
+   "caps": "\u00a75 caps Week 1: spread \u00b12.0, total \u00b12.5 (in-season \u00b12.5/\u00b13.0)",
+   "team_totals": "identity only (home = T/2 - S/2, away = T/2 + S/2); \u00a76 matchup reallocations (explosive, red-zone, pace, PF/PA profile) zeroed by the panel (team totals: overturned); any future reallocation capped \u00b10.5 with spread coherence",
+   "qb": "stint penalty 2.5 (1st start) / 1.5 (2nd-3rd) / 0.5 (4th+) applied NET of what the inputs embed; planned offseason starters 0",
+   "confidence": "tags = distance of the published number to the latest market line (diagnostic; the market is never an input): spread HIGH <1.5, MED to 3.0, LOW beyond; total HIGH <2.5, MED to 5.0, LOW beyond; sigma = sqrt(BASE\u00b2 + D\u00b2), BASE 12.65/13.1; expected real share of a gap \u03bb = 0.27",
+   "rounding": "half-up to .0/.5 (\u00a78); no key-number rounding, no steam lean (panel: market)"
+  },
+  "hfa_rating_paths": 1.75,
+  "hfa_kind": "home",
+  "spread_pff_unclamped": 1.17,
+  "spread_core_before_rest": 0.999,
+  "rest_adj": 0.0,
+  "rest_note": "Week 1: exempt (panel: schedule)",
+  "sleeve_clamp_note": null,
+  "eff_adj": 0.919,
+  "totals_detail": {
+   "LG": 45.0,
+   "DIV": -0.85,
+   "ENV": -0.5,
+   "roof": "outdoors",
+   "R_home_qbfree": -1.091,
+   "R_away_qbfree": -0.359,
+   "GT_home_prior": 48.23,
+   "GT_away_prior": 57.77,
+   "GT_dev": 15.0,
+   "qb_sum_pts": 0.088,
+   "epa_sum_dev": 0.3065,
+   "eff_adj": 0.919,
+   "t_nfelo": 48.068,
+   "t_pff": 43.279,
+   "t_cole": 43.08
+  },
+  "spec_reference": {
+   "spread_pff_spec": 2.58,
+   "spread_cole_spec": 1.96,
+   "spread_core_spec": 1.76,
+   "total_core_spec": 45.467,
+   "hfa_pts_nfelo_spec": 0.34
   }
  },
  {
@@ -1883,7 +2693,7 @@
    "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
    "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
   },
-  "spread_pff": 0.092,
+  "spread_pff": -1.318,
   "pff_meta": {
    "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
    "psr_home": 2.3968171,
@@ -1891,9 +2701,12 @@
    "psr_qb_home": 7.0,
    "psr_qb_away": 3.0,
    "hfa_pts": 0.34,
-   "rank_model_diag": -0.078
+   "rank_model_diag": -0.078,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)",
+   "spread_unclamped": -1.318
   },
-  "spread_cole": -1.34,
+  "spread_cole": -2.75,
   "cole_meta": {
    "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
    "pr_home": 3.0,
@@ -1901,10 +2714,12 @@
    "betting_pr_home": 2.2,
    "betting_pr_away": 1.3,
    "spread_betting_pr_diag": -1.24,
-   "hfa_pts": 0.34
+   "hfa_pts": 0.34,
+   "hfa_used": 1.75,
+   "hfa_basis": "research HFA on rating paths (v6)"
   },
-  "total_pff_implied": 47.829,
-  "total_cole_implied": 47.75,
+  "total_pff_implied": 45.218,
+  "total_cole_implied": 45.15,
   "market_nfelo_open": -3.0,
   "market_nfelo_current": -3.0,
   "spread_tpt": -2.04,
@@ -1916,7 +2731,7 @@
    "DONC": -3.1,
    "FFW": 2.2
   },
-  "total_nfelo": 47.403,
+  "total_nfelo": 41.966,
   "total_pff": null,
   "total_pff_basis": null,
   "total_dvoa_diag": 46.504,
@@ -1952,33 +2767,82 @@
    "away_elo": 4.2348
   },
   "nfelo_vs_market_close": 2.0,
-  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
-  "spread_core": -0.625,
+  "build": "v6 research-calibrated three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -1.387,
   "spread_weights": {
    "nfelo": 0.46,
    "pff": 0.39,
    "cole": 0.15,
    "tpt": 0.0
   },
-  "total_core": 47.669,
+  "total_core": 43.509,
   "total_weights": {
    "pff_implied": 0.38,
    "nfelo_implied": 0.32,
    "cole_implied": 0.3,
    "tpt": 0.0
   },
-  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
-  "spread_range": 1.43,
-  "total_range": 0.43,
-  "spread_sd": 0.748,
-  "total_sd": 0.227,
+  "total_basis": "all three totals are \u00a73.2-derived implied totals on the research (v6) formula: LG 45.0 + rating term + DIV -0.85 + ENV -0.5; nfelo path adds GT_dev and QB terms; blend .38/.32/.30 + EFF -0.65; no engine publishes a total",
+  "spread_range": 1.75,
+  "total_range": 3.25,
+  "spread_sd": 0.761,
+  "total_sd": 1.517,
   "n_spread_sources": 3,
   "n_total_sources": 3,
   "tpt_diag": {
    "spread_panel": -2.04,
    "total_panel": 44.542640000000006,
-   "spread_gap_vs_core": -1.42,
-   "total_gap_vs_core": -3.13
+   "spread_gap_vs_core": -0.65,
+   "total_gap_vs_core": 1.03
+  },
+  "method": {
+   "version": "v6 (research-calibrated, 2026-09-04)",
+   "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
+   "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
+   "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
+   "total_pff_implied": "LG + 0.30\u00b7(PSR_home + PSR_away) + DIV + ENV",
+   "total_cole_implied": "LG + 0.30\u00b7(PR_home + PR_away) + DIV + ENV",
+   "div_env": "DIV -0.85 divisional / +0.45 non-divisional; ENV dome/closed +2.0, outdoor -0.5 at league-average wind (-0.18/mph above 8.4 only with a verified forecast), <20\u00b0F -1.0, precipitation 0",
+   "total_blend": "total_core = .38 PFF-implied + .32 nfelo-implied + .30 Cole-implied + EFF, EFF = clip(3.0\u00b7epa_sum_dev, \u00b12.0) (prior-season EPA/play efficiency, both teams, vs league); pace and style adjustments 0 (panel: pace)",
+   "caps": "\u00a75 caps Week 1: spread \u00b12.0, total \u00b12.5 (in-season \u00b12.5/\u00b13.0)",
+   "team_totals": "identity only (home = T/2 - S/2, away = T/2 + S/2); \u00a76 matchup reallocations (explosive, red-zone, pace, PF/PA profile) zeroed by the panel (team totals: overturned); any future reallocation capped \u00b10.5 with spread coherence",
+   "qb": "stint penalty 2.5 (1st start) / 1.5 (2nd-3rd) / 0.5 (4th+) applied NET of what the inputs embed; planned offseason starters 0",
+   "confidence": "tags = distance of the published number to the latest market line (diagnostic; the market is never an input): spread HIGH <1.5, MED to 3.0, LOW beyond; total HIGH <2.5, MED to 5.0, LOW beyond; sigma = sqrt(BASE\u00b2 + D\u00b2), BASE 12.65/13.1; expected real share of a gap \u03bb = 0.27",
+   "rounding": "half-up to .0/.5 (\u00a78); no key-number rounding, no steam lean (panel: market)"
+  },
+  "hfa_rating_paths": 1.75,
+  "hfa_kind": "home",
+  "spread_pff_unclamped": -1.318,
+  "spread_core_before_rest": -1.387,
+  "rest_adj": 0.0,
+  "rest_note": "Week 1: exempt (panel: schedule)",
+  "sleeve_clamp_note": null,
+  "eff_adj": -0.648,
+  "totals_detail": {
+   "LG": 45.0,
+   "DIV": -0.85,
+   "ENV": -0.5,
+   "roof": "outdoors",
+   "R_home_qbfree": 0.917,
+   "R_away_qbfree": 2.493,
+   "GT_home_prior": 40.58,
+   "GT_away_prior": 41.88,
+   "GT_dev": -8.54,
+   "qb_sum_pts": 0.746,
+   "epa_sum_dev": -0.216,
+   "eff_adj": -0.648,
+   "t_nfelo": 41.966,
+   "t_pff": 45.218,
+   "t_cole": 45.15
+  },
+  "spec_reference": {
+   "spread_pff_spec": 0.092,
+   "spread_cole_spec": -1.34,
+   "spread_core_spec": -0.625,
+   "total_core_spec": 47.669,
+   "hfa_pts_nfelo_spec": 0.34
   }
  }
 ]

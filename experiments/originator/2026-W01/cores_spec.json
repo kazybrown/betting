@@ -1,0 +1,1984 @@
+[
+ {
+  "game_id": "2026_01_NE_SEA",
+  "away": "NE",
+  "home": "SEA",
+  "gameday": "2026-09-09",
+  "weekday": "Wednesday",
+  "gametime": "20:20",
+  "venue": "Lumen Field",
+  "roof": "outdoors",
+  "surface": "fieldturf",
+  "location": "Home",
+  "away_rest": 7,
+  "home_rest": 7,
+  "div_game": false,
+  "market_spread": -3.5,
+  "market_total": 44.5,
+  "away_ml": "150",
+  "home_ml": "-180",
+  "spread_nfelo": -3.5,
+  "home_wp_nfelo": 0.621,
+  "nfelo_provenance": {
+   "spread_nfelo_repo_snapshot": -4.0,
+   "nfelo_site_delta": 0.5,
+   "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
+   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
+  },
+  "spread_pff": -5.607,
+  "pff_meta": {
+   "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+   "psr_home": 4.81475,
+   "psr_away": 2.8928774,
+   "psr_qb_home": 3.5,
+   "psr_qb_away": 5.5,
+   "hfa_pts": 3.69,
+   "rank_model_diag": -6.38
+  },
+  "spread_cole": -4.185,
+  "cole_meta": {
+   "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
+   "pr_home": 3.9,
+   "pr_away": 3.4,
+   "betting_pr_home": 5.4,
+   "betting_pr_away": 3.5,
+   "spread_betting_pr_diag": -5.585,
+   "hfa_pts": 3.69
+  },
+  "total_pff_implied": 48.698,
+  "total_cole_implied": 48.555,
+  "market_nfelo_open": -3.5,
+  "market_nfelo_current": -3.5,
+  "spread_tpt": -2.6399999999999997,
+  "spread_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_spread_detail": {
+   "DONC": -2.3,
+   "FFW": -4.0
+  },
+  "total_nfelo": 48.514,
+  "total_pff": null,
+  "total_pff_basis": null,
+  "total_dvoa_diag": 47.041,
+  "dvoa_proj": {
+   "home": 0.22,
+   "away": 0.079
+  },
+  "total_tpt": 44.21064,
+  "total_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_total_detail": {
+   "DONC": 44.2633,
+   "FFW": 44.0
+  },
+  "structural_flag": null,
+  "market_open_spread": -4.0,
+  "market_open_total": 45.0,
+  "market_tpt_spread": -3.5,
+  "market_tpt_total": 44.5,
+  "pff_psr": {
+   "home": 4.81475,
+   "away": 2.8928774,
+   "home_qb": 3.5,
+   "away_qb": 5.5,
+   "home_proj_wins": 10.7934,
+   "away_proj_wins": 9.9004
+  },
+  "hfa_pts_nfelo": 3.685,
+  "nfelo_qb_adj": {
+   "home_elo": -2.1469,
+   "away_elo": 3.0012
+  },
+  "nfelo_vs_market_close": -0.5,
+  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -4.424,
+  "spread_weights": {
+   "nfelo": 0.46,
+   "pff": 0.39,
+   "cole": 0.15,
+   "tpt": 0.0
+  },
+  "total_core": 48.596,
+  "total_weights": {
+   "pff_implied": 0.38,
+   "nfelo_implied": 0.32,
+   "cole_implied": 0.3,
+   "tpt": 0.0
+  },
+  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "spread_range": 2.11,
+  "total_range": 0.18,
+  "spread_sd": 1.075,
+  "total_sd": 0.097,
+  "n_spread_sources": 3,
+  "n_total_sources": 3,
+  "tpt_diag": {
+   "spread_panel": -2.6399999999999997,
+   "total_panel": 44.21064,
+   "spread_gap_vs_core": 1.78,
+   "total_gap_vs_core": -4.39
+  }
+ },
+ {
+  "game_id": "2026_01_SF_LA",
+  "away": "SF",
+  "home": "LA",
+  "gameday": "2026-09-10",
+  "weekday": "Thursday",
+  "gametime": "20:35",
+  "venue": "Melbourne Cricket Ground",
+  "roof": "dome",
+  "surface": "matrixturf",
+  "location": "Neutral",
+  "away_rest": 7,
+  "home_rest": 7,
+  "div_game": true,
+  "market_spread": -3.5,
+  "market_total": 48.5,
+  "away_ml": "164",
+  "home_ml": "-198",
+  "spread_nfelo": -2.0,
+  "home_wp_nfelo": 0.572,
+  "nfelo_provenance": {
+   "spread_nfelo_repo_snapshot": -2.0,
+   "nfelo_site_delta": 0.0,
+   "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
+   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
+  },
+  "spread_pff": -3.707,
+  "pff_meta": {
+   "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+   "psr_home": 6.4368175,
+   "psr_away": 2.5483431,
+   "psr_qb_home": 5.5,
+   "psr_qb_away": 3.5,
+   "hfa_pts": -0.18,
+   "rank_model_diag": -4.976
+  },
+  "spread_cole": -3.819,
+  "cole_meta": {
+   "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
+   "pr_home": 5.7,
+   "pr_away": 1.7,
+   "betting_pr_home": 4.5,
+   "betting_pr_away": 2.7,
+   "spread_betting_pr_diag": -1.619,
+   "hfa_pts": -0.18
+  },
+  "total_pff_implied": 49.145,
+  "total_cole_implied": 48.59,
+  "market_nfelo_open": -3.5,
+  "market_nfelo_current": -3.5,
+  "spread_tpt": -2.9599999999999995,
+  "spread_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_spread_detail": {
+   "DONC": -4.3,
+   "FFW": 2.4
+  },
+  "total_nfelo": 47.612,
+  "total_pff": null,
+  "total_pff_basis": null,
+  "total_dvoa_diag": 46.93,
+  "dvoa_proj": {
+   "home": 0.213,
+   "away": 0.054
+  },
+  "total_tpt": 46.720624,
+  "total_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_total_detail": {
+   "DONC": 47.77578,
+   "FFW": 42.5
+  },
+  "structural_flag": null,
+  "market_open_spread": -2.5,
+  "market_open_total": 48.5,
+  "market_tpt_spread": -3.5,
+  "market_tpt_total": 48.0,
+  "pff_psr": {
+   "home": 6.4368175,
+   "away": 2.5483431,
+   "home_qb": 5.5,
+   "away_qb": 3.5,
+   "home_proj_wins": 11.5662,
+   "away_proj_wins": 9.815
+  },
+  "hfa_pts_nfelo": -0.181,
+  "nfelo_qb_adj": {
+   "home_elo": -3.6408,
+   "away_elo": 1.7608
+  },
+  "nfelo_vs_market_close": 1.5,
+  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -2.939,
+  "spread_weights": {
+   "nfelo": 0.46,
+   "pff": 0.39,
+   "cole": 0.15,
+   "tpt": 0.0
+  },
+  "total_core": 48.488,
+  "total_weights": {
+   "pff_implied": 0.38,
+   "nfelo_implied": 0.32,
+   "cole_implied": 0.3,
+   "tpt": 0.0
+  },
+  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "spread_range": 1.82,
+  "total_range": 1.53,
+  "spread_sd": 1.019,
+  "total_sd": 0.776,
+  "n_spread_sources": 3,
+  "n_total_sources": 3,
+  "tpt_diag": {
+   "spread_panel": -2.9599999999999995,
+   "total_panel": 46.720624,
+   "spread_gap_vs_core": -0.02,
+   "total_gap_vs_core": -1.77
+  }
+ },
+ {
+  "game_id": "2026_01_CHI_CAR",
+  "away": "CHI",
+  "home": "CAR",
+  "gameday": "2026-09-13",
+  "weekday": "Sunday",
+  "gametime": "13:00",
+  "venue": "Bank of America Stadium",
+  "roof": "outdoors",
+  "surface": "grass",
+  "location": "Home",
+  "away_rest": 7,
+  "home_rest": 7,
+  "div_game": false,
+  "market_spread": 2.5,
+  "market_total": 47.5,
+  "away_ml": "-142",
+  "home_ml": "120",
+  "spread_nfelo": 1.5,
+  "home_wp_nfelo": 0.446,
+  "nfelo_provenance": {
+   "spread_nfelo_repo_snapshot": 2.5,
+   "nfelo_site_delta": -1.0,
+   "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
+   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
+  },
+  "spread_pff": 1.837,
+  "pff_meta": {
+   "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+   "psr_home": -2.8553546,
+   "psr_away": 1.3944701,
+   "psr_qb_home": 1.5,
+   "psr_qb_away": 4.0,
+   "hfa_pts": 2.41,
+   "rank_model_diag": 0.607
+  },
+  "spread_cole": 1.387,
+  "cole_meta": {
+   "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
+   "pr_home": -2.0,
+   "pr_away": 1.8,
+   "betting_pr_home": -0.5,
+   "betting_pr_away": 3.7,
+   "spread_betting_pr_diag": 1.787,
+   "hfa_pts": 2.41
+  },
+  "total_pff_implied": 45.489,
+  "total_cole_implied": 45.93,
+  "market_nfelo_open": 2.5,
+  "market_nfelo_current": 2.5,
+  "spread_tpt": 2.56,
+  "spread_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_spread_detail": {
+   "DONC": 2.7,
+   "FFW": 2.0
+  },
+  "total_nfelo": 45.805,
+  "total_pff": null,
+  "total_pff_basis": null,
+  "total_dvoa_diag": 45.827,
+  "dvoa_proj": {
+   "home": -0.084,
+   "away": 0.033
+  },
+  "total_tpt": 46.372096,
+  "total_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_total_detail": {
+   "DONC": 46.99012,
+   "FFW": 43.9
+  },
+  "structural_flag": null,
+  "market_open_spread": 2.5,
+  "market_open_total": 45.5,
+  "market_tpt_spread": 2.5,
+  "market_tpt_total": 47.0,
+  "pff_psr": {
+   "home": -2.8553546,
+   "away": 1.3944701,
+   "home_qb": 1.5,
+   "away_qb": 4.0,
+   "home_proj_wins": 6.9358,
+   "away_proj_wins": 9.2074
+  },
+  "hfa_pts_nfelo": 2.413,
+  "nfelo_qb_adj": {
+   "home_elo": 2.9967,
+   "away_elo": 4.9933
+  },
+  "nfelo_vs_market_close": 0.0,
+  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": 1.614,
+  "spread_weights": {
+   "nfelo": 0.46,
+   "pff": 0.39,
+   "cole": 0.15,
+   "tpt": 0.0
+  },
+  "total_core": 45.722,
+  "total_weights": {
+   "pff_implied": 0.38,
+   "nfelo_implied": 0.32,
+   "cole_implied": 0.3,
+   "tpt": 0.0
+  },
+  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "spread_range": 0.45,
+  "total_range": 0.44,
+  "spread_sd": 0.234,
+  "total_sd": 0.227,
+  "n_spread_sources": 3,
+  "n_total_sources": 3,
+  "tpt_diag": {
+   "spread_panel": 2.56,
+   "total_panel": 46.372096,
+   "spread_gap_vs_core": 0.95,
+   "total_gap_vs_core": 0.65
+  }
+ },
+ {
+  "game_id": "2026_01_TB_CIN",
+  "away": "TB",
+  "home": "CIN",
+  "gameday": "2026-09-13",
+  "weekday": "Sunday",
+  "gametime": "13:00",
+  "venue": "Paycor Stadium",
+  "roof": "outdoors",
+  "surface": "fieldturf",
+  "location": "Home",
+  "away_rest": 7,
+  "home_rest": 7,
+  "div_game": false,
+  "market_spread": -3.5,
+  "market_total": 51.5,
+  "away_ml": "164",
+  "home_ml": "-198",
+  "spread_nfelo": -3.5,
+  "home_wp_nfelo": 0.621,
+  "nfelo_provenance": {
+   "spread_nfelo_repo_snapshot": -3.5,
+   "nfelo_site_delta": 0.0,
+   "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
+   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
+  },
+  "spread_pff": -3.132,
+  "pff_meta": {
+   "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+   "psr_home": -0.1789223,
+   "psr_away": -0.9135975,
+   "psr_qb_home": 6.0,
+   "psr_qb_away": 3.5,
+   "hfa_pts": 2.4,
+   "rank_model_diag": null
+  },
+  "spread_cole": -3.897,
+  "cole_meta": {
+   "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
+   "pr_home": 1.4,
+   "pr_away": -0.1,
+   "betting_pr_home": -0.1,
+   "betting_pr_away": -1.8,
+   "spread_betting_pr_diag": -4.097,
+   "hfa_pts": 2.4
+  },
+  "total_pff_implied": 45.618,
+  "total_cole_implied": 46.455,
+  "market_nfelo_open": -3.5,
+  "market_nfelo_current": -3.5,
+  "spread_tpt": -0.7599999999999996,
+  "spread_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_spread_detail": {
+   "DONC": -3.3,
+   "FFW": 9.4
+  },
+  "total_nfelo": 45.764,
+  "total_pff": null,
+  "total_pff_basis": null,
+  "total_dvoa_diag": 46.174,
+  "dvoa_proj": {
+   "home": 0.037,
+   "away": 0.012
+  },
+  "total_tpt": 51.47452800000001,
+  "total_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_total_detail": {
+   "DONC": 50.74316,
+   "FFW": 54.4
+  },
+  "structural_flag": null,
+  "market_open_spread": -2.5,
+  "market_open_total": 52.5,
+  "market_tpt_spread": -4.0,
+  "market_tpt_total": 50.5,
+  "pff_psr": {
+   "home": -0.1789223,
+   "away": -0.9135975,
+   "home_qb": 6.0,
+   "away_qb": 3.5,
+   "home_proj_wins": 9.0378,
+   "away_proj_wins": 8.1793
+  },
+  "hfa_pts_nfelo": 2.397,
+  "nfelo_qb_adj": {
+   "home_elo": 6.4546,
+   "away_elo": 2.2242
+  },
+  "nfelo_vs_market_close": 0.0,
+  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -3.416,
+  "spread_weights": {
+   "nfelo": 0.46,
+   "pff": 0.39,
+   "cole": 0.15,
+   "tpt": 0.0
+  },
+  "total_core": 45.916,
+  "total_weights": {
+   "pff_implied": 0.38,
+   "nfelo_implied": 0.32,
+   "cole_implied": 0.3,
+   "tpt": 0.0
+  },
+  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "spread_range": 0.76,
+  "total_range": 0.84,
+  "spread_sd": 0.383,
+  "total_sd": 0.447,
+  "n_spread_sources": 3,
+  "n_total_sources": 3,
+  "tpt_diag": {
+   "spread_panel": -0.7599999999999996,
+   "total_panel": 51.47452800000001,
+   "spread_gap_vs_core": 2.66,
+   "total_gap_vs_core": 5.56
+  }
+ },
+ {
+  "game_id": "2026_01_NO_DET",
+  "away": "NO",
+  "home": "DET",
+  "gameday": "2026-09-13",
+  "weekday": "Sunday",
+  "gametime": "13:00",
+  "venue": "Ford Field",
+  "roof": "dome",
+  "surface": "fieldturf",
+  "location": "Home",
+  "away_rest": 7,
+  "home_rest": 7,
+  "div_game": false,
+  "market_spread": -7.0,
+  "market_total": 49.5,
+  "away_ml": "245",
+  "home_ml": "-305",
+  "spread_nfelo": -7.0,
+  "home_wp_nfelo": 0.729,
+  "nfelo_provenance": {
+   "spread_nfelo_repo_snapshot": -7.0,
+   "nfelo_site_delta": 0.0,
+   "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
+   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
+  },
+  "spread_pff": -8.046,
+  "pff_meta": {
+   "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+   "psr_home": 2.6181462,
+   "psr_away": -3.0151577,
+   "psr_qb_home": 3.5,
+   "psr_qb_away": 2.0,
+   "hfa_pts": 2.41,
+   "rank_model_diag": -7.728
+  },
+  "spread_cole": -6.813,
+  "cole_meta": {
+   "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
+   "pr_home": 3.3,
+   "pr_away": -1.1,
+   "betting_pr_home": 2.3,
+   "betting_pr_away": -3.1,
+   "spread_betting_pr_diag": -7.813,
+   "hfa_pts": 2.41
+  },
+  "total_pff_implied": 45.861,
+  "total_cole_implied": 46.77,
+  "market_nfelo_open": -7.0,
+  "market_nfelo_current": -7.0,
+  "spread_tpt": -7.4,
+  "spread_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_spread_detail": {
+   "DONC": -8.5,
+   "FFW": -3.0
+  },
+  "total_nfelo": 46.271,
+  "total_pff": null,
+  "total_pff_basis": null,
+  "total_dvoa_diag": 45.637,
+  "dvoa_proj": {
+   "home": 0.103,
+   "away": -0.209
+  },
+  "total_tpt": 48.70656,
+  "total_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_total_detail": {
+   "DONC": 49.1332,
+   "FFW": 47.0
+  },
+  "structural_flag": null,
+  "market_open_spread": -6.5,
+  "market_open_total": 49.0,
+  "market_tpt_spread": -7.0,
+  "market_tpt_total": 50.5,
+  "pff_psr": {
+   "home": 2.6181462,
+   "away": -3.0151577,
+   "home_qb": 3.5,
+   "away_qb": 2.0,
+   "home_proj_wins": 10.768,
+   "away_proj_wins": 7.8104
+  },
+  "hfa_pts_nfelo": 2.413,
+  "nfelo_qb_adj": {
+   "home_elo": 3.2292,
+   "away_elo": 3.8182
+  },
+  "nfelo_vs_market_close": 0.0,
+  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -7.38,
+  "spread_weights": {
+   "nfelo": 0.46,
+   "pff": 0.39,
+   "cole": 0.15,
+   "tpt": 0.0
+  },
+  "total_core": 46.265,
+  "total_weights": {
+   "pff_implied": 0.38,
+   "nfelo_implied": 0.32,
+   "cole_implied": 0.3,
+   "tpt": 0.0
+  },
+  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "spread_range": 1.23,
+  "total_range": 0.91,
+  "spread_sd": 0.665,
+  "total_sd": 0.455,
+  "n_spread_sources": 3,
+  "n_total_sources": 3,
+  "tpt_diag": {
+   "spread_panel": -7.4,
+   "total_panel": 48.70656,
+   "spread_gap_vs_core": -0.02,
+   "total_gap_vs_core": 2.44
+  }
+ },
+ {
+  "game_id": "2026_01_BUF_HOU",
+  "away": "BUF",
+  "home": "HOU",
+  "gameday": "2026-09-13",
+  "weekday": "Sunday",
+  "gametime": "13:00",
+  "venue": "Reliant Stadium",
+  "roof": "retractable",
+  "surface": "astroturf",
+  "location": "Home",
+  "away_rest": 7,
+  "home_rest": 7,
+  "div_game": false,
+  "market_spread": 1.5,
+  "market_total": 44.5,
+  "away_ml": "-118",
+  "home_ml": "-102",
+  "spread_nfelo": 1.5,
+  "home_wp_nfelo": 0.447,
+  "nfelo_provenance": {
+   "spread_nfelo_repo_snapshot": 1.5,
+   "nfelo_site_delta": 0.0,
+   "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
+   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
+  },
+  "spread_pff": 0.324,
+  "pff_meta": {
+   "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+   "psr_home": 3.1460139,
+   "psr_away": 4.6108896,
+   "psr_qb_home": 3.5,
+   "psr_qb_away": 7.0,
+   "hfa_pts": 1.14,
+   "rank_model_diag": null
+  },
+  "spread_cole": 0.359,
+  "cole_meta": {
+   "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
+   "pr_home": 2.3,
+   "pr_away": 3.8,
+   "betting_pr_home": 0.7,
+   "betting_pr_away": 3.8,
+   "spread_betting_pr_diag": 1.959,
+   "hfa_pts": 1.14
+  },
+  "total_pff_implied": 48.715,
+  "total_cole_implied": 48.135,
+  "market_nfelo_open": 1.5,
+  "market_nfelo_current": 1.5,
+  "spread_tpt": 1.32,
+  "spread_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_spread_detail": {
+   "DONC": 1.7,
+   "FFW": -0.2
+  },
+  "total_nfelo": 47.721,
+  "total_pff": null,
+  "total_pff_basis": null,
+  "total_dvoa_diag": 47.048,
+  "dvoa_proj": {
+   "home": 0.179,
+   "away": 0.122
+  },
+  "total_tpt": 45.58488,
+  "total_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_total_detail": {
+   "DONC": 45.2311,
+   "FFW": 47.0
+  },
+  "structural_flag": null,
+  "market_open_spread": 2.5,
+  "market_open_total": 44.5,
+  "market_tpt_spread": -1.0,
+  "market_tpt_total": 44.5,
+  "pff_psr": {
+   "home": 3.1460139,
+   "away": 4.6108896,
+   "home_qb": 3.5,
+   "away_qb": 7.0,
+   "home_proj_wins": 10.1316,
+   "away_proj_wins": 10.796
+  },
+  "hfa_pts_nfelo": 1.141,
+  "nfelo_qb_adj": {
+   "home_elo": -3.2211,
+   "away_elo": 6.8981
+  },
+  "nfelo_vs_market_close": 0.0,
+  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": 0.87,
+  "spread_weights": {
+   "nfelo": 0.46,
+   "pff": 0.39,
+   "cole": 0.15,
+   "tpt": 0.0
+  },
+  "total_core": 48.223,
+  "total_weights": {
+   "pff_implied": 0.38,
+   "nfelo_implied": 0.32,
+   "cole_implied": 0.3,
+   "tpt": 0.0
+  },
+  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "spread_range": 1.18,
+  "total_range": 0.99,
+  "spread_sd": 0.669,
+  "total_sd": 0.499,
+  "n_spread_sources": 3,
+  "n_total_sources": 3,
+  "tpt_diag": {
+   "spread_panel": 1.32,
+   "total_panel": 45.58488,
+   "spread_gap_vs_core": 0.45,
+   "total_gap_vs_core": -2.64
+  }
+ },
+ {
+  "game_id": "2026_01_BAL_IND",
+  "away": "BAL",
+  "home": "IND",
+  "gameday": "2026-09-13",
+  "weekday": "Sunday",
+  "gametime": "13:00",
+  "venue": "Lucas Oil Stadium",
+  "roof": "retractable",
+  "surface": "fieldturf",
+  "location": "Home",
+  "away_rest": 7,
+  "home_rest": 7,
+  "div_game": false,
+  "market_spread": 3.5,
+  "market_total": 48.5,
+  "away_ml": "-175",
+  "home_ml": "145",
+  "spread_nfelo": 1.5,
+  "home_wp_nfelo": 0.444,
+  "nfelo_provenance": {
+   "spread_nfelo_repo_snapshot": 1.5,
+   "nfelo_site_delta": 0.0,
+   "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
+   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
+  },
+  "spread_pff": 2.458,
+  "pff_meta": {
+   "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+   "psr_home": -1.2491012,
+   "psr_away": 3.605764,
+   "psr_qb_home": 2.0,
+   "psr_qb_away": 7.0,
+   "hfa_pts": 2.4,
+   "rank_model_diag": 2.659
+  },
+  "spread_cole": 1.003,
+  "cole_meta": {
+   "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
+   "pr_home": -0.8,
+   "pr_away": 2.6,
+   "betting_pr_home": -2.6,
+   "betting_pr_away": 2.7,
+   "spread_betting_pr_diag": 2.903,
+   "hfa_pts": 2.4
+  },
+  "total_pff_implied": 46.825,
+  "total_cole_implied": 46.63,
+  "market_nfelo_open": 3.5,
+  "market_nfelo_current": 3.5,
+  "spread_tpt": 2.88,
+  "spread_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_spread_detail": {
+   "DONC": 4.5,
+   "FFW": -3.6
+  },
+  "total_nfelo": 46.56,
+  "total_pff": null,
+  "total_pff_basis": null,
+  "total_dvoa_diag": 46.31,
+  "dvoa_proj": {
+   "home": 0.044,
+   "away": 0.044
+  },
+  "total_tpt": 50.8912,
+  "total_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_total_detail": {
+   "DONC": 51.414,
+   "FFW": 48.8
+  },
+  "structural_flag": null,
+  "market_open_spread": 3.5,
+  "market_open_total": 48.5,
+  "market_tpt_spread": 3.5,
+  "market_tpt_total": 48.0,
+  "pff_psr": {
+   "home": -1.2491012,
+   "away": 3.605764,
+   "home_qb": 2.0,
+   "away_qb": 7.0,
+   "home_proj_wins": 7.9089,
+   "away_proj_wins": 10.7127
+  },
+  "hfa_pts_nfelo": 2.397,
+  "nfelo_qb_adj": {
+   "home_elo": 0.6735,
+   "away_elo": 10.0991
+  },
+  "nfelo_vs_market_close": -2.0,
+  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": 1.799,
+  "spread_weights": {
+   "nfelo": 0.46,
+   "pff": 0.39,
+   "cole": 0.15,
+   "tpt": 0.0
+  },
+  "total_core": 46.682,
+  "total_weights": {
+   "pff_implied": 0.38,
+   "nfelo_implied": 0.32,
+   "cole_implied": 0.3,
+   "tpt": 0.0
+  },
+  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "spread_range": 1.46,
+  "total_range": 0.27,
+  "spread_sd": 0.74,
+  "total_sd": 0.137,
+  "n_spread_sources": 3,
+  "n_total_sources": 3,
+  "tpt_diag": {
+   "spread_panel": 2.88,
+   "total_panel": 50.8912,
+   "spread_gap_vs_core": 1.08,
+   "total_gap_vs_core": 4.21
+  }
+ },
+ {
+  "game_id": "2026_01_CLE_JAX",
+  "away": "CLE",
+  "home": "JAX",
+  "gameday": "2026-09-13",
+  "weekday": "Sunday",
+  "gametime": "13:00",
+  "venue": "EverBank Stadium",
+  "roof": "outdoors",
+  "surface": "grass",
+  "location": "Home",
+  "away_rest": 7,
+  "home_rest": 7,
+  "div_game": false,
+  "market_spread": -7.5,
+  "market_total": 40.5,
+  "away_ml": "300",
+  "home_ml": "-380",
+  "spread_nfelo": -6.0,
+  "home_wp_nfelo": 0.699,
+  "nfelo_provenance": {
+   "spread_nfelo_repo_snapshot": -7.5,
+   "nfelo_site_delta": 1.5,
+   "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
+   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
+  },
+  "spread_pff": -9.196,
+  "pff_meta": {
+   "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+   "psr_home": 1.6578419,
+   "psr_away": -5.7609715,
+   "psr_qb_home": 4.5,
+   "psr_qb_away": 0.5,
+   "hfa_pts": 1.78,
+   "rank_model_diag": null
+  },
+  "spread_cole": -7.577,
+  "cole_meta": {
+   "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
+   "pr_home": 2.0,
+   "pr_away": -3.8,
+   "betting_pr_home": 0.3,
+   "betting_pr_away": -5.6,
+   "spread_betting_pr_diag": -7.677,
+   "hfa_pts": 1.78
+  },
+  "total_pff_implied": 44.564,
+  "total_cole_implied": 45.37,
+  "market_nfelo_open": -7.5,
+  "market_nfelo_current": -7.5,
+  "spread_tpt": -10.14,
+  "spread_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_spread_detail": {
+   "DONC": -11.8,
+   "FFW": -3.5
+  },
+  "total_nfelo": 45.948,
+  "total_pff": null,
+  "total_pff_basis": null,
+  "total_dvoa_diag": 45.304,
+  "dvoa_proj": {
+   "home": 0.053,
+   "away": -0.255
+  },
+  "total_tpt": 41.849936,
+  "total_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_total_detail": {
+   "DONC": 41.71242,
+   "FFW": 42.4
+  },
+  "structural_flag": null,
+  "market_open_spread": -7.5,
+  "market_open_total": 40.5,
+  "market_tpt_spread": -8.0,
+  "market_tpt_total": 40.5,
+  "pff_psr": {
+   "home": 1.6578419,
+   "away": -5.7609715,
+   "home_qb": 4.5,
+   "away_qb": 0.5,
+   "home_proj_wins": 9.3433,
+   "away_proj_wins": 5.9056
+  },
+  "hfa_pts_nfelo": 1.777,
+  "nfelo_qb_adj": {
+   "home_elo": 3.779,
+   "away_elo": -8.8037
+  },
+  "nfelo_vs_market_close": 0.0,
+  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -7.483,
+  "spread_weights": {
+   "nfelo": 0.46,
+   "pff": 0.39,
+   "cole": 0.15,
+   "tpt": 0.0
+  },
+  "total_core": 45.249,
+  "total_weights": {
+   "pff_implied": 0.38,
+   "nfelo_implied": 0.32,
+   "cole_implied": 0.3,
+   "tpt": 0.0
+  },
+  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "spread_range": 3.2,
+  "total_range": 1.38,
+  "spread_sd": 1.598,
+  "total_sd": 0.695,
+  "n_spread_sources": 3,
+  "n_total_sources": 3,
+  "tpt_diag": {
+   "spread_panel": -10.14,
+   "total_panel": 41.849936,
+   "spread_gap_vs_core": -2.66,
+   "total_gap_vs_core": -3.4
+  }
+ },
+ {
+  "game_id": "2026_01_ATL_PIT",
+  "away": "ATL",
+  "home": "PIT",
+  "gameday": "2026-09-13",
+  "weekday": "Sunday",
+  "gametime": "13:00",
+  "venue": "Acrisure Stadium",
+  "roof": "outdoors",
+  "surface": "grass",
+  "location": "Home",
+  "away_rest": 7,
+  "home_rest": 7,
+  "div_game": false,
+  "market_spread": -3.0,
+  "market_total": 42.5,
+  "away_ml": "145",
+  "home_ml": "-175",
+  "spread_nfelo": -3.0,
+  "home_wp_nfelo": 0.604,
+  "nfelo_provenance": {
+   "spread_nfelo_repo_snapshot": -3.0,
+   "nfelo_site_delta": 0.0,
+   "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
+   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
+  },
+  "spread_pff": -4.674,
+  "pff_meta": {
+   "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+   "psr_home": -0.4983081,
+   "psr_away": -2.7755707,
+   "psr_qb_home": 2.5,
+   "psr_qb_away": 1.5,
+   "hfa_pts": 2.4,
+   "rank_model_diag": -3.189
+  },
+  "spread_cole": -2.297,
+  "cole_meta": {
+   "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
+   "pr_home": -1.3,
+   "pr_away": -1.2,
+   "betting_pr_home": 0.7,
+   "betting_pr_away": -0.6,
+   "spread_betting_pr_diag": -3.697,
+   "hfa_pts": 2.4
+  },
+  "total_pff_implied": 44.854,
+  "total_cole_implied": 45.125,
+  "market_nfelo_open": -3.0,
+  "market_nfelo_current": -3.0,
+  "spread_tpt": -2.38,
+  "spread_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_spread_detail": {
+   "DONC": -3.1,
+   "FFW": 0.5
+  },
+  "total_nfelo": 45.798,
+  "total_pff": null,
+  "total_pff_basis": null,
+  "total_dvoa_diag": 45.304,
+  "dvoa_proj": {
+   "home": -0.05,
+   "away": -0.152
+  },
+  "total_tpt": 42.322239999999994,
+  "total_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_total_detail": {
+   "DONC": 42.4278,
+   "FFW": 41.9
+  },
+  "structural_flag": null,
+  "market_open_spread": -2.0,
+  "market_open_total": 41.5,
+  "market_tpt_spread": -3.0,
+  "market_tpt_total": 42.5,
+  "pff_psr": {
+   "home": -0.4983081,
+   "away": -2.7755707,
+   "home_qb": 2.5,
+   "away_qb": 1.5,
+   "home_proj_wins": 8.3673,
+   "away_proj_wins": 7.2427
+  },
+  "hfa_pts_nfelo": 2.397,
+  "nfelo_qb_adj": {
+   "home_elo": 13.9215,
+   "away_elo": 4.6028
+  },
+  "nfelo_vs_market_close": 0.0,
+  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -3.547,
+  "spread_weights": {
+   "nfelo": 0.46,
+   "pff": 0.39,
+   "cole": 0.15,
+   "tpt": 0.0
+  },
+  "total_core": 45.237,
+  "total_weights": {
+   "pff_implied": 0.38,
+   "nfelo_implied": 0.32,
+   "cole_implied": 0.3,
+   "tpt": 0.0
+  },
+  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "spread_range": 2.38,
+  "total_range": 0.94,
+  "spread_sd": 1.221,
+  "total_sd": 0.486,
+  "n_spread_sources": 3,
+  "n_total_sources": 3,
+  "tpt_diag": {
+   "spread_panel": -2.38,
+   "total_panel": 42.322239999999994,
+   "spread_gap_vs_core": 1.17,
+   "total_gap_vs_core": -2.91
+  }
+ },
+ {
+  "game_id": "2026_01_NYJ_TEN",
+  "away": "NYJ",
+  "home": "TEN",
+  "gameday": "2026-09-13",
+  "weekday": "Sunday",
+  "gametime": "13:00",
+  "venue": "Nissan Stadium",
+  "roof": "outdoors",
+  "surface": "grass",
+  "location": "Home",
+  "away_rest": 7,
+  "home_rest": 7,
+  "div_game": false,
+  "market_spread": -1.5,
+  "market_total": 38.5,
+  "away_ml": "110",
+  "home_ml": "-130",
+  "spread_nfelo": -3.0,
+  "home_wp_nfelo": 0.603,
+  "nfelo_provenance": {
+   "spread_nfelo_repo_snapshot": -2.5,
+   "nfelo_site_delta": -0.5,
+   "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
+   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
+  },
+  "spread_pff": -3.874,
+  "pff_meta": {
+   "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+   "psr_home": -4.1254688,
+   "psr_away": -6.2383734,
+   "psr_qb_home": 1.5,
+   "psr_qb_away": 3.0,
+   "hfa_pts": 1.76,
+   "rank_model_diag": null
+  },
+  "spread_cole": -1.761,
+  "cole_meta": {
+   "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
+   "pr_home": -5.9,
+   "pr_away": -5.9,
+   "betting_pr_home": -4.3,
+   "betting_pr_away": -5.1,
+   "spread_betting_pr_diag": -2.561,
+   "hfa_pts": 1.76
+  },
+  "total_pff_implied": 42.373,
+  "total_cole_implied": 41.87,
+  "market_nfelo_open": -3.0,
+  "market_nfelo_current": -3.0,
+  "spread_tpt": -3.1,
+  "spread_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_spread_detail": {
+   "DONC": -4.7,
+   "FFW": 3.3
+  },
+  "total_nfelo": 43.185,
+  "total_pff": null,
+  "total_pff_basis": null,
+  "total_dvoa_diag": 44.992,
+  "dvoa_proj": {
+   "home": -0.129,
+   "away": -0.163
+  },
+  "total_tpt": 40.637216,
+  "total_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_total_detail": {
+   "DONC": 38.94652,
+   "FFW": 47.4
+  },
+  "structural_flag": null,
+  "market_open_spread": -2.5,
+  "market_open_total": 38.5,
+  "market_tpt_spread": -2.0,
+  "market_tpt_total": 39.5,
+  "pff_psr": {
+   "home": -4.1254688,
+   "away": -6.2383734,
+   "home_qb": 1.5,
+   "away_qb": 3.0,
+   "home_proj_wins": 6.3978,
+   "away_proj_wins": 5.5059
+  },
+  "hfa_pts_nfelo": 1.761,
+  "nfelo_qb_adj": {
+   "home_elo": 0.7962,
+   "away_elo": -2.2518
+  },
+  "nfelo_vs_market_close": 0.0,
+  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -3.155,
+  "spread_weights": {
+   "nfelo": 0.46,
+   "pff": 0.39,
+   "cole": 0.15,
+   "tpt": 0.0
+  },
+  "total_core": 42.482,
+  "total_weights": {
+   "pff_implied": 0.38,
+   "nfelo_implied": 0.32,
+   "cole_implied": 0.3,
+   "tpt": 0.0
+  },
+  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "spread_range": 2.11,
+  "total_range": 1.32,
+  "spread_sd": 1.062,
+  "total_sd": 0.664,
+  "n_spread_sources": 3,
+  "n_total_sources": 3,
+  "tpt_diag": {
+   "spread_panel": -3.1,
+   "total_panel": 40.637216,
+   "spread_gap_vs_core": 0.05,
+   "total_gap_vs_core": -1.84
+  }
+ },
+ {
+  "game_id": "2026_01_ARI_LAC",
+  "away": "ARI",
+  "home": "LAC",
+  "gameday": "2026-09-13",
+  "weekday": "Sunday",
+  "gametime": "16:25",
+  "venue": "SoFi Stadium",
+  "roof": "dome",
+  "surface": "matrixturf",
+  "location": "Home",
+  "away_rest": 7,
+  "home_rest": 7,
+  "div_game": false,
+  "market_spread": -10.5,
+  "market_total": 46.5,
+  "away_ml": "425",
+  "home_ml": "-575",
+  "spread_nfelo": -9.0,
+  "home_wp_nfelo": 0.801,
+  "nfelo_provenance": {
+   "spread_nfelo_repo_snapshot": -7.5,
+   "nfelo_site_delta": -1.5,
+   "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
+   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
+  },
+  "spread_pff": -12.75,
+  "pff_meta": {
+   "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+   "psr_home": 3.2323818,
+   "psr_away": -7.1203627,
+   "psr_qb_home": 6.5,
+   "psr_qb_away": 1.5,
+   "hfa_pts": 2.4,
+   "rank_model_diag": -10.038
+  },
+  "spread_cole": -8.997,
+  "cole_meta": {
+   "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
+   "pr_home": 0.9,
+   "pr_away": -5.7,
+   "betting_pr_home": 2.5,
+   "betting_pr_away": -6.3,
+   "spread_betting_pr_diag": -11.197,
+   "hfa_pts": 2.4
+  },
+  "total_pff_implied": 44.639,
+  "total_cole_implied": 44.32,
+  "market_nfelo_open": -11.5,
+  "market_nfelo_current": -11.5,
+  "spread_tpt": -10.440000000000001,
+  "spread_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_spread_detail": {
+   "DONC": -12.3,
+   "FFW": -3.0
+  },
+  "total_nfelo": 44.745,
+  "total_pff": null,
+  "total_pff_basis": null,
+  "total_dvoa_diag": 45.918,
+  "dvoa_proj": {
+   "home": 0.032,
+   "away": -0.057
+  },
+  "total_tpt": 44.761104,
+  "total_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_total_detail": {
+   "DONC": 46.12638,
+   "FFW": 39.3
+  },
+  "structural_flag": null,
+  "market_open_spread": -10.5,
+  "market_open_total": 45.5,
+  "market_tpt_spread": -10.0,
+  "market_tpt_total": 47.5,
+  "pff_psr": {
+   "home": 3.2323818,
+   "away": -7.1203627,
+   "home_qb": 6.5,
+   "away_qb": 1.5,
+   "home_proj_wins": 9.7815,
+   "away_proj_wins": 4.1822
+  },
+  "hfa_pts_nfelo": 2.397,
+  "nfelo_qb_adj": {
+   "home_elo": 0.6138,
+   "away_elo": -11.3121
+  },
+  "nfelo_vs_market_close": 3.0,
+  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -10.462,
+  "spread_weights": {
+   "nfelo": 0.46,
+   "pff": 0.39,
+   "cole": 0.15,
+   "tpt": 0.0
+  },
+  "total_core": 44.577,
+  "total_weights": {
+   "pff_implied": 0.38,
+   "nfelo_implied": 0.32,
+   "cole_implied": 0.3,
+   "tpt": 0.0
+  },
+  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "spread_range": 3.75,
+  "total_range": 0.42,
+  "spread_sd": 2.166,
+  "total_sd": 0.221,
+  "n_spread_sources": 3,
+  "n_total_sources": 3,
+  "tpt_diag": {
+   "spread_panel": -10.440000000000001,
+   "total_panel": 44.761104,
+   "spread_gap_vs_core": 0.02,
+   "total_gap_vs_core": 0.18
+  }
+ },
+ {
+  "game_id": "2026_01_MIA_LV",
+  "away": "MIA",
+  "home": "LV",
+  "gameday": "2026-09-13",
+  "weekday": "Sunday",
+  "gametime": "16:25",
+  "venue": "Allegiant Stadium",
+  "roof": "dome",
+  "surface": "grass",
+  "location": "Home",
+  "away_rest": 7,
+  "home_rest": 7,
+  "div_game": false,
+  "market_spread": -3.5,
+  "market_total": 40.5,
+  "away_ml": "164",
+  "home_ml": "-198",
+  "spread_nfelo": -3.5,
+  "home_wp_nfelo": 0.621,
+  "nfelo_provenance": {
+   "spread_nfelo_repo_snapshot": -3.5,
+   "nfelo_site_delta": 0.0,
+   "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
+   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
+  },
+  "spread_pff": -6.882,
+  "pff_meta": {
+   "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+   "psr_home": -4.3212071,
+   "psr_away": -8.1539243,
+   "psr_qb_home": 1.5,
+   "psr_qb_away": 2.0,
+   "hfa_pts": 3.05,
+   "rank_model_diag": -3.648
+  },
+  "spread_cole": -0.249,
+  "cole_meta": {
+   "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
+   "pr_home": -6.3,
+   "pr_away": -3.5,
+   "betting_pr_home": -4.3,
+   "betting_pr_away": -6.1,
+   "spread_betting_pr_diag": -4.849,
+   "hfa_pts": 3.05
+  },
+  "total_pff_implied": 41.634,
+  "total_cole_implied": 42.57,
+  "market_nfelo_open": -3.5,
+  "market_nfelo_current": -3.5,
+  "spread_tpt": -3.1599999999999997,
+  "spread_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_spread_detail": {
+   "DONC": -4.5,
+   "FFW": 2.2
+  },
+  "total_nfelo": 44.194,
+  "total_pff": null,
+  "total_pff_basis": null,
+  "total_dvoa_diag": 45.096,
+  "dvoa_proj": {
+   "home": -0.141,
+   "away": -0.121
+  },
+  "total_tpt": 42.944511999999996,
+  "total_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_total_detail": {
+   "DONC": 41.40564,
+   "FFW": 49.1
+  },
+  "structural_flag": null,
+  "market_open_spread": -3.0,
+  "market_open_total": 39.5,
+  "market_tpt_spread": -3.5,
+  "market_tpt_total": 40.5,
+  "pff_psr": {
+   "home": -4.3212071,
+   "away": -8.1539243,
+   "home_qb": 1.5,
+   "away_qb": 2.0,
+   "home_proj_wins": 6.1845,
+   "away_proj_wins": 3.9889
+  },
+  "hfa_pts_nfelo": 3.049,
+  "nfelo_qb_adj": {
+   "home_elo": 22.224,
+   "away_elo": -7.2276
+  },
+  "nfelo_vs_market_close": 0.0,
+  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -4.331,
+  "spread_weights": {
+   "nfelo": 0.46,
+   "pff": 0.39,
+   "cole": 0.15,
+   "tpt": 0.0
+  },
+  "total_core": 42.734,
+  "total_weights": {
+   "pff_implied": 0.38,
+   "nfelo_implied": 0.32,
+   "cole_implied": 0.3,
+   "tpt": 0.0
+  },
+  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "spread_range": 6.63,
+  "total_range": 2.56,
+  "spread_sd": 3.317,
+  "total_sd": 1.295,
+  "n_spread_sources": 3,
+  "n_total_sources": 3,
+  "tpt_diag": {
+   "spread_panel": -3.1599999999999997,
+   "total_panel": 42.944511999999996,
+   "spread_gap_vs_core": 1.17,
+   "total_gap_vs_core": 0.21
+  }
+ },
+ {
+  "game_id": "2026_01_GB_MIN",
+  "away": "GB",
+  "home": "MIN",
+  "gameday": "2026-09-13",
+  "weekday": "Sunday",
+  "gametime": "16:25",
+  "venue": "U.S. Bank Stadium",
+  "roof": "dome",
+  "surface": "sportturf",
+  "location": "Home",
+  "away_rest": 7,
+  "home_rest": 7,
+  "div_game": true,
+  "market_spread": -1.5,
+  "market_total": 45.5,
+  "away_ml": "-102",
+  "home_ml": "-118",
+  "spread_nfelo": -1.0,
+  "home_wp_nfelo": 0.531,
+  "nfelo_provenance": {
+   "spread_nfelo_repo_snapshot": -3.0,
+   "nfelo_site_delta": 2.0,
+   "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
+   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
+  },
+  "spread_pff": 0.85,
+  "pff_meta": {
+   "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+   "psr_home": -0.0821976,
+   "psr_away": 2.3641678,
+   "psr_qb_home": 3.5,
+   "psr_qb_away": 4.5,
+   "hfa_pts": 1.6,
+   "rank_model_diag": 2.203
+  },
+  "spread_cole": 0.704,
+  "cole_meta": {
+   "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
+   "pr_home": -0.1,
+   "pr_away": 2.2,
+   "betting_pr_home": 1.9,
+   "betting_pr_away": 2.0,
+   "spread_betting_pr_diag": -1.496,
+   "hfa_pts": 1.6
+  },
+  "total_pff_implied": 46.799,
+  "total_cole_implied": 46.735,
+  "market_nfelo_open": 1.5,
+  "market_nfelo_current": 1.5,
+  "spread_tpt": -0.5400000000000001,
+  "spread_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_spread_detail": {
+   "DONC": 1.1,
+   "FFW": -7.1
+  },
+  "total_nfelo": 46.812,
+  "total_pff": null,
+  "total_pff_basis": null,
+  "total_dvoa_diag": 46.101,
+  "dvoa_proj": {
+   "home": -0.041,
+   "away": 0.069
+  },
+  "total_tpt": 45.4255,
+  "total_tpt_systems": [
+   "DONC"
+  ],
+  "tpt_total_detail": {
+   "DONC": 45.4255
+  },
+  "structural_flag": null,
+  "market_open_spread": 1.5,
+  "market_open_total": 45.5,
+  "market_tpt_spread": -1.5,
+  "market_tpt_total": 46.0,
+  "pff_psr": {
+   "home": -0.0821976,
+   "away": 2.3641678,
+   "home_qb": 3.5,
+   "away_qb": 4.5,
+   "home_proj_wins": 8.5379,
+   "away_proj_wins": 9.6384
+  },
+  "hfa_pts_nfelo": 1.596,
+  "nfelo_qb_adj": {
+   "home_elo": 31.2611,
+   "away_elo": 0.887
+  },
+  "nfelo_vs_market_close": -1.5,
+  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -0.023,
+  "spread_weights": {
+   "nfelo": 0.46,
+   "pff": 0.39,
+   "cole": 0.15,
+   "tpt": 0.0
+  },
+  "total_core": 46.784,
+  "total_weights": {
+   "pff_implied": 0.38,
+   "nfelo_implied": 0.32,
+   "cole_implied": 0.3,
+   "tpt": 0.0
+  },
+  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "spread_range": 1.85,
+  "total_range": 0.08,
+  "spread_sd": 1.029,
+  "total_sd": 0.041,
+  "n_spread_sources": 3,
+  "n_total_sources": 3,
+  "tpt_diag": {
+   "spread_panel": -0.5400000000000001,
+   "total_panel": 45.4255,
+   "spread_gap_vs_core": -0.52,
+   "total_gap_vs_core": -1.36
+  }
+ },
+ {
+  "game_id": "2026_01_WAS_PHI",
+  "away": "WAS",
+  "home": "PHI",
+  "gameday": "2026-09-13",
+  "weekday": "Sunday",
+  "gametime": "16:25",
+  "venue": "Lincoln Financial Field",
+  "roof": "outdoors",
+  "surface": "grass",
+  "location": "Home",
+  "away_rest": 7,
+  "home_rest": 7,
+  "div_game": true,
+  "market_spread": -4.5,
+  "market_total": 45.5,
+  "away_ml": "170",
+  "home_ml": "-205",
+  "spread_nfelo": -3.5,
+  "home_wp_nfelo": 0.621,
+  "nfelo_provenance": {
+   "spread_nfelo_repo_snapshot": -4.5,
+   "nfelo_site_delta": 1.0,
+   "home_wp_basis": "interpolated on nfelo's published line->WP pairs (site spread differs from snapshot)",
+   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
+  },
+  "spread_pff": -5.44,
+  "pff_meta": {
+   "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+   "psr_home": 3.0922084,
+   "psr_away": -1.3718623,
+   "psr_qb_home": 4.0,
+   "psr_qb_away": 3.5,
+   "hfa_pts": 0.98,
+   "rank_model_diag": null
+  },
+  "spread_cole": -2.776,
+  "cole_meta": {
+   "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
+   "pr_home": 0.6,
+   "pr_away": -1.2,
+   "betting_pr_home": 1.9,
+   "betting_pr_away": -1.0,
+   "spread_betting_pr_diag": -3.876,
+   "hfa_pts": 0.98
+  },
+  "total_pff_implied": 46.602,
+  "total_cole_implied": 45.79,
+  "market_nfelo_open": -4.5,
+  "market_nfelo_current": -4.5,
+  "spread_tpt": -4.28,
+  "spread_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_spread_detail": {
+   "DONC": -5.0,
+   "FFW": -1.4
+  },
+  "total_nfelo": 46.493,
+  "total_pff": null,
+  "total_pff_basis": null,
+  "total_dvoa_diag": 46.081,
+  "dvoa_proj": {
+   "home": 0.052,
+   "away": -0.03
+  },
+  "total_tpt": 46.35216,
+  "total_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_total_detail": {
+   "DONC": 47.1402,
+   "FFW": 43.2
+  },
+  "structural_flag": null,
+  "market_open_spread": -4.0,
+  "market_open_total": 47.5,
+  "market_tpt_spread": -4.5,
+  "market_tpt_total": 45.5,
+  "pff_psr": {
+   "home": 3.0922084,
+   "away": -1.3718623,
+   "home_qb": 4.0,
+   "away_qb": 3.5,
+   "home_proj_wins": 10.2699,
+   "away_proj_wins": 7.6123
+  },
+  "hfa_pts_nfelo": 0.976,
+  "nfelo_qb_adj": {
+   "home_elo": 2.6134,
+   "away_elo": 3.639
+  },
+  "nfelo_vs_market_close": 0.0,
+  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -4.148,
+  "spread_weights": {
+   "nfelo": 0.46,
+   "pff": 0.39,
+   "cole": 0.15,
+   "tpt": 0.0
+  },
+  "total_core": 46.324,
+  "total_weights": {
+   "pff_implied": 0.38,
+   "nfelo_implied": 0.32,
+   "cole_implied": 0.3,
+   "tpt": 0.0
+  },
+  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "spread_range": 2.66,
+  "total_range": 0.81,
+  "spread_sd": 1.377,
+  "total_sd": 0.441,
+  "n_spread_sources": 3,
+  "n_total_sources": 3,
+  "tpt_diag": {
+   "spread_panel": -4.28,
+   "total_panel": 46.35216,
+   "spread_gap_vs_core": -0.13,
+   "total_gap_vs_core": 0.03
+  }
+ },
+ {
+  "game_id": "2026_01_DAL_NYG",
+  "away": "DAL",
+  "home": "NYG",
+  "gameday": "2026-09-13",
+  "weekday": "Sunday",
+  "gametime": "20:20",
+  "venue": "MetLife Stadium",
+  "roof": "outdoors",
+  "surface": "fieldturf",
+  "location": "Home",
+  "away_rest": 7,
+  "home_rest": 7,
+  "div_game": true,
+  "market_spread": 2.5,
+  "market_total": 48.5,
+  "away_ml": "-148",
+  "home_ml": "124",
+  "spread_nfelo": 1.0,
+  "home_wp_nfelo": 0.456,
+  "nfelo_provenance": {
+   "spread_nfelo_repo_snapshot": 1.0,
+   "nfelo_site_delta": 0.0,
+   "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
+   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
+  },
+  "spread_pff": 2.58,
+  "pff_meta": {
+   "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+   "psr_home": -2.0791124,
+   "psr_away": 0.8411947,
+   "psr_qb_home": 2.0,
+   "psr_qb_away": 5.5,
+   "hfa_pts": 0.34,
+   "rank_model_diag": 1.777
+  },
+  "spread_cole": 1.96,
+  "cole_meta": {
+   "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
+   "pr_home": -2.1,
+   "pr_away": 0.2,
+   "betting_pr_home": -2.3,
+   "betting_pr_away": 1.9,
+   "spread_betting_pr_diag": 3.86,
+   "hfa_pts": 0.34
+  },
+  "total_pff_implied": 45.567,
+  "total_cole_implied": 45.335,
+  "market_nfelo_open": 2.5,
+  "market_nfelo_current": 2.5,
+  "spread_tpt": 2.7399999999999998,
+  "spread_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_spread_detail": {
+   "DONC": 3.3,
+   "FFW": 0.5
+  },
+  "total_nfelo": 45.472,
+  "total_pff": null,
+  "total_pff_basis": null,
+  "total_dvoa_diag": 45.734,
+  "dvoa_proj": {
+   "home": -0.106,
+   "away": 0.028
+  },
+  "total_tpt": 47.49,
+  "total_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_total_detail": {
+   "DONC": 48.6375,
+   "FFW": 42.9
+  },
+  "structural_flag": null,
+  "market_open_spread": 2.5,
+  "market_open_total": 48.0,
+  "market_tpt_spread": 3.0,
+  "market_tpt_total": 48.5,
+  "pff_psr": {
+   "home": -2.0791124,
+   "away": 0.8411947,
+   "home_qb": 2.0,
+   "away_qb": 5.5,
+   "home_proj_wins": 7.3281,
+   "away_proj_wins": 8.6562
+  },
+  "hfa_pts_nfelo": 0.34,
+  "nfelo_qb_adj": {
+   "home_elo": -3.1414,
+   "away_elo": 5.3303
+  },
+  "nfelo_vs_market_close": -1.5,
+  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": 1.76,
+  "spread_weights": {
+   "nfelo": 0.46,
+   "pff": 0.39,
+   "cole": 0.15,
+   "tpt": 0.0
+  },
+  "total_core": 45.467,
+  "total_weights": {
+   "pff_implied": 0.38,
+   "nfelo_implied": 0.32,
+   "cole_implied": 0.3,
+   "tpt": 0.0
+  },
+  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "spread_range": 1.58,
+  "total_range": 0.23,
+  "spread_sd": 0.796,
+  "total_sd": 0.117,
+  "n_spread_sources": 3,
+  "n_total_sources": 3,
+  "tpt_diag": {
+   "spread_panel": 2.7399999999999998,
+   "total_panel": 47.49,
+   "spread_gap_vs_core": 0.98,
+   "total_gap_vs_core": 2.02
+  }
+ },
+ {
+  "game_id": "2026_01_DEN_KC",
+  "away": "DEN",
+  "home": "KC",
+  "gameday": "2026-09-14",
+  "weekday": "Monday",
+  "gametime": "20:15",
+  "venue": "GEHA Field at Arrowhead Stadium",
+  "roof": "outdoors",
+  "surface": "grass",
+  "location": "Home",
+  "away_rest": 7,
+  "home_rest": 7,
+  "div_game": true,
+  "market_spread": -3.0,
+  "market_total": 42.5,
+  "away_ml": "124",
+  "home_ml": "-148",
+  "spread_nfelo": -1.0,
+  "home_wp_nfelo": 0.531,
+  "nfelo_provenance": {
+   "spread_nfelo_repo_snapshot": -1.0,
+   "nfelo_site_delta": 0.0,
+   "home_wp_basis": "nfelo published WP (snapshot; spread unchanged on site)",
+   "nfelo_source": "nfeloapp.com Week 1 model spreads pasted by the user 2026-09-02 (authoritative per \u00a712)"
+  },
+  "spread_pff": 0.092,
+  "pff_meta": {
+   "basis": "explicit PFF point-spread rating (pasted table, authoritative per \u00a712)",
+   "psr_home": 2.3968171,
+   "psr_away": 2.8283992,
+   "psr_qb_home": 7.0,
+   "psr_qb_away": 3.0,
+   "hfa_pts": 0.34,
+   "rank_model_diag": -0.078
+  },
+  "spread_cole": -1.34,
+  "cole_meta": {
+   "basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
+   "pr_home": 3.0,
+   "pr_away": 2.0,
+   "betting_pr_home": 2.2,
+   "betting_pr_away": 1.3,
+   "spread_betting_pr_diag": -1.24,
+   "hfa_pts": 0.34
+  },
+  "total_pff_implied": 47.829,
+  "total_cole_implied": 47.75,
+  "market_nfelo_open": -3.0,
+  "market_nfelo_current": -3.0,
+  "spread_tpt": -2.04,
+  "spread_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_spread_detail": {
+   "DONC": -3.1,
+   "FFW": 2.2
+  },
+  "total_nfelo": 47.403,
+  "total_pff": null,
+  "total_pff_basis": null,
+  "total_dvoa_diag": 46.504,
+  "dvoa_proj": {
+   "home": 0.079,
+   "away": 0.065
+  },
+  "total_tpt": 44.542640000000006,
+  "total_tpt_systems": [
+   "DONC",
+   "FFW"
+  ],
+  "tpt_total_detail": {
+   "DONC": 43.8033,
+   "FFW": 47.5
+  },
+  "structural_flag": null,
+  "market_open_spread": -2.5,
+  "market_open_total": 42.5,
+  "market_tpt_spread": -2.5,
+  "market_tpt_total": 43.0,
+  "pff_psr": {
+   "home": 2.3968171,
+   "away": 2.8283992,
+   "home_qb": 7.0,
+   "away_qb": 3.0,
+   "home_proj_wins": 9.6548,
+   "away_proj_wins": 9.8398
+  },
+  "hfa_pts_nfelo": 0.34,
+  "nfelo_qb_adj": {
+   "home_elo": 14.4125,
+   "away_elo": 4.2348
+  },
+  "nfelo_vs_market_close": 2.0,
+  "build": "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)",
+  "spread_core": -0.625,
+  "spread_weights": {
+   "nfelo": 0.46,
+   "pff": 0.39,
+   "cole": 0.15,
+   "tpt": 0.0
+  },
+  "total_core": 47.669,
+  "total_weights": {
+   "pff_implied": 0.38,
+   "nfelo_implied": 0.32,
+   "cole_implied": 0.3,
+   "tpt": 0.0
+  },
+  "total_basis": "all three totals are \u00a73.2-derived implied totals (league prior 46.0 + 0.35 \u00d7 combined rating vs avg); no engine publishes a total",
+  "spread_range": 1.43,
+  "total_range": 0.43,
+  "spread_sd": 0.748,
+  "total_sd": 0.227,
+  "n_spread_sources": 3,
+  "n_total_sources": 3,
+  "tpt_diag": {
+   "spread_panel": -2.04,
+   "total_panel": 44.542640000000006,
+   "spread_gap_vs_core": -1.42,
+   "total_gap_vs_core": -3.13
+  }
+ }
+]
