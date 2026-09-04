@@ -130,7 +130,7 @@
   "method": {
    "version": "v6 (research-calibrated, 2026-09-04)",
    "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
-   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; \u00a71 single-computer clamp on the sleeve: the Cole sleeve may move the blend at most 1.0 from the Tier-A (nfelo/PFF) blend (|core \u2212 Tier-A| \u2264 1.0, as implemented in v5); Cole's raw distance from the Tier-A blend is not itself clamped",
    "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
    "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
    "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
@@ -308,7 +308,7 @@
   "method": {
    "version": "v6 (research-calibrated, 2026-09-04)",
    "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
-   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; \u00a71 single-computer clamp on the sleeve: the Cole sleeve may move the blend at most 1.0 from the Tier-A (nfelo/PFF) blend (|core \u2212 Tier-A| \u2264 1.0, as implemented in v5); Cole's raw distance from the Tier-A blend is not itself clamped",
    "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
    "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
    "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
@@ -486,7 +486,7 @@
   "method": {
    "version": "v6 (research-calibrated, 2026-09-04)",
    "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
-   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; \u00a71 single-computer clamp on the sleeve: the Cole sleeve may move the blend at most 1.0 from the Tier-A (nfelo/PFF) blend (|core \u2212 Tier-A| \u2264 1.0, as implemented in v5); Cole's raw distance from the Tier-A blend is not itself clamped",
    "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
    "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
    "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
@@ -664,7 +664,7 @@
   "method": {
    "version": "v6 (research-calibrated, 2026-09-04)",
    "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
-   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; \u00a71 single-computer clamp on the sleeve: the Cole sleeve may move the blend at most 1.0 from the Tier-A (nfelo/PFF) blend (|core \u2212 Tier-A| \u2264 1.0, as implemented in v5); Cole's raw distance from the Tier-A blend is not itself clamped",
    "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
    "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
    "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
@@ -842,7 +842,7 @@
   "method": {
    "version": "v6 (research-calibrated, 2026-09-04)",
    "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
-   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; \u00a71 single-computer clamp on the sleeve: the Cole sleeve may move the blend at most 1.0 from the Tier-A (nfelo/PFF) blend (|core \u2212 Tier-A| \u2264 1.0, as implemented in v5); Cole's raw distance from the Tier-A blend is not itself clamped",
    "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
    "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
    "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
@@ -1020,7 +1020,7 @@
   "method": {
    "version": "v6 (research-calibrated, 2026-09-04)",
    "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
-   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; \u00a71 single-computer clamp on the sleeve: the Cole sleeve may move the blend at most 1.0 from the Tier-A (nfelo/PFF) blend (|core \u2212 Tier-A| \u2264 1.0, as implemented in v5); Cole's raw distance from the Tier-A blend is not itself clamped",
    "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
    "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
    "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
@@ -1198,7 +1198,7 @@
   "method": {
    "version": "v6 (research-calibrated, 2026-09-04)",
    "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
-   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; \u00a71 single-computer clamp on the sleeve: the Cole sleeve may move the blend at most 1.0 from the Tier-A (nfelo/PFF) blend (|core \u2212 Tier-A| \u2264 1.0, as implemented in v5); Cole's raw distance from the Tier-A blend is not itself clamped",
    "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
    "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
    "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
@@ -1376,7 +1376,7 @@
   "method": {
    "version": "v6 (research-calibrated, 2026-09-04)",
    "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
-   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; \u00a71 single-computer clamp on the sleeve: the Cole sleeve may move the blend at most 1.0 from the Tier-A (nfelo/PFF) blend (|core \u2212 Tier-A| \u2264 1.0, as implemented in v5); Cole's raw distance from the Tier-A blend is not itself clamped",
    "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
    "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
    "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
@@ -1554,7 +1554,7 @@
   "method": {
    "version": "v6 (research-calibrated, 2026-09-04)",
    "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
-   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; \u00a71 single-computer clamp on the sleeve: the Cole sleeve may move the blend at most 1.0 from the Tier-A (nfelo/PFF) blend (|core \u2212 Tier-A| \u2264 1.0, as implemented in v5); Cole's raw distance from the Tier-A blend is not itself clamped",
    "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
    "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
    "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
@@ -1732,7 +1732,7 @@
   "method": {
    "version": "v6 (research-calibrated, 2026-09-04)",
    "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
-   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; \u00a71 single-computer clamp on the sleeve: the Cole sleeve may move the blend at most 1.0 from the Tier-A (nfelo/PFF) blend (|core \u2212 Tier-A| \u2264 1.0, as implemented in v5); Cole's raw distance from the Tier-A blend is not itself clamped",
    "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
    "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
    "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
@@ -1910,7 +1910,7 @@
   "method": {
    "version": "v6 (research-calibrated, 2026-09-04)",
    "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
-   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; \u00a71 single-computer clamp on the sleeve: the Cole sleeve may move the blend at most 1.0 from the Tier-A (nfelo/PFF) blend (|core \u2212 Tier-A| \u2264 1.0, as implemented in v5); Cole's raw distance from the Tier-A blend is not itself clamped",
    "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
    "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
    "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
@@ -2088,7 +2088,7 @@
   "method": {
    "version": "v6 (research-calibrated, 2026-09-04)",
    "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
-   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; \u00a71 single-computer clamp on the sleeve: the Cole sleeve may move the blend at most 1.0 from the Tier-A (nfelo/PFF) blend (|core \u2212 Tier-A| \u2264 1.0, as implemented in v5); Cole's raw distance from the Tier-A blend is not itself clamped",
    "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
    "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
    "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
@@ -2264,7 +2264,7 @@
   "method": {
    "version": "v6 (research-calibrated, 2026-09-04)",
    "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
-   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; \u00a71 single-computer clamp on the sleeve: the Cole sleeve may move the blend at most 1.0 from the Tier-A (nfelo/PFF) blend (|core \u2212 Tier-A| \u2264 1.0, as implemented in v5); Cole's raw distance from the Tier-A blend is not itself clamped",
    "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
    "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
    "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
@@ -2442,7 +2442,7 @@
   "method": {
    "version": "v6 (research-calibrated, 2026-09-04)",
    "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
-   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; \u00a71 single-computer clamp on the sleeve: the Cole sleeve may move the blend at most 1.0 from the Tier-A (nfelo/PFF) blend (|core \u2212 Tier-A| \u2264 1.0, as implemented in v5); Cole's raw distance from the Tier-A blend is not itself clamped",
    "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
    "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
    "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
@@ -2620,7 +2620,7 @@
   "method": {
    "version": "v6 (research-calibrated, 2026-09-04)",
    "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
-   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; \u00a71 single-computer clamp on the sleeve: the Cole sleeve may move the blend at most 1.0 from the Tier-A (nfelo/PFF) blend (|core \u2212 Tier-A| \u2264 1.0, as implemented in v5); Cole's raw distance from the Tier-A blend is not itself clamped",
    "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
    "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
    "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",
@@ -2798,7 +2798,7 @@
   "method": {
    "version": "v6 (research-calibrated, 2026-09-04)",
    "hfa_rating_paths": "PFF and Cole spreads use HFA 1.75 (neutral: international 0.75, domestic 0.0); nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
-   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+   "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; \u00a71 single-computer clamp on the sleeve: the Cole sleeve may move the blend at most 1.0 from the Tier-A (nfelo/PFF) blend (|core \u2212 Tier-A| \u2264 1.0, as implemented in v5); Cole's raw distance from the Tier-A blend is not itself clamped",
    "rest": "rest differential priced once on the blend at -0.15/day (clip \u00b17), Week 1 exempt; short-week / bye / west-to-east clauses deleted (panel: schedule)",
    "totals_prior": "Week-1 league prior LG = 46.0 -1.0 = 45.0 (panel: totals/earlyseason; in-season: blended prior -0.5)",
    "total_nfelo_implied": "LG + 0.10\u00b7(R_home + R_away, QB-free nfelo Elo in points) + 0.30\u00b7GT_dev (prior-season PF+PA vs league) + 0.72\u00b7QB_sum (nfelo QB adj, points) + DIV + ENV",

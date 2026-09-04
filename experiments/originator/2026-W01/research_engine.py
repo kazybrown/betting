@@ -39,7 +39,9 @@ METHOD = {
     "hfa_rating_paths": f"PFF and Cole spreads use HFA {CFG['spreads']['hfa_rating_paths']} (neutral: international "
                         f"{CFG['spreads']['hfa_neutral_international']}, domestic {CFG['spreads']['hfa_neutral_domestic']}); "
                         "nfelo's per-game hfa_mod is never applied to the rating paths (panel: hfa)",
-    "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; sleeve clamp 1.0 on Cole vs the Tier-A blend",
+    "spread_blend": "spread_core = .46 nfelo + .39 PFF + .15 Cole; structural clamp 4.5 on PFF vs nfelo; §1 single-computer clamp on the sleeve: "
+                    "the Cole sleeve may move the blend at most 1.0 from the Tier-A (nfelo/PFF) blend (|core − Tier-A| ≤ 1.0, as implemented in v5); "
+                    "Cole's raw distance from the Tier-A blend is not itself clamped",
     "rest": f"rest differential priced once on the blend at -{CFG['schedule']['rest_per_day']}/day (clip ±{CFG['schedule']['rest_clip_days']}), Week 1 exempt; "
             "short-week / bye / west-to-east clauses deleted (panel: schedule)",
     "totals_prior": f"Week-1 league prior LG = {CFG['totals']['L_prev']} {CFG['totals']['week1_prior_offset']:+.1f} = "
