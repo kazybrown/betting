@@ -1,0 +1,79 @@
+loaded 2009: rows=43048 games=256 unmapped_rows=0.0000
+loaded 2010: rows=43421 games=256 unmapped_rows=0.0000
+loaded 2011: rows=43969 games=256 unmapped_rows=0.0000
+loaded 2012: rows=44245 games=256 unmapped_rows=0.0000
+loaded 2013: rows=44618 games=256 unmapped_rows=0.0000
+loaded 2014: rows=44097 games=256 unmapped_rows=0.0000
+loaded 2015: rows=44581 games=256 unmapped_rows=0.0000
+loaded 2016: rows=44206 games=256 unmapped_rows=0.0000
+loaded 2017: rows=43721 games=256 unmapped_rows=0.0000
+loaded 2018: rows=43579 games=256 unmapped_rows=0.0000
+loaded 2019: rows=43850 games=256 unmapped_rows=0.0000
+loaded 2023: rows=47027 games=285 unmapped_rows=0.0000
+loaded 2024: rows=46779 games=285 unmapped_rows=0.0000
+loaded 2025: rows=46042 games=285 unmapped_rows=0.0000
+
+xpass logit fit on 2009-2019 scrimmage plays n=353888  pseudo-R2=0.140
+const        -0.444
+down2         0.681
+down3         2.155
+down4         1.209
+ytg          -0.077
+log_ytg       1.270
+down2_ytg     0.002
+down3_ytg    -0.013
+gtg           0.446
+yl            0.015
+yl_sq        -0.021
+rz            0.076
+sd            0.087
+sd_late       0.112
+sd_sq_late   -0.137
+gfrac         0.930
+hsr          -1.282
+h2            1.022
+q4           -0.140
+two_min       0.772
+two_min_sd   -0.011
+wp           -0.659
+wp_sq        -1.318
+wp_late      -5.051
+2009: team-games=512  plays=62.0 spp_neut=32.5 pr_neut=0.536 expl_off=0.095 ppd=1.74 proe=-1.84
+2010: team-games=512  plays=62.2 spp_neut=32.9 pr_neut=0.536 expl_off=0.097 ppd=1.76 proe=-1.38
+2011: team-games=512  plays=62.8 spp_neut=32.3 pr_neut=0.538 expl_off=0.102 ppd=1.78 proe=-1.16
+2012: team-games=512  plays=63.3 spp_neut=32.1 pr_neut=0.549 expl_off=0.097 ppd=1.82 proe=-0.35
+2013: team-games=512  plays=64.0 spp_neut=31.7 pr_neut=0.555 expl_off=0.095 ppd=1.84 proe=+0.18
+2014: team-games=512  plays=63.1 spp_neut=31.9 pr_neut=0.555 expl_off=0.097 ppd=1.86 proe=+0.25
+2015: team-games=512  plays=63.5 spp_neut=31.9 pr_neut=0.560 expl_off=0.098 ppd=1.85 proe=+0.83
+2016: team-games=512  plays=63.1 spp_neut=32.4 pr_neut=0.559 expl_off=0.095 ppd=1.93 proe=+1.20
+2017: team-games=512  plays=62.4 spp_neut=32.6 pr_neut=0.553 expl_off=0.094 ppd=1.80 proe=-0.93
+2018: team-games=512  plays=62.1 spp_neut=32.8 pr_neut=0.560 expl_off=0.104 ppd=2.00 proe=+1.03
+2019: team-games=512  plays=62.7 spp_neut=32.7 pr_neut=0.567 expl_off=0.100 ppd=1.97 proe=+0.70
+2023: team-games=570  plays=62.5 spp_neut=33.0 pr_neut=0.562 expl_off=0.096 ppd=1.94 proe=-0.13
+2024: team-games=570  plays=61.5 spp_neut=33.8 pr_neut=0.541 expl_off=0.100 ppd=2.12 proe=-1.13
+2025: team-games=570  plays=60.8 spp_neut=34.0 pr_neut=0.540 expl_off=0.096 ppd=2.14 proe=-1.40
+
+wrote /home/user/originator-2026-w01/research/experts/pace/_teamgame.csv shape=(7342, 36) in 18s
+coverage by season (team-games): {2009: 512, 2010: 512, 2011: 512, 2012: 512, 2013: 512, 2014: 512, 2015: 512, 2016: 512, 2017: 512, 2018: 512, 2019: 512, 2023: 570, 2024: 570, 2025: 570}
+
+sanity: corr(pts_off, pts) = 0.954 (offensive drive points vs team score; should be ~0.95)
+sanity: mean (pts - pts_off) = 1.3 (defensive/ST return points per game; should be ~0.5-1.5)
+proe vs nflfastR pass_oe (2023-25 team-games): corr = 0.822 | mean proe -0.88 mean pass_oe -1.98
+               count    mean     std     min     25%     50%     75%      max
+plays         7342.0  62.540   8.531  30.000  57.000  63.000  68.000  104.000
+drives        7342.0  11.419   1.761   6.000  10.000  11.000  13.000   19.000
+ppd           7342.0   1.899   0.899   0.000   1.273   1.846   2.455    5.778
+spp_neut      7330.0  32.638   3.637   5.500  30.520  32.866  35.000   52.500
+spp_neut_run  7305.0  37.482   3.154  18.000  35.810  37.769  39.500   57.000
+spp_neut_n    7342.0  23.640  10.032   0.000  16.000  24.000  31.000   54.000
+nh_neut       7338.0   0.069   0.145   0.000   0.000   0.000   0.065    0.958
+pr_neut       7338.0   0.551   0.109   0.000   0.485   0.556   0.621    1.000
+pr_all        7342.0   0.582   0.106   0.129   0.509   0.586   0.661    0.909
+pr_wp         7340.0   0.567   0.107   0.000   0.500   0.571   0.636    1.000
+proe          7342.0  -0.308   8.539 -42.166  -5.758  -0.074   5.515   38.385
+proe_neut     7338.0  -0.596  10.918 -57.983  -7.394  -0.584   6.169   65.368
+expl_off      7342.0   0.098   0.041   0.000   0.068   0.095   0.123    0.324
+expl20_off    7342.0   0.060   0.031   0.000   0.037   0.057   0.080    0.220
+expl_def      7342.0   0.098   0.041   0.000   0.068   0.095   0.123    0.324
+epa_off       7342.0  -0.003   0.208  -0.875  -0.135   0.006   0.140    0.669
+epa_def       7342.0  -0.003   0.208  -0.875  -0.135   0.006   0.140    0.669

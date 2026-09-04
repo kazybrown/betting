@@ -1,0 +1,54 @@
+[common] games=7276 seasons 1999-2025 | with market total=7276 | nfelo elo coverage 2009+ = 0.931 | pace coverage = 0.521
+[common] sign check corr(mkt_spread, margin) = -0.426 (must be strongly NEGATIVE); corr(mkt_total, total_pts) = 0.321 (positive)
+
+sample: REG games with Elo: train 2009-2021 n=3027, test 2022-2025 n=1087
+
+== (b) predictive content of elo_sum (combined strength, points vs avg) ==
+  train corr(elo_sum,total_pts)=+0.110 (p=1.4e-09) | corr(elo_sum,mkt_total)=+0.340 | corr(elo_sum, total - mkt_total)=+0.003 (p=0.87)  <- ~0 means market already prices it
+  test  corr(elo_sum,total_pts)=+0.129 (p=1.9e-05) | corr(elo_sum,mkt_total)=+0.399 | corr(elo_sum, total - mkt_total)=+0.005 (p=0.86)  <- ~0 means market already prices it
+  market's own slope: mkt_total = 45.04 + 0.274*elo_sum (se 0.014) [train]
+
+== (a) total_pts ~ a + b*elo_sum ==
+  FIT 2009-2021: a=45.46  b=0.282  95% CI [0.185,0.378]  R2=0.0120  (spec uses b=0.35, a=46.0)
+  FIT with season FE:               b=0.281  95% CI [0.185,0.378]
+  TEST 2022-2025 (in-sample there): b=0.331  95% CI [0.171,0.491]
+  split home/away: b_home=0.347 (se 0.068)  b_away=0.217 (se 0.066)
+  curvature: elo_sum=0.285  elo_sum^2=0.0125 (p=0.06)  |elo_dif|=0.028 (p=0.70)
+
+== OOS 2022-2025 totals MAE (n=1087) ==
+  market close                         MAE=10.189 bias=-0.72  dMAE vs mkt=+0.000 [+0.000,+0.000]  O/U vs mkt 549-530-8 (0.509)
+  spec: 46.0 + 0.35*elo_sum            MAE=10.820 bias=+1.32  dMAE vs mkt=+0.631 [+0.380,+0.848]  O/U vs mkt 536-543-8 (0.497)
+  lg_prev + 0.35*elo_sum               MAE=10.714 bias=+0.09  dMAE vs mkt=+0.525 [+0.302,+0.728]  O/U vs mkt 538-541-8 (0.499)
+  lg_prev + 0.28*elo_sum (fit b)       MAE=10.709 bias=+0.07  dMAE vs mkt=+0.520 [+0.293,+0.723]  O/U vs mkt 541-538-8 (0.501)
+  lg_blend + 0.28*elo_sum              MAE=10.658 bias=+0.01  dMAE vs mkt=+0.469 [+0.256,+0.665]  O/U vs mkt 541-538-8 (0.501)
+  lg_prev only (no team info)          MAE=10.778 bias=-0.02  dMAE vs mkt=+0.589 [+0.346,+0.814]  O/U vs mkt 530-549-8 (0.491)
+  lg_blend only                        MAE=10.724 bias=-0.08  dMAE vs mkt=+0.535 [+0.298,+0.759]  O/U vs mkt 518-561-8 (0.480)
+  constant 46.0                        MAE=10.849 bias=+1.21  dMAE vs mkt=+0.660 [+0.388,+0.897]  O/U vs mkt 533-546-8 (0.494)
+
+== rolling-origin b and OOS MAE by test season (fit on all REG seasons < Y) ==
+  2019: b=0.318  MAE lg_prev+b*elo=11.365  spec(46+.35)=11.338  market=10.871  n=248  realized mean=45.7 lg_prev=46.7
+  2020: b=0.265  MAE lg_prev+b*elo=11.106  spec(46+.35)=11.031  market=10.146  n=256  realized mean=49.6 lg_prev=45.6
+  2021: b=0.270  MAE lg_prev+b*elo=11.487  spec(46+.35)=10.928  market=10.789  n=272  realized mean=46.0 lg_prev=49.6
+  2022: b=0.281  MAE lg_prev+b*elo=11.314  spec(46+.35)=11.336  market=10.395  n=271  realized mean=43.8 lg_prev=46.0
+  2023: b=0.273  MAE lg_prev+b*elo=10.615  spec(46+.35)=11.074  market=10.239  n=272  realized mean=43.5 lg_prev=43.8
+  2024: b=0.281  MAE lg_prev+b*elo=10.044  spec(46+.35)=10.004  market=9.730  n=272  realized mean=45.8 lg_prev=43.5
+  2025: b=0.290  MAE lg_prev+b*elo=10.866  spec(46+.35)=10.870  market=10.393  n=272  realized mean=46.0 lg_prev=45.8
+
+== (c) offense/defense proxies (blended rolling PF/PA, K=6) vs combined Elo ==
+  pf_sum = h_pf + a_pf (both offenses), pa_sum = h_pa + a_pa (both defenses, higher = worse D)
+  elo only                                   train-R2=0.0259 coefs={'elo_sum': '0.281'} | OOS MAE=10.709 dMAE vs mkt=+0.520 [+0.293,+0.723]
+  pf+pa                                      train-R2=0.0587 coefs={'pf_sum': '0.543', 'pa_sum': '0.338'} | OOS MAE=10.738 dMAE vs mkt=+0.549 [+0.317,+0.761]
+  gt (team game-total avg)                   train-R2=0.0552 coefs={'gt_avg': '0.940'} | OOS MAE=10.797 dMAE vs mkt=+0.608 [+0.357,+0.838]
+  pf+pa+elo                                  train-R2=0.0587 coefs={'pf_sum': '0.513', 'pa_sum': '0.362', 'elo_sum': '0.045'} | OOS MAE=10.719 dMAE vs mkt=+0.530 [+0.300,+0.735]
+  matchup: h_off_vs_a_def + a_off_vs_h_def   train-R2=0.0558 coefs={'h_off_vs_a_def': '0.511', 'a_off_vs_h_def': '0.428'} | OOS MAE=10.778 dMAE vs mkt=+0.589 [+0.338,+0.820]
+  prior-season only pf+pa                    train-R2=0.0310 coefs={'I(h_pf_prev + a_pf_prev)': '0.301', 'I(h_pa_prev + a_pa_prev)': '0.193'} | OOS MAE=10.777 dMAE vs mkt=+0.588 [+0.350,+0.810]
+
+== does the MARKET miss offense/defense structure? residual (total - mkt) regressions ==
+  elo_sum              train {'elo_sum': '+0.007 (p=0.88)'}
+  elo_sum              test  {'elo_sum': '+0.013 (p=0.87)'}
+  pf_sum + pa_sum      train {'pf_sum': '-0.026 (p=0.57)', 'pa_sum': '-0.089 (p=0.08)'}
+  pf_sum + pa_sum      test  {'pf_sum': '-0.053 (p=0.51)', 'pa_sum': '-0.136 (p=0.17)'}
+  gt_avg               train {'gt_avg': '-0.101 (p=0.17)'}
+  gt_avg               test  {'gt_avg': '-0.156 (p=0.27)'}
+  lg_prev - mkt level  train {'I(lg_prev - mkt_total)': '-0.003 (p=0.95)'}
+  lg_prev - mkt level  test  {'I(lg_prev - mkt_total)': '+0.017 (p=0.86)'}

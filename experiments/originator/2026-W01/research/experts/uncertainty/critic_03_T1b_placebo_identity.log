@@ -1,0 +1,53 @@
+(1) PLACEBO model = market close + signed noise with the SAME |d| distribution as nfelo_b (|d| resampled from D_base, sign random)
+  REAL nfelo_b (test): slope +0.364 (se 0.175, p=0.038) Spearman +0.067 | tercile RMSE [12.13 12.6  13.39]
+  PLACEBO (500 reps): slope mean +0.228 [2.5-97.5%: -0.062, +0.557] | Spearman mean +0.032 | tercile RMSE mean [12.41 12.52 12.97]
+  real slope percentile among placebos: 80% ; real Spearman percentile: 87%
+  -> if the real numbers sit inside the placebo band, T1b is the identity and says nothing about nfelo.
+
+(2) EXCESS beyond the identity: RMSE_model^2 - RMSE_mkt^2 - mean(d^2) = 2*cov(e_mkt, d)  [negative = model has edge]
+
+  nfelo_b vs nflverse close (expert's frame)
+ era band    n  rmse_mkt  rmse_model  identity_pred  two_cov   ci_lo  ci_hi   corr  w_implied
+ fit HIGH 1612    13.144      13.132         13.171   -1.006  -2.054  0.043 -0.046      0.725
+ fit  MED  934    13.273      13.291         13.453   -4.338  -8.169 -0.579 -0.076      0.450
+ fit  LOW  625    13.844      14.022         14.582  -16.016 -26.215 -6.580 -0.130      0.382
+ fit  ALL 3171    13.323      13.359         13.543   -4.946  -7.284 -2.599 -0.077      0.418
+test HIGH  616    12.435      12.468         12.463    0.110  -1.638  1.811  0.008     -0.078
+test  MED  344    12.456      12.561         12.645   -2.128  -7.839  3.955 -0.036      0.223
+test  LOW  179    12.318      13.572         13.141   11.522  -4.823 28.225  0.116     -0.275
+test  ALL 1139    12.423      12.676         12.627    1.227  -1.973  4.326  0.028     -0.120
+
+  538 qbelo (independent engine) vs close
+ era band    n  rmse_mkt  rmse_model  identity_pred  two_cov   ci_lo  ci_hi   corr  w_implied
+ fit HIGH 1223    13.238      13.254         13.255   -0.020  -1.029  0.944 -0.001      0.021
+ fit  MED 1095    13.143      13.235         13.295   -1.588  -4.534  1.436 -0.031      0.198
+ fit  LOW  783    13.627      14.024         14.330   -8.686 -17.366 -0.222 -0.072      0.221
+ fit  ALL 3101    13.304      13.446         13.548   -2.762  -5.092 -0.345 -0.040      0.210
+test HIGH  379    12.682      12.770         12.700    1.789   0.008  3.680  0.102     -1.934
+test  MED  322    12.280      12.336         12.440   -2.592  -7.982  3.131 -0.043      0.328
+test  LOW  369    12.392      13.745         13.403    9.290  -4.683 22.955  0.073     -0.178
+test  ALL 1070    12.462      12.989         12.871    3.057  -2.001  8.400  0.040     -0.148
+
+  engine mean (nfelo_b, qbelo) vs close
+ era band    n  rmse_mkt  rmse_model  identity_pred  two_cov   ci_lo  ci_hi   corr  w_implied
+ fit HIGH 1650    13.097      13.103         13.124   -0.550  -1.655  0.551 -0.025      0.390
+ fit  MED  960    13.457      13.422         13.634   -5.742  -9.603 -2.120 -0.097      0.596
+ fit  LOW  491    13.686      13.960         14.408  -12.711 -23.273 -2.029 -0.110      0.313
+ fit  ALL 3101    13.304      13.341         13.493   -4.083  -6.279 -1.970 -0.068      0.402
+test HIGH  540    12.509      12.570         12.535    0.874  -0.834  2.544  0.044     -0.659
+test  MED  354    12.220      12.415         12.420   -0.118  -6.019  5.841  0.017      0.012
+test  LOW  176    12.797      14.108         13.677   11.983  -6.868 30.905  0.094     -0.257
+test  ALL 1070    12.462      12.786         12.692    2.373  -1.324  6.414  0.043     -0.205
+  w_implied = -cov(e_mkt,d)/E[d^2] is the no-intercept blend weight of T3 inside each band (0 = market right).
+
+(3) ROBUSTNESS of the expert's OOS slope +0.364 (|e_nb| ~ D_base, test era)
+  winsorise D at 4.5: slope +0.401 p=0.048
+  drop D>=4.5 (n=1093): slope +0.332 p=0.137
+  Huber M-estimator: slope +0.297 se 0.149
+  quadratic term (identity predicts convexity): D +0.283 (p=0.453) D^2 +0.013 (p=0.823)
+  per-season slopes (model vs market, same D):
+season        2012   2013   2014   2015   2016   2017   2018   2019   2020   2021   2022   2023   2024  2025
+slope_model  0.197 -0.142 -0.007 -0.008  0.028  0.390  0.231  0.655  0.779 -0.307  0.489  0.067  0.588  0.20
+slope_mkt   -0.206 -0.290 -0.082  0.256 -0.010  0.123  0.184  0.319  0.531 -0.468  0.183 -0.289  0.194 -0.12
+diff         0.403  0.147  0.075 -0.263  0.038  0.267  0.047  0.336  0.248  0.161  0.305  0.356  0.394  0.32
+  model slope > market slope in 13/14 seasons (binom p=0.002); mean diff +0.202

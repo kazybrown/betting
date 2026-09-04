@@ -1,0 +1,183 @@
+====================================================================================================
+SPREAD: market absolute error (benchmark)
+
+### market |err|: ae_mkt ~ D_base
+  FIT (<=2021, n=3171): slope=0.120 se=0.098 p=0.2184 | intercept=10.056
+  TEST (2022-25, n=1139): slope=0.019 se=0.165 p=0.9079 | Spearman rho=0.028 p=0.3497 | OOS slope of D controlling for abs_mkt: 0.008 (p=0.964)
+  OOS skill predicting |err|: MAE(fit-line)=6.5019 vs MAE(constant)=6.5032 -> improvement 0.02%
+  tercile edges (fit era): [0.94 2.17]; T3-T1 mean |err| diff = 0.596 (Welch p=0.325)
+           n  mean_abs_err  ci_lo   ci_hi    rmse  D_mean
+tercile                                                  
+T1 low   399         9.118  8.356   9.905  12.120   0.451
+T2 mid   406         9.800  9.086  10.503  12.436   1.487
+T3 high  334         9.714  8.880  10.588  12.761   3.486
+
+### market |err|: ae_mkt ~ D_reg
+  FIT (<=2021, n=3171): slope=0.342 se=0.177 p=0.0532 | intercept=10.042
+  TEST (2022-25, n=1139): slope=-0.330 se=0.264 p=0.2114 | Spearman rho=-0.023 p=0.4426 | OOS slope of D controlling for abs_mkt: -0.343 (p=0.195)
+  OOS skill predicting |err|: MAE(fit-line)=6.5176 vs MAE(constant)=6.5032 -> improvement -0.22%
+  tercile edges (fit era): [0. 1.]; T3-T1 mean |err| diff = -0.765 (Welch p=0.202)
+           n  mean_abs_err  ci_lo   ci_hi    rmse  D_mean
+tercile                                                  
+T1 low   531         9.599  8.950  10.303  12.476   0.000
+T2 mid   349         9.961  9.115  10.754  12.776   0.669
+T3 high  259         8.834  7.929   9.828  11.817   2.054
+
+### market |err|: ae_mkt ~ D_nmove
+  FIT (<=2021, n=3171): slope=-0.046 se=0.117 p=0.6949 | intercept=10.329
+  TEST (2022-25, n=1139): slope=0.296 se=0.254 p=0.2442 | Spearman rho=0.050 p=0.0942 | OOS slope of D controlling for abs_mkt: 0.287 (p=0.260)
+  OOS skill predicting |err|: MAE(fit-line)=6.5080 vs MAE(constant)=6.5032 -> improvement -0.07%
+  tercile edges (fit era): [0.5 1. ]; T3-T1 mean |err| diff = 0.643 (Welch p=0.291)
+           n  mean_abs_err  ci_lo   ci_hi    rmse  D_mean
+tercile                                                  
+T1 low   687         9.450  8.849  10.046  12.430   0.210
+T2 mid   215         9.198  8.211  10.258  11.843   1.000
+T3 high  237        10.093  9.165  11.095  12.907   2.439
+
+### market |err|: ae_mkt ~ D_mmove
+  FIT (<=2021, n=3171): slope=-0.066 se=0.101 p=0.5154 | intercept=10.362
+  TEST (2022-25, n=1139): slope=0.030 se=0.205 p=0.8836 | Spearman rho=0.013 p=0.6611 | OOS slope of D controlling for abs_mkt: 0.017 (p=0.934)
+  OOS skill predicting |err|: MAE(fit-line)=6.5086 vs MAE(constant)=6.5032 -> improvement -0.08%
+  tercile edges (fit era): [0.5 1.5]; T3-T1 mean |err| diff = 0.100 (Welch p=0.877)
+           n  mean_abs_err  ci_lo   ci_hi    rmse  D_mean
+tercile                                                  
+T1 low   665         9.447  8.810  10.068  12.467   0.226
+T2 mid   275         9.742  8.822  10.622  12.324   1.164
+T3 high  199         9.548  8.450  10.684  12.414   3.384
+
+====================================================================================================
+SPREAD: nfelo UNREGRESSED (base) absolute error
+
+### nfelo base |err|: ae_nb ~ D_base
+  FIT (<=2021, n=3171): slope=0.302 se=0.100 p=0.0026 | intercept=9.801
+  TEST (2022-25, n=1139): slope=0.364 se=0.175 p=0.0378 | Spearman rho=0.067 p=0.0245 | OOS slope of D controlling for abs_mkt: 0.354 (p=0.044)
+  OOS skill predicting |err|: MAE(fit-line)=6.5450 vs MAE(constant)=6.5589 -> improvement 0.21%
+  tercile edges (fit era): [0.94 2.17]; T3-T1 mean |err| diff = 1.180 (Welch p=0.056)
+           n  mean_abs_err  ci_lo   ci_hi    rmse  D_mean
+tercile                                                  
+T1 low   399         9.127  8.373   9.911  12.125   0.451
+T2 mid   406         9.970  9.249  10.669  12.598   1.487
+T3 high  334        10.307  9.430  11.221  13.393   3.486
+
+### nfelo base |err|: ae_nb ~ D_reg
+  FIT (<=2021, n=3171): slope=0.288 se=0.180 p=0.1087 | intercept=10.161
+  TEST (2022-25, n=1139): slope=-0.056 se=0.278 p=0.8389 | Spearman rho=0.005 p=0.8658 | OOS slope of D controlling for abs_mkt: -0.068 (p=0.806)
+  OOS skill predicting |err|: MAE(fit-line)=6.5657 vs MAE(constant)=6.5589 -> improvement -0.10%
+  tercile edges (fit era): [0. 1.]; T3-T1 mean |err| diff = -0.308 (Welch p=0.619)
+           n  mean_abs_err  ci_lo   ci_hi    rmse  D_mean
+tercile                                                  
+T1 low   531         9.692  9.020  10.388  12.609   0.000
+T2 mid   349        10.186  9.323  11.026  12.940   0.669
+T3 high  259         9.384  8.437  10.410  12.451   2.054
+
+### nfelo base |err|: ae_nb ~ D_nmove
+  FIT (<=2021, n=3171): slope=0.095 se=0.120 p=0.4274 | intercept=10.255
+  TEST (2022-25, n=1139): slope=0.557 se=0.252 p=0.0272 | Spearman rho=0.071 p=0.0164 | OOS slope of D controlling for abs_mkt: 0.549 (p=0.030)
+  OOS skill predicting |err|: MAE(fit-line)=6.5466 vs MAE(constant)=6.5589 -> improvement 0.19%
+  tercile edges (fit era): [0.5 1. ]; T3-T1 mean |err| diff = 1.057 (Welch p=0.087)
+           n  mean_abs_err  ci_lo   ci_hi    rmse  D_mean
+tercile                                                  
+T1 low   687         9.566  8.941  10.169  12.538   0.210
+T2 mid   215         9.502  8.483  10.574  12.276   1.000
+T3 high  237        10.623  9.639  11.602  13.408   2.439
+
+### nfelo base |err|: ae_nb ~ D_mmove
+  FIT (<=2021, n=3171): slope=0.029 se=0.104 p=0.7779 | intercept=10.323
+  TEST (2022-25, n=1139): slope=0.187 se=0.212 p=0.3782 | Spearman rho=0.031 p=0.2922 | OOS slope of D controlling for abs_mkt: 0.175 (p=0.412)
+  OOS skill predicting |err|: MAE(fit-line)=6.5557 vs MAE(constant)=6.5589 -> improvement 0.05%
+  tercile edges (fit era): [0.5 1.5]; T3-T1 mean |err| diff = 0.536 (Welch p=0.421)
+           n  mean_abs_err  ci_lo   ci_hi    rmse  D_mean
+tercile                                                  
+T1 low   665         9.616  8.993  10.242  12.662   0.226
+T2 mid   275         9.880  8.989  10.753  12.431   1.164
+T3 high  199        10.152  8.976  11.375  13.051   3.384
+
+====================================================================================================
+SPREAD: nfelo REGRESSED (close) absolute error
+
+### nfelo close |err|: ae_nc ~ D_base
+  FIT (<=2021, n=3171): slope=0.104 se=0.097 p=0.2864 | intercept=10.047
+  TEST (2022-25, n=1139): slope=0.077 se=0.168 p=0.6463 | Spearman rho=0.038 p=0.2022 | OOS slope of D controlling for abs_mkt: 0.069 (p=0.685)
+  OOS skill predicting |err|: MAE(fit-line)=6.5164 vs MAE(constant)=6.5171 -> improvement 0.01%
+  tercile edges (fit era): [0.94 2.17]; T3-T1 mean |err| diff = 0.738 (Welch p=0.226)
+           n  mean_abs_err  ci_lo   ci_hi    rmse  D_mean
+tercile                                                  
+T1 low   399         9.132  8.353   9.922  12.135   0.451
+T2 mid   406         9.842  9.126  10.531  12.466   1.487
+T3 high  334         9.870  9.004  10.755  12.937   3.486
+
+### nfelo close |err|: ae_nc ~ D_reg
+  FIT (<=2021, n=3171): slope=0.182 se=0.185 p=0.3271 | intercept=10.113
+  TEST (2022-25, n=1139): slope=-0.190 se=0.271 p=0.4833 | Spearman rho=-0.011 p=0.7202 | OOS slope of D controlling for abs_mkt: -0.200 (p=0.461)
+  OOS skill predicting |err|: MAE(fit-line)=6.5245 vs MAE(constant)=6.5171 -> improvement -0.11%
+  tercile edges (fit era): [0. 1.]; T3-T1 mean |err| diff = -0.568 (Welch p=0.350)
+           n  mean_abs_err  ci_lo   ci_hi    rmse  D_mean
+tercile                                                  
+T1 low   531         9.599  8.950  10.303  12.476   0.000
+T2 mid   349        10.029  9.170  10.822  12.822   0.669
+T3 high  259         9.031  8.071  10.033  12.067   2.054
+
+### nfelo close |err|: ae_nc ~ D_nmove
+  FIT (<=2021, n=3171): slope=-0.090 se=0.118 p=0.4492 | intercept=10.337
+  TEST (2022-25, n=1139): slope=0.326 se=0.260 p=0.2104 | Spearman rho=0.054 p=0.0692 | OOS slope of D controlling for abs_mkt: 0.320 (p=0.221)
+  OOS skill predicting |err|: MAE(fit-line)=6.5259 vs MAE(constant)=6.5171 -> improvement -0.13%
+  tercile edges (fit era): [0.5 1. ]; T3-T1 mean |err| diff = 0.736 (Welch p=0.227)
+           n  mean_abs_err  ci_lo   ci_hi    rmse  D_mean
+tercile                                                  
+T1 low   687         9.488  8.873  10.090  12.466   0.210
+T2 mid   215         9.279  8.295  10.333  11.969   1.000
+T3 high  237        10.224  9.287  11.226  13.020   2.439
+
+====================================================================================================
+TOTALS: market total |err| and Elo-implied total |err| vs D_tot = |T_elo - mkt_total|
+
+### market total |err|: ae_tot ~ D_tot
+  FIT (<=2021, n=3171): slope=0.046 se=0.057 p=0.4172 | intercept=10.472
+  TEST (2022-25, n=1139): slope=-0.011 se=0.092 p=0.9057 | Spearman rho=-0.013 p=0.6558 | OOS slope of D controlling for mkt_total: 0.037 (p=0.727)
+  OOS skill predicting |err|: MAE(fit-line)=6.4768 vs MAE(constant)=6.4726 -> improvement -0.06%
+  tercile edges (fit era): [1.8  4.02]; T3-T1 mean |err| diff = -0.231 (Welch p=0.700)
+           n  mean_abs_err  ci_lo   ci_hi    rmse  D_mean
+tercile                                                  
+T1 low   365        10.381  9.553  11.219  13.217   0.829
+T2 mid   376        10.045  9.278  10.864  12.720   2.820
+T3 high  398        10.149  9.381  10.961  13.134   6.303
+
+### T_elo total |err|: ae_telo ~ D_tot
+  FIT (<=2021, n=3171): slope=0.311 se=0.064 p=0.0000 | intercept=10.006
+  TEST (2022-25, n=1139): slope=0.330 se=0.092 p=0.0004 | Spearman rho=0.075 p=0.0112 | OOS slope of D controlling for mkt_total: 0.344 (p=0.002)
+  OOS skill predicting |err|: MAE(fit-line)=6.5510 vs MAE(constant)=6.5864 -> improvement 0.54%
+  tercile edges (fit era): [1.8  4.02]; T3-T1 mean |err| diff = 1.098 (Welch p=0.073)
+           n  mean_abs_err   ci_lo   ci_hi    rmse  D_mean
+tercile                                                   
+T1 low   365        10.444   9.623  11.270  13.225   0.829
+T2 mid   376        10.344   9.593  11.139  12.904   2.820
+T3 high  398        11.542  10.724  12.379  14.474   6.303
+
+--- D_tmove (total open->close move) exists only for 2024-25: IN-SAMPLE descriptive only (n small) ---
+n=559 slope=-0.478 p=0.187 Spearman rho=-0.048 p=0.259
+  D_tmove in [0,0.5): n=141 mean|err|=11.42 rmse=14.53
+  D_tmove in [0.5,1.5): n=282 mean|err|=9.64 rmse=12.18
+  D_tmove in [1.5,99): n=136 mean|err|=9.56 rmse=12.43
+
+====================================================================================================
+SUMMARY TABLE (test era 2022-25)
+                 label   target        D  n_test  slope_fit  slope_test  p_test    rho  p_rho  t3_minus_t1  p_t3t1  skill_pct
+0         market |err|   ae_mkt   D_base    1139      0.120       0.019   0.908  0.028  0.350        0.596   0.325      0.019
+1         market |err|   ae_mkt    D_reg    1139      0.342      -0.330   0.211 -0.023  0.443       -0.765   0.202     -0.222
+2         market |err|   ae_mkt  D_nmove    1139     -0.046       0.296   0.244  0.050  0.094        0.643   0.291     -0.075
+3         market |err|   ae_mkt  D_mmove    1139     -0.066       0.030   0.884  0.013  0.661        0.100   0.877     -0.083
+4     nfelo base |err|    ae_nb   D_base    1139      0.302       0.364   0.038  0.067  0.025        1.180   0.056      0.213
+5     nfelo base |err|    ae_nb    D_reg    1139      0.288      -0.056   0.839  0.005  0.866       -0.308   0.619     -0.103
+6     nfelo base |err|    ae_nb  D_nmove    1139      0.095       0.557   0.027  0.071  0.016        1.057   0.087      0.188
+7     nfelo base |err|    ae_nb  D_mmove    1139      0.029       0.187   0.378  0.031  0.292        0.536   0.421      0.049
+8    nfelo close |err|    ae_nc   D_base    1139      0.104       0.077   0.646  0.038  0.202        0.738   0.226      0.012
+9    nfelo close |err|    ae_nc    D_reg    1139      0.182      -0.190   0.483 -0.011  0.720       -0.568   0.350     -0.113
+10   nfelo close |err|    ae_nc  D_nmove    1139     -0.090       0.326   0.210  0.054  0.069        0.736   0.227     -0.135
+11  market total |err|   ae_tot    D_tot    1139      0.046      -0.011   0.906 -0.013  0.656       -0.231   0.700     -0.064
+12   T_elo total |err|  ae_telo    D_tot    1139      0.311       0.330   0.000  0.075  0.011        1.098   0.073      0.538
+
+--- Decomposition: why disagreement predicts model error but not market error ---
+test era: corr(e_mkt, nfelo_b - mkt) = 0.028 | E[|err_model|^2] - E[|err_mkt|^2] by D_base tercile:
+  T1 low: n=399 rmse_mkt=12.120 rmse_nfelo_b=12.125 rmse_nfelo_c=12.135 mean D_base=0.45 | sqrt(rmse_mkt^2 + mean D^2)=12.131
+  T2 mid: n=406 rmse_mkt=12.436 rmse_nfelo_b=12.598 rmse_nfelo_c=12.466 mean D_base=1.49 | sqrt(rmse_mkt^2 + mean D^2)=12.529
+  T3 high: n=334 rmse_mkt=12.761 rmse_nfelo_b=13.393 rmse_nfelo_c=12.937 mean D_base=3.49 | sqrt(rmse_mkt^2 + mean D^2)=13.308

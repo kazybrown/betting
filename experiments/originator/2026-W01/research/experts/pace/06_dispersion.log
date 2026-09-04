@@ -1,0 +1,9 @@
+prior-8 neutral seconds/play (two-team avg, league-relative): SD train=1.30 test=1.02 | realized game plays SD train=9.3 test=8.3 mean 125.9 / 122.8
+  train 2009-19: corr(prior spp, realized plays)=-0.294 (slope -2.10 plays per s) | corr(realized plays, total)=+0.296 (slope +0.446 pts/play) | chain = -0.94 pts per s | corr(prior spp, MARKET total)=-0.188 | corr(prior spp, total)=-0.086 n=2442
+  test 2023-25: corr(prior spp, realized plays)=-0.116 (slope -0.95 plays per s) | corr(realized plays, total)=+0.306 (slope +0.500 pts/play) | chain = -0.47 pts per s | corr(prior spp, MARKET total)=-0.060 | corr(prior spp, total)=-0.017 n=752
+  market total ~ BASE + spp_avg [train]: market slope on spp_avg = -0.204 (se 0.036, p=0.000)
+  market total ~ BASE + spp_avg [test]: market slope on spp_avg = +0.065 (se 0.080, p=0.417)
+  train: FF mean spp_avg=-2.37 s -> implied adj +1.28 pts (n=165); SS mean +2.18 s -> -1.18 pts (n=147)
+  test: FF mean spp_avg=-1.70 s -> implied adj +0.92 pts (n=25); SS mean +2.17 s -> -1.18 pts (n=55)
+  team level 2009-19: corr(prior-8 spp, this-game spp)=+0.346; SD of prior-8 spp=1.89; SD of game spp=3.69; n=5495
+  team level 2023-25: corr(prior-8 spp, this-game spp)=+0.227; SD of prior-8 spp=1.46; SD of game spp=3.35; n=1501

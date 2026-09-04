@@ -1,0 +1,18 @@
+late_rest_wk values: {0: 3976, 1: 334}
+[IN-SEASON, one-side downgrade, FIT 2009-21]
+   stint 1st     n= 229 market-implied -2.66+/-0.21 | realized vs noQB +2.76+/-0.86 (median +2.13) | nfelo embedded A +2.36+/-0.16 (median +2.17) | resid after nfelo +0.40+/-0.87 | resid vs market +0.09+/-0.86
+   stint 2nd-3rd n= 263 market-implied -1.61+/-0.18 | realized vs noQB +2.60+/-0.78 (median +2.43) | nfelo embedded A +1.67+/-0.12 (median +1.39) | resid after nfelo +0.92+/-0.78 | resid vs market +0.99+/-0.78
+   stint 4th+    n= 293 market-implied -0.62+/-0.16 | realized vs noQB +1.59+/-0.78 (median +0.55) | nfelo embedded A +0.79+/-0.10 (median +0.51) | resid after nfelo +0.80+/-0.77 | resid vs market +0.97+/-0.77
+[IN-SEASON, one-side downgrade, OOS 2022-25]
+   stint 1st     n=  77 market-implied -3.06+/-0.34 | realized vs noQB +5.76+/-1.63 (median +4.84) | nfelo embedded A +2.05+/-0.21 (median +1.73) | resid after nfelo +3.71+/-1.61 | resid vs market +2.70+/-1.53
+   stint 2nd-3rd n=  90 market-implied -2.01+/-0.31 | realized vs noQB +0.89+/-1.39 (median +0.60) | nfelo embedded A +1.60+/-0.20 (median +1.38) | resid after nfelo -0.70+/-1.39 | resid vs market -1.12+/-1.37
+   stint 4th+    n=  94 market-implied -0.68+/-0.26 | realized vs noQB +1.97+/-1.27 (median +0.51) | nfelo embedded A +1.11+/-0.16 (median +1.16) | resid after nfelo +0.86+/-1.24 | resid vs market +1.29+/-1.23
+[IN-SEASON, one-side downgrade, ALL 2009-25]
+   stint 1st     n= 306 market-implied -2.76+/-0.18 | realized vs noQB +3.51+/-0.76 (median +2.91) | nfelo embedded A +2.28+/-0.13 (median +2.11) | resid after nfelo +1.23+/-0.77 | resid vs market +0.75+/-0.75
+   stint 2nd-3rd n= 353 market-implied -1.71+/-0.16 | realized vs noQB +2.16+/-0.68 (median +2.19) | nfelo embedded A +1.65+/-0.10 (median +1.39) | resid after nfelo +0.51+/-0.68 | resid vs market +0.45+/-0.68
+   stint 4th+    n= 387 market-implied -0.63+/-0.13 | realized vs noQB +1.68+/-0.67 (median +0.55) | nfelo embedded A +0.87+/-0.08 (median +0.68) | resid after nfelo +0.81+/-0.65 | resid vs market +1.05+/-0.65
+[LATE/REST-WEEK games (all seasons)]
+   stint 1st     n=  49 market-implied -5.64+/-0.84 | realized vs noQB +10.33+/-1.91 (median +10.27) | nfelo embedded A +3.32+/-0.38 (median +3.14) | resid after nfelo +7.01+/-1.98 | resid vs market +4.69+/-1.97
+   stint 2nd-3rd n=  35 market-implied -1.35+/-0.50 | realized vs noQB +8.56+/-1.79 (median +8.20) | nfelo embedded A +1.79+/-0.36 (median +1.62) | resid after nfelo +6.78+/-1.69 | resid vs market +7.21+/-1.64
+   stint 4th+    n=  61 market-implied +0.39+/-0.50 | realized vs noQB +0.57+/-1.87 (median +0.71) | nfelo embedded A +0.33+/-0.26 (median +0.52) | resid after nfelo +0.24+/-1.84 | resid vs market +0.96+/-1.84
+[rule] P_stint1=2.5 ; mean A_nfelo at 1st start (fit) = 2.36 -> nfelo-share top-up 0.46*max(0,P-A) = 0.07; spec's -3.0 on top of a fully QB-adjusted blend would total 5.36 vs market-implied -2.66

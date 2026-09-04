@@ -1,0 +1,32 @@
+OLS fit <=2021 (margin ~ elo_dif + hfa + qb): {'const': 0.633, 'elo_dif_pts': 1.054, 'hfa_pts': 0.604, 'qb_adj_pts': 1.209} | n = 3171
+test 2022-25: n = 1139 | MAE origin 9.767 | MAE market 9.536
+SD(origin - market) = 2.26
+
+=== OOS 2022-25 backtest of rules (bets vs market close; units at -110) ===
+  T        rule  bets   W   L  P  win_rate  units  roi_per_bet
+0.5           A  1022 486 509 27     0.488  -73.9       -0.066
+0.5           B  1023 486 510 27     0.488  -75.0       -0.067
+0.5           C  1017 486 506 25     0.490  -70.6       -0.063
+0.5 D(ev>=0.02)   731 358 347 26     0.508  -23.7       -0.029
+0.5 D(ev>=0.04)   542 271 256 15     0.514  -10.6       -0.018
+0.5 D(ev>=0.06)   486 244 228 14     0.517   -6.8       -0.013
+1.0           A   810 396 395 19     0.501  -38.5       -0.043
+1.0           B   815 398 398 19     0.500  -39.8       -0.044
+1.0           C   805 392 394 19     0.499  -41.4       -0.047
+1.0 D(ev>=0.02)   731 358 347 26     0.508  -23.7       -0.029
+1.0 D(ev>=0.04)   542 271 256 15     0.514  -10.6       -0.018
+1.0 D(ev>=0.06)   486 244 228 14     0.517   -6.8       -0.013
+1.5           A   620 305 301 14     0.503  -26.1       -0.038
+1.5           B   618 306 298 14     0.507  -21.8       -0.032
+1.5           C   619 304 301 14     0.502  -27.1       -0.040
+1.5 D(ev>=0.02)   731 358 347 26     0.508  -23.7       -0.029
+1.5 D(ev>=0.04)   542 271 256 15     0.514  -10.6       -0.018
+1.5 D(ev>=0.06)   486 244 228 14     0.517   -6.8       -0.013
+
+=== Games where the rule changes the decision (OOS 2022-25) ===
+T=0.5 A vs B: decision differs in 19 games | units A=+2.7 | units B=+1.6
+T=0.5 A vs C: decision differs in 21 games | units A=-3.7 | units C=-0.4
+T=1.0 A vs B: decision differs in 7 games | units A=-1.1 | units B=-2.4
+T=1.0 A vs C: decision differs in 9 games | units A=+0.7 | units C=-2.2
+
+Share of OOS games whose quarter-rounded origin lands exactly on 2.75/3.25/6.75/7.25: 0.078 of 1139

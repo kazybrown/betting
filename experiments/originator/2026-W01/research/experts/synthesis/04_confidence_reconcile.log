@@ -1,0 +1,10 @@
+[A] BASE (2021, 2025): spread RMSE(margin+close) 12.63 | total RMSE 13.08 (n=1359)
+[A] BASE (2023, 2025): spread RMSE(margin+close) 12.65 | total RMSE 12.96 (n=816)
+[A] BASE (2019, 2025): spread RMSE(margin+close) 12.73 | total RMSE 13.10 (n=1863)
+[A] per-season spread RMSE: {2009: 14.13, 2010: 13.78, 2011: 13.7, 2012: 14.22, 2013: 12.43, 2014: 14.29, 2015: 13.01, 2016: 12.05, 2017: 13.22, 2018: 13.17, 2019: 13.21, 2020: 12.77, 2021: 13.67, 2022: 11.43, 2023: 13.07, 2024: 12.61, 2025: 12.27}
+[B] 2022-25 n=1087: model (unregressed nfelo) MAE 9.751 vs market 9.494; mean D 1.70; corr(e_mkt, model-mkt) +0.036
+[B] bands (1.5, 3.0): HIGH: share 0.54 model RMSE 12.40 mkt RMSE 12.37 excess +0.03 identity-pred +0.03 | MED: share 0.31 model RMSE 12.64 mkt RMSE 12.53 excess +0.11 identity-pred +0.19 | LOW: share 0.15 model RMSE 13.41 mkt RMSE 11.99 excess +1.42 identity-pred +0.80 | 
+[B] bands (1.75, 3.5): HIGH: share 0.61 model RMSE 12.36 mkt RMSE 12.31 excess +0.05 identity-pred +0.04 | MED: share 0.30 model RMSE 13.06 mkt RMSE 12.84 excess +0.21 identity-pred +0.25 | LOW: share 0.09 model RMSE 12.95 mkt RMSE 11.00 excess +1.95 identity-pred +1.04 | 
+[B] bands (2.0, 4.0): HIGH: share 0.67 model RMSE 12.35 mkt RMSE 12.27 excess +0.07 identity-pred +0.05 | MED: share 0.28 model RMSE 12.91 mkt RMSE 12.65 excess +0.26 identity-pred +0.32 | LOW: share 0.05 model RMSE 14.48 mkt RMSE 11.93 excess +2.55 identity-pred +1.38 | 
+[C] |market err| ~ D (2022-25): slope -0.004 (se 0.171, p=0.98); Spearman +0.027
+[C] |model err| ~ D (2022-25): slope +0.394 (se 0.181, p=0.029)

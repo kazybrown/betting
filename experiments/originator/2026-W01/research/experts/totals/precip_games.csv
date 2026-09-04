@@ -1,0 +1,856 @@
+gid,weather,precip_any,precip_strict
+2023_01_ARI_WAS,"Cloudy Temp: 76° F, Humidity: 84%, Wind: S 2 mph",0,0
+2023_01_BUF_NYJ,"Rain Temp: 72° F, Humidity: 88%, Wind: N 3 mph",1,1
+2023_01_CAR_ATL,"Indoors Temp: 72° F, Humidity: Wind: N/A 0 mph",0,0
+2023_01_CIN_CLE,"Cloudy Temp: 68° F, Humidity: 83%, Wind: NW 8 mph",0,0
+2023_01_DAL_NYG,"Rain Temp: 74° F, Humidity: 82%, Wind: N 3 mph",1,1
+2023_01_DET_KC,"Temp: 83° F, Humidity: 36%, Wind: E 6 mph",0,0
+2023_01_GB_CHI,"Mostly Sunny Temp: 75° F, Humidity: 53%, Wind: W 7 mph",0,0
+2023_01_HOU_BAL,"Overcast Temp: 78° F, Humidity: 76%, Wind: SE 2 mph",0,0
+2023_01_JAX_IND,"Clear Temp: 72° F, Humidity: 62%, Wind: NNE 3 mph",0,0
+2023_01_LA_SEA,"Mostly Cloudy Temp: 72° F, Humidity: 58%, Wind: S 7 mph",0,0
+2023_01_LV_DEN,"Cloudy Temp: 64° F, Humidity: 65%, Wind: W 12 mph",0,0
+2023_01_MIA_LAC,"Partly Cloudy Temp: 90° F, Humidity: 40%, Wind: S 3 mph",0,0
+2023_01_PHI_NE,"Rain Temp: 71° F, Humidity: 96%, Wind: SE 5 mph",1,1
+2023_01_SF_PIT,"Cloudy Temp: 72° F, Humidity: 83%, Wind: N 3 mph",0,0
+2023_01_TB_MIN,"N/A (Indoors) Temp: 67° F, Humidity: 64%, Wind: NNE 10 mph",0,0
+2023_01_TEN_NO,"Sunny Temp: 83° F, Humidity: 62%, Wind: NE 7 mph",0,0
+2023_02_BAL_CIN,"Cloudy Temp: 72° F, Humidity: 54%, Wind: NNW 4 mph",0,0
+2023_02_CHI_TB,"Cloudy Temp: 89° F, Humidity: 68%, Wind: W 6 mph",0,0
+2023_02_CLE_PIT,"Clear Temp: 62° F, Humidity: 66%, Wind: NW 6 mph",0,0
+2023_02_GB_ATL,"Indoors Temp: 72° F, Humidity: 25%, Wind: N/A 0 mph",0,0
+2023_02_IND_HOU,"Indoors Temp: 85° F, Humidity: 47%, Wind: N 6 mph",0,0
+2023_02_KC_JAX,"Temp: 87° F, Humidity: 68%, Wind: SW 5 mph",0,0
+2023_02_LAC_TEN,"Cloudy Temp: 64° F, Humidity: 85%, Wind: NW 11 mph",0,0
+2023_02_LV_BUF,"Partly Cloudy Temp: 70° F, Humidity: 57%, Wind: S 4 mph",0,0
+2023_02_MIA_NE,"Clear Temp: 63° F, Humidity: 77%, Wind: NE 3 mph",0,0
+2023_02_MIN_PHI,"Clear Temp: 72° F, Humidity: 43%, Wind: N 8 mph",0,0
+2023_02_NO_CAR,"Partly Cloudy Temp: 81° F, Humidity: 43%, Wind: NW 2 mph",0,0
+2023_02_NYG_ARI,N/A Temp: Humidity: Wind: mph,0,0
+2023_02_NYJ_DAL,,0,0
+2023_02_SEA_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2023_02_SF_LA,"Cloudy Temp: 71° F, Humidity: 82%, Wind: SSW 2 mph",0,0
+2023_02_WAS_DEN,"Sunny Temp: 81° F, Humidity: 24%, Wind: E 5 mph",0,0
+2023_03_ATL_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2023_03_BUF_WAS,"Rain Temp: 65° F, Humidity: 96%, Wind: SSE 1 mph",1,1
+2023_03_CAR_SEA,"Cloudy Temp: 61° F, Humidity: 76%, Wind: NE 2 mph",0,0
+2023_03_CHI_KC,"Temp: 82° F, Humidity: 37%, Wind: WNW 9 mph",0,0
+2023_03_DAL_ARI,N/A Indoors Temp: Humidity: Wind: mph,0,0
+2023_03_DEN_MIA,"Partly Cloudy Temp: 86° F, Humidity: 65%, Wind: SSW 5 mph",0,0
+2023_03_HOU_JAX,"Temp: 84° F, Humidity: 51%, Wind: WSW 6 mph",0,0
+2023_03_IND_BAL,"Steady rain Temp: 68° F, Humidity: 88%, Wind: SE 3 mph",1,1
+2023_03_LAC_MIN,"N/A (Indoors) Temp: 67° F, Humidity: 75%, Wind: SSE 8 mph",0,0
+2023_03_LA_CIN,"Mostly clear Temp: 71° F, Humidity: 70%, Wind: ENE 5 mph",0,0
+2023_03_NE_NYJ,"Threat of rain, wind from Tropical Storm Ophelia Temp: 65° F, Humidity: 90%, Wind: NNE 14 mph",1,0
+2023_03_NO_GB,"Cloudy Temp: 68° F, Humidity: 62%, Wind: E 10 mph",0,0
+2023_03_NYG_SF,"Sunny Temp: 77° F, Humidity: 41%, Wind: NW 13 mph",0,0
+2023_03_PHI_TB,"Cloudy Temp: 90° F, Humidity: 60%, Wind: SSW 4 mph",0,0
+2023_03_PIT_LV,"Sunny Temp: 87° F, Humidity: 21%, Wind: E 8 mph",0,0
+2023_03_TEN_CLE,"Sun/Clouds Temp: 68° F, Humidity: 69%, Wind: NE 5 mph",0,0
+2023_04_ARI_SF,"Sunny Temp: 75° F, Humidity: 36%, Wind: N 9 mph",0,0
+2023_04_ATL_JAX,"Cloudy Temp: 72° F, Humidity: 75%, Wind: SW 8 mph",0,0
+2023_04_BAL_CLE,"Sunny Temp: 71° F, Humidity: 79%, Wind: E 1 mph",0,0
+2023_04_CIN_TEN,"Sunny Temp: 82° F, Humidity: 50%, Wind: ENE 4 mph",0,0
+2023_04_DEN_CHI,"Sunny Temp: 80° F, Humidity: 64%, Wind: SSE 2 mph",0,0
+2023_04_DET_GB,"Cloudy Temp: 64° F, Humidity: 75%, Wind: SE 8 mph",0,0
+2023_04_KC_NYJ,"Clear Temp: 69° F, Humidity: 71%, Wind: N 5 mph",0,0
+2023_04_LA_IND,"Clear Temp: 80° F, Humidity: 57%, Wind: SE 2 mph",0,0
+2023_04_LV_LAC,"Partly Cloudy Temp: 67° F, Humidity: 60%, Wind: N 5 mph",0,0
+2023_04_MIA_BUF,"Sunny, fair Temp: 70° F, Humidity: 71%, Wind: WNW 5 mph",0,0
+2023_04_MIN_CAR,"Sunny Temp: 80° F, Humidity: 50%, Wind: SSW 7 mph",0,0
+2023_04_NE_DAL,,0,0
+2023_04_PIT_HOU,"Mostly Sunny Temp: 90° F, Humidity: 47%, Wind: W 12 mph",0,0
+2023_04_SEA_NYG,"Fair Temp: 67° F, Humidity: 79%, Wind: SW 8 mph",0,0
+2023_04_TB_NO,"Sunny Temp: 82° F, Humidity: 69%, Wind: ENE 13 mph",0,0
+2023_04_WAS_PHI,"Temp: 76° F, Humidity: 54%, Wind: NNE 10 mph",0,0
+2023_05_BAL_PIT,"Partly Cloudy Temp: 53° F, Humidity: 62%, Wind: W 13 mph",0,0
+2023_05_CAR_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2023_05_CHI_WAS,"Cloudy Temp: 70° F, Humidity: 83%, Wind: NW 1 mph",0,0
+2023_05_CIN_ARI,N/A Temp: Humidity: Wind: mph,0,0
+2023_05_DAL_SF,"Sunny Temp: 78° F, Humidity: 53%, Wind: SE 10 mph",0,0
+2023_05_GB_LV,"Sunny Temp: 92° F, Humidity: 11%, Wind: SW 12 mph",0,0
+2023_05_HOU_ATL,"Sunny Temp: 63° F, Humidity: 39%, Wind: SE 8 mph",0,0
+2023_05_JAX_BUF,"Partly Cloudy Temp: 75° F, Humidity: 52%, Wind: WSW 7 mph",0,0
+2023_05_KC_MIN,"N/A (Indoors) Temp: 58° F, Humidity: 46%, Wind: NNE 7 mph",0,0
+2023_05_NO_NE,"Sunny Temp: 61° F, Humidity: 52%, Wind: NE 10 mph",0,0
+2023_05_NYG_MIA,"Partly Cloudy Temp: 88° F, Humidity: 60%, Wind: W 8 mph",0,0
+2023_05_NYJ_DEN,"Sunny Temp: 73° F, Humidity: 17%, Wind: S 9 mph",0,0
+2023_05_PHI_LA,"Sunny Temp: 71° F, Humidity: 59%, Wind: SW 3 mph",0,0
+2023_05_TEN_IND,"Cloudy Temp: 53° F, Humidity: 56%, Wind: WNW 7 mph",0,0
+2023_06_ARI_LA,"Sunny Temp: 82° F, Humidity: 47%, Wind: WSW 3 mph",0,0
+2023_06_BAL_TEN,"Sunny Temp: 52° F, Humidity: 44%, Wind: NNW 8 mph",0,0
+2023_06_CAR_MIA,"Sunny Temp: 87° F, Humidity: 56%, Wind: W 12 mph",0,0
+2023_06_DAL_LAC,"Clear Temp: 74° F, Humidity: 62%, Wind: WSW 7 mph",0,0
+2023_06_DEN_KC,"Temp: 62° F, Humidity: 67%, Wind: S 15 mph",0,0
+2023_06_DET_TB,"Cloudy Temp: 77° F, Humidity: 55%, Wind: W 13 mph",0,0
+2023_06_IND_JAX,"Temp: 68° F, Humidity: 57%, Wind: NW 10 mph",0,0
+2023_06_MIN_CHI,"Partly Cloudy Temp: 53° F, Humidity: 74%, Wind: S 16 mph",0,0
+2023_06_NE_LV,"Sunny Temp: 81° F, Humidity: 13%, Wind: NNE 5 mph",0,0
+2023_06_NO_HOU,"Sunny Temp: 67° F, Humidity: 53%, Wind: N 14 mph",0,0
+2023_06_NYG_BUF,"Cloudy Temp: 46° F, Humidity: 90%, Wind: NW 7 mph",0,0
+2023_06_PHI_NYJ,"Partly Cloudy with a Fall Crisp Temp: 59° F, Humidity: 54%, Wind: NNW 11 mph",0,0
+2023_06_SEA_CIN,"Cloudy Temp: 57° F, Humidity: 59%, Wind: N 15 mph",0,0
+2023_06_SF_CLE,"Temp: 53° F, Humidity: 70%, Wind: NNW 15 mph",0,0
+2023_06_WAS_ATL,"Mostly Cloudy Temp: 62° F, Humidity: 72%, Wind: SE 11 mph",0,0
+2023_07_ARI_SEA,"Cloudy Temp: 56° F, Humidity: 83%, Wind: NW 5 mph",0,0
+2023_07_ATL_TB,"Cloudy Temp: 79° F, Humidity: 47%, Wind: NE 3 mph",0,0
+2023_07_BUF_NE,"Partly Cloudy Temp: 55° F, Humidity: 65%, Wind: E 13 mph",0,0
+2023_07_CLE_IND,"Sunny Temp: 53° F, Humidity: 48%, Wind: NNE 6 mph",0,0
+2023_07_DET_BAL,"Partly cloudy Temp: 62° F, Humidity: 42%, Wind: WNW 16 mph",0,0
+2023_07_GB_DEN,"Temperatures to remain in 70s throughout the game Temp: 72° F, Humidity: 22%, Wind: W 9 mph",0,0
+2023_07_JAX_NO,"Partly Cloudy Temp: 79° F, Humidity: 57%, Wind: S 8 mph",0,0
+2023_07_LAC_KC,"Temp: 72° F, Humidity: 35%, Wind: ESE 10 mph",0,0
+2023_07_LV_CHI,"Partly Cloudy Temp: 52° F, Humidity: 68%, Wind: N 8 mph",0,0
+2023_07_MIA_PHI,"Partly Cloudy Temp: 55° F, Humidity: 44%, Wind: NW 17 mph",0,0
+2023_07_PIT_LA,"Sunny Temp: 74° F, Humidity: 57%, Wind: SSW 5 mph",0,0
+2023_07_SF_MIN,"N/A (Indoors) Temp: 59° F, Humidity: 71%, Wind: ESE 4 mph",0,0
+2023_07_WAS_NYG,"Mostly Cloudy Temp: 54° F, Humidity: 51%, Wind: NW 14 mph",0,0
+2023_08_ATL_TEN,"Cloudy Temp: 77° F, Humidity: 52%, Wind: WSW 7 mph",0,0
+2023_08_BAL_ARI,N/A Indoors Temp: Humidity: Wind: mph,0,0
+2023_08_CHI_LAC,"Clear Temp: 76° F, Humidity: 15%, Wind: SW 9 mph",0,0
+2023_08_CIN_SF,"Sunny Temp: 74° F, Humidity: 15%, Wind: NW 10 mph",0,0
+2023_08_CLE_SEA,"Sunny Temp: 47° F, Humidity: 60%, Wind: N 3 mph",0,0
+2023_08_HOU_CAR,"Clear Temp: 76° F, Humidity: 53%, Wind: SW 11 mph",0,0
+2023_08_JAX_PIT,"Rain Temp: 58° F, Humidity: 95%, Wind: NE 2 mph",1,1
+2023_08_KC_DEN,"Cold, getting colder, a few light flakes of snow falling Temp: 26° F, Humidity: 58%, Wind: NW 3 mph",1,1
+2023_08_LA_DAL,"Cloudy Temp: 46° F, Humidity: 95%, Wind: N 13 mph",0,0
+2023_08_LV_DET,"Controlled Climate Temp: 72° F, Humidity: 58%, Wind: mph",0,0
+2023_08_MIN_GB,"Cloudy Temp: 39° F, Humidity: 62%, Wind: N 8 mph",0,0
+2023_08_NE_MIA,"Partly Cloudy Temp: 83° F, Humidity: 68%, Wind: ENE 17 mph",0,0
+2023_08_NO_IND,"Cloudy Temp: 51° F, Humidity: 94%, Wind: NNE 4 mph",0,0
+2023_08_NYJ_NYG,"Rain Temp: 51° F, Humidity: 92%, Wind: N 7 mph",1,1
+2023_08_PHI_WAS,"Cloudy Temp: 69° F, Humidity: 77%, Wind: NNE 4 mph",0,0
+2023_08_TB_BUF,"Partly cloudy Temp: 66° F, Humidity: 60%, Wind: SSW 10 mph",0,0
+2023_09_ARI_CLE,"Sunny Temp: 56° F, Humidity: 58%, Wind: N 7 mph",0,0
+2023_09_BUF_CIN,"Mostly clear Temp: 51° F, Humidity: 61%, Wind: ENE 5 mph",0,0
+2023_09_CHI_NO,"Sunny Temp: 72° F, Humidity: 59%, Wind: N 7 mph",0,0
+2023_09_DAL_PHI,"Clear Temp: 64° F, Humidity: 41%, Wind: NNW 6 mph",0,0
+2023_09_IND_CAR,"Clear Temp: 75° F, Humidity: 31%, Wind: E 2 mph",0,0
+2023_09_LAC_NYJ,"Mosly Cloudy and Cool Temp: 48° F, Humidity: 83%, Wind: SSE 4 mph",0,0
+2023_09_LA_GB,"Cloudy Temp: 51° F, Humidity: 54%, Wind: S 8 mph",0,0
+2023_09_MIA_KC,"Light Rain Temp: 53° F, Humidity: 81%, Wind: SW 14 mph",1,1
+2023_09_MIN_ATL,"Clear Temp: 70° F, Humidity: 38%, Wind: 0 mph",0,0
+2023_09_NYG_LV,"Partly Cloudy Temp: 73° F, Humidity: 13%, Wind: ENE 5 mph",0,0
+2023_09_SEA_BAL,"Clear Temp: 69° F, Humidity: 32%, Wind: WNW 6 mph",0,0
+2023_09_TB_HOU,"Indoors Temp: 80° F, Humidity: 60%, Wind: ESE 5 mph",0,0
+2023_09_TEN_PIT,"Mostly clear Temp: 40° F, Humidity: 58%, Wind: S 5 mph",0,0
+2023_09_WAS_NE,"Mostly Sunny Temp: 62° F, Humidity: 51%, Wind: SE 6 mph",0,0
+2023_10_ATL_ARI,N/A Temp: Humidity: Wind: mph,0,0
+2023_10_CAR_CHI,"Clear Temp: 51° F, Humidity: 40%, Wind: NE 8 mph",0,0
+2023_10_CLE_BAL,"Clear Temp: 49° F, Humidity: 46%, Wind: N 4 mph",0,0
+2023_10_DEN_BUF,"Mostly cloudy Temp: 49° F, Humidity: 61%, Wind: W 10 mph",0,0
+2023_10_DET_LAC,"Sunny Temp: 79° F, Humidity: 10%, Wind: N 5 mph",0,0
+2023_10_GB_PIT,"Partly Cloudy Temp: 50° F, Humidity: 58%, Wind: NE 5 mph",0,0
+2023_10_HOU_CIN,"Sunny Temp: 56° F, Humidity: 42%, Wind: ENE 6 mph",0,0
+2023_10_IND_NE,"Cloudy Temp: 47° F, Humidity: 78%, Wind: E 1 mph",0,0
+2023_10_NO_MIN,"N/A (Indoors) Temp: 51° F, Humidity: 52%, Wind: SW 11 mph",0,0
+2023_10_NYG_DAL,,0,0
+2023_10_NYJ_LV,"Sunny Temp: 66° F, Humidity: 13%, Wind: SSW 3 mph",0,0
+2023_10_SF_JAX,"Temp: 59° F, Humidity: 94%, Wind: N 11 mph",0,0
+2023_10_TEN_TB,"Cloudy Temp: 85° F, Humidity: 66%, Wind: W 6 mph",0,0
+2023_10_WAS_SEA,"Cloudy Temp: 52° F, Humidity: 76%, Wind: S 4 mph",0,0
+2023_11_ARI_HOU,"Fair with Low Clouds Temp: 73° F, Humidity: 69%, Wind: NW 9 mph",0,0
+2023_11_CHI_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2023_11_CIN_BAL,"Clear Temp: 56° F, Humidity: 54%, Wind: NNW 1 mph",0,0
+2023_11_DAL_CAR,"Sunny Temp: 65° F, Humidity: 28%, Wind: E 2 mph",0,0
+2023_11_LAC_GB,"Sunny Temp: 45° F, Humidity: 55%, Wind: E 5 mph",0,0
+2023_11_LV_MIA,"Partly Cloudy Temp: 82° F, Humidity: 71%, Wind: NNE 7 mph",0,0
+2023_11_MIN_DEN,"Cloudy Temp: 53° F, Humidity: 30%, Wind: SW 3 mph",0,0
+2023_11_NYG_WAS,"Sunny Temp: 56° F, Humidity: 32%, Wind: W 7 mph",0,0
+2023_11_NYJ_BUF,"Clear Temp: 40° F, Humidity: 60%, Wind: NW 9 mph",0,0
+2023_11_PHI_KC,"Temp: 45° F, Humidity: 90%, Wind: N 12 mph",0,0
+2023_11_PIT_CLE,"Sunny Temp: 48° F, Humidity: 67%, Wind: W 11 mph",0,0
+2023_11_SEA_LA,"Sunny Temp: 72° F, Humidity: 32%, Wind: W 7 mph",0,0
+2023_11_TB_SF,"Sunny, Clear Temp: 65° F, Humidity: 52%, Wind: NW 10 mph",0,0
+2023_11_TEN_JAX,"Temp: 75° F, Humidity: 62%, Wind: NE 3 mph",0,0
+2023_12_BAL_LAC,"Temp: 64° F, Humidity: 29%, Wind: W 5 mph",0,0
+2023_12_BUF_PHI,"Rain Temp: 47° F, Humidity: 88%, Wind: NE 6 mph",1,1
+2023_12_CAR_TEN,"Cloudy Temp: 51° F, Humidity: 82%, Wind: SW 13 mph",0,0
+2023_12_CHI_MIN,"N/A (Indoors) Temp: 16° F, Humidity: 54%, Wind: NW 12 mph",0,0
+2023_12_CLE_DEN,"Sunny Temp: 40° F, Humidity: 28%, Wind: NW 5 mph",0,0
+2023_12_GB_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2023_12_JAX_HOU,"Cloudy Temp: 57° F, Humidity: 78%, Wind: NNW 8 mph",0,0
+2023_12_KC_LV,"Sunny Temp: 55° F, Humidity: 26%, Wind: NE 14 mph",0,0
+2023_12_LA_ARI,"Partly Cloudy Temp: 70° F, Humidity: 16%, Wind: SW 6 mph",0,0
+2023_12_MIA_NYJ,"Partly Sunny and Cool Temp: 48° F, Humidity: 45%, Wind: NW 11 mph",0,0
+2023_12_NE_NYG,"Mostly Cloudy Temp: 43° F, Humidity: 65%, Wind: N 6 mph",0,0
+2023_12_NO_ATL,"N/A (Indoors) Temp: 72° F, Humidity: 0%, Wind: N/A 0 mph",0,0
+2023_12_PIT_CIN,"Rain Temp: 48° F, Humidity: 78%, Wind: SSW 9 mph",1,1
+2023_12_SF_SEA,"Mostly Clear Temp: 43° F, Humidity: 91%, Wind: NW 4 mph",0,0
+2023_12_TB_IND,"Rain Temp: 37° F, Humidity: 98%, Wind: SSW 3 mph",1,1
+2023_12_WAS_DAL,,0,0
+2023_13_ARI_PIT,"Mostly Cloudy Temp: 56° F, Humidity: 88%, Wind: SW 12 mph",0,0
+2023_13_ATL_NYJ,"Cloudy Temp: 50° F, Humidity: 90%, Wind: NE 8 mph",0,0
+2023_13_CAR_TB,"Cloudy Temp: 81° F, Humidity: 77%, Wind: SW 8 mph",0,0
+2023_13_CIN_JAX,"Temp: 61° F, Humidity: 60%, Wind: E 4 mph",0,0
+2023_13_CLE_LA,"Cloudy Temp: 67° F, Humidity: 45%, Wind: SW 2 mph",0,0
+2023_13_DEN_HOU,"Partly Sunny Temp: 67° F, Humidity: 37%, Wind: WNW 5 mph",0,0
+2023_13_DET_NO,"Partly Cloudy Temp: 65° F, Humidity: 84%, Wind: NW 6 mph",0,0
+2023_13_IND_TEN,"Partly Sunny Temp: 53° F, Humidity: 77%, Wind: W 13 mph",0,0
+2023_13_KC_GB,"Cloudy Temp: 31° F, Humidity: 85%, Wind: N 9 mph",0,0
+2023_13_LAC_NE,"Rain Temp: 44° F, Humidity: 94%, Wind: W 8 mph",1,1
+2023_13_MIA_WAS,"Cloudy Temp: 53° F, Humidity: 99%, Wind: N 1 mph",0,0
+2023_13_SEA_DAL,,0,0
+2023_13_SF_PHI,"Cloudy Temp: 52° F, Humidity: 95%, Wind: N 44 mph",0,0
+2023_14_BUF_KC,"Temp: 45° F, Humidity: 43%, Wind: W 5 mph",0,0
+2023_14_CAR_NO,"Partly Cloudy Temp: 55° F, Humidity: 64%, Wind: NNW 19 mph",0,0
+2023_14_DEN_LAC,"Clear Temp: 75° F, Humidity: 10%, Wind: N 3 mph",0,0
+2023_14_DET_CHI,"Cloudy Temp: 36° F, Humidity: 70%, Wind: SE 12 mph",0,0
+2023_14_GB_NYG,"Overcast Temp: 39° F, Humidity: 50%, Wind: NW 14 mph",0,0
+2023_14_HOU_NYJ,"Raining, Mild with Gusty Winds Expected Temp: 58° F, Humidity: 94%, Wind: S 7 mph",1,1
+2023_14_IND_CIN,"Cloudy Temp: 40° F, Humidity: 68%, Wind: WNW 9 mph",0,0
+2023_14_JAX_CLE,"Cloudy Temp: 39° F, Humidity: 70%, Wind: W 11 mph",0,0
+2023_14_LA_BAL,"Rain Temp: 57° F, Humidity: 91%, Wind: ESE 5 mph",1,1
+2023_14_MIN_LV,"Mostly Sunny Temp: 54° F, Humidity: 15%, Wind: ENE 3 mph",0,0
+2023_14_NE_PIT,"Partly Cloudy Temp: 42° F, Humidity: 71%, Wind: SW 5 mph",0,0
+2023_14_PHI_DAL,,0,0
+2023_14_SEA_SF,"Sunny Temp: 63° F, Humidity: 42%, Wind: NW 5 mph",0,0
+2023_14_TB_ATL,"Indoors Temp: 68° F, Humidity: 40%, Wind: 0 mph",0,0
+2023_14_TEN_MIA,"Partly Cloudy Temp: 64° F, Humidity: 73%, Wind: N 9 mph",0,0
+2023_15_ATL_CAR,"Rain Temp: 46° F, Humidity: 93%, Wind: NE 4 mph",1,1
+2023_15_BAL_JAX,"Temp: 58° F, Humidity: 81%, Wind: W 13 mph",0,0
+2023_15_CHI_CLE,"Temp: 45° F, Humidity: 84%, Wind: SE 15 mph",0,0
+2023_15_DAL_BUF,"Rain showers Temp: 48° F, Humidity: 90%, Wind: S 9 mph",1,1
+2023_15_DEN_DET,"Controlled Climate Temp: 70° F, Humidity: 68%, Wind: mph",0,0
+2023_15_HOU_TEN,"Cloudy Temp: 48° F, Humidity: 77%, Wind: NW 9 mph",0,0
+2023_15_KC_NE,"Cloudy and cool Temp: 53° F, Humidity: 74%, Wind: NW 7 mph",0,0
+2023_15_LAC_LV,"Mostly Sunny Temp: 60° F, Humidity: 23%, Wind: S 0 mph",0,0
+2023_15_MIN_CIN,"Mostly cloudy Temp: 53° F, Humidity: 42%, Wind: SE 5 mph",0,0
+2023_15_NYG_NO,"Cloudy Temp: 56° F, Humidity: 80%, Wind: NNW 11 mph",0,0
+2023_15_NYJ_MIA,"Partly Cloudy Temp: 76° F, Humidity: 69%, Wind: WNW 15 mph",0,0
+2023_15_PHI_SEA,"Drizzle Temp: 46° F, Humidity: 82%, Wind: South 2 mph",1,1
+2023_15_PIT_IND,"Cloudy Temp: 53° F, Humidity: 47%, Wind: SE 4 mph",0,0
+2023_15_SF_ARI,"Sunny Temp: 76° F, Humidity: 13%, Wind: NE 3 mph",0,0
+2023_15_TB_GB,"Cloudy Temp: 42° F, Humidity: 85%, Wind: W 10 mph",0,0
+2023_15_WAS_LA,"Cloudy Temp: 78° F, Humidity: 18%, Wind: NW 2 mph",0,0
+2023_16_ARI_CHI,"Mostly Cloudy Temp: 52° F, Humidity: 78%, Wind: SE 4 mph",0,0
+2023_16_BAL_SF,"Cloudy Temp: 56° F, Humidity: 60%, Wind: NW 8 mph",0,0
+2023_16_BUF_LAC,"Cloudy Temp: 62° F, Humidity: 82%, Wind: SW 8 mph",0,0
+2023_16_CIN_PIT,"Cloudy Temp: 49° F, Humidity: 54%, Wind: S 5 mph",0,0
+2023_16_CLE_HOU,"Thunderstorms Temp: 68° F, Humidity: 95%, Wind: ENE 2 mph",1,1
+2023_16_DAL_MIA,"Cloudy Temp: 75° F, Humidity: 66%, Wind: E 15 mph",0,0
+2023_16_DET_MIN,"N/A (Indoors) Temp: 54° F, Humidity: 80%, Wind: SSE 16 mph",0,0
+2023_16_GB_CAR,"Sunny Temp: 67° F, Humidity: 43%, Wind: E 1 mph",0,0
+2023_16_IND_ATL,"Indoors Temp: 68° F, Humidity: 70%, Wind: N/A 0 mph",0,0
+2023_16_JAX_TB,"Cloudy Temp: 72° F, Humidity: 72%, Wind: E 11 mph",0,0
+2023_16_LV_KC,"Temp: 38° F, Humidity: 89%, Wind: W 11 mph",0,0
+2023_16_NE_DEN,"Mostly cloudy to partly cloudy by end of game, temperatures falling Temp: 28° F, Humidity: 50%, Wind: SW 9 mph",0,0
+2023_16_NO_LA,"Cloudy Temp: 63° F, Humidity: 85%, Wind: ESE 3 mph",0,0
+2023_16_NYG_PHI,"Cloudy Temp: 51° F, Humidity: 68%, Wind: NE 5 mph",0,0
+2023_16_SEA_TEN,"Cloudy Temp: 64° F, Humidity: 70%, Wind: SSE 13 mph",0,0
+2023_16_WAS_NYJ,"Mostly Cloudy Temp: 47° F, Humidity: 76%, Wind: WNW 2 mph",0,0
+2023_17_ARI_PHI,"Partly Cloudy Temp: 45° F, Humidity: 48%, Wind: NW 9 mph",0,0
+2023_17_ATL_CHI,"Light Snow Temp: 32° F, Humidity: 92%, Wind: WNW 5 mph",1,1
+2023_17_CAR_JAX,"Temp: 56° F, Humidity: 47%, Wind: W 8 mph",0,0
+2023_17_CIN_KC,"Temp: 36° F, Humidity: 59%, Wind: N 12 mph",0,0
+2023_17_DET_DAL,,0,0
+2023_17_GB_MIN,"N/A (Indoors) Temp: 23° F, Humidity: 74%, Wind: N 8 mph",0,0
+2023_17_LAC_DEN,"Mostly cloudy with temperatures falling throughout the game Temp: 41° F, Humidity: 40%, Wind: W 6 mph",0,0
+2023_17_LA_NYG,"Overcast Temp: 41° F, Humidity: 53%, Wind: W 10 mph",0,0
+2023_17_LV_IND,"Cloudy Temp: 33° F, Humidity: 90%, Wind: W 5 mph",0,0
+2023_17_MIA_BAL,"Clear Temp: 50° F, Humidity: 41%, Wind: WNW 7 mph",0,0
+2023_17_NE_BUF,"Cloudy Temp: 35° F, Humidity: 88%, Wind: SSE 4 mph",0,0
+2023_17_NO_TB,"Clear Temp: 66° F, Humidity: 58%, Wind: SW 5 mph",0,0
+2023_17_NYJ_CLE,"Cloudy Temp: 47° F, Humidity: 76%, Wind: S 6 mph",0,0
+2023_17_PIT_SEA,"Partly Cloudy Temp: 47° F, Humidity: 83%, Wind: S 4 mph",0,0
+2023_17_SF_WAS,"Cloudy Temp: 48° F, Humidity: 43%, Wind: SW 7 mph",0,0
+2023_17_TEN_HOU,"Sunny Temp: 68° F, Humidity: 59%, Wind: SW 2 mph",0,0
+2023_18_ATL_NO,"Partly Cloudy Temp: 52° F, Humidity: 70%, Wind: N 10 mph",0,0
+2023_18_BUF_MIA,"Partly Cloudy Temp: 63° F, Humidity: 71%, Wind: NNE 6 mph",0,0
+2023_18_CHI_GB,"Cloudy Temp: 34° F, Humidity: 69%, Wind: W 7 mph",0,0
+2023_18_CLE_CIN,"Cloudy Temp: 38° F, Humidity: 74%, Wind: W 12 mph",0,0
+2023_18_DAL_WAS,"Cloudy Temp: 48° F, Humidity: 52%, Wind: WNW 13 mph",0,0
+2023_18_DEN_LV,"Sunny Temp: 50° F, Humidity: 17%, Wind: NW 23 mph",0,0
+2023_18_HOU_IND,"Rain Temp: 36° F, Humidity: 95%, Wind: W 1 mph",1,1
+2023_18_JAX_TEN,"Cloudy Temp: 41° F, Humidity: 77%, Wind: W 11 mph",0,0
+2023_18_KC_LAC,"Clear Temp: 57° F, Humidity: 28%, Wind: NNW 7 mph",0,0
+2023_18_LA_SF,"Sunny Temp: 52° F, Humidity: 50%, Wind: NW 11 mph",0,0
+2023_18_MIN_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2023_18_NYJ_NE,"Snow Temp: 33° F, Humidity: 98%, Wind: SW 14 mph",1,1
+2023_18_PHI_NYG,"Overcast Temp: 36° F, Humidity: 76%, Wind: NW 12 mph",0,0
+2023_18_PIT_BAL,"Rain Temp: 38° F, Humidity: 91%, Wind: ENE 15 mph",1,1
+2023_18_SEA_ARI,N/A (Indoors) Temp: Humidity: Wind: mph,0,0
+2023_18_TB_CAR,"Partly Cloudy Temp: 54° F, Humidity: 48%, Wind: WSW 19 mph",0,0
+2023_19_CLE_HOU,"Sunny Temp: 62° F, Humidity: 40%, Wind: SSE 6 mph",0,0
+2023_19_GB_DAL,,0,0
+2023_19_LA_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2023_19_MIA_KC,"Temp: -4° F, Humidity: 64%, Wind: NW 19 mph",0,0
+2023_19_PHI_TB,"Cloudy Temp: 67° F, Humidity: 87%, Wind: E 1 mph",0,0
+2023_19_PIT_BUF,"Partly cloudy Temp: 17° F, Humidity: 57%, Wind: SW 10 mph",0,0
+2023_20_GB_SF,"Rain Temp: 59° F, Humidity: 77%, Wind: SW 8 mph",1,1
+2023_20_HOU_BAL,"Clear Temp: 27° F, Humidity: 40%, Wind: WNW 16 mph",0,0
+2023_20_KC_BUF,"Cloudy Temp: 25° F, Humidity: 67%, Wind: WSW 11 mph",0,0
+2023_20_TB_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2023_21_DET_SF,"Cloudy Temp: 69° F, Humidity: 55%, Wind: NW 5 mph",0,0
+2023_21_KC_BAL,"Cloudy Temp: 47° F, Humidity: 83%, Wind: N 7 mph",0,0
+2023_22_SF_KC,"Sunny Temp: 54° F, Humidity: 26%, Wind: NE 6 mph",0,0
+2024_01_ARI_BUF,"Clouds and sun with wind Temp: 61° F, Humidity: 55%, Wind: W 20 mph",0,0
+2024_01_BAL_KC,"Temp: 67° F, Humidity: 53%, Wind: NE 8 mph",0,0
+2024_01_CAR_NO,"Cloudy Temp: 75° F, Humidity: 64%, Wind: C 13 mph",0,0
+2024_01_DAL_CLE,"Sunny Temp: 68° F, Humidity: 41%, Wind: W 15 mph",0,0
+2024_01_DEN_SEA,"Mostly Cloudy Temp: 73° F, Humidity: 72%, Wind: S 7 mph",0,0
+2024_01_GB_PHI,"Temp: 63° F, Humidity: 87%, Wind: SE 4 mph",0,0
+2024_01_HOU_IND,"Mostly sunny Temp: 63° F, Humidity: 41%, Wind: NNE 3 mph",0,0
+2024_01_JAX_MIA,"Partly Cloudy Temp: 91° F, Humidity: 57%, Wind: SE 10 mph",0,0
+2024_01_LA_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2024_01_LV_LAC,"Sunny Temp: 97° F, Humidity: 27%, Wind: WSW 7 mph",0,0
+2024_01_MIN_NYG,"A few clouds Temp: 64° F, Humidity: 48%, Wind: NW 10 mph",0,0
+2024_01_NE_CIN,"Sunny Temp: 66° F, Humidity: 40%, Wind: NNE 5 mph",0,0
+2024_01_NYJ_SF,"Sunny Temp: 76° F, Humidity: 60%, Wind: NE 10 mph",0,0
+2024_01_PIT_ATL,Clear Temp: Humidity: Wind: mph,0,0
+2024_01_TEN_CHI,"Mostly Sunny Temp: 67° F, Humidity: 43%, Wind: W 8 mph",0,0
+2024_01_WAS_TB,"Cloudy Temp: 93° F, Humidity: 60%, Wind: SW 6 mph",0,0
+2024_02_ATL_PHI,"Cloudy Temp: 71° F, Humidity: 72%, Wind: E 9 mph",0,0
+2024_02_BUF_MIA,"Partly Cloudy Temp: 86° F, Humidity: 79%, Wind: S 3 mph",0,0
+2024_02_CHI_HOU,"Clear Temp: 89° F, Humidity: 57%, Wind: SSW 4 mph",0,0
+2024_02_CIN_KC,"Temp: 89° F, Humidity: 44%, Wind: SE 8 mph",0,0
+2024_02_CLE_JAX,"Temp: 80° F, Humidity: 78%, Wind: N 12 mph",0,0
+2024_02_IND_GB,"Sunny Temp: 85° F, Humidity: 58%, Wind: S 7 mph",0,0
+2024_02_LAC_CAR,"Cloudy Temp: 78° F, Humidity: 66%, Wind: ENE 13 mph",0,0
+2024_02_LA_ARI,N/A Temp: Humidity: Wind: mph,0,0
+2024_02_LV_BAL,"Clear Temp: 78° F, Humidity: 52%, Wind: E 10 mph",0,0
+2024_02_NO_DAL,,0,0
+2024_02_NYG_WAS,"Sunny Temp: 82° F, Humidity: 49%, Wind: E 11 mph",0,0
+2024_02_NYJ_TEN,"Cloudy Temp: 80° F, Humidity: 51%, Wind: S 13 mph",0,0
+2024_02_PIT_DEN,"Partly Cloudy Temp: 88° F, Humidity: 20%, Wind: N 6 mph",0,0
+2024_02_SEA_NE,"Sunny Temp: 77° F, Humidity: 50%, Wind: W 5 mph",0,0
+2024_02_SF_MIN,"N/A Indoors Temp: 82° F, Humidity: 60%, Wind: S 12 mph",0,0
+2024_02_TB_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2024_03_BAL_DAL,,0,0
+2024_03_CAR_LV,"Sunny Temp: 86° F, Humidity: 24%, Wind: ENE 4 mph",0,0
+2024_03_CHI_IND,"Cloudy Temp: 76° F, Humidity: 72%, Wind: WNW 4 mph",0,0
+2024_03_DEN_TB,"Cloudy Temp: 87° F, Humidity: 53%, Wind: NE 5 mph",0,0
+2024_03_DET_ARI,,0,0
+2024_03_GB_TEN,"Cloudy Temp: 87° F, Humidity: 52%, Wind: N 8 mph",0,0
+2024_03_HOU_MIN,"N/A Indoors Temp: 63° F, Humidity: 47%, Wind: N 12 mph",0,0
+2024_03_JAX_BUF,"Cloudy Temp: 68° F, Humidity: 87%, Wind: S 5 mph",0,0
+2024_03_KC_ATL,"Clear Temp: 89° F, Humidity: 34%, Wind: W 3 mph",0,0
+2024_03_LAC_PIT,"Partly Cloudy Temp: 78° F, Humidity: 68%, Wind: SE 2 mph",0,0
+2024_03_MIA_SEA,"Cloudy Temp: 64° F, Humidity: 66%, Wind: SW 2 mph",0,0
+2024_03_NE_NYJ,"Cloudy and Warm Temp: 75° F, Humidity: 63%, Wind: N 5 mph",0,0
+2024_03_NYG_CLE,"Cloudy Temp: 76° F, Humidity: 62%, Wind: E 4 mph",0,0
+2024_03_PHI_NO,"Partly Cloudy Temp: 87° F, Humidity: 70%, Wind: E 8 mph",0,0
+2024_03_SF_LA,"Sunny Temp: 75° F, Humidity: 72%, Wind: SW 4 mph",0,0
+2024_03_WAS_CIN,"Cloudy Temp: 69° F, Humidity: 67%, Wind: N 5 mph",0,0
+2024_04_BUF_BAL,"Cloudy Temp: 68° F, Humidity: 89%, Wind: NE 8 mph",0,0
+2024_04_CIN_CAR,"Mostly Cloudy Temp: 78° F, Humidity: 75%, Wind: SSW 6 mph",0,0
+2024_04_CLE_LV,"Sunny Temp: 99° F, Humidity: 12%, Wind: ESE 6 mph",0,0
+2024_04_DAL_NYG,"Overcast Temp: 74° F, Humidity: 88%, Wind: SW 3 mph",0,0
+2024_04_DEN_NYJ,"Rain and High 60s Temp: 67° F, Humidity: 79%, Wind: WSW 8 mph",1,1
+2024_04_JAX_HOU,"Sunny Temp: 82° F, Humidity: 38%, Wind: NNW 4 mph",0,0
+2024_04_KC_LAC,"Sunny Temp: 68° F, Humidity: 69%, Wind: WNW 7 mph",0,0
+2024_04_LA_CHI,"Mostly Cloudy Temp: 70° F, Humidity: 90%, Wind: NNE 16 mph",0,0
+2024_04_MIN_GB,"Sunny Temp: 71° F, Humidity: 68%, Wind: NE 15 mph",0,0
+2024_04_NE_SF,"Sunny Temp: 71° F, Humidity: 59%, Wind: NE 5 mph",0,0
+2024_04_NO_ATL,,0,0
+2024_04_PHI_TB,"Cloudy Temp: 88° F, Humidity: 68%, Wind: S 9 mph",0,0
+2024_04_PIT_IND,"Cloudy Temp: 70° F, Humidity: 88%, Wind: NNE 8 mph",0,0
+2024_04_SEA_DET,"Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2024_04_TEN_MIA,"Partly Cloudy Temp: 86° F, Humidity: 70%, Wind: SE 9 mph",0,0
+2024_04_WAS_ARI,,0,0
+2024_05_ARI_SF,"Sunny Temp: 89° F, Humidity: 31%, Wind: NE 3 mph",0,0
+2024_05_BAL_CIN,"Mostly sunny Temp: 81° F, Humidity: 57%, Wind: SW 10 mph",0,0
+2024_05_BUF_HOU,"Sunny Temp: 86° F, Humidity: 58%, Wind: NE 4 mph",0,0
+2024_05_CAR_CHI,"Sunny Temp: 74° F, Humidity: 27%, Wind: W 7 mph",0,0
+2024_05_CLE_WAS,"Sunny Temp: 73° F, Humidity: 54%, Wind: SSW 5 mph",0,0
+2024_05_DAL_PIT,"Cloudy Temp: 67° F, Humidity: 86%, Wind: W 6 mph",0,0
+2024_05_GB_LA,"Sunny Temp: 73° F, Humidity: 70%, Wind: W 6 mph",0,0
+2024_05_IND_JAX,"Temp: 74° F, Humidity: 90%, Wind: E 4 mph",0,0
+2024_05_LV_DEN,"Sunny Temp: 73° F, Humidity: 22%, Wind: N 7 mph",0,0
+2024_05_MIA_NE,"Sunny Temp: 65° F, Humidity: 57%, Wind: SW 2 mph",0,0
+2024_05_NO_KC,"Temp: 70° F, Humidity: 27%, Wind: NE 0 mph",0,0
+2024_05_NYG_SEA,"Mostly Sunny Temp: 61° F, Humidity: 68%, Wind: SW 3 mph",0,0
+2024_05_NYJ_MIN,"Cloudy Temp: 59° F, Humidity: 77%, Wind: SSE 8 mph",0,0
+2024_05_TB_ATL,,0,0
+2024_06_ARI_GB,"Rain Temp: 50° F, Humidity: 86%, Wind: E 4 mph",1,1
+2024_06_ATL_CAR,"Sunny Temp: 79° F, Humidity: 44%, Wind: SW 9 mph",0,0
+2024_06_BUF_NYJ,"Blustery and Chilly Temp: 49° F, Humidity: 60%, Wind: NW 14 mph",0,0
+2024_06_CIN_NYG,"Fair Temp: 63° F, Humidity: 81%, Wind: NE 2 mph",0,0
+2024_06_CLE_PHI,"Clear Temp: 75° F, Humidity: 45%, Wind: SSW 8 mph",0,0
+2024_06_DET_DAL,,0,0
+2024_06_HOU_NE,"Cloudy Temp: 56° F, Humidity: 53%, Wind: W 5 mph",0,0
+2024_06_IND_TEN,"Sunny Temp: 76° F, Humidity: 52%, Wind: WSW 12 mph",0,0
+2024_06_JAX_CHI,"Partly Cloudy Temp: 54° F, Humidity: 55%, Wind: SSW 3 mph",0,0
+2024_06_LAC_DEN,"Party Cloudy Temp: 65° F, Humidity: 28%, Wind: N 7 mph",0,0
+2024_06_PIT_LV,"Sunny Temp: 85° F, Humidity: 13%, Wind: ESE 4 mph",0,0
+2024_06_SF_SEA,"Mostly Sunny Temp: 59° F, Humidity: 61%, Wind: N 10 mph",0,0
+2024_06_TB_NO,"Sunny Temp: 76° F, Humidity: 68%, Wind: E 3 mph",0,0
+2024_06_WAS_BAL,"Clear Temp: 75° F, Humidity: 55%, Wind: SSW 8 mph",0,0
+2024_07_BAL_TB,"Cloudy Temp: 80° F, Humidity: 65%, Wind: NW 8 mph",0,0
+2024_07_CAR_WAS,"Sunny Temp: 76° F, Humidity: 34%, Wind: WNW 2 mph",0,0
+2024_07_CIN_CLE,"Sunny Temp: 62° F, Humidity: 55%, Wind: W 8 mph",0,0
+2024_07_DEN_NO,"Sunny Temp: 68° F, Humidity: 42%, Wind: W 7 mph",0,0
+2024_07_DET_MIN,"N/A Indoors Temp: 71° F, Humidity: 53%, Wind: SW 12 mph",0,0
+2024_07_HOU_GB,"Temp: 70° F, Humidity: 43%, Wind: SW 10 mph",0,0
+2024_07_KC_SF,"Sunny Temp: 77° F, Humidity: 24%, Wind: NE 3 mph",0,0
+2024_07_LAC_ARI,"Temp: 85° F, Humidity: 8%, Wind: WSW 2 mph",0,0
+2024_07_LV_LA,"Sunny Temp: 80° F, Humidity: 24%, Wind: WSW 5 mph",0,0
+2024_07_MIA_IND,"Sunny Temp: 65° F, Humidity: 43%, Wind: W 2 mph",0,0
+2024_07_NE_JAX,"Cloudy Temp: 63° F, Humidity: 92%, Wind: SSW 12 mph",0,0
+2024_07_NYJ_PIT,"Clear Temp: 60° F, Humidity: 57%, Wind: WSW 4 mph",0,0
+2024_07_PHI_NYG,"Shallow Fog Temp: 72° F, Humidity: 28%, Wind: W 3 mph",0,0
+2024_07_SEA_ATL,"Sunny Temp: 72° F, Humidity: 41%, Wind: North 4 mph",0,0
+2024_07_TEN_BUF,"Sunny Temp: 66° F, Humidity: 49%, Wind: WSW 12 mph",0,0
+2024_08_ARI_MIA,"Partly Cloudy Temp: 82° F, Humidity: 52%, Wind: ENE 14 mph",0,0
+2024_08_ATL_TB,"Cloudy Temp: 79° F, Humidity: 59%, Wind: NE 6 mph",0,0
+2024_08_BAL_CLE,"Sunny Temp: 52° F, Humidity: 50%, Wind: S 4 mph",0,0
+2024_08_BUF_SEA,"Mostly Cloudy Temp: 55° F, Humidity: 82%, Wind: SW 14 mph",0,0
+2024_08_CAR_DEN,"Mostly Cloudy Temp: 76° F, Humidity: 9%, Wind: W 4 mph",0,0
+2024_08_CHI_WAS,"Sunny Temp: 58° F, Humidity: 33%, Wind: NNW 2 mph",0,0
+2024_08_DAL_SF,"Cloudy Temp: 69° F, Humidity: 70%, Wind: NE 9 mph",0,0
+2024_08_GB_JAX,"Temp: 84° F, Humidity: 46%, Wind: S 4 mph",0,0
+2024_08_IND_HOU,"Sunny Temp: 82° F, Humidity: 56%, Wind: NNW 4 mph",0,0
+2024_08_KC_LV,"Cloudy Temp: 80° F, Humidity: 18%, Wind: E 5 mph",0,0
+2024_08_MIN_LA,"Sunny Temp: 66° F, Humidity: 67%, Wind: WSW 7 mph",0,0
+2024_08_NO_LAC,"Cloudy Temp: 76° F, Humidity: 56%, Wind: SSW 6 mph",0,0
+2024_08_NYG_PIT,"Clear Temp: 54° F, Humidity: 57%, Wind: SSE 7 mph",0,0
+2024_08_NYJ_NE,"Sunny Temp: 53° F, Humidity: 34%, Wind: E 8 mph",0,0
+2024_08_PHI_CIN,"Sunny Temp: 59° F, Humidity: 37%, Wind: ENE 6 mph",0,0
+2024_08_TEN_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2024_09_CHI_ARI,"Temp: 71° F, Humidity: 28%, Wind: SW 10 mph",0,0
+2024_09_DAL_ATL,,0,0
+2024_09_DEN_BAL,"Clear Temp: 57° F, Humidity: 30%, Wind: ENE 3 mph",0,0
+2024_09_DET_GB,"Rain Temp: 50° F, Humidity: 86%, Wind: E 15 mph",1,1
+2024_09_HOU_NYJ,"Warm. 71 and cloudy Temp: 71° F, Humidity: 65%, Wind: SSW 8 mph",0,0
+2024_09_IND_MIN,"Temp: 47° F, Humidity: 98%, Wind: SE 7 mph",0,0
+2024_09_JAX_PHI,"Clear Temp: 57° F, Humidity: 31%, Wind: NE 6 mph",0,0
+2024_09_LAC_CLE,"Sunny Temp: 57° F, Humidity: 42%, Wind: E 10 mph",0,0
+2024_09_LA_SEA,"Cloudy Temp: 52° F, Humidity: 83%, Wind: SW 4 mph",0,0
+2024_09_LV_CIN,"Sunny Temp: 67° F, Humidity: 41%, Wind: ESE 7 mph",0,0
+2024_09_MIA_BUF,"Sunny Temp: 54° F, Humidity: 38%, Wind: E 9 mph",0,0
+2024_09_NE_TEN,"Cloudy Temp: 75° F, Humidity: 60%, Wind: S 10 mph",0,0
+2024_09_NO_CAR,"Mostly Sunny Temp: 66° F, Humidity: 48%, Wind: 7 mph",0,0
+2024_09_TB_KC,"Temp: 63° F, Humidity: 90%, Wind: NE 6 mph",0,0
+2024_09_WAS_NYG,"Fair Temp: 52° F, Humidity: 35%, Wind: Vrbl 6 mph",0,0
+2024_10_ATL_NO,"Rain Temp: 78° F, Humidity: 83%, Wind: ESE 10 mph",1,1
+2024_10_BUF_IND,"Partly sunny Temp: 63° F, Humidity: 88%, Wind: SW 5 mph",0,0
+2024_10_CIN_BAL,"Clear Temp: 69° F, Humidity: 43%, Wind: NNW 6 mph",0,0
+2024_10_DEN_KC,"Temp: 57° F, Humidity: 58%, Wind: West 12 mph",0,0
+2024_10_DET_HOU,"Clear Temp: 73° F, Humidity: 88%, Wind: N 5 mph",0,0
+2024_10_MIA_LA,"Clear Temp: 60° F, Humidity: 86%, Wind: WSW 7 mph",0,0
+2024_10_MIN_JAX,"Temp: 79° F, Humidity: 77%, Wind: ESE 7 mph",0,0
+2024_10_NE_CHI,"Mostly Cloudy Temp: 60° F, Humidity: 78%, Wind: S 6 mph",0,0
+2024_10_NYG_CAR,"Mostly Cloudy Temp: 40° F, Humidity: 90%, Wind: N 3 mph",0,0
+2024_10_NYJ_ARI,"Sunny Temp: 79° F, Humidity: 13%, Wind: NW 2 mph",0,0
+2024_10_PHI_DAL,,0,0
+2024_10_PIT_WAS,"Cloudy Temp: 57° F, Humidity: 54%, Wind: SSW 9 mph",0,0
+2024_10_SF_TB,"Cloudy Temp: 85° F, Humidity: 54%, Wind: SE 9 mph",0,0
+2024_10_TEN_LAC,"Sunny Temp: 73° F, Humidity: 36%, Wind: SW 6 mph",0,0
+2024_11_ATL_DEN,"Sunny Temp: 55° F, Humidity: 12%, Wind: N 9 mph",0,0
+2024_11_BAL_PIT,"Cloudy Temp: 52° F, Humidity: 61%, Wind: SW 5 mph",0,0
+2024_11_CIN_LAC,"Clear Temp: 61° F, Humidity: 45%, Wind: WSW 4 mph",0,0
+2024_11_CLE_NO,"Partly Cloudy Temp: 76° F, Humidity: 69%, Wind: SE 9 mph",0,0
+2024_11_GB_CHI,"Mostly Cloudy Temp: 54° F, Humidity: 80%, Wind: SW 5 mph",0,0
+2024_11_HOU_DAL,,0,0
+2024_11_IND_NYJ,"Mild and Cloudy Temp: 62° F, Humidity: 32%, Wind: NW 4 mph",0,0
+2024_11_JAX_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2024_11_KC_BUF,"Cloudy Temp: 50° F, Humidity: 62%, Wind: SW 3 mph",0,0
+2024_11_LA_NE,"Sunny Temp: 59° F, Humidity: 30%, Wind: SE 9 mph",0,0
+2024_11_LV_MIA,"Cloudy Temp: 80° F, Humidity: 47%, Wind: E 16 mph",0,0
+2024_11_MIN_TEN,"Sunny Temp: 66° F, Humidity: 59%, Wind: SSW 7 mph",0,0
+2024_11_SEA_SF,"Cloudy Temp: 59° F, Humidity: 45%, Wind: S 4 mph",0,0
+2024_11_WAS_PHI,"Clear Temp: 46° F, Humidity: 63%, Wind: W 9 mph",0,0
+2024_12_ARI_SEA,"Cloudy Temp: 45° F, Humidity: 85%, Wind: SE 5 mph",0,0
+2024_12_BAL_LAC,"Cloudy Temp: 62° F, Humidity: 74%, Wind: W 6 mph",0,0
+2024_12_DAL_WAS,"Sunny Temp: 55° F, Humidity: 49%, Wind: WNW 5 mph",0,0
+2024_12_DEN_LV,"Mostly Cloudy Temp: Humidity: 34%, Wind: SSW 3 mph",0,0
+2024_12_DET_IND,"Mostly sunny Temp: 50° F, Humidity: 68%, Wind: SSE 9 mph",0,0
+2024_12_KC_CAR,"Sunny Temp: 61° F, Humidity: 52%, Wind: SW 5 mph",0,0
+2024_12_MIN_CHI,"Partly Sunny Temp: 47° F, Humidity: 77%, Wind: SSE 5 mph",0,0
+2024_12_NE_MIA,"Sunny Temp: 77° F, Humidity: 51%, Wind: ENE 6 mph",0,0
+2024_12_PHI_LA,"Clear Temp: 57° F, Humidity: 75%, Wind: WSW 6 mph",0,0
+2024_12_PIT_CLE,"Light Snow Temp: 36° F, Humidity: 88%, Wind: W 13 mph",1,1
+2024_12_SF_GB,"Cloudy Temp: 43° F, Humidity: 73%, Wind: ENE 12 mph",0,0
+2024_12_TB_NYG,"Mostly Cloudy Temp: 50° F, Humidity: 48%, Wind: W 13 mph",0,0
+2024_12_TEN_HOU,"Sunny Temp: 78° F, Humidity: 59%, Wind: S 6 mph",0,0
+2024_13_ARI_MIN,"N/A Indoors Temp: 12° F, Humidity: 78%, Wind: WNW 9 mph",0,0
+2024_13_CHI_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2024_13_CLE_DEN,"Clear but cold with no wind Temp: 48° F, Humidity: 39%, Wind: NE 4 mph",0,0
+2024_13_HOU_JAX,"Temp: 56° F, Humidity: 37%, Wind: NW 5 mph",0,0
+2024_13_IND_NE,"Sunny Temp: 36° F, Humidity: 49%, Wind: WSW 9 mph",0,0
+2024_13_LAC_ATL,,0,0
+2024_13_LA_NO,"Sunny Temp: 64° F, Humidity: 46%, Wind: N 5 mph",0,0
+2024_13_LV_KC,"Temp: 37° F, Humidity: 40%, Wind: W 5 mph",0,0
+2024_13_MIA_GB,"Temp: 27° F, Humidity: 63%, Wind: W 10 mph",0,0
+2024_13_NYG_DAL,"T: 49, W: N 15, H: 37%, Overcast Temp: Humidity: Wind: mph",0,0
+2024_13_PHI_BAL,"Cloudy Temp: 41° F, Humidity: 41%, Wind: W 7 mph",0,0
+2024_13_PIT_CIN,"Partly cloudy Temp: 32° F, Humidity: 43%, Wind: WNW 9 mph",0,0
+2024_13_SEA_NYJ,"Cold and Sunny Temp: 37° F, Humidity: 44%, Wind: W 12 mph",0,0
+2024_13_SF_BUF,"Snow shower Temp: 28° F, Humidity: 79%, Wind: WSW 11 mph",1,1
+2024_13_TB_CAR,"Mostly Sunny Temp: 51° F, Humidity: 41%, Wind: West 7 mph",0,0
+2024_13_TEN_WAS,"Cloudy Temp: 42° F, Humidity: 40%, Wind: WSW 6 mph",0,0
+2024_14_ATL_MIN,"Temp: 41° F, Humidity: 72%, Wind: ESE 6 mph",0,0
+2024_14_BUF_LA,"Sunny Temp: 68° F, Humidity: 54%, Wind: SSE 3 mph",0,0
+2024_14_CAR_PHI,"Clear Temp: 55° F, Humidity: 37%, Wind: W 16 mph",0,0
+2024_14_CHI_SF,"Cloudy Temp: 65° F, Humidity: 51%, Wind: NE 4 mph",0,0
+2024_14_CIN_DAL,"Clear Temp: 59° F, Humidity: 59%, Wind: NNW 12 mph",0,0
+2024_14_CLE_PIT,"Sunny Temp: 49° F, Humidity: 62%, Wind: W 12 mph",0,0
+2024_14_GB_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2024_14_JAX_TEN,"Cloudy Temp: 53° F, Humidity: 44%, Wind: SSW 9 mph",0,0
+2024_14_LAC_KC,"Temp: 50° F, Humidity: 80%, Wind: SW 10 mph",0,0
+2024_14_LV_TB,"Cloudy Temp: 71° F, Humidity: 56%, Wind: SE 4 mph",0,0
+2024_14_NO_NYG,"Fair Temp: 54° F, Humidity: 35%, Wind: W 13 mph",0,0
+2024_14_NYJ_MIA,"Partly Cloudy Temp: 77° F, Humidity: 55%, Wind: E 12 mph",0,0
+2024_14_SEA_ARI,"Sunny Temp: 71° F, Humidity: 26%, Wind: S 3 mph",0,0
+2024_15_ATL_LV,"Partly Cloudy Temp: 56° F, Humidity: 21%, Wind: ESE 4 mph",0,0
+2024_15_BAL_NYG,"Fair Temp: 36° F, Humidity: 62%, Wind: E 6 mph",0,0
+2024_15_BUF_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2024_15_CHI_MIN,"N/A Indoors Temp: 32° F, Humidity: 73%, Wind: WNW 15 mph",0,0
+2024_15_CIN_TEN,"Cloudy Temp: 52° F, Humidity: 90%, Wind: S 12 mph",0,0
+2024_15_DAL_CAR,"Cloudy Temp: 45° F, Humidity: 77%, Wind: NNE 7 mph",0,0
+2024_15_GB_SEA,"Cloudy Temp: 43° F, Humidity: 77%, Wind: SE 3 mph",0,0
+2024_15_IND_DEN,"Sunny and clear but winds in the 15-20 with gusts up to 30-35, temperatures falling throughout to mid 40s by end of game Temp: 55° F, Humidity: 13%, Wind: SE 15 mph",0,0
+2024_15_KC_CLE,"Cloudy Temp: 40° F, Humidity: 87%, Wind: S 18 mph",0,0
+2024_15_LA_SF,"Rain Temp: 53° F, Humidity: 87%, Wind: NE 4 mph",1,1
+2024_15_MIA_HOU,"Cloudy Temp: 77° F, Humidity: 75%, Wind: SSE 6 mph",0,0
+2024_15_NE_ARI,"Sunny Temp: 68° F, Humidity: 18%, Wind: WSW 2 mph",0,0
+2024_15_NYJ_JAX,"Temp: 73° F, Humidity: 78%, Wind: NE 12 mph",0,0
+2024_15_PIT_PHI,"Partly Cloudy Temp: 37° F, Humidity: 62%, Wind: NE 5 mph",0,0
+2024_15_TB_LAC,"Sunny Temp: 66° F, Humidity: 71%, Wind: WSW 6 mph",0,0
+2024_15_WAS_NO,"Sunny Temp: 71° F, Humidity: 82%, Wind: ESE 7 mph",0,0
+2024_16_ARI_CAR,"Sunny Temp: 37° F, Humidity: 52%, Wind: ENE 10 mph",0,0
+2024_16_CLE_CIN,"Mostly sunny Temp: 33° F, Humidity: 56%, Wind: SSE 6 mph",0,0
+2024_16_DEN_LAC,"Clear Temp: 64° F, Humidity: 56%, Wind: WSW 3 mph",0,0
+2024_16_DET_CHI,"Mostly Cloudy Temp: 29° F, Humidity: 68%, Wind: S 7 mph",0,0
+2024_16_HOU_KC,"Temp: 30° F, Humidity: 60%, Wind: SE 5 mph",0,0
+2024_16_JAX_LV,"Partly Cloudy Temp: 60° F, Humidity: 23%, Wind: E 2 mph",0,0
+2024_16_LA_NYJ,"Bitterly cold and sunny Temp: 23° F, Humidity: 47%, Wind: NNW 8 mph",0,0
+2024_16_MIN_SEA,"Rain Temp: 48° F, Humidity: 84%, Wind: SE 5 mph",1,1
+2024_16_NE_BUF,"Sunny Temp: 14° F, Humidity: 54%, Wind: NE 2 mph",0,0
+2024_16_NO_GB,"Temp: 34° F, Humidity: 85%, Wind: N 12 mph",0,0
+2024_16_NYG_ATL,,0,0
+2024_16_PHI_WAS,"Sunny Temp: 32° F, Humidity: 36%, Wind: NW 8 mph",0,0
+2024_16_PIT_BAL,"Cloudy Temp: 35° F, Humidity: 32%, Wind: WNW 15 mph",0,0
+2024_16_SF_MIA,"Partly Cloudy Temp: 73° F, Humidity: 61%, Wind: ENE 12 mph",0,0
+2024_16_TB_DAL,,0,0
+2024_16_TEN_IND,"Mostly sunny Temp: 32° F, Humidity: 55%, Wind: S 5 mph",0,0
+2024_17_ARI_LA,"Cloudy Temp: 57° F, Humidity: 84%, Wind: W 5 mph",0,0
+2024_17_ATL_WAS,"Cloudy Temp: 58° F, Humidity: 89%, Wind: SSE 10 mph",0,0
+2024_17_BAL_HOU,"Cloudy Temp: 67° F, Humidity: 85%, Wind: SSE 2 mph",0,0
+2024_17_CAR_TB,"Cloudy Temp: 76° F, Humidity: 76%, Wind: S 8 mph",0,0
+2024_17_DAL_PHI,"Sunny Temp: 62° F, Humidity: 74%, Wind: S 10 mph",0,0
+2024_17_DEN_CIN,"Cloudy Temp: 60° F, Humidity: 82%, Wind: SE 8 mph",0,0
+2024_17_DET_SF,"Temp: 48° F, Humidity: 79%, Wind: NW 5 mph",0,0
+2024_17_GB_MIN,"N/A Indoors Temp: 35° F, Humidity: 94%, Wind: N 4 mph",0,0
+2024_17_IND_NYG,"Cloudy Temp: 54° F, Humidity: 90%, Wind: E 0 mph",0,0
+2024_17_KC_PIT,"Cloudy Temp: 39° F, Humidity: 82%, Wind: E 2 mph",0,0
+2024_17_LAC_NE,"Mostly cloudy Temp: 40° F, Humidity: 95%, Wind: SSW 4 mph",0,0
+2024_17_LV_NO,"Sunny Temp: 61° F, Humidity: 77%, Wind: NNW 11 mph",0,0
+2024_17_MIA_CLE,"Cloudy Temp: 54° F, Humidity: 93%, Wind: S 15 mph",0,0
+2024_17_NYJ_BUF,"Cloudy Temp: 54° F, Humidity: 87%, Wind: SSE 15 mph",0,0
+2024_17_SEA_CHI,"Mostly Cloudy Temp: 47° F, Humidity: 88%, Wind: SE 5 mph",0,0
+2024_17_TEN_JAX,"Temp: 72° F, Humidity: 83%, Wind: SSW 16 mph",0,0
+2024_18_BUF_NE,"Cloudy Temp: 33° F, Humidity: 50%, Wind: WNW 14 mph",0,0
+2024_18_CAR_ATL,,0,0
+2024_18_CHI_GB,"Cloudy Temp: 16° F, Humidity: 68%, Wind: NW 13 mph",0,0
+2024_18_CIN_PIT,"Cloudy Temp: 19° F, Humidity: 73%, Wind: W 10 mph",0,0
+2024_18_CLE_BAL,"Clear Temp: 31° F, Humidity: 35%, Wind: W 16 mph",0,0
+2024_18_HOU_TEN,"Cloudy Temp: 35° F, Humidity: 97%, Wind: SW 10 mph",0,0
+2024_18_JAX_IND,"Snow Temp: 21° F, Humidity: 85%, Wind: ESE 2 mph",1,1
+2024_18_KC_DEN,"Sunny and clear but with temperatures to remain below freezing throughout the game Temp: 30° F, Humidity: 56%, Wind: SW 5 mph",0,0
+2024_18_LAC_LV,"Sunny Temp: 57° F, Humidity: 22%, Wind: E 4 mph",0,0
+2024_18_MIA_NYJ,"Sunny and Very Cold Temp: 34° F, Humidity: 47%, Wind: WNW 10 mph",0,0
+2024_18_MIN_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2024_18_NO_TB,"Clear Temp: 68° F, Humidity: 34%, Wind: SE 6 mph",0,0
+2024_18_NYG_PHI,"Clear Temp: 31° F, Humidity: 37%, Wind: WNW 19 mph",0,0
+2024_18_SEA_LA,"Sunny Temp: 76° F, Humidity: 18%, Wind: S 3 mph",0,0
+2024_18_SF_ARI,"Sunny Temp: 68° F, Humidity: 12%, Wind: WSW 4 mph",0,0
+2024_18_WAS_DAL,,0,0
+2024_19_DEN_BUF,"Cloudy Temp: 32° F, Humidity: 76%, Wind: SSW 10 mph",0,0
+2024_19_GB_PHI,"Cloudy Temp: 40° F, Humidity: 47%, Wind: W 6 mph",0,0
+2024_19_LAC_HOU,"Sunny Temp: 53° F, Humidity: 40%, Wind: S 4 mph",0,0
+2024_19_MIN_LA,,0,0
+2024_19_PIT_BAL,"Clear Temp: 32° F, Humidity: 54%, Wind: WNW 12 mph",0,0
+2024_19_WAS_TB,"Cloudy Temp: 58° F, Humidity: 57%, Wind: NE 2 mph",0,0
+2024_20_BAL_BUF,"Cloudy Temp: 19° F, Humidity: 84%, Wind: ENE 4 mph",0,0
+2024_20_HOU_KC,"Temp: 23° F, Humidity: 43%, Wind: NNW 17 mph",0,0
+2024_20_LA_PHI,"Snow Temp: 34° F, Humidity: 67%, Wind: S 8 mph",1,1
+2024_20_WAS_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2024_21_BUF_KC,"Temp: 31° F, Humidity: 45%, Wind: W 8 mph",0,0
+2024_21_WAS_PHI,"Cloudy Temp: 40° F, Humidity: 45%, Wind: WNW 11 mph",0,0
+2024_22_KC_PHI,,0,0
+2025_01_ARI_NO,"Sunny Temp: 83° F, Humidity: 72%, Wind: NE 9 mph",0,0
+2025_01_BAL_BUF,"Partly cloudy Temp: 58° F, Humidity: 61%, Wind: SW 8 mph",0,0
+2025_01_CAR_JAX,"Temp: 85° F, Humidity: 71%, Wind: SW 3 mph",0,0
+2025_01_CIN_CLE,"Sunny Temp: 63° F, Humidity: 49%, Wind: NW 10 mph",0,0
+2025_01_DAL_PHI,"Rain Temp: 75° F, Humidity: 66%, Wind: S 11 mph",1,1
+2025_01_DET_GB,"Cloudy Temp: 60° F, Humidity: 76%, Wind: NW 5 mph",0,0
+2025_01_HOU_LA,"Sunny Temp: 83° F, Humidity: 51%, Wind: SW 9 mph",0,0
+2025_01_KC_LAC,"Temp: 62° F, Humidity: 80%, Wind: SE 7 mph",0,0
+2025_01_LV_NE,"Rain Temp: 64° F, Humidity: 86%, Wind: NE 4 mph",1,1
+2025_01_MIA_IND,"Sunny Temp: 64° F, Humidity: 38%, Wind: NW 3 mph",0,0
+2025_01_MIN_CHI,"Clear Temp: 68° F, Humidity: 38%, Wind: SE 6 mph",0,0
+2025_01_NYG_WAS,"Temp: 68° F, Humidity: 68%, Wind: NW 5 mph",0,0
+2025_01_PIT_NYJ,"Cloudy with more rain possible Temp: 67° F, Humidity: 79%, Wind: W 3 mph",1,0
+2025_01_SF_SEA,"Cloudy Temp: 67° F, Humidity: 83%, Wind: S 6 mph",0,0
+2025_01_TB_ATL,,0,0
+2025_01_TEN_DEN,"Mostly Sunny Temp: 84° F, Humidity: 24%, Wind: NE 6 mph",0,0
+2025_02_ATL_MIN,"N/A Indoors Temp: 82° F, Humidity: 69%, Wind: SE 8 mph",0,0
+2025_02_BUF_NYJ,"Beautiful. 80 and Sunny Temp: 80° F, Humidity: 49%, Wind: NE 3 mph",0,0
+2025_02_CAR_ARI,,0,0
+2025_02_CHI_DET,"Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2025_02_CLE_BAL,"Clear Temp: 82° F, Humidity: 49%, Wind: SE 3 mph",0,0
+2025_02_DEN_IND,"Sunny Temp: 85° F, Humidity: 46%, Wind: SE 2 mph",0,0
+2025_02_JAX_CIN,"Partly Sunny Temp: 84° F, Humidity: 49%, Wind: SE 6 mph",0,0
+2025_02_LAC_LV,"Sunny Temp: 93° F, Humidity: 12%, Wind: SE 7 mph",0,0
+2025_02_LA_TEN,"Cloudy Temp: 83° F, Humidity: 46%, Wind: S 3 mph",0,0
+2025_02_NE_MIA,"Partly Cloudy Temp: 89° F, Humidity: 56%, Wind: NW 4 mph",0,0
+2025_02_NYG_DAL,,0,0
+2025_02_PHI_KC,"Temp: 88° F, Humidity: 46%, Wind: S 12 mph",0,0
+2025_02_SEA_PIT,"Sunny Temp: 79° F, Humidity: 46%, Wind: NE 5 mph",0,0
+2025_02_SF_NO,"Partly Cloudy Temp: 87° F, Humidity: 55%, Wind: N 5 mph",0,0
+2025_02_TB_HOU,"Sunny Temp: 87° F, Humidity: 45%, Wind: SE 4 mph",0,0
+2025_02_WAS_GB,"Cloudy Temp: 64° F, Humidity: 78%, Wind: NE 7 mph",0,0
+2025_03_ARI_SF,"Sunny Temp: 72° F, Humidity: 65%, Wind: SE 7 mph",0,0
+2025_03_ATL_CAR,"Sunny Temp: 84° F, Humidity: 48%, Wind: NE 6 mph",0,0
+2025_03_CIN_MIN,"N/A Indoors Temp: 70° F, Humidity: 74%, Wind: SW 4 mph",0,0
+2025_03_DAL_CHI,"Mostly Sunny Temp: 82° F, Humidity: 48%, Wind: SW 4 mph",0,0
+2025_03_DEN_LAC,"Cloudy Temp: 76° F, Humidity: 70%, Wind: SE 8 mph",0,0
+2025_03_DET_BAL,"Clear Temp: 73° F, Humidity: 67%, Wind: SE 4 mph",0,0
+2025_03_GB_CLE,"Cloudy Temp: 79° F, Humidity: 53%, Wind: S 10 mph",0,0
+2025_03_HOU_JAX,"Temp: 85° F, Humidity: 76%, Wind: NE 12 mph",0,0
+2025_03_IND_TEN,"Cloudy Temp: 84° F, Humidity: 49%, Wind: SW 7 mph",0,0
+2025_03_KC_NYG,"Fair Temp: 65° F, Humidity: 56%, Wind: S 5 mph",0,0
+2025_03_LA_PHI,"Sunny Temp: 73° F, Humidity: 47%, Wind: E 9 mph",0,0
+2025_03_LV_WAS,"Temp: 72° F, Humidity: 72%, Wind: E 6 mph",0,0
+2025_03_MIA_BUF,"Partly cloudy Temp: 68° F, Humidity: 71%, Wind: SW 7 mph",0,0
+2025_03_NO_SEA,"Cloudy Temp: 63° F, Humidity: 84%, Wind: SE 3 mph",0,0
+2025_03_NYJ_TB,"Cloudy Temp: 88° F, Humidity: 55%, Wind: NE 5 mph",0,0
+2025_03_PIT_NE,"Cloudy Temp: 66° F, Humidity: 54%, Wind: W 5 mph",0,0
+2025_04_BAL_KC,"Temp: 89° F, Humidity: 38%, Wind: SW 10 mph",0,0
+2025_04_CAR_NE,"Sunny Temp: 76° F, Humidity: 70%, Wind: NE 7 mph",0,0
+2025_04_CHI_LV,"Partly Cloudy Temp: 77° F, Humidity: 54%, Wind: E 5 mph",0,0
+2025_04_CIN_DEN,"Partly Cloudy Temp: 65° F, Humidity: 54%, Wind: S 9 mph",0,0
+2025_04_CLE_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2025_04_GB_DAL,"Partly Cloudy Temp: 81° F, Humidity: 42%, Wind: NE 2 mph",0,0
+2025_04_IND_LA,"Cloudy Temp: 74° F, Humidity: 68%, Wind: SW 3 mph",0,0
+2025_04_JAX_SF,"Cloudy Temp: 72° F, Humidity: 72%, Wind: N 7 mph",0,0
+2025_04_LAC_NYG,"Fair Temp: 81° F, Humidity: 53%, Wind: W mph",0,0
+2025_04_MIN_PIT,"Mostly Cloudy Temp: 61° F, Humidity: 70%, Wind: W 5 mph",0,0
+2025_04_NO_BUF,"Sunny Temp: 73° F, Humidity: 56%, Wind: NW 7 mph",0,0
+2025_04_NYJ_MIA,"Partly Cloudy Temp: 86° F, Humidity: 63%, Wind: NW 1 mph",0,0
+2025_04_PHI_TB,"Cloudy Temp: 88° F, Humidity: 61%, Wind: N 6 mph",0,0
+2025_04_SEA_ARI,,0,0
+2025_04_TEN_HOU,"Sunny Temp: 83° F, Humidity: 50%, Wind: NE 3 mph",0,0
+2025_04_WAS_ATL,,0,0
+2025_05_DAL_NYJ,"Sunny and Warm Temp: 82° F, Humidity: 46%, Wind: S 3 mph",0,0
+2025_05_DEN_PHI,"Sunny Temp: 80° F, Humidity: 43%, Wind: SW 6 mph",0,0
+2025_05_DET_CIN,"Mostly Sunny Temp: 84° F, Humidity: 39%, Wind: SW 7 mph",0,0
+2025_05_HOU_BAL,"Temp: 78° F, Humidity: 45%, Wind: S 2 mph",0,0
+2025_05_KC_JAX,"Temp: 80° F, Humidity: 79%, Wind: E 12 mph",0,0
+2025_05_LV_IND,"Sunny Temp: 76° F, Humidity: 52%, Wind: SW 2 mph",0,0
+2025_05_MIA_CAR,"Mostly Cloudy Temp: 77° F, Humidity: 57%, Wind: E 8 mph",0,0
+2025_05_MIN_CLE,"Cloudy Temp: 61° F, Humidity: 48%, Wind: NW 14 mph",0,0
+2025_05_NE_BUF,"Clear Temp: 66° F, Humidity: 58%, Wind: S 3 mph",0,0
+2025_05_NYG_NO,"Rain Temp: 75° F, Humidity: 95%, Wind: NE 9 mph",1,1
+2025_05_SF_LA,"Cloudy Temp: 71° F, Humidity: 65%, Wind: S 5 mph",0,0
+2025_05_TB_SEA,"Sunny Temp: 61° F, Humidity: 73%, Wind: N 8 mph",0,0
+2025_05_TEN_ARI,,0,0
+2025_05_WAS_LAC,"Sunny Temp: 77° F, Humidity: 56%, Wind: SW 7 mph",0,0
+2025_06_ARI_IND,"Sunny Temp: 57° F, Humidity: 48%, Wind: NE 2 mph",0,0
+2025_06_BUF_ATL,,0,0
+2025_06_CHI_WAS,"Temp: 59° F, Humidity: 82%, Wind: N 12 mph",0,0
+2025_06_CIN_GB,"Sunny Temp: 64° F, Humidity: 56%, Wind: SE 14 mph",0,0
+2025_06_CLE_PIT,"Cloudy Temp: 64° F, Humidity: 77%, Wind: E 8 mph",0,0
+2025_06_DAL_CAR,"Cloudy Temp: 68° F, Humidity: 71%, Wind: N 15 mph",0,0
+2025_06_DEN_NYJ,"Mostly Sunny Temp: 59° F, Humidity: 69%, Wind: NE 6 mph",0,0
+2025_06_DET_KC,"Temp: 85° F, Humidity: 37%, Wind: S 13 mph",0,0
+2025_06_LAC_MIA,"Partly Cloudy Temp: 85° F, Humidity: 62%, Wind: N 4 mph",0,0
+2025_06_LA_BAL,"Cloudy Temp: 64° F, Humidity: 66%, Wind: NE 15 mph",0,0
+2025_06_NE_NO,"Sunny Temp: 79° F, Humidity: 41%, Wind: S 8 mph",0,0
+2025_06_PHI_NYG,"Fair Temp: 53° F, Humidity: 31%, Wind: N 3 mph",0,0
+2025_06_SEA_JAX,"Temp: 76° F, Humidity: 59%, Wind: NW 8 mph",0,0
+2025_06_SF_TB,"Clear Temp: 82° F, Humidity: 49%, Wind: NW 10 mph",0,0
+2025_06_TEN_LV,"Sunny Temp: 74° F, Humidity: 13%, Wind: N 6 mph",0,0
+2025_07_ATL_SF,"Sunny Temp: 74° F, Humidity: 49%, Wind: SE 5 mph",0,0
+2025_07_CAR_NYJ,"Mostly Sunny and Mild Temp: 71° F, Humidity: 70%, Wind: SE 13 mph",0,0
+2025_07_GB_ARI,,0,0
+2025_07_HOU_SEA,"Cloudy Temp: 56° F, Humidity: 54%, Wind: SE 5 mph",0,0
+2025_07_IND_LAC,"Sunny Temp: 79° F, Humidity: 42%, Wind: SW 7 mph",0,0
+2025_07_LA_JAX,"Rain Temp: 59° F, Humidity: 95%, Wind: SE 9 mph",1,1
+2025_07_LV_KC,"Temp: 57° F, Humidity: 41%, Wind: NW 9 mph",0,0
+2025_07_MIA_CLE,"Rain Temp: 65° F, Humidity: 85%, Wind: S 17 mph",1,1
+2025_07_NE_TEN,"Cloudy Temp: 60° F, Humidity: 78%, Wind: NW 18 mph",0,0
+2025_07_NO_CHI,"Temp: 49° F, Humidity: 87%, Wind: NW 8 mph",0,0
+2025_07_NYG_DEN,"Partly Cloudy Temp: 72° F, Humidity: 17%, Wind: N 3 mph",0,0
+2025_07_PHI_MIN,"Temp: 52° F, Humidity: 57%, Wind: NW 12 mph",0,0
+2025_07_PIT_CIN,"Clear and Cool Temp: 60° F, Humidity: 51%, Wind: E 5 mph",0,0
+2025_07_TB_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2025_07_WAS_DAL,,0,0
+2025_08_BUF_CAR,"Mostly Cloudy Temp: 63° F, Humidity: 36%, Wind: NE 9 mph",0,0
+2025_08_CHI_BAL,"Clear Temp: 60° F, Humidity: 38%, Wind: NE 2 mph",0,0
+2025_08_CLE_NE,"Sunny Temp: 53° F, Humidity: 52%, Wind: SE 7 mph",0,0
+2025_08_DAL_DEN,"Cloudy Temp: 67° F, Humidity: 25%, Wind: N 4 mph",0,0
+2025_08_GB_PIT,"Clear Temp: 46° F, Humidity: 56%, Wind: NE 5 mph",0,0
+2025_08_MIA_ATL,,0,0
+2025_08_MIN_LAC,"Sunny Temp: 68° F, Humidity: 74%, Wind: W 12 mph",0,0
+2025_08_NYG_PHI,"Sunny Temp: 60° F, Humidity: 41%, Wind: N 4 mph",0,0
+2025_08_NYJ_CIN,"Cloudy Temp: 57° F, Humidity: 48%, Wind: NE 8 mph",0,0
+2025_08_SF_HOU,"Temp: 71° F, Humidity: 88%, Wind: N 1 mph",0,0
+2025_08_TB_NO,"Temp: 79° F, Humidity: 77%, Wind: S 10 mph",0,0
+2025_08_TEN_IND,"Temp: 52° F, Humidity: 53%, Wind: E 2 mph",0,0
+2025_08_WAS_KC,"Temp: 54° F, Humidity: 94%, Wind: NE 8 mph",0,0
+2025_09_ARI_DAL,,0,0
+2025_09_ATL_NE,"Sunny Temp: 52° F, Humidity: 51%, Wind: SE 7 mph",0,0
+2025_09_BAL_MIA,"Clear Temp: 73° F, Humidity: 57%, Wind: NW 5 mph",0,0
+2025_09_CAR_GB,"Cloudy Temp: 47° F, Humidity: 53%, Wind: SW 15 mph",0,0
+2025_09_CHI_CIN,"Cloudy Temp: 50° F, Humidity: 74%, Wind: NE 6 mph",0,0
+2025_09_DEN_HOU,"Temp: 67° F, Humidity: 59%, Wind: N 7 mph",0,0
+2025_09_IND_PIT,"Cloudy Temp: 56° F, Humidity: 66%, Wind: SE 2 mph",0,0
+2025_09_JAX_LV,"Temp: 80° F, Humidity: 13%, Wind: E 2 mph",0,0
+2025_09_KC_BUF,"Fair Temp: 54° F, Humidity: 55%, Wind: SW 6 mph",0,0
+2025_09_LAC_TEN,"Cloudy Temp: 46° F, Humidity: 84%, Wind: N 5 mph",0,0
+2025_09_MIN_DET,"Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2025_09_NO_LA,"Sunny Temp: 65° F, Humidity: 75%, Wind: SW 8 mph",0,0
+2025_09_SEA_WAS,"Temp: 52° F, Humidity: 70%, Wind: E 3 mph",0,0
+2025_09_SF_NYG,"Fair Temp: 56° F, Humidity: 47%, Wind: SW 5 mph",0,0
+2025_10_ARI_SEA,"Cloudy Temp: 59° F, Humidity: 72%, Wind: SW 5 mph",0,0
+2025_10_ATL_IND,"Cloudy Temp: 46° F, Humidity: 80%, Wind: SW 2 mph",0,0
+2025_10_BAL_MIN,"Temp: 28° F, Humidity: 58%, Wind: NE 4 mph",0,0
+2025_10_BUF_MIA,"Partly Cloudy Temp: 84° F, Humidity: 68%, Wind: SE 6 mph",0,0
+2025_10_CLE_NYJ,"Cloudy, chance of rain, mild Temp: 62° F, Humidity: 78%, Wind: SE 12 mph",1,0
+2025_10_DET_WAS,"Temp: 65° F, Humidity: 79%, Wind: SE 7 mph",0,0
+2025_10_JAX_HOU,"Temp: 69° F, Humidity: 37%, Wind: N 7 mph",0,0
+2025_10_LA_SF,"Sunny Temp: 77° F, Humidity: 49%, Wind: SE 3 mph",0,0
+2025_10_LV_DEN,"Partly Cloudy Temp: 60° F, Humidity: 26%, Wind: W 10 mph",0,0
+2025_10_NE_TB,"Cloudy Temp: 82° F, Humidity: 74%, Wind: S 11 mph",0,0
+2025_10_NO_CAR,"Partly Cloudy Temp: 73° F, Humidity: 52%, Wind: SW 15 mph",0,0
+2025_10_NYG_CHI,"Light Snow Temp: 33° F, Humidity: 68%, Wind: NW 10 mph",1,1
+2025_10_PHI_GB,"Cloudy Temp: 33° F, Humidity: 55%, Wind: NW 9 mph",0,0
+2025_10_PIT_LAC,"Clear Temp: 70° F, Humidity: 71%, Wind: W 7 mph",0,0
+2025_11_BAL_CLE,"Cloudy Temp: 44° F, Humidity: 53%, Wind: NW 20 mph",0,0
+2025_11_CAR_ATL,"Temp: 72° F, Humidity: 52%, Wind: SW 10 mph",0,0
+2025_11_CHI_MIN,"Temp: 44° F, Humidity: 40%, Wind: NW 8 mph",0,0
+2025_11_CIN_PIT,"Partly Cloudy Temp: 46° F, Humidity: 50%, Wind: NW 17 mph",0,0
+2025_11_DAL_LV,"61 Temp: 60° F, Humidity: 52%, Wind: SE 8 mph",0,0
+2025_11_DET_PHI,"Clear Temp: 45° F, Humidity: 43%, Wind: NW 15 mph",0,0
+2025_11_GB_NYG,"Mostly Cloudy Temp: 55° F, Humidity: 31%, Wind: W 17 mph",0,0
+2025_11_HOU_TEN,"Sunny Temp: 64° F, Humidity: 26%, Wind: N 8 mph",0,0
+2025_11_KC_DEN,"Sunny Temp: 70° F, Humidity: 23%, Wind: N 6 mph",0,0
+2025_11_LAC_JAX,"Temp: 74° F, Humidity: 50%, Wind: NW 9 mph",0,0
+2025_11_NYJ_NE,"Clear Temp: 39° F, Humidity: 76%, Wind: SE 9 mph",0,0
+2025_11_SEA_LA,"Cloudy Temp: 64° F, Humidity: 68%, Wind: S 3 mph",0,0
+2025_11_SF_ARI,"Mostly Cloudy Temp: 73° F, Humidity: 38%, Wind: SW 10 mph",0,0
+2025_11_TB_BUF,"Cloudy & windy Temp: 38° F, Humidity: 50%, Wind: NW 20 mph",0,0
+2025_11_WAS_MIA,,0,0
+2025_12_ATL_NO,"Temp: 75° F, Humidity: 45%, Wind: NW 6 mph",0,0
+2025_12_BUF_HOU,"Temp: 76° F, Humidity: 83%, Wind: S 10 mph",0,0
+2025_12_CAR_SF,"Sunny Temp: 58° F, Humidity: 78%, Wind: SE 3 mph",0,0
+2025_12_CLE_LV,"Temp: 66° F, Humidity: 34%, Wind: S 3 mph",0,0
+2025_12_IND_KC,"Temp: 46° F, Humidity: 93%, Wind: SW 5 mph",0,0
+2025_12_JAX_ARI,,0,0
+2025_12_MIN_GB,"Cloudy Temp: 43° F, Humidity: 60%, Wind: W 10 mph",0,0
+2025_12_NE_CIN,"Sunny Temp: 54° F, Humidity: 61%, Wind: NW 7 mph",0,0
+2025_12_NYG_DET,"Controlled Climate Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2025_12_NYJ_BAL,"Cloudy Temp: 54° F, Humidity: 69%, Wind: SW 3 mph",0,0
+2025_12_PHI_DAL,,0,0
+2025_12_PIT_CHI,"Sunny Temp: 51° F, Humidity: 58%, Wind: NW 3 mph",0,0
+2025_12_SEA_TEN,"Sunny Temp: 55° F, Humidity: 64%, Wind: N 1 mph",0,0
+2025_12_TB_LA,"Clear Temp: 63° F, Humidity: 81%, Wind: S 2 mph",0,0
+2025_13_ARI_TB,"Clear Temp: 80° F, Humidity: 56%, Wind: E 8 mph",0,0
+2025_13_ATL_NYJ,"Cold misty rain Temp: 43° F, Humidity: 79%, Wind: SW 8 mph",1,1
+2025_13_BUF_PIT,"Cloudy Temp: 34° F, Humidity: 68%, Wind: W 16 mph",0,0
+2025_13_CHI_PHI,"Sunny Temp: 42° F, Humidity: 35%, Wind: W 18 mph",0,0
+2025_13_CIN_BAL,"Clear Temp: 38° F, Humidity: 44%, Wind: NW 11 mph",0,0
+2025_13_DEN_WAS,"Clear Temp: 40° F, Humidity: 77%, Wind: SW 13 mph",0,0
+2025_13_GB_DET,"Controlled climate Temp: 68° F, Humidity: 70%, Wind: 0 mph",0,0
+2025_13_HOU_IND,"Temp: 27° F, Humidity: 79%, Wind: W 5 mph",0,0
+2025_13_JAX_TEN,"Cloudy Temp: 38° F, Humidity: 79%, Wind: NW 7 mph",0,0
+2025_13_KC_DAL,,0,0
+2025_13_LA_CAR,"Cloudy Temp: 45° F, Humidity: 57%, Wind: W 3 mph",0,0
+2025_13_LV_LAC,"Cloudy Temp: 64° F, Humidity: 70%, Wind: SW 7 mph",0,0
+2025_13_MIN_SEA,"Sunny Temp: 45° F, Humidity: 75%, Wind: N 2 mph",0,0
+2025_13_NO_MIA,"Cloudy Temp: 76° F, Humidity: 87%, Wind: E 10 mph",0,0
+2025_13_NYG_NE,"Mostly Clear Temp: 30° F, Humidity: 60%, Wind: S 4 mph",0,0
+2025_13_SF_CLE,"Cloudy Temp: 35° F, Humidity: 73%, Wind: SW 20 mph",0,0
+2025_14_CHI_GB,"Sunny Temp: 16° F, Humidity: 55%, Wind: W 9 mph",0,0
+2025_14_CIN_BUF,"Snow Temp: 31° F, Humidity: 86%, Wind: W 12 mph",1,1
+2025_14_DAL_DET,"68 Temp: 70° F, Humidity: Wind: mph",0,0
+2025_14_DEN_LV,"Sunny Temp: 63° F, Humidity: 30%, Wind: SE 2 mph",0,0
+2025_14_HOU_KC,"Temp: 27° F, Humidity: 80%, Wind: North 8 mph",0,0
+2025_14_IND_JAX,"Temp: 61° F, Humidity: 98%, Wind: NE 7 mph",0,0
+2025_14_LA_ARI,"Sunny Temp: 68° F, Humidity: 30%, Wind: NE 1 mph",0,0
+2025_14_MIA_NYJ,"Cloudy and Cold Temp: 41° F, Humidity: 58%, Wind: SW 6 mph",0,0
+2025_14_NO_TB,"Cloudy Temp: 73° F, Humidity: 88%, Wind: E 6 mph",0,0
+2025_14_PHI_LAC,"Clear Temp: 67° F, Humidity: 56%, Wind: NW 7 mph",0,0
+2025_14_PIT_BAL,"Cloudy Temp: 44° F, Humidity: 51%, Wind: SW 6 mph",0,0
+2025_14_SEA_ATL,,0,0
+2025_14_TEN_CLE,"Cloudy Temp: 33° F, Humidity: 86%, Wind: W 6 mph",0,0
+2025_14_WAS_MIN,"Temp: 8° F, Humidity: 67%, Wind: N 6 mph",0,0
+2025_15_ARI_HOU,"Temp: 53° F, Humidity: 73%, Wind: N 9 mph",0,0
+2025_15_ATL_TB,"Clear Temp: 56° F, Humidity: 68%, Wind: NW 5 mph",0,0
+2025_15_BAL_CIN,"Sunny Temp: 10° F, Humidity: 63%, Wind: NW 7 mph",0,0
+2025_15_BUF_NE,"Snow Flurries Temp: 32° F, Humidity: 86%, Wind: SE 6 mph",1,1
+2025_15_CAR_NO,"Temp: 51° F, Humidity: 58%, Wind: N 17 mph",0,0
+2025_15_CLE_CHI,"Sunny Temp: 8° F, Humidity: 62%, Wind: NW 6 mph",0,0
+2025_15_DET_LA,"Sunny Temp: 65° F, Humidity: 78%, Wind: SW 3 mph",0,0
+2025_15_GB_DEN,"Partly Cloudy Temp: 65° F, Humidity: 16%, Wind: NW 3 mph",0,0
+2025_15_IND_SEA,"Cloudy Temp: 51° F, Humidity: 87%, Wind: S 9 mph",0,0
+2025_15_LAC_KC,"Temp: 15° F, Humidity: 44%, Wind: N 3 mph",0,0
+2025_15_LV_PHI,"Sunny Temp: 30° F, Humidity: 56%, Wind: NW 20 mph",0,0
+2025_15_MIA_PIT,"Cloudy Temp: 17° F, Humidity: 71%, Wind: S 7 mph",0,0
+2025_15_MIN_DAL,,0,0
+2025_15_NYJ_JAX,"Temp: 70° F, Humidity: 60%, Wind: NW 11 mph",0,0
+2025_15_TEN_SF,"Cloudy Temp: 54° F, Humidity: 82%, Wind: SE 4 mph",0,0
+2025_15_WAS_NYG,"Overcast Temp: 27° F, Humidity: 69%, Wind: NW 13 mph",0,0
+2025_16_ATL_ARI,"Sunny Temp: 76° F, Humidity: 23%, Wind: NW 1 mph",0,0
+2025_16_BUF_CLE,"Sunny Temp: 25° F, Humidity: 68%, Wind: NW 16 mph",0,0
+2025_16_CIN_MIA,"Partly Cloudy Temp: 81° F, Humidity: 64%, Wind: E 7 mph",0,0
+2025_16_GB_CHI,"Clear Temp: 37° F, Humidity: 48%, Wind: SW 6 mph",0,0
+2025_16_JAX_DEN,"Partly Cloudy Temp: 62° F, Humidity: 26%, Wind: NW 3 mph",0,0
+2025_16_KC_TEN,"Sunny Temp: 51° F, Humidity: 27%, Wind: NE 8 mph",0,0
+2025_16_LAC_DAL,,0,0
+2025_16_LA_SEA,"Rain Temp: 51° F, Humidity: 91%, Wind: SW 17 mph",1,1
+2025_16_LV_HOU,"Temp: 81° F, Humidity: 66%, Wind: W 3 mph",0,0
+2025_16_MIN_NYG,"Fair Temp: 46° F, Humidity: 37%, Wind: NW 20 mph",0,0
+2025_16_NE_BAL,"Clear Temp: 40° F, Humidity: 36%, Wind: NW 2 mph",0,0
+2025_16_NYJ_NO,"Temp: 74° F, Humidity: 81%, Wind: SW 4 mph",0,0
+2025_16_PHI_WAS,"Clear Temp: 42° F, Humidity: 49%, Wind: SE 7 mph",0,0
+2025_16_PIT_DET,"Temp: 68° F, Humidity: 70%, Wind: mph",0,0
+2025_16_SF_IND,"Cloudy Temp: 46° F, Humidity: 42%, Wind: SE 4 mph",0,0
+2025_16_TB_CAR,"Partly Cloudy Temp: 61° F, Humidity: 28%, Wind: N 8 mph",0,0
+2025_17_ARI_CIN,"Overcast Temp: 65° F, Humidity: 87%, Wind: SW 9 mph",0,0
+2025_17_BAL_GB,"Cloudy Temp: 36° F, Humidity: 95%, Wind: SE 10 mph",0,0
+2025_17_CHI_SF,"Sunny Temp: 53° F, Humidity: 65%, Wind: SE 5 mph",0,0
+2025_17_DAL_WAS,"Sunny Temp: 50° F, Humidity: 53%, Wind: E 7 mph",0,0
+2025_17_DEN_KC,"Temp: 57° F, Humidity: 99%, Wind: East 3 mph",0,0
+2025_17_DET_MIN,"Temp: 32° F, Humidity: 89%, Wind: SE 11 mph",0,0
+2025_17_HOU_LAC,"Sunny Temp: 61° F, Humidity: 60%, Wind: SW 2 mph",0,0
+2025_17_JAX_IND,"Cloudy Temp: 64° F, Humidity: 87%, Wind: S 3 mph",0,0
+2025_17_LA_ATL,,0,0
+2025_17_NE_NYJ,"Cloudy and Cold Temp: 29° F, Humidity: 81%, Wind: SW 4 mph",0,0
+2025_17_NO_TEN,"Cloudy Temp: 71° F, Humidity: 71%, Wind: SW 14 mph",0,0
+2025_17_NYG_LV,"Temp: 58° F, Humidity: 24%, Wind: NE 11 mph",0,0
+2025_17_PHI_BUF,"Rain Temp: 38° F, Humidity: 94%, Wind: S 6 mph",1,1
+2025_17_PIT_CLE,"Rain Temp: 45° F, Humidity: 95%, Wind: S 14 mph",1,1
+2025_17_SEA_CAR,"Cloudy Temp: 43° F, Humidity: 94%, Wind: E 2 mph",0,0
+2025_17_TB_MIA,"Sunny Temp: 80° F, Humidity: 51%, Wind: E 3 mph",0,0
+2025_18_ARI_LA,"Cloudy Temp: 61° F, Humidity: 86%, Wind: SE 4 mph",0,0
+2025_18_BAL_PIT,"Cloudy Temp: 25° F, Humidity: 81%, Wind: W 3 mph",0,0
+2025_18_CAR_TB,"Rain Temp: 69° F, Humidity: 85%, Wind: W 11 mph",1,1
+2025_18_CLE_CIN,"Sunny Temp: 37° F, Humidity: 56%, Wind: NE 0 mph",0,0
+2025_18_DAL_NYG,"Fair Temp: 33° F, Humidity: 52%, Wind: NW 7 mph",0,0
+2025_18_DET_CHI,"Mostly Cloudy Temp: 33° F, Humidity: 70%, Wind: SE 4 mph",0,0
+2025_18_GB_MIN,"Temp: 25° F, Humidity: 87%, Wind: SE 13 mph",0,0
+2025_18_IND_HOU,"Temp: 61° F, Humidity: 67%, Wind: W 6 mph",0,0
+2025_18_KC_LV,"Temp: 60° F, Humidity: 55%, Wind: S 15 mph",0,0
+2025_18_LAC_DEN,"Sunny Temp: 69° F, Humidity: 7%, Wind: SE 16 mph",0,0
+2025_18_MIA_NE,"Partly Cloudy Temp: 29° F, Humidity: 56%, Wind: SE 6 mph",0,0
+2025_18_NO_ATL,,0,0
+2025_18_NYJ_BUF,"Cloudy Temp: 27° F, Humidity: 75%, Wind: W 13 mph",0,0
+2025_18_SEA_SF,"Cloudy Temp: 57° F, Humidity: 81%, Wind: N 8 mph",0,0
+2025_18_TEN_JAX,"Temp: 58° F, Humidity: 76%, Wind: NE 7 mph",0,0
+2025_18_WAS_PHI,"Clear Temp: 35° F, Humidity: 47%, Wind: NW 9 mph",0,0
+2025_19_BUF_JAX,"Temp: 62° F, Humidity: 80%, Wind: NW 6 mph",0,0
+2025_19_GB_CHI,"Mostly Cloudy Temp: 32° F, Humidity: 80%, Wind: W 6 mph",0,0
+2025_19_HOU_PIT,"Clear Temp: 32° F, Humidity: 65%, Wind: SW 9 mph",0,0
+2025_19_LAC_NE,"Clear Temp: 35° F, Humidity: 69%, Wind: SE 10 mph",0,0
+2025_19_LA_CAR,"Mostly Cloudy Temp: 72° F, Humidity: 61%, Wind: SW 16 mph",0,0
+2025_19_SF_PHI,"Cloudy Temp: 46° F, Humidity: 44%, Wind: NW 22 mph",0,0
+2025_20_BUF_DEN,"Sunny Temp: 36° F, Humidity: 21%, Wind: NE 5 mph",0,0
+2025_20_HOU_NE,"Wintry Mix Temp: 35° F, Humidity: 88%, Wind: S 2 mph",0,0
+2025_20_LA_CHI,"Light Snow Temp: 19° F, Humidity: 65%, Wind: SW 6 mph",1,1
+2025_20_SF_SEA,"Clear Temp: 46° F, Humidity: 72%, Wind: N 5 mph",0,0
+2025_21_LA_SEA,"Sunny Temp: 41° F, Humidity: 67%, Wind: W 2 mph",0,0
+2025_21_NE_DEN,"Cloudy Temp: 26° F, Humidity: 38%, Wind: N 10 mph",0,0
+2025_22_SEA_NE,"Temp: 67° F, Humidity: 50%, Wind: NW 7 mph",0,0

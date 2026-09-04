@@ -1,0 +1,47 @@
+== (c) market residual by roof (does the market price the roof?) ==
+-- ALL 1999-2025
+    outdoors  n= 4857 total=43.29 mkt=42.85 residual=+0.44 (se 0.19) over-rate=0.488
+    open      n=  128 total=46.73 mkt=44.90 residual=+1.84 (se 1.17) over-rate=0.500
+    closed    n=  585 total=46.74 mkt=45.62 residual=+1.12 (se 0.53) over-rate=0.501
+    dome      n= 1083 total=47.03 mkt=45.67 residual=+1.36 (se 0.41) over-rate=0.521
+    dome/closed vs outdoor market residual diff=+0.80 p=0.035
+-- FIT <=2021
+    outdoors  n= 4162 total=43.22 mkt=42.74 residual=+0.47 (se 0.21) over-rate=0.489
+    open      n=  107 total=45.97 mkt=45.14 residual=+0.83 (se 1.22) over-rate=0.486
+    closed    n=  438 total=46.45 mkt=45.75 residual=+0.70 (se 0.61) over-rate=0.494
+    dome      n=  882 total=47.22 mkt=45.73 residual=+1.49 (se 0.46) over-rate=0.529
+    dome/closed vs outdoor market residual diff=+0.74 p=0.076
+-- TEST 2022-25
+    outdoors  n=  695 total=43.70 mkt=43.45 residual=+0.26 (se 0.48) over-rate=0.485
+    open      n=   21 total=50.62 mkt=43.67 residual=+6.95 (se 3.40) over-rate=0.571
+    closed    n=  147 total=47.61 mkt=45.22 residual=+2.39 (se 1.08) over-rate=0.521
+    dome      n=  201 total=46.19 mkt=45.40 residual=+0.79 (se 0.98) over-rate=0.485
+    dome/closed vs outdoor market residual diff=+1.01 p=0.245
+
+== (a) raw dome effect with PARTICIPANT team-season fixed effects (one effect per team-season, home or away), y = total - league prior ==
+  ALL 1999-2025  n= 6653 dome/closed=+2.15 (se 0.52, p=0.000) | by type vs outdoors: dome=+2.27(0.63) closed=+2.59(0.79) open=+3.14(1.37)
+  1999-2010      n= 2792 dome/closed=+0.57 (se 0.85, p=0.501) | by type vs outdoors: dome=+0.72(0.95) closed=+0.96(1.73) open=+2.25(1.99)
+  2011-2021      n= 2797 dome/closed=+2.83 (se 0.79, p=0.000) | by type vs outdoors: dome=+3.23(1.05) closed=+2.57(1.08) open=+0.99(2.17)
+  FIT <=2021     n= 5589 dome/closed=+1.80 (se 0.58, p=0.002) | by type vs outdoors: dome=+1.86(0.70) closed=+2.10(0.92) open=+1.83(1.46)
+  TEST 2022-2025 n= 1064 dome/closed=+3.59 (se 1.15, p=0.002) | by type vs outdoors: dome=+4.22(1.46) closed=+4.43(1.57) open=+9.28(3.62)
+  no team control, ALL: dome=+3.23 (se 0.39)  <- raw difference includes team quality (dome teams' offenses)
+
+== (b) dome vs outdoor GOOD weather (wind<10 & temp>=50) vs MID vs BAD (wind>=15 or temp<32), participant team-season FE ==
+  ALL          n= 6453 vs outdoor-good: dome=+1.47 (se 0.56, p=0.009)  out_mid=-0.86 (se 0.46)  out_bad=-2.85 (se 0.59)  | counts: {'out_good': 2243, 'out_mid': 1729, 'dome': 1668, 'out_bad': 813}
+  FIT <=2021   n= 5477 vs outdoor-good: dome=+1.37 (se 0.62, p=0.028)  out_mid=-0.58 (se 0.50)  out_bad=-2.57 (se 0.63)  | counts: {'out_good': 1940, 'out_mid': 1500, 'dome': 1320, 'out_bad': 717}
+  TEST 2022-25 n=  976 vs outdoor-good: dome=+1.59 (se 1.28, p=0.216)  out_mid=-2.63 (se 1.17)  out_bad=-4.78 (se 1.58)  | counts: {'dome': 348, 'out_good': 303, 'out_mid': 229, 'out_bad': 96}
+  market residual by condition (ALL):
+    dome      n= 1668 residual=+1.28 (se 0.33)
+    out_good  n= 2243 residual=+0.99 (se 0.28)
+    out_mid   n= 1729 residual=+0.44 (se 0.32)
+    out_bad   n=  813 residual=-0.60 (se 0.48)
+
+== venue or home team? dome x (away team is a dome team), participant FE ==
+  dome (outdoor visitor)=+2.19 (se 0.52)  extra when visitor is also a dome team=-1.27 (se 0.87)
+  ALL          dome vs zero-wind outdoor=+0.18 (se 0.61); wind=-0.240/mph (se 0.040); <20F=-4.82 (se 1.80); => dome vs AVERAGE outdoor (8.4 mph) = -1.84
+  FIT <=2021   dome vs zero-wind outdoor=+0.00 (se 0.68); wind=-0.235/mph (se 0.042); <20F=-3.45 (se 2.09); => dome vs AVERAGE outdoor (8.5 mph) = -1.99
+
+== (d) OOS 2022-2025: LEAN with vs without dome term (fit 2009-2021) ==
+  dome coef in LEAN (with wind_f, so vs average outdoor conditions) = +1.03 (se 0.73, p=0.161)
+  OOS MAE without dome=10.383 with dome=10.393  dMAE=+0.009 [-0.011,+0.030] n=1064
+  dome games only (n=348): MAE without=10.583 with=10.598 market=10.457; bias without=-1.20 with=-0.74

@@ -1,0 +1,33 @@
+(a) blend weight grid: line = mkt + w*(nfelo_b - mkt)
+      mae_fit  rmse_fit  mae_test  rmse_test  test_mae_diff_vs_mkt  p_paired_t
+w                                                                             
+0.00  10.2786   13.3227    9.5360    12.4231                0.0000         NaN
+0.10  10.2709   13.3064    9.5422    12.4301                0.0062      0.3535
+0.20  10.2661   13.2945    9.5520    12.4412                0.0160      0.2284
+0.30  10.2655   13.2870    9.5662    12.4564                0.0302      0.1263
+0.40  10.2692   13.2839    9.5843    12.4757                0.0483      0.0652
+0.50  10.2765   13.2853    9.6071    12.4990                0.0711      0.0283
+0.75  10.3093   13.3083    9.6781    12.5749                0.1421      0.0030
+1.00  10.3603   13.3589    9.7737    12.6756                0.2377      0.0002
+
+(b) parameter table
+BASE_spread for 2026 (trailing 3 seasons 2023-25 RMSE of market-close spread error): 12.719
+BASE_total  for 2026 (trailing 3 seasons 2023-25 RMSE of market-close total error):  12.963
+5-season versions: spread 12.656 | total 13.081
+fit-era (2009-21) constants: spread 13.323 | total 13.393
+spread: k_p for model number (sqrt rule) p50/p80/p90 = 0.607/1.253/1.615 | for market number p50/p80/p90 = 0.615/1.262/1.660 | Gaussian 0.674/1.282/1.645
+total: k_p for model number (sqrt rule) p50/p80/p90 = 0.658/1.264/1.630 | for market number p50/p80/p90 = 0.672/1.264/1.636 | Gaussian 0.674/1.282/1.645
+
+expected excess RMSE of a number sitting D points from the market close, base 12.5 (spread) / 13.1 (total):
+  D= 0.5: spread +0.01 | total +0.01
+  D=   1: spread +0.04 | total +0.04
+  D= 1.5: spread +0.09 | total +0.09
+  D=   2: spread +0.16 | total +0.15
+  D= 2.5: spread +0.25 | total +0.24
+  D=   3: spread +0.35 | total +0.34
+  D=   4: spread +0.62 | total +0.60
+  D=   5: spread +0.96 | total +0.92
+  D=   6: spread +1.37 | total +1.31
+  D=   7: spread +1.83 | total +1.75
+
+share of 2022-25 games by proposed band: spread D_base <1.5 / 1.5-3 / >=3: [np.float64(0.541), np.float64(0.302), np.float64(0.157)] | total D_tot <2.5 / 2.5-5 / >=5: [np.float64(0.443), np.float64(0.308), np.float64(0.248)]

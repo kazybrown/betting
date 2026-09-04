@@ -1,0 +1,61 @@
+[expert join] train n=3027 test n=1087: b=0.281 [0.185,0.378] | Huber b=0.308 (se 0.048)
+[repaired join] train n=3344 test n=1087: b=0.299 [0.208,0.390] | Huber b=0.327 (se 0.045)
+
+== OOS 2022-2025 n=1087: decomposition of the expert's claimed -0.16 MAE (ref = lg_prev + 0.35*elo, i.e. what the spec's own mechanism produces each season) ==
+  market close                                                 MAE=10.189 bias=-0.72  dMAE vs ref=-0.525 [-0.728,-0.302]  O/U 549-530-8 (0.509) n=1087
+  fixed 46.0 + 0.35*elo  (expert's 'spec' straw man)           MAE=10.820 bias=+1.32  dMAE vs ref=+0.106 [+0.010,+0.200]  O/U 536-543-8 (0.497) n=1087
+  lg_prev + 0.35*elo     (spec mechanism, prior-season mean)  [REF] MAE=10.714 bias=+0.09  dMAE vs ref=+0.000 [+0.000,+0.000]  O/U 538-541-8 (0.499) n=1087
+  lg_prev + 0.28*elo     (slope change only)                   MAE=10.709 bias=+0.07  dMAE vs ref=-0.006 [-0.027,+0.017]  O/U 541-538-8 (0.501) n=1087
+  lg_blend128 + 0.35*elo (blend only)                          MAE=10.669 bias=+0.06  dMAE vs ref=-0.046 [-0.090,-0.005]  O/U 538-541-8 (0.499) n=1087
+  lg_blend128 + 0.28*elo (expert's recommendation)             MAE=10.664 bias=+0.04  dMAE vs ref=-0.051 [-0.100,-0.004]  O/U 541-538-8 (0.501) n=1087
+  per-season bias of lg_prev+0.35 vs lg_blend+0.28:
+    2022: lg_prev=45.96 realized=43.76 | bias lg_prev+.35=+2.27 lg_blend+.28=+1.23 46.0+.35=+2.31
+    2023: lg_prev=43.76 realized=43.54 | bias lg_prev+.35=+0.34 lg_blend+.28=+0.30 46.0+.35=+2.57
+    2024: lg_prev=43.54 realized=45.82 | bias lg_prev+.35=-2.16 lg_blend+.28=-1.51 46.0+.35=+0.30
+    2025: lg_prev=45.82 realized=46.03 | bias lg_prev+.35=-0.07 lg_blend+.28=+0.11 46.0+.35=+0.11
+
+== slope grid OOS (level = lg_blend128), paired vs b=0.28 ==
+  lg_blend + 0.00*elo                                          MAE=10.730 bias=-0.05  dMAE vs ref=+0.066 [-0.020,+0.154]  O/U 523-556-8 (0.485) n=1087
+  lg_blend + 0.20*elo                                          MAE=10.668 bias=+0.01  dMAE vs ref=+0.004 [-0.022,+0.030]  O/U 533-546-8 (0.494) n=1087
+  lg_blend + 0.25*elo                                          MAE=10.664 bias=+0.03  dMAE vs ref=+0.000 [-0.009,+0.010]  O/U 541-538-8 (0.501) n=1087
+  lg_blend + 0.28*elo                                          MAE=10.664 bias=+0.04  dMAE vs ref=+0.000 [+0.000,+0.000]  O/U 541-538-8 (0.501) n=1087
+  lg_blend + 0.30*elo                                          MAE=10.664 bias=+0.04  dMAE vs ref=+0.001 [-0.006,+0.007]  O/U 536-543-8 (0.497) n=1087
+  lg_blend + 0.35*elo                                          MAE=10.669 bias=+0.06  dMAE vs ref=+0.005 [-0.017,+0.027]  O/U 538-541-8 (0.499) n=1087
+  lg_blend + 0.40*elo                                          MAE=10.676 bias=+0.07  dMAE vs ref=+0.012 [-0.026,+0.049]  O/U 540-539-8 (0.500) n=1087
+  lg_blend + 0.50*elo                                          MAE=10.704 bias=+0.10  dMAE vs ref=+0.040 [-0.028,+0.108]  O/U 541-538-8 (0.501) n=1087
+
+== K_lg sensitivity, V1-type formula lg_blend(K) + 0.28*elo, seasons 2010-2025 (no fitting), paired vs lg_prev ==
+  K=  16 2010-2021: MAE=11.003 vs lg_prev 11.026  d=-0.023 [-0.089,+0.049] n=3088
+  K=  16 2022-2025: MAE=10.663 vs lg_prev 10.709  d=-0.046 [-0.126,+0.029] n=1087
+  K=  32 2010-2021: MAE=10.989 vs lg_prev 11.026  d=-0.037 [-0.096,+0.026] n=3088
+  K=  32 2022-2025: MAE=10.657 vs lg_prev 10.709  d=-0.052 [-0.122,+0.013] n=1087
+  K=  64 2010-2021: MAE=10.983 vs lg_prev 11.026  d=-0.043 [-0.092,+0.008] n=3088
+  K=  64 2022-2025: MAE=10.658 vs lg_prev 10.709  d=-0.051 [-0.110,+0.002] n=1087
+  K= 128 2010-2021: MAE=10.983 vs lg_prev 11.026  d=-0.043 [-0.081,-0.003] n=3088
+  K= 128 2022-2025: MAE=10.664 vs lg_prev 10.709  d=-0.045 [-0.091,-0.004] n=1087
+  K= 256 2010-2021: MAE=10.990 vs lg_prev 11.026  d=-0.036 [-0.062,-0.009] n=3088
+  K= 256 2022-2025: MAE=10.674 vs lg_prev 10.709  d=-0.035 [-0.066,-0.007] n=1087
+  K= 512 2010-2021: MAE=11.001 vs lg_prev 11.026  d=-0.025 [-0.041,-0.008] n=3088
+  K= 512 2022-2025: MAE=10.686 vs lg_prev 10.709  d=-0.023 [-0.042,-0.005] n=1087
+  -> in-season blend: check whether the gain concentrates in 2020-2023 (COVID / scoring drop) or is general
+    2010: lg_blend-lg_prev MAE diff=+0.003  |lg_prev-realized|=1.14
+    2011: lg_blend-lg_prev MAE diff=+0.025  |lg_prev-realized|=0.29
+    2012: lg_blend-lg_prev MAE diff=+0.015  |lg_prev-realized|=1.15
+    2013: lg_blend-lg_prev MAE diff=+0.032  |lg_prev-realized|=1.30
+    2014: lg_blend-lg_prev MAE diff=-0.041  |lg_prev-realized|=1.64
+    2015: lg_blend-lg_prev MAE diff=+0.061  |lg_prev-realized|=0.45
+    2016: lg_blend-lg_prev MAE diff=+0.013  |lg_prev-realized|=0.07
+    2017: lg_blend-lg_prev MAE diff=-0.076  |lg_prev-realized|=2.11
+    2018: lg_blend-lg_prev MAE diff=-0.125  |lg_prev-realized|=3.25
+    2019: lg_blend-lg_prev MAE diff=-0.020  |lg_prev-realized|=1.06
+    2020: lg_blend-lg_prev MAE diff=-0.090  |lg_prev-realized|=3.95
+    2021: lg_blend-lg_prev MAE diff=-0.297  |lg_prev-realized|=3.61
+    2022: lg_blend-lg_prev MAE diff=-0.167  |lg_prev-realized|=2.20
+    2023: lg_blend-lg_prev MAE diff=+0.028  |lg_prev-realized|=0.23
+    2024: lg_blend-lg_prev MAE diff=-0.075  |lg_prev-realized|=2.29
+    2025: lg_blend-lg_prev MAE diff=+0.033  |lg_prev-realized|=0.20
+
+== does the market residual load on elo_sum in ANY era (placebo for 'fully priced')? ==
+  2009-2013: slope=+0.080 (p=0.27) n=1280
+  2014-2018: slope=-0.039 (p=0.61) n=1280
+  2019-2025: slope=+0.006 (p=0.92) n=1871

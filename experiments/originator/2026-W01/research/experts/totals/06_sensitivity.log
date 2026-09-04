@@ -1,0 +1,27 @@
+== K_team sensitivity (V3, OOS 2022-2025 REG) ==
+  K_team=1                                         MAE=10.288 bias=-0.74  dMAE vs mkt=+0.099 [-0.038,+0.235]  O/U 547-532-8 (0.507) n=1087
+  K_team=3                                         MAE=10.266 bias=-0.70  dMAE vs mkt=+0.077 [-0.058,+0.209]  O/U 540-539-8 (0.500) n=1087
+  K_team=6                                         MAE=10.262 bias=-0.67  dMAE vs mkt=+0.073 [-0.070,+0.211]  O/U 554-525-8 (0.513) n=1087
+
+== ENV pieces (K_team=1) ==
+  full table (dome +2.0, <20F -1.0, precip -1.5)   MAE=10.288 bias=-0.74  dMAE vs mkt=+0.099 [-0.038,+0.235]  O/U 547-532-8 (0.507) n=1087
+  no precipitation term                            MAE=10.312 bias=-0.68  dMAE vs mkt=+0.123 [-0.013,+0.257]  O/U 542-537-8 (0.502) n=1087
+  no <20F term                                     MAE=10.297 bias=-0.72  dMAE vs mkt=+0.108 [-0.030,+0.243]  O/U 547-532-8 (0.507) n=1087
+  dome level +1.0                                  MAE=10.289 bias=-1.06  dMAE vs mkt=+0.100 [-0.036,+0.232]  O/U 545-534-8 (0.505) n=1087
+  dome level +1.5                                  MAE=10.286 bias=-0.90  dMAE vs mkt=+0.097 [-0.041,+0.228]  O/U 552-527-8 (0.512) n=1087
+  dome level +2.5                                  MAE=10.297 bias=-0.58  dMAE vs mkt=+0.108 [-0.034,+0.243]  O/U 543-536-8 (0.503) n=1087
+  dome level +3.0                                  MAE=10.311 bias=-0.41  dMAE vs mkt=+0.122 [-0.022,+0.263]  O/U 546-533-8 (0.506) n=1087
+
+== league prior inside V3 ==
+  lg_blend (K=128)                                 MAE=10.288 bias=-0.74  dMAE vs mkt=+0.099 [-0.038,+0.235]  O/U 547-532-8 (0.507) n=1087
+  lg_prev (prior season mean)                      MAE=10.307 bias=-0.70  dMAE vs mkt=+0.118 [-0.023,+0.257]  O/U 538-541-8 (0.499) n=1087
+  constant 46.0                                    MAE=10.364 bias=+0.53  dMAE vs mkt=+0.174 [+0.008,+0.331]  O/U 533-546-8 (0.494) n=1087
+
+== post-season games 2022-2025 (never used in fitting; small n) ==
+  V3 on playoffs                                   MAE=10.151 bias=-1.81  dMAE vs mkt=-0.041 [-0.552,+0.503]  O/U 31-19-2 (0.620) n=52
+  spec 46+0.35elo on playoffs                      MAE=11.095 bias=+0.48  dMAE vs mkt=+0.903 [-0.210,+1.994]  O/U 24-26-2 (0.480) n=52
+  playoff realized mean total=48.4 market mean=46.4 n=52
+
+== in-sample check (2009-2021) of the same fixed formula, for the record ==
+  V3 2009-2021 (in-sample coefficients)            MAE=10.739 bias=-0.53  dMAE vs mkt=+0.136 [+0.043,+0.224]  O/U 1530-1465-32 (0.511) n=3027
+  spec 46+0.35elo 2009-2021                        MAE=11.054 bias=+0.57  dMAE vs mkt=+0.451 [+0.316,+0.593]  O/U 1547-1448-32 (0.517) n=3027

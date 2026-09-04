@@ -1,0 +1,20 @@
+game table: 3792 games | REG with market total & r8 features both sides: 3502 (train 2750, test 752)
+r8 coverage by season: {2009: 0.71, 2010: 0.96, 2011: 0.96, 2012: 0.96, 2013: 0.96, 2014: 0.96, 2015: 0.96, 2016: 0.96, 2017: 0.96, 2018: 0.96, 2019: 0.96, 2023: 0.78, 2024: 1.0, 2025: 1.0}
+
+SIGN CHECKS: corr(mkt_spread, margin) = -0.441 (must be strongly NEGATIVE) | corr(mkt_total, total_pts) = +0.295 (positive)
+implied team totals: corr(home implied, home pts) = +0.388; corr(away implied, away pts) = +0.370 (both positive)
+team-game: corr(spp_neut, plays) = -0.160 (negative: slower -> fewer plays) | corr(pr_all, plays) = +0.058 | corr(proe, pr_all) = +0.669
+prior pace -> realized game plays (REG, both sides r8): corr(h_plays_r8+a_plays_r8, actual game plays) = +0.203 | corr(h_game_plays_r8+a_game_plays_r8, actual) = +0.280 | corr(spp avg r8, actual plays) = -0.315 | corr(actual game plays, total_pts) = +0.293
+year-to-year stability of team-season means (corr season t vs t+1, REG):
+  plays=+0.39  spp_neut=+0.53  spp_neut_run=+0.54  pr_neut=+0.31  proe=+0.48  expl_off=+0.23  expl_def=+0.30  ppd=+0.45  epa_off=+0.41
+split-half reliability within season (odd vs even games, team-season, REG):
+  plays=+0.34  spp_neut=+0.65  spp_neut_run=+0.77  pr_neut=+0.58  proe=+0.78  expl_off=+0.47  expl_def=+0.29  ppd=+0.63  epa_off=+0.64
+
+COLE VALIDATION: matched team-games = 444 (seasons [np.int64(2012), np.int64(2023), np.int64(2024), np.int64(2025)])
+  plays (Cole counts all plays incl. penalties/ST?) corr=+0.858  mine mean=61.72 Cole mean=64.41
+  game drives (both teams)                         corr=+0.992  mine mean=21.95 Cole mean=22.03
+  pass rate (Cole in %)                            corr=+0.957  mine mean=0.58 Cole mean=61.71
+  PROE (all plays)                                 corr=+0.801  mine mean=-0.36 Cole mean=-0.39
+  PROE neutral                                     corr=+0.551  mine mean=0.37 Cole mean=-0.39
+  score                                            corr=+1.000  mine mean=22.62 Cole mean=22.62
+nflfastR pass_oe vs my proe (2023-25 team-games n=1710): corr=+0.822; team-season means corr=+0.894

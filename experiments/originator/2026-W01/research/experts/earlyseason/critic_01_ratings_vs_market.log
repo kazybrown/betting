@@ -1,0 +1,47 @@
+sanity corr(mkt, margin) = -0.431 (must be negative)
+
+A. Reproduce: paired MAE(rating line) - MAE(market), 2009-2025 REG
+  W1    elo_line n= 253 MAE line 9.786 mkt 9.818 diff -0.032 [-0.31,+0.23] p=0.816
+  W1    nraw     n= 253 MAE line 9.852 mkt 9.818 diff +0.034 [-0.23,+0.29] p=0.795
+  W2-4  elo_line n= 744 MAE line 10.175 mkt 10.171 diff +0.004 [-0.17,+0.17] p=0.967
+  W2-4  nraw     n= 744 MAE line 10.216 mkt 10.171 diff +0.044 [-0.10,+0.19] p=0.570
+  W1-4  elo_line n= 997 MAE line 10.076 mkt 10.082 diff -0.005 [-0.15,+0.13] p=0.941
+  W1-4  nraw     n= 997 MAE line 10.123 mkt 10.082 diff +0.042 [-0.09,+0.16] p=0.534
+  W5-9  elo_line n=1107 MAE line 10.202 mkt 10.066 diff +0.136 [-0.01,+0.29] p=0.082
+  W5-9  nraw     n=1107 MAE line 10.096 mkt 10.066 diff +0.030 [-0.09,+0.15] p=0.630
+  W10+  elo_line n=2010 MAE line 10.549 mkt 10.129 diff +0.420 [+0.29,+0.55] p=0.000
+  W10+  nraw     n=2010 MAE line 10.345 mkt 10.129 diff +0.217 [+0.11,+0.32] p=0.000
+
+B. Per-season W1 paired diff (elo_line - market MAE) and a season-clustered test
+  2009:+0.78, 2010:-0.39, 2011:+0.27, 2012:+0.13, 2013:+0.41, 2014:+0.02, 2015:-0.94, 2016:-0.45, 2017:+0.38, 2018:-0.20, 2019:-0.13, 2020:+0.03, 2021:+0.02, 2022:-0.23, 2023:-0.26, 2024:+0.01, 2025:-0.00
+  seasons where rating line better (diff<0): 8 of 17 | mean of season means -0.033 (se 0.094, t p=0.733)
+  cluster(season) mean diff -0.032 (se 0.088, p=0.716)
+  W10+ cluster(season) mean diff +0.420 (se 0.069, p=0.000)
+
+C. PLACEBO rating with no hindsight: previous-season avg point differential (REG), rolling-origin shrink + HFA
+  sanity: corr(pmov_dif, margin) W1 = 0.259 (positive)
+  rolling-origin 2005-2025 (fit on seasons < t): naive line = fitted HFA + b * prev-season MOV gap
+    W1    n= 332 MAE naive 10.263 mkt 10.068 diff +0.195 [-0.13,+0.52] p=0.243 | mean fitted b 0.377, HFA 1.81
+    W2-4  n= 970 MAE naive 10.599 mkt 10.253 diff +0.346 [+0.12,+0.58] p=0.002 | mean fitted b 0.432, HFA 2.45
+    W5-9  n=1437 MAE naive 10.861 mkt 10.175 diff +0.686 [+0.46,+0.90] p=0.000 | mean fitted b 0.419, HFA 2.63
+    W10+  n=2651 MAE naive 11.384 mkt 10.294 diff +1.091 [+0.89,+1.28] p=0.000 | mean fitted b 0.377, HFA 2.55
+    W1 2015-2025 only: n=172 naive 9.756 mkt 9.788 diff -0.031 [-0.48,+0.41] p=0.887
+    W1 2022-2025 only: n=62 naive 8.916 mkt 8.911 diff +0.005 [-0.72,+0.74] p=0.989
+  W1 2009-2025 same games: nfelo elo_line MAE 9.692 | market 9.732 (n=250); naive rolling MAE 9.766 (n=268)
+
+D. Rolling-origin blend: margin ~ a + w_r*(-elo_line) + w_m*(-mkt) fitted on seasons < t (same bucket), applied to season t (2015-25)
+  W1    n= 169 mean w_rating 0.40 w_market 0.58 | MAE blend 9.943 mkt 9.964 diff -0.021 [-0.22,+0.17] p=0.832
+  W2-4  n= 509 mean w_rating 0.60 w_market 0.51 | MAE blend 9.849 mkt 9.886 diff -0.037 [-0.16,+0.09] p=0.559
+  W5-9  n= 757 mean w_rating 0.57 w_market 0.60 | MAE blend 9.851 mkt 9.820 diff +0.030 [-0.09,+0.14] p=0.598
+  W10+  n=1374 mean w_rating 0.06 w_market 1.06 | MAE blend 9.875 mkt 9.839 diff +0.037 [-0.01,+0.08] p=0.103
+
+E. Theory 1b re-checks (1999-2025 W1, n=428): season-clustered SEs
+  home residual      mean -0.70  cluster se 0.60 p=0.239 (n=428)
+  fav cover margin   mean -0.31  cluster se 0.54 p=0.571 (n=424)
+  MZ slope 1999-2010 0.94 (se 0.19) intercept -0.05 (se 1.07) n=189
+  MZ slope 2011-2025 0.90 (se 0.17) intercept -0.92 (se 0.92) n=239
+  MZ slope ALL       0.92 (se 0.13) intercept -0.54 (se 0.70) n=428
+  |line|>=10 W1 favourites: n=23 fav cover -5.74 (se 1.96) | seasons represented 15 | median -7.0
+  |line|>=10 W5+ favourites: n=718 fav cover +0.35 (se 0.49)
+    <=2012  n=15 fav cover -5.13
+    >=2013  n= 8 fav cover -6.88

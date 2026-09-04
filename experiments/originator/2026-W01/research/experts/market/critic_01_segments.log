@@ -1,0 +1,126 @@
+sanity: corr(mkt_spread, margin) = -0.436 | n = 4630
+
+=== (a) All-era segment biases with Holm and BH corrected p (K = 47 tests) ===
+  kind             seg    n    bias      p  p_holm   p_bh
+ total       roof dome  697  1.3967 0.0066  0.3093 0.2014
+ total             ALL 4630  0.5119 0.0086  0.3943 0.2014
+spread    |spread| 10+  593  1.2698 0.0141  0.6348 0.2053
+spread  home fav 0-2.5  548 -1.3212 0.0175  0.7686 0.2053
+ total     roof closed  573  1.1606 0.0362  1.0000 0.2812
+spread    home fav 10+  471  1.1943 0.0383  1.0000 0.2812
+spread             SNF  303  1.6106 0.0434  1.0000 0.2812
+ total        wind>=15  377 -1.3064 0.0500  1.0000 0.2812
+ total      total <=40  636  0.9796 0.0555  1.0000 0.2812
+ total total 40.5-43.5 1266  0.6963 0.0598  1.0000 0.2812
+ total       weeks 15+  895  0.7855 0.0839  1.0000 0.3585
+spread  away fav 0-2.5  474  0.9694 0.1086  1.0000 0.4252
+raw p<0.05: 8 | Holm p<0.05: 0 | BH q<0.10: 0
+
+=== (b) Placebo: 47 random segments with the real sizes, 2000 reps ===
+real: 8 hits at p<0.05, min p = 0.0066 | placebo hits mean 4.84, 95th pct 8, P(placebo hits >= real) = 0.072
+placebo min-p: median 0.0060, P(placebo min p <= real min p) = 0.528
+(note: ALL-era 'ALL' total bias +0.51 is one of the real hits; random segments include it as a near-duplicate of the population so the placebo is conservative)
+
+=== (c) Per-season sign persistence of the flagged cells (share of seasons with the claimed sign; binomial p vs 0.5) ===
+spread home fav 0-2.5   seasons with sign -1: 12/17 (p=0.143) | per-season means: {2009: 1.0, 2010: 0.0, 2011: -1.2, 2012: -2.3, 2013: 0.8, 2014: 0.2, 2015: -2.6, 2016: -0.3, 2017: -0.6, 2018: -1.8, 2019: -2.9, 2020: -4.8, 2021: -5.9, 2022: 0.1, 2023: -0.9, 2024: -1.6, 2025: -0.4}
+spread |spread| 10+     seasons with sign +1: 11/17 (p=0.332) | per-season means: {2009: 1.7, 2010: -2.7, 2011: 6.0, 2012: 4.7, 2013: -2.2, 2014: -0.7, 2015: 0.8, 2016: 1.6, 2017: 1.9, 2018: -2.1, 2019: -4.0, 2020: -1.9, 2021: 5.5, 2022: 1.9, 2023: 0.0, 2024: 5.6, 2025: 4.4}
+spread SNF              seasons with sign +1: 11/17 (p=0.332) | per-season means: {2009: -0.8, 2010: 1.8, 2011: 6.3, 2012: 2.2, 2013: 8.4, 2014: 3.4, 2015: 1.1, 2016: 3.9, 2017: 0.6, 2018: 0.0, 2019: 3.9, 2020: -1.0, 2021: -1.5, 2022: -0.8, 2023: -1.5, 2024: 2.9, 2025: -0.7}
+total  roof dome        seasons with sign +1: 12/17 (p=0.143) | per-season means: {2009: 0.5, 2010: -1.8, 2011: 3.6, 2012: 2.4, 2013: 3.2, 2014: -0.3, 2015: 2.5, 2016: 3.9, 2017: 1.5, 2018: -1.0, 2019: 2.2, 2020: 2.9, 2021: 0.4, 2022: 2.7, 2023: -0.2, 2024: 3.0, 2025: -1.8}
+total  roof closed      seasons with sign +1: 10/17 (p=0.629) | per-season means: {2009: -0.1, 2010: 4.6, 2011: -1.3, 2012: 2.4, 2013: 4.1, 2014: -2.9, 2015: -1.8, 2016: -2.5, 2017: -3.1, 2018: -0.6, 2019: 2.2, 2020: 4.7, 2021: 1.9, 2022: 0.2, 2023: 5.2, 2024: 0.2, 2025: 5.4}
+total  wind>=15         seasons with sign -1: 10/17 (p=0.629) | per-season means: {2009: -3.7, 2010: 4.2, 2011: -1.7, 2012: -3.8, 2013: 0.2, 2014: 0.8, 2015: -2.0, 2016: 1.1, 2017: -6.3, 2018: -6.9, 2019: 0.7, 2020: 2.2, 2021: -6.1, 2022: -0.3, 2023: -5.3, 2024: 1.2, 2025: -0.3}
+total  ALL              seasons with sign +1: 12/17 (p=0.143) | per-season means: {2009: 0.3, 2010: 1.6, 2011: 0.8, 2012: 1.1, 2013: 1.4, 2014: -0.8, 2015: 0.4, 2016: 0.0, 2017: -0.5, 2018: -0.1, 2019: 0.5, 2020: 1.3, 2021: -0.5, 2022: -0.2, 2023: 0.7, 2024: 1.5, 2025: 1.1}
+/home/user/originator-2026-w01/research/experts/market/critic_01_segments.py:90: RuntimeWarning: divide by zero encountered in divide
+  o = np.asarray(o, float); return np.where(o < 0, -o / (-o + 100), 100 / (o + 100))
+/home/user/originator-2026-w01/research/experts/market/critic_01_segments.py:90: RuntimeWarning: divide by zero encountered in divide
+  o = np.asarray(o, float); return np.where(o < 0, -o / (-o + 100), 100 / (o + 100))
+
+=== (d) Juice-aware: vig-free implied home-cover prob vs realized (excl pushes); a bias already in the price is not exploitable ===
+mean home_spread_odds -61.6 | away -62.4 | implied home cover mean 0.4999
+           seg    n  home_cover  implied  excess      z  roi_home
+           ALL 4513       0.490    0.500  -0.010 -1.323       NaN
+      home fav 2871       0.482    0.499  -0.017 -1.837       NaN
+      away fav 1637       0.504    0.501   0.003  0.212       NaN
+|spread| 0-2.5 1018       0.484    0.502  -0.018 -1.149    -0.061
+|spread| 3-6.5 2143       0.477    0.501  -0.023 -2.169       NaN
+|spread| 7-9.5  777       0.502    0.497   0.005  0.275       NaN
+  |spread| 10+  575       0.532    0.497   0.035  1.692       NaN
+  |spread| 14+  146       0.514    0.498   0.015  0.370     0.001
+home fav 0-2.5  547       0.473    0.510  -0.036 -1.700    -0.095
+home fav 3-6.5 1314       0.472    0.500  -0.028 -2.019       NaN
+home fav 7-9.5  555       0.485    0.492  -0.007 -0.351       NaN
+  home fav 10+  455       0.519    0.494   0.025  1.066     0.020
+away fav 0-2.5  466       0.496    0.493   0.002  0.098    -0.024
+away fav 3-6.5  829       0.486    0.503  -0.016 -0.947       NaN
+   away fav 7+  342       0.558    0.509   0.049  1.834       NaN
+     primetime  942       0.507    0.500   0.007  0.448       NaN
+           SNF  295       0.536    0.500   0.036  1.227       NaN
+           MNF  307       0.482    0.501  -0.018 -0.648       NaN
+           TNF  269       0.509    0.499   0.010  0.328       NaN
+       Sun day 3472       0.485    0.500  -0.015 -1.756       NaN
+    divisional 1617       0.484    0.500  -0.016 -1.298       NaN
+       non-div 2896       0.494    0.500  -0.006 -0.682       NaN
+        week 1  266       0.477    0.501  -0.023 -0.756       NaN
+    weeks 2-14 3186       0.486    0.500  -0.014 -1.603       NaN
+     weeks 15+  865       0.505    0.500   0.005  0.289    -0.018
+      playoffs  196       0.515    0.501   0.014  0.389    -0.001
+       neutral   79       0.481    0.503  -0.022 -0.389    -0.074
+   dome/closed 1247       0.500    0.500   0.000  0.005       NaN
+      outdoors 3266       0.487    0.500  -0.014 -1.558       NaN
+            seg    n  over_rate  implied_over  excess      z  roi_under
+            ALL 4580      0.494         0.501  -0.007 -0.883        NaN
+     total <=40  631      0.528         0.501   0.026  1.332        NaN
+total 40.5-43.5 1253      0.498         0.501  -0.003 -0.188        NaN
+  total 44-46.5 1195      0.485         0.501  -0.016 -1.140        NaN
+  total 47-49.5  905      0.485         0.501  -0.016 -0.936        NaN
+    total 50-53  403      0.486         0.501  -0.014 -0.572      0.000
+    total 53.5+  193      0.482         0.501  -0.019 -0.541      0.012
+  roof outdoors 3237      0.488         0.501  -0.012 -1.416        NaN
+      roof dome  690      0.523         0.501   0.023  1.189     -0.073
+    roof closed  569      0.496         0.501  -0.005 -0.261     -0.017
+      roof open   84      0.476         0.501  -0.025 -0.459      0.023
+      primetime  957      0.478         0.502  -0.025 -1.527        NaN
+     divisional 1638      0.476         0.500  -0.025 -2.018        NaN
+         week 1  269      0.472         0.501  -0.028 -0.933        NaN
+       playoffs  195      0.497         0.502  -0.004 -0.122     -0.021
+      weeks 15+  883      0.496         0.500  -0.004 -0.224     -0.021
+       wind>=15  372      0.449         0.501  -0.052 -2.021      0.072
+        temp<32  206      0.524         0.498   0.026  0.742     -0.078
+
+=== (e) wind>=15 unders in detail ===
+wind coverage (outdoor games with wind): 3151 | wind>=15: 377 | wind>=20: 87
+market total line by wind bin (does the market already price wind?):
+             n   line    pts   err  under
+wind                                     
+(-1, 4]    677  44.87  46.17  1.30   0.49
+(4, 9]    1376  44.48  45.21  0.73   0.48
+(9, 14]    721  44.13  43.39 -0.74   0.55
+(14, 19]   290  43.64  41.98 -1.67   0.56
+(19, 60]    86  42.72  42.74  0.02   0.52
+  residual ~ max(wind-10,0)  [fit] n=2514 slope=-0.253/mph SE=0.074 p=0.001
+  residual ~ max(wind-10,0)  [test] n=637 slope=-0.124/mph SE=0.210 p=0.555
+  residual ~ max(wind-10,0)  [ALL] n=3151 slope=-0.235/mph SE=0.072 p=0.001
+  wind>=15: n=377 bias=-1.31 under=0.551 (p=0.055) | seasons under>50%: 12/17 | implied under from juice 0.499
+  wind>=20: n=87 bias=-0.11 under=0.523 (p=0.747) | seasons under>50%: 7/17 | implied under from juice 0.499
+
+=== (f) Totals: mean vs median of realized total, vs mean closing total (spec league_prior = 46.0 = '2025 realized mean') ===
+          n  mean_pts  median_pts  mean_line  mean_err  median_err  over_rate
+season                                                                       
+2009    267     43.16        43.0      42.84      0.32        -1.0       0.48
+2010    267     44.32        45.0      42.74      1.58         2.0       0.56
+2011    267     44.49        43.0      43.67      0.82         0.0       0.50
+2012    267     45.78        44.0      44.71      1.07         0.0       0.50
+2013    267     46.87        45.0      45.46      1.41         0.5       0.52
+2014    267     45.27        44.0      46.05     -0.78        -1.5       0.47
+2015    267     45.46        44.0      45.05      0.41        -1.0       0.47
+2016    267     45.74        46.0      45.71      0.03         1.0       0.53
+2017    267     43.63        43.0      44.12     -0.49        -1.5       0.47
+2018    267     46.55        46.0      46.65     -0.10        -1.5       0.47
+2019    267     45.70        45.0      45.22      0.48        -0.5       0.50
+2020    269     49.49        49.0      48.17      1.32         0.0       0.51
+2021    285     46.07        45.0      46.54     -0.48        -1.5       0.46
+2022    284     44.03        43.0      44.22     -0.19        -2.0       0.44
+2023    285     43.80        42.0      43.13      0.67        -1.0       0.46
+2024    285     46.02        45.0      44.48      1.53         1.5       0.54
+2025    285     45.96        45.0      44.88      1.08         0.5       0.52
+2022-25 pooled: mean_pts - mean_line = 0.78 | median err = -0.5 | skew of total err = 0.319
+=> a prior anchored to the realized MEAN sits above the market's median-targeting line by the mean-median gap; see verdict notes.

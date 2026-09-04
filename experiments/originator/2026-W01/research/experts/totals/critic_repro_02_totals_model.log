@@ -1,0 +1,114 @@
+== Part A: K selection (fit 1999-2014, validate 2015-2021, REG games; model total-lg_blend ~ pf_sum + pa_sum) ==
+K_lg    16      32      64      128     256     100000
+K_team                                                
+1       11.199  11.180  11.165  11.156  11.158  11.187
+2       11.232  11.214  11.201  11.191  11.194  11.225
+3       11.255  11.237  11.224  11.216  11.221  11.254
+4       11.272  11.253  11.241  11.236  11.242  11.276
+6       11.291  11.275  11.265  11.262  11.268  11.311
+10      11.313  11.297  11.288  11.286  11.296  11.358
+16      11.324  11.308  11.300  11.302  11.317  11.391
+32      11.329  11.314  11.309  11.317  11.336  11.416
+best: K_team=1 K_lg=128 val MAE=11.156 (market val MAE=10.569, n=1808)
+range of val MAE across grid: 11.156 .. 11.416
+
+== Part B: OOS 2022-2025 (fit 2009-2021 REG, n_train=3027, n_test=1087; K_team=1, K_lg=128) ==
+  model                                                          MAE   bias  dMAE vs market [95% CI]        O/U vs mkt
+  market close                                                10.189  -0.72
+  L  lg_blend only                                            10.730  -0.05  +0.541 [+0.304,+0.764]   523-556-8 (0.485)
+  L  lg_prev only                                             10.778  -0.02  +0.589 [+0.346,+0.814]   530-549-8 (0.491)
+  L+E  cumulative: E                                          10.657  -0.07  +0.468 [+0.255,+0.664]   538-541-8 (0.499)
+  L+S  cumulative: E+S                                        10.521  -0.65  +0.332 [+0.161,+0.492]   540-539-8 (0.500)
+  L+Q  cumulative: E+S+Q                                      10.408  -0.85  +0.219 [+0.070,+0.360]   543-536-8 (0.503)
+  L+V  cumulative: E+S+Q+V                                    10.399  -0.59  +0.210 [+0.066,+0.354]   545-534-8 (0.505)
+  L+W  cumulative: E+S+Q+V+W                                  10.357  -0.56  +0.168 [+0.019,+0.310]   555-524-8 (0.514)
+
+  full-model coefficients (fit 2009-2021):
+     const        -19.044  (se 2.869, p=0.000)
+     elo_sum      +0.136  (se 0.088, p=0.122)
+     pf_sum       +0.264  (se 0.060, p=0.000)
+     pa_sum       +0.216  (se 0.056, p=0.000)
+     qb_sum       +0.756  (se 0.142, p=0.000)
+     dome         +0.416  (se 0.848, p=0.624)
+     div          -1.297  (se 0.523, p=0.013)
+     wk           -0.077  (se 0.077, p=0.314)
+     late         +0.744  (se 0.907, p=0.412)
+     short_home   +0.860  (se 4.843, p=0.859)
+     short_away   -1.436  (se 4.840, p=0.767)
+     bye_home     +1.419  (se 1.065, p=0.183)
+     bye_away     -0.762  (se 1.027, p=0.459)
+     neutral      -0.238  (se 2.424, p=0.922)
+     grass        -1.017  (se 0.552, p=0.065)
+     wind_f       -0.221  (se 0.082, p=0.007)
+     wind15       +0.124  (se 1.252, p=0.921)
+     wind20       +1.196  (se 2.032, p=0.556)
+     cold32       -0.010  (se 1.496, p=0.995)
+     cold20       -0.888  (se 2.977, p=0.766)
+
+  drop-one importance (OOS MAE when the group is removed from the full model; + = group helps):
+     drop E  elo_sum                                         MAE=10.370  delta=+0.013
+     drop S  pf_sum+pa_sum                                   MAE=10.465  delta=+0.108
+     drop Q  qb_sum (538 QB adj)                             MAE=10.474  delta=+0.117
+     drop V  env: dome,div,week,late,short/bye,neutral,grass MAE=10.325  delta=-0.032
+     drop W  weather: wind_f,wind15,wind20,cold32,cold20     MAE=10.399  delta=+0.042
+     drop single elo_sum                                      MAE=10.370  delta=+0.013
+     drop single pf_sum                                       MAE=10.383  delta=+0.026
+     drop single pa_sum                                       MAE=10.413  delta=+0.056
+     drop single qb_sum                                       MAE=10.474  delta=+0.117
+     drop single dome                                         MAE=10.355  delta=-0.002
+     drop single div                                          MAE=10.360  delta=+0.003
+     drop single wk                                           MAE=10.348  delta=-0.009
+     drop single late                                         MAE=10.355  delta=-0.002
+     drop single short_home                                   MAE=10.357  delta=+0.000
+     drop single short_away                                   MAE=10.356  delta=-0.001
+     drop single bye_home                                     MAE=10.343  delta=-0.014
+     drop single bye_away                                     MAE=10.359  delta=+0.002
+     drop single neutral                                      MAE=10.358  delta=+0.001
+     drop single grass                                        MAE=10.358  delta=+0.001
+     drop single wind_f                                       MAE=10.369  delta=+0.011
+     drop single wind15                                       MAE=10.356  delta=-0.001
+     drop single wind20                                       MAE=10.359  delta=+0.002
+     drop single cold32                                       MAE=10.357  delta=-0.000
+     drop single cold20                                       MAE=10.364  delta=+0.007
+
+  LEAN model (L + elo_sum, pf_sum, pa_sum, qb_sum, dome, wind_f, cold32, div):
+  LEAN                                                        10.344  -0.57  +0.155 [+0.011,+0.292]   556-523-8 (0.515)
+     const        -20.174  (se 2.794, p=0.000)
+     elo_sum      +0.142  (se 0.087, p=0.104)
+     pf_sum       +0.261  (se 0.060, p=0.000)
+     pa_sum       +0.215  (se 0.055, p=0.000)
+     qb_sum       +0.792  (se 0.141, p=0.000)
+     dome         +0.982  (se 0.730, p=0.178)
+     wind_f       -0.201  (se 0.056, p=0.000)
+     cold32       -0.263  (se 1.289, p=0.839)
+     div          -1.328  (se 0.510, p=0.009)
+
+  PACE subset (train 2009-2019 n=2498, test 2023-2025 n=815):
+  LEAN (pace subset)                                         MAE=10.321 bias=-0.53  dMAE vs mkt=+0.202 [+0.023,+0.379]  O/U 416-394-5  | market MAE=10.118
+  LEAN + pace(plays,spp,no-huddle,pass-rate)                 MAE=10.366 bias=-1.05  dMAE vs mkt=+0.247 [+0.070,+0.422]  O/U 405-405-5  | market MAE=10.118
+       plays_sum  -0.107 (p=0.100)
+       spp_avg    -0.550 (p=0.092)
+       nh_sum     +0.437 (p=0.837)
+       pr_sum     +12.621 (p=0.004)
+  LEAN + plays_sum only                                      MAE=10.319 bias=-0.46  dMAE vs mkt=+0.201 [+0.023,+0.377]  O/U 412-398-5  | market MAE=10.118
+  LEAN + pace + EPA off/def                                  MAE=10.359 bias=-1.37  dMAE vs mkt=+0.241 [+0.064,+0.414]  O/U 402-408-5  | market MAE=10.118
+  LEAN + EPA off/def only                                    MAE=10.292 bias=-0.69  dMAE vs mkt=+0.174 [+0.004,+0.353]  O/U 419-391-5  | market MAE=10.118
+
+  rolling-origin LEAN (fit on REG seasons < Y):
+     2018: LEAN MAE=10.721 bias=-0.15 | market MAE=10.409 | spec 46+.35elo MAE=10.977 | n=248
+     2019: LEAN MAE=10.915 bias=+0.11 | market MAE=10.871 | spec 46+.35elo MAE=11.338 | n=248
+     2020: LEAN MAE=10.457 bias=+0.39 | market MAE=10.146 | spec 46+.35elo MAE=11.031 | n=256
+     2021: LEAN MAE=11.124 bias=+2.81 | market MAE=10.789 | spec 46+.35elo MAE=10.928 | n=272
+     2022: LEAN MAE=10.501 bias=+0.01 | market MAE=10.395 | spec 46+.35elo MAE=11.336 | n=271
+     2023: LEAN MAE=10.213 bias=-0.81 | market MAE=10.239 | spec 46+.35elo MAE=11.074 | n=272
+     2024: LEAN MAE=9.827 bias=-1.56 | market MAE=9.730 | spec 46+.35elo MAE=10.004 | n=272
+     2025: LEAN MAE=10.878 bias=+0.37 | market MAE=10.393 | spec 46+.35elo MAE=10.870 | n=272
+
+== Part C: does the LEAN model carry information the market lacks? ==
+  train (in-sample)  (total - mkt) ~ (model - mkt): slope=+0.141 (se 0.089, p=0.110)  n=3027  corr=+0.030  mean|model-mkt|=2.28
+  test 2022-2025     (total - mkt) ~ (model - mkt): slope=+0.196 (se 0.157, p=0.211)  n=1087  corr=+0.039  mean|model-mkt|=2.01
+  blend w*model + (1-w)*market: train-optimal w=0.15 -> test MAE=10.187 vs market 10.189; test-optimal w=0.10 (MAE 10.187)
+  test MAE by w: {np.float64(0.0): 10.189, np.float64(0.2): 10.188, np.float64(0.4): 10.2, np.float64(0.6): 10.229, np.float64(0.8): 10.281, np.float64(1.0): 10.344}
+  |model - market| >= 2: n=459  O/U taking model side 232-224-3 (0.509)
+  |model - market| >= 3: n=246  O/U taking model side 124-120-2 (0.508)
+  |model - market| >= 4: n=137  O/U taking model side 74-61-2 (0.548)

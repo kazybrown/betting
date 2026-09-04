@@ -1,0 +1,50 @@
+frame rows: 4310 | seasons 2009 - 2025 | REG: 4114 | POST: 196
+fit (<=2021): 3171 | test (2022-25): 1139
+total prior used for T_elo (mean realized total, fit era): 45.692
+
+--- SIGN CHECKS (all should be strongly NEGATIVE) ---
+corr(mkt, margin) = -0.435
+corr(nfelo_c, margin) = -0.439
+corr(nfelo_o, margin) = -0.430
+corr(nfelo_b, margin) = -0.422
+corr(T_elo, total_pts) = 0.119 (should be positive)
+corr(mkt_total, total_pts) = 0.304
+mkt == nfelo home_line_close exact share: 0.665
+
+--- nfelo_dif_base is pre-market? cross-check vs historic_projected_spreads.home_line_pre_regression (2021+) ---
+joined: 1326
+corr(nfelo_b, home_line_pre_regression) = 0.9646
+mean |nfelo_b - home_line_pre_regression| = 1.118
+corr(nfelo_dif_base, home_dif_pre_reg) = 0.966
+mean |nfelo_c - home_closing_line_rounded_nfelo| = 0.931
+=> nfelo_b tracks the historic-file pre-regression line; nfelo_c tracks the regressed rounded line.
+
+--- BASELINE MAE (spread) fit / test ---
+fit: n=3171 | market 10.279 | nfelo close(reg) 10.239 | nfelo base(unreg) 10.360
+   nfelo base vs market ATS 1645-1445-81 (0.532)
+   nfelo close vs market ATS 1629-1461-81 (0.527)
+test: n=1139 | market 9.536 | nfelo close(reg) 9.601 | nfelo base(unreg) 9.774
+   nfelo base vs market ATS 555-555-29 (0.500)
+   nfelo close vs market ATS 564-546-29 (0.508)
+
+--- BASELINE MAE (total) ---
+fit: n=3171 | market total 10.629 | T_elo 11.058 | total SD of err_mkt 13.387 | spread SD of err_mkt 13.325
+test: n=1139 | market total 10.189 | T_elo 10.794 | total SD of err_mkt 13.008 | spread SD of err_mkt 12.410
+
+--- DISAGREEMENT DISTRIBUTIONS (test era unless noted) ---
+D_base   n=1139 mean=1.71 quantiles {0.1: np.float64(0.26), 0.25: np.float64(0.64), 0.5: np.float64(1.37), 0.75: np.float64(2.37), 0.9: np.float64(3.47)}
+D_reg    n=1139 mean=0.67 quantiles {0.1: np.float64(0.0), 0.25: np.float64(0.0), 0.5: np.float64(0.5), 0.75: np.float64(1.0), 0.9: np.float64(2.0)}
+D_nmove  n=1139 mean=0.82 quantiles {0.1: np.float64(0.0), 0.25: np.float64(0.0), 0.5: np.float64(0.5), 0.75: np.float64(1.0), 0.9: np.float64(2.0)}
+D_mmove  n=1139 mean=1.00 quantiles {0.1: np.float64(0.0), 0.25: np.float64(0.0), 0.5: np.float64(0.5), 0.75: np.float64(1.5), 0.9: np.float64(3.0)}
+D_tot    n=1139 mean=3.40 quantiles {0.1: np.float64(0.51), 0.25: np.float64(1.31), 0.5: np.float64(2.88), 0.75: np.float64(4.98), 0.9: np.float64(6.88)}
+D_tmove  n=559 (2024-25 only) mean=0.95 quantiles {0.1: np.float64(0.0), 0.25: np.float64(0.0), 0.5: np.float64(1.0), 0.75: np.float64(1.0), 0.9: np.float64(2.0)}
+
+corr matrix of proxies (test era):
+         D_base  D_reg  D_nmove  D_mmove  abs_mkt  ae_mkt  ae_nb
+D_base    1.000  0.542    0.158    0.125    0.014   0.028  0.067
+D_reg     0.542  1.000    0.050    0.092   -0.002  -0.023  0.005
+D_nmove   0.158  0.050    1.000    0.824   -0.026   0.050  0.071
+D_mmove   0.125  0.092    0.824    1.000   -0.007   0.013  0.031
+abs_mkt   0.014 -0.002   -0.026   -0.007    1.000   0.058  0.047
+ae_mkt    0.028 -0.023    0.050    0.013    0.058   1.000  0.937
+ae_nb     0.067  0.005    0.071    0.031    0.047   0.937  1.000

@@ -1,0 +1,11 @@
+BASE for 2026: {'spread_trail3': 12.719, 'spread_trail5': 12.656, 'spread_trail8': 12.761, 'spread_trail17': 13.091} {'total_trail3': 12.963, 'total_trail5': 13.081, 'total_trail8': 13.156, 'total_trail17': 13.297}
+trail3 spread: k50/80/90 = [0.608 1.245 1.612] | OOS coverage sqrt-rule [0.515 0.795 0.882] base-only [0.507 0.788 0.875] | logscore sqrt-rule -3.95905 base-only -3.96030 (fit n=2486, test n=1139)
+trail3 total: k50/80/90 = [0.661 1.264 1.629] | OOS coverage sqrt-rule [0.5   0.811 0.91 ] base-only [0.478 0.782 0.888] | logscore sqrt-rule -4.02338 base-only -4.02811 (fit n=2486, test n=1139)
+trail5 spread: k50/80/90 = [0.604 1.24  1.607] | OOS coverage sqrt-rule [0.518 0.797 0.883] base-only [0.512 0.788 0.876] | logscore sqrt-rule -3.95900 base-only -3.95991 (fit n=2032, test n=1139)
+trail5 total: k50/80/90 = [0.655 1.263 1.618] | OOS coverage sqrt-rule [0.5   0.813 0.912] base-only [0.478 0.784 0.891] | logscore sqrt-rule -4.02362 base-only -4.02747 (fit n=2032, test n=1139)
+
+D-band table for the REAL nfelo pre-regression line, 2022-25 (identity excess uses in-band market RMSE):
+  HIGH: n=502 share=0.47 mean D=0.63 rmse mkt 12.43 model 12.47 excess +0.04 | identity +0.02 | excess by season [-0.02  0.1   0.14 -0.05]
+  MED: n=341 share=0.32 mean D=2.08 rmse mkt 12.34 model 12.62 excess +0.28 | identity +0.18 | excess by season [-0.03  0.31  0.59  0.21]
+  LOW: n=233 share=0.22 mean D=4.40 rmse mkt 12.83 model 13.72 excess +0.89 | identity +0.82 | excess by season [0.63 0.55 0.83 1.5 ]
+  D_pre quantiles 2022-25: [0.21 0.59 1.5  2.57 4.  ] | for 55/30/15 shares the cuts would be [1.76 3.5 ]

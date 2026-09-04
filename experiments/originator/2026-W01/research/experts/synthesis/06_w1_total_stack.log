@@ -1,0 +1,19 @@
+[W1 2010-21] n=175 base bias -0.12 median -0.89 (se 1.04); market W1 residual +0.61
+     shift -0.50: bias +0.38 MAE 10.972 dMAE -0.009 [-0.078,+0.065]
+     shift -0.75: bias +0.63 MAE 10.969 dMAE -0.012 [-0.116,+0.098]
+     shift -1.00: bias +0.88 MAE 10.970 dMAE -0.012 [-0.151,+0.133]
+     shift -1.25: bias +1.13 MAE 10.975 dMAE -0.006 [-0.181,+0.174]
+[W1 2022-25] n=64 base bias -2.33 median -4.53 (se 1.60); market W1 residual -2.59
+     shift -0.50: bias -1.83 MAE 10.509 dMAE -0.128 [-0.250,-0.005]
+     shift -0.75: bias -1.58 MAE 10.446 dMAE -0.190 [-0.375,-0.005]
+     shift -1.00: bias -1.33 MAE 10.384 dMAE -0.253 [-0.500,-0.005]
+     shift -1.25: bias -1.08 MAE 10.321 dMAE -0.315 [-0.625,-0.005]
+[W1 2010-25] n=239 base bias -0.72 median -2.32 (se 0.88); market W1 residual -0.25
+     shift -0.50: bias -0.22 MAE 10.848 dMAE -0.041 [-0.103,+0.025]
+     shift -0.75: bias +0.03 MAE 10.829 dMAE -0.060 [-0.153,+0.039]
+     shift -1.00: bias +0.28 MAE 10.813 dMAE -0.076 [-0.200,+0.053]
+     shift -1.25: bias +0.53 MAE 10.800 dMAE -0.089 [-0.245,+0.072]
+[W2+ 2010-21] n=2635 blend base bias -0.08 median -0.80; shift -0.50: bias +0.42 dMAE -0.014 [-0.033,+0.005]
+[W2+ 2010-21] n=2635 blend base bias -0.08 median -0.80; shift -0.75: bias +0.67 dMAE -0.016 [-0.044,+0.013]
+[W2+ 2022-25] n=1023 blend base bias +0.10 median -0.73; shift -0.50: bias +0.60 dMAE -0.016 [-0.047,+0.014]
+[W2+ 2022-25] n=1023 blend base bias +0.10 median -0.73; shift -0.75: bias +0.85 dMAE -0.019 [-0.065,+0.025]

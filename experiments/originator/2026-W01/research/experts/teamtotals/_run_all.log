@@ -1,0 +1,438 @@
+=================== 01_identity_regression.py
+[common] rows=7276 seasons 1999-2025 | train=6137 test=1139
+[common] sign check corr(S, margin) = -0.426 (must be strongly negative); corr(T, total_pts) = 0.321 (positive)
+[common] mean spread err (margin+S) = +0.094 | mean total err = +0.701
+
+TRAIN 1999-2021 n=6137   TEST 2022-2025 n=1139
+
+[train] home_score ~ const + S + T   n=6137
+       const: +1.7712  (se 1.0743)
+           S: -0.5173  (se 0.0205)
+           T: +0.4660  (se 0.0246)
+
+[train] away_score ~ const + S + T   n=6137
+       const: +2.4565  (se 1.0549)
+           S: +0.5240  (se 0.0196)
+           T: +0.4528  (se 0.0241)
+  Wald test identity (home: S = -0.5, T = 0.5, const = 0): F=10.09 p=0.0178
+  Wald test slopes only (home): F=2.62 p=0.2695
+  Wald test identity (away: S = 0.5, T = 0.5, const = 0): F=13.59 p=0.0035
+  Wald test slopes only (away): F=5.36 p=0.0687
+
+[train] fav_score ~ const + abs_S + T   n=6137
+       const: +1.8739  (se 1.1013)
+       abs_S: +0.5362  (se 0.0360)
+           T: +0.4607  (se 0.0250)
+
+[train] dog_score ~ const + abs_S + T   n=6137
+       const: +2.4653  (se 1.0431)
+       abs_S: -0.5671  (se 0.0330)
+           T: +0.4591  (se 0.0237)
+  Wald test identity (fav): F=11.83 p=0.0080
+  Wald test identity (dog): F=14.65 p=0.0021
+
+TRAIN 1999-2021: mean identity residual by spread bin (home_score - (T/2 - S/2); away likewise)
+           bin     n   r_home               ci   r_away               ci  med_h  med_a  P(h>tt)  P(a>tt)
+     H fav 14+   194    +0.18 [ -1.23, +1.59]    -0.11 [ -1.29, +1.07]  -0.25  -1.25    0.490    0.455
+ H fav 10-13.5   554    +0.51 [ -0.33, +1.35]    +0.03 [ -0.67, +0.73]  +0.25  -1.00    0.513    0.466
+   H fav 7-9.5   925    +0.90 [ +0.26, +1.54]    -0.08 [ -0.67, +0.51]  +0.25  -0.50    0.504    0.474
+   H fav 4-6.5  1163    +0.43 [ -0.11, +0.98]    +0.43 [ -0.09, +0.95]  +0.00  +0.00    0.503    0.494
+   H fav 1-3.5  1205    -0.21 [ -0.76, +0.33]    +0.79 [ +0.24, +1.33]  -0.75  +0.50    0.469    0.529
+          pick    31    -0.37 [ -3.22, +2.48]    -1.34 [ -4.78, +2.10]  -1.00  -1.00    0.419    0.448
+   A fav 1-3.5  1162    +0.59 [ +0.05, +1.13]    +0.22 [ -0.33, +0.78]  +0.25  +0.00    0.516    0.498
+   A fav 4-6.5   466    -0.16 [ -0.99, +0.67]    +1.07 [ +0.17, +1.98]  -0.75  +0.75    0.476    0.529
+   A fav 7-9.5   296    +0.10 [ -0.98, +1.18]    +0.63 [ -0.43, +1.69]  -0.50  +0.62    0.481    0.531
+ A fav 10-13.5   110    +0.22 [ -1.52, +1.96]    -0.86 [ -2.61, +0.88]  -1.25  -1.00    0.458    0.440
+     A fav 14+    31    +0.35 [ -2.57, +3.26]    -0.70 [ -4.69, +3.29]  -0.25  +0.75    0.484    0.516
+
+TEST 2022-2025: mean identity residual by spread bin (home_score - (T/2 - S/2); away likewise)
+           bin     n   r_home               ci   r_away               ci  med_h  med_a  P(h>tt)  P(a>tt)
+     H fav 14+    39    +0.92 [ -1.79, +3.62]    +0.92 [ -1.35, +3.19]  -0.50  +1.50    0.436    0.622
+ H fav 10-13.5    76    +1.95 [ -0.20, +4.10]    -1.21 [ -3.21, +0.79]  +1.12  -2.38    0.560    0.400
+   H fav 7-9.5   133    +1.68 [ +0.22, +3.14]    +0.98 [ -0.61, +2.56]  +2.00  +1.00    0.609    0.556
+   H fav 4-6.5   201    +1.75 [ +0.40, +3.09]    +0.56 [ -0.63, +1.76]  +1.00  +0.00    0.548    0.505
+   H fav 1-3.5   241    +0.21 [ -0.92, +1.34]    -0.00 [ -1.12, +1.11]  -1.25  -0.75    0.435    0.464
+   A fav 1-3.5   267    -0.21 [ -1.35, +0.93]    -0.65 [ -1.73, +0.42]  -0.50  -1.50    0.494    0.431
+   A fav 4-6.5    98    -0.98 [ -2.57, +0.62]    +0.05 [ -1.70, +1.80]  -0.75  +0.00    0.485    0.505
+   A fav 7-9.5    58    +1.19 [ -1.02, +3.40]    +0.49 [ -1.88, +2.87]  +1.25  +0.50    0.621    0.517
+ A fav 10-13.5    21    +4.79 [ +1.70, +7.87]    +0.67 [ -3.48, +4.81]  +4.50  +2.25    0.810    0.571
+     A fav 14+     5    +0.15 [ -4.39, +4.69]    -0.45 [ -3.46, +2.56]  +0.50  -0.75    0.600    0.200
+
+TRAIN 1999-2021: favorite / dog residuals by |S| bin (fav_score - (T/2+|S|/2), dog_score - (T/2-|S|/2))
+     |S|     n   r_fav               ci   r_dog               ci  r_total  r_margin  P(f>tt)  P(d>tt)
+    pick    31   -0.37 [ -3.22, +2.48]   -1.34 [ -4.78, +2.10]    -1.71     +0.97    0.419    0.448
+     1-3  2145   -0.11 [ -0.52, +0.29]   +0.71 [ +0.30, +1.11]    +0.59     -0.30    0.478    0.523
+ 3.5-6.5  2051   +0.57 [ +0.15, +0.99]   +0.29 [ -0.11, +0.68]    +0.86     -0.41    0.509    0.493
+   7-9.5  1129   +1.13 [ +0.57, +1.70]   -0.02 [ -0.57, +0.53]    +1.11     +0.88    0.518    0.478
+ 10-13.5   604   +0.01 [ -0.78, +0.81]   +0.01 [ -0.67, +0.69]    +0.03     +0.40    0.496    0.456
+     14+   177   +0.10 [ -1.41, +1.60]   -0.27 [ -1.47, +0.94]    -0.17     +0.73    0.506    0.443
+
+TEST 2022-2025: favorite / dog residuals by |S| bin (fav_score - (T/2+|S|/2), dog_score - (T/2-|S|/2))
+     |S|     n   r_fav               ci   r_dog               ci  r_total  r_margin  P(f>tt)  P(d>tt)
+     1-3   458   -0.48 [ -1.29, +0.33]   -0.11 [ -0.95, +0.72]    -0.59     +0.59    0.420    0.476
+ 3.5-6.5   389   +1.49 [ +0.55, +2.43]   +0.17 [ -0.70, +1.03]    +1.66     +0.28    0.554    0.512
+   7-9.5   170   +0.75 [ -0.60, +2.09]   +0.87 [ -0.51, +2.24]    +1.61     +0.36    0.541    0.553
+ 10-13.5    84   +1.91 [ -0.08, +3.90]   +0.12 [ -1.71, +1.94]    +2.03     +3.85    0.566    0.524
+     14+    38   +0.84 [ -1.64, +3.33]   +0.87 [ -1.31, +3.05]    +1.71     +0.13    0.421    0.595
+
+OOS 2022-2025 home team total, n=1139
+                             formula     MAE    RMSE    bias  P(over)
+                            identity   7.230   9.146  +0.726    0.519
+     identity+train_mean_shift(0.34)   7.220   9.125  +0.390    0.508
+  identity+train_median_shift(-0.25)   7.241   9.169  +0.976    0.525
+                    OLS linear (S,T)   7.222   9.119  +0.427    0.511
+                  OLS + |S|,S|S|,S*T   7.215   9.113  +0.434    0.507
+   MAE(identity) - MAE(OLS nonlinear) = +0.014  95% CI [-0.006,+0.035]
+   MAE(identity) - MAE(identity+median shift) = -0.011  95% CI [-0.025,+0.004]
+
+OOS 2022-2025 away team total, n=1139
+                             formula     MAE    RMSE    bias  P(over)
+                            identity   7.080   8.852  +0.050    0.483
+     identity+train_mean_shift(0.35)   7.098   8.857  -0.301    0.471
+   identity+train_median_shift(0.00)   7.080   8.852  +0.050    0.483
+                    OLS linear (S,T)   7.101   8.865  -0.284    0.470
+                  OLS + |S|,S|S|,S*T   7.107   8.874  -0.291    0.470
+   MAE(identity) - MAE(OLS nonlinear) = -0.027  95% CI [-0.053,-0.002]
+   MAE(identity) - MAE(identity+median shift) = +0.000  95% CI [+0.000,+0.000]
+
+Mean / median identity residuals by season block (home, away):
+            n  mean_r_home  med_r_home  mean_r_away  med_r_away  tot_err  sp_err
+block                                                                           
+1999-04  1578         0.70        0.38         0.29       -0.25     0.98    0.41
+2005-10  1602         0.37        0.25         0.68        0.12     1.05   -0.31
+2011-16  1602         0.38       -0.25         0.11       -0.12     0.49    0.28
+2017-21  1355        -0.18       -0.75         0.32        0.25     0.14   -0.49
+2022-25  1139         0.73        0.50         0.05       -0.50     0.78    0.68
+=================== 02_median_vs_mean.py
+[common] rows=7276 seasons 1999-2025 | train=6137 test=1139
+[common] sign check corr(S, margin) = -0.426 (must be strongly negative); corr(T, total_pts) = 0.321 (positive)
+[common] mean spread err (margin+S) = +0.094 | mean total err = +0.701
+team-games: 14552  (train 12274, test 2278)
+
+TRAIN 1999-2021: score vs identity by expected-score (identity) bin
+        tt bin     n  mean_r               ci median_r   skew  P(over)               ci  push
+   (0.0, 15.0]   586   -0.07 [ -0.76, +0.62]    -1.00   0.48    0.440 [ 0.399, 0.480] 0.010
+  (15.0, 17.5]  1409   +0.93 [ +0.44, +1.41]    +0.00   0.43    0.508 [ 0.482, 0.534] 0.021
+  (17.5, 20.0]  2437   +0.02 [ -0.35, +0.39]    -0.25   0.35    0.492 [ 0.472, 0.512] 0.012
+  (20.0, 22.5]  2863   +0.46 [ +0.12, +0.80]    -0.25   0.24    0.494 [ 0.475, 0.512] 0.006
+  (22.5, 25.0]  2412   +0.34 [ -0.05, +0.74]    +0.00   0.32    0.495 [ 0.475, 0.515] 0.012
+  (25.0, 27.5]  1614   +0.49 [ +0.02, +0.96]    +0.50   0.03    0.528 [ 0.503, 0.552] 0.010
+  (27.5, 30.0]   702   -0.13 [ -0.85, +0.60]    -0.50   0.12    0.489 [ 0.451, 0.526] 0.009
+  (30.0, 60.0]   251   +0.23 [ -1.07, +1.54]    -0.50   0.12    0.482 [ 0.420, 0.544] 0.008
+
+TEST 2022-2025: score vs identity by expected-score (identity) bin
+        tt bin     n  mean_r               ci median_r   skew  P(over)               ci  push
+   (0.0, 15.0]    57   -0.09 [ -2.27, +2.09]    +1.00  -0.03    0.564 [ 0.433, 0.695] 0.035
+  (15.0, 17.5]   229   +0.63 [ -0.53, +1.78]    +0.00   0.46    0.498 [ 0.433, 0.563] 0.009
+  (17.5, 20.0]   414   +0.16 [ -0.66, +0.99]    +0.25   0.44    0.510 [ 0.461, 0.558] 0.010
+  (20.0, 22.5]   559   -0.15 [ -0.91, +0.60]    -0.50   0.18    0.485 [ 0.443, 0.526] 0.004
+  (22.5, 25.0]   530   +0.41 [ -0.36, +1.19]    +0.00   0.12    0.505 [ 0.462, 0.548] 0.025
+  (25.0, 27.5]   340   +1.19 [ +0.19, +2.19]    +0.75   0.39    0.518 [ 0.465, 0.571] 0.000
+  (27.5, 30.0]   122   +0.63 [ -0.98, +2.24]    -1.00   0.54    0.463 [ 0.374, 0.552] 0.008
+  (30.0, 60.0]    27   +2.42 [ -0.48, +5.31]    -0.50   0.69    0.481 [ 0.293, 0.670] 0.000
+
+TRAIN median regression  score ~ tt : {'Intercept': -0.94, 'tt': 1.04}
+TRAIN OLS               score ~ tt : {'Intercept': 0.538, 'tt': 0.991}
+   identity 14 -> median-reg fair 13.62  (OLS 14.41)
+   identity 17 -> median-reg fair 16.74  (OLS 17.39)
+   identity 20 -> median-reg fair 19.86  (OLS 20.36)
+   identity 23 -> median-reg fair 22.98  (OLS 23.33)
+   identity 26 -> median-reg fair 26.10  (OLS 26.31)
+   identity 29 -> median-reg fair 29.22  (OLS 29.28)
+   identity 32 -> median-reg fair 32.34  (OLS 32.25)
+
+TRAIN median residual by bin (candidate shift table):
+ebin
+(0.0, 15.0]    -1.00
+(15.0, 17.5]    0.00
+(17.5, 20.0]   -0.25
+(20.0, 22.5]   -0.25
+(22.5, 25.0]    0.00
+(25.0, 27.5]    0.50
+(27.5, 30.0]   -0.50
+(30.0, 60.0]   -0.50
+
+OOS 2022-2025 (team-games n=2278): MAE / P(over) of candidate rules
+                              rule     MAE          dMAE vs ident  P(over)  P(over) tt<20 P(over) tt>=27.5
+                          identity   7.155  +0.000 [+0.000,+0.000]    0.501          0.511            0.460
+                 median-reg linear   7.158  -0.003 [-0.010,+0.003]    0.503          0.518            0.457
+                  bin median table   7.154  +0.000 [-0.013,+0.013]    0.505          0.518            0.468
+              piecewise -1/-.5/0/0   7.165  -0.010 [-0.029,+0.008]    0.512          0.533            0.460
+               identity - 0.5 flat   7.164  -0.009 [-0.029,+0.012]    0.520          0.525            0.482
+
+P(over identity) for tt<20 vs tt>=25, by season (robustness):
+  2009: tt<20 P(over)=0.480 (n=200)   tt>=25 P(over)=0.484 (n=128)
+  2010: tt<20 P(over)=0.511 (n=186)   tt>=25 P(over)=0.578 (n=90)
+  2011: tt<20 P(over)=0.475 (n=177)   tt>=25 P(over)=0.508 (n=126)
+  2012: tt<20 P(over)=0.448 (n=134)   tt>=25 P(over)=0.515 (n=132)
+  2013: tt<20 P(over)=0.553 (n=123)   tt>=25 P(over)=0.497 (n=145)
+  2014: tt<20 P(over)=0.368 (n=114)   tt>=25 P(over)=0.538 (n=171)
+  2015: tt<20 P(over)=0.474 (n=116)   tt>=25 P(over)=0.463 (n=123)
+  2016: tt<20 P(over)=0.477 (n=111)   tt>=25 P(over)=0.578 (n=154)
+  2017: tt<20 P(over)=0.461 (n=154)   tt>=25 P(over)=0.446 (n=121)
+  2018: tt<20 P(over)=0.500 (n=102)   tt>=25 P(over)=0.506 (n=180)
+  2019: tt<20 P(over)=0.453 (n=137)   tt>=25 P(over)=0.513 (n=158)
+  2020: tt<20 P(over)=0.482 (n=83)   tt>=25 P(over)=0.521 (n=240)
+  2021: tt<20 P(over)=0.432 (n=125)   tt>=25 P(over)=0.493 (n=205)
+  2022: tt<20 P(over)=0.509 (n=163)   tt>=25 P(over)=0.442 (n=138)
+  2023: tt<20 P(over)=0.500 (n=180)   tt>=25 P(over)=0.514 (n=107)
+  2024: tt<20 P(over)=0.497 (n=161)   tt>=25 P(over)=0.531 (n=147)
+  2025: tt<20 P(over)=0.543 (n=140)   tt>=25 P(over)=0.509 (n=159)
+2009-2025 tt<20: P(over)=0.482 n=2406  binomial p=0.0831
+2009-2025 tt>=25: P(over)=0.508 n=2524  binomial p=0.4145
+=================== 03_home_away_asymmetry.py
+[common] rows=7276 seasons 1999-2025 | train=6137 test=1139
+[common] sign check corr(S, margin) = -0.426 (must be strongly negative); corr(T, total_pts) = 0.321 (positive)
+[common] mean spread err (margin+S) = +0.094 | mean total err = +0.701
+
+TRAIN 1999-2021 (non-neutral, n=6071): mean r_home +0.350 [+0.109,+0.592] | mean r_away +0.357 [+0.121,+0.592] | r_home - r_away = spread err -0.006 [-0.341,+0.329] | home share resid +0.0010 [-0.0032,+0.0053]
+
+TEST 2022-2025 (non-neutral, n=1111): mean r_home +0.741 [+0.202,+1.279] | mean r_away +0.083 [-0.440,+0.605] | r_home - r_away = spread err +0.658 [-0.074,+1.390] | home share resid +0.0065 [-0.0027,+0.0157]
+
+2009-2025 (non-neutral, n=4551): mean r_home +0.304 [+0.029,+0.579] | mean r_away +0.233 [-0.034,+0.499] | r_home - r_away = spread err +0.071 [-0.309,+0.452] | home share resid +0.0003 [-0.0043,+0.0050]
+TRAIN   r_fav ~ home_fav + |S| + T : home_fav coef -0.129 (se 0.268, p=0.629) | |S| +0.039 (p=0.290)
+TRAIN   r_dog ~ home_fav + |S| + T : home_fav coef +0.057 (se 0.258, p=0.825) | |S| -0.066 (p=0.051)
+TRAIN  sp_err ~ home_fav + |S| + T : home_fav coef -0.007 (se 0.368, p=0.985) | |S| +0.075 (p=0.135)
+TRAIN tot_err ~ home_fav + |S| + T : home_fav coef -0.072 (se 0.374, p=0.847) | |S| -0.028 (p=0.577)
+TEST    r_fav ~ home_fav + |S| + T : home_fav coef +1.244 (se 0.565, p=0.028) | |S| +0.146 (p=0.071)
+TEST    r_dog ~ home_fav + |S| + T : home_fav coef +0.147 (se 0.553, p=0.791) | |S| +0.078 (p=0.285)
+TEST   sp_err ~ home_fav + |S| + T : home_fav coef +0.502 (se 0.770, p=0.515) | |S| +0.117 (p=0.281)
+TEST  tot_err ~ home_fav + |S| + T : home_fav coef +1.391 (se 0.811, p=0.086) | |S| +0.225 (p=0.040)
+
+TRAIN: favorite residual (fav_score - fav_tt) when favorite is HOME vs AWAY, by |S|
+     |S| n_homefav  r_fav(H)  r_dog(H) n_awayfav  r_fav(A)  r_dog(A)  diff r_fav               ci
+     1-3      1189     -0.22     +0.82       926     +0.02     +0.62       -0.24 [ -1.06, +0.59]
+ 3.5-6.5      1356     +0.32     +0.38       673     +1.16     +0.04       -0.84 [ -1.75, +0.07]
+   7-9.5       832     +1.30     -0.08       290     +0.58     +0.20       +0.72 [ -0.54, +1.98]
+ 10-13.5       492     +0.26     -0.01       108     -0.81     +0.29       +1.07 [ -0.89, +3.04]
+     14+       146     +0.27     -0.40        28     -0.88     +0.70       +1.14 [ -3.30, +5.58]
+
+TEST: favorite residual (fav_score - fav_tt) when favorite is HOME vs AWAY, by |S|
+     |S| n_homefav  r_fav(H)  r_dog(H) n_awayfav  r_fav(A)  r_dog(A)  diff r_fav               ci
+     1-3       234     +0.23     +0.04       209     -1.13     -0.33       +1.36 [ -0.29, +3.01]
+ 3.5-6.5       237     +2.01     +0.73       143     +0.68     -0.71       +1.33 [ -0.64, +3.29]
+   7-9.5       110     +0.90     +0.60        57     +0.72     +1.33       +0.19 [ -2.71, +3.08]
+ 10-13.5        63     +2.33     -1.44        20     +0.14     +5.36       +2.19 [ -2.61, +6.98]
+     14+        33     +1.04     +0.98         5     -0.45     +0.15       +1.49 [ -2.65, +5.62]
+
+Neutral-site games n=94: r_home -0.61 [-2.68,+1.47]  r_away -0.50 [-2.39,+1.39]
+
+TRAIN implied home shift k = mean(r_home - r_away)/2 = -0.003
+  OOS home: MAE identity 7.259 vs identity-0.00: 7.259  dMAE -0.000 [-0.000,+0.000]
+  OOS away: MAE identity 7.098 vs identity+0.00: 7.098  dMAE -0.000 [-0.000,+0.000]
+
+Spread error (margin+S) = 2 x home allocation residual, by block (non-neutral):
+         size   mean    sem
+block                      
+1999-04  1571  0.401  0.335
+2005-10  1589 -0.297  0.343
+2011-16  1580  0.315  0.333
+2017-21  1331 -0.521  0.356
+2022-25  1111  0.658  0.374
+=================== 04a_build_pbp_features.py
+2009 512 team-games
+2010 512 team-games
+2011 512 team-games
+2012 512 team-games
+2013 512 team-games
+2014 512 team-games
+2015 512 team-games
+2016 512 team-games
+2017 512 team-games
+2018 512 team-games
+2019 512 team-games
+2023 570 team-games
+2024 570 team-games
+2025 570 team-games
+wrote /home/user/originator-2026-w01/research/experts/teamtotals/_pbp_teamgame.csv (7342, 16)
+         tg  plays  expl20    rz  rz_td   pace
+season                                        
+2009    512  61.97    3.56  3.85   2.26  31.24
+2010    512  62.22    3.70  3.86   2.29  31.41
+2011    512  62.79    3.98  3.90   2.27  31.12
+2012    512  63.29    3.77  3.82   2.29  30.78
+2013    512  64.00    3.83  3.92   2.38  30.43
+2014    512  63.10    3.81  3.94   2.33  30.66
+2015    512  63.51    3.96  3.85   2.37  30.51
+2016    512  63.13    3.72  4.01   2.41  30.99
+2017    512  62.40    3.64  3.74   2.21  30.94
+2018    512  62.12    3.97  3.97   2.52  31.41
+2019    512  62.66    3.94  4.07   2.45  31.06
+2023    570  62.46    3.68  3.92   2.28  31.39
+2024    570  61.49    3.60  4.06   2.45  31.94
+2025    570  60.75    3.49  3.99   2.43  32.31
+=================== 05a_matchup_pfpa.py
+[common] rows=7276 seasons 1999-2025 | train=6137 test=1139
+[common] sign check corr(S, margin) = -0.426 (must be strongly negative); corr(T, total_pts) = 0.321 (positive)
+[common] mean spread err (margin+S) = +0.094 | mean total err = +0.701
+
+rows with features: 7189 (train 6050, test 1139); feature SDs: h_off 4.72 h_def 4.02 X_home 6.12
+sanity: R2 margin~profiles = 0.130; with S added, profile coefs: h_off +0.087 (p=0.07), h_def -0.091 (p=0.06), a_off -0.043 (p=0.35), a_def +0.045 (p=0.34)
+TRAIN  r_home ~ profiles + S + T : h_off +0.058 (p=0.13), h_def -0.088 (p=0.02), a_off -0.014 (p=0.70), a_def +0.022 (p=0.55) | R2=0.0020
+TRAIN  r_away ~ profiles + S + T : h_off -0.027 (p=0.46), h_def +0.005 (p=0.90), a_off +0.030 (p=0.39), a_def -0.022 (p=0.51) | R2=0.0013
+TRAIN tot_err ~ profiles + S + T : h_off +0.031 (p=0.56), h_def -0.083 (p=0.10), a_off +0.017 (p=0.75), a_def -0.001 (p=0.99) | R2=0.0019
+TRAIN  sp_err ~ profiles + S + T : h_off +0.086 (p=0.10), h_def -0.092 (p=0.07), a_off -0.044 (p=0.37), a_def +0.044 (p=0.37) | R2=0.0014
+TRAIN  r_home ~ X_home + S + T : X_home +0.0318 (se 0.0302, p=0.293) -> per-SD effect +0.195 pts
+TRAIN  r_away ~ X_away + S + T : X_away +0.0132 (se 0.0288, p=0.648) -> per-SD effect +0.080 pts
+TRAIN X_home: top decile (n=605) resid +0.08 [-0.74,+0.89] P(over)=0.474 | bottom decile (n=605) resid +0.61 [-0.08,+1.31] P(over)=0.506
+TRAIN X_away: top decile (n=605) resid +0.21 [-0.58,+0.99] P(over)=0.503 | bottom decile (n=605) resid +0.23 [-0.46,+0.91] P(over)=0.462
+TEST X_home: top decile (n=114) resid +2.91 [+1.28,+4.54] P(over)=0.614 | bottom decile (n=114) resid +1.99 [+0.15,+3.83] P(over)=0.604
+TEST X_away: top decile (n=114) resid +0.32 [-1.38,+2.03] P(over)=0.469 | bottom decile (n=114) resid +0.12 [-1.25,+1.50] P(over)=0.495
+OOS home: MAE identity 7.230 vs identity+profile-realloc 7.209; dMAE +0.021 [-0.007,+0.049]; realloc SD 0.33, |realloc|>0.5 in 0.37 of games
+OOS away: MAE identity 7.080 vs identity+profile-realloc 7.102; dMAE -0.022 [-0.047,+0.005]; realloc SD 0.27, |realloc|>0.5 in 0.31 of games
+
+sum-preserving reallocation: sp_err ~ (X_home - X_away): coef +0.0467 (p=0.011); train n=6050
+OOS sum-preserving realloc: mean dMAE (home+away)/2 = -0.0022 [-0.0105,+0.0063]; realloc SD 0.201
+total-side: tot_err ~ (X_home + X_away): coef -0.0400 (p=0.062)
+   TEST same regression: coef +0.0017 (p=0.973) n=1139
+=================== 05b_matchup_pbp.py
+[common] rows=4630 seasons 2009-2025 | train=3491 test=1139
+[common] sign check corr(S, margin) = -0.436 (must be strongly negative); corr(T, total_pts) = 0.304 (positive)
+[common] mean spread err (margin+S) = +0.064 | mean total err = +0.512
+team-games joined to games.csv: 7342 (2009-2025)
+games with full features: 3506 (train 2009-2019 n=2733, test 2023-2025 n=773)
+train feature means: expl: off 0.061 / def 0.061, rz: off 0.595 / def 0.599, pace: off 30.996 / def 30.971, epa: off -0.000 / def 0.001
+
+--- sanity: features carry information the market prices (margin on S + indices) ---
+  S -1.091 (p=0.00), epa_home -0.156 (p=0.57), epa_away -0.053 (p=0.84), expl_home -0.191 (p=0.40), expl_away +0.001 (p=0.99)
+
+--- identity residuals on matchup indices (TRAIN 2009-2019, HC1) ---
+TRAIN  r_home: expl_home -0.190 (p=0.23), rz_home -0.058 (p=0.70), epa_home -0.378 (p=0.07), pace_avg +0.368 (p=0.18), pace_mismatch -0.126 (p=0.58), pass_home -0.004 (p=0.98) | R2=0.0055
+TRAIN  r_away: expl_away +0.217 (p=0.13), rz_away -0.279 (p=0.05), epa_away +0.105 (p=0.62), pace_avg +0.065 (p=0.81), pace_mismatch -0.271 (p=0.19), pass_away -0.109 (p=0.54) | R2=0.0037
+TRAIN tot_err: expl_home + expl_away +0.117 (p=0.42), rz_home + rz_away -0.158 (p=0.27), epa_home + epa_away -0.264 (p=0.15), pace_avg +0.376 (p=0.33), pace_mismatch -0.381 (p=0.21), pass_home + pass_away +0.115 (p=0.54) | R2=0.0036
+TRAIN  sp_err: expl_home - expl_away -0.080 (p=0.60), rz_home - rz_away -0.184 (p=0.21), epa_home - epa_away -0.068 (p=0.78), pace_home_rel +0.217 (p=0.26), pass_home - pass_away -0.262 (p=0.20) | R2=0.0030
+
+--- same regressions on TEST 2023-2025 (independent check, NOT a fit) ---
+TEST   r_home: expl_home +0.041 (p=0.87), rz_home +0.202 (p=0.43), epa_home -0.263 (p=0.46), pace_avg +0.932 (p=0.12), pace_mismatch -0.696 (p=0.14), pass_home -1.218 (p=0.00) | R2=0.0244
+TEST   r_away: expl_away +0.057 (p=0.82), rz_away +0.519 (p=0.04), epa_away -0.503 (p=0.14), pace_avg +0.032 (p=0.96), pace_mismatch -0.477 (p=0.30), pass_away -0.191 (p=0.57) | R2=0.0103
+TEST  tot_err: expl_home + expl_away -0.013 (p=0.96), rz_home + rz_away +0.599 (p=0.02), epa_home + epa_away -0.407 (p=0.23), pace_avg +1.037 (p=0.23), pace_mismatch -1.152 (p=0.09), pass_home + pass_away -0.604 (p=0.08) | R2=0.0155
+TEST   sp_err: expl_home - expl_away +0.118 (p=0.67), rz_home - rz_away +0.113 (p=0.67), epa_home - epa_away -0.424 (p=0.26), pace_home_rel +0.001 (p=1.00), pass_home - pass_away -0.870 (p=0.04) | R2=0.0154
+
+--- single-factor: residual per 1 SD of index, and top/bottom-decile over rate vs identity ---
+TRAIN expl_home -> r_home: -0.455 pts/SD (p=0.035, n=2733) | top-decile resid +0.05 P(over) 0.471 (n=274) | bottom-decile resid +0.87 P(over) 0.487
+TEST expl_home -> r_home: +0.162 pts/SD (p=0.648, n=773) | top-decile resid +1.54 P(over) 0.590 (n=78) | bottom-decile resid +1.55 P(over) 0.605
+TRAIN expl_away -> r_away: +0.312 pts/SD (p=0.111, n=2733) | top-decile resid +1.13 P(over) 0.557 (n=274) | bottom-decile resid +0.03 P(over) 0.450
+TEST expl_away -> r_away: -0.010 pts/SD (p=0.977, n=773) | top-decile resid +1.07 P(over) 0.487 (n=78) | bottom-decile resid -1.18 P(over) 0.442
+TRAIN   rz_home -> r_home: -0.257 pts/SD (p=0.200, n=2733) | top-decile resid +0.14 P(over) 0.480 (n=274) | bottom-decile resid +0.79 P(over) 0.489
+TEST   rz_home -> r_home: +0.275 pts/SD (p=0.454, n=773) | top-decile resid +1.92 P(over) 0.577 (n=78) | bottom-decile resid +1.23 P(over) 0.532
+TRAIN   rz_away -> r_away: -0.347 pts/SD (p=0.073, n=2733) | top-decile resid -0.15 P(over) 0.498 (n=274) | bottom-decile resid +0.88 P(over) 0.536
+TEST   rz_away -> r_away: +0.581 pts/SD (p=0.094, n=773) | top-decile resid +1.08 P(over) 0.474 (n=78) | bottom-decile resid -0.91 P(over) 0.423
+TRAIN  epa_home -> r_home: -0.725 pts/SD (p=0.006, n=2733) | top-decile resid +0.05 P(over) 0.478 (n=274) | bottom-decile resid -0.02 P(over) 0.464
+TEST  epa_home -> r_home: -0.034 pts/SD (p=0.941, n=773) | top-decile resid +2.68 P(over) 0.615 (n=78) | bottom-decile resid +2.09 P(over) 0.566
+TRAIN  epa_away -> r_away: +0.124 pts/SD (p=0.643, n=2733) | top-decile resid -0.05 P(over) 0.496 (n=274) | bottom-decile resid +0.41 P(over) 0.463
+TEST  epa_away -> r_away: -0.362 pts/SD (p=0.412, n=773) | top-decile resid +0.17 P(over) 0.462 (n=78) | bottom-decile resid -0.32 P(over) 0.455
+TRAIN tot_err ~ pace_avg + pace_mismatch: pace_avg +0.343 pts/SD (p=0.187), pace_mismatch -0.370 pts/SD (p=0.184)
+      fastest-decile games: tot resid +0.80 P(over) 0.528 (n=274) | slowest-decile: +1.09 P(over) 0.522
+TEST tot_err ~ pace_avg + pace_mismatch: pace_avg +0.325 pts/SD (p=0.495), pace_mismatch -0.761 pts/SD (p=0.103)
+      fastest-decile games: tot resid +3.17 P(over) 0.519 (n=78) | slowest-decile: -0.10 P(over) 0.551
+
+--- OOS 2023-2025: team-total MAE, identity vs identity + reallocation fit on 2009-2019 ---
+  home: MAE identity 7.345 -> +full realloc 7.350; dMAE -0.005 [-0.032,+0.021] (realloc SD 0.37)
+  away: MAE identity 7.046 -> +full realloc 7.070; dMAE -0.024 [-0.063,+0.015] (realloc SD 0.50)
+  sum-preserving realloc on I(expl_home-expl_away): train coef -0.0023 (p=0.986); OOS dMAE -0.0001 [-0.0002,-0.0000]; realloc SD 0.002
+  sum-preserving realloc on I(epa_home-epa_away): train coef +0.1135 (p=0.366); OOS dMAE +0.0003 [-0.0057,+0.0063]; realloc SD 0.116
+  sum-preserving realloc on I(rz_home-rz_away): train coef -0.1133 (p=0.400); OOS dMAE -0.0024 [-0.0081,+0.0032]; realloc SD 0.113
+
+--- implied reallocation magnitude at the 90th percentile of each index (train coefs, r_home spec) ---
+  expl_home: coef -0.313 [-0.604,-0.021] x p90 1.86 = -0.58 pts
+  rz_home: coef -0.179 [-0.453,+0.095] x p90 1.88 = -0.34 pts
+  epa_home: coef -0.508 [-0.871,-0.145] x p90 1.74 = -0.88 pts
+=================== 06_rolling_origin.py
+Rolling-origin MAE by season (h_=home team total, a_=away):
+          n  h_identity  h_shift  h_ols  h_ols_nl  h_qreg  a_identity  a_shift  a_ols  a_ols_nl  a_qreg
+season                                                                                                 
+2010    267       7.996    7.975  7.983     7.978   7.990       7.629    7.628  7.618     7.635   7.620
+2011    267       7.506    7.538  7.542     7.529   7.510       6.998    7.025  7.016     7.023   6.971
+2012    267       7.453    7.476  7.486     7.492   7.484       7.736    7.739  7.760     7.736   7.766
+2013    267       7.628    7.638  7.635     7.646   7.642       7.301    7.288  7.272     7.242   7.315
+2014    267       8.083    8.154  8.152     8.154   8.108       7.199    7.235  7.216     7.219   7.180
+2015    267       7.420    7.459  7.455     7.459   7.420       7.214    7.237  7.213     7.227   7.219
+2016    267       6.728    6.705  6.703     6.699   6.728       6.909    6.930  6.953     6.965   6.937
+2017    267       7.800    7.814  7.802     7.802   7.800       7.455    7.482  7.478     7.460   7.470
+2018    267       7.477    7.519  7.517     7.512   7.474       7.177    7.189  7.213     7.224   7.209
+2019    267       7.420    7.463  7.454     7.456   7.413       7.108    7.092  7.142     7.179   7.113
+2020    269       6.991    7.003  7.007     7.020   6.998       7.660    7.628  7.655     7.685   7.641
+2021    285       8.144    8.187  8.177     8.191   8.135       7.111    7.124  7.124     7.122   7.084
+2022    284       6.851    6.875  6.882     6.873   6.849       7.045    7.066  7.075     7.069   7.087
+2023    285       7.310    7.310  7.301     7.287   7.307       7.292    7.333  7.337     7.366   7.319
+2024    285       7.417    7.380  7.380     7.372   7.432       6.741    6.754  6.747     6.747   6.735
+2025    285       7.339    7.312  7.321     7.319   7.352       7.241    7.234  7.237     7.233   7.238
+
+Mean over 16 seasons and #seasons identity beats each alternative:
+  h identity -   shift: mean dMAE -0.0151 (sd 0.030); identity better in 11/16 seasons; paired t p=0.064
+  h identity -     ols: mean dMAE -0.0147 (sd 0.029); identity better in 11/16 seasons; paired t p=0.060
+  h identity -  ols_nl: mean dMAE -0.0142 (sd 0.032); identity better in 11/16 seasons; paired t p=0.102
+  h identity -    qreg: mean dMAE -0.0050 (sd 0.012); identity better in 9/16 seasons; paired t p=0.111
+  a identity -   shift: mean dMAE -0.0104 (sd 0.020); identity better in 11/16 seasons; paired t p=0.054
+  a identity -     ols: mean dMAE -0.0149 (sd 0.021); identity better in 11/16 seasons; paired t p=0.012
+  a identity -  ols_nl: mean dMAE -0.0198 (sd 0.032); identity better in 14/16 seasons; paired t p=0.027
+  a identity -    qreg: mean dMAE -0.0056 (sd 0.022); identity better in 9/16 seasons; paired t p=0.336
+pooled 2010-2025 (n=4363) h: MAE identity - nl: -0.0138 [-0.0268,-0.0006]
+pooled 2010-2025 (n=4363) h: MAE identity - q: -0.0049 [-0.0116,+0.0021]
+pooled 2010-2025 (n=4363) a: MAE identity - nl: -0.0198 [-0.0333,-0.0060]
+pooled 2010-2025 (n=4363) a: MAE identity - q: -0.0056 [-0.0177,+0.0060]
+
+Favorite-perspective spread error (fav margin - |S|) by |S| bin x era: mean (n)
+block          1999-04        2005-10        2011-16        2017-21        2022-25
+fbin                                                                              
+pick       1.24 (21.0)     -4.6 (5.0)      3.5 (2.0)     6.67 (3.0)            NaN
+1-3      -0.97 (527.0)   0.33 (559.0)  -1.01 (596.0)  -1.81 (463.0)  -0.37 (458.0)
+3.5-6.5    0.6 (560.0)  -0.19 (512.0)   1.11 (533.0)  -0.56 (446.0)   1.32 (389.0)
+7-9.5    -0.08 (307.0)    2.4 (294.0)   1.19 (287.0)   1.18 (241.0)  -0.12 (170.0)
+10-13.5   0.25 (134.0)  -1.19 (173.0)   0.73 (149.0)   0.44 (148.0)    1.79 (84.0)
+14+        0.81 (29.0)    0.54 (59.0)    2.29 (35.0)   -1.31 (54.0)   -0.03 (38.0)
+
+r_fav (favorite score - identity) by |S| bin x era:
+block    1999-04  2005-10  2011-16  2017-21  2022-25
+fbin                                                
+pick        0.07    -2.50    -3.25     2.00      NaN
+1-3        -0.08     0.95    -0.42    -1.04    -0.48
+3.5-6.5     0.99     0.35     1.09    -0.34     1.49
+7-9.5       0.35     1.77     0.99     1.53     0.75
+10-13.5     0.32    -0.58     0.08     0.36     1.91
+14+         1.91     0.29     1.12    -1.75     0.84
+
+total error by |S| bin x era:
+block    1999-04  2005-10  2011-16  2017-21  2022-25
+fbin                                                
+pick       -1.10    -0.40   -10.00    -2.67      NaN
+1-3         0.80     1.58     0.16    -0.27    -0.59
+3.5-6.5     1.39     0.90     1.08    -0.13     1.66
+7-9.5       0.77     1.13     0.80     1.88     1.61
+10-13.5     0.39     0.04    -0.57     0.29     2.03
+14+         3.00     0.03    -0.04    -2.18     1.71
+=================== 07_noise_cost.py
+TEST 2022-2025 n=1139: baseline identity team-total MAE (home/away avg) = 7.155
+  random realloc U(0.5,1.5) applied to 100% of games: dMAE +0.0426 (sd over reps 0.0195); implied spread shift 2*delta up to 3.0 pts
+  random realloc U(0.5,1.5) applied to 50% of games: dMAE +0.0210 (sd over reps 0.0158); implied spread shift 2*delta up to 3.0 pts
+  random realloc U(0.5,1.0) applied to 100% of games: dMAE +0.0219 (sd over reps 0.0140); implied spread shift 2*delta up to 2.0 pts
+  random realloc U(0.5,0.5) applied to 100% of games: dMAE +0.0064 (sd over reps 0.0105); implied spread shift 2*delta up to 1.0 pts
+  random realloc U(1.5,1.5) applied to 100% of games: dMAE +0.0913 (sd over reps 0.0293); implied spread shift 2*delta up to 3.0 pts
+
+residual SD of team score around identity in test: 8.99
+expected MAE change from reallocating x when the TRUE mean shift is t (same sign), Normal approx:
+x\t      0.00    0.25    0.50    1.00    1.50
+   0.5 +0.0111 +0.0000 -0.0111 -0.0332 -0.0553
+   1.0 +0.0443 +0.0222 +0.0000 -0.0443 -0.0885
+   1.5 +0.0996 +0.0664 +0.0332 -0.0332 -0.0996
+(negative = MAE falls; a reallocation of x only pays if the true shift t > x/2)
+=================== 08_fav_bin_rule.py
+TRAIN |S| 7-9.5: n=1129 r_fav +1.13 [+0.57,+1.70] median +0.50 P(fav over) 0.518; r_dog -0.02
+TEST  |S| 7-9.5: n=170 r_fav +0.75 [-0.60,+2.09] median +0.75 P(fav over) 0.541 (binom p=0.319); r_dog +0.87
+  OOS rule fav_tt += 0.5 in 7-9.5: MAE 7.281 -> 7.246, dMAE +0.035 [-0.038,+0.109] (n=170); P(fav over) after shift 0.521
+  OOS rule fav_tt += 1.0 in 7-9.5: MAE 7.281 -> 7.246, dMAE +0.035 [-0.112,+0.182] (n=170); P(fav over) after shift 0.482
+r_fav in 7-9.5 by season: {1999: 1.42, 2000: -0.39, 2001: -1.36, 2002: 1.29, 2003: 0.41, 2004: 0.31, 2005: 1.87, 2006: 1.72, 2007: 1.98, 2008: 2.9, 2009: 1.55, 2010: 0.32, 2011: 2.06, 2012: 0.66, 2013: 0.55, 2014: 1.17, 2015: 0.12, 2016: 1.09, 2017: 1.27, 2018: 0.99, 2019: 2.09, 2020: 2.15, 2021: 1.1, 2022: -1.1, 2023: 2.0, 2024: 1.57, 2025: 0.16}
+seasons with r_fav > 0: 24/27 (binomial p=0.000)
+  OOS monotone rule fav_tt += 0.03*|S| (all games): dMAE +0.0038 [-0.0070,+0.0143] n=1139
+  OOS monotone rule fav_tt += 0.05*|S| (all games): dMAE +0.0058 [-0.0121,+0.0235] n=1139
+ALL 1999-2025 |S| 7-9.5 n=1299: r_fav +1.08 = 0.5*total_err (+0.59) + 0.5*fav_spread_err (+0.50); r_dog +0.09
+=================== 09_modern_era_check.py
+modern era: train 2009-2021 n=3491, test 2022-2025 n=1139
+  home_score: const +0.882 (se 1.674), S -0.547 (se 0.027), T +0.481 (se 0.037) | Wald slopes=identity p=0.189
+              OOS MAE identity 7.230 vs OLS 7.228: dMAE +0.001 [-0.018,+0.020]
+  away_score: const +1.460 (se 1.644), S +0.509 (se 0.025), T +0.474 (se 0.036) | Wald slopes=identity p=0.727
+              OOS MAE identity 7.080 vs OLS 7.096: dMAE -0.016 [-0.036,+0.003]
+   fav_score: const +0.936 (se 1.713), abs_S +0.562 (se 0.046), T +0.476 (se 0.037) | Wald slopes=identity p=0.326
+              OOS MAE identity 7.198 vs OLS 7.188: dMAE +0.010 [-0.007,+0.029]
+   dog_score: const +1.641 (se 1.631), abs_S -0.590 (se 0.042), T +0.479 (se 0.036) | Wald slopes=identity p=0.085
+              OOS MAE identity 7.111 vs OLS 7.128: dMAE -0.017 [-0.040,+0.007]

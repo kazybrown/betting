@@ -1,0 +1,35 @@
+[A] hfa_mod - (hfa_base + tz + div + surface + home_bye + away_bye): mean 0.0000 sd 0.0000 share |res|<0.01 = 1.000  (n=4646)
+[A] nfelo_dif_base - (elo_dif + hfa_mod + qb): mean 0.392 sd 3.067 share |res|<0.01 = 0.957
+[A] tz share of hfa_mod: corr(hfa_mod, tz) = 0.507 | as-built (hfa_mod + tz) carries tz at 2x by construction
+[A] hfa_base_mod/25 mean by era: {'09-13': 2.48, '14-19': 2.3, '20-21': 0.95, '22-25': 1.67, '26': 1.67}
+[A] bye-mod sign check (Elo, home perspective): home_bye_mod mean when >0: 14.9 | away_bye_mod mean when <0: -40.8
+[B] nfelo bye mod, pts to the bye team: home bye 0.34 (n=247) | away bye 1.61 (n=219)
+[B] as-built PFF/Cole site HFA (hfa_mod+tz)/25: mean 2.25 sd 1.29 | bye pts embedded for home-bye games 0.58; blend carries 0.46*nfelo + 0.54*asbuilt + spec 0.75 = 1.22 pts vs market ~1.0
+[C] IN-SAMPLE 2015-21 n=1596 | market MAE 10.024
+    const 1.25                                 MAE 10.073  bias +0.37  dMAE vs 1.75 +0.001 [-0.024,+0.026]  bye-team bias +0.15 (n=199)
+    const 1.5                                  MAE 10.070  bias +0.12  dMAE vs 1.75 -0.002 [-0.014,+0.010]  bye-team bias +0.15 (n=199)
+    const 1.75                                 MAE 10.072  bias -0.13  dMAE vs 1.75 +0.000 [+0.000,+0.000]  bye-team bias +0.15 (n=199)
+    const 2.0                                  MAE 10.079  bias -0.38  dMAE vs 1.75 +0.007 [-0.005,+0.019]  bye-team bias +0.15 (n=199)
+    const 2.5                                  MAE 10.108  bias -0.88  dMAE vs 1.75 +0.035 [-0.001,+0.069]  bye-team bias +0.15 (n=199)
+    hfa_base_mod/25                            MAE 10.089  bias -0.27  dMAE vs 1.75 +0.017 [-0.021,+0.053]  bye-team bias +0.19 (n=199)
+    hfa_mod/25 (incl bye,div,tz)               MAE 10.083  bias -0.35  dMAE vs 1.75 +0.010 [-0.046,+0.066]  bye-team bias -0.61 (n=199)
+    (hfa_mod+tz)/25 AS-BUILT                   MAE 10.120  bias -0.47  dMAE vs 1.75 +0.047 [-0.016,+0.114]  bye-team bias -0.59 (n=199)
+    (hfa_base+tz)/25                           MAE 10.114  bias -0.39  dMAE vs 1.75 +0.042 [-0.004,+0.088]  bye-team bias +0.21 (n=199)
+    const 1.75 + 0.15*rest_diff (RECONCILED)   MAE 10.062  bias -0.11  dMAE vs 1.75 -0.011 [-0.029,+0.009]  bye-team bias -0.77 (n=199)
+    hfa_base/25 + 0.15*rest_diff               MAE 10.078  bias -0.25  dMAE vs 1.75 +0.005 [-0.034,+0.046]  bye-team bias -0.73 (n=199)
+[C] OOS 2022-25 n=1002 | market MAE 9.581
+    const 1.25                                 MAE 9.832  bias +0.98  dMAE vs 1.75 -0.006 [-0.038,+0.025]  bye-team bias +1.36 (n=115)
+    const 1.5                                  MAE 9.831  bias +0.73  dMAE vs 1.75 -0.007 [-0.021,+0.008]  bye-team bias +1.31 (n=115)
+    const 1.75                                 MAE 9.838  bias +0.48  dMAE vs 1.75 +0.000 [+0.000,+0.000]  bye-team bias +1.26 (n=115)
+    const 2.0                                  MAE 9.850  bias +0.23  dMAE vs 1.75 +0.012 [-0.003,+0.027]  bye-team bias +1.21 (n=115)
+    const 2.5                                  MAE 9.886  bias -0.27  dMAE vs 1.75 +0.049 [+0.004,+0.096]  bye-team bias +1.11 (n=115)
+    hfa_base_mod/25                            MAE 9.838  bias +0.52  dMAE vs 1.75 +0.000 [-0.007,+0.007]  bye-team bias +1.28 (n=115)
+    hfa_mod/25 (incl bye,div,tz)               MAE 9.854  bias +0.39  dMAE vs 1.75 +0.016 [-0.027,+0.057]  bye-team bias +0.62 (n=115)
+    (hfa_mod+tz)/25 AS-BUILT                   MAE 9.861  bias +0.26  dMAE vs 1.75 +0.023 [-0.038,+0.082]  bye-team bias +0.61 (n=115)
+    (hfa_base+tz)/25                           MAE 9.843  bias +0.39  dMAE vs 1.75 +0.005 [-0.019,+0.029]  bye-team bias +1.27 (n=115)
+    const 1.75 + 0.15*rest_diff (RECONCILED)   MAE 9.842  bias +0.47  dMAE vs 1.75 +0.004 [-0.019,+0.026]  bye-team bias +0.40 (n=115)
+    hfa_base/25 + 0.15*rest_diff               MAE 9.842  bias +0.51  dMAE vs 1.75 +0.004 [-0.019,+0.028]  bye-team bias +0.41 (n=115)
+[D] 2009-25 n=3809: market prices rest_diff at +0.137/day (se 0.014); realized +0.175/day (se 0.077)
+[D] bye games n=466: market prices bye team +0.86; realized vs rating line +0.90 (se 0.57)
+[E] neutral-site games with nfelo rows n=73: |tz mod|>2.5 Elo in 44; hfa_base_mod==0 in 73; mean |hfa_mod+tz|/25 = 0.84 pts
+[F] asymmetric short-rest games 2009-25 (one side <=5 days, other >=6): n=8, since 2021: 0

@@ -1,0 +1,62 @@
+(1) ROLLING-ORIGIN w(D) rule vs constant w vs market, nfelo_b, 2016-25
+          n  w_const      w0      w1    p_w1  mae_mkt  d_const    d_wD  d_wD_vs_const
+season                                                                               
+2016    244   0.4347  0.7844 -0.0763  0.0299   9.2439  -0.0749 -0.1011        -0.0262
+2017    259   0.5006  0.8731 -0.0824  0.0141  10.1622   0.0243  0.0161        -0.0081
+2018    259   0.4585  0.8310 -0.0802  0.0104   9.8494  -0.0756 -0.0924        -0.0168
+2019    259   0.4998  0.9113 -0.0899  0.0025  10.2046   0.1212  0.1658         0.0446
+2020    269   0.4168  0.7717 -0.0786  0.0074   9.7900   0.0111 -0.0193        -0.0304
+2021    285   0.4378  0.8246 -0.0839  0.0050  10.6667   0.0105  0.0142         0.0037
+2022    284   0.4185  0.7822 -0.0795  0.0069   8.7835  -0.0387 -0.0772        -0.0385
+2023    285   0.3977  0.7669 -0.0810  0.0037   9.9842   0.0722  0.0951         0.0229
+2024    285   0.3792  0.7280 -0.0776  0.0046   9.7035   0.1005  0.1418         0.0413
+2025    285   0.3222  0.6464 -0.0719  0.0090   9.6702   0.0356  0.0314        -0.0042
+  w1 refit each year: negative in 10/10, p<0.05 in 10/10 | w(D) rule beats constant-w in 6/10 seasons, mean -0.0012 | beats market in 4/10, mean +0.0174
+
+(2) is the in-sample w1<0 identified by the near-zero-D games? refit on <=2021 with D_base >= 1 / >= 2 only
+  D_base >= 0: n=3171 const w=0.418 (se 0.101) | w(D) = 0.782 (se 0.171) + -0.080 (se 0.029, p=0.007)*D
+  D_base >= 0.5: n=2589 const w=0.418 (se 0.101) | w(D) = 0.783 (se 0.172) + -0.080 (se 0.029, p=0.007)*D
+  D_base >= 1: n=2038 const w=0.404 (se 0.102) | w(D) = 0.756 (se 0.177) + -0.076 (se 0.030, p=0.012)*D
+  D_base >= 2: n=1169 const w=0.412 (se 0.109) | w(D) = 0.863 (se 0.197) + -0.090 (se 0.031, p=0.004)*D
+  same in TEST era:
+  D_base >= 0: n=1139 const w=-0.120 (se 0.161) | w(D) = 0.045 + -0.037 (se 0.055, p=0.495)*D
+  D_base >= 1: n=705 const w=-0.114 (se 0.163) | w(D) = 0.072 + -0.041 (se 0.056, p=0.457)*D
+  D_base >= 2: n=378 const w=-0.077 (se 0.175) | w(D) = 0.261 + -0.068 (se 0.061, p=0.264)*D
+
+(3) 'the model' = REAL nfelo pre-regression line (historic_projected_spreads.csv), 2021-25
+  joined n=1326 seasons [np.int64(2021), np.int64(2022), np.int64(2023), np.int64(2024), np.int64(2025)] | corr(pre, margin) = -0.407 | MAE pre 10.039 vs market 9.805 vs nfelo_b 10.043
+  2022-25 (n=1076): constant w = -0.111 (se 0.147) | w(D) = -0.122 +0.002*D (p_w1=0.958)
+    HIGH D_pre [0,1.5): n=502 share=0.47 w=-0.433 (se 0.681) | ATS vs close 244-239-19 (0.505, p=0.856) | rmse pre 12.47 mkt 12.43 identity 12.45
+    MED D_pre [1.5,3): n=341 share=0.32 w=-0.279 (se 0.311) | ATS vs close 160-177-4 (0.475, p=0.383) | rmse pre 12.62 mkt 12.34 identity 12.52
+    LOW D_pre [3,99): n=233 share=0.22 w=-0.042 (se 0.172) | ATS vs close 115-113-5 (0.504, p=0.947) | rmse pre 13.72 mkt 12.83 identity 13.65
+    blend w=0.1: MAE diff vs market +0.0109 (paired t p=0.156)
+    blend w=0.2: MAE diff vs market +0.0259 (paired t p=0.090)
+    blend w=0.3: MAE diff vs market +0.0445 (paired t p=0.052)
+    blend w=0.5: MAE diff vs market +0.0996 (paired t p=0.008)
+
+(4) model vs OPEN line: 53.4% ATS - per season, break-even, and source
+          n  open_w  open_l  open_rate  close_rate  mkt_move_toward_model  mkt_moved
+season                                                                              
+2009    227     119     105      0.531       0.514                  0.476      0.775
+2010    230     122     102      0.545       0.549                  0.504      0.822
+2011    228     127      95      0.572       0.548                  0.408      0.719
+2012    228     123      99      0.554       0.498                  0.504      0.820
+2013    226     120      95      0.558       0.532                  0.509      0.827
+2014    229     109     114      0.489       0.493                  0.476      0.847
+2015    228     140      85      0.622       0.616                  0.491      0.868
+2016    244     121     116      0.511       0.552                  0.516      0.816
+2017    259     144     111      0.565       0.496                  0.467      0.780
+2018    259     135     116      0.538       0.592                  0.510      0.822
+2019    259     122     132      0.480       0.490                  0.417      0.772
+2020    269     151     112      0.574       0.543                  0.543      0.862
+2021    285     144     138      0.511       0.505                  0.477      0.754
+2022    284     158     118      0.572       0.536                  0.338      0.560
+2023    285     155     127      0.550       0.491                  0.572      0.821
+2024    285     132     143      0.480       0.477                  0.467      0.726
+2025    285     149     131      0.532       0.496                  0.379      0.611
+  ALL 2009-25 vs open: 2271-1939 (0.5394, p=0.0000); break-even at -110 = 0.5238 -> above break-even; seasons > 52.4%: 12/17
+  2022-25 vs open: 594-519 (0.5337, p=0.0265)
+  share of games where market moved: 0.78; when it moved, share toward the model side: 0.474
+  538 qbelo vs OPEN (2009-25, n=4171): 2093-1979 (0.5140, p=0.0766)
+  538 qbelo vs CLOSE: 2075-1990 (0.5105)
+  CLOSE vs OPEN (closing line as the 'model'): 2294-1916 (0.5449, p=0.0000) -> how much of the open is beatable at all

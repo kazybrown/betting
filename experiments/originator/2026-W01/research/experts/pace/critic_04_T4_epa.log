@@ -1,0 +1,71 @@
+sample: train n=2442 test n=752 (expert 2442 / 752)
+
+== (0) reproduce ==
+  BASE MAE=10.290; epa_sum train coef +4.051 (se 1.689) p=0.016; refit OOS dMAE -0.065 [-0.120,-0.014] (expert 4.051, -0.065 [-0.120,-0.014])
+  rule clip(4*epa_sum, +/-3): dMAE -0.051 [-0.117,+0.012] dRMSE -0.011; O/U 408-339-5 (0.546) vs BASE 391-356-5 (0.523); calib slope +0.68 (se 0.55)  (expert -0.051, 408-339, 0.68)
+  2023-25 in-sample coef +3.726 (se 2.644) p=0.159 (expert 3.73)
+
+== (1) season-level offsets in epa_sum (expert ref = prior-season league mean; 2019 nflscrapR mean used for 2023 nflfastR) ==
+  league mean EPA/play by season: 2017:-0.019  2018:+0.035  2019:+0.018  2023:-0.036  2024:+0.005  2025:+0.002
+  2023: mean epa_sum expert-ref -0.221 (std-ref +0.004) -> mean rule adj -0.88 pts | BASE bias (act-pred) +0.79 | market bias +0.57
+  2024: mean epa_sum expert-ref +0.126 (std-ref +0.026) -> mean rule adj +0.50 pts | BASE bias (act-pred) +1.88 | market bias +1.48
+  2025: mean epa_sum expert-ref +0.020 (std-ref -0.003) -> mean rule adj +0.08 pts | BASE bias (act-pred) -0.76 | market bias +1.15
+  rule 4*epa_sum cap3 (expert ref)               per-season dMAE: 2023: -0.000 (n=208)  2024: -0.065 (n=272)  2025: -0.076 (n=272)
+  refit BASE+epa_sum (expert ref)                per-season dMAE: 2023: -0.021 (n=208)  2024: -0.091 (n=272)  2025: -0.073 (n=272)
+  [diagnostic] rule with its pooled test mean (-0.03) removed: dMAE -0.052 [-0.117,+0.012]
+  [diagnostic, leaky] rule demeaned within each test season (matchup shape only): dMAE -0.033 [-0.084,+0.018]
+
+== (2) leak-free season-to-date league reference (std ref) ==
+  train coef +6.683 (se 1.829) p=0.000; corr(expert ref, std ref) test=0.804; refit OOS dMAE -0.060 [-0.128,+0.012]; calib slope +0.58 (se 0.39)
+  rule clip(4*epa_sum_s, +/-3): dMAE -0.039 [-0.089,+0.011] dRMSE -0.021; mean adj +0.04; O/U 397-350-5 (0.531)
+  rule 4*epa_sum cap3 (std ref)                  per-season dMAE: 2023: +0.007 (n=208)  2024: -0.023 (n=272)  2025: -0.091 (n=272)
+  2023-25 in-sample coef (std ref) +5.671 (se 3.230) p=0.079
+
+== (3) the O/U claim ==
+  2023-25 REG (n=752): overs 382, unders 365, always-over = 0.511; BASE (no EPA) already 391-356 (0.523) because BASE leans over (bias +0.63)
+  games where the EPA rule flips the O/U pick: 91; rule right 54, BASE right 37 -> exact binomial p=0.093
+  408-339 vs 50%: binomial p=0.0128; vs the always-over rate 0.511: p=0.057
+  O/U when |adj|>=1 (n=212): 121-88 (0.579); agreement of rule's O/U pick with the market-vs-BASE direction: 0.569
+
+== (4) rolling-origin, all seasons (fit < Y; 2023 fits <= 2019; 2024 adds 2023; 2025 adds 2023-24) ==
+   Y   n   BASE  d_epa  b_epa  d_epa_s  b_epa_s  d_pts8_s  b_pts8_s  d_ppd_s  b_ppd_s  d_rule4_s
+2013 217 11.196 -0.063  3.393   -0.097    6.045    -0.038     0.219    0.007    1.195     -0.043
+2014 218 11.575 -0.005  5.417   -0.132    7.921    -0.174     0.221   -0.069    1.173     -0.093
+2015 217 10.891 -0.019  5.073   -0.023    8.370    -0.007     0.227    0.022    1.864      0.029
+2016 233 10.392 -0.040  4.970   -0.080    7.840    -0.008     0.205   -0.040    1.447     -0.043
+2017 248 11.302  0.043  5.242    0.168    8.360     0.174     0.200    0.030    1.928      0.075
+2018 248 10.807 -0.056  3.826   -0.128    6.049    -0.032     0.159   -0.089    1.521     -0.084
+2019 248 10.836 -0.022  4.159   -0.040    6.810    -0.043     0.145   -0.030    1.848     -0.005
+2023 208 10.319 -0.021  4.051    0.029    6.683     0.068     0.160    0.033    2.101      0.007
+2024 272  9.862 -0.071  3.082   -0.063    6.023    -0.019     0.151   -0.073    1.904     -0.019
+2025 272 10.728 -0.073  3.772   -0.122    6.283    -0.017     0.153   -0.061    2.253     -0.103
+  d_epa      mean 2013-19 -0.023 (6/7 better) | 2023-25 -0.055 (3/3) | all 10 -0.033
+  d_epa_s    mean 2013-19 -0.047 (6/7 better) | 2023-25 -0.052 (2/3) | all 10 -0.049
+  d_pts8_s   mean 2013-19 -0.018 (6/7 better) | 2023-25 +0.011 (2/3) | all 10 -0.010
+  d_ppd_s    mean 2013-19 -0.024 (4/7 better) | 2023-25 -0.034 (2/3) | all 10 -0.027
+  d_rule4_s  mean 2013-19 -0.023 (5/7 better) | 2023-25 -0.038 (2/3) | all 10 -0.028
+  pooled rolling-origin refit +epa_sum_s                       dMAE vs BASE -0.049 [-0.092,-0.007] n=2381
+  pooled rolling-origin fixed rule 4*epa_s cap3                dMAE vs BASE -0.029 [-0.057,+0.001] n=2381
+  pooled rolling-origin refit +pts_r8_sum_s (recency placebo)  dMAE vs BASE -0.009 [-0.047,+0.031] n=2381
+
+== (5) EPA or just an 8-game recency window? prior-8 POINTS for+against as the extra term (fit train, OOS 2023-25) ==
+  + epa_sum       train +4.051 (p=0.016; per SD +0.86) | 23-25 in-sample +3.726 (p=0.159) | OOS dMAE -0.065 [-0.120,-0.014] | calib +0.68 (se 0.55)
+  + epa_sum_s     train +6.683 (p=0.000; per SD +1.26) | 23-25 in-sample +5.671 (p=0.079) | OOS dMAE -0.060 [-0.128,+0.012] | calib +0.58 (se 0.39)
+  + pts_r8_sum    train +0.119 (p=0.024; per SD +1.03) | 23-25 in-sample +0.072 (p=0.430) | OOS dMAE -0.001 [-0.043,+0.049] | calib +0.19 (se 0.50)
+  + pts_r8_sum_s  train +0.160 (p=0.002; per SD +1.32) | 23-25 in-sample +0.096 (p=0.294) | OOS dMAE +0.006 [-0.051,+0.068] | calib +0.22 (se 0.38)
+  + ppd_sum       train +1.066 (p=0.167; per SD +0.69) | 23-25 in-sample +2.759 (p=0.028) | OOS dMAE -0.029 [-0.058,+0.002] | calib +1.26 (se 0.67)
+  + ppd_sum_s     train +2.101 (p=0.008; per SD +1.31) | 23-25 in-sample +2.847 (p=0.029) | OOS dMAE -0.036 [-0.090,+0.016] | calib +0.64 (se 0.35)
+  + epa_sum_bl    train +6.814 (p=0.002; per SD +1.16) | 23-25 in-sample +6.072 (p=0.136) | OOS dMAE -0.072 [-0.133,-0.014] | calib +0.52 (se 0.45)
+  + both epa_sum_s and pts_r8_sum_s: epa +5.215 (p=0.013), pts8 +0.087 (p=0.136) | OOS dMAE -0.038 [-0.112,+0.040]
+
+== (6) robustness of the train coefficient ==
+  Huber 2009-19: epa_sum_s +6.681 (se 1.808)
+  single-season coefs (BASE + epa_sum_s): 2009:-10.6(7.6)  2010:+8.2(6.2)  2011:+6.1(5.3)  2012:+15.7(6.7)  2013:+11.3(6.9)  2014:+6.5(5.9)  2015:+0.3(7.1)  2016:+11.1(6.0)  2017:-3.8(6.7)  2018:+13.9(6.6)  2019:+1.6(6.2)  2023:-0.8(6.3)  2024:+6.6(5.3)  2025:+8.0(5.6)
+  seasons with positive coef: 11/14; inverse-variance pooled +5.73 (se 1.66)
+
+== (7) market-consistency: does the EPA term move BASE toward the market total? and the market's own EPA weight ==
+  BASE                         MAE vs MARKET total = 2.131; MAE vs result = 10.290
+  BASE + refit epa_sum_s       MAE vs MARKET total = 1.975; MAE vs result = 10.230
+  BASE + rule 4*epa_s cap3     MAE vs MARKET total = 1.964; MAE vs result = 10.251
+  train: market slope on epa_sum_s +6.54 (se 0.28) | realized slope +6.68 (se 1.83) | residual-vs-market slope -0.62 (p=0.67)
+  test: market slope on epa_sum_s +7.94 (se 0.53) | realized slope +5.67 (se 3.23) | residual-vs-market slope -1.83 (p=0.49)

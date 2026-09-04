@@ -1,0 +1,68 @@
+team-seasons 829 | new_qb 267 = qb_new_to_team 174 + qb_took_over 93 | new_vs_last 347 | first_start 50 vet_new 204
+W1 games with flags: 412 (1999-2025)
+
+1. Reproduce W1 new_qb (vs prev primary), residual vs market, HC1 and season-clustered
+  new_qb HC1                                                 n= 412 ev=173  net_new_qb +2.13 (se 0.98, p=0.029)
+  new_qb cluster(season)                                     n= 412 ev=173  net_new_qb +2.13 (se 0.92, p=0.021)
+  new_qb                                                     back-flag ATS 99-71-3 = 0.582 [0.504,0.657] p=0.038
+  new_hc HC1 (4a)                                            n= 412 ev=151  net_new_hc -0.18 (se 1.11, p=0.874)
+  new_hc                                                     back-flag ATS 73-75-3 = 0.493 [0.410,0.577] p=0.935
+
+2. Decomposition of new_qb
+  new_to_team + took_over (jointly)                          n= 412 ev=133  net_qb_new_to_team +1.49 (se 1.12, p=0.185) | net_qb_took_over +3.29 (se 1.57, p=0.036)
+  QB new to team                                             back-flag ATS 71-58-4 = 0.550 [0.460,0.638] p=0.291
+  QB took over last season (not primary)                     back-flag ATS 49-34-1 = 0.590 [0.477,0.697] p=0.124
+  first-ever start + veteran new starter (2001+)             n= 397 ev= 46  net_first_start +2.85 (se 1.72, p=0.097) | net_vet_new +1.68 (se 1.11, p=0.130)
+  first-ever start                                           back-flag ATS 24-22-0 = 0.522 [0.369,0.671] p=0.883
+  veteran new starter                                        back-flag ATS 81-59-3 = 0.579 [0.492,0.661] p=0.076
+
+3. Confounders
+  + net prev-season MOV                                      n= 412 ev=173  net_new_qb +2.34 (se 1.04, p=0.025) | net_prev_mov +0.05 (se 0.08, p=0.534)
+  + prev MOV + market line                                   n= 412 ev=173  net_new_qb +2.33 (se 1.06, p=0.027) | net_prev_mov +0.05 (se 0.12, p=0.671) | mkt +0.01 (se 0.21, p=0.977)
+  + new_hc + prev MOV + line                                 n= 412 ev=173  net_new_qb +2.33 (se 1.05, p=0.027) | net_new_hc -0.11 (se 1.19, p=0.928) | net_prev_mov +0.05 (se 0.12, p=0.687) | mkt +0.01 (se 0.21, p=0.973)
+  correlation net_new_qb vs net_prev_mov = -0.330, vs mkt = 0.354
+  home flag only                                             n= 412 ev=128  home_new_qb +2.13 (se 1.37, p=0.121)
+  away flag only (expect negative)                           n= 412 ev=137  away_new_qb -1.97 (se 1.45, p=0.174)
+  flagged team underdog (tline>0)          n=166 cover margin +1.58 (se 1.08) p=0.144 | ATS 92-70
+  flagged team favourite (tline<0)         n= 94 cover margin +1.13 (se 1.44) p=0.433 | ATS 48-43
+
+4. Stability: per era, leave-one-season-out, per-season team-level sign
+  new_qb 1999-2008                                           n= 141 ev= 51  net_new_qb +2.37 (se 2.03, p=0.241)
+  new_qb 2009-2016                                           n= 128 ev= 51  net_new_qb +2.03 (se 1.54, p=0.188)
+  new_qb 2017-2025                                           n= 143 ev= 71  net_new_qb +2.03 (se 1.54, p=0.187)
+  new_qb 2000-2012                                           n= 205 ev= 79  net_new_qb +1.89 (se 1.51, p=0.213)
+  new_qb 2013-2025                                           n= 207 ev= 94  net_new_qb +2.40 (se 1.28, p=0.061)
+  leave-one-season-out coef range 1.81 .. 2.60 (mean 2.13)
+  per-season mean cover margin of flagged teams: positive in 19 of 26 seasons | mean of season means +1.19 (se 0.63, p=0.072)
+  2000:+4.4, 2001:+3.6, 2002:-2.1, 2003:-6.3, 2004:+0.6, 2005:+1.9, 2006:+5.0, 2007:-1.8, 2008:+4.2, 2009:+2.0, 2010:-1.8, 2011:+1.5, 2012:+0.2, 2013:+7.3, 2014:+3.9, 2015:+1.6, 2016:-1.6, 2017:-5.4, 2018:+2.2, 2019:+0.2, 2020:+0.1, 2021:+4.5, 2022:-1.2, 2023:+5.2, 2024:+0.8, 2025:+1.5
+  median team-level cover margin +1.0 | Wilcoxon p=0.082 | 10%-trimmed mean +1.40
+
+5. Placebo by week (same season-level flag)
+  new_qb W1                                                  n= 412 ev=173  net_new_qb +2.13 (se 0.98, p=0.029)
+  new_qb W2                                                  n= 411 ev=160  net_new_qb -0.01 (se 1.03, p=0.995)
+  new_qb W3                                                  n= 401 ev=166  net_new_qb +0.92 (se 1.05, p=0.378)
+  new_qb W4                                                  n= 383 ev=180  net_new_qb -0.61 (se 0.97, p=0.528)
+  new_qb W2-4                                                n=1195 ev=506  net_new_qb +0.08 (se 0.59, p=0.885)
+  new_qb W5-8                                                n=1461 ev=649  net_new_qb +0.22 (se 0.54, p=0.676)
+  new_qb W9-18                                               n=3635 ev=1606  net_new_qb -0.15 (se 0.32, p=0.647)
+
+6. Alternative definitions (W1)
+  starter != last season's FINAL-game starter                n= 412 ev=197  net_new_vs_last +0.07 (se 0.94, p=0.936)
+  vs final-game starter                                      back-flag ATS 101-91-5 = 0.526 [0.453,0.598] p=0.516
+  starter != mode of last season's last 3 starters           n= 412 ev=185  net_new_vs_last3 +0.50 (se 0.94, p=0.592)
+  vs last-3 mode                                             back-flag ATS 104-76-5 = 0.578 [0.502,0.651] p=0.044
+  QB new to team (expert alt)                                n= 412 ev=133  net_qb_new_to_team +0.94 (se 1.13, p=0.403)
+
+7. Multiplicity: headline p=0.029; expert tested 5 flags x {ALL,FIT,TEST} x {coef, ATS} in W1 plus 3 windows -> >=15 tests. Bonferroni(15) p = 0.43; Bonferroni(5 flags) p = 0.15
+
+8. OOS value of the recommended +1.0 lean: market line shifted 1.0 toward the flagged team (net flag), paired MAE vs market
+  ALL 1999-2025   n=173 shift 1.0: MAE adj 9.766 vs mkt 9.876 diff -0.110 [-0.25,+0.03] p=0.142
+  ALL 1999-2025   n=173 shift 2.0: MAE adj 9.737 vs mkt 9.876 diff -0.139 [-0.43,+0.15] p=0.350
+  FIT 1999-2021   n=138 shift 1.0: MAE adj 10.199 vs mkt 10.308 diff -0.109 [-0.27,+0.05] p=0.198
+  FIT 1999-2021   n=138 shift 2.0: MAE adj 10.149 vs mkt 10.308 diff -0.159 [-0.49,+0.16] p=0.342
+  TEST 2022-2025  n= 35 shift 1.0: MAE adj 8.057 vs mkt 8.171 diff -0.114 [-0.43,+0.20] p=0.487
+  TEST 2022-2025  n= 35 shift 2.0: MAE adj 8.114 vs mkt 8.171 diff -0.057 [-0.66,+0.57] p=0.860
+  2009-2025       n=122 shift 1.0: MAE adj 9.135 vs mkt 9.242 diff -0.107 [-0.27,+0.06] p=0.231
+  2009-2025       n=122 shift 2.0: MAE adj 9.135 vs mkt 9.242 diff -0.107 [-0.44,+0.24] p=0.544
+  2015-2025       n= 84 shift 1.0: MAE adj 9.256 vs mkt 9.327 diff -0.071 [-0.27,+0.13] p=0.506
+  2015-2025       n= 84 shift 2.0: MAE adj 9.292 vs mkt 9.327 diff -0.036 [-0.44,+0.37] p=0.867

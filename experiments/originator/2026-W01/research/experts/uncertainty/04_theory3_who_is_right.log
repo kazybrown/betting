@@ -1,0 +1,71 @@
+
+====================================================================================================
+MODEL = nfelo UNREGRESSED (base); disagreement = D_base
+overall blend weight on model, fit era (n=3171): w=0.418 se=0.101 p=0.0000
+overall blend weight on model, TEST era (n=1139): w=-0.120 se=0.161 p=0.4563  [descriptive, not used for OOS eval]
+interaction (fit): w(D) = 0.782 + -0.080*D  (p_w1=0.007)
+interaction (test, descriptive): w(D) = 0.045 + -0.037*D  (p_w1=0.495)
+tercile edges of D_base (fit era): [0.94 2.17]
+         n_fit   w_fit      se  n_test  mae_mkt  mae_model  mae_blend_tercile_w  d_blend_minus_mkt   ci_lo   ci_hi  mae_blend_global_w         ats  ats_rate  p_binom
+tercile                                                                                                                                                              
+T1 low    1057  1.4116  0.7442     399   9.1178     9.1271               9.1379             0.0201 -0.0501  0.0922              9.1202  196-189-14    0.5091   0.7598
+T2 mid    1057  0.2841  0.2556     406   9.8005     9.9702               9.8289             0.0284 -0.0128  0.0709              9.8512   190-209-7    0.4762   0.3675
+T3 high   1057  0.4212  0.1110     334   9.7141    10.3072               9.8288             0.1148 -0.0499  0.2811              9.8274   169-157-8    0.5184   0.5424
+TEST whole: MAE market=9.5360 blend(w=0.42)=9.5882 diff=+0.0522 [95% CI +0.0011,+0.1063] | RMSE market=12.4231 blend=12.4797
+TEST whole: blend with w(D) rule MAE=9.5937 vs market diff=+0.0577 [95% CI -0.0026,+0.1180] | vs constant-w blend diff=+0.0055 [-0.0210,+0.0316]
+ATS of model side vs market by D bin (test era), with binomial p:
+  D in [0,1): n=434 ATS 209-210-15 rate=0.499 p=1.000 | MAE mkt=9.237 model=9.269
+  D in [1,2): n=327 ATS 156-166-5 rate=0.484 p=0.616 | MAE mkt=9.688 model=9.847
+  D in [2,3): n=199 ATS 109-85-5 rate=0.562 p=0.098 | MAE mkt=10.101 model=10.023
+  D in [3,4.5): n=133 ATS 58-72-3 rate=0.446 p=0.254 | MAE mkt=9.308 model=10.251
+  D in [4.5,99): n=46 ATS 23-22-1 rate=0.511 p=1.000 | MAE mkt=9.489 model=11.563
+Fit era same bins (in-sample, for reference):
+  D in [0,1): n=1133 ATS 588-511-34 rate=0.535 p=0.022 | MAE mkt=10.273 model=10.251
+  D in [1,2): n=869 ATS 441-410-18 rate=0.518 p=0.304 | MAE mkt=9.922 model=9.964
+  D in [2,3): n=544 ATS 282-246-16 rate=0.534 p=0.128 | MAE mkt=10.353 model=10.390
+  D in [3,4.5): n=446 ATS 232-203-11 rate=0.533 p=0.179 | MAE mkt=10.476 model=10.669
+  D in [4.5,99): n=179 ATS 102-75-2 rate=0.576 p=0.050 | MAE mkt=11.330 model=12.117
+
+====================================================================================================
+MODEL = nfelo REGRESSED (close); disagreement = D_reg
+overall blend weight on model, fit era (n=3171): w=1.050 se=0.216 p=0.0000
+overall blend weight on model, TEST era (n=1139): w=-0.225 se=0.320 p=0.4819  [descriptive, not used for OOS eval]
+interaction (fit): w(D) = 1.064 + -0.005*D  (p_w1=0.877)
+interaction (test, descriptive): w(D) = -0.022 + -0.092*D  (p_w1=0.788)
+tercile edges of D_reg (fit era): [0. 1.]
+/home/user/originator-2026-w01/research/experts/uncertainty/04_theory3_who_is_right.py:23: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  r = sm.OLS(d.e_mkt.values, x.values).fit(cov_type="HC1")   # no intercept
+         n_fit   w_fit      se  n_test  mae_mkt  mae_model  mae_blend_tercile_w  d_blend_minus_mkt   ci_lo   ci_hi  mae_blend_global_w         ats  ats_rate  p_binom
+tercile                                                                                                                                                              
+T1 low    1347  0.0000  0.0000     531   9.5989     9.5989               9.5989             0.0000  0.0000  0.0000              9.5989  267-248-16    0.5184   0.4277
+T2 mid    1118  0.3186  0.5547     349   9.9613    10.0287               9.9809             0.0196 -0.0050  0.0424             10.0329   166-175-8    0.4868   0.6649
+T3 high    706  1.1740  0.2355     259   8.8340     9.0309               9.1034             0.2695 -0.0296  0.5686              9.0518   131-123-5    0.5157   0.6606
+TEST whole: MAE market=9.5360 blend(w=1.05)=9.6074 diff=+0.0714 [95% CI +0.0079,+0.1345] | RMSE market=12.4231 blend=12.4981
+TEST whole: blend with w(D) rule MAE=9.6014 vs market diff=+0.0654 [95% CI +0.0061,+0.1264] | vs constant-w blend diff=-0.0060 [-0.0091,-0.0029]
+ATS of model side vs market by D bin (test era), with binomial p:
+  D in [0,1): n=762 ATS 387-354-21 rate=0.522 p=0.240 | MAE mkt=9.644 model=9.638
+  D in [1,2): n=212 ATS 94-113-5 rate=0.454 p=0.211 | MAE mkt=9.866 model=10.002
+  D in [2,3): n=142 ATS 70-69-3 rate=0.504 p=1.000 | MAE mkt=8.511 model=8.771
+  D in [3,4.5): n=22 ATS 13-9-0 rate=0.591 p=0.523 | MAE mkt=9.091 model=9.455
+  D in [4.5,99): n=1 (too few)
+Fit era same bins (in-sample, for reference):
+  D in [0,1): n=2076 ATS 1027-992-57 rate=0.509 p=0.449 | MAE mkt=10.256 model=10.263
+  D in [1,2): n=674 ATS 358-301-15 rate=0.543 p=0.029 | MAE mkt=9.921 model=9.884
+  D in [2,3): n=348 ATS 196-144-8 rate=0.576 p=0.006 | MAE mkt=10.404 model=10.272
+  D in [3,4.5): n=66 ATS 41-24-1 rate=0.631 p=0.046 | MAE mkt=14.333 model=13.720
+
+====================================================================================================
+Rolling-origin check of the constant blend weight w for nfelo_b (fit on all prior seasons >= 2009, test each season 2016-2025)
+          n   w_fit  mae_mkt  mae_blend    diff
+season                                         
+2016    244  0.4347   9.2439     9.1689 -0.0749
+2017    259  0.5006  10.1622    10.1864  0.0243
+2018    259  0.4585   9.8494     9.7738 -0.0756
+2019    259  0.4998  10.2046    10.3259  0.1212
+2020    269  0.4168   9.7900     9.8010  0.0111
+2021    285  0.4378  10.6667    10.6771  0.0105
+2022    284  0.4185   8.7835     8.7448 -0.0387
+2023    285  0.3977   9.9842    10.0564  0.0722
+2024    285  0.3792   9.7035     9.8040  0.1005
+2025    285  0.3222   9.6702     9.7058  0.0356
+mean diff (blend - market) 2016-25 = +0.0186; seasons blend better: 3/10

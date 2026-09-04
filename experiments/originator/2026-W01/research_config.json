@@ -1,5 +1,5 @@
 {
- "_status": "PLACEHOLDER values from expert findings \u2014 pending critic/synthesis verdicts",
+ "_status": "FINAL \u2014 parameters from the synthesis of the 10-expert panel (2026-09-04); see research/synthesis.json",
  "spreads": {
   "weights": {
    "nfelo": 0.46,
@@ -7,32 +7,89 @@
    "cole": 0.15
   },
   "hfa_rating_paths": 1.75,
+  "hfa_neutral_international": 0.75,
+  "hfa_neutral_domestic": 0.0,
   "structural_clamp": 4.5,
   "sleeve_clamp": 1.0,
-  "hfa_neutral": 0.5
+  "nfelo_strip_bye_mods": true,
+  "nfelo_strip_tz_at_neutral": true
+ },
+ "schedule": {
+  "rest_per_day": 0.15,
+  "rest_clip_days": 7,
+  "week1_exempt": true,
+  "deleted_clauses": [
+   "short week -0.6..-1.2",
+   "bye +0.5..+1.0",
+   "west-to-east 10am -0.4..-0.8"
+  ]
  },
  "totals": {
-  "model": "v3",
-  "league_prior": 46.0,
-  "b_elo": 0.1,
-  "b_pf": 0.34,
-  "b_pa": 0.27,
-  "b_qb": 0.72,
-  "b_div": -1.36,
-  "b_eff": 0.0,
-  "eff_cap": 3.0,
+  "model": "synthesis-v1",
+  "L_prev": 46.0,
+  "week1_prior_offset": -1.0,
+  "inseason_K": 128,
+  "median_target": -0.5,
+  "nfelo_path": {
+   "b_R": 0.1,
+   "b_gt": 0.3,
+   "b_qb": 0.72,
+   "K_team": 3
+  },
+  "rating_paths": {
+   "b_R": 0.3
+  },
+  "div": {
+   "div_game": -0.85,
+   "non_div": 0.45
+  },
   "env": {
    "dome": 2.0,
    "outdoor_base": -0.5,
-   "per_mph": 0.2,
-   "mean_wind": 8.4
+   "per_mph": 0.18,
+   "mean_wind": 8.4,
+   "cold_lt20F": -1.0,
+   "precip": 0.0
+  },
+  "blend": {
+   "pff_implied": 0.38,
+   "nfelo_implied": 0.32,
+   "cole_implied": 0.3
+  },
+  "pace_adj": 0.0,
+  "style_adj": 0.0,
+  "eff": {
+   "b_eff": 3.0,
+   "cap": 2.0,
+   "window_games": 8,
+   "min_games": 4
   }
  },
  "team_totals": {
-  "realloc_cap": 0.5
+  "identity": "home = T/2 - S/2, away = T/2 + S/2",
+  "realloc_default": 0.0,
+  "realloc_cap": 0.5,
+  "coherence": "spread_final = spread - 2*delta",
+  "matchup_components_zeroed": [
+   "explosive",
+   "red_zone",
+   "pace",
+   "pf_pa_profile"
+  ]
  },
- "schedule": {
-  "rest_per_day": 0.15
+ "qb": {
+  "stint_penalty": {
+   "1st_start": 2.5,
+   "2nd_3rd": 1.5,
+   "4th_plus": 0.5
+  },
+  "A_stint_nfelo": {
+   "1st_start": 2.3,
+   "2nd_3rd": 1.6,
+   "4th_plus": 0.8
+  },
+  "rule": "penalty applied NET of what each input embeds: sum_i w_i*clip(P - A_i, -1, P); nfelo QB term multiplier 1.0, no top-up; planned offseason starters 0; rested-starter games: anchor/tag LOW",
+  "team_total_split": "60/40 (unvalidated)"
  },
  "caps": {
   "spread": 2.5,
@@ -40,40 +97,37 @@
   "scale": 1.0
  },
  "week1_caps": {
-  "spread": 1.5,
-  "total": 2.0,
-  "scale": 0.6
+  "spread": 2.0,
+  "total": 2.5,
+  "scale": 1.0
  },
  "uncertainty": {
-  "base_spread": 12.72,
-  "base_total": 12.96,
-  "c": 1.0,
+  "driver": "distance to latest market line (diagnostic; the market is never an input to the number)",
+  "base_spread": 12.65,
+  "base_total": 13.1,
   "spread_thresholds": [
-   1.0,
-   2.5
+   1.5,
+   3.0
   ],
   "total_thresholds": [
-   1.5,
-   3.5
+   2.5,
+   5.0
+  ],
+  "label": "expected excess RMSE vs the close = sqrt(BASE^2 + D^2) - BASE",
+  "gap_shrink_lambda": 0.27,
+  "breakeven_raw_gap": 3.0,
+  "forced_low": [
+   "final regular-season week",
+   "announced rested starter"
   ]
  },
  "market": {
-  "mass": {
-   "1": 0.022,
-   "2": 0.028,
-   "3": 0.088,
-   "4": 0.03,
-   "5": 0.027,
-   "6": 0.041,
-   "7": 0.062,
-   "8": 0.032,
-   "9": 0.006,
-   "10": 0.037,
-   "11": 0.014,
-   "12": 0.016,
-   "13": 0.033,
-   "14": 0.052,
-   "15": 0.02
-  }
+  "push_mass": {
+   "3": 0.1,
+   "7": 0.06,
+   "other": 0.025
+  },
+  "no_key_number_rounding": true,
+  "no_steam_lean": true
  }
 }

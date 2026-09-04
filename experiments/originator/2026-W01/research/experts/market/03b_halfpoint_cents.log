@@ -1,0 +1,23 @@
+ k    n  mass  full_point_cents  half_point_cents
+ 1 1692 0.022             8.983             4.492
+ 2 2363 0.028            11.172             5.586
+ 3 2627 0.088            35.173            17.587
+ 4 2506 0.030            11.971             5.986
+ 5 2509 0.027            10.682             5.341
+ 6 1659 0.041            16.395             8.198
+ 7 1409 0.062            24.698            12.349
+ 8 1357 0.032            12.675             6.338
+ 9 1078 0.006             2.597             1.299
+10  600 0.037            14.667             7.333
+11  565 0.014             5.664             2.832
+12  511 0.016             6.262             3.131
+13  301 0.033            13.289             6.645
+14  249 0.052            20.884            10.442
+
+generic integer mass (excl 3,7): 0.028 -> 6 cents per half point | 3: 18 c | 7: 12 c | 6: 8 c | 10: 7 c | 14: 10 c
+
+Exact fair prices (favorite side) for a latent fair line at the midpoint, from the empirical two-number pools:
+  latent 2.75 (n=1064): lay 2.5: win 0.505 push 0.000 fair -102 | lay 3.0: win 0.418 push 0.086 fair +118 | lay 3.5: win 0.418 push 0.000 fair +139
+  latent 3.25 (n=1125): lay 2.5: win 0.552 push 0.000 fair -123 | lay 3.0: win 0.465 push 0.087 fair -104 | lay 3.5: win 0.465 push 0.000 fair +115 | lay 4.0: win 0.433 push 0.032 fair +124
+  latent 6.75 (n=504): lay 6.5: win 0.510 push 0.000 fair -104 | lay 7.0: win 0.452 push 0.058 fair +108 | lay 7.5: win 0.452 push 0.000 fair +121
+  latent 7.25 (n=514): lay 6.5: win 0.537 push 0.000 fair -116 | lay 7.0: win 0.467 push 0.070 fair -101 | lay 7.5: win 0.467 push 0.000 fair +114 | lay 8.0: win 0.444 push 0.023 fair +120

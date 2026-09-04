@@ -1,0 +1,14 @@
+(a) coherence algebra: max |(home_tt - away_tt) + S| = 0.0 | after +d/-d shift, implied S' = -(home_tt+d - (away_tt-d)) = S - 2d  -> for d=1.0 the implied spread moves -2.0 pts
+(c) 2010-2021 n=3224: baseline MAE 7.424; random realloc U(0.5,1.5) all games dMAE +0.0480 (sd 0.0121)
+    empirical E|r + t - x| - E|r + t| (x = reallocation applied, t = true shift):
+      x\t     0.00    0.25    0.50    1.00    1.50
+      0.5  +0.0074 -0.0040 -0.0149 -0.0364 -0.0609
+      1.0  +0.0363 +0.0140 -0.0074 -0.0513 -0.0972
+      1.5  +0.0863 +0.0538 +0.0214 -0.0438 -0.1121
+(c) 2022-2025 n=1139: baseline MAE 7.155; random realloc U(0.5,1.5) all games dMAE +0.0417 (sd 0.0204)
+    empirical E|r + t - x| - E|r + t| (x = reallocation applied, t = true shift):
+      x\t     0.00    0.25    0.50    1.00    1.50
+      0.5  +0.0075 -0.0009 -0.0092 -0.0307 -0.0544
+      1.0  +0.0375 +0.0173 -0.0018 -0.0399 -0.0852
+      1.5  +0.0926 +0.0593 +0.0283 -0.0325 -0.0944
+(d) rounding identity to .0/.5: MAE 7.1547 -> 7.1504 (d -0.0044); identity values already on .25 grid: 1.00

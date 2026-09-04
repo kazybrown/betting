@@ -1,0 +1,71 @@
+sample (prior-8-game league-relative features): train 2009-2019 n=2442 | test 2023-2025 n=752
+
+== (1) modern-era IN-SAMPLE check: BASE + x fit on 2023-2025 only (n=752) vs the 2009-2019 fit ==
+  x                  2009-19 coef (se) p        2023-25 coef (se) p   corr(x, total) 09-19 | 23-25
+  spp_avg          -0.541 (0.215) p=0.012      +0.132 (0.516) p=0.798   -0.086 | -0.017
+  sppr_avg         -0.381 (0.202) p=0.059      +0.004 (0.497) p=0.994   -0.070 | -0.003
+  gplays_avg       +0.316 (0.101) p=0.002      +0.134 (0.202) p=0.506   +0.124 | +0.050
+  proe_sum         +0.170 (0.041) p=0.000      +0.040 (0.076) p=0.600   +0.179 | +0.103
+  pr_sum          +13.343 (3.663) p=0.000      +2.434 (6.593) p=0.712   +0.143 | +0.044
+  ppd_sum          +1.066 (0.772) p=0.167      +2.759 (1.255) p=0.028   +0.184 | +0.238
+  epa_sum          +4.051 (1.689) p=0.016      +3.726 (2.644) p=0.159   +0.179 | +0.189
+  expl_def_sum    +43.023 (12.508) p=0.001     +11.271 (20.158) p=0.576   +0.103 | +0.018
+  expl_off_sum     +1.793 (11.077) p=0.871     +24.396 (18.181) p=0.180   +0.077 | +0.165
+
+== (2) OOS calibration of train-fit adjustments on top of BASE (test 2023-25) ==
+  BASE: MAE=10.290 RMSE=13.122 | market MAE=10.157 RMSE=13.001
+  adj = b*x      b (train) mean|adj|       calib slope (se) p   dMAE [95% CI]            dRMSE   in-sample train dMAE
+  spp_avg           -0.541      0.49    -0.27 (0.91) p=0.767   +0.064 [+0.021,+0.106]   +0.027   -0.010
+  sppr_avg          -0.381      0.33    +0.36 (1.29) p=0.780   +0.028 [-0.001,+0.056]   +0.006   -0.008
+  gplays_avg        +0.316      0.69    +0.42 (0.62) p=0.494   +0.027 [-0.030,+0.084]   +0.016   -0.013
+  proe_sum          +0.170      0.94    +0.44 (0.40) p=0.262   +0.018 [-0.063,+0.090]   +0.025   -0.025
+  pr_sum           +13.343      0.78    +0.24 (0.48) p=0.614   +0.038 [-0.035,+0.104]   +0.032   -0.017
+  ppd_sum           +1.066      0.61    +1.26 (0.67) p=0.060   -0.029 [-0.058,+0.002]   -0.035   -0.008
+  epa_sum           +4.051      0.75    +0.68 (0.55) p=0.211   -0.065 [-0.120,-0.014]   -0.021   -0.019
+  expl_def_sum     +43.023      0.90    -0.04 (0.44) p=0.934   +0.023 [-0.051,+0.097]   +0.019   -0.017
+  expl_off_sum      +1.793      0.04   +15.77 (9.18) p=0.086   -0.004 [-0.007,-0.000]   -0.003   -0.000
+
+== (3) concrete PACE rules applied to the BASE total (OOS 2023-25) ==
+  quartile cutoffs (train): fast <= -0.99 s/play vs league, slow >= +1.26; mean spp_avg by bucket (test): FF=-1.70, FM=-0.77, MM=+0.26, FS=+0.15, SM=+1.18, SS=+2.17
+  rule                                                     MAE    RMSE  dMAE vs BASE [95% CI]     dRMSE   mean|adj|  O/U vs mkt
+  no pace adj (BASE)                                    10.290  13.122  +0.000 [+0.000,+0.000]   +0.000     0.00   391-356-5 (0.523)
+  spec bucket rule (+/-1.5 FF/SS, +/-0.75 mixed)        10.368  13.163  +0.078 [+0.027,+0.125]   +0.041     0.54   387-360-5 (0.518)
+  spec rule x0.5 (+/-0.75 FF/SS, +/-0.375 mixed)        10.323  13.137  +0.033 [+0.009,+0.058]   +0.015     0.27   387-360-5 (0.518)
+  linear -0.5*spp_avg, cap +/-1.0                       10.346  13.150  +0.056 [+0.018,+0.091]   +0.028     0.44   389-358-5 (0.521)
+  linear train-fit b*spp_avg (b=-0.54), no cap          10.354  13.154  +0.064 [+0.020,+0.105]   +0.032     0.49   390-357-5 (0.522)
+  linear -0.25*spp_avg, cap +/-0.5                      10.316  13.133  +0.025 [+0.006,+0.043]   +0.011     0.22   392-355-5 (0.525)
+  rolling-origin 2013-2019 (fit < Y): mean dMAE vs BASE of each rule
+    no pace adj (BASE)                                   mean dMAE=+0.000  seasons better: 0/7
+    spec bucket rule (+/-1.5 FF/SS, +/-0.75 mixed)       mean dMAE=-0.010  seasons better: 5/7
+    spec rule x0.5 (+/-0.75 FF/SS, +/-0.375 mixed)       mean dMAE=-0.010  seasons better: 5/7
+    linear -0.5*spp_avg, cap +/-1.0                      mean dMAE=-0.013  seasons better: 5/7
+    linear train-fit b*spp_avg (b=-0.54), no cap         mean dMAE=-0.011  seasons better: 5/7
+    linear -0.25*spp_avg, cap +/-0.5                     mean dMAE=-0.008  seasons better: 5/7
+
+== (4) efficiency alternative on the BASE total (OOS 2023-25): EPA/play (for+against, both teams) and points per drive ==
+  EPA: train-fit b*epa_sum (b=4.05)          MAE=10.239 dMAE vs BASE -0.051 [-0.117,+0.013]  vs market +0.082 [-0.090,+0.259]  dRMSE -0.010  mean|adj|=0.75  O/U 408-339-5 (0.546)
+  EPA: 4.0*epa_sum, cap +/-3                 MAE=10.239 dMAE vs BASE -0.051 [-0.117,+0.012]  vs market +0.082 [-0.091,+0.258]  dRMSE -0.011  mean|adj|=0.75  O/U 408-339-5 (0.546)
+  EPA: 3.0*epa_sum, cap +/-2                 MAE=10.247 dMAE vs BASE -0.043 [-0.092,+0.005]  vs market +0.090 [-0.078,+0.267]  dRMSE -0.015  mean|adj|=0.56  O/U 402-345-5 (0.538)
+  PPD: train-fit b*ppd_sum (b=1.07)          MAE=10.257 dMAE vs BASE -0.033 [-0.085,+0.020]  vs market +0.100 [-0.071,+0.279]  dRMSE -0.036  mean|adj|=0.61  O/U 404-343-5 (0.541)
+  EPA 4.0 + pace -0.5*spp (both capped)      MAE=10.291 dMAE vs BASE +0.001 [-0.069,+0.068]  vs market +0.135 [-0.041,+0.316]  dRMSE +0.011  mean|adj|=0.79  O/U 403-344-5 (0.539)
+  rolling-origin 2013-2019: EPA 4.0*epa_sum cap 3 -> mean dMAE vs BASE -0.006, seasons better 4/7
+  epa_sum scale: train SD=0.213, so 4.0*epa_sum has SD 0.85 pts; 1st/99th pct of adj in test: -2.25 / +1.89
+
+== (5) TEAM TOTAL: explosive-plays-allowed by the opponent's defense, on the market-free team-points baseline (OOS 2023-25) ==
+  BASE team pts: MAE=7.269 | implied_tt MAE=7.187
+  + opp_expl_def  b= +31.558 (p=0.000) per SD +0.55 | calib slope +0.08 (se 0.41) | dMAE -0.002 [-0.027,+0.023] mean|adj|=0.45
+  + off_expl      b=  +6.058 (p=0.441) per SD +0.11 | calib slope +5.00 (se 1.91) | dMAE -0.005 [-0.011,+0.000] mean|adj|=0.10
+  + off_epa       b=  +4.060 (p=0.051) per SD +0.43 | calib slope +0.72 (se 0.51) | dMAE -0.010 [-0.025,+0.004] mean|adj|=0.38
+  + opp_def_epa   b=  +3.372 (p=0.096) per SD +0.31 | calib slope -0.07 (se 0.75) | dMAE -0.001 [-0.013,+0.012] mean|adj|=0.26
+  rule: team_total += 30 * (opp explosive-allowed rate - league), cap +/-1.5 -> dMAE +0.005 [-0.021,+0.031], mean|adj|=0.42
+
+== (6) WEEKLY FEATURE SPEC (what to compute from pbp each week; all prior-only, league-relative) ==
+            feature                                                                                                                        definition                               window                                      use
+           spp_neut game-clock seconds between consecutive offensive snaps of the same drive, Q1-Q3, |score diff|<=8, excl. last 2:00 of H1, 0<dt<=60 prior 8 games, weighted by gap count                                     pace
+ plays / game_plays                                                   offensive pass+run plays; game_plays = own + opponent plays in the team's games                        prior 8 games                   pace (diagnostic only)
+     pr_neut / proe              pass share of neutral pass+run plays; PROE = pass - xpass (logit on down/dist/field pos/score x time/clock/wp), x100                        prior 8 games         style (market prices it; no adj)
+  epa_off / epa_def                                                                                               EPA per pass+run play for / against                        prior 8 games       efficiency (recommended total adj)
+                ppd                                                                           offensive drive points / offensive drives (XP included)                        prior 8 games             efficiency (weaker than EPA)
+expl_off / expl_def                                                                            (pass>=20 yds or rush>=10 yds) per play, for / allowed                        prior 8 games team-total (defense-allowed only; small)
+  league-relative = subtract the prior-season league mean (2019 league mean when the prior season has no pbp).
+  minimum 4 prior games; before that fall back to prior-season team mean, else league mean (the K=4 blend behaved the same as rolling-8 in every test).

@@ -1,0 +1,51 @@
+== reproduce: dome/closed vs outdoors, participant team-season FE ==
+  ALL 1999-2025  n=6653 dome=+2.15 (HC1 se 0.52; stadium-cluster se 0.55)
+  FIT <=2021     n=5589 dome=+1.80 (HC1 se 0.58; stadium-cluster se 0.62)
+  TEST 2022-25   n=1064 dome=+3.59 (HC1 se 1.15; stadium-cluster se 0.83)
+
+== (1) placebo: outdoor games only; flag home games of k random outdoor home teams per season (k = # dome teams that season); 200 draws ==
+  placebo pseudo-dome coefficient: mean=+0.044 sd=0.613 2.5/97.5%=[-1.23,+1.24]  (real dome = +2.15)
+  share of placebo draws >= +2.15: 0.005
+
+== (2) leave-one-dome-home-team-out (ALL 1999-2025) ==
+  dome home teams (games): {'DET': 210, 'NO': 202, 'ATL': 190, 'MIN': 190, 'LA': 177, 'IND': 176, 'HOU': 149, 'ARI': 140, 'DAL': 129, 'LV': 51, 'LAC': 50, 'BUF': 4}
+   drop DET : dome=+1.97 (se 0.54)
+   drop NO  : dome=+2.01 (se 0.54)
+   drop ATL : dome=+1.98 (se 0.54)
+   drop MIN : dome=+2.31 (se 0.55)
+   drop LA  : dome=+2.11 (se 0.54)
+   drop IND : dome=+2.62 (se 0.55)
+   drop HOU : dome=+2.17 (se 0.54)
+   drop ARI : dome=+2.17 (se 0.54)
+   drop DAL : dome=+1.75 (se 0.53)
+   drop LV  : dome=+2.13 (se 0.52)
+   drop LAC : dome=+2.11 (se 0.52)
+   drop BUF : dome=+2.16 (se 0.52)
+  by dome home team (that team's dome games flagged alone, others as outdoor-equivalent excluded):
+   DET  n_dome=210: +2.01 (se 1.54)
+   NO   n_dome=202: +3.14 (se 1.46)
+   ATL  n_dome=190: +2.30 (se 1.46)
+   MIN  n_dome=190: -0.00 (se 1.48)
+   LA   n_dome=177: +2.71 (se 1.52)
+   IND  n_dome=176: -1.66 (se 1.42)
+   HOU  n_dome=149: +1.85 (se 1.49)
+   ARI  n_dome=140: +0.86 (se 1.56)
+
+== (3) within-stadium: closed vs open at retractable-roof stadiums (stadium x season FE + participant FE) ==
+/home/user/originator-2026-w01/research/experts/totals/critic_04_T4_dome.py:72: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  X = np.hstack([r[["closed"]].values.astype(float), F, S]); f = sm.OLS(r.y.values, X).fit(cov_type="HC1")
+  stadiums with both: ['AT&T Stadium', 'Cowboys Stadium', 'Lucas Oil Stadium', 'Mercedes-Benz Stadium', 'NRG Stadium', 'Reliant Stadium', 'State Farm Stadium', 'University of Phoenix Stadium']; n=713 (closed 585, open 128); closed-vs-open within stadium-season = -1.46 (se 3.21)
+  stadium-season FE only (no participant FE): -1.45 (se 1.51); raw mean total closed=46.7 open=46.7
+
+== (4) market residual by roof: cluster by season; by era ==
+  ALL        dome-outdoor market residual diff=+0.80 (season-cluster se 0.31, p=0.010) n_dome=1668
+  1999-2010  dome-outdoor market residual diff=+0.22 (season-cluster se 0.49, p=0.656) n_dome=588
+  2011-2021  dome-outdoor market residual diff=+1.28 (season-cluster se 0.52, p=0.013) n_dome=732
+  2022-25    dome-outdoor market residual diff=+1.01 (season-cluster se 0.58, p=0.079) n_dome=348
+
+== (5) marginal dome coefficient inside the V3 spec (with PF/PA, QB, wind_c), rolling origin ==
+  fit < 2016: dome=+1.97 (se 0.72) wind_c=-0.187 n=1777
+  fit < 2019: dome=+1.58 (se 0.62) wind_c=-0.199 n=2533
+  fit < 2022: dome=+2.28 (se 0.54) wind_c=-0.224 n=3306
+  fit < 2026: dome=+2.44 (se 0.46) wind_c=-0.238 n=4370
+  test 2022-25 in-sample: dome=+2.78 (se 0.88) n=1064

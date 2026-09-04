@@ -1,0 +1,35 @@
+frame n=4310 seasons 2009-2025 fit=3171 test=1139
+nflverse scored games 2009-25 with a closing spread: 4630 -> dropped by the nfelo join: 320
+dropped game types: {'REG': 317, 'DIV': 2, 'WC': 1}
+
+(a) SIGN CHECKS
+  corr(mkt, margin) = -0.435
+  corr(nfelo_b, margin) = -0.422
+  corr(nfelo_c, margin) = -0.439
+  corr(home_line_close, margin) = -0.436
+  corr(mkt_open, margin) = -0.420
+  mean e_mkt (margin+mkt) = +0.135 (should be ~0)
+
+(b) nflverse close vs nfelo market close
+  identical share 0.665 | mean |diff| 0.231 | p90 |diff| 0.50 | max 14.5 | mean signed diff -0.040
+  |diff| by season: {2009: 0.34, 2010: 0.24, 2011: 0.23, 2012: 0.25, 2013: 0.31, 2014: 0.23, 2015: 0.2, 2016: 0.23, 2017: 0.2, 2018: 0.21, 2019: 0.2, 2020: 0.27, 2021: 0.32, 2022: 0.28, 2023: 0.18, 2024: 0.14, 2025: 0.15}
+  RMSE vs results: nflverse close 13.091 | nfelo market close 13.085 | MAE 10.082 vs 10.067
+  nfelo regressed line == nfelo market close share: 0.621 | == nflverse close share: 0.436
+  D_base vs nflverse close: mean 1.816 | vs nfelo market close: mean 1.813 | corr 0.960
+
+(c) what is nfelo_dif_base?
+  nfelo_dif_base - [elo_dif + hfa_mod + div + surf + time + qb + bye]: mean|.|=17.65 Elo, exact(<0.5) share=0.098
+  nfelo_dif_base - [elo_dif + hfa_base_mod + div + surf + time + qb + bye]: mean|.|=5.38 Elo, exact(<0.5) share=0.899
+  nfelo_dif_base - [elo_dif + hfa_mod + qb + bye]: mean|.|=3.71 Elo, exact(<0.5) share=0.850
+  nfelo_dif_base - [elo_dif + hfa_mod + qb]: mean|.|=0.52 Elo, exact(<0.5) share=0.959
+  hfa_base_mod non-null share by season: {'2009': 1.0, '2010': 1.0, '2011': 1.0, '2012': 1.0, '2013': 1.0, '2014': 1.0, '2015': 1.0, '2016': 1.0, '2017': 1.0, '2018': 1.0, '2019': 1.0, '2020': 1.0, '2021': 1.0, '2022': 1.0, '2023': 1.0, '2024': 1.0, '2025': 1.0, '2026': 1.0}
+  joined to historic file n=1326: nfelo_b - home_line_pre_regression: mean -0.112 sd 1.550 | corr 0.9646
+  |gap| by season: {2021: 1.64, 2022: 1.21, 2023: 0.83, 2024: 1.26, 2025: 0.7}
+  D from historic pre-regression line vs its own close: mean 1.831 | D_base (nfelo_b vs nflverse close): mean 1.725 | corr of the two D's 0.605
+  market_regression_factor: mean 0.730 sd 0.285
+
+(d) INDEPENDENT engine: 538 qbelo line vs market
+  n=4171 corr(qbelo, margin)=-0.400 | MAE qbelo 10.319 vs market 10.088 vs nfelo_b 10.205
+  nfelo_b (market-informed Elo)    D mean 1.81 median 1.45 p90 3.79 | test-era band shares HIGH<1.5 0.54 MED 0.30 LOW>=3 0.16
+  qbelo (independent Elo)          D mean 2.08 median 1.50 p90 4.00 | test-era band shares HIGH<1.5 0.35 MED 0.30 LOW>=3 0.34
+  -> if ORIGINATOR's PFF/Cole engines are independent of the market like qbelo, the LOW band share will be far larger than the 16% quoted for nfelo.

@@ -1,0 +1,70 @@
+sanity corr(mkt_total, total_pts) = 0.320 (positive)
+
+A. Reproduce (1999-2025)
+  W1 market residual -0.47 (se 0.64) [-1.67,+0.75] p=0.461 n=428 | under 232-192 0.547 [0.498,0.595] p=0.058
+  W1 realized - prev-season mean -1.32 (se 0.75, p=0.092, 26 seasons) | W1 realized - same-season W2+ mean -1.30 (se 0.71, p=0.078); negative 20/27 binom p=0.019
+  Wilcoxon signed-rank on (W1 - W2+ mean) per season: p=0.065 | median -1.81
+
+B. Week profile of scoring within a season (realized total minus own-season mean), season-clustered SE; and the market total minus season mean
+  wk 1     n= 428 realized - season mean -1.23 (cl se 0.67, p=0.065) | market - season mean -0.75 (se 0.34) | market resid -0.47
+  wk 2     n= 427 realized - season mean -0.50 (cl se 0.74, p=0.497) | market - season mean -0.83 (se 0.29) | market resid +0.33
+  wk 3     n= 416 realized - season mean -0.15 (cl se 0.58, p=0.795) | market - season mean -0.62 (se 0.25) | market resid +0.47
+  wk 4     n= 398 realized - season mean +0.96 (cl se 0.60, p=0.107) | market - season mean -0.66 (se 0.25) | market resid +1.62
+  wk 5     n= 384 realized - season mean +1.22 (cl se 0.55, p=0.026) | market - season mean -0.51 (se 0.25) | market resid +1.73
+  wk 6     n= 380 realized - season mean -0.26 (cl se 0.62, p=0.668) | market - season mean -0.20 (se 0.20) | market resid -0.06
+  wk 7     n= 378 realized - season mean +0.25 (cl se 0.59, p=0.675) | market - season mean -0.53 (se 0.21) | market resid +0.78
+  wk 8     n= 378 realized - season mean +0.68 (cl se 0.61, p=0.263) | market - season mean -0.52 (se 0.23) | market resid +1.20
+  wk 9-13  n=1994 realized - season mean -0.06 (cl se 0.21, p=0.787) | market - season mean -0.48 (se 0.18) | market resid +0.43
+  wk 14+   n=1784 realized - season mean -0.11 (cl se 0.27, p=0.692) | market - season mean -1.10 (se 0.13) | market resid +1.00
+  W1 minus W2-4 (realized, season-demeaned): -1.31 (cl se 0.79, p=0.098)
+  W1 minus W2-4 (market residual):            -1.26 (cl se 0.83, p=0.129)
+
+C. Era stability
+  1999-2008 W1 - prev mean -2.54 (se 1.48, n_seasons 9) | W1 - W2+ mean -2.10 (se 1.46) neg 8/10 | market resid -0.91 (se 1.11) | market - prev mean -0.93
+  2009-2016 W1 - prev mean -0.47 (se 1.27, n_seasons 8) | W1 - W2+ mean -0.70 (se 1.29) neg 6/8 | market resid +0.49 (se 1.14) | market - prev mean -0.96
+  2017-2025 W1 - prev mean -0.85 (se 1.16, n_seasons 9) | W1 - W2+ mean -0.96 (se 0.90) neg 6/9 | market resid -0.86 (se 1.08) | market - prev mean +0.03
+  2009-2025 W1 - prev mean -0.67 (se 0.83, n_seasons 17) | W1 - W2+ mean -0.84 (se 0.75) neg 12/17 | market resid -0.22 (se 0.78) | market - prev mean -0.44
+  2015-2025 W1 - prev mean -0.76 (se 0.94, n_seasons 11) | W1 - W2+ mean -0.89 (se 0.73) neg 8/11 | market resid -0.72 (se 0.97) | market - prev mean -0.02
+  2022-2025 W1 - prev mean -2.22 (se 1.54, n_seasons 4) | W1 - W2+ mean -2.38 (se 1.04) neg 4/4 | market resid -2.59 (se 1.55) | market - prev mean +0.37
+
+D. Rolling-origin effect of a fixed W1 shift: prior = prev-season mean + delta (no fitting needed); pooled W1 games
+  2005-2025 n=335 | market MAE 10.385 bias -0.80
+    delta +0.0  MAE 10.921 bias -1.38 | vs P0: +0.000 [+0.00,+0.00] p=nan | vs market: +0.536 [+0.15,+0.93] p=0.01
+    delta -0.5  MAE 10.850 bias -0.88 | vs P0: -0.071 [-0.13,-0.02] p=0.01 | vs market: +0.465 [+0.09,+0.86] p=0.02
+    delta -0.6  MAE 10.838 bias -0.78 | vs P0: -0.083 [-0.15,-0.02] p=0.01 | vs market: +0.453 [+0.07,+0.85] p=0.02
+    delta -1.0  MAE 10.795 bias -0.38 | vs P0: -0.126 [-0.24,-0.02] p=0.02 | vs market: +0.410 [+0.02,+0.81] p=0.04
+    delta -1.3  MAE 10.765 bias -0.08 | vs P0: -0.156 [-0.30,-0.02] p=0.03 | vs market: +0.380 [-0.01,+0.78] p=0.06
+    delta -1.5  MAE 10.748 bias +0.12 | vs P0: -0.173 [-0.34,-0.02] p=0.03 | vs market: +0.363 [-0.03,+0.76] p=0.08
+    delta -2.0  MAE 10.727 bias +0.62 | vs P0: -0.194 [-0.42,+0.01] p=0.07 | vs market: +0.342 [-0.07,+0.76] p=0.11
+  2015-2025 n=175 | market MAE 10.309 bias -0.72
+    delta +0.0  MAE 10.879 bias -0.74 | vs P0: +0.000 [+0.00,+0.00] p=nan | vs market: +0.570 [+0.06,+1.09] p=0.03
+    delta -0.5  MAE 10.825 bias -0.24 | vs P0: -0.054 [-0.12,+0.02] p=0.15 | vs market: +0.516 [+0.01,+1.05] p=0.04
+    delta -0.6  MAE 10.814 bias -0.14 | vs P0: -0.065 [-0.15,+0.02] p=0.15 | vs market: +0.506 [-0.01,+1.04] p=0.05
+    delta -1.0  MAE 10.782 bias +0.26 | vs P0: -0.096 [-0.24,+0.05] p=0.20 | vs market: +0.474 [-0.05,+1.00] p=0.07
+    delta -1.3  MAE 10.760 bias +0.56 | vs P0: -0.119 [-0.30,+0.07] p=0.22 | vs market: +0.451 [-0.08,+1.00] p=0.09
+    delta -1.5  MAE 10.746 bias +0.76 | vs P0: -0.133 [-0.34,+0.09] p=0.24 | vs market: +0.437 [-0.10,+1.00] p=0.11
+    delta -2.0  MAE 10.743 bias +1.26 | vs P0: -0.136 [-0.41,+0.15] p=0.36 | vs market: +0.434 [-0.13,+1.04] p=0.13
+  2022-2025 n=64 | market MAE 10.625 bias -2.59
+    delta +0.0  MAE 10.771 bias -2.22 | vs P0: +0.000 [+0.00,+0.00] p=nan | vs market: +0.146 [-0.65,+1.02] p=0.74
+    delta -0.5  MAE 10.630 bias -1.72 | vs P0: -0.141 [-0.25,-0.03] p=0.02 | vs market: +0.005 [-0.81,+0.91] p=0.99
+    delta -0.6  MAE 10.602 bias -1.62 | vs P0: -0.169 [-0.30,-0.04] p=0.02 | vs market: -0.023 [-0.85,+0.88] p=0.96
+    delta -1.0  MAE 10.497 bias -1.22 | vs P0: -0.274 [-0.49,-0.06] p=0.03 | vs market: -0.128 [-0.98,+0.79] p=0.78
+    delta -1.3  MAE 10.422 bias -0.92 | vs P0: -0.349 [-0.63,-0.06] p=0.03 | vs market: -0.203 [-1.08,+0.74] p=0.67
+    delta -1.5  MAE 10.372 bias -0.72 | vs P0: -0.399 [-0.73,-0.07] p=0.03 | vs market: -0.253 [-1.14,+0.69] p=0.60
+    delta -2.0  MAE 10.252 bias -0.22 | vs P0: -0.518 [-0.96,-0.08] p=0.04 | vs market: -0.373 [-1.32,+0.62] p=0.47
+  Engine implied total (nfelo path, prior + 0.35*rating_sum), W1 2009-2025 n=253: mean rating_sum +0.41
+    delta +0.0  MAE 11.046 bias -0.86 | vs engine delta 0: +0.000 [+0.00,+0.00] p=nan | vs market (MAE 10.579): +0.467 [+0.07,+0.86] p=0.02
+    delta -0.5  MAE 11.001 bias -0.36 | vs engine delta 0: -0.045 [-0.11,+0.02] p=0.15 | vs market (MAE 10.579): +0.422 [+0.02,+0.81] p=0.03
+    delta -1.0  MAE 10.965 bias +0.14 | vs engine delta 0: -0.080 [-0.20,+0.04] p=0.20 | vs market (MAE 10.579): +0.386 [-0.02,+0.78] p=0.05
+    delta -1.5  MAE 10.941 bias +0.64 | vs engine delta 0: -0.104 [-0.29,+0.08] p=0.26 | vs market (MAE 10.579): +0.362 [-0.05,+0.76] p=0.07
+    2015-25 n=169 delta +0.0 MAE 10.828 bias -1.15 | vs delta 0: +0.000 [+0.00,+0.00] p=nan
+    2015-25 n=169 delta -1.0 MAE 10.716 bias -0.15 | vs delta 0: -0.112 [-0.27,+0.04] p=0.14
+
+E. Placebo: same shift logic applied to Week 2 and Week 3 (prior = prev-season mean + delta)
+  W2 n=335 bias of prev-mean prior -0.38 (se 0.77) | delta -1.0 MAE diff vs P0 -0.026 [-0.13,+0.08] p=0.63 | market resid +0.35
+  W3 n=332 bias of prev-mean prior +0.60 (se 0.74) | delta -1.0 MAE diff vs P0 +0.038 [-0.07,+0.15] p=0.49 | market resid +1.05
+  W4 n=313 bias of prev-mean prior +1.68 (se 0.81) | delta -1.0 MAE diff vs P0 +0.093 [-0.01,+0.20] p=0.10 | market resid +1.99
+
+F. Robust location of the W1 market residual and of (W1 - prev mean) game-level
+  W1 market residual: mean -0.47 median -2.00 10%-trimmed mean -1.04 | Wilcoxon p=0.146
+  W1 realized - prev mean (game level, n=413): mean -1.30 median -2.35 trimmed -1.96 | t p=0.058, Wilcoxon p=0.010

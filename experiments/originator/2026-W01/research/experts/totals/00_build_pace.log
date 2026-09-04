@@ -1,0 +1,24 @@
+nflscrapR 2009: games=256 team-games=512 unmapped rows=0.000
+nflscrapR 2010: games=256 team-games=512 unmapped rows=0.000
+nflscrapR 2011: games=256 team-games=512 unmapped rows=0.000
+nflscrapR 2012: games=256 team-games=512 unmapped rows=0.000
+nflscrapR 2013: games=256 team-games=512 unmapped rows=0.000
+nflscrapR 2014: games=256 team-games=512 unmapped rows=0.000
+nflscrapR 2015: games=256 team-games=512 unmapped rows=0.000
+nflscrapR 2016: games=256 team-games=512 unmapped rows=0.000
+nflscrapR 2017: games=256 team-games=512 unmapped rows=0.000
+nflscrapR 2018: games=256 team-games=512 unmapped rows=0.000
+nflscrapR 2019: games=256 team-games=512 unmapped rows=0.000
+nflfastR 2023: games=285 team-games=570 precip_any=25 precip_strict=24
+nflfastR 2024: games=285 team-games=570 precip_any=10 precip_strict=10
+nflfastR 2025: games=285 team-games=570 precip_any=16 precip_strict=14
+wrote 7342 team-games; summary:
+          plays    drives  sec_per_play  no_huddle_rate  pass_rate   off_epa   def_epa
+count  7342.000  7342.000      7342.000        7342.000   7342.000  7342.000  7342.000
+mean     62.540    11.559        27.776           0.088      0.582    -0.003    -0.003
+std       8.531     1.770         3.218           0.131      0.106     0.208     0.208
+min      30.000     6.000        17.179           0.000      0.129    -0.875    -0.875
+25%      57.000    10.000        25.594           0.000      0.509    -0.135    -0.135
+50%      63.000    11.000        27.814           0.042      0.586     0.006     0.006
+75%      68.000    13.000        29.957           0.116      0.661     0.140     0.140
+max     104.000    19.000        55.000           0.887      0.909     0.669     0.669

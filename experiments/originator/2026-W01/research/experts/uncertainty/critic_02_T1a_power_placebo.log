@@ -1,0 +1,42 @@
+(1) POOLED slope of market |err| on D_base, n=4310
+  |e_mkt| ~ D_base: slope +0.104 se 0.084 p=0.216 95% CI [-0.061, +0.270]
+  e_mkt^2 ~ D_base: slope +3.24 se 2.75 p=0.240 95% CI [-2.16, +8.63]  (variance per point of D)
+  implied LOW(D>=3, mean D 4.33) / HIGH(D<1.5, mean D 0.72) variance ratio: point 1.068, upper 95% 1.182, lower 0.954
+  -> in sigma terms the LOW band could be at most sqrt(upper)= 1.087x the HIGH band sigma (~1.09 pts on a 12.5 base)
+
+(2) PER-SEASON slopes (sign test across 17 seasons)
+season       2009    2010    2011    2012    2013    2014    2015    2016    2017    2018    2019    2020    2021    2022    2023    2024    2025
+n          227.00  230.00  228.00  228.00  226.00  229.00  228.00  244.00  259.00  259.00  259.00  269.00  285.00  284.00  285.00  285.00  285.00
+slope_abs    0.15    0.58    0.17   -0.21   -0.29   -0.08    0.26   -0.01    0.12    0.18    0.32    0.53   -0.47    0.18   -0.29    0.19   -0.12
+slope_sq     3.46   24.19   -0.19  -14.48   -7.56    4.99    6.06   -4.06    2.71    9.43   11.55   16.73  -16.15    2.17  -11.41    8.44    0.38
+  slope_abs: positive in 10/17 seasons (binom p=0.629); mean +0.072, t-test vs 0 p=0.315
+  slope_sq: positive in 11/17 seasons (binom p=0.332); mean +2.134, t-test vs 0 p=0.424
+
+(3) Brown-Forsythe test of e_mkt across D_base bands (full sample / fit / test)
+  full: n=[2228, 1278, 804] sd=[np.float64(12.95), np.float64(13.06), np.float64(13.53)] Brown-Forsythe W=1.12 p=0.326
+  fit: n=[1612, 934, 625] sd=[np.float64(13.15), np.float64(13.28), np.float64(13.84)] Brown-Forsythe W=1.23 p=0.292
+  test: n=[616, 344, 179] sd=[np.float64(12.43), np.float64(12.47), np.float64(12.26)] Brown-Forsythe W=0.17 p=0.845
+
+(4) top-decile D_base vs rest: variance ratio with bootstrap CI (full sample)
+  D_base >= 3.80: n=431 rmse 13.64 vs rest rmse 13.03 | variance ratio 1.097 95% CI [0.934, 1.278]
+
+(5) PLACEBO: D permuted across games (breaks any real link) - 200 reps, distribution of the pooled slope
+  placebo slope mean -0.013 sd 0.080 | real pooled slope +0.104 -> percentile of real among placebos 92%
+
+(6) confounds: season fixed effects; REG only; abs_mkt + mkt_total + dome controls
+  with season FE: slope +0.098 se 0.084 p=0.245
+  REG only + season FE (n=4114): slope +0.110 se 0.088 p=0.210
+  + abs_mkt, mkt_total, dome: slope +0.105 se 0.085 p=0.214
+
+(7) independent engine (538 qbelo) and engine mean as the disagreement source
+  |e_mkt| ~ D_q  : pooled n=4171 slope +0.083 se 0.073 p=0.255 CI [-0.060,+0.227] | test-only slope +0.134 p=0.252
+  |e_mkt| ~ D_m2 : pooled n=4171 slope +0.152 se 0.090 p=0.091 CI [-0.024,+0.329] | test-only slope +0.103 p=0.531
+  |e_mkt| ~ sd2  : pooled n=4171 slope -0.041 se 0.117 p=0.728 CI [-0.270,+0.188] | test-only slope +0.185 p=0.325
+
+(8) TOTALS: mkt_total as a variance driver - rolling-origin (fit through s-1, test s) 2016-25
+season        2016     2017     2018     2019     2020     2021     2022     2023     2024     2025
+slope_fit    0.075    0.068    0.056    0.081    0.073    0.065    0.062    0.061    0.053    0.065
+rho_oos      0.028   -0.029    0.058   -0.027    0.052   -0.013    0.034   -0.016    0.092   -0.002
+n          244.000  259.000  259.000  259.000  269.000  285.000  284.000  285.000  285.000  285.000
+  mean OOS Spearman +0.018; positive in 5/10 seasons | pooled |e_tot| ~ mkt_total slope +0.063 p=0.029
+  total<=41 (n=867): total-error RMSE 13.15 | total>=49 (n=791): 13.55 | Brown-Forsythe p=0.181

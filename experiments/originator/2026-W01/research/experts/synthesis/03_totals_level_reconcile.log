@@ -1,0 +1,67 @@
+[common] games=7276 seasons 1999-2025 | with market total=7276 | nfelo elo coverage 2009+ = 0.931 | pace coverage = 0.521
+[common] sign check corr(mkt_spread, margin) = -0.426 (must be strongly NEGATIVE); corr(mkt_total, total_pts) = 0.321 (positive)
+[A] per-season REG totals (mean/median/close):
+        real_mean  real_median  close_mean  mean_minus_median  mean_minus_close
+season                                                                         
+1999        41.63         41.0       40.14               0.63              1.49
+2000        41.35         41.0       41.46               0.35             -0.11
+2001        40.42         38.0       39.77               2.42              0.65
+2002        43.35         43.0       41.50               0.35              1.85
+2003        41.66         41.0       41.01               0.66              0.65
+2004        42.97         41.5       41.82               1.47              1.14
+2005        41.23         41.0       41.11               0.23              0.13
+2006        41.32         41.0       40.39               0.32              0.93
+2007        43.38         43.0       41.43               0.38              1.95
+2008        44.06         43.0       42.37               1.06              1.69
+2009        42.93         43.0       42.69              -0.07              0.24
+2010        44.07         44.5       42.74              -0.43              1.33
+2011        44.36         43.0       43.55               1.36              0.80
+2012        45.51         44.0       44.64               1.51              0.87
+2013        46.82         46.0       45.33               0.82              1.48
+2014        45.18         44.0       46.01               1.18             -0.84
+2015        45.62         44.0       45.10               1.62              0.53
+2016        45.55         46.0       45.58              -0.45             -0.03
+2017        43.44         42.5       44.11               0.94             -0.67
+2018        46.69         46.0       46.52               0.69              0.17
+2019        45.62         45.0       45.13               0.62              0.49
+2020        49.58         49.0       48.07               0.58              1.51
+2021        45.96         45.5       46.45               0.46             -0.49
+2022        43.76         42.0       44.10               1.76             -0.34
+2023        43.54         42.0       42.95               1.54              0.59
+2024        45.82         45.5       44.35               0.32              1.48
+2025        46.03         45.0       44.88               1.03              1.15
+[A] 2025: realized mean 46.03, median 45.0, mean close 44.88
+[A] 2009-25 avg (mean - median) +0.79; avg (mean - close) +0.49; 2022-25 +1.16 / +0.72
+[B] ROLLING 2010-21 (prior-season priors, no fitting) n=2810 | market MAE 10.576 bias +0.43
+    L_mean         MAE 11.076 bias +0.12  dMAE vs L_mean +0.000 [+0.000,+0.000]  O/U vs close 0.512
+    L_median       MAE 11.097 bias +0.81  dMAE vs L_mean +0.020 [-0.014,+0.055]  O/U vs close 0.508
+    L_close        MAE 11.047 bias +0.61  dMAE vs L_mean -0.030 [-0.062,+0.001]  O/U vs close 0.509
+    L_mean_m05     MAE 11.072 bias +0.62  dMAE vs L_mean -0.004 [-0.022,+0.014]  O/U vs close 0.511
+    L_blend        MAE 11.028 bias -0.08  dMAE vs L_mean -0.048 [-0.089,-0.009]  O/U vs close 0.505
+    L_blend_m05    MAE 11.014 bias +0.42  dMAE vs L_mean -0.062 [-0.104,-0.022]  O/U vs close 0.509
+    L_blend_close  MAE 11.007 bias +0.40  dMAE vs L_mean -0.070 [-0.129,-0.015]  O/U vs close 0.503
+[B] ROLLING 2022-25 n=1087 | market MAE 10.189 bias +0.72
+    L_mean         MAE 10.709 bias -0.08  dMAE vs L_mean +0.000 [+0.000,+0.000]  O/U vs close 0.500
+    L_median       MAE 10.722 bias +0.95  dMAE vs L_mean +0.012 [-0.053,+0.084]  O/U vs close 0.498
+    L_close        MAE 10.785 bias +0.23  dMAE vs L_mean +0.076 [+0.024,+0.126]  O/U vs close 0.492
+    L_mean_m05     MAE 10.692 bias +0.42  dMAE vs L_mean -0.018 [-0.047,+0.014]  O/U vs close 0.498
+    L_blend        MAE 10.664 bias -0.04  dMAE vs L_mean -0.045 [-0.090,-0.004]  O/U vs close 0.496
+    L_blend_m05    MAE 10.642 bias +0.46  dMAE vs L_mean -0.068 [-0.123,-0.015]  O/U vs close 0.509
+    L_blend_close  MAE 10.723 bias +0.27  dMAE vs L_mean +0.014 [-0.034,+0.060]  O/U vs close 0.494
+[C] 2010-21: base bias div -1.01 (n=1051) non-div +0.47; market residual div -0.26 non-div +0.84; div share 0.37
+      V3 -1.36/0               bias div +0.35 non-div +0.47 overall +0.42 | dMAE -0.048 [-0.078,-0.016]
+      mean-pres -0.85/+0.45    bias div -0.16 non-div +0.02 overall -0.05 | dMAE -0.030 [-0.054,-0.007]
+      HFA-critic -0.75/+0.40   bias div -0.26 non-div +0.07 overall -0.05 | dMAE -0.027 [-0.048,-0.007]
+[C] 2022-25: base bias div -0.96 (n=384) non-div +0.46; market residual div +0.22 non-div +0.99; div share 0.35
+      V3 -1.36/0               bias div +0.40 non-div +0.46 overall +0.44 | dMAE -0.031 [-0.077,+0.015]
+      mean-pres -0.85/+0.45    bias div -0.11 non-div +0.01 overall -0.03 | dMAE -0.006 [-0.042,+0.030]
+      HFA-critic -0.75/+0.40   bias div -0.21 non-div +0.06 overall -0.04 | dMAE -0.007 [-0.038,+0.025]
+[D] 2010-21 week 1 n=175: base bias -0.14 (se 1.04) vs weeks 2+ -0.08; market W1 residual +0.61; W1 shift -0.75 -> bias +0.61, dMAE -0.012 [-0.115,+0.099]
+[D] 2022-25 week 1 n=64: base bias -2.34 (se 1.60) vs weeks 2+ +0.10; market W1 residual -2.59; W1 shift -0.75 -> bias -1.59, dMAE -0.189 [-0.375,-0.003]
+[D] 2010-25 week 1 n=239: base bias -0.73 (se 0.88) vs weeks 2+ -0.03; market W1 residual -0.25; W1 shift -0.75 -> bias +0.02, dMAE -0.059 [-0.153,+0.040]
+[E] V3-style refit on 2009-21 (y = total - lg_blend), coef (se): {'const': '-0.092 (0.342)', 'elo_sum': '+0.129 (0.049)', 'gt_dev': '+0.396 (0.040)', 'qb_sum': '+0.760 (0.137)', 'div': '-1.375 (0.507)', 'dome': '+2.438 (0.566)', 'wind_c': '-0.198 (0.056)', 'cold20': '-1.249 (3.286)'}
+[E] OOS 2022-25 n=1087 market close                   MAE 10.189 RMSE 13.03 bias +0.72 dMAE vs market +0.000 [+0.000,+0.000]
+[E] OOS 2022-25 n=1087 ratings-only LG+0.30*elo       MAE 10.664 RMSE 13.53 bias -0.04 dMAE vs market +0.475 [+0.260,+0.672]
+[E] OOS 2022-25 n=1087 ratings-only + div + ENV       MAE 10.606 RMSE 13.38 bias -0.27 dMAE vs market +0.417 [+0.202,+0.600]
+[E] OOS 2022-25 n=1087 V3 spec (rounded, no precip)   MAE 10.311 RMSE 13.12 bias +0.17 dMAE vs market +0.122 [-0.019,+0.259]
+[E] OOS 2022-25 n=1087 V3 refit coefficients          MAE 10.302 RMSE 13.12 bias +0.18 dMAE vs market +0.113 [-0.021,+0.244]

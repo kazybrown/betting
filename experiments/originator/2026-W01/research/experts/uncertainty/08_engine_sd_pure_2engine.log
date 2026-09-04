@@ -1,0 +1,44 @@
+qbelo_pub coverage by season: {2009: 1.0, 2010: 1.0, 2011: 1.0, 2012: 1.0, 2013: 1.0, 2014: 1.0, 2015: 1.0, 2016: 1.0, 2017: 1.0, 2018: 1.0, 2019: 1.0, 2020: 1.0, 2021: 1.0, 2022: 1.0, 2023: 1.0, 2024: 1.0, 2025: 1.0}
+sign check corr(qbelo_pub, margin) = -0.4 (strongly negative)
+qbelo_se vs (margin+qbelo_pub)^2: mean |sqrt diff| = 0.0 | within 0.5 share = 1.0
+corr nfelo_b vs qbelo_pub: 0.92 | sd2 distribution: {'count': 4171.0, 'mean': 1.25, 'std': 1.06, 'min': 0.0, '25%': 0.48, '50%': 0.99, '75%': 1.74, 'max': 9.52}
+literal thresholds on sd2: HIGH(<=1.2) share = 0.585 MED = 0.256 LOW(>2.2) = 0.16
+Spearman(sd2, D2_mkt) = 0.047 | Spearman(sd2, D_base) = 0.067
+fit n=3101 (<=2021) | test n=1070 (2022-25)
+baseline test MAE: market 9.591 | nfelo_b 9.847 | qbelo 10.036 | engine mean2 9.883
+
+--- does engine-vs-engine SD (sd2) predict |err|? ---
+market |err|          : ae_mkt ~ sd2    | fit slope=-0.116 (p=0.445) | TEST slope=+0.185 se=0.188 p=0.325 | Spearman=+0.039 p=0.205
+engine-mean |err|     : ae_m2  ~ sd2    | fit slope=-0.060 (p=0.694) | TEST slope=+0.355 se=0.220 p=0.105 | Spearman=+0.044 p=0.146
+nfelo-base |err|      : ae_nb  ~ sd2    | fit slope=-0.026 (p=0.869) | TEST slope=+0.264 se=0.205 p=0.199 | Spearman=+0.040 p=0.189
+qbelo |err|           : ae_q   ~ sd2    | fit slope=+0.035 (p=0.825) | TEST slope=+0.599 se=0.238 p=0.012 | Spearman=+0.062 p=0.041
+--- does engine-mean vs market distance (D2_mkt) predict |err|? (no reconstruction involved) ---
+market |err|          : ae_mkt ~ D2_mkt | fit slope=+0.179 (p=0.097) | TEST slope=+0.103 se=0.165 p=0.531 | Spearman=+0.017 p=0.580
+engine-mean |err|     : ae_m2  ~ D2_mkt | fit slope=+0.328 (p=0.002) | TEST slope=+0.501 se=0.193 p=0.009 | Spearman=+0.060 p=0.051
+nfelo-base |err|      : ae_nb  ~ D2_mkt | fit slope=+0.331 (p=0.002) | TEST slope=+0.389 se=0.180 p=0.031 | Spearman=+0.053 p=0.086
+qbelo |err|           : ae_q   ~ D2_mkt | fit slope=+0.316 (p=0.003) | TEST slope=+0.643 se=0.209 p=0.002 | Spearman=+0.070 p=0.022
+--- joint (test): ae_m2 ~ sd2 + D2_mkt ---
+  sd2 coef=+0.177 (p=0.386) | D2_mkt coef=+0.458 (p=0.015)
+  (market |err|) sd2 coef=+0.160 (p=0.409) | D2_mkt coef=+0.065 (p=0.703)
+
+--- literal ORIGINATOR thresholds on sd2 (HIGH<=1.2, MED 1.2-2.2, LOW>2.2), TEST 2022-25 ---
+  HIGH: n=541 share=0.51 rmse_mkt=12.48 rmse_engine_mean=12.65 rmse_nfelo_b=12.65 | mean|err| mkt=9.47 eng=9.69 | mean D2_mkt=1.61 | engine-mean vs mkt ATS 262-264-15 (0.498, p=0.965)
+  MED: n=290 share=0.27 rmse_mkt=12.21 rmse_engine_mean=12.34 rmse_nfelo_b=12.36 | mean|err| mkt=9.51 eng=9.65 | mean D2_mkt=1.67 | engine-mean vs mkt ATS 143-139-8 (0.507, p=0.858)
+  LOW: n=239 share=0.22 rmse_mkt=12.71 rmse_engine_mean=13.60 rmse_nfelo_b=13.33 | mean|err| mkt=9.97 eng=10.60 | mean D2_mkt=2.36 | engine-mean vs mkt ATS 109-125-5 (0.466, p=0.327)
+  variance ratio LOW/HIGH market: 1.037 (one-sided p=0.365)
+  variance ratio LOW/HIGH engine mean: 1.157 (one-sided p=0.089)
+  FIT era (in-sample reference):
+  HIGH: n=1897 share=0.61 rmse_mkt=13.28 rmse_engine_mean=13.29 | engine-mean vs mkt ATS 975-873-49 (0.528)
+  MED: n=777 share=0.25 rmse_mkt=13.52 rmse_engine_mean=13.57 | engine-mean vs mkt ATS 389-373-15 (0.510)
+  LOW: n=427 share=0.14 rmse_mkt=13.03 rmse_engine_mean=13.15 | engine-mean vs mkt ATS 210-203-14 (0.508)
+
+--- mechanical check on the engine mean: sqrt(rmse_mkt^2 + mean(D2^2)) vs realized, by D2_mkt tercile (test) ---
+  T1: n=357 D2 mean=0.43 rmse_mkt=12.54 predicted=12.55 realized=12.57 | corr(e_mkt, mean2-mkt)=+0.062
+  T2: n=356 D2 mean=1.51 rmse_mkt=12.09 predicted=12.19 realized=12.18 | corr(e_mkt, mean2-mkt)=-0.004
+  T3: n=357 D2 mean=3.45 rmse_mkt=12.75 predicted=13.31 realized=13.56 | corr(e_mkt, mean2-mkt)=+0.073
+
+--- who is right when the two engines disagree? blend weight w (engine mean vs market) by sd2 tercile ---
+  fit<=2021: overall w=+0.402 (se 0.109) | T1(sd2<=0.60): n=1034 w=+0.397 (se 0.188) | T2(sd2<=1.35): n=1033 w=+0.670 (se 0.195) | T3(sd2<=7.77): n=1034 w=+0.179 (se 0.179)
+  test2022-25: overall w=-0.205 (se 0.163) | T1(sd2<=0.77): n=357 w=+0.160 (se 0.308) | T2(sd2<=1.68): n=356 w=-0.068 (se 0.263) | T3(sd2<=9.52): n=357 w=-0.474 (se 0.251)
+--- does the SPREAD between engines tell you which engine to trust? |err| of nfelo vs qbelo when they disagree by > 2 (test) ---
+  n=447: MAE nfelo_b=9.951 qbelo=10.394 mean2=10.050 market=9.605

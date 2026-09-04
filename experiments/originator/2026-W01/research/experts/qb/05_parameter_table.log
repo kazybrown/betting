@@ -1,0 +1,32 @@
+Penalty charged to the team with the backup (points, + = backup team penalised); ±HC1 SE; realized/538/resid signs flipped so + = penalty
+                   era      stint market_implied  n_event realized_vs_noQB nfelo538_adj resid_after_538 resid_vs_market
+                   ALL  1st start     +3.01±0.19      422       +3.95±0.66   +2.25±0.12      +1.70±0.66      +0.94±0.64
+                   ALL    2nd-3rd     +1.52±0.14      442       +2.60±0.60   +1.54±0.10      +1.06±0.59      +1.09±0.59
+                   ALL       4th+     +0.11±0.14      519       +0.99±0.58   +0.46±0.09      +0.53±0.56      +0.88±0.56
+                   ALL all stints     +1.67±0.10     1191       +2.80±0.38   +1.57±0.06      +1.23±0.38      +1.12±0.38
+             2009-2015  1st start     +2.56±0.30      139       +2.30±1.17   +2.08±0.19      +0.22±1.16      -0.26±1.16
+             2009-2015    2nd-3rd     +1.18±0.23      156       +3.11±0.93   +1.31±0.16      +1.80±0.91      +1.94±0.90
+             2009-2015       4th+     +0.09±0.21      175       +0.86±1.01   +0.26±0.14      +0.60±0.98      +0.77±0.98
+             2009-2015 all stints     +1.36±0.15      408       +2.34±0.66   +1.32±0.10      +1.02±0.65      +0.98±0.65
+             2016-2025  1st start     +3.23±0.24      283       +4.75±0.80   +2.33±0.16      +2.42±0.81      +1.52±0.76
+             2016-2025    2nd-3rd     +1.70±0.18      286       +2.32±0.77   +1.66±0.12      +0.66±0.77      +0.62±0.76
+             2016-2025       4th+     +0.11±0.19      344       +1.07±0.71   +0.56±0.12      +0.51±0.69      +0.96±0.68
+             2016-2025 all stints     +1.84±0.12      783       +3.03±0.47   +1.69±0.08      +1.34±0.47      +1.20±0.46
+2022-2025 (OOS window)  1st start     +3.62±0.38      122       +5.98±1.31   +2.08±0.20      +3.90±1.29      +2.37±1.21
+2022-2025 (OOS window)    2nd-3rd     +1.89±0.28      113       +1.73±1.23   +1.45±0.19      +0.27±1.22      -0.16±1.19
+2022-2025 (OOS window)       4th+     +0.07±0.26      134       +0.50±1.14   +0.72±0.16      -0.21±1.12      +0.44±1.09
+2022-2025 (OOS window) all stints     +2.09±0.19      317       +3.13±0.76   +1.62±0.11      +1.50±0.75      +1.04±0.72
+
+Interpretation columns: market_implied = how much the closing market penalises the backup relative to the no-QB nfelo rating line;
+realized_vs_noQB = points the backup team actually lost vs that line; nfelo538_adj = penalty nfelo's 538-style QB adj applied;
+resid_after_538 = penalty still unexplained after nfelo's adj (what a top-up would need to be); resid_vs_market = unexplained after the market.
+
+Top-up on nfelo UNREGRESSED 538-adj line, fitted <=2021 (pts): 1st=0.99 (se 0.77), 2nd-3rd=1.46 (se 0.68), 4th+=0.95 (se 0.66)
+Full penalty on a NO-QB rating line, fitted <=2021 (pts): 1st=3.47 (se 0.76), 2nd-3rd=3.21 (se 0.69), 4th+=1.61 (se 0.68)
+Market-implied penalty, fitted <=2021 (pts): 1st=2.89 (se 0.21), 2nd-3rd=1.58 (se 0.16), 4th+=0.44 (se 0.16)
+
+Distribution of nfelo 538 penalty at 1st backup start (pts): p10=-0.57 p25=0.55 median=2.17 p75=3.90 p90=5.36  (n=422)
+Distribution of MARKET-implied penalty at 1st backup start: p10=-1.87 p25=0.55 median=2.88 p75=5.18 p90=7.98
+corr(538 penalty, market-implied penalty) at 1st start: 0.543 ; slope of market on 538: 0.838
+realized penalty ~ 538 penalty at 1st start: intercept=2.71 slope=0.55 (se 0.25, p=0.029)
+realized penalty ~ market-implied penalty at 1st start: intercept=0.95 slope=0.99 (se 0.16, p=0.000)

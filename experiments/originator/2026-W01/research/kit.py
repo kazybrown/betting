@@ -28,7 +28,7 @@ def load_games(min_season=2009, scored_only=True):
     g["total_err_mkt"] = g.total_pts - g.mkt_total
     g["is_dome"] = g.roof.isin(["dome", "closed"])
     g["neutral"] = g.location.eq("Neutral")
-    g["gid"] = g.game_id.str.replace("_LAR_", "_LA_").str.replace("_OAK_", "_LV_")
+    g["gid"] = (g.season.astype(str) + "_" + g.game_id.str.split("_").str[1] + "_" + g.away + "_" + g.home)
     return g
 
 

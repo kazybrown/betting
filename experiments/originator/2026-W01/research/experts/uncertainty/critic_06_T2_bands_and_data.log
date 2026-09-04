@@ -1,0 +1,41 @@
+(1) games dropped by the nfelo join
+  dropped n=320 | by season: {2009: 40, 2010: 37, 2011: 39, 2012: 39, 2013: 41, 2014: 38, 2015: 39, 2016: 23, 2017: 8, 2018: 8, 2019: 8}
+  in nfelo file at all? 0.000 share | of those, nfelo_home_line_close NaN share: nan, nfelo_dif_base NaN share: nan
+  dropped games: market RMSE 13.47 vs kept 13.09; mean |spread| 5.51 vs 5.31; weeks {1: 18, 2: 21, 3: 18, 4: 19, 5: 16, 6: 17}
+
+(2) nflverse close vs nfelo close outliers
+  |diff|>3: n=8
+            gid   mkt  home_line_close    nfelo_b  nfelo_c  margin location
+ 2020_01_ARI_SF  -7.0              7.5  -3.917444      7.5    -4.0     Home
+  2020_04_NE_KC  -7.0            -11.5  -7.827748     -9.5    16.0     Home
+2021_10_DET_PIT  -9.0             -5.5  -4.651540     -4.5     0.0     Home
+ 2021_17_MIN_GB -13.0             -7.0 -11.447616     -9.0    27.0     Home
+ 2021_18_KC_DEN  11.5              4.0   8.938496      4.0    -4.0     Home
+2022_12_NYG_DAL -10.5             -7.0 -10.442772     -9.0     8.0     Home
+2022_12_CHI_NYJ  -8.5             -3.5  -4.364224     -3.5    21.0     Home
+  2022_12_LA_KC -16.5            -11.0 -14.214364    -12.5    16.0     Home
+  -> a handful of source discrepancies; re-run T1a slope without them: pooled slope +0.104 p=0.221 (n=4302)
+
+(3) T2 band sensitivity (spread, model = nfelo_b, test 2022-25) - realized excess RMSE (model - market) per band and F-test LOW vs HIGH
+  nfelo_b cuts (1.5, 3.0): HIGH n=616 share=0.54 excess=+0.03 (identity +0.03) | MED n=344 share=0.30 excess=+0.11 (identity +0.19) | LOW n=179 share=0.16 excess=+1.25 (identity +0.82) || var ratio LOW/HIGH 1.185 p=0.073 | LOW excess by season [1.37 0.74 1.28 1.45]
+  nfelo_b cuts (1.0, 2.5): HIGH n=434 share=0.38 excess=+0.02 (identity +0.01) | MED n=442 share=0.39 excess=+0.12 (identity +0.12) | LOW n=263 share=0.23 excess=+0.81 (identity +0.64) || var ratio LOW/HIGH 1.222 p=0.033 | LOW excess by season [0.83 0.36 1.01 0.93]
+  nfelo_b cuts (2.0, 4.0): HIGH n=761 share=0.67 excess=+0.08 (identity +0.05) | MED n=310 share=0.27 excess=+0.22 (identity +0.32) | LOW n=68 share=0.06 excess=+2.19 (identity +1.39) || var ratio LOW/HIGH 1.340 p=0.041 | LOW excess by season [2.01 2.78 2.29 1.98]
+  nfelo_b cuts (1.0, 2.0): HIGH n=434 share=0.38 excess=+0.02 (identity +0.01) | MED n=327 share=0.29 excess=+0.15 (identity +0.09) | LOW n=378 share=0.33 excess=+0.58 (identity +0.51) || var ratio LOW/HIGH 1.169 p=0.058 | LOW excess by season [0.38 0.36 0.89 0.65]
+  PLACEBO model = market + noise (|d| resampled from D_base), same cuts, 300 reps: mean LOW-band excess, share of reps with LOW excess > 0 in all 4 seasons
+    cuts (1.5, 3.0): placebo LOW excess mean +0.81 [+0.15,+1.51] | 'positive in all 4 seasons' in 59% of placebo reps | real nfelo_b: see above
+    cuts (1.0, 2.5): placebo LOW excess mean +0.65 [+0.21,+1.08] | 'positive in all 4 seasons' in 64% of placebo reps | real nfelo_b: see above
+  TOTALS (model = T_elo):
+  T_elo cuts (2.5, 5.0): HIGH n=505 share=0.44 excess=-0.04 (identity +0.07) | MED n=351 share=0.31 excess=+0.56 (identity +0.53) | LOW n=283 share=0.25 excess=+1.51 (identity +1.87) || var ratio LOW/HIGH 1.284 p=0.008 | LOW excess by season [2.25 1.52 1.03 1.  ]
+  T_elo cuts (2.0, 4.0): HIGH n=412 share=0.36 excess=+0.02 (identity +0.05) | MED n=324 share=0.28 excess=+0.19 (identity +0.35) | LOW n=403 share=0.35 excess=+1.33 (identity +1.56) || var ratio LOW/HIGH 1.194 p=0.037 | LOW excess by season [1.74 1.16 1.41 1.05]
+  T_elo cuts (3.0, 6.0): HIGH n=581 share=0.51 excess=+0.01 (identity +0.10) | MED n=383 share=0.34 excess=+0.69 (identity +0.74) | LOW n=175 share=0.15 excess=+1.86 (identity +2.28) || var ratio LOW/HIGH 1.442 p=0.001 | LOW excess by season [2.25 2.29 1.   1.36]
+
+(4) a 3-number SD (nfelo_b, qbelo, market close) with the literal 1.2/2.2 cuts -> does it sort error?
+  sd3 shares: HIGH<=1.2 0.37 MED 0.42 LOW>2.2 0.21
+    HIGH: n=395 rmse_mkt 12.49 rmse_mean3 12.50 rmse_mean2 12.52 | mean D3 0.50
+    MED: n=451 rmse_mkt 12.29 rmse_mean3 12.32 rmse_mean2 12.40 | mean D3 1.23
+    LOW: n=224 rmse_mkt 12.77 rmse_mean3 13.43 rmse_mean2 13.96 | mean D3 2.36
+  Spearman(sd3, |e_mkt|) test = +0.029 (p=0.337) | Spearman(sd3, |e_mean3|) = +0.050 (p=0.100) | note sd3 contains the market so it is partly D by construction: Spearman(sd3, D3) = +0.719
+
+(5) is the engine SD even a proxy for distance-to-market? (pooled 2009-25)
+  Spearman(sd2, D2) = +0.047 | Spearman(sd2, D_base) = +0.067 | Spearman(sd2, |e_m2|) = -0.002 (p=0.919) | Spearman(D2, |e_m2|) = +0.057 (p=0.000)
+  pooled |e_mean2| ~ sd2 + D2: sd2 -0.004 (p=0.976) D2 +0.376 (p=0.000) n=4171

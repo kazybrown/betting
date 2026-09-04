@@ -1,0 +1,79 @@
+n games with open & close: 4310 | seasons 2009 - 2025
+sign check corr(home_line_close, margin) = -0.436 (negative expected)
+
+move distribution (close - open):
+count    4310.000
+mean        0.140
+std         1.793
+min       -15.500
+25%        -0.500
+50%         0.000
+75%         1.000
+max        17.000
+share no move: 0.236 | |move|>=1: 0.505 | |move|>=2: 0.239
+
+(a) MAE vs margin: open 10.189 | close 10.067
+   fit<=2021: open MAE 10.379 | close MAE 10.258 | n=3171
+   test2022-25: open MAE 9.659 | close MAE 9.535 | n=1139
+   close-side bet AT THE OPEN, |move|>=0.5: 1803-1416-72 = 0.560 (95% CI 0.543-0.577), n=3291
+   close-side bet AT THE OPEN, |move|>=1.0: 1242-896-38 = 0.581 (95% CI 0.560-0.602), n=2176
+   close-side bet AT THE OPEN, |move|>=1.5: 857-589-25 = 0.593 (95% CI 0.567-0.618), n=1471
+   close-side bet AT THE OPEN, |move|>=2.0: 607-411-14 = 0.596 (95% CI 0.565-0.627), n=1032
+
+(b) OLS: res_close ~ move  (coef<0 => steam continues past the close; coef>0 => market over-moves)
+   ALL          n=4310 coef(move)=+0.043 SE=0.109 p=0.696 | const=+0.169
+   fit<=2021    n=3171 coef(move)=+0.131 SE=0.123 p=0.284 | const=-0.036
+   test2022-25  n=1139 coef(move)=-0.193 SE=0.247 p=0.434 | const=+0.653
+
+   residual vs close by move bucket (mean res_close, >0 = home beat close):
+             n   mean     se
+mb                          
+<=-3       176 -1.793  0.957
+-2.5..-2   256  1.164  0.805
+-1.5..-1   546  0.234  0.539
+-0.5       563  0.002  0.575
+0         1019  0.422  0.410
++0.5       552  0.163  0.582
++1..+1.5   598 -0.140  0.527
++2..+2.5   343  0.083  0.681
+>=+3       257  0.687  0.818
+
+(c) ATS of betting WITH steam at the close (move<0 -> home; move>0 -> away):
+        era  min_abs_move    n    W    L  P  rate  p_binom
+        ALL           0.5 3291 1610 1585 96 0.504    0.671
+        ALL           1.0 2176 1080 1031 65 0.512    0.296
+        ALL           1.5 1471  735  696 40 0.514    0.315
+        ALL           2.0 1032  507  500 25 0.503    0.850
+        ALL           2.5  661  316  330 15 0.489    0.609
+  fit<=2021           0.5 2547 1238 1229 80 0.502    0.872
+  fit<=2021           1.0 1709  843  813 53 0.509    0.476
+  fit<=2021           1.5 1195  587  575 33 0.505    0.747
+  fit<=2021           2.0  829  405  403 21 0.501    0.972
+  fit<=2021           2.5  518  244  262 12 0.482    0.450
+test2022-25           0.5  744  372  356 16 0.511    0.578
+test2022-25           1.0  467  237  218 12 0.521    0.399
+test2022-25           1.5  276  148  121  7 0.550    0.113
+test2022-25           2.0  203  102   97  4 0.513    0.777
+test2022-25           2.5  143   72   68  3 0.514    0.800
+   (FADE steam rate = 1 - rate)
+
+(d) Model pick (nfelo close vs market close) x steam agreement:
+        era           steam   n   W   L  P  model_pick_rate  p_binom
+        ALL         no move 347 178 158 11            0.530    0.300
+        ALL    steam agrees 690 363 311 16            0.539    0.049
+        ALL steam disagrees 597 291 286 20            0.504    0.868
+  fit<=2021         no move 215 112  95  8            0.541    0.266
+  fit<=2021    steam agrees 507 274 221 12            0.554    0.019
+  fit<=2021 steam disagrees 482 239 225 18            0.515    0.546
+test2022-25         no move 132  66  63  3            0.512    0.860
+test2022-25    steam agrees 183  89  90  4            0.497    1.000
+test2022-25 steam disagrees 115  52  61  2            0.460    0.452
+   agree vs disagree difference (ALL): +0.034, z=1.21, p=0.227
+
+(e) TOTALS open->close (only seasons with total_line_open):
+   n = 559 | seasons: [np.int64(2023), np.int64(2024), np.int64(2025)] | share no move: 0.252 | |move|>=1: 0.562
+   MAE open 10.039 | close 10.091
+   OLS res_close ~ move: coef=-0.756 SE=0.392 p=0.054
+   with-steam over/under at close, |move|>=0.5: 180-233 = 0.436, n=418
+   with-steam over/under at close, |move|>=1.0: 135-177 = 0.433, n=314
+   with-steam over/under at close, |move|>=1.5: 57-78 = 0.422, n=136

@@ -1,0 +1,64 @@
+  m["dome"] = m.is_dome.astype(int)
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+  m[f"{s}_{f}_{v}s"] = std.fillna(m[f"{s}_{f}_{v}d"])
+sample: train n=2442 test n=752 (expert 2442 / 752)
+
+== (0) reproduce ==
+  market residual ~ proe_sum: train +0.044 (se 0.036) p=0.227 | test +0.022 (se 0.068) p=0.750 | OOS dMAE +0.001 [-0.032,+0.034]  (expert +0.044/+0.022, +0.001)
+  market-free BASE + proe_sum: train coef +0.170 (se 0.041) | OOS dMAE +0.018 [-0.063,+0.090] | calib slope +0.44 (se 0.40)  (expert +0.170, +0.018, 0.44)
+
+== (1) season-level offsets in the expert's league-relative PROE ==
+  league mean PROE (expert xpass) by season: 2017:-0.93  2018:+1.03  2019:+0.70  2023:-0.25  2024:-1.05  2025:-1.44
+  2023: mean proe_sum expert-ref -1.16 | std-ref -0.11 | mean train-fit adj -0.23 pts | BASE bias(act-pred) +0.79
+  2024: mean proe_sum expert-ref -1.91 | std-ref +0.48 | mean train-fit adj -0.36 pts | BASE bias(act-pred) +1.88
+  2025: mean proe_sum expert-ref +0.29 | std-ref -0.43 | mean train-fit adj +0.02 pts | BASE bias(act-pred) -0.76
+  BASE+proe_sum (expert ref)                     per-season dMAE: 2023: -0.022 (n=208)  2024: +0.068 (n=272)  2025: -0.001 (n=272)
+  std ref: train coef +0.175 (se 0.043) | OOS dMAE +0.006 [-0.072,+0.083] | calib slope +0.61 (se 0.39) | O/U 394-353-5 (0.527)
+  BASE+proe_sum (std ref)                        per-season dMAE: 2023: -0.007 (n=208)  2024: +0.015 (n=272)  2025: +0.006 (n=272)
+  2023-25 in-sample coef (std ref): +0.067 (se 0.078) p=0.388
+  vs market, test, std ref: +0.023 (se 0.069) p=0.739
+
+== (2) nflfastR's own pass_oe (prior-8, 2023-25) as the PROE series ==
+  n=752; corr(expert proe_sum r8, fastR poe_sum r8) = 0.878; SD poe_sum=6.04 (expert proe_sum SD 6.71)
+  market residual ~ fastR poe_sum (2023-25 in-sample): -0.031 (se 0.075) p=0.678 [per SD -0.19]
+  market-free BASE + fastR poe_sum (2023-25 in-sample): +0.015 (se 0.080) p=0.853 [per SD +0.09]
+  MARKET total ~ BASE + fastR poe_sum (2023-25): +0.071 (se 0.015) p=0.000  <- the market's own weight on PROE
+  train-fit 0.170 x fastR poe_sum (centered) on BASE: calib slope +0.28 (se 0.43); dMAE +0.020 [-0.054,+0.092]
+
+== (3) rolling-origin vs MARKET (fit < Y, market + train-fit adj), std ref ==
+  2013:-0.004(b=+0.065)  2014:+0.077(b=+0.055)  2015:+0.079(b=+0.070)  2016:+0.019(b=+0.068)  2017:+0.028(b=+0.063)  2018:+0.025(b=+0.064)  2019:+0.030(b=+0.065)  2023:+0.044(b=+0.043)  2024:-0.022(b=+0.039)  2025:-0.014(b=+0.037) | mean +0.026, better 3/10
+
+== (4) PROE on the RATING-ONLY total (Elo + QB + env; no pf/pa) -- what ORIGINATOR publishes ==
+  Elo-base MAE=10.403 + proe_sum    [expert ref]: train coef +0.257 (p=0.000; per SD +1.98) | 2023-25 in-sample +0.044 (p=0.567) | OOS dMAE +0.034 [-0.079,+0.138] | vs mkt +0.281 [+0.039,+0.519] | calib +0.34 (se 0.27)
+  Elo-base + proe_sum                            per-season dMAE: 2023: -0.010 (n=208)  2024: +0.124 (n=272)  2025: -0.021 (n=272)
+  Elo-base MAE=10.403 + proe_sum_s  [std ref]: train coef +0.256 (p=0.000; per SD +1.91) | 2023-25 in-sample +0.051 (p=0.518) | OOS dMAE +0.032 [-0.073,+0.134] | vs mkt +0.278 [+0.035,+0.518] | calib +0.38 (se 0.27)
+  Elo-base + proe_sum_s                          per-season dMAE: 2023: +0.048 (n=208)  2024: +0.066 (n=272)  2025: -0.014 (n=272)
+  rolling-origin Elo-base + proe_sum_s minus Elo-base: 2013:+0.057  2014:-0.128  2015:-0.079  2016:+0.042  2017:-0.128  2018:-0.141  2019:+0.032  2023:+0.048  2024:+0.055  2025:-0.009 | mean 2013-19 -0.049, 2023-25 +0.031
+  distance to MARKET total: Elo-base MAE vs mkt=2.785; Elo-base+PROE=2.962; LEAN=2.131
+
+== (5) placebo band: cost of a PROE-sized adjustment (mean|adj| ~0.9 pts) carrying no signal, on LEAN BASE (300 within-season shuffles) ==
+  real dMAE=+0.006 | placebo mean=+0.038 sd=0.044 [2.5%,97.5%]=[-0.046,+0.128] | P(placebo <= real)=0.247

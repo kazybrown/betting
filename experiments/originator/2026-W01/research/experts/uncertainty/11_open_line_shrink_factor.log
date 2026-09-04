@@ -1,0 +1,17 @@
+D_base: fitted c = 0.85 (fit n=2486) | TEST log-score: c=0 -3.96030 | c=0.5 -3.95970 | c_hat -3.95914 | c=1 -3.95905
+   quintile calibration with c_hat (pred sigma -> realized RMSE): 12.53->12.65; 12.66->12.61; 12.80->13.24; 13.05->11.92; 13.41->12.93
+   HIGH [0,1.5): n=616 realized rmse_model=12.47 | predicted c=1: 12.78 | predicted c_hat: 12.77
+   MED [1.5,3.0): n=344 realized rmse_model=12.56 | predicted c=1: 12.93 | predicted c_hat: 12.88
+   LOW [3.0,99): n=179 realized rmse_model=13.57 | predicted c=1: 13.55 | predicted c_hat: 13.34
+D_open: fitted c = 0.00 (fit n=2486) | TEST log-score: c=0 -3.96030 | c=0.5 -3.95966 | c_hat -3.96030 | c=1 -3.95965
+   quintile calibration with c_hat (pred sigma -> realized RMSE): 12.54->12.93; 12.77->13.13; 13.14->11.65
+   HIGH [0,1.5): n=602 realized rmse_model=12.68 | predicted c=1: 12.78 | predicted c_hat: 12.75
+   MED [1.5,3.0): n=329 realized rmse_model=12.92 | predicted c=1: 12.91 | predicted c_hat: 12.74
+   LOW [3.0,99): n=208 realized rmse_model=12.29 | predicted c=1: 13.54 | predicted c_hat: 12.76
+
+model (nfelo_b) vs market OPEN, ATS by D_open band (test 2022-25):
+  HIGH: 314-274-14 (0.534, binom p=0.108)
+  MED: 167-152-10 (0.524, binom p=0.433)
+  LOW: 113-93-2 (0.549, binom p=0.185)
+  overall vs open: 594-519 (0.534, p=0.0265) | vs close (from 01): 555-555
+  -> the open->close move goes toward the model on average; vs the CLOSE the model has no edge. Disagreement measured at publication must be shrunk by c before entering the sigma rule.

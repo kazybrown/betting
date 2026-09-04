@@ -1,0 +1,28 @@
+== pace / EPA, rolling origin on pbp seasons ==
+        n  market    FULL  FULL+plays  FULL+pace4  FULL+EPA  FULL+pace4+EPA
+Y                                                                          
+2012  256  10.396  10.670      10.680      10.681    10.690          10.724
+2013  256  11.111  11.043      11.035      11.226    11.032          11.175
+2014  256  10.770  11.240      11.244      11.209    11.359          11.362
+2015  256  10.529  10.820      10.804      10.738    10.823          10.747
+2016  256   9.918  10.427      10.443      10.495    10.392          10.458
+2017  256  11.162  11.245      11.231      11.199    11.268          11.241
+2018  256  10.598  10.822      10.871      10.857    10.805          10.837
+2019  256  10.828  10.863      10.861      10.867    10.827          10.840
+2024  272   9.730   9.824       9.844       9.896     9.813           9.902
+2025  272  10.393  10.705      10.705      10.679    10.682          10.674
+mean:
+market            10.544
+FULL              10.766
+FULL+plays        10.772
+FULL+pace4        10.785
+FULL+EPA          10.769
+FULL+pace4+EPA    10.796
+  FULL+plays       minus FULL: +0.006 [-0.003,+0.014] n=2592
+  FULL+pace4       minus FULL: +0.019 [-0.032,+0.069] n=2592
+  FULL+EPA         minus FULL: +0.003 [-0.020,+0.026] n=2592
+  FULL+pace4+EPA   minus FULL: +0.030 [-0.022,+0.084] n=2592
+
+== rest/bye/week/late/neutral/grass, rolling origin 2016-2025 ==
+  FULL+REST minus FULL: +0.011 [-0.013,+0.033] n=2639  (MAE FULL=10.590 FULL+REST=10.601)
+  in-sample 2009-2021 REST coefficients: wk=-0.06(p=0.38)  late=+0.54(p=0.52)  short_home=-0.51(p=0.91)  short_away=-0.04(p=0.99)  bye_home=+1.23(p=0.23)  bye_away=-0.63(p=0.49)  neutral=-0.19(p=0.92)  grass=-0.72(p=0.17)

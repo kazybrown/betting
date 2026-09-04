@@ -1,0 +1,726 @@
+===== 00_explore.py =====
+rows 4630 REG 4431 POST 199
+
+home_rest value counts (REG):
+{4: 250, 5: 12, 6: 392, 7: 2987, 8: 285, 9: 13, 10: 196, 11: 30, 13: 27, 14: 216, 15: 22, 16: 1}
+away_rest value counts (REG):
+{4: 251, 5: 10, 6: 295, 7: 3004, 8: 273, 9: 17, 10: 264, 11: 38, 12: 1, 13: 34, 14: 216, 15: 27, 17: 1}
+
+rest NA by season: {2009: 0, 2010: 0, 2011: 0, 2012: 0, 2013: 0, 2014: 0, 2015: 0, 2016: 0, 2017: 0, 2018: 0, 2019: 0, 2020: 0, 2021: 0, 2022: 0, 2023: 0, 2024: 0, 2025: 0}
+
+week 1 rest values: {7: 271}
+
+weekday counts: {'Sunday': 3739, 'Monday': 307, 'Thursday': 277, 'Saturday': 92, 'Friday': 7, 'Tuesday': 5, 'Wednesday': 4}
+gametime counts (top 15): {'13:00': 2341, '16:25': 572, '16:05': 403, '20:20': 312, '20:30': 234, '20:15': 198, '16:15': 143, '20:25': 74, '16:30': 39, '09:30': 30, '12:30': 16, '19:00': 11, '20:00': 7, '19:10': 6, '19:15': 6}
+gametime NA: 0
+
+rest by weekday (home):
+home_rest   4   5    6     7    8   9    10  11  13   14  15
+weekday                                                     
+Friday       0   5    0     2    0   0    0   0   0    0   0
+Monday       0   1    1    34  218   1    1  29   0    0  22
+Saturday     0   2   70    11    0   6    2   0   0    1   0
+Sunday       0   2  319  2912   67   5  192   1  27  214   0
+Thursday   248   2    0    27    0   0    0   0   0    0   0
+Tuesday      0   0    2     0    0   1    0   0   0    1   1
+Wednesday    2   0    0     1    0   0    1   0   0    0   0
+
+nfelo home_bye_mod values: {0.0: 4007, 17.925: 106, 1.8: 18, 17.025: 11, 16.75: 11, 16.725: 10, 16.7: 7, 11.85: 7}
+nfelo away_bye_mod values: {-0.0: 4053, -48.625: 91, -4.85: 16, -48.425: 7, -45.2: 5, -44.55: 5, -46.225: 5, -45.725: 4}
+nfelo home_time_advantage_mod values: {0.0: 1927, 11.2: 309, -11.2: 265, 22.38: 128, 1.12: 57, 33.55: 54, -1.12: 46, 10.42: 29, 2.25: 29, 10.62: 24, 10.45: 23, -10.42: 22}
+
+crosstab home_rest>=13 vs nfelo home_bye_mod>0 (2009-2025 REG):
+home_bye_mod  False  True 
+home_rest                 
+False          4163      2
+True             19    247
+crosstab away_rest>=13 vs nfelo away_bye_mod<0? (values): [ -0.    -48.625 -48.425 -48.475 -48.175 -45.25  -45.3   -45.2   -45.325
+ -45.425]
+away_bye_mod  False  True 
+away_rest                 
+False          4153      0
+True             21    257
+
+mean home_bye_mod by home_rest:
+            mean  count
+home_rest              
+4           0.00    235
+5           0.00     10
+6           0.07    361
+7           0.00   2760
+8           0.00    272
+9           0.00     12
+10          0.00    187
+11          0.00     29
+13         13.08     25
+14         14.54    203
+15         15.79     19
+16          1.80      1
+
+mean away_bye_mod by away_rest:
+            mean  count
+away_rest              
+4           0.00    236
+5           0.00      9
+6           0.00    277
+7           0.00   2782
+8           0.00    259
+9           0.00     16
+10          0.00    240
+11          0.00     36
+12          0.00      1
+13        -36.83     32
+14        -40.37    198
+15        -42.71     27
+16         -4.85      1
+
+nfelo_home_line_close = -0.0405*nfelo_dif_close + -0.005  (1/25=0.0400)
+nfelo_home_line_close = -0.0380*nfelo_dif_base + 0.075 ; corr=-0.953
+nfelo_dif_close - nfelo_dif_base describe:
+count    4646.00
+mean       -5.48
+std        43.69
+min      -301.07
+25%       -28.12
+50%        -1.99
+75%        18.78
+max       318.23
+dtype: float64
+
+historic_projected_spreads seasons: 2021 2026 rows 1431
+cols sample:    season  week  home_line_close  home_line_pre_regression   home_dif  home_dif_pre_reg  market_regression_factor  home_net_bye_mod  time_mod
+0    2021     1              7.5                  2.052075 -86.450386        -51.301884                  0.280101               0.0       NaN
+1    2021     1             -7.5                 -4.271634  83.559169        106.790842                  0.116123               0.0       NaN
+2    2021     1              4.5                  1.837580 -14.181039        -45.939505                  0.229407               0.0       NaN
+3    2021     1             -7.5                 -4.580493  70.072281        114.512314                  0.282752               0.0       NaN
+4    2021     1              3.5                  1.440440 -64.986217        -36.011002                  0.221972               0.0       NaN
+market_regression_factor describe: {'count': 1431.0, 'mean': 0.731, 'std': 0.285, 'min': 0.011, '25%': 0.458, '50%': 0.795, '75%': 1.0, 'max': 1.0}
+
+sign check corr(mkt_spread, margin): -0.44
+===== 00b_decomposition_check.py =====
+base+hfa+qb+div+surf+tz+hbye+abye             mean  -2.495 sd  21.634 max|.|  88.025  (rows |r|>0.5: 4190)
+base+hfa+qb+div+surf+tz+netbye                mean  -7.356 sd  22.462 max|.| 111.975  (rows |r|>0.5: 4190)
+base+hfa+qb+div+surf+hbye+abye (no tz)        mean  +0.831 sd  17.814 max|.|  76.825  (rows |r|>0.5: 3392)
+base+hfa_base+qb+div+surf+tz+hbye+abye        mean  +0.392 sd   3.067 max|.|  38.912  (rows |r|>0.5: 192)
+
+home_net_bye_mod vs home_bye_mod+away_bye_mod: corr=-0.735; mean diff=4.861
+rows where net bye != hbye+abye: 277
+
+rows with large residual (no-tz formula) by season: {2009: 200, 2010: 193, 2011: 201, 2012: 201, 2013: 194, 2014: 202, 2015: 194, 2016: 200, 2017: 196, 2018: 186, 2019: 193, 2020: 194, 2021: 213, 2022: 210, 2023: 194, 2024: 202, 2025: 209, 2026: 10}
+            game_id  hfa_mod  hfa_base_mod  home_time_advantage_mod  home_bye_mod  away_bye_mod  home_net_bye_mod  home_net_qb_mod  nfelo_dif_base
+1   2009_01_MIA_ATL   84.300          62.5                    0.000           0.0          -0.0               0.0          -5.8528         92.4472
+2    2009_01_KC_BAL   95.500          62.5                   11.200           0.0          -0.0               0.0           5.4697        355.9697
+4   2009_01_DEN_CIN  106.675          62.5                   22.375           0.0          -0.0               0.0          34.3783        142.0533
+5   2009_01_MIN_CLE   95.500          62.5                   11.200           0.0          -0.0               0.0           5.4223        -14.0777
+6   2009_01_NYJ_HOU   73.100          62.5                  -11.200           0.0          -0.0               0.0          10.4514        105.5514
+7   2009_01_JAX_IND   56.100          62.5                    0.000           0.0          -0.0               0.0          13.2242        221.3242
+9    2009_01_DAL_TB   95.500          62.5                   11.200           0.0          -0.0               0.0         -19.2800         24.2200
+10   2009_01_SF_ARI   34.300          62.5                    0.000           0.0          -0.0               0.0          14.9723        145.2723
+
+hfa_mod - hfa_base - tz by season (mean, sd):
+season   2009   2010   2011   2012   2013   2014   2015   2016   2017   2018   2019  2020   2021   2022   2023   2024   2025   2026
+mean     0.45  -0.92  -1.28  -0.39  -1.23  -1.05  -1.36   0.76  -0.23  -2.54  -1.27 -0.12   0.73   0.90  -0.52  -0.28   0.59   0.52
+sd      18.99  20.20  22.68  21.21  22.29  22.14  21.86  19.17  18.93  19.96  17.86  2.17  12.58  12.71  13.36  13.73  13.33  12.76
+hfa_mod - hfa_base by season (mean, sd):
+season   2009   2010   2011   2012   2013   2014   2015   2016   2017   2018   2019  2020   2021   2022   2023   2024   2025   2026
+mean     4.31   1.34   2.87   4.01   2.62   1.76   2.98   5.29   3.21   1.20   2.83  0.40   3.66   2.71   2.93   3.08   3.83   2.01
+sd      22.41  23.46  27.07  24.50  26.64  26.97  26.29  23.92  23.65  23.69  22.34  2.77  16.14  15.32  17.59  17.21  17.53  16.27
+===== common.py =====
+REG games with market line: 4431 | fit: 3344 | test: 1087
+nfelo coverage: 0.928 | test coverage: 1.0
+sanity corr(mkt_spread, margin) = -0.439 (should be strongly negative)
+MAE vs results: market 10.101 | nfelo close 10.093 | nfelo raw 10.225 | rating-only 10.220
+TEST 2022-25 MAE: market 9.494 | nfelo close 9.569 | nfelo raw 9.751 | rating-only 9.741 (n=1087)
+check: nraw_line - rate_line should equal -(bye+tz)/25:  max abs dev = 0.0000
+corr(nraw_line, mkt_spread)=0.922  corr(nclose, mkt)=0.983
+tz_diff counts: {-3: 284, -2: 264, -1: 738, 0: 1854, 1: 743, 2: 269, 3: 279}
+home_body kickoff hours (top): {13.0: 1637, 12.0: 698, 13.08: 256, 13.42: 217, 16.42: 150, 20.33: 144, 15.42: 134, 20.5: 106}
+away_body kickoff hours (top): {13.0: 1332, 12.0: 583, 10.0: 328, 16.42: 252, 16.08: 204, 15.42: 165, 20.33: 163, 20.5: 129}
+dist describe: {'count': 4431.0, 'mean': 948.0, 'std': 651.0, 'min': 0.0, '25%': 423.0, '50%': 816.0, '75%': 1316.0, 'max': 2720.0}
+example ARI DST check: [{'gameday': '2009-09-13', 'home_off': -3}, {'gameday': '2009-11-01', 'home_off': -2}]
+===== 01_short_rest.py =====
+sample: REG weeks 2+, with nfelo: 3861 | fit 2838 | test 1023
+
+counts: both short 241 | home short only 3 | away short only 4 | home short vs away bye/long 1 | away short vs home bye/long 0
+Thursday games: n=246, of which both rest 4: 235
+
+A. mean residual by short-rest configuration (ALL 2009-2025)
+  group                                      n | err_mkt                    err_nclose                 err_nraw                   err_rate                  
+  both short (TNF standard)                241 | -0.60 (se 0.82 p=0.47)     -0.45 (se 0.83 p=0.59)     -0.49 (se 0.83 p=0.56)     -0.43 (se 0.83 p=0.60)    
+  home short, away normal 6-8                3 | -3.83 (se 5.10 p=0.53)     -4.00 (se 5.51 p=0.54)     -6.90 (se 5.94 p=0.37)     -7.05 (se 5.94 p=0.36)    
+  away short, home normal 6-8                4 | -8.50 (se 5.86 p=0.24)     -8.38 (se 5.89 p=0.25)     -7.75 (se 5.53 p=0.26)     -7.73 (se 5.64 p=0.26)    
+  neither short                           3612 | +0.22 (se 0.22 p=0.31)     +0.25 (se 0.22 p=0.26)     +0.05 (se 0.22 p=0.83)     +0.10 (se 0.22 p=0.64)    
+
+A. mean residual by short-rest configuration (FIT 2009-2021)
+  group                                      n | err_mkt                    err_nclose                 err_nraw                   err_rate                  
+  both short (TNF standard)                166 | -0.54 (se 1.02 p=0.60)     -0.33 (se 1.01 p=0.74)     -0.29 (se 1.02 p=0.78)     -0.24 (se 1.02 p=0.81)    
+  home short, away normal 6-8                3 | -3.83 (se 5.10 p=0.53)     -4.00 (se 5.51 p=0.54)     -6.90 (se 5.94 p=0.37)     -7.05 (se 5.94 p=0.36)    
+  away short, home normal 6-8                4 | -8.50 (se 5.86 p=0.24)     -8.38 (se 5.89 p=0.25)     -7.75 (se 5.53 p=0.26)     -7.73 (se 5.64 p=0.26)    
+  neither short                           2664 | +0.04 (se 0.26 p=0.89)     +0.11 (se 0.26 p=0.67)     -0.11 (se 0.26 p=0.66)     -0.07 (se 0.26 p=0.79)    
+
+A. mean residual by short-rest configuration (TEST 2022-2025)
+  group                                      n | err_mkt                    err_nclose                 err_nraw                   err_rate                  
+  both short (TNF standard)                 75 | -0.73 (se 1.40 p=0.60)     -0.71 (se 1.42 p=0.62)     -0.94 (se 1.43 p=0.51)     -0.86 (se 1.44 p=0.55)    
+  home short, away normal 6-8                0 | n/a                        n/a                        n/a                        n/a                       
+  away short, home normal 6-8                0 | n/a                        n/a                        n/a                        n/a                       
+  neither short                            948 | +0.75 (se 0.40 p=0.06)     +0.63 (se 0.41 p=0.12)     +0.50 (se 0.41 p=0.23)     +0.58 (se 0.41 p=0.16)    
+
+B. rested team's residual vs the short-rest team (one team short, any opponent rest):
+  ALL   n=  8 | err_mkt -1.38 (se 4.27 p=0.76) | err_nclose -1.19 (se 4.35 p=0.79) | err_nraw +0.67 (se 4.64 p=0.89) | err_rate +0.74 (se 4.67 p=0.88) | ATS rested team vs close 3-5-0 (0.375, p=0.73)
+  FIT   n=  8 | err_mkt -1.38 (se 4.27 p=0.76) | err_nclose -1.19 (se 4.35 p=0.79) | err_nraw +0.67 (se 4.64 p=0.89) | err_rate +0.74 (se 4.67 p=0.88) | ATS rested team vs close 3-5-0 (0.375, p=0.73)
+  TEST  n=  0 | err_mkt +nan (se nan p=nan) | err_nclose +nan (se nan p=nan) | err_nraw +nan (se nan p=nan) | err_rate +nan (se nan p=nan) | ATS rested team vs close 0-0-0 (nan, p=nan)
+  (opponent on normal 6-8 rest only) n=7: mkt -3.21 (se 4.44) | rate -1.40 (se 4.80)
+
+C. OLS residual ~ rest dummies (each coded so + = the rested side gains; HC1 se). Coef, se, p:
+  FIT  err_mkt   short(<=5)=-1.24(3.99,p=0.76)  mini(6)=+0.42(0.71,p=0.55)  long(9-12)=+0.21(0.65,p=0.75)  bye(13+)=-0.26(0.72,p=0.71)
+  FIT  err_rate  short(<=5)=+0.96(4.34,p=0.83)  mini(6)=+0.74(0.70,p=0.29)  long(9-12)=+0.44(0.65,p=0.49)  bye(13+)=+0.77(0.72,p=0.28)
+  FIT  err_nraw  short(<=5)=+0.86(4.29,p=0.84)  mini(6)=+0.67(0.70,p=0.34)  long(9-12)=+0.46(0.65,p=0.47)  bye(13+)=-0.38(0.72,p=0.60)
+  TEST err_mkt   short(<=5)=+0.00(0.00,p=0.82)  mini(6)=+0.42(1.04,p=0.69)  long(9-12)=+0.71(0.98,p=0.47)  bye(13+)=+0.55(0.97,p=0.57)
+  TEST err_rate  short(<=5)=+0.00(0.00,p=0.59)  mini(6)=+0.67(1.05,p=0.52)  long(9-12)=+0.82(1.02,p=0.42)  bye(13+)=+1.59(0.97,p=0.10)
+  TEST err_nraw  short(<=5)=+0.00(0.00,p=0.84)  mini(6)=+0.65(1.05,p=0.53)  long(9-12)=+0.85(1.02,p=0.40)  bye(13+)=+0.75(0.97,p=0.44)
+  ALL  err_mkt   short(<=5)=-1.25(4.02,p=0.76)  mini(6)=+0.44(0.59,p=0.45)  long(9-12)=+0.35(0.54,p=0.51)  bye(13+)=-0.05(0.59,p=0.93)
+  ALL  err_rate  short(<=5)=+0.94(4.37,p=0.83)  mini(6)=+0.74(0.58,p=0.20)  long(9-12)=+0.55(0.55,p=0.31)  bye(13+)=+0.98(0.59,p=0.10)
+  ALL  err_nraw  short(<=5)=+0.85(4.32,p=0.84)  mini(6)=+0.68(0.58,p=0.24)  long(9-12)=+0.57(0.54,p=0.29)  bye(13+)=-0.10(0.59,p=0.87)
+
+D. market pricing: mkt_spread ~ rate_line + rest dummies (dummies coded + = home side rested; negative coef = market moves toward the rested side)
+  FIT  rate_line=+0.936(0.007)  short(<=5)=-1.972(0.940)  mini(6)=-0.270(0.119)  long(9-12)=-0.266(0.122)  bye(13+)=-1.018(0.121)
+  TEST rate_line=+0.968(0.012)  short(<=5)=-0.000(0.000)  mini(6)=-0.214(0.157)  long(9-12)=-0.142(0.206)  bye(13+)=-1.054(0.196)
+  ALL  rate_line=+0.944(0.006)  short(<=5)=-1.993(0.936)  mini(6)=-0.244(0.096)  long(9-12)=-0.233(0.106)  bye(13+)=-1.028(0.103)
+
+E. Thursday both-short games: totals and error dispersion
+  ALL  TNF n=241 total resid +0.35 (se 0.87 p=0.68) mean line 44.9 realized 45.2 | Sunday n=3248 resid +0.68 (se 0.23) line 44.8 realized 45.5 | spread MAE TNF 9.79 vs Sun 10.18; over rate TNF 0.481 Sun 0.494
+  FIT  TNF n=166 total resid +0.01 (se 1.03 p=0.99) mean line 45.2 realized 45.2 | Sunday n=2417 resid +0.54 (se 0.27) line 45.1 realized 45.6 | spread MAE TNF 10.03 vs Sun 10.36; over rate TNF 0.470 Sun 0.492
+  TEST TNF n= 75 total resid +1.11 (se 1.59 p=0.49) mean line 44.1 realized 45.2 | Sunday n= 831 resid +1.09 (se 0.45) line 43.9 realized 45.0 | spread MAE TNF 9.25 vs Sun 9.65; over rate TNF 0.507 Sun 0.498
+  TNF total residual by era:
+    2009-2013 n= 51 total resid -1.35 (se 1.87 p=0.47) | market total line mean 44.3
+    2014-2017 n= 56 total resid -1.13 (se 1.78 p=0.53) | market total line mean 44.7
+    2018-2021 n= 59 total resid +2.27 (se 1.72 p=0.19) | market total line mean 46.4
+    2022-2025 n= 75 total resid +1.11 (se 1.59 p=0.49) | market total line mean 44.1
+
+F. OOS 2022-25: rating-only line + k*(rested side) on one-team-short games; MAE vs results (lower better)
+  k=0.0  n=0  MAE nan  bias +nan
+  k=0.5  n=0  MAE nan  bias +nan
+  k=0.9  n=0  MAE nan  bias +nan
+  k=1.2  n=0  MAE nan  bias +nan
+  k=1.5  n=0  MAE nan  bias +nan
+  k=2.0  n=0  MAE nan  bias +nan
+  market MAE on same games: nan
+  fit-set (2009-21, n=8) MAE-minimizing k = 1.9 (MAE 9.948 vs k=0 10.310); fit-set mean gross effect = +0.74
+===== 02_bye.py =====
+sample (REG wk2+, nfelo present): n=3861 fit 2838 test 1023 | market-only sample n=4160
+counts: home bye 248 | away bye 258 | both 38 | home bye vs away normal 194 | away bye vs home normal 203
+
+A. mean residual by bye configuration (ALL 2009-25) [home perspective]
+  group                                      n | err_mkt                    err_nclose                 err_nraw                   err_rate                  
+  home bye, away normal 6-8                194 | -0.50 (se 0.82 p=0.54)     -0.41 (se 0.81 p=0.61)     -0.08 (se 0.82 p=0.92)     +0.63 (se 0.82 p=0.45)    
+  away bye, home normal 6-8                203 | -0.42 (se 0.89 p=0.64)     -0.07 (se 0.89 p=0.94)     -0.06 (se 0.89 p=0.95)     -1.51 (se 0.90 p=0.09)    
+  home bye, away any non-bye               210 | -0.35 (se 0.78 p=0.66)     -0.29 (se 0.78 p=0.71)     -0.01 (se 0.79 p=0.99)     +0.70 (se 0.79 p=0.38)    
+  away bye, home any non-bye               220 | -0.25 (se 0.87 p=0.78)     +0.10 (se 0.87 p=0.91)     +0.15 (se 0.87 p=0.86)     -1.29 (se 0.87 p=0.14)    
+  both bye                                  38 | -0.09 (se 2.37 p=0.97)     +0.05 (se 2.37 p=0.98)     +0.06 (se 2.41 p=0.98)     -0.79 (se 2.40 p=0.74)    
+  no bye either side                      3393 | +0.22 (se 0.23 p=0.34)     +0.22 (se 0.23 p=0.32)     -0.02 (se 0.23 p=0.95)     +0.11 (se 0.23 p=0.64)    
+
+A. mean residual by bye configuration (FIT 2009-21) [home perspective]
+  group                                      n | err_mkt                    err_nclose                 err_nraw                   err_rate                  
+  home bye, away normal 6-8                146 | -0.93 (se 1.01 p=0.36)     -0.82 (se 1.00 p=0.42)     -0.53 (se 1.02 p=0.60)     +0.21 (se 1.02 p=0.83)    
+  away bye, home normal 6-8                161 | -0.35 (se 1.03 p=0.73)     +0.07 (se 1.03 p=0.95)     +0.12 (se 1.03 p=0.91)     -1.41 (se 1.03 p=0.18)    
+  home bye, away any non-bye               154 | -0.54 (se 0.99 p=0.58)     -0.46 (se 0.98 p=0.64)     -0.20 (se 1.00 p=0.84)     +0.54 (se 1.00 p=0.59)    
+  away bye, home any non-bye               174 | -0.04 (se 1.02 p=0.97)     +0.37 (se 1.01 p=0.71)     +0.45 (se 1.01 p=0.66)     -1.06 (se 1.02 p=0.30)    
+  both bye                                  25 | -0.40 (se 3.22 p=0.90)     -0.16 (se 3.19 p=0.96)     +0.28 (se 3.26 p=0.93)     -0.66 (se 3.25 p=0.84)    
+  no bye either side                      2485 | +0.02 (se 0.27 p=0.94)     +0.08 (se 0.27 p=0.77)     -0.19 (se 0.27 p=0.48)     -0.07 (se 0.27 p=0.79)    
+
+A. mean residual by bye configuration (TEST 2022-25) [home perspective]
+  group                                      n | err_mkt                    err_nclose                 err_nraw                   err_rate                  
+  home bye, away normal 6-8                 48 | +0.82 (se 1.24 p=0.51)     +0.81 (se 1.22 p=0.51)     +1.28 (se 1.22 p=0.30)     +1.88 (se 1.21 p=0.13)    
+  away bye, home normal 6-8                 42 | -0.68 (se 1.71 p=0.69)     -0.57 (se 1.74 p=0.74)     -0.73 (se 1.74 p=0.68)     -1.93 (se 1.75 p=0.28)    
+  home bye, away any non-bye                56 | +0.18 (se 1.13 p=0.88)     +0.17 (se 1.12 p=0.88)     +0.54 (se 1.13 p=0.64)     +1.13 (se 1.12 p=0.32)    
+  away bye, home any non-bye                46 | -1.03 (se 1.61 p=0.53)     -0.91 (se 1.64 p=0.58)     -0.98 (se 1.64 p=0.55)     -2.16 (se 1.64 p=0.20)    
+  both bye                                  13 | +0.50 (se 3.27 p=0.88)     +0.46 (se 3.35 p=0.89)     -0.34 (se 3.39 p=0.92)     -1.04 (se 3.36 p=0.76)    
+  no bye either side                       908 | +0.76 (se 0.42 p=0.07)     +0.63 (se 0.42 p=0.14)     +0.46 (se 0.43 p=0.28)     +0.59 (se 0.43 p=0.17)    
+
+B. bye team vs the line (one team on bye):
+  subset                    n | err_mkt                  err_nclose               err_nraw                 err_rate                 | nfelo mod | ATS bye team vs close
+  ALL                     430 | -0.05 (se 0.59 p=0.94)   -0.19 (se 0.58 p=0.74)   -0.08 (se 0.59 p=0.89)   +1.00 (se 0.59 p=0.09)   | +1.11     | 204-213-13 0.489 (p=0.70)
+  FIT                     328 | -0.23 (se 0.71 p=0.74)   -0.41 (se 0.71 p=0.56)   -0.34 (se 0.71 p=0.64)   +0.82 (se 0.71 p=0.25)   | +1.18     | 156-160-12 0.494 (p=0.87)
+  TEST                    102 | +0.56 (se 0.95 p=0.56)   +0.50 (se 0.96 p=0.60)   +0.74 (se 0.96 p=0.44)   +1.59 (se 0.96 p=0.10)   | +0.87     | 48-53-1 0.475 (p=0.69)
+  ALL home-bye only       210 | -0.35 (se 0.78 p=0.66)   -0.29 (se 0.78 p=0.71)   -0.01 (se 0.79 p=0.99)   +0.70 (se 0.79 p=0.38)   | +0.58     | 93-109-8 0.460 (p=0.29)
+  ALL away-bye only       220 | +0.25 (se 0.87 p=0.78)   -0.10 (se 0.87 p=0.91)   -0.15 (se 0.87 p=0.86)   +1.29 (se 0.87 p=0.14)   | +1.61     | 111-104-5 0.516 (p=0.68)
+  TEST home-bye only       56 | +0.18 (se 1.13 p=0.88)   +0.17 (se 1.12 p=0.88)   +0.54 (se 1.13 p=0.64)   +1.13 (se 1.12 p=0.32)   | +0.49     | 26-30-0 0.464 (p=0.69)
+  TEST away-bye only       46 | +1.03 (se 1.61 p=0.53)   +0.91 (se 1.64 p=0.58)   +0.98 (se 1.64 p=0.55)   +2.16 (se 1.64 p=0.20)   | +1.33     | 22-23-1 0.489 (p=1.00)
+  ALL opp normal 6-8      397 | -0.03 (se 0.60 p=0.96)   -0.17 (se 0.60 p=0.78)   -0.01 (se 0.61 p=0.99)   +1.08 (se 0.61 p=0.08)   | +1.11     | 188-197-12 0.488 (p=0.68)
+  TEST opp normal 6-8      90 | +0.76 (se 1.03 p=0.47)   +0.70 (se 1.03 p=0.50)   +1.03 (se 1.04 p=0.33)   +1.91 (se 1.03 p=0.07)   | +0.88     | 43-46-1 0.483 (p=0.83)
+  by era:
+    2009-2012             100 | +1.96 (se 1.34 p=0.15)   +1.79 (se 1.34 p=0.19)   +1.76 (se 1.37 p=0.20)   +3.00 (se 1.36 p=0.03)   | +1.32     | 51-44-5 0.537 (p=0.54)
+    2013-2017             122 | -0.73 (se 1.07 p=0.49)   -1.02 (se 1.06 p=0.34)   -1.07 (se 1.04 p=0.31)   +0.28 (se 1.05 p=0.79)   | +1.30     | 56-61-5 0.479 (p=0.71)
+    2018-2021             106 | -1.73 (se 1.30 p=0.19)   -1.79 (se 1.29 p=0.17)   -1.46 (se 1.31 p=0.27)   -0.62 (se 1.31 p=0.64)   | +0.91     | 49-55-2 0.471 (p=0.62)
+    2022-2025             102 | +0.56 (se 0.95 p=0.56)   +0.50 (se 0.96 p=0.60)   +0.74 (se 0.96 p=0.44)   +1.59 (se 0.96 p=0.10)   | +0.87     | 48-53-1 0.475 (p=0.69)
+  market-only full sample n=464: bye team vs close -0.02 (se 0.57 p=0.97); ATS 222-229-13 0.492 (p=0.78)
+
+C. OLS residual ~ bye (home-away) + mini(6) + long(9-12) dummies (HC1), + = rested side gains
+  FIT  err_mkt   bye=-0.26(0.71,p=0.71)  mini(6)=+0.43(0.71,p=0.54)  long(9-12)=+0.20(0.65,p=0.75)
+  FIT  err_rate  bye=+0.77(0.72,p=0.28)  mini(6)=+0.73(0.70,p=0.29)  long(9-12)=+0.45(0.65,p=0.49)
+  FIT  err_nraw  bye=-0.38(0.72,p=0.60)  mini(6)=+0.66(0.70,p=0.34)  long(9-12)=+0.46(0.65,p=0.47)
+  TEST err_mkt   bye=+0.55(0.97,p=0.57)  mini(6)=+0.42(1.04,p=0.69)  long(9-12)=+0.71(0.98,p=0.47)
+  TEST err_rate  bye=+1.59(0.97,p=0.10)  mini(6)=+0.67(1.05,p=0.52)  long(9-12)=+0.82(1.02,p=0.42)
+  TEST err_nraw  bye=+0.75(0.97,p=0.44)  mini(6)=+0.65(1.05,p=0.53)  long(9-12)=+0.85(1.02,p=0.40)
+  ALL  err_mkt   bye=-0.06(0.59,p=0.93)  mini(6)=+0.45(0.58,p=0.44)  long(9-12)=+0.35(0.54,p=0.52)
+  ALL  err_rate  bye=+0.98(0.59,p=0.10)  mini(6)=+0.73(0.58,p=0.21)  long(9-12)=+0.55(0.55,p=0.31)
+  ALL  err_nraw  bye=-0.10(0.59,p=0.87)  mini(6)=+0.67(0.58,p=0.25)  long(9-12)=+0.57(0.54,p=0.29)
+
+D. market pricing: mkt_spread ~ rate_line + home_bye + away_bye (negative coef on home_bye = market moves toward home; positive on away_bye = toward away)
+  FIT  rate_line=+0.935(0.007)  home_bye=-1.126(0.174)  away_bye=+0.934(0.162)
+       nfelo's own mod (pts, mean in this set): home bye +0.38, away bye -1.60
+  TEST rate_line=+0.968(0.012)  home_bye=-0.875(0.268)  away_bye=+1.268(0.234)
+       nfelo's own mod (pts, mean in this set): home bye +0.24, away bye -1.23
+  ALL  rate_line=+0.943(0.006)  home_bye=-1.048(0.146)  away_bye=+1.016(0.137)
+       nfelo's own mod (pts, mean in this set): home bye +0.34, away bye -1.52
+
+E. OOS 2022-25, one-team-bye games: MAE of rating-only line + k*(bye side); and nfelo raw (own asymmetric mod); and market
+  k=0.00 n=102 MAE 7.362 RMSE 9.764 bias(bye team) +1.59
+  k=0.50 n=102 MAE 7.364 RMSE 9.695 bias(bye team) +1.09
+  k=0.75 n=102 MAE 7.370 RMSE 9.670 bias(bye team) +0.84
+  k=1.00 n=102 MAE 7.384 RMSE 9.651 bias(bye team) +0.59
+  k=1.25 n=102 MAE 7.401 RMSE 9.639 bias(bye team) +0.34
+  k=1.50 n=102 MAE 7.425 RMSE 9.633 bias(bye team) +0.09
+  k=2.00 n=102 MAE 7.474 RMSE 9.642 bias(bye team) -0.41
+  nfelo raw (own mods) MAE 7.422 | nfelo close MAE 7.417 | market MAE 7.407
+  fit-set n=328: MAE-min k=1.00, RMSE-min k=0.80, mean gross effect (err_rate*sgn)=+0.82
+  fit-set home bye n=154 gross effect +0.54 (se 1.00); nfelo mod +0.61
+  fit-set away bye n=174 gross effect +1.06 (se 1.02); nfelo mod +1.68
+===== 03_rest_diff.py =====
+sample n=3861 fit 2838 test 1023 | rest_diff counts: {-8: 21, -7: 164, -6: 20, -4: 36, -3: 237, -2: 20, -1: 276, 0: 2448, 1: 221, 2: 15, 3: 179, 4: 29, 6: 16, 7: 167, 8: 12}
+
+A. OLS residual ~ rest_diff (clipped +-7); slope per day (HC1)
+  FIT  n=2838 | err_mkt +0.003 (se 0.092 p=0.97) | err_nclose -0.012 (se 0.092 p=0.89) | err_nraw +0.014 (se 0.093 p=0.88) | err_rate +0.153 (se 0.093 p=0.10) | market prices +0.147/day (se 0.016)
+  TEST n=1023 | err_mkt +0.108 (se 0.134 p=0.42) | err_nclose +0.110 (se 0.134 p=0.41) | err_nraw +0.150 (se 0.136 p=0.27) | err_rate +0.244 (se 0.135 p=0.07) | market prices +0.137/day (se 0.027)
+  ALL  n=3861 | err_mkt +0.031 (se 0.077 p=0.69) | err_nclose +0.019 (se 0.077 p=0.80) | err_nraw +0.049 (se 0.077 p=0.53) | err_rate +0.177 (se 0.077 p=0.02) | market prices +0.145/day (se 0.014)
+  excluding bye games:
+  FIT  n=2485 | err_mkt +0.129 (se 0.199 p=0.52) | err_rate +0.256 (se 0.200 p=0.20) | market prices +0.128/day (se 0.038)
+  TEST n= 908 | err_mkt +0.229 (se 0.326 p=0.48) | err_rate +0.277 (se 0.336 p=0.41) | market prices +0.055/day (se 0.062)
+  ALL  n=3393 | err_mkt +0.163 (se 0.170 p=0.34) | err_rate +0.266 (se 0.172 p=0.12) | market prices +0.108/day (se 0.033)
+
+B. by rest_diff bin (ALL): mean err_mkt / err_rate / err_nraw, market move toward home vs rating line, nfelo mods
+  bin          n | err_mkt                err_rate               err_nraw               | mkt_move | nfelo bye+tz mod
+  <=-7       185 | +0.06 (se 0.90)        -1.00 (se 0.91)        +0.47 (se 0.91)        | -0.90    | -1.48
+  -6..-4      56 | -1.30 (se 1.83)        -2.01 (se 1.86)        -1.40 (se 1.85)        | -0.52    | -0.60
+  -3..-2     257 | -0.38 (se 0.77)        -0.72 (se 0.77)        -0.84 (se 0.76)        | -0.28    | +0.12
+  -1         276 | +0.22 (se 0.83)        -0.20 (se 0.84)        -0.23 (se 0.83)        | -0.28    | +0.03
+  0         2448 | +0.19 (se 0.27)        +0.10 (se 0.27)        -0.01 (se 0.27)        | +0.01    | +0.11
+  1..2       236 | +1.01 (se 0.81)        +1.03 (se 0.81)        +0.89 (se 0.81)        | +0.09    | +0.14
+  3..5       208 | +0.34 (se 0.80)        +0.48 (se 0.81)        +0.29 (se 0.81)        | +0.28    | +0.19
+  >=6        195 | -0.35 (se 0.83)        +0.77 (se 0.83)        +0.06 (se 0.83)        | +1.24    | +0.71
+
+C. specific asymmetries; effect shown for the MORE-RESTED side (+ = rested side beat the line)
+  group                                 n | err_mkt                err_rate               err_nraw               | nfelo mod(rested) | ATS rested vs close
+  home 6-day (Mon->Sun), away 7-8     247 | -0.33 (se 0.90 p=0.72) +0.17 (se 0.89 p=0.85) +0.21 (se 0.89 p=0.81) | -0.04 | 125-117-5 0.517 (p=0.65)  [ALL]
+     (test)                            64 | -2.12 (se 1.66 p=0.20) -1.61 (se 1.67 p=0.34) -1.41 (se 1.67 p=0.40) | -0.20 | 29-34-1 0.460 (p=0.61)  [TEST]
+  away 6-day, home 7-8                185 | +1.87 (se 0.93 p=0.05) +1.86 (se 0.92 p=0.05) +1.67 (se 0.93 p=0.07) | +0.19 | 96-86-3 0.527 (p=0.50)  [ALL]
+     (test)                            65 | +1.38 (se 1.55 p=0.38) +1.42 (se 1.57 p=0.37) +1.23 (se 1.57 p=0.44) | +0.19 | 32-32-1 0.500 (p=1.00)  [TEST]
+  home 9-12 (Thu->Sun), away 7-8      181 | -0.30 (se 0.85 p=0.72) -0.21 (se 0.87 p=0.81) -0.32 (se 0.86 p=0.71) | +0.11 | 82-93-6 0.469 (p=0.45)  [ALL]
+     (test)                            57 | -0.86 (se 1.58 p=0.59) -0.94 (se 1.62 p=0.56) -1.02 (se 1.62 p=0.53) | +0.08 | 23-31-3 0.426 (p=0.34)  [TEST]
+  away 9-12, home 7-8                 238 | +0.64 (se 0.79 p=0.42) +0.83 (se 0.80 p=0.30) +0.99 (se 0.79 p=0.22) | -0.15 | 121-112-5 0.519 (p=0.60)  [ALL]
+     (test)                            71 | +0.69 (se 1.47 p=0.64) +0.94 (se 1.55 p=0.55) +1.14 (se 1.56 p=0.47) | -0.20 | 40-31-0 0.563 (p=0.34)  [TEST]
+  pooled 6-day/10-day asymmetries (rested side):
+    ALL  n= 851 | +0.43 (se 0.44 p=0.33) +0.64 (se 0.44 p=0.14) +0.63 (se 0.44 p=0.15) | ATS 424-408-19 0.510 (p=0.60)
+    FIT  n= 594 | +0.69 (se 0.53 p=0.19) +0.92 (se 0.52 p=0.08) +0.88 (se 0.52 p=0.09) | ATS 300-280-14 0.517 (p=0.43)
+    TEST n= 257 | -0.18 (se 0.78 p=0.82) +0.01 (se 0.80 p=0.99) +0.05 (se 0.80 p=0.95) | ATS 124-128-5 0.492 (p=0.85)
+
+D. OOS 2022-25 full sample: rating-only line + rest adjustment (fit on 2009-21). MAE / RMSE / ATS vs close (all games where adj != 0)
+  baseline rating-only: MAE 9.8035 RMSE 12.6829 | nfelo raw (own mods): MAE 9.8113 | market: MAE 9.5367  (n=1023)
+  linear rest_diff (per day)               k=0.15 | test MAE 9.8064 (d=+0.0029) RMSE 12.6713 | games w/ adj n=402, MAE there 9.2420 vs base 9.2347 | ATS rested side 194-201-7 0.491
+  bye dummy only                           k=1.00 | test MAE 9.8058 (d=+0.0022) RMSE 12.6743 | games w/ adj n=102, MAE there 7.3844 vs base 7.3620 | ATS rested side 48-53-1 0.475
+  bye + 6-day + 10-day dummies (one k)     k=1.00 | test MAE 9.8046 (d=+0.0010) RMSE 12.6704 | games w/ adj n=376, MAE there 9.3255 vs base 9.3227 | ATS rested side 183-187-6 0.495
+  sqrt-signed rest_diff                    k=0.30 | test MAE 9.8072 (d=+0.0037) RMSE 12.6740 | games w/ adj n=402, MAE there 9.2442 vs base 9.2347 | ATS rested side 194-201-7 0.491
+  MAE diff (bye+6+10 spec vs base) = +0.0010, 95% bootstrap CI [-0.0196, +0.0218]
+===== 04_travel.py =====
+sample non-neutral REG with nfelo: n=4059 fit 2995 test 1064
+feature counts: {'away_pt_early': 287, 'away_mt_early': 96, 'away_west_early': 383, 'away_east_late_west': 228, 'away_east_prime_west': 69, 'away_west_prime_east': 40, 'xc_east': 249, 'xc_west': 215}
+nfelo tz mod (pts, + favors home) mean by feature: {'away_pt_early': np.float64(0.9), 'away_mt_early': np.float64(0.6), 'away_east_late_west': np.float64(0.56), 'away_east_prime_west': np.float64(0.92), 'away_west_prime_east': np.float64(-0.93), 'xc_east': np.float64(0.59), 'xc_west': np.float64(0.61)}
+
+A. mean residual (home perspective; + = home beat the line) (ALL 2009-25)
+  group                                      n | err_mkt                    err_nclose                 err_nraw                   err_rate                  
+  away PT team @ 1pm ET (body 10am)        287 | -0.05 (se 0.77 p=0.95)     -0.49 (se 0.77 p=0.52)     -1.27 (se 0.78 p=0.10)     -0.47 (se 0.78 p=0.55)    
+  away MT team @ 1pm ET (body 11am)         96 | -0.07 (se 1.32 p=0.96)     -0.35 (se 1.30 p=0.79)     -1.11 (se 1.29 p=0.39)     -0.60 (se 1.30 p=0.64)    
+  away ET team, 4pm window, host MT/PT     228 | -1.34 (se 0.97 p=0.17)     -1.47 (se 0.97 p=0.13)     -1.93 (se 0.97 p=0.05)     -1.48 (se 0.98 p=0.13)    
+  away ET team, primetime, host MT/PT       69 | -0.12 (se 1.59 p=0.94)     -0.40 (se 1.58 p=0.80)     -0.71 (se 1.55 p=0.65)     +0.16 (se 1.56 p=0.92)    
+  away MT/PT team, primetime, host ET       40 | -2.45 (se 1.76 p=0.17)     -2.17 (se 1.77 p=0.23)     -2.04 (se 1.84 p=0.28)     -3.08 (se 1.86 p=0.11)    
+  away crosses 3 zones east (any kick)     249 | -1.73 (se 0.83 p=0.04)     -2.01 (se 0.83 p=0.02)     -2.64 (se 0.83 p=0.00)     -2.15 (se 0.84 p=0.01)    
+  away crosses 3 zones west (any kick)     215 | -1.63 (se 0.99 p=0.10)     -1.77 (se 0.99 p=0.08)     -2.10 (se 0.99 p=0.04)     -1.61 (se 1.00 p=0.11)    
+  same time zone                          1774 | +0.44 (se 0.31 p=0.15)     +0.53 (se 0.31 p=0.09)     +0.38 (se 0.31 p=0.22)     +0.33 (se 0.31 p=0.29)    
+
+A. mean residual (home perspective; + = home beat the line) (FIT 2009-21)
+  group                                      n | err_mkt                    err_nclose                 err_nraw                   err_rate                  
+  away PT team @ 1pm ET (body 10am)        203 | -0.28 (se 0.93 p=0.77)     -0.67 (se 0.93 p=0.48)     -1.51 (se 0.94 p=0.11)     -0.69 (se 0.94 p=0.46)    
+  away MT team @ 1pm ET (body 11am)         74 | -0.45 (se 1.41 p=0.75)     -0.72 (se 1.37 p=0.60)     -1.55 (se 1.36 p=0.26)     -1.02 (se 1.38 p=0.46)    
+  away ET team, 4pm window, host MT/PT     160 | -1.02 (se 1.21 p=0.40)     -1.12 (se 1.20 p=0.35)     -1.66 (se 1.20 p=0.17)     -1.17 (se 1.20 p=0.33)    
+  away ET team, primetime, host MT/PT       42 | -0.56 (se 2.26 p=0.81)     -0.64 (se 2.26 p=0.78)     -0.66 (se 2.22 p=0.77)     +0.20 (se 2.24 p=0.93)    
+  away MT/PT team, primetime, host ET       25 | -2.82 (se 1.92 p=0.15)     -2.38 (se 1.90 p=0.22)     -2.19 (se 1.90 p=0.26)     -3.20 (se 1.90 p=0.10)    
+  away crosses 3 zones east (any kick)     176 | -1.71 (se 0.98 p=0.08)     -1.91 (se 0.98 p=0.05)     -2.54 (se 0.98 p=0.01)     -2.02 (se 0.98 p=0.04)    
+  away crosses 3 zones west (any kick)     141 | -1.32 (se 1.32 p=0.32)     -1.38 (se 1.31 p=0.29)     -1.71 (se 1.31 p=0.20)     -1.21 (se 1.32 p=0.36)    
+  same time zone                          1324 | +0.21 (se 0.36 p=0.57)     +0.34 (se 0.36 p=0.34)     +0.18 (se 0.36 p=0.63)     +0.12 (se 0.36 p=0.74)    
+
+A. mean residual (home perspective; + = home beat the line) (TEST 2022-25)
+  group                                      n | err_mkt                    err_nclose                 err_nraw                   err_rate                  
+  away PT team @ 1pm ET (body 10am)         84 | +0.51 (se 1.37 p=0.71)     -0.08 (se 1.38 p=0.96)     -0.69 (se 1.40 p=0.63)     +0.07 (se 1.40 p=0.96)    
+  away MT team @ 1pm ET (body 11am)         22 | +1.20 (se 3.27 p=0.72)     +0.89 (se 3.32 p=0.79)     +0.34 (se 3.34 p=0.92)     +0.78 (se 3.34 p=0.82)    
+  away ET team, 4pm window, host MT/PT      68 | -2.09 (se 1.60 p=0.20)     -2.31 (se 1.61 p=0.16)     -2.55 (se 1.64 p=0.13)     -2.21 (se 1.64 p=0.18)    
+  away ET team, primetime, host MT/PT       27 | +0.56 (se 2.06 p=0.79)     -0.02 (se 2.06 p=0.99)     -0.77 (se 1.99 p=0.70)     +0.10 (se 1.99 p=0.96)    
+  away MT/PT team, primetime, host ET       15 | -1.83 (se 3.52 p=0.61)     -1.83 (se 3.62 p=0.62)     -1.79 (se 3.86 p=0.65)     -2.88 (se 3.92 p=0.48)    
+  away crosses 3 zones east (any kick)      73 | -1.80 (se 1.54 p=0.24)     -2.27 (se 1.56 p=0.15)     -2.88 (se 1.60 p=0.08)     -2.47 (se 1.61 p=0.13)    
+  away crosses 3 zones west (any kick)      74 | -2.22 (se 1.44 p=0.13)     -2.51 (se 1.44 p=0.09)     -2.84 (se 1.45 p=0.05)     -2.36 (se 1.46 p=0.11)    
+  same time zone                           450 | +1.13 (se 0.57 p=0.05)     +1.07 (se 0.58 p=0.06)     +0.96 (se 0.59 p=0.10)     +0.94 (se 0.59 p=0.11)    
+
+B. ATS vs close for the side the theory favors (home side when away is disadvantaged)
+  fade PT team @1pm ET (bet home)                ALL  n=287 ATS 129-148-10 0.466 (p=0.28) | mean err_mkt*side -0.05 | err_rate*side -0.47 | err_nraw*side -1.27
+  fade PT team @1pm ET (bet home)                FIT  n=203 ATS  89-105- 9 0.459 (p=0.28) | mean err_mkt*side -0.28 | err_rate*side -0.69 | err_nraw*side -1.51
+  fade PT team @1pm ET (bet home)                TEST n= 84 ATS  40- 43- 1 0.482 (p=0.83) | mean err_mkt*side +0.51 | err_rate*side +0.07 | err_nraw*side -0.69
+  fade MT/PT team @1pm ET (bet home)             ALL  n=383 ATS 172-200-11 0.462 (p=0.16) | mean err_mkt*side -0.05 | err_rate*side -0.50 | err_nraw*side -1.23
+  fade MT/PT team @1pm ET (bet home)             FIT  n=277 ATS 123-145- 9 0.459 (p=0.20) | mean err_mkt*side -0.32 | err_rate*side -0.77 | err_nraw*side -1.52
+  fade MT/PT team @1pm ET (bet home)             TEST n=106 ATS  49- 55- 2 0.471 (p=0.62) | mean err_mkt*side +0.66 | err_rate*side +0.21 | err_nraw*side -0.47
+  fade ET team late window out west (bet home)   ALL  n=228 ATS 103-121- 4 0.460 (p=0.26) | mean err_mkt*side -1.34 | err_rate*side -1.48 | err_nraw*side -1.93
+  fade ET team late window out west (bet home)   FIT  n=160 ATS  73- 84- 3 0.465 (p=0.42) | mean err_mkt*side -1.02 | err_rate*side -1.17 | err_nraw*side -1.66
+  fade ET team late window out west (bet home)   TEST n= 68 ATS  30- 37- 1 0.448 (p=0.46) | mean err_mkt*side -2.09 | err_rate*side -2.21 | err_nraw*side -2.55
+  fade ET team primetime out west (bet home)     ALL  n= 69 ATS  35- 34- 0 0.507 (p=1.00) | mean err_mkt*side -0.12 | err_rate*side +0.16 | err_nraw*side -0.71
+  fade ET team primetime out west (bet home)     FIT  n= 42 ATS  19- 23- 0 0.452 (p=0.64) | mean err_mkt*side -0.56 | err_rate*side +0.20 | err_nraw*side -0.66
+  fade ET team primetime out west (bet home)     TEST n= 27 ATS  16- 11- 0 0.593 (p=0.44) | mean err_mkt*side +0.56 | err_rate*side +0.10 | err_nraw*side -0.77
+  back west team primetime in east (bet away)    ALL  n= 40 ATS  21- 17- 2 0.553 (p=0.63) | mean err_mkt*side +2.45 | err_rate*side +3.08 | err_nraw*side +2.04
+  back west team primetime in east (bet away)    FIT  n= 25 ATS  15-  9- 1 0.625 (p=0.31) | mean err_mkt*side +2.82 | err_rate*side +3.20 | err_nraw*side +2.19
+  back west team primetime in east (bet away)    TEST n= 15 ATS   6-  8- 1 0.429 (p=0.79) | mean err_mkt*side +1.83 | err_rate*side +2.88 | err_nraw*side +1.79
+  fade 3-zone-east traveller (bet home)          ALL  n=249 ATS 101-141- 7 0.417 (p=0.01) | mean err_mkt*side -1.73 | err_rate*side -2.15 | err_nraw*side -2.64
+  fade 3-zone-east traveller (bet home)          FIT  n=176 ATS  72- 99- 5 0.421 (p=0.05) | mean err_mkt*side -1.71 | err_rate*side -2.02 | err_nraw*side -2.54
+  fade 3-zone-east traveller (bet home)          TEST n= 73 ATS  29- 42- 2 0.408 (p=0.15) | mean err_mkt*side -1.80 | err_rate*side -2.47 | err_nraw*side -2.88
+  fade 3-zone-west traveller (bet home)          ALL  n=215 ATS 100-111- 4 0.474 (p=0.49) | mean err_mkt*side -1.63 | err_rate*side -1.61 | err_nraw*side -2.10
+  fade 3-zone-west traveller (bet home)          FIT  n=141 ATS  64- 74- 3 0.464 (p=0.44) | mean err_mkt*side -1.32 | err_rate*side -1.21 | err_nraw*side -1.71
+  fade 3-zone-west traveller (bet home)          TEST n= 74 ATS  36- 37- 1 0.493 (p=1.00) | mean err_mkt*side -2.22 | err_rate*side -2.36 | err_nraw*side -2.84
+
+C. OLS residual ~ dist(k miles) + tz_diff + primetime*tz_diff  (+ coef = favors HOME)  [HC1]
+  FIT  err_mkt  dist_k=-0.425(0.401,p=0.29)  tz_diff=+0.023(0.218,p=0.92)  prime*tz_diff=-0.869(0.500,p=0.08)
+  FIT  err_rate dist_k=-0.583(0.399,p=0.14)  tz_diff=-0.034(0.218,p=0.88)  prime*tz_diff=-0.949(0.498,p=0.06)
+  FIT  err_nraw dist_k=-0.802(0.399,p=0.04)  tz_diff=-0.114(0.217,p=0.60)  prime*tz_diff=-0.554(0.498,p=0.27)
+  FIT  market   dist_k=-0.120(0.068)  tz_diff=-0.092(0.036)  prime*tz_diff=-0.053(0.088)   [market move toward home per unit]
+  TEST err_mkt  dist_k=-0.894(0.598,p=0.13)  tz_diff=+0.090(0.318,p=0.78)  prime*tz_diff=-0.908(0.610,p=0.14)
+  TEST err_rate dist_k=-1.135(0.614,p=0.06)  tz_diff=+0.059(0.325,p=0.86)  prime*tz_diff=-0.983(0.631,p=0.12)
+  TEST err_nraw dist_k=-1.336(0.613,p=0.03)  tz_diff=-0.029(0.325,p=0.93)  prime*tz_diff=-0.617(0.626,p=0.32)
+  TEST market   dist_k=-0.240(0.100)  tz_diff=-0.034(0.048)  prime*tz_diff=-0.063(0.108)   [market move toward home per unit]
+  ALL  err_mkt  dist_k=-0.541(0.332,p=0.10)  tz_diff=+0.039(0.180,p=0.83)  prime*tz_diff=-0.870(0.388,p=0.02)
+  ALL  err_rate dist_k=-0.725(0.334,p=0.03)  tz_diff=-0.009(0.181,p=0.96)  prime*tz_diff=-0.946(0.390,p=0.02)
+  ALL  err_nraw dist_k=-0.939(0.333,p=0.00)  tz_diff=-0.091(0.180,p=0.61)  prime*tz_diff=-0.562(0.389,p=0.15)
+  ALL  market   dist_k=-0.161(0.056)  tz_diff=-0.071(0.029)  prime*tz_diff=-0.052(0.069)   [market move toward home per unit]
+  distance-only, fit vs test (err_rate):
+   FIT  err_rate slope -0.526/1000mi (se 0.393 p=0.18) | err_mkt slope -0.364 (se 0.394 p=0.35)
+   TEST err_rate slope -1.019/1000mi (se 0.604 p=0.09) | err_mkt slope -0.788 (se 0.591 p=0.18)
+  distance buckets (ALL): mean err_rate / err_mkt
+   (-1, 300]      n= 693 err_rate +0.70 (se 0.47) err_mkt +0.63 (se 0.47) nfelo tz mod +0.01
+   (300, 800]     n=1401 err_rate +0.17 (se 0.35) err_mkt +0.19 (se 0.35) nfelo tz mod +0.02
+   (800, 1500]    n=1224 err_rate -0.38 (se 0.38) err_mkt -0.17 (se 0.38) nfelo tz mod +0.07
+   (1500, 2200]   n= 510 err_rate -0.07 (se 0.58) err_mkt +0.21 (se 0.58) nfelo tz mod +0.51
+   (2200, 3000]   n= 231 err_rate -1.42 (se 0.96) err_mkt -1.12 (se 0.95) nfelo tz mod +0.60
+
+D. OOS 2022-25 (non-neutral): MAE of rating-only line vs + nfelo tz mod vs + fitted west-early dummy
+  rating-only MAE 9.7826 | + nfelo tz mod MAE 9.7910 (d=+0.0084) | games with tz mod != 0: n=599, MAE base 9.7587 vs +tz 9.7735
+  away_pt_early    fit k=-2.0 (pts toward home) | test games n= 84: MAE base 9.997 -> adj 10.036 (d=+0.038); full-test MAE d=+0.0030
+  away_west_early  fit k=-2.0 (pts toward home) | test games n=106: MAE base 10.329 -> adj 10.325 (d=-0.005); full-test MAE d=-0.0004
+  xc_east          fit k=-2.0 (pts toward home) | test games n= 73: MAE base 11.064 -> adj 10.736 (d=-0.327); full-test MAE d=-0.0224
+  xc_west          fit k=-0.8 (pts toward home) | test games n= 74: MAE base 9.839 -> adj 9.814 (d=-0.025); full-test MAE d=-0.0017
+===== 04b_travel_robustness.py =====
+xc games n=464 (fit 317, test 147)
+
+A. cross-country (|tz_diff|=3) by era: home-perspective residuals (+ = home beat line); ATS = bet the traveller
+  2009-2012 n= 72 err_mkt +0.15 (se 1.98) err_rate -0.00 (se 2.04) err_nraw -0.64 | traveller ATS 34-36 0.486
+  2013-2017 n=115 err_mkt +0.20 (se 1.13) err_rate -0.30 (se 1.13) err_nraw -0.90 | traveller ATS 59-52 0.532
+  2018-2021 n=130 err_mkt -4.00 (se 1.24) err_rate -3.79 (se 1.22) err_nraw -4.14 | traveller ATS 80-48 0.625
+  2022-2025 n=147 err_mkt -2.01 (se 1.05) err_rate -2.41 (se 1.08) err_nraw -2.86 | traveller ATS 79-65 0.549
+
+B. team fixed effects: err ~ xc (+ home & away team FE, season FE). HC1 se
+  err_mkt  no FE                      xc=-2.00 (se 0.67, p=0.00)
+  err_mkt  team FE                    xc=-2.21 (se 0.77, p=0.00)
+  err_mkt  team+season FE             xc=-2.26 (se 0.77, p=0.00)
+  err_mkt  east/west split, team FE   xc_east=-1.29 (se 1.18, p=0.27)  xc_west=-2.58 (se 1.33, p=0.05)  two=+1.24 (se 0.76, p=0.10)
+  err_mkt  distance, team FE          dist_k=-0.33 (se 0.41, p=0.42)
+  err_rate no FE                      xc=-2.12 (se 0.68, p=0.00)
+  err_rate team FE                    xc=-2.39 (se 0.78, p=0.00)
+  err_rate team+season FE             xc=-2.46 (se 0.78, p=0.00)
+  err_rate east/west split, team FE   xc_east=-1.71 (se 1.19, p=0.15)  xc_west=-2.79 (se 1.33, p=0.04)  two=+0.70 (se 0.76, p=0.36)
+  err_rate distance, team FE          dist_k=-0.64 (se 0.41, p=0.12)
+  err_nraw no FE                      xc=-2.60 (se 0.68, p=0.00)
+  err_nraw team FE                    xc=-2.85 (se 0.78, p=0.00)
+  err_nraw team+season FE             xc=-2.91 (se 0.78, p=0.00)
+  err_nraw east/west split, team FE   xc_east=-2.20 (se 1.18, p=0.06)  xc_west=-3.39 (se 1.33, p=0.01)  two=+0.33 (se 0.76, p=0.66)
+  err_nraw distance, team FE          dist_k=-0.91 (se 0.41, p=0.03)
+  FIT  team FE: err_mkt xc=-1.77 (se 0.98 p=0.07) | err_rate xc=-1.98 (se 0.98 p=0.04)
+  TEST team FE: err_mkt xc=-3.14 (se 1.26 p=0.01) | err_rate xc=-3.29 (se 1.29 p=0.01)
+
+C. leave-one-team-out (drop all xc games involving team T): mean err_mkt of remaining xc games
+  range of err_mkt over LOTO: -2.16 .. -1.28 (base -1.69); err_rate -2.40 .. -1.48
+  most influential drops: [{'drop': 'LAC', 'n': 402, 'err_mkt': -1.28, 'err_rate': -1.48}, {'drop': 'NYG', 'n': 429, 'err_mkt': -1.35, 'err_rate': -1.55}, {'drop': 'LA', 'n': 404, 'err_mkt': -1.43, 'err_rate': -1.64}, {'drop': 'NE', 'n': 441, 'err_mkt': -1.46, 'err_rate': -1.72}]
+  by away (traveller) team, n>=12:
+    away ARI  n= 28 err_mkt -2.48 err_rate -2.74 | traveller ATS 20-8
+    away ATL  n= 17 err_mkt -3.76 err_rate -4.05 | traveller ATS 9-8
+    away CAR  n= 17 err_mkt +0.38 err_rate -0.11 | traveller ATS 8-8
+    away DET  n= 14 err_mkt -0.54 err_rate -0.63 | traveller ATS 7-6
+    away LA   n= 31 err_mkt -3.08 err_rate -3.78 | traveller ATS 17-12
+    away LAC  n= 31 err_mkt -3.77 err_rate -4.35 | traveller ATS 21-10
+    away LV   n= 23 err_mkt +5.11 err_rate +5.32 | traveller ATS 8-15
+    away MIA  n= 13 err_mkt -2.23 err_rate -2.64 | traveller ATS 8-5
+    away NYG  n= 16 err_mkt -2.97 err_rate -3.17 | traveller ATS 8-8
+    away OAK  n= 33 err_mkt +4.58 err_rate +4.62 | traveller ATS 14-18
+    away PHI  n= 17 err_mkt +1.50 err_rate +1.54 | traveller ATS 7-10
+    away SEA  n= 52 err_mkt -4.61 err_rate -4.91 | traveller ATS 31-18
+    away SF   n= 51 err_mkt -3.51 err_rate -4.44 | traveller ATS 30-20
+    away TB   n= 17 err_mkt -1.79 err_rate -2.01 | traveller ATS 10-7
+    away WAS  n= 14 err_mkt -5.46 err_rate -5.44 | traveller ATS 9-5
+  by home team, n>=12:
+    home ARI  n= 31 err_mkt -0.65 err_rate -0.46
+    home ATL  n= 16 err_mkt -0.78 err_rate -0.88
+    home BAL  n= 14 err_mkt +2.39 err_rate +2.00
+    home BUF  n= 12 err_mkt +7.08 err_rate +6.30
+    home CAR  n= 17 err_mkt -1.35 err_rate -1.56
+    home CIN  n= 12 err_mkt -2.00 err_rate -2.19
+    home CLE  n= 15 err_mkt -4.70 err_rate -5.35
+    home DET  n= 16 err_mkt -1.16 err_rate -2.54
+    home IND  n= 16 err_mkt -2.31 err_rate -3.75
+    home JAX  n= 13 err_mkt -6.46 err_rate -6.33
+    home LA   n= 29 err_mkt -3.76 err_rate -3.50
+    home LAC  n= 31 err_mkt -4.79 err_rate -4.83
+    home LV   n= 23 err_mkt -3.80 err_rate -4.13
+    home MIA  n= 15 err_mkt +4.93 err_rate +5.35
+    home NE   n= 13 err_mkt -7.96 err_rate -8.38
+    home NYG  n= 19 err_mkt -8.18 err_rate -8.65
+    home NYJ  n= 13 err_mkt -3.96 err_rate -5.28
+    home PHI  n= 14 err_mkt -0.82 err_rate -1.27
+    home PIT  n= 15 err_mkt -0.03 err_rate +0.15
+    home SEA  n= 51 err_mkt +0.87 err_rate +0.62
+    home SF   n= 50 err_mkt -0.59 err_rate -0.33
+    home TB   n= 14 err_mkt +0.68 err_rate +0.79
+    home WAS  n= 15 err_mkt -2.80 err_rate -2.91
+
+D. west-team quality confound: PT/MT franchises' residual in xc games vs their other games (perspective of the west team)
+  west team AWAY, xc (3 zones)       n= 249 west team vs market +1.73 (se 0.83 p=0.04) | vs ratings +2.15 (se 0.84)
+  west team AWAY, 1-2 zones          n= 337 west team vs market -0.08 (se 0.69 p=0.91) | vs ratings +0.23 (se 0.68)
+  west team AWAY, same zone          n= 149 west team vs market -0.78 (se 1.07 p=0.47) | vs ratings -0.95 (se 1.07)
+  west team HOME, xc visitor         n= 215 west team vs market -1.63 (se 0.99 p=0.10) | vs ratings -1.61 (se 1.00)
+  west team HOME, 1-2 zone visitor   n= 299 west team vs market +1.27 (se 0.76 p=0.09) | vs ratings +1.28 (se 0.77)
+  west team HOME, same zone          n= 149 west team vs market +0.78 (se 1.07 p=0.47) | vs ratings +0.95 (se 1.07)
+  ET team AWAY at PT/MT host         n= 298 east team vs market +0.97 (se 0.83 p=0.25) | vs ratings +1.01
+  ET team AWAY at CT host            n= 591 east team vs market -0.47 (se 0.55 p=0.39) | vs ratings -0.37
+  ET team AWAY at ET host            n=1347 east team vs market -0.46 (se 0.35 p=0.19) | vs ratings -0.31
+
+E. primetime circadian: the more-western team's edge vs the line, primetime (kick>=19:00 ET) vs day games, by zones apart
+  primetime            1 zone(s) n= 276 west edge vs market +1.65 (se 0.78 p=0.04) | vs ratings +1.63 (se 0.78) | west ATS 142-124 0.534 | nfelo tz mod (west persp.) +0.37
+  primetime            2 zone(s) n=  94 west edge vs market +1.69 (se 1.22 p=0.17) | vs ratings +1.85 (se 1.21) | west ATS 52-40 0.565 | nfelo tz mod (west persp.) +0.67
+  primetime            3 zone(s) n=  77 west edge vs market +1.22 (se 1.44 p=0.40) | vs ratings +1.65 (se 1.47) | west ATS 42-33 0.560 | nfelo tz mod (west persp.) +0.99
+  primetime            slope per zone: vs market -0.17 (se 0.78 p=0.82) | vs ratings +0.04 (se 0.79 p=0.96), n=447
+  day games (placebo)  1 zone(s) n=1109 west edge vs market +0.69 (se 0.40 p=0.08) | vs ratings +0.60 (se 0.40) | west ATS 548-529 0.509 | nfelo tz mod (west persp.) -0.21
+  day games (placebo)  2 zone(s) n= 342 west edge vs market -1.18 (se 0.70 p=0.09) | vs ratings -0.81 (se 0.70) | west ATS 159-173 0.479 | nfelo tz mod (west persp.) -0.09
+  day games (placebo)  3 zone(s) n= 387 west edge vs market -0.03 (se 0.72 p=0.97) | vs ratings +0.17 (se 0.72) | west ATS 199-179 0.526 | nfelo tz mod (west persp.) -0.23
+  day games (placebo)  slope per zone: vs market -0.53 (se 0.39 p=0.18) | vs ratings -0.35 (se 0.40 p=0.38), n=1838
+  FIT  primetime any zones apart: n=312 west edge vs market +1.60 (se 0.75 p=0.03) | west ATS 164-139 0.541 (p=0.17)
+  TEST primetime any zones apart: n=135 west edge vs market +1.54 (se 0.96 p=0.11) | west ATS 72-58 0.554 (p=0.25)
+
+F. OOS: adjustment k (pts to the TRAVELLER) on xc games, fit on 2009-21 with a wide grid; test 2022-25
+  fit-set n=317 MAE-min k=2.50 (MAE 10.823 vs k=0 11.213); fit mean err_rate -1.66
+  test xc n=147 k=0.00 MAE 10.447 RMSE 13.282 bias(home) -2.41
+  test xc n=147 k=0.50 MAE 10.376 RMSE 13.201 bias(home) -1.91
+  test xc n=147 k=1.00 MAE 10.330 RMSE 13.138 bias(home) -1.41
+  test xc n=147 k=1.50 MAE 10.307 RMSE 13.093 bias(home) -0.91
+  test xc n=147 k=2.00 MAE 10.304 RMSE 13.068 bias(home) -0.41
+  test xc n=147 k=2.50 MAE 10.307 RMSE 13.062 bias(home) +0.09
+  test market MAE on xc games 10.156, nfelo raw 10.513
+===== 04c_travel_rules_oos.py =====
+A. 3-zone traveller games by season: home-perspective residuals; 'excess' = err_rate minus that season's league mean err_rate
+  2009 n=15 err_mkt -2.77 err_rate -2.41 excess -2.77 | market lean to home +0.74 nfelo tz +0.69 | traveller ATS  7- 7
+  2010 n=12 err_mkt +0.92 err_rate +0.01 excess +1.77 | market lean to home -0.73 nfelo tz +0.82 | traveller ATS  6- 6
+  2011 n=24 err_mkt +1.04 err_rate +1.16 excess +0.40 | market lean to home +0.26 nfelo tz +0.93 | traveller ATS 12-11
+  2012 n=21 err_mkt +0.79 err_rate +0.38 excess -0.16 | market lean to home -0.16 nfelo tz +0.79 | traveller ATS  9-12
+  2013 n=18 err_mkt -4.28 err_rate -3.85 excess -4.71 | market lean to home +0.58 nfelo tz +0.94 | traveller ATS 12- 6
+  2014 n=13 err_mkt -0.92 err_rate -1.87 excess -1.83 | market lean to home -0.75 nfelo tz +0.59 | traveller ATS  7- 6
+  2015 n=19 err_mkt +0.42 err_rate -0.52 excess +0.04 | market lean to home -0.79 nfelo tz +0.81 | traveller ATS  9- 9
+  2016 n=31 err_mkt +0.18 err_rate -0.09 excess -0.56 | market lean to home -0.07 nfelo tz +0.69 | traveller ATS 16-13
+  2017 n=34 err_mkt +2.88 err_rate +2.11 excess +1.79 | market lean to home -0.63 nfelo tz +0.56 | traveller ATS 15-18
+  2018 n=16 err_mkt -6.47 err_rate -6.10 excess -5.86 | market lean to home +0.53 nfelo tz +0.97 | traveller ATS 12- 4
+  2019 n=35 err_mkt -5.27 err_rate -6.11 excess -3.81 | market lean to home -0.75 nfelo tz +0.74 | traveller ATS 23-10
+  2020 n=43 err_mkt -4.38 err_rate -2.53 excess -2.50 | market lean to home +1.84 nfelo tz +0.08 | traveller ATS 25-18
+  2021 n=36 err_mkt -1.19 err_rate -2.00 excess -1.85 | market lean to home -0.70 nfelo tz +0.43 | traveller ATS 20-16
+  2022 n=26 err_mkt -0.60 err_rate -0.39 excess -0.84 | market lean to home +0.26 nfelo tz +0.33 | traveller ATS 13-12
+  2023 n=44 err_mkt -2.00 err_rate -2.24 excess -3.01 | market lean to home -0.18 nfelo tz +0.55 | traveller ATS 25-17
+  2024 n=40 err_mkt -3.69 err_rate -4.57 excess -4.59 | market lean to home -0.79 nfelo tz +0.61 | traveller ATS 22-18
+  2025 n=37 err_mkt -1.22 err_rate -1.69 excess -2.08 | market lean to home -0.41 nfelo tz +0.56 | traveller ATS 19-18
+  by era: n, err_mkt, excess_rate (se), market lean, nfelo tz, traveller ATS
+  2009-2013 n= 90 err_mkt -0.73 (se 1.70) excess_rate -1.10 (se 1.74 p=0.528) | market lean +0.17 nfelo tz +0.85 | traveller ATS 46-42 0.523 (p=0.749)
+  2014-2017 n= 97 err_mkt +1.03 (se 1.22) excess_rate +0.21 (se 1.22 p=0.861) | market lean -0.50 nfelo tz +0.65 | traveller ATS 47-46 0.505 (p=1.000)
+  2018-2021 n=130 err_mkt -4.00 (se 1.24) excess_rate -3.09 (se 1.21 p=0.012) | market lean +0.28 nfelo tz +0.47 | traveller ATS 80-48 0.625 (p=0.006)
+  2022-2025 n=147 err_mkt -2.01 (se 1.05) excess_rate -2.82 (se 1.08 p=0.010) | market lean -0.33 nfelo tz +0.53 | traveller ATS 79-65 0.549 (p=0.279)
+  2018-2025 n=277 err_mkt -2.94 (se 0.80) excess_rate -2.95 (se 0.81 p=0.000) | market lean -0.04 nfelo tz +0.50 | traveller ATS 159-113 0.585 (p=0.006)
+  2020 (no fans) excluded, 2018-2025: n=234 err_mkt -2.68 (se 0.85)
+  contrast 2-zone games all seasons n=436 err_mkt +1.30 (se 0.61); 2018-25 n=247 err_mkt +1.23 (se 0.78)
+
+B. primetime west edge by season-era (more-western team vs market), and overlap with 3-zone rule
+  2009-2013 n=105 west edge vs market +2.58 (se 1.32 p=0.05) | vs ratings +2.72 | west ATS 60-44 0.577
+  2014-2017 n=100 west edge vs market +0.61 (se 1.28 p=0.64) | vs ratings +0.55 | west ATS 46-48 0.489
+  2018-2021 n=107 west edge vs market +1.56 (se 1.30 p=0.23) | vs ratings +1.59 | west ATS 58-47 0.552
+  2022-2025 n=135 west edge vs market +1.54 (se 0.96 p=0.11) | vs ratings +1.78 | west ATS 72-58 0.554
+  games with both flags (primetime & 3 zones): 77 of 464 xc / 447 primetime-tz games
+
+C. OOS 2022-25 on the ORIGINATOR proxy (0.46 nfelo raw stripped of bye/tz mods + 0.54 rating-only, + rest 0.15/day) = base (c1)
+  (c1) base                                            MAE 9.7435 (d=+0.0000, 95% CI [+0.0000, +0.0000]) | affected n=  0 MAE nan bias +nan | ATS vs close 0-0 nan
+  +0.5 to 3-zone traveller                             MAE 9.7351 (d=-0.0084, 95% CI [-0.0193, +0.0027]) | affected n=147 MAE 10.398 bias -1.86 | ATS vs close 74-70 0.514
+  +1.0 to 3-zone traveller                             MAE 9.7298 (d=-0.0137, 95% CI [-0.0357, +0.0079]) | affected n=147 MAE 10.359 bias -1.36 | ATS vs close 70-74 0.486
+  +1.5 to 3-zone traveller                             MAE 9.7270 (d=-0.0164, 95% CI [-0.0490, +0.0146]) | affected n=147 MAE 10.338 bias -0.86 | ATS vs close 73-71 0.507
+  +2.0 to 3-zone traveller                             MAE 9.7264 (d=-0.0171, 95% CI [-0.0608, +0.0248]) | affected n=147 MAE 10.334 bias -0.36 | ATS vs close 73-71 0.507
+  +0.5 to more-western team in primetime               MAE 9.7369 (d=-0.0066, 95% CI [-0.0170, +0.0039]) | affected n=135 MAE 8.628 bias -1.02 | ATS vs close 69-61 0.531
+  +1.0 to more-western team in primetime               MAE 9.7316 (d=-0.0119, 95% CI [-0.0331, +0.0094]) | affected n=135 MAE 8.585 bias -1.08 | ATS vs close 71-59 0.546
+  +1.5 to more-western team in primetime               MAE 9.7275 (d=-0.0160, 95% CI [-0.0469, +0.0152]) | affected n=135 MAE 8.552 bias -1.13 | ATS vs close 70-60 0.538
+  both: +1.0 traveller & +1.0 west primetime           MAE 9.7171 (d=-0.0264, 95% CI [-0.0565, +0.0013]) | affected n=249 MAE 9.421 bias -1.18 | ATS vs close 124-118 0.512
+  spec as written: -0.6 to MT/PT away team at 1pm ET   MAE 9.7479 (d=+0.0044, 95% CI [-0.0066, +0.0160]) | affected n=106 MAE 10.429 bias -0.39 | ATS vs close 46-58 0.442
+  reverse of spec: +0.6 to MT/PT away team at 1pm ET   MAE 9.7399 (d=-0.0035, 95% CI [-0.0148, +0.0077]) | affected n=106 MAE 10.348 bias +0.81 | ATS vs close 47-57 0.452
+  nfelo's own tz mod re-applied to whole blend         MAE 9.7496 (d=+0.0061, 95% CI [-0.0164, +0.0286]) | affected n=613 MAE 9.739 bias -0.34 | ATS vs close 299-296 0.503
+  per-season MAE change of '+1.0 to 3-zone traveller' (affected games):
+    2022 n=26 MAE 10.376 -> 10.393 (d=+0.016) bias(home) -0.42
+    2023 n=44 MAE 9.059 -> 8.938 (d=-0.121) bias(home) -2.20
+    2024 n=40 MAE 10.754 -> 10.574 (d=-0.180) bias(home) -4.51
+    2025 n=37 MAE 11.867 -> 11.792 (d=-0.075) bias(home) -1.61
+  fit window 2009-2021 (n=317): MAE-min k for traveller = +2.50; mean err_rate -1.66
+  fit window 2014-2021 (n=227): MAE-min k for traveller = +2.75; mean err_rate -2.02
+  fit window 2018-2021 (n=130): MAE-min k for traveller = +3.25; mean err_rate -3.79
+===== 05_week_effects.py =====
+
+A. ALL 2009-2025 by week bucket
+  wk          n | MAE: market nraw  nclose rate | nraw-mkt | SD err_mkt | bias home                | fav cover                | dog ATS | |line| mkt / rate | tot resid
+  1         253 | 9.82  9.85  9.78  9.83 | +0.03 | 13.15 | -0.77 (se 0.83) | -0.88 (se 0.83) | 130-118 0.524 | 4.48 / 3.96 | -0.31 (se 0.82)
+  2         251 | 9.27  9.23  9.24  9.18 | -0.04 | 11.86 | +0.12 (se 0.75) | -0.39 (se 0.75) | 140-104 0.574 | 4.89 / 4.22 | +0.22 (se 0.83)
+  3         254 | 10.88  11.00  10.89  11.02 | +0.12 | 14.13 | +0.14 (se 0.89) | -1.77 (se 0.88) | 134-114 0.540 | 4.94 / 4.65 | +0.52 (se 0.81)
+  4-8      1134 | 10.20  10.23  10.17  10.22 | +0.03 | 13.24 | -0.05 (se 0.39) | +0.08 (se 0.39) | 565-542 0.510 | 5.08 / 4.91 | +0.92 (se 0.39)
+  9-16     1715 | 9.90  10.06  9.91  10.06 | +0.16 | 12.87 | +0.00 (se 0.31) | +0.33 (se 0.31) | 832-829 0.501 | 5.39 / 5.14 | +0.47 (se 0.32)
+  penult    252 | 11.29  11.54  11.35  11.55 | +0.25 | 14.18 | +1.04 (se 0.89) | +1.76 (se 0.89) | 120-124 0.492 | 6.13 / 5.80 | +0.03 (se 0.87)
+  final     255 | 10.15  10.57  10.09  10.58 | +0.42 | 13.07 | +1.27 (se 0.82) | +0.79 (se 0.82) | 126-125 0.502 | 6.53 / 6.18 | +0.47 (se 0.83)
+
+A. FIT 2009-2021
+  wk          n | MAE: market nraw  nclose rate | nraw-mkt | SD err_mkt | bias home                | fav cover                | dog ATS | |line| mkt / rate | tot resid
+  1         189 | 10.16  10.22  10.11  10.21 | +0.06 | 13.56 | -0.85 (se 0.99) | -1.68 (se 0.98) | 98-86 0.533 | 4.64 / 4.04 | +0.46 (se 0.96)
+  2         187 | 9.46  9.38  9.41  9.34 | -0.07 | 11.92 | +0.36 (se 0.87) | +0.05 (se 0.87) | 104-80 0.565 | 4.97 / 4.27 | -0.18 (se 0.95)
+  3         190 | 10.58  10.67  10.54  10.67 | +0.09 | 13.58 | -0.38 (se 0.98) | -2.37 (se 0.97) | 103-83 0.554 | 5.10 / 4.75 | +1.11 (se 0.93)
+  4-8       837 | 10.31  10.28  10.24  10.27 | -0.03 | 13.39 | -0.36 (se 0.46) | -0.06 (se 0.46) | 431-385 0.528 | 5.18 / 5.02 | +0.83 (se 0.47)
+  9-16     1244 | 10.26  10.39  10.24  10.39 | +0.13 | 13.33 | -0.11 (se 0.38) | +0.31 (se 0.38) | 598-607 0.496 | 5.44 / 5.25 | +0.19 (se 0.38)
+  penult    189 | 11.11  11.41  11.17  11.45 | +0.30 | 14.04 | +1.08 (se 1.02) | +1.38 (se 1.02) | 90-92 0.495 | 6.34 / 6.13 | -0.40 (se 0.99)
+  final     191 | 10.68  10.81  10.58  10.82 | +0.13 | 13.75 | +0.97 (se 0.99) | +0.82 (se 1.00) | 94-94 0.500 | 6.55 / 6.29 | +0.88 (se 0.96)
+
+A. TEST 2022-2025
+  wk          n | MAE: market nraw  nclose rate | nraw-mkt | SD err_mkt | bias home                | fav cover                | dog ATS | |line| mkt / rate | tot resid
+  1          64 | 8.82  8.78  8.82  8.74 | -0.04 | 11.97 | -0.54 (se 1.50) | +1.49 (se 1.49) | 32-32 0.500 | 4.02 / 3.71 | -2.59 (se 1.55)
+  2          64 | 8.74  8.78  8.73  8.70 | +0.04 | 11.74 | -0.57 (se 1.47) | -1.68 (se 1.45) | 36-24 0.600 | 4.65 / 4.08 | +1.40 (se 1.69)
+  3          64 | 11.77  11.97  11.93  12.05 | +0.20 | 15.68 | +1.66 (se 1.96) | +0.00 (se 1.97) | 31-31 0.500 | 4.45 / 4.38 | -1.24 (se 1.66)
+  4-8       297 | 9.89  10.09  9.97  10.08 | +0.20 | 12.77 | +0.84 (se 0.74) | +0.48 (se 0.74) | 134-157 0.460 | 4.81 / 4.60 | +1.16 (se 0.73)
+  9-16      471 | 8.94  9.19  9.03  9.19 | +0.25 | 11.57 | +0.31 (se 0.53) | +0.37 (se 0.53) | 234-222 0.513 | 5.26 / 4.86 | +1.19 (se 0.60)
+  penult     63 | 11.83  11.94  11.86  11.83 | +0.10 | 14.72 | +0.90 (se 1.85) | +2.91 (se 1.82) | 30-32 0.484 | 5.50 / 4.81 | +1.33 (se 1.80)
+  final      64 | 8.57  9.85  8.60  9.87 | +1.28 | 10.86 | +2.15 (se 1.36) | +0.68 (se 1.38) | 32-31 0.508 | 6.49 / 5.85 | -0.75 (se 1.69)
+
+B. Week 1 vs weeks 4-16: engine (nfelo raw) minus market abs error; and how much shrinking the engine toward the market helps
+  ALL  wk1    n= 253  MAE nraw-mkt +0.034 (se 0.131 p=0.795) | corr(nraw,mkt) 0.896 | SD(nraw-mkt) 2.14 | best engine weight a=0.25
+  ALL  wk2-3  n= 505  MAE nraw-mkt +0.037 (se 0.094 p=0.697) | corr(nraw,mkt) 0.915 | SD(nraw-mkt) 2.23 | best engine weight a=0.40
+  ALL  wk4-16 n=3022  MAE nraw-mkt +0.120 (se 0.038 p=0.002) | corr(nraw,mkt) 0.934 | SD(nraw-mkt) 2.19 | best engine weight a=0.15
+  FIT  wk1    n= 189  MAE nraw-mkt +0.059 (se 0.156 p=0.703) | corr(nraw,mkt) 0.894 | SD(nraw-mkt) 2.21 | best engine weight a=0.25
+  FIT  wk2-3  n= 377  MAE nraw-mkt +0.008 (se 0.113 p=0.947) | corr(nraw,mkt) 0.910 | SD(nraw-mkt) 2.33 | best engine weight a=0.45
+  FIT  wk4-16 n=2254  MAE nraw-mkt +0.082 (se 0.046 p=0.071) | corr(nraw,mkt) 0.932 | SD(nraw-mkt) 2.25 | best engine weight a=0.25
+  TEST wk1    n=  64  MAE nraw-mkt -0.041 (se 0.241 p=0.866) | corr(nraw,mkt) 0.901 | SD(nraw-mkt) 1.94 | best engine weight a=0.75
+  TEST wk2-3  n= 128  MAE nraw-mkt +0.123 (se 0.166 p=0.462) | corr(nraw,mkt) 0.932 | SD(nraw-mkt) 1.85 | best engine weight a=0.00
+  TEST wk4-16 n= 768  MAE nraw-mkt +0.230 (se 0.069 p=0.001) | corr(nraw,mkt) 0.941 | SD(nraw-mkt) 2.00 | best engine weight a=0.00
+  Levene err_mkt wk1 (sd 13.15, n=253) vs wk4-16 (sd 13.08, n=3022): p=0.621
+  Levene err_nraw wk1 (sd 13.16, n=253) vs wk4-16 (sd 13.15, n=3022): p=0.484
+
+C. Final week (17 pre-2021 / 18 from 2021): favourite cover margin by line size; totals; |market - rating line| gap
+  ALL  final n=255: fav cover +0.79 (se 0.82) | dog ATS 126-125 | tot resid +0.47 (se 0.83) | MAE mkt 10.15 nraw 10.57 | gap |mkt-rate| 2.97 vs wk4-16 1.71 (p=0.000) | home bias +1.27
+       |line|  0.0- 3.0 n= 65 fav cover vs mkt -0.82 (se 1.37 p=0.55) | fav vs nfelo raw +0.00 (se 1.39) | mkt fav ATS 31-33
+       |line|  3.5- 6.5 n= 87 fav cover vs mkt +1.00 (se 1.47 p=0.50) | fav vs nfelo raw +2.10 (se 1.47) | mkt fav ATS 41-46
+       |line|  7.0-30.0 n=103 fav cover vs mkt +1.63 (se 1.36 p=0.24) | fav vs nfelo raw +3.11 (se 1.42) | mkt fav ATS 53-47
+  FIT  final n=191: fav cover +0.82 (se 1.00) | dog ATS 94-94 | tot resid +0.88 (se 0.96) | MAE mkt 10.68 nraw 10.81 | gap |mkt-rate| 2.90 vs wk4-16 1.75 (p=0.000) | home bias +0.97
+       |line|  0.0- 3.0 n= 47 fav cover vs mkt -1.01 (se 1.66 p=0.55) | fav vs nfelo raw -0.01 (se 1.63) | mkt fav ATS 22-24
+       |line|  3.5- 6.5 n= 65 fav cover vs mkt +1.42 (se 1.82 p=0.44) | fav vs nfelo raw +2.43 (se 1.79) | mkt fav ATS 33-32
+       |line|  7.0-30.0 n= 79 fav cover vs mkt +1.43 (se 1.61 p=0.38) | fav vs nfelo raw +2.63 (se 1.65) | mkt fav ATS 39-38
+  TEST final n= 64: fav cover +0.68 (se 1.38) | dog ATS 32-31 | tot resid -0.75 (se 1.69) | MAE mkt 8.57 nraw 9.85 | gap |mkt-rate| 3.19 vs wk4-16 1.60 (p=0.000) | home bias +2.15
+       |line|  0.0- 3.0 n= 18 fav cover vs mkt -0.33 (se 2.41 p=0.89) | fav vs nfelo raw +0.04 (se 2.75) | mkt fav ATS 9-9
+       |line|  3.5- 6.5 n= 22 fav cover vs mkt -0.23 (se 2.24 p=0.92) | fav vs nfelo raw +1.14 (se 2.50) | mkt fav ATS 8-14
+       |line|  7.0-30.0 n= 24 fav cover vs mkt +2.27 (se 2.52 p=0.38) | fav vs nfelo raw +4.69 (se 2.84) | mkt fav ATS 14-9
+  who is right when market and ratings disagree (OLS margin ~ -rate_line, -mkt_spread; weights):
+   final ALL   n= 255 rating w=+0.24 (se 0.22) market w=+0.92 (se 0.21)
+   final TEST  n=  64 rating w=-0.40 (se 0.30) market w=+1.42 (se 0.28)
+   wk4-16 ALL  n=3022 rating w=+0.34 (se 0.12) market w=+0.76 (se 0.12)
+   wk1 ALL     n= 253 rating w=+0.41 (se 0.45) market w=+0.55 (se 0.39)
+   wk1 TEST    n=  64 rating w=+0.75 (se 1.02) market w=+0.43 (se 0.92)
+
+D. week-by-week (ALL): n, MAE market, MAE nraw, diff, SD err_mkt, bias home, |line| market
+  wk  1 n= 253 mkt 9.82 nraw 9.85 diff +0.03 sd 13.15 home bias -0.77 |line| 4.48
+  wk  2 n= 251 mkt 9.27 nraw 9.23 diff -0.04 sd 11.86 home bias +0.12 |line| 4.89
+  wk  3 n= 254 mkt 10.88 nraw 11.00 diff +0.12 sd 14.13 home bias +0.14 |line| 4.94
+  wk  4 n= 239 mkt 10.36 nraw 10.42 diff +0.06 sd 13.18 home bias +0.43 |line| 4.88
+  wk  5 n= 228 mkt 10.05 nraw 10.27 diff +0.21 sd 13.16 home bias -0.34 |line| 4.96
+  wk  6 n= 226 mkt 10.09 nraw 9.90 diff -0.19 sd 13.14 home bias -0.77 |line| 5.13
+  wk  7 n= 220 mkt 10.83 nraw 10.92 diff +0.09 sd 14.27 home bias -0.08 |line| 4.93
+  wk  8 n= 221 mkt 9.67 nraw 9.65 diff -0.02 sd 12.46 home bias +0.51 |line| 5.54
+  wk  9 n= 212 mkt 9.68 nraw 9.74 diff +0.06 sd 12.31 home bias -1.12 |line| 5.40
+  wk 10 n= 222 mkt 11.40 nraw 11.35 diff -0.05 sd 14.59 home bias -0.48 |line| 5.23
+  wk 11 n= 226 mkt 9.27 nraw 9.56 diff +0.29 sd 12.57 home bias -0.15 |line| 5.28
+  wk 12 n= 240 mkt 8.90 nraw 9.15 diff +0.25 sd 11.65 home bias +0.96 |line| 5.51
+  wk 13 n= 244 mkt 9.76 nraw 9.81 diff +0.05 sd 12.47 home bias +0.02 |line| 5.32
+  wk 14 n= 241 mkt 10.38 nraw 10.54 diff +0.15 sd 13.50 home bias +0.66 |line| 5.18
+  wk 15 n= 250 mkt 9.92 nraw 10.23 diff +0.31 sd 12.97 home bias -0.35 |line| 5.80
+  wk 16 n= 253 mkt 10.78 nraw 11.06 diff +0.28 sd 13.67 home bias +0.61 |line| 5.91
+  wk 17 n= 254 mkt 11.01 nraw 11.18 diff +0.17 sd 14.00 home bias +1.31 |line| 6.38
+  wk 18 n=  80 mkt 8.87 nraw 9.84 diff +0.97 sd 11.06 home bias +2.23 |line| 6.63
+===== 06_recommendation.py =====
+
+=== nfelo component = nfelo RAW (unregressed) | test 2022-25 REG n=1087 ===
+  market close MAE 9.4945 RMSE 12.3603 | nfelo component alone MAE 9.7506 | rating-only alone MAE 9.7408
+  (a) proxy, no schedule adjustments                         MAE 9.7439 RMSE 12.6304
+  (b) + spec table (short -0.9, bye +0.75, west@1pm -0.6)    MAE 9.7515 RMSE 12.6277 | affected n= 196 MAE 9.195 bias -0.651 | ATS vs close 96-97 0.497
+  (b1) spec bye only (+0.75 on top of nfelo's mod)           MAE 9.7471 RMSE 12.6258 | affected n= 102 MAE 7.414 bias -0.331 | ATS vs close 55-46 0.545
+  (b2) spec west@1pm only (-0.6 to west team)                MAE 9.7483 RMSE 12.6322 | affected n= 106 MAE 10.424 bias -0.702 | ATS vs close 48-56 0.462
+  (c0) strip nfelo bye+tz mods, no adjustment                MAE 9.7408 RMSE 12.6359 | affected n= 657 MAE 9.571 bias -0.118 | ATS vs close 316-320 0.497
+  (c1) strip mods, + rest 0.15/day (cap +-7) whole blend     MAE 9.7435 RMSE 12.6249 | affected n= 402 MAE 9.242 bias +0.138 | ATS vs close 184-211 0.466
+  (c2) strip mods, + bye 1.0 only (whole blend)              MAE 9.7429 RMSE 12.6278 | affected n= 102 MAE 7.384 bias -0.450 | ATS vs close 55-46 0.545
+  (c3) keep nfelo mods, + 0.54*0.15/day to non-nfelo share   MAE 9.7463 RMSE 12.6248 | affected n= 402 MAE 9.248 bias +0.110 | ATS vs close 192-203 0.486
+  (c4) strip tz only, keep nfelo bye, + 0.54*1.0 bye         MAE 9.7439 RMSE 12.6267 | affected n= 102 MAE 7.385 bias -0.252 | ATS vs close 55-46 0.545
+  (c5) (c1) + exploratory: +1.0 to 3-zone traveller          MAE 9.7298 RMSE 12.6049 | affected n= 147 MAE 10.359 bias -1.365 | ATS vs close 70-74 0.486
+  (d) (c1) + final week: engine weight a=1.00 vs market      MAE 9.7435 RMSE 12.6249 | affected n=  64 MAE 9.837 bias +3.311 | ATS vs close 29-34 0.460
+  (d) (c1) + final week: engine weight a=0.50 vs market      MAE 9.6942 RMSE 12.5676 | affected n=  64 MAE 9.000 bias +2.729 | ATS vs close 29-34 0.460
+  (d) (c1) + final week: engine weight a=0.25 vs market      MAE 9.6784 RMSE 12.5475 | affected n=  64 MAE 8.732 bias +2.439 | ATS vs close 29-34 0.460
+  (d) (c1) + final week: engine weight a=0.00 vs market      MAE 9.6689 RMSE 12.5331 | affected n=  64 MAE 8.570 bias +2.148 | ATS vs close 0-0 nan
+      bye games n=102: (a)     bye-team bias +1.20 (se 0.96)
+      bye games n=102: (b1)    bye-team bias +0.45 (se 0.96)
+      bye games n=102: (c1)    bye-team bias +0.62 (se 0.96)
+      bye games n=102: (c2)    bye-team bias +0.59 (se 0.96)
+      bye games n=102: market  bye-team bias +0.56 (se 0.95)
+
+=== nfelo component = nfelo published CLOSE (market-regressed) | test 2022-25 REG n=1087 ===
+  market close MAE 9.4945 RMSE 12.3603 | nfelo component alone MAE 9.5685 | rating-only alone MAE 9.7408
+  (a) proxy, no schedule adjustments                         MAE 9.6378 RMSE 12.5200
+  (b) + spec table (short -0.9, bye +0.75, west@1pm -0.6)    MAE 9.6453 RMSE 12.5166 | affected n= 196 MAE 9.104 bias -0.558 | ATS vs close 90-103 0.466
+  (b1) spec bye only (+0.75 on top of nfelo's mod)           MAE 9.6398 RMSE 12.5159 | affected n= 102 MAE 7.377 bias -0.410 | ATS vs close 50-51 0.495
+  (b2) spec west@1pm only (-0.6 to west team)                MAE 9.6434 RMSE 12.5206 | affected n= 106 MAE 10.294 bias -0.428 | ATS vs close 49-55 0.471
+  (c0) strip nfelo bye+tz mods, no adjustment                MAE 9.6349 RMSE 12.5266 | affected n= 657 MAE 9.495 bias -0.035 | ATS vs close 314-322 0.494
+  (c1) strip mods, + rest 0.15/day (cap +-7) whole blend     MAE 9.6344 RMSE 12.5167 | affected n= 402 MAE 9.132 bias +0.193 | ATS vs close 186-209 0.471
+  (c2) strip mods, + bye 1.0 only (whole blend)              MAE 9.6352 RMSE 12.5192 | affected n= 102 MAE 7.352 bias -0.529 | ATS vs close 54-47 0.535
+  (c3) keep nfelo mods, + 0.54*0.15/day to non-nfelo share   MAE 9.6374 RMSE 12.5149 | affected n= 402 MAE 9.135 bias +0.165 | ATS vs close 183-212 0.463
+  (c4) strip tz only, keep nfelo bye, + 0.54*1.0 bye         MAE 9.6355 RMSE 12.5181 | affected n= 102 MAE 7.347 bias -0.331 | ATS vs close 54-47 0.535
+  (c5) (c1) + exploratory: +1.0 to 3-zone traveller          MAE 9.6230 RMSE 12.4988 | affected n= 147 MAE 10.274 bias -1.149 | ATS vs close 73-71 0.507
+  (d) (c1) + final week: engine weight a=1.00 vs market      MAE 9.6344 RMSE 12.5167 | affected n=  64 MAE 9.123 bias +2.940 | ATS vs close 27-36 0.429
+  (d) (c1) + final week: engine weight a=0.50 vs market      MAE 9.6124 RMSE 12.4888 | affected n=  64 MAE 8.749 bias +2.544 | ATS vs close 27-36 0.429
+  (d) (c1) + final week: engine weight a=0.25 vs market      MAE 9.6070 RMSE 12.4784 | affected n=  64 MAE 8.658 bias +2.346 | ATS vs close 27-36 0.429
+  (d) (c1) + final week: engine weight a=0.00 vs market      MAE 9.6019 RMSE 12.4703 | affected n=  64 MAE 8.570 bias +2.148 | ATS vs close 0-0 nan
+      bye games n=102: (a)     bye-team bias +1.09 (se 0.96)
+      bye games n=102: (b1)    bye-team bias +0.34 (se 0.96)
+      bye games n=102: (c1)    bye-team bias +0.51 (se 0.96)
+      bye games n=102: (c2)    bye-team bias +0.49 (se 0.96)
+      bye games n=102: market  bye-team bias +0.56 (se 0.95)
+
+=== rolling-origin (fit on all seasons < s, test s) of k*rest_diff on the rating-only line, seasons 2016-2025 ===
+ season  k_fit  MAE_base  MAE_adj  MAE_base_aff  MAE_adj_aff  bias_rested_base  bias_rested_adj  n_aff
+   2016  0.075     9.224    9.208         9.569        9.526             0.207           -0.067     82
+   2017  0.125    10.207   10.211         9.555        9.566             0.933            0.505     90
+   2018  0.100     9.850    9.833         9.229        9.182             0.500            0.173     84
+   2019  0.150    10.362   10.374         9.965        9.998             0.430           -0.139     81
+   2020  0.125    10.095   10.089         9.513        9.498             0.593            0.157     91
+   2021  0.125    10.806   10.799         9.699        9.676            -0.233           -0.666     85
+   2022  0.150     8.797    8.801         9.478        9.488            -0.617           -1.078     98
+   2023  0.125    10.120   10.099         8.919        8.864             0.319           -0.057     98
+   2024  0.150    10.025   10.054         9.531        9.603             0.871            0.366    103
+   2025  0.100    10.268   10.270         9.008        9.011             1.366            1.063    103
+  pooled affected games: bias of rested side base +0.451 -> adj +0.040; MAE base 9.4311 -> adj 9.4270 (n=915)

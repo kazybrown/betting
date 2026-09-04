@@ -1,0 +1,44 @@
+sample team-games: train n=4884 test n=1504 (expert 4884 / 1504); sanity corr(implied_tt, team_pts) test=+0.418
+
+== (0) reproduce ==
+  market residual ~ off_expl_off  train   -1.299 (se 7.151) p=0.856 | test  +25.054 (se 11.422) p=0.028
+  market residual ~ opp_expl_def  train   +7.119 (se 7.837) p=0.364 | test  -12.455 (se 12.841) p=0.332
+  market residual ~ mismatch      train   +1.014 (se 4.377) p=0.817 | test   +8.358 (se 6.055) p=0.168
+  (expert: off_expl test +25.054 se 11.422 p=0.028; 1 SD of off_expl = 0.0186 -> +25 per unit = +0.47 pts per SD)
+
+== (1) multiple comparisons: the expert reported 10 specs x 2 feature versions x 2 eras = 40 market-residual coefficient tests in T2 (plus 2 cell tests) ==
+  expected number of p<0.05 under the null: 2.0; observed in the expert's log: 2 (off_expl test r8 p=0.028, 'both additive' test r8 p=0.025 -- the same feature) -> exactly the null expectation
+
+== (2) single-season coefficients of (team_pts - implied_tt) ~ off_expl (r8d), cluster SE ==
+  2009:-29(34)  2010:-12(28)  2011:+7(21)  2012:+11(25)  2013:-30(23)  2014:-1(25)  2015:+11(28)  2016:+21(26)  2017:-45(24)  2018:+14(20)  2019:+24(20)  2023:+15(21)  2024:+57(18)  2025:-0(20)
+  2009-19 season coefs: mean -2.6, SD 23.1, range [-45,+24]; 2023-25 individual seasons: 2023 +15, 2024 +57, 2025 -0
+  -> the 2023-25 pooled +25 is driven by which seasons? (a +25 value would be exceeded by a single 2009-19 season with prob ~0.00)
+
+== (3) modern-era OOS test of the watch item: fit market residual ~ off_expl on earlier modern seasons, test the next ==
+  fit [2023] (coef +14.8) -> test 2024: in-sample coef +56.7 (p=0.00); OOS dMAE -0.035 [-0.079,+0.007] n=544; team-total O/U vs implied 284-256-4 (0.526)
+  fit [2023, 2024] (coef +36.4) -> test 2025: in-sample coef -0.0 (p=1.00); OOS dMAE +0.030 [-0.041,+0.104] n=544; team-total O/U vs implied 283-256-5 (0.525)
+  fit [2024] (coef +56.7) -> test 2025: in-sample coef -0.0 (p=1.00); OOS dMAE +0.067 [-0.032,+0.168] n=544; team-total O/U vs implied 271-268-5 (0.503)
+  fit 2009-19 + 2023..2023 (coef +0.4) -> test 2024: OOS dMAE -0.008 [-0.026,+0.009]
+  fit 2009-19 + 2023..2024 (coef +6.4) -> test 2025: OOS dMAE -0.007 [-0.031,+0.016]
+
+== (4) influence and robustness of the 2023-25 coefficient ==
+  Huber fit 2023-25: +26.9 (se 11.8)
+  team-seasons whose removal most reduces the coefficient (top 6):
+team_season  n  d_coef_when_dropped  mean_resid  mean_off_expl
+   DET_2024 17               -2.664       5.309          0.026
+   CAR_2023 13               -2.555      -4.231         -0.035
+    NE_2023 13               -2.468      -3.423         -0.039
+   BUF_2024 17               -2.298       5.853          0.014
+   BAL_2024 17               -2.183       3.838          0.037
+    TB_2024 17               -1.933       5.941          0.017
+  dropping the top 3 together: coef = +17.0
+
+== (5) leak-free season-to-date league reference (r8s) instead of the prior-season reference ==
+  train: market residual ~ off_expl (std ref) +0.71 (se 7.28) p=0.922  | corr(expert ref, std ref)=0.976
+  test: market residual ~ off_expl (std ref) +25.57 (se 11.44) p=0.025  | corr(expert ref, std ref)=0.979
+
+== (6) defense-allowed explosive rate, market-free team-points baseline: calibration + std ref + rolling-origin ==
+  expert ref  b=+31.6 (p=0.001) | calib slope +0.08 (se 0.41) | dMAE -0.002 [-0.027,+0.023]
+  std ref     b=+34.2 (p=0.000) | calib slope +0.01 (se 0.39) | dMAE +0.003 [-0.024,+0.029]
+  rolling-origin BASE+expl(off,def) minus BASE: 2013:-0.022  2014:-0.034  2015:+0.020  2016:+0.013  2017:+0.016  2018:+0.002  2019:-0.030  2023:+0.002  2024:+0.012  2025:-0.025 | mean -0.005
+  market prices it: corr(opp_expl_def prior, implied_tt) train +0.275; residual coef vs market train +7.1 (p=0.36)

@@ -1,0 +1,37 @@
+outdoor REG games with observed wind/temp: n=4835 (fit<=2021 n=4193, test n=642); stadiums=76
+
+== (1) team-controlled wind slope: pooled vs STADIUM fixed effects (within-stadium identification) ==
+  FIT 1999-2021  n=4193 pooled=-0.214(0.040) | cluster-stad se=0.049 | +stadium FE=-0.212(0.050, p=0.000) | +stad+season FE=-0.224(0.049) | Huber+stadFE=-0.205(0.043) | stadFE excl 25+=-0.160(0.051, p=0.002)
+  TEST 2022-25   n= 642 pooled=-0.295(0.131) | cluster-stad se=0.140 | +stadium FE=-0.227(0.125, p=0.069) | +stad+season FE=-0.223(0.124) | Huber+stadFE=-0.233(0.123) | stadFE excl 25+=-0.289(0.137, p=0.035)
+  ALL            n=4835 pooled=-0.222(0.038) | cluster-stad se=0.044 | +stadium FE=-0.215(0.043, p=0.000) | +stad+season FE=-0.222(0.042) | Huber+stadFE=-0.211(0.040) | stadFE excl 25+=-0.177(0.046, p=0.000)
+
+== (2) era stability of the team-controlled slope (stadium FE, cluster by stadium) ==
+  1999-2004: n= 998 team-controlled=-0.150 (se 0.093, p=0.107) | market residual=-0.127 (se 0.093, p=0.173) | mean wind=8.9
+  2005-2010: n=1148 team-controlled=-0.272 (se 0.094, p=0.004) | market residual=-0.229 (se 0.089, p=0.010) | mean wind=8.5
+  2011-2016: n=1127 team-controlled=-0.185 (se 0.063, p=0.003) | market residual=-0.162 (se 0.062, p=0.009) | mean wind=8.3
+  2017-2021: n= 920 team-controlled=-0.312 (se 0.111, p=0.005) | market residual=-0.202 (se 0.101, p=0.045) | mean wind=8.2
+  2022-2025: n= 642 team-controlled=-0.227 (se 0.125, p=0.069) | market residual=-0.120 (se 0.124, p=0.336) | mean wind=8.0
+
+== (3) permutation placebo: shuffle wind within (season, stadium), 300 draws, FIT sample, stadium-FE spec ==
+  real slope=-0.212; placebo mean=+0.0087 sd=0.0399; share of |placebo| >= |real| = 0.000
+
+== (4) bins with stadium FE (vs <10 mph), team-controlled, FIT 1999-2021 ==
+  10-14  -0.99 (se 0.59) n=965
+  15-19  -2.56 (se 0.96) n=398
+  20-24  -1.25 (se 1.14) n=119
+  25+    -12.71 (se 2.08) n=38
+  market residual bins with stadium FE: 10-14=-0.88(0.53)  15-19=-2.15(0.91)  20-24=-0.01(1.15)  25+=-10.91(1.92)
+  fine bins vs 4-6 mph (stadium FE): 0-3=-0.38(0.77)  7-9=-1.83(0.54)  10-12=-1.92(0.74)  13-15=-2.25(0.96)  16-18=-3.53(1.29)  19-21=-1.41(1.37)  22-25=-5.12(1.99)  26+=-14.15(2.18)
+
+== (5) temperature (T3b) with wind linear + stadium FE, team-controlled ==
+  FIT 1999-2021: <32F=-0.46 (se 1.03) <20F extra=-1.88 (se 2.06, n=51) 85F+=-0.55 (se 0.96)
+  ALL 1999-2025: <32F=-0.10 (se 0.93) <20F extra=-3.39 (se 1.62, n=66) 85F+=-0.54 (se 0.96)
+  precipitation: flag exists only 2023-25 (= TEST). The expert's -1.5 term was sized on test data; n=39. Nothing to add.
+
+== (6) T3c spreads: does wind change the spread's predictive slope? margin ~ spread_line * wind (outdoor, observed wind) ==
+  FIT <=2021   n=4193 slope on spread=+1.128 ; sl:wind=-0.0041 (se 0.0065, p=0.53) -> slope at 20 mph = +1.047
+  TEST 2022-25 n=642 slope on spread=+0.993 ; sl:wind=+0.0090 (se 0.0169, p=0.59) -> slope at 20 mph = +1.174
+  ALL          n=4835 slope on spread=+1.112 ; sl:wind=-0.0027 (se 0.0061, p=0.65) -> slope at 20 mph = +1.057
+  FIT <=2021   fav cover margin ~ wind (stadium FE): -0.053/mph (se 0.037, p=0.16) | >=15: -0.75 (n=551) vs +0.48
+  TEST 2022-25 fav cover margin ~ wind (stadium FE): +0.022/mph (se 0.125, p=0.86) | >=15: +2.38 (n=60) vs +0.24
+  ALL          fav cover margin ~ wind (stadium FE): -0.048/mph (se 0.035, p=0.17) | >=15: -0.45 (n=611) vs +0.44

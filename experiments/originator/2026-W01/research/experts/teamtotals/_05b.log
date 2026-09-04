@@ -1,0 +1,51 @@
+[common] rows=4630 seasons 2009-2025 | train=3491 test=1139
+[common] sign check corr(S, margin) = -0.436 (must be strongly negative); corr(T, total_pts) = 0.304 (positive)
+[common] mean spread err (margin+S) = +0.064 | mean total err = +0.512
+team-games joined to games.csv: 7342 (2009-2025)
+games with full features: 3506 (train 2009-2019 n=2733, test 2023-2025 n=773)
+train feature means: expl: off 0.061 / def 0.061, rz: off 0.595 / def 0.599, pace: off 30.996 / def 30.971, epa: off -0.000 / def 0.001
+
+--- sanity: features carry information the market prices (margin on S + indices) ---
+  S -1.091 (p=0.00), epa_home -0.156 (p=0.57), epa_away -0.053 (p=0.84), expl_home -0.191 (p=0.40), expl_away +0.001 (p=0.99)
+
+--- identity residuals on matchup indices (TRAIN 2009-2019, HC1) ---
+TRAIN  r_home: expl_home -0.190 (p=0.23), rz_home -0.058 (p=0.70), epa_home -0.378 (p=0.07), pace_avg +0.368 (p=0.18), pace_mismatch -0.126 (p=0.58), pass_home -0.004 (p=0.98) | R2=0.0055
+TRAIN  r_away: expl_away +0.217 (p=0.13), rz_away -0.279 (p=0.05), epa_away +0.105 (p=0.62), pace_avg +0.065 (p=0.81), pace_mismatch -0.271 (p=0.19), pass_away -0.109 (p=0.54) | R2=0.0037
+TRAIN tot_err: expl_home + expl_away +0.117 (p=0.42), rz_home + rz_away -0.158 (p=0.27), epa_home + epa_away -0.264 (p=0.15), pace_avg +0.376 (p=0.33), pace_mismatch -0.381 (p=0.21), pass_home + pass_away +0.115 (p=0.54) | R2=0.0036
+TRAIN  sp_err: expl_home - expl_away -0.080 (p=0.60), rz_home - rz_away -0.184 (p=0.21), epa_home - epa_away -0.068 (p=0.78), pace_home_rel +0.217 (p=0.26), pass_home - pass_away -0.262 (p=0.20) | R2=0.0030
+
+--- same regressions on TEST 2023-2025 (independent check, NOT a fit) ---
+TEST   r_home: expl_home +0.041 (p=0.87), rz_home +0.202 (p=0.43), epa_home -0.263 (p=0.46), pace_avg +0.932 (p=0.12), pace_mismatch -0.696 (p=0.14), pass_home -1.218 (p=0.00) | R2=0.0244
+TEST   r_away: expl_away +0.057 (p=0.82), rz_away +0.519 (p=0.04), epa_away -0.503 (p=0.14), pace_avg +0.032 (p=0.96), pace_mismatch -0.477 (p=0.30), pass_away -0.191 (p=0.57) | R2=0.0103
+TEST  tot_err: expl_home + expl_away -0.013 (p=0.96), rz_home + rz_away +0.599 (p=0.02), epa_home + epa_away -0.407 (p=0.23), pace_avg +1.037 (p=0.23), pace_mismatch -1.152 (p=0.09), pass_home + pass_away -0.604 (p=0.08) | R2=0.0155
+TEST   sp_err: expl_home - expl_away +0.118 (p=0.67), rz_home - rz_away +0.113 (p=0.67), epa_home - epa_away -0.424 (p=0.26), pace_home_rel +0.001 (p=1.00), pass_home - pass_away -0.870 (p=0.04) | R2=0.0154
+
+--- single-factor: residual per 1 SD of index, and top/bottom-decile over rate vs identity ---
+TRAIN expl_home -> r_home: -0.455 pts/SD (p=0.035, n=2733) | top-decile resid +0.05 P(over) 0.471 (n=274) | bottom-decile resid +0.87 P(over) 0.487
+TEST expl_home -> r_home: +0.162 pts/SD (p=0.648, n=773) | top-decile resid +1.54 P(over) 0.590 (n=78) | bottom-decile resid +1.55 P(over) 0.605
+TRAIN expl_away -> r_away: +0.312 pts/SD (p=0.111, n=2733) | top-decile resid +1.13 P(over) 0.557 (n=274) | bottom-decile resid +0.03 P(over) 0.450
+TEST expl_away -> r_away: -0.010 pts/SD (p=0.977, n=773) | top-decile resid +1.07 P(over) 0.487 (n=78) | bottom-decile resid -1.18 P(over) 0.442
+TRAIN   rz_home -> r_home: -0.257 pts/SD (p=0.200, n=2733) | top-decile resid +0.14 P(over) 0.480 (n=274) | bottom-decile resid +0.79 P(over) 0.489
+TEST   rz_home -> r_home: +0.275 pts/SD (p=0.454, n=773) | top-decile resid +1.92 P(over) 0.577 (n=78) | bottom-decile resid +1.23 P(over) 0.532
+TRAIN   rz_away -> r_away: -0.347 pts/SD (p=0.073, n=2733) | top-decile resid -0.15 P(over) 0.498 (n=274) | bottom-decile resid +0.88 P(over) 0.536
+TEST   rz_away -> r_away: +0.581 pts/SD (p=0.094, n=773) | top-decile resid +1.08 P(over) 0.474 (n=78) | bottom-decile resid -0.91 P(over) 0.423
+TRAIN  epa_home -> r_home: -0.725 pts/SD (p=0.006, n=2733) | top-decile resid +0.05 P(over) 0.478 (n=274) | bottom-decile resid -0.02 P(over) 0.464
+TEST  epa_home -> r_home: -0.034 pts/SD (p=0.941, n=773) | top-decile resid +2.68 P(over) 0.615 (n=78) | bottom-decile resid +2.09 P(over) 0.566
+TRAIN  epa_away -> r_away: +0.124 pts/SD (p=0.643, n=2733) | top-decile resid -0.05 P(over) 0.496 (n=274) | bottom-decile resid +0.41 P(over) 0.463
+TEST  epa_away -> r_away: -0.362 pts/SD (p=0.412, n=773) | top-decile resid +0.17 P(over) 0.462 (n=78) | bottom-decile resid -0.32 P(over) 0.455
+TRAIN tot_err ~ pace_avg + pace_mismatch: pace_avg +0.343 pts/SD (p=0.187), pace_mismatch -0.370 pts/SD (p=0.184)
+      fastest-decile games: tot resid +0.80 P(over) 0.528 (n=274) | slowest-decile: +1.09 P(over) 0.522
+TEST tot_err ~ pace_avg + pace_mismatch: pace_avg +0.325 pts/SD (p=0.495), pace_mismatch -0.761 pts/SD (p=0.103)
+      fastest-decile games: tot resid +3.17 P(over) 0.519 (n=78) | slowest-decile: -0.10 P(over) 0.551
+
+--- OOS 2023-2025: team-total MAE, identity vs identity + reallocation fit on 2009-2019 ---
+  home: MAE identity 7.345 -> +full realloc 7.350; dMAE -0.005 [-0.032,+0.021] (realloc SD 0.37)
+  away: MAE identity 7.046 -> +full realloc 7.070; dMAE -0.024 [-0.063,+0.015] (realloc SD 0.50)
+  sum-preserving realloc on I(expl_home-expl_away): train coef -0.0023 (p=0.986); OOS dMAE -0.0001 [-0.0002,-0.0000]; realloc SD 0.002
+  sum-preserving realloc on I(epa_home-epa_away): train coef +0.1135 (p=0.366); OOS dMAE +0.0003 [-0.0057,+0.0063]; realloc SD 0.116
+  sum-preserving realloc on I(rz_home-rz_away): train coef -0.1133 (p=0.400); OOS dMAE -0.0024 [-0.0081,+0.0032]; realloc SD 0.113
+
+--- implied reallocation magnitude at the 90th percentile of each index (train coefs, r_home spec) ---
+  expl_home: coef -0.313 [-0.604,-0.021] x p90 1.86 = -0.58 pts
+  rz_home: coef -0.179 [-0.453,+0.095] x p90 1.88 = -0.34 pts
+  epa_home: coef -0.508 [-0.871,-0.145] x p90 1.74 = -0.88 pts

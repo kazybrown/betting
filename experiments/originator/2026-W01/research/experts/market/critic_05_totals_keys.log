@@ -1,0 +1,51 @@
+=== (a) reproduce landing masses (window +/-3) ===
+key mean 0.0416 | other mean 0.0271 | ratio 1.53
+
+=== (b) rolling blocks: key vs other mass ===
+2009-14: n=1602 key 0.0404 other 0.0276 ratio 1.46 | per key: 41:0.036, 44:0.051, 47:0.028, 51:0.047
+2015-21: n=1889 key 0.0398 other 0.0278 ratio 1.43 | per key: 41:0.035, 44:0.034, 47:0.039, 51:0.051
+2022-25: n=1139 key 0.0454 other 0.0291 ratio 1.56 | per key: 41:0.051, 44:0.040, 47:0.035, 51:0.056
+rank of mass (1 = heaviest) by block:
+     2009-14  2015-21  2022-25
+37        4        8       14
+40        3        4        8
+41        6        5        3
+43        5        6        6
+44        1        7        5
+45       13       14       11
+47        8        2        7
+48        9       15        9
+51        2        1        1
+
+=== (c) full placebo of the rounding-rule EV comparison (expert's 04b method) for every integer 37-54 ===
+T=0.5: mean diff (alt-A) at keys +0.0014 vs non-keys -0.0032 | SD across non-keys 0.0175
+   ranking (1=largest gain from key-aware rounding): 50:+0.037, 47*:+0.016, 45:+0.014, 44*:+0.009, 49:+0.006, 43:+0.005, 42:+0.005, 52:+0.003, 53:+0.002, 37:-0.006, 41*:-0.006, 46:-0.009, 48:-0.009, 51*:-0.013, 38:-0.014, 39:-0.025, 54:-0.025, 40:-0.028
+   Mann-Whitney keys vs non-keys p = 0.505
+T=1.0: mean diff (alt-A) at keys +0.0022 vs non-keys -0.0011 | SD across non-keys 0.0151
+   ranking (1=largest gain from key-aware rounding): 50:+0.034, 47*:+0.015, 45:+0.013, 44*:+0.008, 43:+0.008, 49:+0.006, 42:+0.005, 53:+0.005, 52:+0.004, 37:-0.005, 46:-0.006, 41*:-0.006, 48:-0.007, 51*:-0.009, 38:-0.012, 39:-0.018, 54:-0.019, 40:-0.023
+   Mann-Whitney keys vs non-keys p = 0.574
+
+=== (d) juice at integer total lines (over vs under odds) ===
+             n  over_odds  under_odds  p_over_imp  over_real    key
+mkt_total                                                          
+36.0        16     -110.0      -108.0       0.504      0.600  False
+37.0        42     -108.0      -105.0       0.502      0.425  False
+38.0        71     -106.0      -106.0       0.501      0.465  False
+39.0        53     -106.0      -105.0       0.502      0.585  False
+40.0       114     -108.0      -106.0       0.501      0.562  False
+41.0       180     -106.0      -105.0       0.501      0.506   True
+42.0       147     -106.0      -107.0       0.501      0.479  False
+43.0       211     -106.0      -105.0       0.501      0.468  False
+44.0       220     -106.0      -105.0       0.501      0.493   True
+45.0       187     -106.0      -105.0       0.501      0.473  False
+46.0       173     -106.0      -105.0       0.501      0.538  False
+47.0       186     -107.0      -105.0       0.501      0.436   True
+48.0       153     -107.0      -105.0       0.500      0.503  False
+49.0       112     -106.5      -105.0       0.500      0.495  False
+50.0        68     -105.0      -105.5       0.501      0.343  False
+51.0        76     -106.0      -105.0       0.501      0.521   True
+52.0        42     -105.5      -105.0       0.500      0.487  False
+53.0        44     -106.0      -105.5       0.500      0.476  False
+54.0        35     -105.0      -106.0       0.497      0.529  False
+55.0        31     -104.0      -106.0       0.501      0.258  False
+mean implied over prob at key integer lines: 0.5011 | other integers: 0.5009 | half-point lines: 0.5008

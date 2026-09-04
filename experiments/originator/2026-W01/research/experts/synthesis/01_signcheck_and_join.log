@@ -1,0 +1,6 @@
+sign check: corr(mkt_spread, margin) = -0.44 (must be strongly negative)
+sign check: corr(mkt_total, total_pts) = 0.304 (positive)
+kit.merged(): REG 2009-25 nfelo coverage 0.928  missing=317  2009-2019 missing=317  2022-25 missing=0
+normalized both parts: REG 2009-25 nfelo coverage 1.000  missing=0  2009-2019 missing=0  2022-25 missing=0
+kit-missing games by season: {2009: 39, 2010: 37, 2011: 39, 2012: 39, 2013: 39, 2014: 38, 2015: 39, 2016: 23, 2017: 8, 2018: 8, 2019: 8}
+kit-missing games involving LA/LAC/LV ids: 317 of 317

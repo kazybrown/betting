@@ -1,0 +1,54 @@
+5a. Week-1 HFA
+  2009-25 non-neutral n=4059 HC1              HFA other +2.09 (se 0.22) | W1 shift -1.04 (se 0.84, p=0.215)
+  2009-25 non-neutral n=4059 cluster(season)  HFA other +2.09 (se 0.26) | W1 shift -1.04 (se 0.88, p=0.234)
+  2000-25 naive-rating n=6637 cluster(season): HFA other +2.31 (se 0.18) | W1 shift -1.01 (se 0.63, p=0.109)
+  2000-25 naive-rating: W1-4 shift -0.16 (se 0.30, p=0.604)
+/home/user/originator-2026-w01/research/experts/earlyseason/critic_05_hfa_caps.py:24: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  return sm.OLS(np.asarray(y, float), Xm).fit(cov_type="cluster", cov_kwds={"groups": np.asarray(groups)})
+  market W1 home residual 1999-2025 -0.83 (cluster se 0.61, p=0.173, n=425)
+/home/user/originator-2026-w01/research/experts/earlyseason/critic_05_hfa_caps.py:24: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  return sm.OLS(np.asarray(y, float), Xm).fit(cov_type="cluster", cov_kwds={"groups": np.asarray(groups)})
+  market W1 home residual 1999-2012 -0.15 (cluster se 0.96, p=0.873, n=221)
+/home/user/originator-2026-w01/research/experts/earlyseason/critic_05_hfa_caps.py:24: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  return sm.OLS(np.asarray(y, float), Xm).fit(cov_type="cluster", cov_kwds={"groups": np.asarray(groups)})
+  market W1 home residual 2013-2025 -1.55 (cluster se 0.70, p=0.026, n=204)
+/home/user/originator-2026-w01/research/experts/earlyseason/critic_05_hfa_caps.py:24: SingularMatrixWarning: The design matrix is rank-deficient. The model parameters are not uniquely determined.
+  return sm.OLS(np.asarray(y, float), Xm).fit(cov_type="cluster", cov_kwds={"groups": np.asarray(groups)})
+  market W1 home residual 2021-2025 -1.42 (cluster se 1.53, p=0.352, n=77)
+  market home residual W1 minus other weeks (1999-2025, cluster): -0.96 (se 0.61, p=0.116)
+
+5b. Information share of the market's deviation from the rating line (-slope of err_elo_line on dev)
+  A. reproduce + clustered
+    HC1              other 0.93 (se 0.07) W1 change -0.52 (se 0.35, p=0.144) | W5+ 0.97 W1-4 change -0.40 (se 0.18, p=0.028)
+    cluster(season)  other 0.93 (se 0.09) W1 change -0.52 (se 0.36, p=0.146) | W5+ 0.97 W1-4 change -0.40 (se 0.19, p=0.039)
+  B. per-week share by era (HC1):
+    2009-2014 W1 1.12 (0.50) | W2 0.89 (0.71) | W3 -0.03 (0.59) | W4 1.00 (0.84) | W5-9 0.66 (0.31) | W10+ 0.96 (0.18)
+    2015-2025 W1 -0.14 (0.45) | W2 0.92 (0.32) | W3 0.36 (0.38) | W4 0.74 (0.34) | W5-9 0.64 (0.18) | W10+ 1.14 (0.10)
+    2009-2025 W1 0.41 (0.35) | W2 0.86 (0.30) | W3 0.25 (0.32) | W4 0.81 (0.34) | W5-9 0.64 (0.15) | W10+ 1.09 (0.09)
+  C. W1-4 pooled test WITHOUT week 3, and W1+W2 only, and W2-4 only (2009-25):
+    W1,2,4 vs W5+  early share 0.70 | change -0.27 (cluster se 0.21, p=0.188)
+    W1-2 vs W5+    early share 0.65 | change -0.32 (cluster se 0.28, p=0.258)
+    W2-4 vs W5+    early share 0.63 | change -0.35 (cluster se 0.18, p=0.048)
+  D. rating line WITH the QB adjustment (nraw): dev_raw = mkt - nraw
+    2009-2025 other 0.71 W1 0.51 (change -0.20, se 0.36, p=0.573) | W5+ 0.73 W1-4 0.56 (change -0.18, se 0.23, p=0.439)
+    2015-2025 other 0.76 W1 -0.03 (change -0.79, se 0.47, p=0.091) | W5+ 0.79 W1-4 0.45 (change -0.34, se 0.31, p=0.273)
+  E. nonlinearity: W1 share for |dev|<=2.5 vs >2.5, and W10+
+    wk 1    |dev|<=2.5 n= 194 share 0.27 (se 0.73)
+    wk 1    |dev|>2.5  n=  56 share 0.54 (se 0.38)
+    wk 1-4  |dev|<=2.5 n= 730 share 0.45 (se 0.38)
+    wk 1-4  |dev|>2.5  n= 256 share 0.61 (se 0.18)
+    wk 10+  |dev|<=2.5 n=1279 share 1.11 (se 0.27)
+    wk 10+  |dev|>2.5  n= 716 share 1.09 (se 0.09)
+  F. link to theory 4b: W1 share with the net new-QB flag as a covariate (flags from critic_04 construction)
+    W1 n=250 share alone 0.41 (se 0.35) | with new-QB flag: share 0.46 (se 0.36), flag coef +1.42 (se 1.11) | market prices new-QB flag at dev +0.37 (se 0.22)
+    W1 games with NO new-QB on either side: n=134 share 0.35 (se 0.54)
+    W1 games with a new-QB flag: n=116 share 0.46 (se 0.46)
+  G. rolling-origin cap test 2015-25: cap c chosen on seasons < t (grid 1,1.5,2,2.5,3,4,none) by MAE, applied to season t; paired MAE vs market
+    W1    n= 166 chosen caps [1.0, 1.5, 99] | MAE capped 9.747 mkt 9.837 diff -0.091 [-0.27,+0.08] p=0.301 | fixed: c=1.0 -0.202 [-0.41,+0.00]; c=1.5 -0.185 [-0.35,-0.03]; c=2.5 -0.100 [-0.19,-0.01]
+    W1-4  n= 668 chosen caps [1.0, 2.0, 99] | MAE capped 9.789 mkt 9.847 diff -0.058 [-0.18,+0.06] p=0.334 | fixed: c=1.0 -0.092 [-0.22,+0.03]; c=1.5 -0.095 [-0.20,+0.01]; c=2.5 -0.073 [-0.15,-0.00]
+    W2-4  n= 502 chosen caps [1.0, 2.0] | MAE capped 9.785 mkt 9.850 diff -0.065 [-0.21,+0.07] p=0.373 | fixed: c=1.0 -0.055 [-0.21,+0.09]; c=1.5 -0.066 [-0.21,+0.06]; c=2.5 -0.064 [-0.16,+0.02]
+    W5+   n=2096 chosen caps [99] | MAE capped 9.854 mkt 9.854 diff -0.000 [-0.00,-0.00] p=0.001 | fixed: c=1.0 +0.225 [+0.13,+0.33]; c=1.5 +0.185 [+0.10,+0.28]; c=2.5 +0.131 [+0.06,+0.20]
+  H. Placebo: 'dev' measured from the nfelo CLOSE (already regressed to market) — share should be ~1 everywhere if the method is sound
+    wk 1    n= 250 share of (mkt - nfelo close) 0.17 (se 0.43) | SD dev_c 1.33
+    wk 1-4  n= 986 share of (mkt - nfelo close) 0.27 (se 0.32) | SD dev_c 1.15
+    wk 5+   n=3073 share of (mkt - nfelo close) 0.32 (se 0.23) | SD dev_c 1.09

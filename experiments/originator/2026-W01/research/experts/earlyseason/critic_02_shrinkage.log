@@ -1,0 +1,31 @@
+A/B. Rolling-origin Week-1 shrinkage variants (fit seasons < t, test t), MAE diff = variant - k=1 (negative = variant better)
+  W1    t0=2015 single k through origin (expert)               n= 169 mean k 0.937 (0.88-1.01) | MAE k=1 9.816 var 9.787 diff -0.029 [-0.08,+0.03] p=0.28 | RMSE 13.432 -> 13.446
+  W1    t0=2015 k with intercept: margin ~ a + k*(-elo_line)   n= 169 mean k 1.016 (0.94-1.12) | MAE k=1 9.816 var 9.820 diff +0.004 [-0.13,+0.14] p=0.95 | RMSE 13.432 -> 13.444
+  W1    t0=2015 Huber-robust k with intercept                  n= 169 mean k 1.010 (0.96-1.07) | MAE k=1 9.816 var 9.815 diff -0.001 [-0.11,+0.12] p=0.98 | RMSE 13.432 -> 13.436
+  W1    t0=2015 k on rating gap only, HFA face value           n= 169 mean k 1.081 (0.94-1.18) | MAE k=1 9.816 var 9.821 diff +0.005 [-0.06,+0.07] p=0.88 | RMSE 13.432 -> 13.444
+  W1    t0=2015 single k on nraw (with QB adj)                 n= 169 mean k 0.882 (0.82-0.96) | MAE k=1 9.816 var 9.837 diff +0.021 [-0.10,+0.14] p=0.72 | RMSE 13.432 -> 13.506
+  W1    t0=2012 single k through origin (expert)               n= 211 mean k 0.946 (0.88-1.04) | MAE k=1 9.797 var 9.776 diff -0.021 [-0.07,+0.02] p=0.38 | RMSE 13.106 -> 13.123
+  W1    t0=2012 k with intercept: margin ~ a + k*(-elo_line)   n= 211 mean k 0.996 (0.82-1.12) | MAE k=1 9.797 var 9.792 diff -0.005 [-0.12,+0.11] p=0.93 | RMSE 13.106 -> 13.129
+  W1    t0=2012 Huber-robust k with intercept                  n= 211 mean k 1.001 (0.89-1.07) | MAE k=1 9.797 var 9.792 diff -0.005 [-0.10,+0.09] p=0.91 | RMSE 13.106 -> 13.119
+  W1    t0=2012 k on rating gap only, HFA face value           n= 211 mean k 1.075 (0.93-1.18) | MAE k=1 9.797 var 9.812 diff +0.015 [-0.04,+0.07] p=0.61 | RMSE 13.106 -> 13.121
+  W1    t0=2012 single k on nraw (with QB adj)                 n= 211 mean k 0.894 (0.82-0.99) | MAE k=1 9.797 var 9.830 diff +0.033 [-0.07,+0.13] p=0.52 | RMSE 13.106 -> 13.175
+  W1-4  t0=2015 single k through origin (expert)               n= 678 mean k 1.067 (1.02-1.14) | MAE k=1 9.886 var 9.901 diff +0.015 [-0.01,+0.04] p=0.31 | RMSE 13.050 -> 13.066
+  W1-4  t0=2015 k with intercept: margin ~ a + k*(-elo_line)   n= 678 mean k 1.108 (1.02-1.19) | MAE k=1 9.886 var 9.886 diff +0.000 [-0.05,+0.05] p=1.00 | RMSE 13.050 -> 13.077
+  W1-4  t0=2015 Huber-robust k with intercept                  n= 678 mean k 1.124 (1.05-1.18) | MAE k=1 9.886 var 9.880 diff -0.006 [-0.06,+0.05] p=0.83 | RMSE 13.050 -> 13.074
+  W1-4  t0=2015 k on rating gap only, HFA face value           n= 678 mean k 1.123 (1.02-1.19) | MAE k=1 9.886 var 9.881 diff -0.005 [-0.05,+0.04] p=0.82 | RMSE 13.050 -> 13.062
+  W1-4  t0=2015 single k on nraw (with QB adj)                 n= 678 mean k 1.011 (0.96-1.10) | MAE k=1 9.886 var 9.923 diff +0.037 [-0.07,+0.14] p=0.48 | RMSE 13.050 -> 13.046
+  W1-4  t0=2012 single k through origin (expert)               n= 837 mean k 1.070 (1.02-1.14) | MAE k=1 10.126 var 10.145 diff +0.019 [-0.01,+0.05] p=0.17 | RMSE 13.252 -> 13.263
+  W1-4  t0=2012 k with intercept: margin ~ a + k*(-elo_line)   n= 837 mean k 1.112 (1.02-1.19) | MAE k=1 10.126 var 10.139 diff +0.012 [-0.03,+0.05] p=0.56 | RMSE 13.252 -> 13.275
+  W1-4  t0=2012 Huber-robust k with intercept                  n= 837 mean k 1.122 (1.05-1.18) | MAE k=1 10.126 var 10.133 diff +0.006 [-0.04,+0.05] p=0.79 | RMSE 13.252 -> 13.272
+  W1-4  t0=2012 k on rating gap only, HFA face value           n= 837 mean k 1.132 (1.02-1.19) | MAE k=1 10.126 var 10.133 diff +0.006 [-0.03,+0.05] p=0.77 | RMSE 13.252 -> 13.261
+  W1-4  t0=2012 single k on nraw (with QB adj)                 n= 837 mean k 1.022 (0.96-1.10) | MAE k=1 10.126 var 10.190 diff +0.064 [-0.03,+0.15] p=0.16 | RMSE 13.252 -> 13.264
+
+C. Is the W1 nfelo rating already regressed?  Dispersion of ratings vs prev-season MOV (points), W1 2009-2025
+  SD W1 nfelo rating (pts) 3.01 | SD prev-season MOV 6.22 | ratio 0.48
+  nfelo W1 rating gap ~ prev-MOV gap: slope 0.404 (se 0.016), R2 0.722  -> nfelo carries ~40% of last season's MOV into W1
+  margin ~ prev-MOV gap (W1): slope 0.436 (se 0.099) -> the OUTCOME-optimal carry-over is ~44%
+  margin ~ nfelo W1 rating gap: slope 1.17 (se 0.20) (1 = calibrated)
+
+D. Totals: rolling-origin W1 c and level (fit seasons < t on W1 games only vs on ALL weeks), engine c=0.35, prior = prev-season mean
+  fit on W1 only   n_test=169 mean c 0.394 (0.26-0.55) | MAE engine 10.828 | fitted (c+level) diff -0.025 [-0.15,+0.10] p=0.69 | level-only (c=.35) diff -0.046 [-0.15,+0.06] p=0.39 | bias engine -1.15
+  fit on all weeks n_test=169 mean c 0.300 (0.27-0.37) | MAE engine 10.828 | fitted (c+level) diff +0.018 [-0.03,+0.06] p=0.45 | level-only (c=.35) diff +0.011 [-0.02,+0.04] p=0.46 | bias engine -1.15

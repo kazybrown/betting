@@ -1,0 +1,40 @@
+rows (REG, with market line): 6967  seasons 1999-2025
+sign check corr(mkt, margin) all  = -0.431 (must be strongly NEGATIVE)
+sign check corr(mkt, margin) wk1  = -0.320 | n=428
+sign check corr(mkt_total, total_pts) = 0.320 (should be positive)
+mean err_mkt (home bias, all) = +0.069 | mean tot_err (all) = +0.688
+
+2009+ rows 4431; with nfelo 4114 (0.928); week-1 with nfelo 253 of 271
+decomposition nfelo_dif_base = elo_dif + hfa_mod + qb_mod : |resid|<0.01 in 1.000 of rows (max 0.00 Elo)
+corr(nraw, mkt) = 0.922 | corr(elo_line, mkt) = 0.875 | corr(elo_line, margin) = -0.399 (negative)
+MAE (2009+ REG): market 10.101 | nraw 10.225 | elo_line (no QB adj) 10.341 | elo_only 10.450 | nclose 10.093
+mean hfa_pts by week bucket (nfelo site HFA incl. mods):
+      mean    std  size
+wk                     
+1    2.182  1.035   253
+2    2.323  1.037   251
+3    2.334  1.004   254
+4    2.151  0.995   239
+5-9  2.122  1.128  1107
+10+  2.025  1.026  2010
+
+Week-1 starting Elo spread (SD of team ratings, points) by season — how compressed are preseason ratings?
+season
+2009    3.04
+2010    3.13
+2011    3.13
+2012    3.17
+2013    3.08
+2014    2.81
+2015    2.71
+2016    2.68
+2017    3.16
+2018    2.71
+2019    3.18
+2020    3.06
+2021    3.17
+2022    3.02
+2023    2.98
+2024    3.18
+2025    3.48
+mean W1 rating SD (pts): 3.04 ; W10+ rating SD: 4.18

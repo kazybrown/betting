@@ -1,0 +1,103 @@
+=== (a) landing masses: reproduce, blocks, far-side conditioning ===
+ k    n  mass  ci_lo  ci_hi  m_2009-14  m_2015-21  m_2022-25
+ 1 1692 0.022  0.016  0.031      0.032      0.015      0.022
+ 2 2363 0.028  0.022  0.035      0.032      0.026      0.026
+ 3 2627 0.088  0.078  0.099      0.069      0.091      0.108
+ 4 2506 0.030  0.024  0.037      0.034      0.027      0.030
+ 5 2509 0.027  0.021  0.034      0.022      0.027      0.033
+ 6 1659 0.041  0.032  0.052      0.036      0.044      0.044
+ 7 1409 0.062  0.050  0.076      0.054      0.070      0.058
+ 8 1357 0.032  0.024  0.042      0.026      0.035      0.036
+10  600 0.037  0.024  0.055      0.043      0.026      0.043
+14  249 0.052  0.031  0.087      0.063      0.055      0.032
+  mass at 3 | line in [0.5,1.5]: 0.079 (CI 0.059-0.105, n=521)
+  mass at 3 | line in [2,2.5]: 0.082 (CI 0.061-0.109, n=501)
+  mass at 3 | line in [3,3.5]: 0.087 (CI 0.072-0.105, n=1125)
+  mass at 3 | line in [4,5]: 0.106 (CI 0.082-0.137, n=480)
+  mass at 3 | line in [5.5,7]: 0.085 (CI 0.069-0.105, n=904)
+  mass at 7 | line in [0.5,5.5]: 0.052 (CI 0.044-0.060, n=2814)
+  mass at 7 | line in [6,6.5]: 0.052 (CI 0.035-0.077, n=423)
+  mass at 7 | line in [7,7.5]: 0.070 (CI 0.051-0.095, n=514)
+  mass at 7 | line in [8,9]: 0.082 (CI 0.050-0.131, n=183)
+  mass at 7 | line in [9.5,11]: 0.047 (CI 0.030-0.073, n=381)
+
+rolling-origin Elo+HFA+QB origin (fit < season, 2012-25): n=3625 | MAE origin 10.111 vs market 9.962 | SD(origin - market) 2.46
+
+=== (b) shrinkage lambda: residual-vs-market ~ (market - origin)  [lambda=1: origin is truth; 0: gap is pure noise] ===
+Elo origin OOS 2012-25: n=3625 lambda=+0.273 (SE 0.089, p=0.002) | SD gap 2.46
+   |gap| 0-1: n=1210 origin-side cover 0.521 (CI 0.492-0.549)
+   |gap| 1-2: n=972 origin-side cover 0.514 (CI 0.483-0.546)
+   |gap| 2-3: n=675 origin-side cover 0.517 (CI 0.479-0.555)
+   |gap| 3-99: n=678 origin-side cover 0.527 (CI 0.489-0.564)
+nfelo close 2009-25: n=4310 lambda=+0.727 (SE 0.181, p=0.000) | SD gap 1.11
+   |gap| 0-1: n=941 origin-side cover 0.499 (CI 0.468-0.531)
+   |gap| 1-2: n=866 origin-side cover 0.522 (CI 0.489-0.555)
+   |gap| 2-3: n=479 origin-side cover 0.555 (CI 0.511-0.599)
+   |gap| 3-99: n=95 origin-side cover 0.642 (CI 0.542-0.731)
+
+=== (c) Elo origin OOS 2012-25: bets at |gap|>=0.5, n=2982 ===
+logit cover ~ |gap| + crossed_mass: b_gap=+0.036 (p=0.251) b_cmass=-0.57 (p=0.543) | T4 premise needs b_cmass>0 beyond gap
+logit cover ~ |gap| + cross3 + cross7: b_gap=+0.030 (p=0.242) b_c3=-0.086 (p=0.430) b_c7=-0.038 (p=0.748)
+    gap            key   n  cover  ci_lo  ci_hi  roi_actual  roi_110  mean_formula_ev
+0.5-1.0 crosses 3 or 7  69  0.551  0.434  0.662       0.049    0.051            0.099
+0.5-1.0 no 3/7 crossed 532  0.487  0.444  0.531      -0.048   -0.067            0.006
+1.0-1.5 crosses 3 or 7  94  0.468  0.370  0.568      -0.105   -0.106            0.104
+1.0-1.5 no 3/7 crossed 462  0.510  0.464  0.556      -0.003   -0.026            0.034
+1.5-2.5 crosses 3 or 7 214  0.498  0.431  0.564      -0.043   -0.050            0.157
+1.5-2.5 no 3/7 crossed 609  0.512  0.472  0.552      -0.004   -0.022            0.059
+2.5-4.0 crosses 3 or 7 228  0.516  0.451  0.580      -0.005   -0.016            0.215
+2.5-4.0 no 3/7 crossed 442  0.548  0.501  0.595       0.068    0.046            0.070
+ 4.0-99 crosses 3 or 7 179  0.506  0.433  0.578      -0.021   -0.035            0.325
+ 4.0-99 no 3/7 crossed 153  0.569  0.488  0.647       0.110    0.082            0.098
+--- (d) Elo origin OOS 2012-25: by formula-EV bucket (the recommended rule acts at EV>=0.02) ---
+ ev_bucket   n  share_of_games  cover  ci_lo  ci_hi  roi_actual  roi_110  units_actual
+   -1..0.0 474           0.131  0.529  0.484  0.574       0.035    0.009        16.523
+ 0.0..0.02 353           0.097  0.510  0.458  0.562       0.003   -0.026         0.965
+0.02..0.04 423           0.117  0.475  0.427  0.524      -0.074   -0.089       -31.460
+0.04..0.06 209           0.058  0.507  0.440  0.575      -0.013   -0.031        -2.753
+ 0.06..0.1 467           0.129  0.517  0.470  0.563       0.001   -0.012         0.316
+ 0.1..0.15 413           0.114  0.533  0.485  0.582       0.032    0.018        13.051
+   0.15..9 643           0.177  0.517  0.478  0.556       0.000   -0.012         0.164
+rule 'act when EV>=0.02': bets 2155 = 59.4% of games | cover 0.511 (CI 0.490-0.533) | ROI actual -0.010 | units -20.7
+gap 0.5-1.5 crossing 3 (n=102) cover 0.520 vs no key (n=962) 0.498: diff +0.022, z=+0.42, p=0.677 | formula predicts diff ~ +0.081 x lambda
+
+=== (c) nfelo close 2009-25: bets at |gap|>=0.5, n=2432 ===
+logit cover ~ |gap| + crossed_mass: b_gap=+0.214 (p=0.004) b_cmass=-1.69 (p=0.353) | T4 premise needs b_cmass>0 beyond gap
+logit cover ~ |gap| + cross3 + cross7: b_gap=+0.189 (p=0.001) b_c3=-0.100 (p=0.552) b_c7=-0.232 (p=0.250)
+    gap            key   n  cover  ci_lo  ci_hi  roi_actual  roi_110  mean_formula_ev
+0.5-1.0 no 3/7 crossed 960  0.499  0.468  0.531      -0.039   -0.046           -0.026
+1.0-1.5 crosses 3 or 7  55  0.436  0.314  0.567      -0.170   -0.167            0.096
+1.0-1.5 no 3/7 crossed 452  0.517  0.470  0.563       0.003   -0.012           -0.001
+1.5-2.5 crosses 3 or 7 136  0.507  0.424  0.590      -0.031   -0.031            0.128
+1.5-2.5 no 3/7 crossed 547  0.555  0.513  0.597       0.072    0.059            0.036
+2.5-4.0 crosses 3 or 7  74  0.622  0.508  0.724       0.194    0.187            0.176
+2.5-4.0 no 3/7 crossed 188  0.569  0.496  0.639       0.097    0.083            0.062
+--- (d) nfelo close 2009-25: by formula-EV bucket (the recommended rule acts at EV>=0.02) ---
+ ev_bucket    n  share_of_games  cover  ci_lo  ci_hi  roi_actual  roi_110  units_actual
+   -1..0.0 1191           0.276  0.506  0.477  0.534      -0.024   -0.034       -28.441
+ 0.0..0.02  328           0.076  0.543  0.488  0.597       0.052    0.035        16.969
+0.02..0.04  277           0.064  0.507  0.448  0.567      -0.027   -0.030        -7.607
+0.04..0.06   90           0.021  0.596  0.492  0.691       0.159    0.135        14.291
+ 0.06..0.1  234           0.054  0.574  0.508  0.637       0.102    0.091        23.719
+ 0.1..0.15  194           0.045  0.489  0.419  0.560      -0.062   -0.064       -12.001
+   0.15..9  118           0.027  0.610  0.520  0.693       0.161    0.165        18.958
+rule 'act when EV>=0.02': bets 913 = 21.2% of games | cover 0.543 (CI 0.510-0.575) | ROI actual +0.041 | units +37.4
+gap 0.5-1.5 crossing 3 (n=34) cover 0.471 vs no key (n=1380) 0.505: diff -0.034, z=-0.40, p=0.691 | formula predicts diff ~ +0.081 x lambda
+
+=== (e) the -3/-7 guard: dogs at exactly +3 / +7 by block, with juice-implied dog prob ===
+  +3 dogs 2009-14: n=230 push 0.065 | dog wins 120/215 = 0.558 (CI 0.491-0.623, p=0.101) | juice-implied dog 0.499 | dog ROI at actual price +0.101
+  +3 dogs 2015-21: n=268 push 0.090 | dog wins 130/244 = 0.533 (CI 0.470-0.594, p=0.337) | juice-implied dog 0.499 | dog ROI at actual price +0.045
+  +3 dogs 2022-25: n=165 push 0.121 | dog wins 71/145 = 0.490 (CI 0.410-0.570, p=0.868) | juice-implied dog 0.497 | dog ROI at actual price -0.050
+  +3 dogs ALL: n=663 push 0.089 | dog wins 321/604 = 0.531 (CI 0.492-0.571, p=0.132) | juice-implied dog 0.499 | dog ROI at actual price +0.042
+  guard cell latent 3.25 lay 3 2009-14: n=384 fav EV(-110) -0.045 [P(win) 0.469 push 0.060]
+  guard cell latent 3.25 lay 3 2015-21: n=456 fav EV(-110) -0.064 [P(win) 0.443 push 0.090]
+  guard cell latent 3.25 lay 3 2022-25: n=285 fav EV(-110) +0.064 [P(win) 0.495 push 0.119]
+  guard cell latent 3.25 lay 3 ALL: n=1125 fav EV(-110) -0.025 [P(win) 0.465 push 0.087]
+  +7 dogs 2009-14: n=120 push 0.058 | dog wins 58/113 = 0.513 (CI 0.422-0.603, p=0.851) | juice-implied dog 0.506 | dog ROI at actual price -0.009
+  +7 dogs 2015-21: n=120 push 0.075 | dog wins 54/111 = 0.486 (CI 0.396-0.578, p=0.850) | juice-implied dog 0.510 | dog ROI at actual price -0.070
+  +7 dogs 2022-25: n=52 push 0.038 | dog wins 26/50 = 0.520 (CI 0.385-0.652, p=0.888) | juice-implied dog 0.498 | dog ROI at actual price +0.001
+  +7 dogs ALL: n=292 push 0.062 | dog wins 138/274 = 0.504 (CI 0.445-0.562, p=0.952) | juice-implied dog 0.506 | dog ROI at actual price -0.032
+  guard cell latent 7.25 lay 7 2009-14: n=176 fav EV(-110) -0.021 [P(win) 0.477 push 0.068]
+  guard cell latent 7.25 lay 7 2015-21: n=230 fav EV(-110) +0.012 [P(win) 0.491 push 0.074]
+  guard cell latent 7.25 lay 7 2022-25: n=108 fav EV(-110) -0.175 [P(win) 0.398 push 0.065]
+  guard cell latent 7.25 lay 7 ALL: n=514 fav EV(-110) -0.039 [P(win) 0.467 push 0.070]

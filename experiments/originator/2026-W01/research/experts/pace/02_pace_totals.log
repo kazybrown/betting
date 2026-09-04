@@ -1,0 +1,190 @@
+
+==============================================================================================================
+FEATURE VERSION: prior-8-game rolling (league-relative)
+==============================================================================================================
+sample: train 2009-2019 n=2442 | test 2023-2025 n=752
+
+-- (A) descriptive: prior pace -> realized game plays / total (corr, train | test) --
+  spp_avg     vs game plays -0.294 | -0.116   vs total_pts -0.086 | -0.017   vs MARKET total -0.188 | -0.060
+  sppr_avg    vs game plays -0.275 | -0.147   vs total_pts -0.070 | -0.003   vs MARKET total -0.153 | -0.045
+  plays_sum   vs game plays +0.190 | +0.095   vs total_pts +0.104 | +0.060   vs MARKET total +0.261 | +0.101
+  gplays_avg  vs game plays +0.258 | +0.110   vs total_pts +0.124 | +0.050   vs MARKET total +0.262 | +0.133
+  drives_sum  vs game plays +0.072 | +0.016   vs total_pts -0.035 | -0.089   vs MARKET total -0.198 | -0.343
+  nh_sum      vs game plays +0.182 | +0.099   vs total_pts +0.076 | +0.020   vs MARKET total +0.172 | +0.033
+  pr_sum      vs game plays +0.099 | +0.045   vs total_pts +0.143 | +0.044   vs MARKET total +0.371 | +0.139
+  proe_sum    vs game plays +0.096 | +0.045   vs total_pts +0.179 | +0.103   vs MARKET total +0.505 | +0.293
+  ppd_sum     vs game plays +0.072 | +0.058   vs total_pts +0.184 | +0.238   vs MARKET total +0.635 | +0.670
+  expl_sum    vs game plays -0.029 | -0.024   vs total_pts +0.122 | +0.139   vs MARKET total +0.412 | +0.459
+  epa_sum     vs game plays +0.043 | -0.023   vs total_pts +0.179 | +0.189   vs MARKET total +0.642 | +0.611
+
+-- (B) MARKET residual regressions: (total - mkt_total) ~ x, single features, HC1 --
+  x                      train coef (se) p             test coef (se) p   OOS: MAE(mkt + train-fit adj) - MAE(mkt) [95% CI]  O/U
+  spp_avg       -0.300 (0.207) p=0.146     +0.030 (0.480) p=0.950   +0.025 [-0.003,+0.053]  357-390-5 (0.478)
+  sppr_avg      -0.244 (0.197) p=0.215     +0.147 (0.488) p=0.764   +0.012 [-0.015,+0.042]  372-375-5 (0.498)
+  plays_sum     +0.065 (0.053) p=0.222     +0.077 (0.100) p=0.438   +0.006 [-0.025,+0.040]  376-371-5 (0.503)
+  gplays_avg    +0.209 (0.094) p=0.025     +0.042 (0.196) p=0.828   +0.025 [-0.013,+0.062]  362-385-5 (0.485)
+  drives_sum    +0.329 (0.247) p=0.183     +0.299 (0.555) p=0.590   +0.003 [-0.025,+0.031]  397-350-5 (0.531)
+  nh_sum        +2.090 (1.796) p=0.244     +0.854 (2.811) p=0.761   -0.008 [-0.045,+0.030]  382-365-5 (0.511)
+  pr_sum        +5.150 (3.443) p=0.135     +0.040 (6.467) p=0.995   +0.004 [-0.033,+0.040]  377-370-5 (0.505)
+  proe_sum      +0.044 (0.036) p=0.227     +0.022 (0.068) p=0.750   +0.001 [-0.032,+0.034]  378-369-5 (0.506)
+  ppd_sum       -0.237 (0.450) p=0.598     +0.504 (0.719) p=0.483   -0.003 [-0.033,+0.027]  381-366-5 (0.510)
+  expl_sum      -1.668 (7.171) p=0.816     -2.265 (13.160) p=0.863   -0.006 [-0.035,+0.025]  382-365-5 (0.511)
+  epa_sum       -1.189 (1.353) p=0.380     -0.242 (2.224) p=0.913   +0.008 [-0.026,+0.044]  375-372-5 (0.502)
+  joint ['spp_avg', 'ppd_sum', 'pr_sum', 'proe_sum']: train F-test p=0.317; coefs spp_avg=-0.228(p=0.29), ppd_sum=-0.557(p=0.27), pr_sum=+1.990(p=0.74), proe_sum=+0.042(p=0.53)
+      OOS dMAE vs market +0.041 [-0.005,+0.084] n=752; O/U 354-393-5 (0.474); mean|adj|=0.52
+
+-- (C) MARKET-FREE baseline (LEAN) + pace: fit train, OOS 2023-2025 --
+  BASE alone: test MAE=10.290 (market 10.157; dMAE vs mkt +0.133 [-0.034,+0.315])  bias=+0.63
+  + x                coef (se) p [train]  1 SD of x  pts per SD   test MAE   dMAE vs BASE [95% CI]   O/U vs mkt
+  spp_avg       -0.541 (0.215) p=0.012      1.302      -0.70   10.354   +0.064 [+0.021,+0.106]   393-354-5 (0.526)
+  sppr_avg      -0.381 (0.202) p=0.059      1.346      -0.51   10.318   +0.028 [-0.001,+0.056]   384-363-5 (0.514)
+  plays_sum     +0.089 (0.058) p=0.120      5.084      +0.45   10.303   +0.012 [-0.019,+0.044]   388-359-5 (0.519)
+  gplays_avg    +0.316 (0.101) p=0.002      2.934      +0.93   10.318   +0.027 [-0.030,+0.084]   388-359-5 (0.519)
+  drives_sum    +0.091 (0.254) p=0.720      1.091      +0.10   10.296   +0.006 [-0.001,+0.012]   388-359-5 (0.519)
+  nh_sum        +3.666 (1.838) p=0.046      0.158      +0.58   10.280   -0.011 [-0.049,+0.028]   393-354-5 (0.526)
+  pr_sum       +13.343 (3.663) p=0.000      0.079      +1.05   10.328   +0.038 [-0.035,+0.104]   392-355-5 (0.525)
+  proe_sum      +0.170 (0.041) p=0.000      7.704      +1.31   10.308   +0.018 [-0.063,+0.090]   392-355-5 (0.525)
+  ppd_sum       +1.066 (0.772) p=0.167      0.647      +0.69   10.261   -0.029 [-0.058,+0.002]   388-359-5 (0.519)
+  expl_sum     +18.323 (7.897) p=0.020      0.039      +0.71   10.262   -0.028 [-0.076,+0.018]   397-350-5 (0.531)
+  epa_sum       +4.051 (1.689) p=0.016      0.213      +0.86   10.225   -0.065 [-0.120,-0.014]   399-348-5 (0.534)
+  BASE + spp_avg + ppd_sum               test MAE=10.317  dMAE vs BASE +0.027 [-0.019,+0.076]  vs mkt +0.160 [-0.013,+0.342]  O/U 393-354-5 (0.526)
+      coefs: spp_avg=-0.593(p=0.01), ppd_sum=+1.343(p=0.08)
+  BASE + spp_avg + pr_sum + proe_sum     test MAE=10.357  dMAE vs BASE +0.066 [-0.023,+0.155]  vs mkt +0.200 [+0.013,+0.396]  O/U 381-366-5 (0.510)
+      coefs: spp_avg=-0.413(p=0.06), pr_sum=+0.675(p=0.91), proe_sum=+0.153(p=0.03)
+  BASE + all pace/style                  test MAE=10.282  dMAE vs BASE -0.008 [-0.120,+0.103]  vs mkt +0.125 [-0.055,+0.302]  O/U 390-357-5 (0.522)
+      coefs: spp_avg=+0.364(p=0.41), sppr_avg=-0.492(p=0.20), plays_sum=+0.011(p=0.88), gplays_avg=+0.219(p=0.18), drives_sum=+0.093(p=0.82), nh_sum=+1.731(p=0.43), pr_sum=+5.802(p=0.36), proe_sum=+0.136(p=0.06), ppd_sum=-0.488(p=0.65), expl_sum=+27.079(p=0.01), epa_sum=+1.408(p=0.66)
+  BASE + sppr_avg + plays_sum            test MAE=10.323  dMAE vs BASE +0.033 [-0.005,+0.071]  vs mkt +0.166 [-0.004,+0.346]  O/U 388-359-5 (0.519)
+      coefs: sppr_avg=-0.317(p=0.13), plays_sum=+0.065(p=0.27)
+
+-- (C2) rolling-origin inside the pbp era (fit REG seasons < Y, test Y; Y=2013..2019 PRE-2020, then 2023-25) --
+      Y    n    BASE    +spp  +spp+ppd    +all     mkt   spp coef
+   2013  217  11.196  11.193    11.193  11.180  11.258   -0.122
+   2014  218  11.575  11.542    11.537  11.500  10.596   -0.155
+   2015  217  10.891  10.875    10.873  10.670  10.664   -0.396
+   2016  233  10.392  10.428    10.421  10.690   9.863   -0.450
+   2017  248  11.302  11.277    11.278  11.304  11.165   -0.398
+   2018  248  10.807  10.771    10.732  10.772  10.409   -0.465
+   2019  248  10.836  10.790    10.771  10.795  10.871   -0.564
+   2023  208  10.319  10.353    10.370  10.228  10.406   -0.541
+   2024  272   9.862   9.976     9.900  10.022   9.730   -0.512
+   2025  272  10.728  10.743    10.704  10.637  10.393   -0.351
+  mean  BASE=10.791 +spp=10.795 +spp+ppd=10.778 +all=10.780 mkt=10.536
+
+-- (D) matchup buckets by neutral seconds/play (league-relative, prior 8 games): FAST = fastest quartile, SLOW = slowest quartile (cutoffs from train) --
+  cutoffs: fast <= -0.99 s/play vs league, slow >= +1.26
+  TRAIN 2009-19 (BASE residual in-sample)
+          n   plays  total    mkt  res_mkt  se_mkt  res_base  se_base
+bucket                                                               
+FF      165  131.29  47.92  46.16     1.75    1.08      1.58     1.12
+F+M     599  128.00  46.31  45.43     0.88    0.57      0.70     0.58
+MM      604  125.29  44.94  44.54     0.40    0.51     -0.04     0.52
+FS/SF   292  125.96  44.10  45.00    -0.91    0.82     -1.00     0.82
+S+M     635  123.94  44.54  44.10     0.44    0.52     -0.24     0.53
+SS      147  121.59  43.46  43.91    -0.46    1.08     -1.42     1.11
+  TEST 2023-25
+          n   plays  total    mkt  res_mkt  se_mkt  res_base  se_base
+bucket                                                               
+FF       25  123.80  47.88  44.46     3.42    3.24      2.83     3.31
+F+M     130  124.15  44.71  44.90    -0.20    1.01     -0.84     1.02
+MM      228  123.05  45.33  43.63     1.70    0.89      1.09     0.88
+FS/SF    62  123.10  45.53  43.36     2.17    1.62      1.60     1.65
+S+M     252  121.48  44.71  44.33     0.38    0.78      0.07     0.81
+SS       55  123.33  46.07  43.25     2.82    1.99      2.63     2.02
+  TEST FF vs SS (market-free residual): diff=+0.20 pts, Welch p=0.958, n=25/55
+  TRAIN FF vs SS (market-free residual, in-sample baseline): diff=+3.00 pts, Welch p=0.058, n=165/147
+  TRAIN FF vs SS (market residual): diff=+2.21 pts, Welch p=0.148
+
+==============================================================================================================
+FEATURE VERSION: prior-season/season-to-date blend K=4 (league-relative)
+==============================================================================================================
+sample: train 2009-2019 n=2499 | test 2023-2025 n=816
+
+-- (A) descriptive: prior pace -> realized game plays / total (corr, train | test) --
+  spp_avg     vs game plays -0.294 | -0.138   vs total_pts -0.086 | +0.005   vs MARKET total -0.181 | -0.024
+  sppr_avg    vs game plays -0.284 | -0.157   vs total_pts -0.082 | +0.023   vs MARKET total -0.171 | -0.028
+  plays_sum   vs game plays +0.193 | +0.127   vs total_pts +0.104 | +0.039   vs MARKET total +0.308 | +0.082
+  gplays_avg  vs game plays +0.285 | +0.177   vs total_pts +0.123 | +0.051   vs MARKET total +0.297 | +0.141
+  drives_sum  vs game plays +0.083 | +0.014   vs total_pts -0.057 | -0.102   vs MARKET total -0.231 | -0.355
+  nh_sum      vs game plays +0.192 | +0.089   vs total_pts +0.077 | +0.021   vs MARKET total +0.173 | +0.039
+  pr_sum      vs game plays +0.097 | +0.017   vs total_pts +0.150 | +0.047   vs MARKET total +0.390 | +0.132
+  proe_sum    vs game plays +0.101 | +0.011   vs total_pts +0.187 | +0.084   vs MARKET total +0.515 | +0.279
+  ppd_sum     vs game plays +0.076 | +0.039   vs total_pts +0.197 | +0.228   vs MARKET total +0.676 | +0.668
+  expl_sum    vs game plays -0.032 | -0.033   vs total_pts +0.137 | +0.147   vs MARKET total +0.481 | +0.470
+  epa_sum     vs game plays +0.051 | -0.035   vs total_pts +0.200 | +0.204   vs MARKET total +0.717 | +0.653
+
+-- (B) MARKET residual regressions: (total - mkt_total) ~ x, single features, HC1 --
+  x                      train coef (se) p             test coef (se) p   OOS: MAE(mkt + train-fit adj) - MAE(mkt) [95% CI]  O/U
+  spp_avg       -0.374 (0.230) p=0.104     +0.216 (0.602) p=0.719   +0.025 [-0.003,+0.052]  387-424-5 (0.477)
+  sppr_avg      -0.334 (0.217) p=0.123     +0.539 (0.577) p=0.350   +0.020 [-0.010,+0.049]  397-414-5 (0.490)
+  plays_sum     +0.032 (0.068) p=0.642     +0.054 (0.133) p=0.683   +0.004 [-0.024,+0.031]  411-400-5 (0.507)
+  gplays_avg    +0.189 (0.116) p=0.103     +0.051 (0.255) p=0.842   +0.017 [-0.009,+0.044]  389-422-5 (0.480)
+  drives_sum    +0.238 (0.315) p=0.450     +0.195 (0.745) p=0.794   -0.001 [-0.028,+0.025]  412-399-5 (0.508)
+  nh_sum        +2.359 (1.959) p=0.228     +1.015 (3.381) p=0.764   -0.005 [-0.042,+0.029]  411-400-5 (0.507)
+  pr_sum        +6.784 (4.313) p=0.116     +1.589 (8.518) p=0.852   +0.007 [-0.025,+0.038]  399-412-5 (0.492)
+  proe_sum      +0.060 (0.042) p=0.157     -0.011 (0.087) p=0.900   +0.009 [-0.024,+0.039]  409-402-5 (0.504)
+  ppd_sum       -0.297 (0.542) p=0.584     +0.449 (0.928) p=0.628   -0.001 [-0.031,+0.028]  408-403-5 (0.503)
+  expl_sum      -5.415 (9.241) p=0.558     -0.436 (18.202) p=0.981   -0.000 [-0.033,+0.029]  411-400-5 (0.507)
+  epa_sum       -1.734 (1.670) p=0.299     -0.178 (3.047) p=0.953   +0.009 [-0.028,+0.046]  398-413-5 (0.491)
+  joint ['spp_avg', 'ppd_sum', 'pr_sum', 'proe_sum']: train F-test p=0.150; coefs spp_avg=-0.309(p=0.20), ppd_sum=-0.922(p=0.15), pr_sum=+0.212(p=0.98), proe_sum=+0.089(p=0.30)
+      OOS dMAE vs market +0.051 [+0.006,+0.098] n=816; O/U 383-428-5 (0.472); mean|adj|=0.55
+
+-- (C) MARKET-FREE baseline (LEAN) + pace: fit train, OOS 2023-2025 --
+  BASE alone: test MAE=10.250 (market 10.121; dMAE vs mkt +0.130 [-0.041,+0.295])  bias=+0.70
+  + x                coef (se) p [train]  1 SD of x  pts per SD   test MAE   dMAE vs BASE [95% CI]   O/U vs mkt
+  spp_avg       -0.567 (0.241) p=0.019      1.128      -0.64   10.301   +0.050 [+0.018,+0.084]   420-391-5 (0.518)
+  sppr_avg      -0.475 (0.225) p=0.035      1.206      -0.57   10.283   +0.033 [+0.003,+0.059]   414-397-5 (0.510)
+  plays_sum     +0.066 (0.075) p=0.383      3.925      +0.26   10.265   +0.014 [-0.002,+0.030]   422-389-5 (0.520)
+  gplays_avg    +0.319 (0.127) p=0.012      2.337      +0.75   10.276   +0.026 [-0.015,+0.070]   418-393-5 (0.515)
+  drives_sum    -0.223 (0.326) p=0.494      0.840      -0.19   10.242   -0.009 [-0.019,+0.002]   425-386-5 (0.524)
+  nh_sum        +4.106 (2.028) p=0.043      0.140      +0.58   10.243   -0.008 [-0.040,+0.025]   422-389-5 (0.520)
+  pr_sum       +17.542 (4.589) p=0.000      0.062      +1.09   10.292   +0.042 [-0.019,+0.106]   412-399-5 (0.508)
+  proe_sum      +0.223 (0.049) p=0.000      6.534      +1.46   10.291   +0.041 [-0.032,+0.114]   407-404-5 (0.502)
+  ppd_sum       +2.587 (1.245) p=0.038      0.526      +1.36   10.223   -0.027 [-0.070,+0.012]   424-387-5 (0.523)
+  expl_sum     +25.158 (10.740) p=0.019      0.029      +0.74   10.234   -0.016 [-0.055,+0.023]   438-373-5 (0.540)
+  epa_sum       +6.717 (2.225) p=0.003      0.168      +1.13   10.191   -0.060 [-0.117,-0.005]   435-376-5 (0.536)
+  BASE + spp_avg + ppd_sum               test MAE=10.271  dMAE vs BASE +0.020 [-0.033,+0.075]  vs mkt +0.150 [-0.017,+0.310]  O/U 419-392-5 (0.517)
+      coefs: spp_avg=-0.714(p=0.00), ppd_sum=+3.350(p=0.01)
+  BASE + spp_avg + pr_sum + proe_sum     test MAE=10.335  dMAE vs BASE +0.084 [+0.004,+0.166]  vs mkt +0.214 [+0.042,+0.395]  O/U 404-407-5 (0.498)
+      coefs: spp_avg=-0.485(p=0.05), pr_sum=-4.178(p=0.62), proe_sum=+0.250(p=0.00)
+  BASE + all pace/style                  test MAE=10.281  dMAE vs BASE +0.030 [-0.074,+0.139]  vs mkt +0.160 [-0.004,+0.328]  O/U 403-408-5 (0.497)
+      coefs: spp_avg=+0.503(p=0.37), sppr_avg=-0.833(p=0.08), plays_sum=-0.033(p=0.74), gplays_avg=+0.288(p=0.20), drives_sum=-0.172(p=0.77), nh_sum=+1.413(p=0.56), pr_sum=+2.900(p=0.74), proe_sum=+0.228(p=0.01), ppd_sum=-0.204(p=0.93), expl_sum=+40.204(p=0.00), epa_sum=+1.687(p=0.71)
+  BASE + sppr_avg + plays_sum            test MAE=10.286  dMAE vs BASE +0.035 [+0.004,+0.062]  vs mkt +0.165 [-0.007,+0.332]  O/U 413-398-5 (0.509)
+      coefs: sppr_avg=-0.457(p=0.05), plays_sum=+0.019(p=0.81)
+
+-- (C2) rolling-origin inside the pbp era (fit REG seasons < Y, test Y; Y=2013..2019 PRE-2020, then 2023-25) --
+      Y    n    BASE    +spp  +spp+ppd    +all     mkt   spp coef
+   2013  217  11.235  11.208    11.188  11.311  11.258   -0.515
+   2014  218  11.497  11.437    11.408  11.510  10.596   -0.432
+   2015  217  10.888  10.874    10.887  10.659  10.664   -0.599
+   2016  233  10.364  10.380    10.347  10.548   9.863   -0.602
+   2017  248  11.298  11.278    11.234  11.219  11.165   -0.579
+   2018  248  10.804  10.792    10.731  10.762  10.409   -0.608
+   2019  248  10.844  10.851    10.851  10.875  10.871   -0.626
+   2023  272  10.206  10.231    10.283  10.245  10.239   -0.567
+   2024  272   9.848   9.937     9.840   9.936   9.730   -0.521
+   2025  272  10.724  10.738    10.689  10.694  10.393   -0.349
+  mean  BASE=10.771 +spp=10.773 +spp+ppd=10.746 +all=10.776 mkt=10.519
+
+-- (D) matchup buckets by neutral seconds/play (league-relative, prior 8 games): FAST = fastest quartile, SLOW = slowest quartile (cutoffs from train) --
+  cutoffs: fast <= -0.86 s/play vs league, slow >= +0.99
+  TRAIN 2009-19 (BASE residual in-sample)
+          n   plays  total    mkt  res_mkt  se_mkt  res_base  se_base
+bucket                                                               
+FF      159  131.01  46.58  45.83     0.75    1.01      0.12     1.05
+F+M     619  128.05  45.51  45.26     0.24    0.55      0.03     0.55
+MM      618  125.19  44.99  44.33     0.66    0.53      0.15     0.53
+FS/SF   313  125.80  45.47  45.04     0.43    0.81      0.19     0.81
+S+M     643  123.84  44.73  44.21     0.52    0.52      0.05     0.53
+SS      147  122.22  43.65  44.34    -0.69    1.12     -1.51     1.16
+  TEST 2023-25
+          n   plays  total    mkt  res_mkt  se_mkt  res_base  se_base
+bucket                                                               
+FF       14  122.07  45.29  45.04     0.25    3.85      0.18     3.83
+F+M     149  125.01  45.81  44.74     1.07    1.02      0.65     1.04
+MM      299  123.35  44.35  43.75     0.60    0.76      0.17     0.76
+FS/SF    52  123.35  48.46  44.87     3.60    1.59      3.54     1.58
+S+M     251  121.74  44.49  43.74     0.74    0.82      0.32     0.84
+SS       51  121.10  47.41  44.30     3.11    1.87      3.09     1.92
+  TEST FF vs SS (market-free residual): diff=-2.91 pts, Welch p=0.505, n=14/51
+  TRAIN FF vs SS (market-free residual, in-sample baseline): diff=+1.63 pts, Welch p=0.297, n=159/147
+  TRAIN FF vs SS (market residual): diff=+1.44 pts, Welch p=0.341

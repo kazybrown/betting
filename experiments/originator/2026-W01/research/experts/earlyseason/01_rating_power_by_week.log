@@ -1,0 +1,115 @@
+
+A. ALL 2009-2025 (REG)
+  wk    n | MAE  mkt   nraw  elo_line elo_only | nraw-mkt (95%CI)      | slope mkt (se)  R2   | slope nraw (se) R2   | slope elo_line (se) R2 | slope elo_only (se) R2
+  1     253 | 9.82 9.85 9.79  9.80     | +0.034 [-0.23,+0.29] p=0.79 | 0.88 (0.16) 0.095 | 0.96 (0.19) 0.092 | 1.05 (0.19) 0.100     | 1.17 (0.20) 0.112
+  2     251 | 9.27 9.23 9.22  9.30     | -0.045 [-0.32,+0.22] p=0.74 | 1.12 (0.15) 0.203 | 1.23 (0.17) 0.196 | 1.25 (0.18) 0.184     | 1.27 (0.18) 0.179
+  3     254 | 10.88 11.00 10.89  11.03     | +0.117 [-0.14,+0.39] p=0.38 | 0.81 (0.16) 0.096 | 0.87 (0.17) 0.098 | 0.95 (0.19) 0.102     | 0.97 (0.19) 0.101
+  4     239 | 10.36 10.42 10.42  10.46     | +0.060 [-0.23,+0.33] p=0.66 | 1.07 (0.14) 0.169 | 1.03 (0.14) 0.155 | 1.09 (0.15) 0.147     | 1.11 (0.16) 0.143
+  5-9  1107 | 10.07 10.10 10.20  10.29     | +0.030 [-0.09,+0.15] p=0.63 | 1.05 (0.06) 0.184 | 1.09 (0.06) 0.192 | 1.14 (0.07) 0.176     | 1.15 (0.07) 0.170
+  10+  2010 | 10.13 10.35 10.55  10.69     | +0.217 [+0.11,+0.32] p=0.00 | 1.10 (0.05) 0.224 | 1.05 (0.05) 0.199 | 1.02 (0.05) 0.164     | 1.02 (0.05) 0.163
+
+A. FIT 2009-2021
+  wk    n | MAE  mkt   nraw  elo_line elo_only | nraw-mkt (95%CI)      | slope mkt (se)  R2   | slope nraw (se) R2   | slope elo_line (se) R2 | slope elo_only (se) R2
+  1     189 | 10.16 10.22 10.15  10.19     | +0.059 [-0.25,+0.37] p=0.70 | 0.83 (0.19) 0.083 | 0.91 (0.22) 0.079 | 1.01 (0.24) 0.086     | 1.12 (0.24) 0.096
+  2     187 | 9.46 9.38 9.39  9.62     | -0.074 [-0.40,+0.26] p=0.64 | 1.14 (0.17) 0.215 | 1.26 (0.20) 0.207 | 1.30 (0.22) 0.194     | 1.31 (0.21) 0.186
+  3     190 | 10.58 10.67 10.54  10.71     | +0.088 [-0.24,+0.39] p=0.59 | 0.80 (0.18) 0.107 | 0.89 (0.19) 0.111 | 1.02 (0.22) 0.123     | 1.03 (0.22) 0.120
+  4     175 | 10.61 10.57 10.56  10.53     | -0.034 [-0.34,+0.28] p=0.84 | 1.09 (0.17) 0.176 | 1.07 (0.16) 0.170 | 1.16 (0.18) 0.168     | 1.18 (0.19) 0.163
+  5-9   818 | 10.21 10.19 10.32  10.37     | -0.017 [-0.16,+0.12] p=0.82 | 1.05 (0.07) 0.183 | 1.13 (0.07) 0.203 | 1.17 (0.08) 0.185     | 1.17 (0.08) 0.178
+  10+  1468 | 10.44 10.60 10.79  10.98     | +0.162 [+0.04,+0.29] p=0.01 | 1.10 (0.06) 0.215 | 1.05 (0.05) 0.199 | 1.03 (0.06) 0.166     | 1.03 (0.06) 0.163
+
+A. TEST 2022-2025
+  wk    n | MAE  mkt   nraw  elo_line elo_only | nraw-mkt (95%CI)      | slope mkt (se)  R2   | slope nraw (se) R2   | slope elo_line (se) R2 | slope elo_only (se) R2
+  1      64 | 8.82 8.78 8.70  8.66     | -0.041 [-0.52,+0.41] p=0.87 | 1.09 (0.29) 0.140 | 1.12 (0.33) 0.140 | 1.15 (0.33) 0.146     | 1.30 (0.35) 0.169
+  2      64 | 8.74 8.78 8.73  8.35     | +0.041 [-0.43,+0.51] p=0.86 | 1.02 (0.29) 0.163 | 1.10 (0.32) 0.160 | 1.12 (0.33) 0.154     | 1.18 (0.33) 0.168
+  3      64 | 11.77 11.97 11.93  11.98     | +0.204 [-0.28,+0.66] p=0.38 | 0.89 (0.42) 0.079 | 0.86 (0.43) 0.071 | 0.79 (0.42) 0.062     | 0.81 (0.42) 0.062
+  4      64 | 9.69 10.01 10.02  10.28     | +0.318 [-0.16,+0.79] p=0.20 | 1.05 (0.23) 0.159 | 0.92 (0.26) 0.117 | 0.90 (0.28) 0.096     | 0.87 (0.28) 0.089
+  5-9   289 | 9.66 9.83 9.87  10.05     | +0.163 [-0.05,+0.37] p=0.14 | 1.06 (0.13) 0.193 | 1.00 (0.14) 0.162 | 1.08 (0.16) 0.153     | 1.08 (0.16) 0.147
+  10+   542 | 9.28 9.65 9.89  9.92     | +0.365 [+0.18,+0.56] p=0.00 | 1.10 (0.08) 0.254 | 1.03 (0.09) 0.201 | 1.00 (0.10) 0.159     | 1.01 (0.10) 0.163
+
+A2. Is the rating line (elo_line, no QB adj) less/more predictive early? OLS margin ~ -elo_line * early, HC1
+  ALL  n=4114 slope late=1.058 (se 0.042)  early-late diff=+0.026 (se 0.099, p=0.797)  early intercept shift -0.33 (se 0.53)
+       market: slope late=1.084 (se 0.037)  early-late diff=-0.115 (se 0.086, p=0.179)
+       elo_line week1 only: slope other=1.063  W1-other diff=-0.016 (se 0.197, p=0.933)
+  FIT  n=3027 slope late=1.069 (se 0.048)  early-late diff=+0.053 (se 0.115, p=0.645)  early intercept shift -0.43 (se 0.63)
+       market: slope late=1.084 (se 0.044)  early-late diff=-0.118 (se 0.099, p=0.235)
+       elo_line week1 only: slope other=1.081  W1-other diff=-0.070 (se 0.239, p=0.770)
+  TEST n=1087 slope late=1.027 (se 0.086)  early-late diff=-0.047 (se 0.198, p=0.812)  early intercept shift -0.06 (se 0.98)
+       market: slope late=1.091 (se 0.069)  early-late diff=-0.086 (se 0.173, p=0.621)
+       elo_line week1 only: slope other=1.011  W1-other diff=+0.142 (se 0.338, p=0.674)
+
+B. Who is right when rating and market disagree: OLS margin ~ -elo_line, -mkt (weights sum ~1 if both calibrated)
+  split wk      n | w_rating (se) | w_market (se) | R2   | MAE of fitted combo (in-bucket, in-sample)
+  FIT   1     189 | +0.61 (0.48)  | +0.38 (0.40)  | 0.090 | 10.11
+  FIT   2     187 | +0.37 (0.45)  | +0.86 (0.38)  | 0.218 | 9.46
+  FIT   3     190 | +0.86 (0.45)  | +0.15 (0.36)  | 0.124 | 10.50
+  FIT   4     175 | +0.48 (0.42)  | +0.70 (0.40)  | 0.182 | 10.52
+  FIT   5-9   818 | +0.64 (0.18)  | +0.54 (0.17)  | 0.194 | 10.21
+  FIT   10+  1468 | +0.05 (0.11)  | +1.06 (0.11)  | 0.215 | 10.46
+  TEST  1      64 | +0.72 (0.84)  | +0.47 (0.74)  | 0.152 | 8.79
+  TEST  2      64 | +0.48 (0.54)  | +0.65 (0.46)  | 0.170 | 8.60
+  TEST  3      64 | -0.07 (0.88)  | +0.95 (0.87)  | 0.079 | 11.89
+  TEST  4      64 | -0.72 (0.65)  | +1.63 (0.53)  | 0.171 | 9.57
+  TEST  5-9   289 | +0.01 (0.38)  | +1.06 (0.32)  | 0.193 | 9.67
+  TEST  10+   542 | -0.25 (0.17)  | +1.29 (0.15)  | 0.257 | 9.34
+  ALL   1     253 | +0.66 (0.41)  | +0.38 (0.35)  | 0.103 | 9.75
+  ALL   2     251 | +0.39 (0.36)  | +0.82 (0.30)  | 0.207 | 9.28
+  ALL   3     254 | +0.65 (0.39)  | +0.30 (0.32)  | 0.105 | 10.84
+  ALL   4     239 | +0.23 (0.36)  | +0.89 (0.33)  | 0.170 | 10.37
+  ALL   5-9  1107 | +0.49 (0.17)  | +0.66 (0.15)  | 0.191 | 10.08
+  ALL   10+  2010 | -0.03 (0.10)  | +1.12 (0.09)  | 0.224 | 10.16
+  OOS: weights fitted on FIT (<=2021) per bucket, applied to TEST 2022-2025
+    wk 1    n_test= 64  w_rating=+0.61 w_market=+0.38 -> MAE combo-mkt -0.105 [-0.48,+0.22] p=0.57
+    wk 2    n_test= 64  w_rating=+0.37 w_market=+0.86 -> MAE combo-mkt +0.110 [-0.17,+0.39] p=0.45
+    wk 3    n_test= 64  w_rating=+0.86 w_market=+0.15 -> MAE combo-mkt +0.109 [-0.39,+0.57] p=0.66
+    wk 4    n_test= 64  w_rating=+0.48 w_market=+0.70 -> MAE combo-mkt +0.180 [-0.09,+0.44] p=0.19
+    wk 5-9  n_test=289  w_rating=+0.64 w_market=+0.54 -> MAE combo-mkt +0.102 [-0.08,+0.29] p=0.28
+    wk 10+  n_test=542  w_rating=+0.05 w_market=+1.06 -> MAE combo-mkt +0.050 [-0.01,+0.11] p=0.09
+
+C. Week-1 market biases 1999-2025 (n=428 W1 games) vs weeks 5+ control
+  W1 ALL 1999-2025       n= 428 | home bias -0.70 [-1.94,+0.55] p=0.28 | home ATS 0.483 [0.43,0.53] | fav cover -0.31 (se 0.65) p=0.64 | dog ATS 218-196-10 0.527 [0.48,0.58] p=0.30 | MZ slope 0.92 (se 0.13) | tot resid -0.47 (se 0.64) p=0.46 | over 0.453 [0.40,0.50] p=0.06
+  W1 FIT 1999-2021       n= 364 | home bias -0.73 [-2.09,+0.66] p=0.30 | home ATS 0.483 [0.43,0.54] | fav cover -0.63 (se 0.71) p=0.38 | dog ATS 186-164-10 0.531 [0.48,0.58] p=0.26 | MZ slope 0.90 (se 0.14) | tot resid -0.10 (se 0.70) p=0.89 | over 0.472 [0.42,0.53] p=0.32
+  W1 TEST 2022-2025      n=  64 | home bias -0.54 [-3.51,+2.27] p=0.72 | home ATS 0.484 [0.36,0.61] | fav cover +1.49 (se 1.49) p=0.32 | dog ATS 32-32-0 0.500 [0.37,0.63] p=1.00 | MZ slope 1.09 (se 0.29) | tot resid -2.59 (se 1.55) p=0.10 | over 0.344 [0.23,0.47] p=0.02
+  W1 1999-2008           n= 157 | home bias -0.43 [-2.51,+1.69] p=0.69 | home ATS 0.493 [0.41,0.58] | fav cover +0.72 (se 1.11) p=0.52 | dog ATS 76-72-5 0.514 [0.43,0.60] p=0.81 | MZ slope 0.95 (se 0.22) | tot resid -0.91 (se 1.11) p=0.41 | over 0.419 [0.34,0.50] p=0.05
+  W1 2009-2016           n= 128 | home bias -0.27 [-2.37,+1.82] p=0.80 | home ATS 0.476 [0.39,0.57] | fav cover -1.03 (se 1.07) p=0.34 | dog ATS 68-58-2 0.540 [0.45,0.63] p=0.42 | MZ slope 0.90 (se 0.19) | tot resid +0.49 (se 1.14) p=0.67 | over 0.524 [0.43,0.61] p=0.66
+  W1 2017-2025           n= 143 | home bias -1.38 [-3.54,+0.87] p=0.23 | home ATS 0.479 [0.39,0.56] | fav cover -0.76 (se 1.16) p=0.52 | dog ATS 74-66-3 0.529 [0.44,0.61] p=0.55 | MZ slope 0.88 (se 0.25) | tot resid -0.86 (se 1.08) p=0.43 | over 0.427 [0.34,0.51] p=0.09
+  W2-4 ALL               n=1241 | home bias +0.09 [-0.69,+0.81] p=0.82 | home ATS 0.482 [0.45,0.51] | fav cover -0.46 (se 0.38) p=0.23 | dog ATS 640-563-34 0.532 [0.50,0.56] p=0.03 | MZ slope 1.03 (se 0.07) | tot resid +0.79 (se 0.38) p=0.04 | over 0.502 [0.47,0.53] p=0.93
+  W5+ ALL (control)      n=5298 | home bias +0.13 [-0.24,+0.49] p=0.48 | home ATS 0.492 [0.48,0.51] | fav cover +0.31 (se 0.18) p=0.09 | dog ATS 2592-2539-145 0.505 [0.49,0.52] p=0.47 | MZ slope 1.06 (se 0.03) | tot resid +0.76 (se 0.18) p=0.00 | over 0.497 [0.48,0.51] p=0.65
+  W5+ TEST               n= 831 | home bias +0.54 [-0.32,+1.40] p=0.20 | home ATS 0.503 [0.47,0.54] | fav cover +0.63 (se 0.42) p=0.14 | dog ATS 399-412-20 0.492 [0.46,0.53] p=0.67 | MZ slope 1.09 (se 0.07) | tot resid +0.92 (se 0.45) p=0.04 | over 0.501 [0.47,0.54] p=0.97
+
+  Week-1 favourite cover margin by line size (1999-2025), + = favourite covered by this much; and dog ATS
+    |line|  0.5- 3.0  W1 n=176 fav cover -0.64 (se 0.97) dog ATS 86-82 0.512 [0.43,0.59] | W5+ n=1852 fav cover -0.35 (se 0.31) | W1 vs W5+ p=0.77
+    |line|  3.5- 6.5  W1 n=172 fav cover +0.53 (se 1.04) dog ATS 85-85 0.500 [0.42,0.58] | W5+ n=1719 fav cover +0.56 (se 0.31) | W1 vs W5+ p=0.98
+    |line|  7.0- 9.5  W1 n= 53 fav cover +0.47 (se 2.06) dog ATS 31-22 0.585 [0.44,0.72] | W5+ n= 987 fav cover +1.08 (se 0.44) | W1 vs W5+ p=0.77
+    |line| 10.0-30.0  W1 n= 23 fav cover -5.74 (se 1.96) dog ATS 16-7 0.696 [0.47,0.87] | W5+ n= 718 fav cover +0.35 (se 0.49) | W1 vs W5+ p=0.01
+
+  Week-1 home bias by home/away-favourite status (1999-2025)
+    home favoured  n=275 home resid -0.82 (se 0.80) p=0.31 | home ATS 124-143 0.464
+    away favoured  n=149 home resid -0.64 (se 1.09) p=0.56 | home ATS 75-72 0.510
+
+  Residual SD vs market by bucket (confidence-tag input) and Levene p vs W5+:
+    wk 1    n= 428 SD err_mkt 13.28 | MAE 10.06 | Levene p vs W5+ = 0.685 | tot_err SD 13.30 (W5+ 13.40)
+    wk 2    n= 427 SD err_mkt 12.64 | MAE 9.99 | Levene p vs W5+ = 0.561 | tot_err SD 13.53 (W5+ 13.40)
+    wk 3    n= 416 SD err_mkt 13.76 | MAE 10.77 | Levene p vs W5+ = 0.212 | tot_err SD 13.11 (W5+ 13.40)
+    wk 4    n= 398 SD err_mkt 13.52 | MAE 10.75 | Levene p vs W5+ = 0.220 | tot_err SD 13.56 (W5+ 13.40)
+    wk 5-9  n=1891 SD err_mkt 13.15 | MAE 10.16 | Levene p vs W5+ = 0.747 | tot_err SD 12.88 (W5+ 13.40)
+    wk 10+  n=3407 SD err_mkt 13.16 | MAE 10.26 | Levene p vs W5+ = 0.840 | tot_err SD 13.68 (W5+ 13.40)
+
+D. Week-by-week (2009-2025 with nfelo): n, MAE mkt / nraw / elo_line, slope of margin on elo_line, |line| mkt, |line| elo_line
+  wk  1 n= 253 mkt 9.82 nraw 9.85 elo_line 9.79 | slope elo_line 1.05 (se 0.19) | mean|mkt| 4.48 mean|elo_line| 3.82 | SD(mkt-elo_line) 2.24
+  wk  2 n= 251 mkt 9.27 nraw 9.23 elo_line 9.22 | slope elo_line 1.25 (se 0.18) | mean|mkt| 4.89 mean|elo_line| 4.11 | SD(mkt-elo_line) 2.44
+  wk  3 n= 254 mkt 10.88 nraw 11.00 elo_line 10.89 | slope elo_line 0.95 (se 0.19) | mean|mkt| 4.94 mean|elo_line| 4.46 | SD(mkt-elo_line) 2.54
+  wk  4 n= 239 mkt 10.36 nraw 10.42 elo_line 10.42 | slope elo_line 1.09 (se 0.15) | mean|mkt| 4.88 mean|elo_line| 4.52 | SD(mkt-elo_line) 2.48
+  wk  5 n= 228 mkt 10.05 nraw 10.27 elo_line 10.32 | slope elo_line 1.06 (se 0.18) | mean|mkt| 4.96 mean|elo_line| 4.64 | SD(mkt-elo_line) 2.64
+  wk  6 n= 226 mkt 10.09 nraw 9.90 elo_line 9.95 | slope elo_line 1.02 (se 0.15) | mean|mkt| 5.13 mean|elo_line| 4.48 | SD(mkt-elo_line) 2.78
+  wk  7 n= 220 mkt 10.83 nraw 10.92 elo_line 11.12 | slope elo_line 1.28 (se 0.20) | mean|mkt| 4.93 mean|elo_line| 4.35 | SD(mkt-elo_line) 2.73
+  wk  8 n= 221 mkt 9.67 nraw 9.65 elo_line 9.80 | slope elo_line 1.28 (se 0.13) | mean|mkt| 5.54 mean|elo_line| 4.99 | SD(mkt-elo_line) 2.43
+  wk  9 n= 212 mkt 9.68 nraw 9.74 elo_line 9.81 | slope elo_line 1.06 (se 0.15) | mean|mkt| 5.40 mean|elo_line| 4.66 | SD(mkt-elo_line) 2.84
+  wk 10 n= 222 mkt 11.40 nraw 11.35 elo_line 11.46 | slope elo_line 0.77 (se 0.20) | mean|mkt| 5.23 mean|elo_line| 4.51 | SD(mkt-elo_line) 2.65
+  wk 11 n= 226 mkt 9.27 nraw 9.56 elo_line 9.61 | slope elo_line 1.16 (se 0.16) | mean|mkt| 5.28 mean|elo_line| 4.60 | SD(mkt-elo_line) 2.54
+  wk 12 n= 240 mkt 8.90 nraw 9.15 elo_line 9.42 | slope elo_line 1.05 (se 0.12) | mean|mkt| 5.51 mean|elo_line| 4.89 | SD(mkt-elo_line) 2.99
+  wk 13 n= 244 mkt 9.76 nraw 9.81 elo_line 9.86 | slope elo_line 1.06 (se 0.14) | mean|mkt| 5.32 mean|elo_line| 5.12 | SD(mkt-elo_line) 2.79
+  wk 14 n= 241 mkt 10.38 nraw 10.54 elo_line 10.63 | slope elo_line 1.09 (se 0.16) | mean|mkt| 5.18 mean|elo_line| 4.90 | SD(mkt-elo_line) 2.84
+  wk 15 n= 250 mkt 9.92 nraw 10.23 elo_line 10.25 | slope elo_line 1.09 (se 0.13) | mean|mkt| 5.80 mean|elo_line| 5.09 | SD(mkt-elo_line) 3.04
+  wk 16 n= 253 mkt 10.78 nraw 11.06 elo_line 11.30 | slope elo_line 0.98 (se 0.15) | mean|mkt| 5.91 mean|elo_line| 5.18 | SD(mkt-elo_line) 3.02
+  wk 17 n= 254 mkt 11.01 nraw 11.18 elo_line 11.75 | slope elo_line 1.12 (se 0.15) | mean|mkt| 6.38 mean|elo_line| 5.67 | SD(mkt-elo_line) 4.65
+  wk 18 n=  80 mkt 8.87 nraw 9.84 elo_line 10.65 | slope elo_line 0.60 (se 0.21) | mean|mkt| 6.63 mean|elo_line| 5.73 | SD(mkt-elo_line) 5.31

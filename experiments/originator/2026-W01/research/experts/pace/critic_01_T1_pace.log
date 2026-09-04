@@ -1,0 +1,76 @@
+sample: train 2009-19 n=2442 | test 2023-25 n=752  (expert: 2442 / 752)
+sign check: corr(mkt_spread, margin)=-0.439; corr(spp_avg, realized game plays) train=-0.294
+
+== (0) reproduce the expert's headline numbers ==
+  BASE test MAE=10.290 (expert 10.290) bias(actual-pred)=+0.63 (expert +0.63); market MAE=10.157
+  spp_avg train coef -0.541 (se 0.215) p=0.012  (expert -0.541, se 0.215, p=0.012)
+  spp_avg 2023-25 in-sample coef +0.132 (se 0.516) p=0.798  (expert +0.132, se 0.516)
+  calibration slope of train-fit adj: -0.27 (se 0.91)  (expert -0.27, se 0.91)
+  spec bucket (+/-1.5 FF/SS, +/-0.75 mixed)      dMAE vs BASE +0.078 [+0.027,+0.125]  mean adj=-0.18 mean|adj|=0.54
+  spec x0.5                                      dMAE vs BASE +0.033 [+0.009,+0.058]  mean adj=-0.09 mean|adj|=0.27
+  linear -0.5*spp_avg cap 1                      dMAE vs BASE +0.056 [+0.018,+0.091]  mean adj=-0.22 mean|adj|=0.44
+  linear -0.25*spp_avg cap 0.5                   dMAE vs BASE +0.025 [+0.006,+0.043]  mean adj=-0.11 mean|adj|=0.22
+
+== (1) season-level offsets: expert's league-relative spp (prior-season ref) vs the season's own level; BASE bias by season ==
+  league mean neutral sec/play by season: 2017:32.59  2018:32.85  2019:32.67  2023:32.99  2024:33.86  2025:33.98
+ season   n  mean spp_avg (expert ref)  mean spp_avg (std ref)  BASE bias (act-pred)  market bias  mean spec adj  mean lin adj
+   2023 208                      0.354                   0.194                 0.793        0.575         -0.130        -0.171
+   2024 272                      0.857                   0.104                 1.884        1.476         -0.436        -0.401
+   2025 272                      0.137                   0.127                -0.759        1.151          0.033        -0.066
+  -> in 2024 every team is scored ~+0.8 s 'slow' against the 2023 reference, so the rules subtract points in the season where BASE was already too LOW.
+  spec bucket (+/-1.5 FF/SS, +/-0.75 mixed)      per-season dMAE: 2023: +0.039 (n=208)  2024: +0.143 (n=272)  2025: +0.042 (n=272)
+  spec x0.5                                      per-season dMAE: 2023: +0.016 (n=208)  2024: +0.064 (n=272)  2025: +0.015 (n=272)
+  linear -0.5*spp_avg cap 1                      per-season dMAE: 2023: +0.033 (n=208)  2024: +0.116 (n=272)  2025: +0.013 (n=272)
+  linear -0.25*spp_avg cap 0.5                   per-season dMAE: 2023: +0.014 (n=208)  2024: +0.054 (n=272)  2025: +0.006 (n=272)
+
+== (2) same rules with a leak-free SEASON-TO-DATE league reference (offsets removed) ==
+  train coef on std-ref spp_avg: -0.595 (se 0.217) p=0.006; corr(expert ref, std ref) test=0.929
+  2023-25 in-sample coef: -0.264 (se 0.533) p=0.620
+  calibration slope (std ref): +0.53 (se 0.86)
+  spec bucket, std ref                           dMAE vs BASE +0.066 [+0.017,+0.110]  dRMSE +0.010 mean adj=+0.01  O/U 387-360-5 (0.518)
+  spec bucket, std ref                           per-season dMAE: 2023: +0.079 (n=208)  2024: +0.094 (n=272)  2025: +0.028 (n=272)
+  spec x0.5, std ref                             dMAE vs BASE +0.028 [+0.004,+0.051]  dRMSE +0.001 mean adj=+0.01  O/U 387-360-5 (0.518)
+  spec x0.5, std ref                             per-season dMAE: 2023: +0.036 (n=208)  2024: +0.042 (n=272)  2025: +0.008 (n=272)
+  linear -0.5*spp cap 1, std ref                 dMAE vs BASE +0.038 [+0.003,+0.071]  dRMSE +0.003 mean adj=-0.07  O/U 387-360-5 (0.518)
+  linear -0.5*spp cap 1, std ref                 per-season dMAE: 2023: +0.039 (n=208)  2024: +0.060 (n=272)  2025: +0.014 (n=272)
+  linear -0.25*spp cap 0.5, std ref              dMAE vs BASE +0.017 [-0.000,+0.033]  dRMSE -0.001 mean adj=-0.03  O/U 395-352-5 (0.529)
+  linear -0.25*spp cap 0.5, std ref              per-season dMAE: 2023: +0.017 (n=208)  2024: +0.027 (n=272)  2025: +0.006 (n=272)
+  linear train-fit b*spp, std ref                dMAE vs BASE +0.047 [+0.006,+0.087]  dRMSE +0.002 mean adj=-0.06  O/U 387-360-5 (0.518)
+  linear train-fit b*spp, std ref                per-season dMAE: 2023: +0.053 (n=208)  2024: +0.075 (n=272)  2025: +0.015 (n=272)
+  [diagnostic] spec rule with its test-set mean removed (shape only): dMAE +0.078 [+0.030,+0.125]
+
+== (3) placebo: shuffle both teams' prior pace across games WITHIN season (500 draws); cost of a random rule of the same size ==
+  spec bucket (+/-1.5 FF/SS, +/-0.75 mixed)      real dMAE=+0.078 | placebo mean=+0.036 sd=0.024 2.5/97.5%=[-0.012,+0.084] | P(placebo <= real)=0.956
+  spec x0.5                                      real dMAE=+0.033 | placebo mean=+0.014 sd=0.012 2.5/97.5%=[-0.010,+0.038] | P(placebo <= real)=0.940
+  linear -0.5*spp_avg cap 1                      real dMAE=+0.056 | placebo mean=+0.023 sd=0.016 2.5/97.5%=[-0.010,+0.053] | P(placebo <= real)=0.988
+  linear -0.25*spp_avg cap 0.5                   real dMAE=+0.025 | placebo mean=+0.010 sd=0.008 2.5/97.5%=[-0.007,+0.024] | P(placebo <= real)=0.984
+  (a placebo rule with the same mean offset also 'hurts'; the real rule must beat the placebo band to show anti-signal)
+
+== (4) pace on top of RATING-ONLY totals (no pf/pa): spec-style lg_prior + 0.35*elo_sum (no fit) and fitted Elo(+env) models ==
+  spec: lg_blend + 0.35*elo_sum (no fitting)   MAE=10.498 bias=+0.32 | spec rule: +0.040 [-0.013,+0.087] | lin -0.5 cap1: +0.023 [-0.015,+0.059] | lin -0.5 cap1 std-ref: +0.015 [-0.019,+0.049] | spp coef train -0.852(p=0.000) test-in-sample -0.163(p=0.744)
+  fit: lg_blend + b*elo_sum                    MAE=10.500 bias=+0.40 | spec rule: +0.039 [-0.015,+0.087] | lin -0.5 cap1: +0.025 [-0.014,+0.061] | lin -0.5 cap1 std-ref: +0.015 [-0.019,+0.049] | spp coef train -0.852(p=0.000) test-in-sample -0.163(p=0.744)
+  fit: elo_sum + qb_sum + dome + wind + div    MAE=10.403 bias=+0.25 | spec rule: +0.052 [+0.000,+0.101] | lin -0.5 cap1: +0.028 [-0.011,+0.064] | lin -0.5 cap1 std-ref: +0.021 [-0.012,+0.054] | spp coef train -0.863(p=0.000) test-in-sample +0.070(p=0.892)
+  fit: LEAN (elo+pf+pa+qb+env)                 MAE=10.290 bias=+0.63 | spec rule: +0.078 [+0.027,+0.125] | lin -0.5 cap1: +0.056 [+0.018,+0.091] | lin -0.5 cap1 std-ref: +0.038 [+0.003,+0.071] | spp coef train -0.541(p=0.012) test-in-sample +0.132(p=0.798)
+  rolling-origin (fit < Y; 2023 fit<=2019) Elo-only base vs +spp_avg (std ref), MAE:
+   2013:-0.011(b=-0.74)  2014:-0.076(b=-0.81)  2015:-0.020(b=-0.89)  2016:+0.087(b=-0.87)  2017:-0.028(b=-0.82)  2018:-0.081(b=-0.79)  2019:-0.060(b=-0.89)  2023:+0.040(b=-0.88)  2024:+0.096(b=-0.82)  2025:+0.018(b=-0.74)  | mean 2013-19 -0.027, mean 2023-25 +0.052
+
+== (5) vs MARKET close: pooled robust regression and rolling-origin ==
+  pooled 2009-19+2023-25 n=3194: (total - mkt) ~ spp_avg [expert ref]: OLS -0.207 (se 0.188, p=0.272) | Huber -0.179 (se 0.189)
+  pooled 2009-19+2023-25 n=3194: (total - mkt) ~ spp_avg_s [std ref]: OLS -0.259 (se 0.193, p=0.180) | Huber -0.239 (se 0.194)
+  rolling-origin market + train-fit spp adj (std ref): 2013:-0.041  2014:+0.094  2015:+0.033  2016:+0.021  2017:+0.037  2018:+0.028  2019:-0.026  2023:+0.051  2024:+0.009  2025:-0.007 | mean +0.020, better 3/10
+  market total ~ BASE + spp_avg_s [train]: -0.284 (se 0.036, p=0.000)
+  market total ~ BASE + spp_avg_s [test]: -0.148 (se 0.086, p=0.087)
+
+== (6) power and upper bound ==
+  test-era residual-vs-market coefficient se = 0.480 pts/s -> a train-sized effect (-0.30) has power ~0.09; minimum detectable |effect| at 80% power ~1.34 pts/s
+  market-free 2023-25 in-sample se = 0.516: the 2009-19 coefficient (-0.54) is 1.30 se from the 2023-25 estimate -> 'the effect vanished' is NOT statistically established, only 'not detected'
+  realized game plays vs market residual (test): corr=+0.302; prior spp_avg -> realized plays R^2 = 0.014 (train 0.087)
+  -> even perfect knowledge of realized plays explains 9.1% of market residual variance; prior pace predicts 1.4% of plays -> upper bound on pace's residual R^2 ~ 0.12%
+
+== (7) 'pace dispersion fell': cross-check with the totals expert's independent sec_per_play (possession clock / plays) ==
+  2009-19: SD of prior-8 sec/play (totals-expert def) = 1.66; SD of team-season means within season = 1.45; corr(prior-8, this game) = +0.287; n=5504
+  2016-19: SD of prior-8 sec/play (totals-expert def) = 1.49; SD of team-season means within season = 1.24; corr(prior-8, this game) = +0.203; n=2048
+  2023-25: SD of prior-8 sec/play (totals-expert def) = 1.43; SD of team-season means within season = 1.06; corr(prior-8, this game) = +0.181; n=1582
+  2009-19: SD of prior-8 NEUTRAL sec/play (pace-expert def) = 1.89; team-season SD within season = 1.75; corr(prior-8, this game) = +0.346
+  2016-19: SD of prior-8 NEUTRAL sec/play (pace-expert def) = 1.56; team-season SD within season = 1.41; corr(prior-8, this game) = +0.228
+  2023-25: SD of prior-8 NEUTRAL sec/play (pace-expert def) = 1.46; team-season SD within season = 1.27; corr(prior-8, this game) = +0.227

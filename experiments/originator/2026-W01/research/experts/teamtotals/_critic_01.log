@@ -1,0 +1,33 @@
+[common] rows=7276 seasons 1999-2025 | train=6137 test=1139
+[common] sign check corr(S, margin) = -0.426 (must be strongly negative); corr(T, total_pts) = 0.321 (positive)
+[common] mean spread err (margin+S) = +0.094 | mean total err = +0.701
+train n=6137 test n=1139
+
+(a) slope-only Wald tests and per-coefficient t-tests vs identity, TRAIN 1999-2021 (HC1)
+  home_score: S -0.517 (t vs ident -0.84, p=0.398), T +0.466 (t vs ident -1.38, p=0.168) | joint slopes p=0.270
+  away_score: S +0.524 (t vs ident +1.22, p=0.221), T +0.453 (t vs ident -1.96, p=0.051) | joint slopes p=0.069
+   fav_score: abs_S +0.536 (t vs ident +1.01, p=0.315), T +0.461 (t vs ident -1.57, p=0.116) | joint slopes p=0.186
+   dog_score: abs_S -0.567 (t vs ident -2.03, p=0.042), T +0.459 (t vs ident -1.72, p=0.085) | joint slopes p=0.023
+  fav_margin ~ |S| + T: |S| slope +1.103 (se 0.049, t vs 1.0 = +2.10), T +0.002 (p=0.96), const -0.59
+   -> any |S| slope != 1 is a SPREAD bias (favorites cover more/less per point), not an allocation error; the split at fixed (S,T) is still T/2 +/- S/2 of whatever S is
+  TEST fav_margin ~ |S| + T: |S| slope +1.110 (se 0.107), T +0.089 (p=0.30) n=1139
+
+(b) Huber robust regression (RLM) of the slopes, TRAIN 1999-2021
+  home_score: const +1.141 (se 1.101), S -0.519 (se 0.021), T +0.475 (se 0.025)
+  away_score: const +0.771 (se 1.074), S +0.532 (se 0.021), T +0.487 (se 0.025)
+   fav_score: const +0.701 (se 1.118), abs_S +0.539 (se 0.037), T +0.482 (se 0.025)
+   dog_score: const +1.324 (se 1.076), abs_S -0.578 (se 0.035), T +0.481 (se 0.024)
+
+(c) rolling origin 2010-2025 (fit on all prior seasons from 1999) with SEASON-BLOCK bootstrap
+  h_d_ols: pooled dMAE -0.0144 | game-bootstrap CI [-0.0269,-0.0014] | season-block CI [-0.0278,-0.0004] | identity better in 11/16 seasons
+  h_d_nl: pooled dMAE -0.0138 | game-bootstrap CI [-0.0268,-0.0006] | season-block CI [-0.0296,+0.0016] | identity better in 11/16 seasons
+  a_d_ols: pooled dMAE -0.0150 | game-bootstrap CI [-0.0272,-0.0026] | season-block CI [-0.0251,-0.0049] | identity better in 11/16 seasons
+  a_d_nl: pooled dMAE -0.0198 | game-bootstrap CI [-0.0333,-0.0060] | season-block CI [-0.0350,-0.0044] | identity better in 14/16 seasons
+
+(d) modern-only expanding window: fit 2009..s-1, score s (2014-2025)
+  h_d_ols: pooled n=3295 dMAE (identity - alt) -0.0089 [-0.0248,+0.0064] | identity better in 7/12 seasons | paired-t over seasons p=0.349
+  h_d_nl: pooled n=3295 dMAE (identity - alt) -0.0095 [-0.0262,+0.0066] | identity better in 7/12 seasons | paired-t over seasons p=0.359
+  a_d_ols: pooled n=3295 dMAE (identity - alt) -0.0198 [-0.0318,-0.0081] | identity better in 10/12 seasons | paired-t over seasons p=0.002
+  a_d_nl: pooled n=3295 dMAE (identity - alt) -0.0297 [-0.0458,-0.0136] | identity better in 12/12 seasons | paired-t over seasons p=0.003
+
+(e) market total attenuation, TRAIN: E[total|T] = +4.21 + 0.919 T  (slope se 0.035); TEST: +1.59 + 0.982 T (se 0.095)

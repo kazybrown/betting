@@ -1,0 +1,55 @@
+n = 4310 | sign check corr(home_line_close, margin) = -0.436
+
+=== (a) reproduce: OLS res_close ~ move (HC1) and with-steam ATS at |move|>=1 ===
+OLS coef +0.043 SE 0.109 p 0.696
+with-steam ATS |move|>=1: 1080-1031-65 = 0.5116 (p=0.296), n=2176
+
+=== (b) robust specs ===
+median regression coef(move) -0.000 SE 0.116 p 1.000
+Huber coef(move) +0.018 SE 0.111 p 0.872
+with-steam ATS by |move| bucket and 4-season block (rate = with-steam wins share):
+abs_move   block    n   W   L  rate     p  ci_lo  ci_hi
+0.5-0.75 2009-12  230 120 104 0.536   NaN    NaN    NaN
+0.5-0.75 2013-16  260 128 123 0.510   NaN    NaN    NaN
+0.5-0.75 2017-21  348 147 189 0.438   NaN    NaN    NaN
+0.5-0.75 2022-25  277 135 138 0.495   NaN    NaN    NaN
+0.5-0.75     ALL 1115 530 554 0.489 0.485  0.459  0.519
+1.0-1.75 2009-12  269 142 114 0.555   NaN    NaN    NaN
+1.0-1.75 2013-16  239 107 124 0.463   NaN    NaN    NaN
+1.0-1.75 2017-21  372 189 172 0.524   NaN    NaN    NaN
+1.0-1.75 2022-25  264 135 121 0.527   NaN    NaN    NaN
+1.0-1.75     ALL 1144 573 531 0.519 0.217  0.490  0.548
+2.0-2.75 2009-12  153  82  66 0.554   NaN    NaN    NaN
+2.0-2.75 2013-16  167  81  83 0.494   NaN    NaN    NaN
+2.0-2.75 2017-21  190  99  88 0.529   NaN    NaN    NaN
+2.0-2.75 2022-25   89  46  41 0.529   NaN    NaN    NaN
+2.0-2.75     ALL  599 308 278 0.526 0.231  0.485  0.566
+  3.0-99 2009-12   76  32  42 0.432   NaN    NaN    NaN
+  3.0-99 2013-16   96  40  52 0.435   NaN    NaN    NaN
+  3.0-99 2017-21  147  71  72 0.497   NaN    NaN    NaN
+  3.0-99 2022-25  114  56  56 0.500   NaN    NaN    NaN
+  3.0-99     ALL  433 199 222 0.473 0.284  0.425  0.520
+FADE big moves (|move|>=3): fade wins 222-199 = 0.527 (95% CI 0.480-0.575, p=0.284), n=433 | fit era: 0.537 (n=319) | test: 0.500 (n=114)
+
+=== (c) juice-aware steam ===
+|move|>=0.5: n=3183 with-steam cover 0.504 | implied from closing juice 0.501 | mean steam-side odds -68 vs other -59 | ROI with steam at actual price -0.021
+|move|>=1.0: n=2103 with-steam cover 0.511 | implied from closing juice 0.502 | mean steam-side odds -71 vs other -57 | ROI with steam at actual price -0.009
+|move|>=2.0: n=1003 with-steam cover 0.502 | implied from closing juice 0.502 | mean steam-side odds -71 vs other -52 | ROI with steam at actual price -0.026
+games with open & close PRICES from nfelo: 1408 | seasons 2012 - 2025
+no-number-move games: 402 | of which price moved (|dp|>=0.01): 193
+  price-steam (|dp|>=0.01) with-steam cover at close: 87/189 = 0.460 (CI 0.391-0.531, p=0.309)
+  price-steam (|dp|>=0.02) with-steam cover at close: 26/62 = 0.419 (CI 0.305-0.543, p=0.253)
+OLS res_close ~ move + dp: coef(move) +0.018 (p=0.936), coef(dp) +3.20 (p=0.898), n=1408
+
+=== (d) totals 2024-25: fade the move ===
+n = 557 | seasons [np.int64(2024), np.int64(2025)] | corr(total_line_close, total_pts) = 0.293
+MAE open 10.019 | close 10.072
+close-side bet AT THE OPEN (info in the move vs opener): 194-217 = 0.472 (CI 0.424-0.520, p=0.278)  [spreads: 56%]
+|move|>=0.5: n=412 fade wins 0.566 (CI 0.517-0.613, p=0.009) | mean fade-side odds -108 | ROI at actual price +0.080 | by season: {2024: '0.591(n=215)', 2025: '0.538(n=197)'}
+|move|>=1.0: n=312 fade wins 0.567 (CI 0.512-0.621, p=0.020) | mean fade-side odds -108 | ROI at actual price +0.084 | by season: {2024: '0.585(n=147)', 2025: '0.552(n=165)'}
+|move|>=1.5: n=135 fade wins 0.578 (CI 0.493-0.658, p=0.085) | mean fade-side odds -108 | ROI at actual price +0.104 | by season: {2024: '0.606(n=71)', 2025: '0.547(n=64)'}
+|move|>=2.0: n=87 fade wins 0.586 (CI 0.481-0.684, p=0.133) | mean fade-side odds -110 | ROI at actual price +0.120 | by season: {2024: '0.610(n=41)', 2025: '0.565(n=46)'}
+fade rate by half-season: {'mean': {'wk1-9': 0.559, 'wk10+': 0.571}, 'size': {'wk1-9': 195, 'wk10+': 217}}
+fade rate by direction: move UP (fade=under): 0.541 (n=185) | move DOWN (fade=over): 0.586 (n=227)
+OLS res_close ~ move: -0.761 SE 0.393 p 0.052
+median regression: -1.000 SE 0.482 p 0.039

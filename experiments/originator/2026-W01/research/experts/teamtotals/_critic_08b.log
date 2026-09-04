@@ -1,0 +1,27 @@
+(a) 2010-2025 bin n=741: r_fav +1.073 season-block CI (np.float64(0.681), np.float64(1.434)); excess over season-wide r_fav +0.791 CI (np.float64(0.245), np.float64(1.289)); median r_fav +0.75; P(fav over) 0.526
+    components: tot_err +1.32 (season-wide +0.52), fav_sp_err +0.83; median tot_err +0.5, median fav_sp_err -0.5
+
+(b) rolling OOS 2010-2025, rule fav_tt += k in the bin (dog unchanged): MAE of the favorite team total
+   k=0.5: dMAE (identity - rule; + = rule better) +0.0169 season-block CI (np.float64(-0.0061), np.float64(0.0393)) | rule better in 9/16 seasons | P(fav over rule) 0.510 | per-game-overall equivalent +0.0029
+   k=1.0: dMAE (identity - rule; + = rule better) +0.0121 season-block CI (np.float64(-0.0383), np.float64(0.0582)) | rule better in 8/16 seasons | P(fav over rule) 0.482 | per-game-overall equivalent +0.0021
+
+(c) rolling OOS 2010-2025, rule total += k in the bin: MAE of the game total
+   k=0.5: dMAE +0.0088 season-block CI (np.float64(-0.0229), np.float64(0.0389)) | better in 8/16 seasons | P(over T+k) 0.501
+   k=1.0: dMAE +0.0013 season-block CI (np.float64(-0.0565), np.float64(0.0567)) | better in 8/16 seasons | P(over T+k) 0.486
+   k=1.5: dMAE -0.0182 season-block CI (np.float64(-0.1096), np.float64(0.0662)) | better in 8/16 seasons | P(over T+k) 0.467
+
+    P(total over T) in bin vs outside bin, by era:
+      1999-04: in-bin P(over) 0.469 (n=305) | outside 0.494 (n=1252) | in-bin mean tot_err +0.77 vs outside +1.04
+      2005-10: in-bin P(over) 0.518 (n=282) | outside 0.506 (n=1275) | in-bin mean tot_err +1.13 vs outside +1.03
+      2011-16: in-bin P(over) 0.491 (n=283) | outside 0.503 (n=1301) | in-bin mean tot_err +0.80 vs outside +0.43
+      2017-21: in-bin P(over) 0.519 (n=239) | outside 0.471 (n=1104) | in-bin mean tot_err +1.88 vs outside -0.24
+      2022-25: in-bin P(over) 0.544 (n=169) | outside 0.482 (n=960) | in-bin mean tot_err +1.61 vs outside +0.63
+
+(d) favorite ATS in the bin by era (fav_sp_err > 0 = favorite covered), and medians:
+      1999-04: fav ATS 125-171-11 (0.422) | mean fav_sp_err -0.08 median -1.5 | mean r_fav +0.35 median -0.75 | P(fav over tt) 0.466
+      2005-10: fav ATS 162-129-3 (0.557) | mean fav_sp_err +2.40 median +2.2 | mean r_fav +1.77 median +1.50 | P(fav over tt) 0.570
+      2011-16: fav ATS 133-142-12 (0.484) | mean fav_sp_err +1.19 median +0.0 | mean r_fav +0.99 median +0.00 | P(fav over tt) 0.500
+      2017-21: fav ATS 123-114-4 (0.519) | mean fav_sp_err +1.18 median +0.5 | mean r_fav +1.53 median +1.25 | P(fav over tt) 0.542
+      2022-25: fav ATS 70-98-2 (0.417) | mean fav_sp_err -0.12 median -1.5 | mean r_fav +0.75 median +0.75 | P(fav over tt) 0.541
+      2010-2025 pooled: fav ATS 345-378 (0.477, binomial p=0.234) -> a 'favorite lean' in the bin would have LOST ATS; the +1 mean is a right-tail (blowout) effect
+      skew of fav_sp_err in bin (2010-25): -0.10; mean-median gap +1.33

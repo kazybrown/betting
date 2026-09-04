@@ -1,0 +1,26 @@
+(a) D vs market OPEN. corr(D_open, D_base) = 0.619 | mean D_open 1.76 vs D_base 1.71
+market open RMSE (test) = 12.578 | close RMSE = 12.423
+  HIGH D_open in [0,1.5): n=602 share=0.53 rmse_mkt_open=12.67 rmse_mkt_close=12.54 rmse_model=12.68 predicted(sqrt rule)=12.78 | model vs open ATS 314-274-14 (0.534)
+  MED D_open in [1.5,3.0): n=329 share=0.29 rmse_mkt_open=12.92 rmse_mkt_close=12.86 rmse_model=12.92 predicted(sqrt rule)=12.91 | model vs open ATS 167-152-10 (0.524)
+  LOW D_open in [3.0,99): n=208 share=0.18 rmse_mkt_open=11.75 rmse_mkt_close=11.33 rmse_model=12.29 predicted(sqrt rule)=13.54 | model vs open ATS 113-93-2 (0.549)
+  sqrt rule with D_open: Spearman(sigma, |e_nb|) = -0.052 (p=0.080); coverage k=0.607/1.253/1.615: [0.515, 0.792, 0.882]
+
+(b) per-season LOW band (D_base >= 3) excess RMSE of the model number vs market close, and ATS
+  2022: LOW n=46 rmse_model=11.75 rmse_mkt=10.38 excess=+1.37 ATS 23-21-2 | HIGH n=157 rmse_model=10.81 rmse_mkt=10.83
+  2023: LOW n=29 rmse_model=13.87 rmse_mkt=13.13 excess=+0.74 ATS 13-14-2 | HIGH n=155 rmse_model=13.67 rmse_mkt=13.64
+  2024: LOW n=54 rmse_model=14.02 rmse_mkt=12.74 excess=+1.28 ATS 25-29-0 | HIGH n=143 rmse_model=12.94 rmse_mkt=12.84
+  2025: LOW n=50 rmse_model=14.45 rmse_mkt=13.00 excess=+1.45 ATS 20-30-0 | HIGH n=161 rmse_model=12.33 rmse_mkt=12.32
+  fit-era seasons (in-sample reference), LOW band excess:
+    2009: n=47 excess=+0.99    2010: n=47 excess=-0.28    2011: n=48 excess=-0.30    2012: n=36 excess=+1.52    2013: n=52 excess=+0.40    2014: n=41 excess=+0.01    2015: n=42 excess=-0.99    2016: n=49 excess=-1.00    2017: n=50 excess=+0.10    2018: n=45 excess=+0.26    2019: n=44 excess=+1.16    2020: n=72 excess=+0.21    2021: n=52 excess=+0.16
+
+(c) per-season MARKET RMSE by D_base band (is the market's error really flat in D every season?)
+  2016: 12.1(n=126) | 11.6(n=69) | 12.3(n=49)
+  2017: 12.9(n=140) | 13.4(n=69) | 13.8(n=50)
+  2018: 13.1(n=134) | 12.3(n=80) | 13.9(n=45)
+  2019: 12.4(n=121) | 12.9(n=94) | 15.4(n=44)
+  2020: 11.6(n=123) | 13.1(n=74) | 14.0(n=72)
+  2021: 13.8(n=155) | 13.1(n=78) | 13.5(n=52)
+  2022: 10.8(n=157) | 13.2(n=81) | 10.4(n=46)
+  2023: 13.6(n=155) | 12.4(n=101) | 13.1(n=29)
+  2024: 12.8(n=143) | 12.5(n=88) | 12.7(n=54)
+  2025: 12.3(n=161) | 11.5(n=74) | 13.0(n=50)

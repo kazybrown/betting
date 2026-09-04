@@ -1,0 +1,52 @@
+scored rows: 4630 | nfelo rows: 4646
+row-aligned home_line_close agreement share: 1.0
+merged: 4171 | coverage of 538_se by season: {2009: 1.0, 2010: 1.0, 2011: 1.0, 2012: 1.0, 2013: 1.0, 2014: 1.0, 2015: 1.0, 2016: 1.0, 2017: 1.0, 2018: 1.0, 2019: 1.0, 2020: 1.0, 2021: 1.0, 2022: 1.0, 2023: 1.0, 2024: 1.0, 2025: 1.0}
+VALIDATION market_se -> mkt: mean |diff| = 0.2275 | exact share = 0.6665
+VALIDATION nfelo_unregressed_se -> nfelo_b: mean |diff| = 0.579 | within 0.5 share = 0.6507 | corr = 0.9804
+VALIDATION qbelo_se -> qbelo_home_line_close_rounded (rounded to .5): mean |diff| = 0.2537 | within 0.5 share = 0.9369
+538 reconstruction ambiguous share (|err|<3 so both candidates within 6 of each other): 0.187 -> in those games D is small either way; kept.
+
+engine lines pairwise corr:
+             nfelo_b   l538  qbelo_recon    mkt
+nfelo_b        1.000  0.871        0.911  0.920
+l538           0.871  1.000        0.939  0.865
+qbelo_recon    0.911  0.939        1.000  0.901
+mkt            0.920  0.865        0.901  1.000
+sd3 distribution: {'count': 4171.0, 'mean': 1.42, 'std': 0.99, 'min': 0.0, '25%': 0.74, '50%': 1.18, '75%': 1.89, 'max': 10.46}
+share tagged by literal thresholds on sd3: HIGH(<=1.2) = 0.509 MED = 0.317 LOW(>2.2) = 0.174
+Spearman(sd3, D3_mkt) = 0.128 | Spearman(sd3, D_base) = 0.158
+
+rolling-origin: fit n=2082 (<=2017), test n=1286 (2018-2022)
+
+market |err|: ae_mkt ~ sd3 | fit slope=-0.370 (p=0.053) | TEST slope=-0.160 se=0.204 p=0.433 | Spearman=0.008 p=0.781
+
+market |err|: ae_mkt ~ D3_mkt | fit slope=0.579 (p=0.000) | TEST slope=0.594 se=0.157 p=0.000 | Spearman=0.128 p=0.000
+
+3-engine-mean |err|: ae_m3 ~ sd3 | fit slope=-0.120 (p=0.536) | TEST slope=0.051 se=0.213 p=0.810 | Spearman=0.029 p=0.292
+
+3-engine-mean |err|: ae_m3 ~ D3_mkt | fit slope=0.733 (p=0.000) | TEST slope=0.893 se=0.141 p=0.000 | Spearman=0.157 p=0.000
+
+nfelo-base |err|: ae_nb ~ sd3 | fit slope=-0.085 (p=0.646) | TEST slope=0.041 se=0.203 p=0.842 | Spearman=0.016 p=0.574
+
+nfelo-base |err|: ae_nb ~ D3_mkt | fit slope=0.698 (p=0.000) | TEST slope=0.822 se=0.139 p=0.000 | Spearman=0.151 p=0.000
+
+Literal ORIGINATOR tag thresholds on sd3, TEST 2018-2022: realized error by tag
+  HIGH: n=605 share=0.47 rmse_mkt=12.80 rmse_engine_mean=12.95 mean|err| mkt=9.70 eng=9.84 | mean D3_mkt=1.54 | engine-mean vs mkt ATS 288-304-13 (0.486)
+  MED: n=410 share=0.32 rmse_mkt=12.91 rmse_engine_mean=12.80 mean|err| mkt=10.10 eng=10.09 | mean D3_mkt=1.72 | engine-mean vs mkt ATS 205-196-9 (0.511)
+  LOW: n=271 share=0.21 rmse_mkt=12.40 rmse_engine_mean=12.99 mean|err| mkt=9.62 eng=10.22 | mean D3_mkt=2.15 | engine-mean vs mkt ATS 114-148-9 (0.435)
+  variance ratio LOW/HIGH: market 0.939 (p=0.723) | engine mean 1.006 (p=0.471)
+Same, FIT era <=2017 (in-sample, reference):
+  HIGH: n=1132 share=0.54 rmse_mkt=13.45 rmse_engine_mean=13.42 | mean D3_mkt=1.57
+  MED: n=641 share=0.31 rmse_mkt=13.56 rmse_engine_mean=13.62 | mean D3_mkt=1.73
+  LOW: n=309 share=0.15 rmse_mkt=12.86 rmse_engine_mean=13.30 | mean D3_mkt=2.07
+
+Does sd3 add anything beyond D3_mkt for the engine-mean error? (test era, OLS |err| ~ sd3 + D3_mkt)
+  sd3 coef=-0.186 (p=0.370) | D3_mkt coef=0.918 (p=0.000)
+Mechanical check on engine mean: sqrt(rmse_mkt^2 + mean(D3^2)) vs realized rmse_engine_mean by D3 tercile (test):
+  T1: n=429 D3 mean=0.40 rmse_mkt=11.92 predicted=11.93 realized=11.92
+  T2: n=428 D3 mean=1.42 rmse_mkt=13.03 predicted=13.12 realized=13.10
+  T3: n=429 D3 mean=3.35 rmse_mkt=13.27 predicted=13.76 realized=13.67
+
+Who is right when engines disagree among themselves? blend weight w of engine mean vs market by sd3 tercile (fit and test)
+  fit<=2017: T1: n=694 w=0.663 (se 0.282) | T2: n=694 w=0.304 (se 0.259) | T3: n=694 w=0.071 (se 0.209)
+  test2018-22: T1: n=429 w=0.009 (se 0.388) | T2: n=428 w=0.469 (se 0.288) | T3: n=429 w=-0.067 (se 0.246)

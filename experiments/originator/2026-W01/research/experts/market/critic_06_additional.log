@@ -1,0 +1,35 @@
+=== (1) totals prior: mean vs median ===
+2025: n=285 realized mean 45.96 median 45.0 | mean closing line 44.88 median line 44.5 | mean err +1.08 (t p=0.169) median err +0.5 | over 0.519 | skew 0.27
+2024: n=285 realized mean 46.02 median 45.0 | mean closing line 44.48 median line 44.5 | mean err +1.53 (t p=0.040) median err +1.5 | over 0.539 | skew 0.30
+2022-25: n=1139 realized mean 44.95 median 44.0 | mean closing line 44.18 median line 44.0 | mean err +0.78 (t p=0.044) median err -0.5 | over 0.492 | skew 0.39
+2009-25: n=4630 realized mean 45.43 median 44.0 | mean closing line 44.92 median line 44.5 | mean err +0.51 (t p=0.009) median err -0.5 | over 0.494 | skew 0.32
+If the origin total sat +1.0 above the close (the mean-median gap), the engine would lean OVER; realized 2022-25 over rate at the close: 0.492 | over ROI at actual prices: -0.057
+Recommended anchor = prior-season mean CLOSING total (median-targeting): 2024 -> 44.48 | 2025 -> 44.88 | 2022-25 -> 44.18
+
+=== (2) juice by closing number (vig-free implied favorite prob), pooled and by odds-source era ===
+overround by era: {'2009-22': 0.023, '2023-25': 0.047}
+            mean            size        
+era      2009-22 2023-25 2009-22 2023-25
+fav_line                                
+2.5        0.511   0.511     291     107
+3.0        0.502   0.501     540     123
+3.5        0.491   0.497     364      95
+6.5        0.503   0.505     171      39
+7.0        0.492   0.504     248      44
+7.5        0.486   0.497     173      45
+9.5        0.493   0.503      77      21
+10.0       0.487   0.502     124      14
+10.5       0.487   0.498      85      10
+interpretation: p_fav<0.5 at 3.5/7.5/10 (dog side juiced) and >0.5 at 2.5/6.5 (fav juiced) is the market pricing part of the key-number value in the juice;
+the implied 'effective line' shift is ~ (p_fav-0.5)/mass_k points, e.g. at 3.5: 0.09 pts of the half point toward 3 (mass_3=0.088).
+
+=== (3) skew, not median shift ===
+ALL totals: n=4630 mean +0.51 median -0.5 | sign test P(err>0) 0.494 (p=0.451)
+|spread|>=10 spread err: n=593 mean +1.27 median +1.0 | sign test P(err>0) 0.532 (p=0.133)
+dome totals: n=697 mean +1.40 median +0.5 | sign test P(err>0) 0.523 (p=0.238)
+
+=== (4) MAE of (closing total + delta): where does the MAE-optimal anchor sit relative to the close? ===
+2022-25: delta -1.0: MAE 10.202 | delta -0.5: MAE 10.185 | delta +0.0: MAE 10.189 | delta +0.5: MAE 10.202 | delta +1.0: MAE 10.239 | delta +1.5: MAE 10.283
+2025: delta -1.0: MAE 10.493 | delta -0.5: MAE 10.442 | delta +0.0: MAE 10.423 | delta +0.5: MAE 10.404 | delta +1.0: MAE 10.416 | delta +1.5: MAE 10.428
+2009-25: delta -1.0: MAE 10.495 | delta -0.5: MAE 10.481 | delta +0.0: MAE 10.481 | delta +0.5: MAE 10.492 | delta +1.0: MAE 10.520 | delta +1.5: MAE 10.560
+=> MAE is minimised at delta<=0 (median-targeting); a +1 anchor (realized-mean prior vs the market's median line) costs ~0.05-0.1 pts of MAE and flags overs that hit ~49%.

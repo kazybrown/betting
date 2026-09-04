@@ -1,0 +1,479 @@
+====================================================================================================
+SPREAD, target = market error e_mkt (benchmark number)
+
+##### e_mkt full: features ['D_base', 'abs_mkt', 'mkt_total', 'dome', 'early', 'late', 'playoff', 'D_mmove']
+           OLS|err| coef       p  Gamma err^2 coef     p_g
+const             8.5658  0.0000            5.0749  0.0000
+D_base            0.1467  0.1497            0.0268  0.1393
+abs_mkt          -0.0085  0.8384           -0.0079  0.3118
+mkt_total         0.0383  0.2826            0.0037  0.5674
+dome             -0.4448  0.1969           -0.0724  0.2599
+early            -0.0505  0.8904           -0.0376  0.5826
+late              0.4559  0.2761            0.0776  0.3049
+playoff          -0.9687  0.1795           -0.1691  0.2130
+D_mmove          -0.1262  0.2300           -0.0405  0.0543
+
+--- e_mkt full / A: OLS on |err| --- n=1139
+  Spearman(sigma_hat, |err|) = 0.003 (p=0.9179) | pred sigma range 10.93-14.90 (sd 0.52) | const sigma 13.32
+  Gaussian mean log-score: variable -3.94323 vs constant -3.94317 -> gain -0.00007 per game
+  interval coverage variable-sigma: {0.5: 0.553116769095698, 0.8: 0.8077260755048288, 0.9: 0.8955223880597015} | constant: {0.5: 0.5566286215978928, 0.8: 0.8235294117647058, 0.9: 0.9069359086918349} (targets .5/.8/.9)
+  decile calibration:
+       n  pred_sigma  realized_rmse  mean_abs
+dec                                          
+0    114      11.911         13.132     9.895
+1    114      12.312         11.606     8.504
+2    114      12.516         12.168     9.531
+3    114      12.672         12.077     9.123
+4    114      12.803         13.695    11.075
+5    113      12.919         12.683     9.385
+6    114      13.040         12.860    10.083
+7    114      13.157         12.762     9.719
+8    114      13.333         12.145     9.772
+9    114      13.755         10.872     8.272
+  tags by sigma_hat terciles (cuts [12.65 13.06]):
+    HIGH: n=380 pred_sigma=12.28 realized RMSE=12.34 mean|err|=9.29
+    MED: n=379 pred_sigma=12.86 realized RMSE=12.91 mean|err|=10.04
+    LOW: n=380 pred_sigma=13.38 realized RMSE=12.00 mean|err|=9.28
+    variance ratio LOW/HIGH = 0.947 (F-test one-sided p=0.7023)
+
+--- e_mkt full / B: Gamma on err^2 --- n=1139
+  Spearman(sigma_hat, |err|) = -0.020 (p=0.4997) | pred sigma range 11.08-15.54 (sd 0.56) | const sigma 13.32
+  Gaussian mean log-score: variable -3.94677 vs constant -3.94317 -> gain -0.00361 per game
+  interval coverage variable-sigma: {0.5: 0.568920105355575, 0.8: 0.8226514486391572, 0.9: 0.9069359086918349} | constant: {0.5: 0.5566286215978928, 0.8: 0.8235294117647058, 0.9: 0.9069359086918349} (targets .5/.8/.9)
+  decile calibration:
+       n  pred_sigma  realized_rmse  mean_abs
+dec                                          
+0    114      12.304         12.980     9.557
+1    114      12.764         12.839     9.974
+2    114      13.019         11.921     9.101
+3    114      13.180         12.182     9.763
+4    114      13.315         13.596    10.518
+5    113      13.430         12.227     9.451
+6    114      13.553         13.145     9.956
+7    114      13.681         11.172     8.719
+8    114      13.863         12.463     9.434
+9    114      14.318         11.499     8.886
+  tags by sigma_hat terciles (cuts [13.16 13.57]):
+    HIGH: n=380 pred_sigma=12.74 realized RMSE=12.59 mean|err|=9.64
+    MED: n=379 pred_sigma=13.37 realized RMSE=12.91 mean|err|=10.03
+    LOW: n=380 pred_sigma=13.92 realized RMSE=11.74 mean|err|=8.94
+    variance ratio LOW/HIGH = 0.869 (F-test one-sided p=0.9131)
+
+##### e_mkt simple: features ['D_base', 'abs_mkt', 'mkt_total', 'dome']
+           OLS|err| coef       p  Gamma err^2 coef     p_g
+const             8.6676  0.0000            5.0418  0.0000
+D_base            0.1278  0.1919            0.0210  0.2333
+abs_mkt          -0.0028  0.9457           -0.0062  0.4273
+mkt_total         0.0332  0.3472            0.0033  0.6090
+dome             -0.4320  0.2106           -0.0666  0.3012
+
+--- e_mkt simple / A: OLS on |err| --- n=1139
+  Spearman(sigma_hat, |err|) = 0.000 (p=0.9952) | pred sigma range 11.98-14.11 (sd 0.34) | const sigma 13.32
+  Gaussian mean log-score: variable -3.94103 vs constant -3.94317 -> gain +0.00214 per game
+  interval coverage variable-sigma: {0.5: 0.553116769095698, 0.8: 0.8086040386303776, 0.9: 0.8946444249341527} | constant: {0.5: 0.5566286215978928, 0.8: 0.8235294117647058, 0.9: 0.9069359086918349} (targets .5/.8/.9)
+  decile calibration:
+       n  pred_sigma  realized_rmse  mean_abs
+dec                                          
+0    114      12.205         13.191    10.057
+1    114      12.409         12.571     9.202
+2    114      12.550         11.681     8.912
+3    114      12.657         13.234    10.417
+4    114      12.754         11.684     8.895
+5    113      12.837         12.502     9.819
+6    114      12.919         12.713     9.689
+7    114      13.005         12.372     9.763
+8    114      13.120         13.108    10.575
+9    114      13.406         10.973     8.035
+  tags by sigma_hat terciles (cuts [12.64 12.93]):
+    HIGH: n=380 pred_sigma=12.41 realized RMSE=12.59 mean|err|=9.48
+    MED: n=379 pred_sigma=12.79 realized RMSE=12.56 mean|err|=9.72
+    LOW: n=380 pred_sigma=13.15 realized RMSE=12.12 mean|err|=9.41
+    variance ratio LOW/HIGH = 0.927 (F-test one-sided p=0.7688)
+
+--- e_mkt simple / B: Gamma on err^2 --- n=1139
+  Spearman(sigma_hat, |err|) = -0.019 (p=0.5174) | pred sigma range 12.33-14.37 (sd 0.30) | const sigma 13.32
+  Gaussian mean log-score: variable -3.94368 vs constant -3.94317 -> gain -0.00051 per game
+  interval coverage variable-sigma: {0.5: 0.5636523266022827, 0.8: 0.820017559262511, 0.9: 0.9095697980684812} | constant: {0.5: 0.5566286215978928, 0.8: 0.8235294117647058, 0.9: 0.9069359086918349} (targets .5/.8/.9)
+  decile calibration:
+       n  pred_sigma  realized_rmse  mean_abs
+dec                                          
+0    114      12.769         12.569     9.829
+1    114      12.953         12.405     9.452
+2    114      13.053         13.409    10.123
+3    114      13.139         10.622     8.452
+4    114      13.219         12.966     9.439
+5    113      13.301         13.174    10.376
+6    114      13.382         12.468     9.925
+7    114      13.459         12.908     9.917
+8    114      13.558         12.735     9.886
+9    114      13.808         10.635     7.969
+  tags by sigma_hat terciles (cuts [13.13 13.39]):
+    HIGH: n=380 pred_sigma=12.94 realized RMSE=12.79 mean|err|=9.86
+    MED: n=379 pred_sigma=13.26 realized RMSE=12.39 mean|err|=9.50
+    LOW: n=380 pred_sigma=13.59 realized RMSE=12.08 mean|err|=9.25
+    variance ratio LOW/HIGH = 0.893 (F-test one-sided p=0.8653)
+
+====================================================================================================
+SPREAD, target = nfelo-base error e_nb (the model's own number)
+
+##### e_nb full: features ['D_base', 'abs_mkt', 'mkt_total', 'dome', 'early', 'late', 'playoff', 'D_mmove']
+           OLS|err| coef       p  Gamma err^2 coef     p_g
+const             8.6629  0.0000            5.1341  0.0000
+D_base            0.3128  0.0026            0.0416  0.0213
+abs_mkt          -0.0109  0.7920           -0.0062  0.4281
+mkt_total         0.0298  0.4024            0.0012  0.8451
+dome             -0.4630  0.1786           -0.0624  0.3294
+early            -0.0831  0.8205           -0.0321  0.6372
+late              0.5882  0.1565            0.0909  0.2274
+playoff          -0.8336  0.2505           -0.1296  0.3378
+D_mmove          -0.0797  0.4539           -0.0325  0.1204
+
+--- e_nb full / A: OLS on |err| --- n=1139
+  Spearman(sigma_hat, |err|) = 0.069 (p=0.0204) | pred sigma range 10.85-16.82 (sd 0.72) | const sigma 13.36
+  Gaussian mean log-score: variable -3.96036 vs constant -3.96128 -> gain +0.00092 per game
+  interval coverage variable-sigma: {0.5: 0.5539947322212467, 0.8: 0.8086040386303776, 0.9: 0.8893766461808604} | constant: {0.5: 0.568920105355575, 0.8: 0.8121158911325724, 0.9: 0.9007901668129938} (targets .5/.8/.9)
+  decile calibration:
+       n  pred_sigma  realized_rmse  mean_abs
+dec                                          
+0    114      11.834         12.753     9.576
+1    114      12.243         11.838     8.818
+2    114      12.437         12.247     8.980
+3    114      12.619         12.525     9.572
+4    114      12.783         12.671     9.939
+5    113      12.935         12.452     9.650
+6    114      13.092         12.801     9.939
+7    114      13.302         14.593    12.147
+8    114      13.567         12.093     9.149
+9    114      14.360         12.584     9.967
+  tags by sigma_hat terciles (cuts [12.58 13.12]):
+    HIGH: n=380 pred_sigma=12.21 realized RMSE=12.56 mean|err|=9.32
+    MED: n=379 pred_sigma=12.86 realized RMSE=12.57 mean|err|=9.85
+    LOW: n=380 pred_sigma=13.68 realized RMSE=12.90 mean|err|=10.15
+    variance ratio LOW/HIGH = 1.054 (F-test one-sided p=0.3040)
+
+--- e_nb full / B: Gamma on err^2 --- n=1139
+  Spearman(sigma_hat, |err|) = 0.046 (p=0.1171) | pred sigma range 11.80-16.62 (sd 0.60) | const sigma 13.36
+  Gaussian mean log-score: variable -3.96264 vs constant -3.96128 -> gain -0.00136 per game
+  interval coverage variable-sigma: {0.5: 0.5654082528533801, 0.8: 0.8182616330114135, 0.9: 0.8999122036874452} | constant: {0.5: 0.568920105355575, 0.8: 0.8121158911325724, 0.9: 0.9007901668129938} (targets .5/.8/.9)
+  decile calibration:
+       n  pred_sigma  realized_rmse  mean_abs
+dec                                          
+0    114      12.412         13.852    10.405
+1    114      12.786         12.167     9.028
+2    114      13.005         12.046     9.103
+3    114      13.153         11.996     9.097
+4    114      13.274         12.399     9.803
+5    113      13.403         11.947     9.253
+6    114      13.531         14.914    12.060
+7    114      13.686         12.591     9.829
+8    114      13.896         11.772     9.274
+9    114      14.538         12.714     9.881
+  tags by sigma_hat terciles (cuts [13.13 13.55]):
+    HIGH: n=380 pred_sigma=12.77 realized RMSE=12.64 mean|err|=9.48
+    MED: n=379 pred_sigma=13.34 realized RMSE=12.78 mean|err|=10.02
+    LOW: n=380 pred_sigma=13.99 realized RMSE=12.61 mean|err|=9.82
+    variance ratio LOW/HIGH = 0.995 (F-test one-sided p=0.5190)
+
+##### e_nb simple: features ['D_base', 'abs_mkt', 'mkt_total', 'dome']
+           OLS|err| coef       p  Gamma err^2 coef     p_g
+const             8.8488  0.0000            5.1207  0.0000
+D_base            0.3075  0.0021            0.0368  0.0357
+abs_mkt          -0.0030  0.9419           -0.0046  0.5531
+mkt_total         0.0237  0.5007            0.0007  0.9096
+dome             -0.4442  0.1975           -0.0558  0.3838
+
+--- e_nb simple / A: OLS on |err| --- n=1139
+  Spearman(sigma_hat, |err|) = 0.060 (p=0.0426) | pred sigma range 11.74-16.30 (sd 0.61) | const sigma 13.36
+  Gaussian mean log-score: variable -3.95857 vs constant -3.96128 -> gain +0.00271 per game
+  interval coverage variable-sigma: {0.5: 0.5566286215978928, 0.8: 0.8042142230026339, 0.9: 0.8832309043020193} | constant: {0.5: 0.568920105355575, 0.8: 0.8121158911325724, 0.9: 0.9007901668129938} (targets .5/.8/.9)
+  decile calibration:
+       n  pred_sigma  realized_rmse  mean_abs
+dec                                          
+0    114      12.035         11.620     8.678
+1    114      12.310         12.529     9.551
+2    114      12.457         13.525    10.060
+3    114      12.589         11.394     8.697
+4    114      12.720         12.497    10.084
+5    113      12.848         13.427    10.072
+6    114      12.998         12.879    10.208
+7    114      13.170         12.423     9.823
+8    114      13.429         13.115    10.228
+9    114      14.124         13.171    10.338
+  tags by sigma_hat terciles (cuts [12.56 13.03]):
+    HIGH: n=380 pred_sigma=12.30 realized RMSE=12.45 mean|err|=9.40
+    MED: n=379 pred_sigma=12.79 realized RMSE=12.39 mean|err|=9.51
+    LOW: n=380 pred_sigma=13.52 realized RMSE=13.17 mean|err|=10.40
+    variance ratio LOW/HIGH = 1.119 (F-test one-sided p=0.1370)
+
+--- e_nb simple / B: Gamma on err^2 --- n=1139
+  Spearman(sigma_hat, |err|) = 0.056 (p=0.0583) | pred sigma range 12.39-15.46 (sd 0.41) | const sigma 13.36
+  Gaussian mean log-score: variable -3.96016 vs constant -3.96128 -> gain +0.00112 per game
+  interval coverage variable-sigma: {0.5: 0.5654082528533801, 0.8: 0.8173836698858647, 0.9: 0.8999122036874452} | constant: {0.5: 0.568920105355575, 0.8: 0.8121158911325724, 0.9: 0.9007901668129938} (targets .5/.8/.9)
+  decile calibration:
+       n  pred_sigma  realized_rmse  mean_abs
+dec                                          
+0    114      12.741         12.695     9.477
+1    114      12.927         12.301     9.449
+2    114      13.035         12.969    10.061
+3    114      13.123         10.929     7.891
+4    114      13.199         12.257     9.463
+5    113      13.278         13.291    10.707
+6    114      13.369         13.486    10.327
+7    114      13.499         12.523     9.933
+8    114      13.675         13.215    10.290
+9    114      14.142         12.905    10.146
+  tags by sigma_hat terciles (cuts [13.11 13.39]):
+    HIGH: n=380 pred_sigma=12.92 realized RMSE=12.61 mean|err|=9.62
+    MED: n=379 pred_sigma=13.24 realized RMSE=12.62 mean|err|=9.63
+    LOW: n=380 pred_sigma=13.74 realized RMSE=12.80 mean|err|=10.07
+    variance ratio LOW/HIGH = 1.031 (F-test one-sided p=0.3842)
+
+====================================================================================================
+TOTAL, target = market total error e_tot
+
+##### e_tot full: features ['D_tot', 'mkt_total', 'abs_mkt', 'dome', 'early', 'late', 'playoff', 'wind_hi']
+           OLS|err| coef       p  Gamma err^2 coef     p_g
+const             7.6208  0.0000            4.6783  0.0000
+D_tot             0.0557  0.3405            0.0092  0.3688
+mkt_total         0.0654  0.0615            0.0113  0.0648
+abs_mkt          -0.0322  0.4232           -0.0082  0.2710
+dome             -0.0486  0.8881           -0.0011  0.9860
+early             0.0675  0.8479           -0.0129  0.8429
+late              0.1383  0.7287            0.0327  0.6471
+playoff           0.4496  0.5862            0.1706  0.1842
+wind_hi          -0.1364  0.7899           -0.0115  0.9015
+
+--- e_tot full / A: OLS on |err| --- n=1139
+  Spearman(sigma_hat, |err|) = 0.041 (p=0.1703) | pred sigma range 12.43-14.72 (sd 0.37) | const sigma 13.39
+  Gaussian mean log-score: variable -3.98532 vs constant -3.98663 -> gain +0.00132 per game
+  interval coverage variable-sigma: {0.5: 0.533801580333626, 0.8: 0.8261633011413521, 0.9: 0.9051799824407375} | constant: {0.5: 0.5460930640913082, 0.8: 0.8261633011413521, 0.9: 0.9113257243195786} (targets .5/.8/.9)
+  decile calibration:
+       n  pred_sigma  realized_rmse  mean_abs
+dec                                          
+0    114      12.756         12.763     9.693
+1    114      12.930         13.149    10.404
+2    114      13.020         13.544    10.544
+3    114      13.081         13.803    10.917
+4    114      13.143         11.235     8.461
+5    113      13.211         11.461     9.248
+6    114      13.309         11.961     9.289
+7    114      13.431         14.151    11.425
+8    114      13.640         13.848    10.978
+9    114      14.056         13.927    10.925
+  tags by sigma_hat terciles (cuts [13.07 13.33]):
+    HIGH: n=380 pred_sigma=12.92 realized RMSE=13.10 mean|err|=10.18
+    MED: n=379 pred_sigma=13.18 realized RMSE=12.09 mean|err|=9.40
+    LOW: n=380 pred_sigma=13.67 realized RMSE=13.83 mean|err|=10.98
+    variance ratio LOW/HIGH = 1.115 (F-test one-sided p=0.1449)
+
+--- e_tot full / B: Gamma on err^2 --- n=1139
+  Spearman(sigma_hat, |err|) = 0.044 (p=0.1384) | pred sigma range 12.43-15.38 (sd 0.45) | const sigma 13.39
+  Gaussian mean log-score: variable -3.98552 vs constant -3.98663 -> gain +0.00111 per game
+  interval coverage variable-sigma: {0.5: 0.5329236172080772, 0.8: 0.8270412642669008, 0.9: 0.9069359086918349} | constant: {0.5: 0.5460930640913082, 0.8: 0.8261633011413521, 0.9: 0.9113257243195786} (targets .5/.8/.9)
+  decile calibration:
+       n  pred_sigma  realized_rmse  mean_abs
+dec                                          
+0    114      12.771         12.396     9.781
+1    114      12.947         13.182    10.079
+2    114      13.057         12.594     9.860
+3    114      13.133         12.890    10.123
+4    114      13.207         12.435     9.772
+5    113      13.274         13.264     9.810
+6    114      13.361         12.180     9.860
+7    114      13.504         13.798    11.228
+8    114      13.714         14.059    10.939
+9    114      14.354         13.329    10.439
+  tags by sigma_hat terciles (cuts [13.12 13.38]):
+    HIGH: n=380 pred_sigma=12.94 realized RMSE=12.72 mean|err|=9.87
+    MED: n=379 pred_sigma=13.24 realized RMSE=12.87 mean|err|=10.06
+    LOW: n=380 pred_sigma=13.81 realized RMSE=13.48 mean|err|=10.63
+    variance ratio LOW/HIGH = 1.123 (F-test one-sided p=0.1294)
+
+##### e_tot simple: features ['D_tot', 'mkt_total', 'dome']
+           OLS|err| coef       p  Gamma err^2 coef     p_g
+const             7.4146  0.0000            4.6169  0.0000
+D_tot             0.0596  0.3023            0.0099  0.3349
+mkt_total         0.0668  0.0536            0.0119  0.0522
+dome             -0.0270  0.9365            0.0043  0.9437
+
+--- e_tot simple / A: OLS on |err| --- n=1139
+  Spearman(sigma_hat, |err|) = 0.019 (p=0.5236) | pred sigma range 12.68-14.49 (sd 0.31) | const sigma 13.39
+  Gaussian mean log-score: variable -3.98582 vs constant -3.98663 -> gain +0.00081 per game
+  interval coverage variable-sigma: {0.5: 0.5311676909569798, 0.8: 0.8244073748902546, 0.9: 0.9025460930640913} | constant: {0.5: 0.5460930640913082, 0.8: 0.8261633011413521, 0.9: 0.9113257243195786} (targets .5/.8/.9)
+  decile calibration:
+       n  pred_sigma  realized_rmse  mean_abs
+dec                                          
+0    114      12.847         12.542     9.803
+1    114      12.959         13.214    10.211
+2    114      13.024         14.353    11.232
+3    114      13.078         12.402     9.864
+4    114      13.134         11.438     9.110
+5    113      13.193         11.965     9.270
+6    114      13.262         13.925    11.272
+7    114      13.362         12.848     9.452
+8    114      13.520         13.320    10.772
+9    114      13.940         13.942    10.899
+  tags by sigma_hat terciles (cuts [13.07 13.28]):
+    HIGH: n=380 pred_sigma=12.96 realized RMSE=13.43 mean|err|=10.49
+    MED: n=379 pred_sigma=13.17 realized RMSE=11.94 mean|err|=9.48
+    LOW: n=380 pred_sigma=13.58 realized RMSE=13.63 mean|err|=10.60
+    variance ratio LOW/HIGH = 1.030 (F-test one-sided p=0.3859)
+
+--- e_tot simple / B: Gamma on err^2 --- n=1139
+  Spearman(sigma_hat, |err|) = 0.021 (p=0.4855) | pred sigma range 12.76-14.56 (sd 0.30) | const sigma 13.39
+  Gaussian mean log-score: variable -3.98590 vs constant -3.98663 -> gain +0.00073 per game
+  interval coverage variable-sigma: {0.5: 0.5320456540825286, 0.8: 0.8261633011413521, 0.9: 0.9060579455662863} | constant: {0.5: 0.5460930640913082, 0.8: 0.8261633011413521, 0.9: 0.9113257243195786} (targets .5/.8/.9)
+  decile calibration:
+       n  pred_sigma  realized_rmse  mean_abs
+dec                                          
+0    114      12.934         12.858     9.895
+1    114      13.042         13.403    10.338
+2    114      13.105         13.005    10.386
+3    114      13.154         12.696     9.882
+4    114      13.205         12.155     9.991
+5    113      13.264         12.792     9.509
+6    114      13.330         12.265    10.048
+7    114      13.427         13.418    10.070
+8    114      13.584         13.647    11.039
+9    114      13.993         13.902    10.728
+  tags by sigma_hat terciles (cuts [13.15 13.34]):
+    HIGH: n=380 pred_sigma=13.04 realized RMSE=13.17 mean|err|=10.32
+    MED: n=379 pred_sigma=13.24 realized RMSE=12.17 mean|err|=9.53
+    LOW: n=380 pred_sigma=13.64 realized RMSE=13.70 mean|err|=10.71
+    variance ratio LOW/HIGH = 1.082 (F-test one-sided p=0.2216)
+
+====================================================================================================
+Season-level DRIFT: realized RMSE by season vs fit-era constant; does a trailing-3-season base help?
+          n  rmse_spread  rmse_total  rmse_nb
+season                                       
+2009    227       14.268      13.854   14.475
+2010    230       13.729      14.310   13.616
+2011    228       13.706      12.225   13.660
+2012    228       14.025      13.457   14.307
+2013    226       12.497      14.140   12.559
+2014    229       14.226      12.713   14.281
+2015    228       13.104      13.322   12.823
+2016    244       12.007      12.248   11.796
+2017    259       13.233      14.444   13.383
+2018    259       13.012      13.349   12.860
+2019    259       13.142      13.449   13.504
+2020    269       12.697      13.084   12.643
+2021    285       13.549      13.297   13.666
+2022    284       11.487      13.213   11.650
+2023    285       13.174      13.057   13.308
+2024    285       12.721      12.587   13.128
+2025    285       12.245      13.237   12.547
+          n  fit_const  trailing3  realized  ll_gain_spread  trailing3_tot  realized_tot  ll_gain_total
+season                                                                                                 
+2022    284    13.3227    13.1418   11.4872          0.0034        13.2760       13.2127         0.0002
+2023    285    13.3227    12.6055   13.1740         -0.0019        13.2004       13.0570         0.0005
+2024    285    13.3227    12.7696   12.7205          0.0021        13.1894       12.5866         0.0016
+2025    285    13.3227    12.4821   12.2448          0.0064        12.9545       13.2373        -0.0003
+
+====================================================================================================
+SIMPLE IMPLEMENTABLE RULE (fit <=2021) with trailing-3-season base, evaluated 2022-25
+
+SPREAD (market err): sigma = BASE * (1 + +0.0122*(D_base-1.85) + -0.0003*(abs_mkt-5.39) + +0.0023*(mkt_total-45.24))
+
+--- SPREAD (market err) rule, trailing base --- n=1139
+  Spearman(sigma_hat, |err|) = -0.051 (p=0.0854) | pred sigma range 11.99-14.41 (sd 0.34) | const sigma 13.32
+  Gaussian mean log-score: variable -3.94087 vs constant -3.94317 -> gain +0.00230 per game
+  interval coverage variable-sigma: {0.5: 0.5460930640913082, 0.8: 0.8042142230026339, 0.9: 0.8893766461808604} | constant: {0.5: 0.5566286215978928, 0.8: 0.8235294117647058, 0.9: 0.9069359086918349} (targets .5/.8/.9)
+  decile calibration:
+       n  pred_sigma  realized_rmse  mean_abs
+dec                                          
+0    114      12.202         12.948    10.206
+1    114      12.337         12.814    10.281
+2    114      12.439         12.823     9.632
+3    114      12.529         11.463     8.807
+4    114      12.609         13.175    10.482
+5    113      12.697         13.574     9.942
+6    114      12.799         10.557     8.342
+7    114      12.922         12.126     9.355
+8    114      13.072         13.087     9.605
+9    114      13.364         11.327     8.711
+  tags by sigma_hat terciles (cuts [12.52 12.82]):
+    HIGH: n=380 pred_sigma=12.34 realized RMSE=12.71 mean|err|=9.92
+    MED: n=379 pred_sigma=12.66 realized RMSE=12.59 mean|err|=9.59
+    LOW: n=380 pred_sigma=13.09 realized RMSE=11.96 mean|err|=9.11
+    variance ratio LOW/HIGH = 0.885 (F-test one-sided p=0.8830)
+  realized RMSE by multiplier bin:
+    mult in [0,0.95): n=0 share=0.00 realized RMSE=nan
+    mult in [0.95,1.05): n=1123 share=0.99 realized RMSE=12.45
+    mult in [1.05,99): n=16 share=0.01 realized RMSE=10.45
+
+SPREAD (nfelo-base err): sigma = BASE * (1 + +0.0294*(D_base-1.85) + -0.0003*(abs_mkt-5.39) + +0.0013*(mkt_total-45.24))
+
+--- SPREAD (nfelo-base err) rule, trailing base --- n=1139
+  Spearman(sigma_hat, |err|) = 0.016 (p=0.5805) | pred sigma range 11.86-16.65 (sd 0.60) | const sigma 13.36
+  Gaussian mean log-score: variable -3.95883 vs constant -3.96128 -> gain +0.00245 per game
+  interval coverage variable-sigma: {0.5: 0.5548726953467954, 0.8: 0.8024582967515365, 0.9: 0.8814749780509219} | constant: {0.5: 0.568920105355575, 0.8: 0.8121158911325724, 0.9: 0.9007901668129938} (targets .5/.8/.9)
+  decile calibration:
+       n  pred_sigma  realized_rmse  mean_abs
+dec                                          
+0    114      12.083         13.716    10.492
+1    114      12.263         12.128     9.840
+2    114      12.404         12.523     9.431
+3    114      12.524         12.583     9.505
+4    114      12.639         11.691     8.922
+5    113      12.776         11.647     8.923
+6    114      12.943         12.146     9.561
+7    114      13.123         12.557     9.871
+8    114      13.387         14.292    10.950
+9    114      14.112         13.204    10.234
+  tags by sigma_hat terciles (cuts [12.51 12.98]):
+    HIGH: n=380 pred_sigma=12.27 realized RMSE=12.79 mean|err|=9.98
+    MED: n=379 pred_sigma=12.72 realized RMSE=12.06 mean|err|=9.13
+    LOW: n=380 pred_sigma=13.49 realized RMSE=13.15 mean|err|=10.21
+    variance ratio LOW/HIGH = 1.057 (F-test one-sided p=0.2939)
+  realized RMSE by multiplier bin:
+    mult in [0,0.95): n=86 share=0.08 realized RMSE=11.77
+    mult in [0.95,1.05): n=953 share=0.84 realized RMSE=12.69
+    mult in [1.05,99): n=100 share=0.09 realized RMSE=13.28
+
+TOTAL (market err): sigma = BASE * (1 + +0.0056*(D_tot-3.38) + +0.0063*(mkt_total-45.24) + -0.0025*(dome-0.26))
+
+--- TOTAL (market err) rule, trailing base --- n=1139
+  Spearman(sigma_hat, |err|) = 0.015 (p=0.6123) | pred sigma range 12.33-14.41 (sd 0.32) | const sigma 13.39
+  Gaussian mean log-score: variable -3.98574 vs constant -3.98663 -> gain +0.00089 per game
+  interval coverage variable-sigma: {0.5: 0.5285338015803336, 0.8: 0.8147497805092186, 0.9: 0.897278314310799} | constant: {0.5: 0.5460930640913082, 0.8: 0.8261633011413521, 0.9: 0.9113257243195786} (targets .5/.8/.9)
+  decile calibration:
+       n  pred_sigma  realized_rmse  mean_abs
+dec                                          
+0    114      12.613         13.994    11.083
+1    114      12.779         12.392     9.535
+2    114      12.856         12.916     9.939
+3    114      12.922         13.575    10.776
+4    114      12.984         11.525     9.061
+5    113      13.047         11.866     9.367
+6    114      13.122         12.830    10.101
+7    114      13.206         13.387    10.263
+8    114      13.364         13.673    10.904
+9    114      13.773         13.840    10.855
+  tags by sigma_hat terciles (cuts [12.91 13.13]):
+    HIGH: n=380 pred_sigma=12.76 realized RMSE=13.16 mean|err|=10.26
+    MED: n=379 pred_sigma=13.02 realized RMSE=12.31 mean|err|=9.67
+    LOW: n=380 pred_sigma=13.42 realized RMSE=13.57 mean|err|=10.64
+    variance ratio LOW/HIGH = 1.063 (F-test one-sided p=0.2777)
+  realized RMSE by multiplier bin:
+    mult in [0,0.95): n=0 share=0.00 realized RMSE=nan
+    mult in [0.95,1.05): n=1093 share=0.96 realized RMSE=13.00
+    mult in [1.05,99): n=46 share=0.04 realized RMSE=13.60
+
+SUMMARY of OOS evaluations:
+                                          label     n     rho       p  ll_gain   cov50   cov80   cov90  var_ratio      pF
+0                  e_mkt full / A: OLS on |err|  1139  0.0031  0.9179  -0.0001  0.5531  0.8077  0.8955     0.9469  0.7023
+1                e_mkt full / B: Gamma on err^2  1139 -0.0200  0.4997  -0.0036  0.5689  0.8227  0.9069     0.8695  0.9131
+2                e_mkt simple / A: OLS on |err|  1139  0.0002  0.9952   0.0021  0.5531  0.8086  0.8946     0.9272  0.7688
+3              e_mkt simple / B: Gamma on err^2  1139 -0.0192  0.5174  -0.0005  0.5637  0.8200  0.9096     0.8926  0.8653
+4                   e_nb full / A: OLS on |err|  1139  0.0687  0.0204   0.0009  0.5540  0.8086  0.8894     1.0541  0.3040
+5                 e_nb full / B: Gamma on err^2  1139  0.0465  0.1171  -0.0014  0.5654  0.8183  0.8999     0.9951  0.5190
+6                 e_nb simple / A: OLS on |err|  1139  0.0601  0.0426   0.0027  0.5566  0.8042  0.8832     1.1191  0.1370
+7               e_nb simple / B: Gamma on err^2  1139  0.0561  0.0583   0.0011  0.5654  0.8174  0.8999     1.0307  0.3842
+8                  e_tot full / A: OLS on |err|  1139  0.0407  0.1703   0.0013  0.5338  0.8262  0.9052     1.1150  0.1449
+9                e_tot full / B: Gamma on err^2  1139  0.0439  0.1384   0.0011  0.5329  0.8270  0.9069     1.1231  0.1294
+10               e_tot simple / A: OLS on |err|  1139  0.0189  0.5236   0.0008  0.5312  0.8244  0.9025     1.0303  0.3859
+11             e_tot simple / B: Gamma on err^2  1139  0.0207  0.4855   0.0007  0.5320  0.8262  0.9061     1.0820  0.2216
+12      SPREAD (market err) rule, trailing base  1139 -0.0510  0.0854   0.0023  0.5461  0.8042  0.8894     0.8848  0.8830
+13  SPREAD (nfelo-base err) rule, trailing base  1139  0.0164  0.5805   0.0025  0.5549  0.8025  0.8815     1.0573  0.2939
+14       TOTAL (market err) rule, trailing base  1139  0.0150  0.6123   0.0009  0.5285  0.8147  0.8973     1.0625  0.2777

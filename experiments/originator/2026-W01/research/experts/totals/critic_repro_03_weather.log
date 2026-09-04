@@ -1,0 +1,185 @@
+== (i) MARKET residual (total_pts - mkt_total) by weather bin, outdoor games with observed weather ==
+
+-- ALL 1999-2025: n=4835 | domes for reference: n=1678
+
+  wind  (mean error, se, n, under-rate; error = actual - line)
+    0-9      n= 3113  mean= +1.02  se=0.24  under=0.488
+    10-14    n= 1107  mean= +0.06  se=0.40  under=0.541
+    15-19    n=  447  mean= -1.41  se=0.65  under=0.561
+    20-24    n=  128  mean= +1.39  se=1.19  under=0.480
+    25+      n=   40  mean= -9.35  se=1.72  under=0.821
+
+  temperature  (mean error, se, n, under-rate; error = actual - line)
+    <20F     n=   66  mean= -1.66  se=1.74  under=0.545
+    20-31F   n=  199  mean= +1.37  se=0.98  under=0.459
+    32-49F   n= 1150  mean= +0.40  se=0.41  under=0.530
+    50-84F   n= 3178  mean= +0.57  se=0.24  under=0.505
+    85F+     n=  242  mean= -0.03  se=0.81  under=0.504
+
+-- FIT 1999-2021: n=4193 | domes for reference: n=1327
+
+  wind  (mean error, se, n, under-rate; error = actual - line)
+    0-9      n= 2673  mean= +0.96  se=0.26  under=0.492
+    10-14    n=  965  mean= +0.12  se=0.43  under=0.536
+    15-19    n=  398  mean= -1.27  se=0.70  under=0.558
+    20-24    n=  119  mean= +1.13  se=1.21  under=0.483
+    25+      n=   38  mean=-10.09  se=1.69  under=0.838
+
+  temperature  (mean error, se, n, under-rate; error = actual - line)
+    <20F     n=   51  mean= -0.28  se=2.10  under=0.490
+    20-31F   n=  170  mean= +1.13  se=1.10  under=0.476
+    32-49F   n=  988  mean= +0.54  se=0.44  under=0.530
+    50-84F   n= 2775  mean= +0.46  se=0.25  under=0.507
+    85F+     n=  209  mean= -0.19  se=0.87  under=0.507
+
+-- TEST 2022-2025: n=642 | domes for reference: n=351
+
+  wind  (mean error, se, n, under-rate; error = actual - line)
+    0-9      n=  440  mean= +1.36  se=0.63  under=0.468
+    10-14    n=  142  mean= -0.30  se=0.94  under=0.574
+    15-19    n=   49  mean= -2.56  se=1.63  under=0.583
+    20-24    n=    9  mean= +4.78  se=5.42  under=0.444
+    25+      n=    2  mean= +4.75  se=9.75  under=0.500
+
+  temperature  (mean error, se, n, under-rate; error = actual - line)
+    <20F     n=   15  mean= -6.33  se=2.43  under=0.733
+    20-31F   n=   29  mean= +2.78  se=1.90  under=0.357
+    32-49F   n=  162  mean= -0.45  se=1.05  under=0.534
+    50-84F   n=  403  mean= +1.34  se=0.63  under=0.489
+    85F+     n=   33  mean= +0.94  se=2.28  under=0.485
+
+  dome/closed reference: n=1678 market residual mean=+1.26 se=0.33
+  FIT 1999-2021   market residual ~ wind + cold: wind=-0.166/mph (p=0.000) <32F=+1.07 (p=0.34) <20F=-1.29 (p=0.58) n=4193
+  TEST 2022-2025  market residual ~ wind + cold: wind=-0.162/mph (p=0.173) <32F=+2.18 (p=0.26) <20F=-8.88 (p=0.00) n=642
+  ALL             market residual ~ wind + cold: wind=-0.166/mph (p=0.000) <32F=+1.23 (p=0.22) <20F=-2.90 (p=0.14) n=4835
+  wind >= 10: n=1722 market residual -0.44 vs <10: +1.02  diff=-1.46  p=0.000  under-rate=0.548
+  wind >= 15: n= 615 market residual -1.34 vs <15: +0.77  diff=-2.11  p=0.000  under-rate=0.561
+  wind >= 20: n= 168 market residual -1.17 vs <20: +0.56  diff=-1.73  p=0.107  under-rate=0.560
+  wind >= 25: n=  40 market residual -9.35 vs <25: +0.58  diff=-9.93  p=0.000  under-rate=0.821
+
+== (ii) ORIGINATOR baseline: LEAN team model WITHOUT weather (fit 2009-2021, uses Elo+PF/PA+QB+dome+div), residual by bin ==
+
+-- FIT 2009-2021 (in-sample for the team model): n=2177
+
+  wind  (mean error, se, n, under-rate; error = actual - line)
+    0-9      n= 1411  mean= +0.55  se=0.36  under=0.495
+    10-14    n=  493  mean= -0.79  se=0.58  under=0.546
+    15-19    n=  209  mean= -1.74  se=0.95  under=0.574
+    20-24    n=   51  mean= +1.11  se=1.73  under=0.490
+    25+      n=   13  mean=-15.92  se=3.06  under=1.000
+
+  temperature  (mean error, se, n, under-rate; error = actual - line)
+    <20F     n=   27  mean= -1.36  se=3.38  under=0.481
+    20-31F   n=   92  mean= -0.54  se=1.40  under=0.598
+    32-49F   n=  556  mean= -0.07  se=0.59  under=0.529
+    50-84F   n= 1391  mean= +0.03  se=0.36  under=0.509
+    85F+     n=  111  mean= -0.46  se=1.17  under=0.495
+
+-- TEST 2022-2025: n=642
+
+  wind  (mean error, se, n, under-rate; error = actual - line)
+    0-9      n=  440  mean= +1.75  se=0.64  under=0.452
+    10-14    n=  142  mean= -0.43  se=0.97  under=0.542
+    15-19    n=   49  mean= -4.59  se=1.68  under=0.633
+    20-24    n=    9  mean= +1.81  se=6.15  under=0.556
+    25+      n=    2  mean= -1.90  se=15.32  under=0.500
+
+  temperature  (mean error, se, n, under-rate; error = actual - line)
+    <20F     n=   15  mean= -8.37  se=2.23  under=0.800
+    20-31F   n=   29  mean= +2.11  se=1.94  under=0.414
+    32-49F   n=  162  mean= -1.00  se=1.07  under=0.519
+    50-84F   n=  403  mean= +1.64  se=0.65  under=0.471
+    85F+     n=   33  mean= +1.86  se=2.25  under=0.455
+
+-- ALL 2009-2025: n=2819
+
+  wind  (mean error, se, n, under-rate; error = actual - line)
+    0-9      n= 1851  mean= +0.83  se=0.32  under=0.485
+    10-14    n=  635  mean= -0.71  se=0.50  under=0.545
+    15-19    n=  258  mean= -2.28  se=0.83  under=0.585
+    20-24    n=   60  mean= +1.22  se=1.71  under=0.500
+    25+      n=   15  mean=-14.05  se=3.29  under=0.933
+
+  temperature  (mean error, se, n, under-rate; error = actual - line)
+    <20F     n=   42  mean= -3.87  se=2.36  under=0.595
+    20-31F   n=  121  mean= +0.09  se=1.16  under=0.554
+    32-49F   n=  718  mean= -0.28  se=0.52  under=0.526
+    50-84F   n= 1794  mean= +0.39  se=0.31  under=0.501
+    85F+     n=  144  mean= +0.07  se=1.04  under=0.486
+  FIT 2009-2021: linear  wind=-0.201/mph (se 0.057, p=0.000) <32F=-0.02 (p=0.99) <20F extra=-0.96 (p=0.79) 85F+=-0.56 (p=0.64) n=2177
+  FIT 2009-2021: stepped cumulative effect vs <10mph: 10-14=-1.34 15-19=-2.29 20-24=+0.57 25+=-16.42 (increments p: 0.05 0.39 0.14 0.00)
+  TEST 2022-2025: linear  wind=-0.301/mph (se 0.127, p=0.018) <32F=+1.65 (p=0.41) <20F extra=-10.06 (p=0.00) 85F+=+0.76 (p=0.74) n=642
+  TEST 2022-2025: stepped cumulative effect vs <10mph: 10-14=-2.28 15-19=-6.19 20-24=+0.78 25+=+0.83 (increments p: 0.05 0.05 0.23 1.00)
+
+  larger-n check 1999-2021 (no Elo/QB; baseline lg_blend + pf_sum + pa_sum + div):
+    wind=-0.214/mph (se 0.040) <32F=+0.03 (se 1.11) <20F extra=-2.07 (se 2.37) n=4193
+
+  wind (1999-2021, team-controlled)  (mean error, se, n, under-rate; error = actual - line)
+    0-9      n= 2673  mean= +0.00  se=0.27  under=0.521
+    10-14    n=  965  mean= -1.09  se=0.45  under=0.560
+    15-19    n=  398  mean= -2.73  se=0.71  under=0.598
+    20-24    n=  119  mean= -1.18  se=1.21  under=0.563
+    25+      n=   38  mean=-13.28  se=1.92  under=0.895
+
+  team-controlled residual by wind mph (1999-2021 outdoor):
+     0- 3 mph n= 646 mean=+0.35 se=0.58
+     4- 6 mph n= 996 mean=+0.63 se=0.42
+     7- 9 mph n=1031 mean=-0.82 se=0.41
+    10-12 mph n= 708 mean=-1.24 se=0.50
+    13-15 mph n= 423 mean=-1.44 se=0.73
+    16-18 mph n= 204 mean=-2.96 se=1.02
+    19-21 mph n= 100 mean=-0.59 se=1.30
+    22-25 mph n=  60 mean=-4.67 se=1.81
+    26-60 mph n=  23 mean=-14.82 se=2.39
+
+== OOS 2022-2025: LEAN-no-weather + wind adjustment (fit 2009-2021) ==
+  fitted linear: -0.200/mph, <32F -0.21; fitted step: >=15 -1.93, >=20 extra +2.85, >=25 extra -17.00, <32F -0.23
+  (test games with observed outdoor weather: 642 of 1087; the rest get adj=0)
+  variant                                      MAE     bias   dMAE vs base [95% CI]      dMAE vs market [95% CI]     O/U vs mkt
+  base (no weather)                            10.374  -0.61  +0.000 [+0.000,+0.000]   +0.185 [+0.041,+0.323]   551-528-8
+  base + spec table (15-20:-1, 21-30:-2.5, 30+:-4, <20F:-1) 10.358  -0.69  -0.015 [-0.036,+0.004]   +0.169 [+0.026,+0.308]   550-529-8
+  base + fitted linear (uncentered)            10.415  -1.57  +0.041 [-0.043,+0.128]   +0.226 [+0.066,+0.380]   551-528-8
+  base + fitted linear (centered at train mean wind) 10.342  -0.58  -0.031 [-0.074,+0.012]   +0.153 [+0.010,+0.290]   557-522-8
+  base + fitted step table                     10.357  -0.73  -0.017 [-0.067,+0.032]   +0.168 [+0.026,+0.311]   548-531-8
+  restricted to test games with wind>=15 (n=60): base MAE=10.745  +spec=10.577  +linear_c=10.539  +step=10.437  market=9.533
+
+== precipitation proxy (nflfastR weather string, 2023-2025 outdoor games only) ==
+  precip_any     n= 42 vs dry n= 507: market residual -2.38 (se 2.29) vs +1.13; diff=-3.51 p=0.143; under-rate wet=0.650; raw total wet=39.6 dry=44.8; mkt total wet=42.0 dry=43.6
+  precip_strict  n= 39 vs dry n= 510: market residual -3.27 (se 2.30) vs +1.18; diff=-4.45 p=0.067; under-rate wet=0.676; raw total wet=39.2 dry=44.8; mkt total wet=42.4 dry=43.6
+  team-controlled (LEAN-no-weather residual): wet n=39 -4.52 (se 2.31) vs dry +1.33
+
+== SPREADS: do favorites cover less in wind? (outdoor games with observed weather, 1999-2025) ==
+-- ALL n=4818
+    wind 0-9    n= 3103 fav cover margin=+0.48 (se 0.24)  fav ATS=0.497  spread MAE=10.29  mean |spread|=5.4  fav scored share=0.571
+    wind 10-14  n= 1104 fav cover margin=+0.35 (se 0.40)  fav ATS=0.493  spread MAE=10.26  mean |spread|=5.4  fav scored share=0.570
+    wind 15-19  n=  445 fav cover margin=-0.12 (se 0.64)  fav ATS=0.500  spread MAE=10.32  mean |spread|=5.4  fav scored share=0.569
+    wind 20-24  n=  126 fav cover margin=-1.54 (se 1.26)  fav ATS=0.488  spread MAE=11.56  mean |spread|=5.6  fav scored share=0.547
+    wind 25+    n=   40 fav cover margin=-0.65 (se 2.04)  fav ATS=0.450  spread MAE=10.25  mean |spread|=5.6  fav scored share=0.588
+    OLS fav_cover_margin ~ wind*|spread|: wind=-0.111 (p=0.09) wind:|spread|=+0.0117 (p=0.27) |spread|=+0.044 (p=0.67)
+    wind>=15: n=611 fav cover margin -0.45 vs +0.44 (p=0.129); fav ATS 0.494 vs 0.496; big favs (|spread|>=7) in wind: n=195 ATS=0.526
+    wind>=20: n=166 fav cover margin -1.33 vs +0.39 (p=0.118); fav ATS 0.479 vs 0.496; big favs (|spread|>=7) in wind: n=56 ATS=0.500
+-- FIT <=2021 n=4176
+    wind 0-9    n= 2663 fav cover margin=+0.44 (se 0.26)  fav ATS=0.495  spread MAE=10.38  mean |spread|=5.4  fav scored share=0.570
+    wind 10-14  n=  962 fav cover margin=+0.57 (se 0.43)  fav ATS=0.503  spread MAE=10.38  mean |spread|=5.4  fav scored share=0.573
+    wind 15-19  n=  396 fav cover margin=-0.41 (se 0.69)  fav ATS=0.484  spread MAE=10.47  mean |spread|=5.4  fav scored share=0.565
+    wind 20-24  n=  117 fav cover margin=-1.84 (se 1.34)  fav ATS=0.474  spread MAE=11.97  mean |spread|=5.6  fav scored share=0.542
+    wind 25+    n=   38 fav cover margin=-0.95 (se 2.06)  fav ATS=0.447  spread MAE=10.00  mean |spread|=5.7  fav scored share=0.591
+    OLS fav_cover_margin ~ wind*|spread|: wind=-0.105 (p=0.13) wind:|spread|=+0.0097 (p=0.39) |spread|=+0.070 (p=0.53)
+    wind>=15: n=551 fav cover margin -0.75 vs +0.48 (p=0.050); fav ATS 0.479 vs 0.497; big favs (|spread|>=7) in wind: n=176 ATS=0.526
+    wind>=20: n=155 fav cover margin -1.62 vs +0.39 (p=0.081); fav ATS 0.468 vs 0.496; big favs (|spread|>=7) in wind: n=54 ATS=0.500
+-- TEST 2022-25 n=642
+    wind 0-9    n=  440 fav cover margin=+0.68 (se 0.60)  fav ATS=0.508  spread MAE=9.71  mean |spread|=5.4  fav scored share=0.575
+    wind 10-14  n=  142 fav cover margin=-1.14 (se 0.99)  fav ATS=0.421  spread MAE=9.49  mean |spread|=5.0  fav scored share=0.543
+    wind 15-19  n=   49 fav cover margin=+2.28 (se 1.60)  fav ATS=0.625  spread MAE=9.11  mean |spread|=5.4  fav scored share=0.607
+    wind 20-24  n=    9 fav cover margin=+2.39 (se 3.21)  fav ATS=0.667  spread MAE=6.17  mean |spread|=5.8  fav scored share=0.613
+    wind 25+    n=    2 fav cover margin=+5.00 (se 15.00)  fav ATS=0.500  spread MAE=15.00  mean |spread|=3.0  fav scored share=0.529
+    OLS fav_cover_margin ~ wind*|spread|: wind=-0.170 (p=0.39) wind:|spread|=+0.0326 (p=0.27) |spread|=-0.175 (p=0.51)
+    wind>=15: n=60 fav cover margin +2.38 vs +0.24 (p=0.162); fav ATS 0.627 vs 0.487; big favs (|spread|>=7) in wind: n=19 ATS=0.526
+    wind>=20: n=11 fav cover margin +2.86 vs +0.39 (p=0.476); fav ATS 0.636 vs 0.498; big favs (|spread|>=7) in wind: n=2 ATS=0.500
+
+  spread MAE / margin SD by wind (all outdoor):
+    wind 0-9    n= 3103 spread MAE=10.29 margin SD=14.75 total SD=14.07 total MAE(mkt)=10.67
+    wind 10-14  n= 1104 spread MAE=10.26 margin SD=14.79 total SD=13.86 total MAE(mkt)=10.43
+    wind 15-19  n=  445 spread MAE=10.32 margin SD=14.90 total SD=14.16 total MAE(mkt)=10.87
+    wind 20-24  n=  126 spread MAE=11.56 margin SD=14.55 total SD=14.48 total MAE(mkt)=10.68
+    wind 25+    n=   40 spread MAE=10.25 margin SD=15.04 total SD=11.53 total MAE(mkt)=11.22

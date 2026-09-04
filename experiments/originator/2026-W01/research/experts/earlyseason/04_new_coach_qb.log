@@ -1,0 +1,86 @@
+team-seasons with a previous season: 829 (2000-2025) | new_hc 171 (6.6/season) | hc_first 104 | new_qb 267 | qb_new_to_team 174
+  2026 Week-1 flags (from the schedule file, for the current card):
+    2026_01_BAL_IND BAL  coach=Jesse Minter new_hc=True | qb=nan new_qb=None (2025 primary: Lamar Jackson)
+    2026_01_CLE_JAX CLE  coach=Todd Monken new_hc=True | qb=nan new_qb=None (2025 primary: Shedeur Sanders)
+    2026_01_ATL_PIT PIT  coach=Mike McCarthy new_hc=True | qb=nan new_qb=None (2025 primary: Aaron Rodgers)
+    2026_01_NYJ_TEN TEN  coach=Robert Saleh new_hc=True | qb=nan new_qb=None (2025 primary: Cam Ward)
+    2026_01_MIA_LV LV   coach=Klint Kubliak new_hc=True | qb=nan new_qb=None (2025 primary: Geno Smith)
+    2026_01_MIA_LV MIA  coach=Jeff Hafley new_hc=True | qb=nan new_qb=None (2025 primary: Tua Tagovailoa)
+    2026_01_DAL_NYG NYG  coach=John Harbaugh new_hc=True | qb=nan new_qb=None (2025 primary: Jaxson Dart)
+
+A. WEEK 1, residual vs MARKET close (1999-2025; positive coef = flagged team beat the market by that many points)
+   Week-1 games with flags: 412 | home/away team-games new_hc=171 new_qb=265 hc_first=104 qb_new_to_team=173
+  new head coach: resid vs market ALL                  n= 412 events=151 coef=-0.177 se=1.112 95%CI [-2.36,+2.00] p=0.874
+  new head coach: resid vs market FIT <=2021           n= 348 events=124 coef=-0.212 se=1.274 95%CI [-2.71,+2.29] p=0.868
+  new head coach: resid vs market TEST 2022-25         n=  64 events= 27 coef=+0.017 se=2.077 95%CI [-4.05,+4.09] p=0.993
+  new head coach:                                      back-flag ATS 73-75-3 = 0.493 [0.410,0.577] p=0.935
+  first-time head coach: resid vs market ALL           n= 382 events= 98 coef=-0.611 se=1.419 95%CI [-3.39,+2.17] p=0.667
+  first-time head coach: resid vs market FIT <=2021    n= 318 events= 81 coef=-1.002 se=1.608 95%CI [-4.15,+2.15] p=0.533
+  first-time head coach: resid vs market TEST 2022-25  n=  64 events= 17 coef=+1.239 se=2.849 95%CI [-4.35,+6.82] p=0.664
+  first-time head coach:                               back-flag ATS 50-45-3 = 0.526 [0.421,0.630] p=0.682
+  new starting QB (vs prev primary): resid vs market ALL n= 412 events=173 coef=+2.131 se=0.977 95%CI [+0.22,+4.05] p=0.029
+  new starting QB (vs prev primary): resid vs market FIT <=2021 n= 348 events=138 coef=+2.102 se=1.146 95%CI [-0.14,+4.35] p=0.067
+  new starting QB (vs prev primary): resid vs market TEST 2022-25 n=  64 events= 35 coef=+2.314 se=1.765 95%CI [-1.14,+5.77] p=0.190
+  new starting QB (vs prev primary):                   back-flag ATS 99-71-3 = 0.582 [0.504,0.657] p=0.038
+  QB with no start for team last season: resid vs market ALL n= 412 events=133 coef=+0.941 se=1.127 95%CI [-1.27,+3.15] p=0.403
+  QB with no start for team last season: resid vs market FIT <=2021 n= 348 events=105 coef=+0.630 se=1.347 95%CI [-2.01,+3.27] p=0.640
+  QB with no start for team last season: resid vs market TEST 2022-25 n=  64 events= 28 coef=+2.248 se=1.802 95%CI [-1.28,+5.78] p=0.212
+  QB with no start for team last season:               back-flag ATS 71-58-4 = 0.550 [0.460,0.638] p=0.291
+  new HC AND new QB: resid vs market ALL               n= 412 events= 75 coef=+1.407 se=1.612 95%CI [-1.75,+4.57] p=0.383
+  new HC AND new QB: resid vs market FIT <=2021        n= 348 events= 63 coef=+2.110 se=1.854 95%CI [-1.52,+5.74] p=0.255
+  new HC AND new QB: resid vs market TEST 2022-25      n=  64 events= 12 coef=-2.226 se=2.385 95%CI [-6.90,+2.45] p=0.351
+  new HC AND new QB:                                   back-flag ATS 38-35-2 = 0.521 [0.400,0.639] p=0.815
+  joint W1: new_hc -0.30 (se 1.12 p=0.787) | new_qb +2.15 (se 0.99 p=0.030) n=412
+
+B. WEEK 1, 2009+ with ratings: does the market price the flag, and is the residual vs the RATING line different?
+  new head coach: market line minus rating line (pricing) n= 253 events= 90 coef=+0.192 se=0.240 95%CI [-0.28,+0.66] p=0.424
+  new head coach: resid vs rating line (elo+HFA, no QB adj) n= 253 events= 90 coef=-0.098 se=1.403 95%CI [-2.85,+2.65] p=0.944
+  new head coach: resid vs nfelo raw (with 538 QB adj) n= 253 events= 90 coef=-0.124 se=1.411 95%CI [-2.89,+2.64] p=0.930
+  new head coach: resid vs market (same sample)        n= 253 events= 90 coef=+0.094 se=1.413 95%CI [-2.68,+2.86] p=0.947
+  new starting QB: market line minus rating line (pricing) n= 253 events=117 coef=+0.386 se=0.222 95%CI [-0.05,+0.82] p=0.081
+  new starting QB: resid vs rating line (elo+HFA, no QB adj) n= 253 events=117 coef=+1.578 se=1.128 95%CI [-0.63,+3.79] p=0.162
+  new starting QB: resid vs nfelo raw (with 538 QB adj) n= 253 events=117 coef=+1.774 se=1.132 95%CI [-0.44,+3.99] p=0.117
+  new starting QB: resid vs market (same sample)       n= 253 events=117 coef=+1.964 se=1.128 95%CI [-0.25,+4.18] p=0.082
+
+C. Persistence: weeks 1-4 and full season, residual vs market (flag is a season-long attribute)
+  W1-4 new HC: resid vs market ALL                     n=1607 events=556 coef=-0.017 se=0.567 95%CI [-1.13,+1.09] p=0.976
+  W1-4 new HC: resid vs market TEST                    n= 256 events= 92 coef=+0.272 se=1.357 95%CI [-2.39,+2.93] p=0.841
+  W1-4 new HC                                          back-flag ATS 267-276-13 = 0.492 [0.449,0.535] p=0.731
+  W1-4 first-time HC: resid vs market ALL              n=1491 events=367 coef=+0.050 se=0.672 95%CI [-1.27,+1.37] p=0.941
+  W1-4 first-time HC: resid vs market TEST             n= 256 events= 60 coef=+0.225 se=1.552 95%CI [-2.82,+3.27] p=0.885
+  W1-4 first-time HC                                   back-flag ATS 187-170-10 = 0.524 [0.471,0.577] p=0.397
+  W1-4 new QB: resid vs market ALL                     n=1607 events=679 coef=+0.619 se=0.504 95%CI [-0.37,+1.61] p=0.219
+  W1-4 new QB: resid vs market TEST                    n= 256 events=124 coef=+0.496 se=1.095 95%CI [-1.65,+2.64] p=0.651
+  W1-4 new QB                                          back-flag ATS 344-318-17 = 0.520 [0.481,0.558] p=0.331
+  W5-18 new HC: resid vs market ALL                    n=5096 events=1700 coef=-0.534 se=0.311 95%CI [-1.14,+0.08] p=0.086
+  W5-18 new HC: resid vs market TEST                   n= 831 events=297 coef=-1.309 se=0.688 95%CI [-2.66,+0.04] p=0.057
+  W5-18 new HC                                         back-flag ATS 818-836-46 = 0.495 [0.470,0.519] p=0.676
+  W5-18 first-time HC: resid vs market ALL             n=4716 events=1114 coef=-0.390 se=0.387 95%CI [-1.15,+0.37] p=0.314
+  W5-18 first-time HC: resid vs market TEST            n= 831 events=197 coef=-1.406 se=0.886 95%CI [-3.14,+0.33] p=0.113
+  W5-18 first-time HC                                  back-flag ATS 537-545-32 = 0.496 [0.466,0.527] p=0.831
+  W5-18 new QB: resid vs market ALL                    n=5096 events=2255 coef=-0.041 se=0.277 95%CI [-0.58,+0.50] p=0.882
+  W5-18 new QB: resid vs market TEST                   n= 831 events=389 coef=-0.183 se=0.632 95%CI [-1.42,+1.06] p=0.772
+  W5-18 new QB                                         back-flag ATS 1088-1104-63 = 0.496 [0.475,0.518] p=0.749
+  ALL weeks new HC: resid vs market ALL                n=6703 events=2256 coef=-0.408 se=0.273 95%CI [-0.94,+0.13] p=0.135
+  ALL weeks new HC: resid vs market TEST               n=1087 events=389 coef=-0.935 se=0.616 95%CI [-2.14,+0.27] p=0.129
+  ALL weeks new HC                                     back-flag ATS 1085-1112-59 = 0.494 [0.473,0.515] p=0.579
+  ALL weeks first-time HC: resid vs market ALL         n=6207 events=1481 coef=-0.281 se=0.336 95%CI [-0.94,+0.38] p=0.402
+  ALL weeks first-time HC: resid vs market TEST        n=1087 events=257 coef=-1.026 se=0.771 95%CI [-2.54,+0.49] p=0.183
+  ALL weeks first-time HC                              back-flag ATS 724-715-42 = 0.503 [0.477,0.529] p=0.833
+  ALL weeks new QB: resid vs market ALL                n=6703 events=2934 coef=+0.111 se=0.243 95%CI [-0.37,+0.59] p=0.647
+  ALL weeks new QB: resid vs market TEST               n=1087 events=513 coef=-0.019 se=0.547 95%CI [-1.09,+1.05] p=0.973
+  ALL weeks new QB                                     back-flag ATS 1432-1422-80 = 0.502 [0.483,0.520] p=0.866
+
+D. Direct team-level view, Week 1: mean margin-vs-line for flagged teams (team perspective) with CI
+  new HC (W1)                            team-games n=171  mean cover margin -0.29 (se 1.08) p=0.791 | ATS 82-84 0.494
+  new HC (W1) TEST                       team-games n= 29  mean cover margin +0.03 (se 1.97) p=0.986 | ATS 13-16 0.448
+  first-time HC (W1)                     team-games n=104  mean cover margin -0.65 (se 1.44) p=0.653 | ATS 53-48 0.525
+  first-time HC (W1) TEST                team-games n= 17  mean cover margin +1.21 (se 2.82) p=0.674 | ATS 9-8 0.529
+  new QB (W1)                            team-games n=265  mean cover margin +1.41 (se 0.84) p=0.095 | ATS 143-115 0.554
+  new QB (W1) TEST                       team-games n= 47  mean cover margin +1.77 (se 1.43) p=0.224 | ATS 27-20 0.574
+  QB new to team (W1)                    team-games n=173  mean cover margin +0.72 (se 1.00) p=0.472 | ATS 91-78 0.538
+  QB new to team (W1) TEST               team-games n= 34  mean cover margin +1.91 (se 1.58) p=0.234 | ATS 20-14 0.588
+  new HC by era (W1):
+    new HC 1999-2008                     team-games n= 55  mean cover margin -0.59 (se 1.89) p=0.755 | ATS 27-26 0.509
+    new HC 2009-2016                     team-games n= 55  mean cover margin +2.64 (se 1.77) p=0.142 | ATS 31-23 0.574
+    new HC 2017-2025                     team-games n= 61  mean cover margin -2.65 (se 1.91) p=0.171 | ATS 24-35 0.407

@@ -1,0 +1,115 @@
+[common] games=7276 seasons 1999-2025 | with market total=7276 | nfelo elo coverage 2009+ = 0.931 | pace coverage = 0.521
+[common] sign check corr(mkt_spread, margin) = -0.426 (must be strongly NEGATIVE); corr(mkt_total, total_pts) = 0.321 (positive)
+[critic fix_join] elo coverage 2009+: 0.931 -> 1.000
+
+== A. repaired join: fit 2009-2021 n=3344 (expert had 3027), test n=1087 ==
+   const    OLS=+0.031 (se 0.323, p=0.925)   Huber=-0.257 (se 0.336)
+   elo_sum  OLS=+0.107 (se 0.087, p=0.223)   Huber=+0.145 (se 0.085)
+   pf_dev   OLS=+0.347 (se 0.061, p=0.000)   Huber=+0.330 (se 0.060)
+   pa_dev   OLS=+0.269 (se 0.054, p=0.000)   Huber=+0.274 (se 0.055)
+   qb_sum   OLS=+0.717 (se 0.137, p=0.000)   Huber=+0.728 (se 0.140)
+   div      OLS=-1.638 (se 0.482, p=0.001)   Huber=-1.651 (se 0.496)
+   dome     OLS=+2.261 (se 0.533, p=0.000)   Huber=+2.114 (se 0.550)
+   wind_c   OLS=-0.224 (se 0.053, p=0.000)   Huber=-0.209 (se 0.054)
+   cold20   OLS=-1.281 (se 3.278, p=0.696)   Huber=+0.411 (se 2.687)
+   Wald pf_dev - pa_dev = +0.079 p=0.41
+   OOS 2022-25 with refit coefficients (repaired join) vs expert's rounded V3 (no precip):
+  refit-on-repaired-join, fitted dome/wind/cold terms          MAE=10.331 bias=-0.21  dMAE vs ref=+0.142 [+0.000,+0.277]  O/U 542-537-8 (0.502) n=1087
+  expert V3 rounded + ENV table (with precip)                  MAE=10.288 bias=-0.74  dMAE vs ref=+0.099 [-0.038,+0.235]  O/U 547-532-8 (0.507) n=1087
+  expert V3 rounded + ENV table (NO precip; precip was estimated on 2023-25 = test) MAE=10.312 bias=-0.68  dMAE vs ref=+0.123 [-0.013,+0.257]  O/U 542-537-8 (0.502) n=1087
+  market                                                       MAE=10.189 bias=-0.72  dMAE vs ref=+0.000 [+0.000,+0.000]  O/U 549-530-8 (0.509) n=1087
+
+== B. league-tracking confound for the K_team=1 PF/PA term ==
+   corr(lg_gap, pf_dev)=+0.140  sd(lg_gap)=0.92
+   expert: elo + pf_dev + pa_dev                           OOS MAE=10.512 bias=-0.23 | elo_sum=+0.040(0.087)  pf_dev=+0.439(0.059)  pa_dev=+0.242(0.054)
+   elo + lg_gap only (league tracker, NO team scoring)     OOS MAE=10.651 bias=-0.20 | elo_sum=+0.298(0.047)  lg_gap=+0.680(0.259)
+   elo + pf_dev_t + pa_dev_t (team-only deviations)        OOS MAE=10.519 bias=-0.10 | elo_sum=+0.043(0.087)  pf_dev_t=+0.437(0.060)  pa_dev_t=+0.242(0.055)
+   elo + pf_dev_t + pa_dev_t + lg_gap                      OOS MAE=10.512 bias=-0.24 | elo_sum=+0.040(0.087)  pf_dev_t=+0.438(0.060)  pa_dev_t=+0.242(0.054)  lg_gap=+0.694(0.256)
+   elo only                                                OOS MAE=10.658 bias=-0.06 | elo_sum=+0.300(0.047)
+   paired vs elo-only: expert S term          dMAE=-0.147 [-0.279,-0.010]
+   paired vs elo-only: team-only S term       dMAE=-0.140 [-0.269,-0.006]
+   paired vs elo-only: league tracker only    dMAE=-0.007 [-0.035,+0.018]
+
+== C. rolling-origin ablation, fit REG < Y, test Y (repaired join; K_team=1, K_lg=128) ==
+        n  market       L     L+E   L+E+S  L+E+S+Q    FULL  FULL_bias  FULL-S  FULL-Q  FULL-ENV  FULL-E
+Y                                                                                                      
+2016  256   9.918  10.481  10.583  10.281   10.250  10.426      0.112  10.626  10.444    10.348  10.441
+2017  256  11.162  11.352  11.208  11.346   11.309  11.248      0.693  11.069  11.282    11.259  11.277
+2018  256  10.598  11.359  11.229  10.997   10.939  10.822     -0.347  11.087  10.879    10.900  10.825
+2019  256  10.828  11.169  11.265  11.053   11.012  10.863     -0.463  10.979  10.902    10.971  10.834
+2020  256  10.146  11.140  11.010  10.662   10.450  10.365     -0.913  10.562  10.565    10.488  10.375
+2021  272  10.789  11.345  11.201  11.108   10.910  10.873      1.159  10.929  11.054    11.007  10.893
+2022  271  10.395  11.115  11.135  10.850   10.671  10.492      0.178  10.637  10.646    10.653  10.490
+2023  272  10.239  10.711  10.620  10.518   10.383  10.310      0.035  10.342  10.471    10.418  10.326
+2024  272   9.730  10.077   9.982   9.890    9.719   9.790     -1.042   9.820  10.001     9.766   9.810
+2025  272  10.393  11.009  10.897  10.790   10.825  10.754      0.015  11.008  10.635    10.789  10.748
+   mean 2016-2025:
+market       10.420
+L            10.976
+L+E          10.913
+L+E+S        10.749
+L+E+S+Q      10.647
+FULL         10.594
+FULL_bias    -0.057
+FULL-S       10.706
+FULL-Q       10.688
+FULL-ENV     10.660
+FULL-E       10.602
+   mean 2022-2025:
+market       10.189
+L            10.728
+L+E          10.659
+L+E+S        10.512
+L+E+S+Q      10.399
+FULL         10.337
+FULL_bias    -0.203
+FULL-S       10.452
+FULL-Q       10.438
+FULL-ENV     10.406
+FULL-E       10.343
+   per-year drop-one deltas (FULL-X minus FULL; + = feature helps):
+      FULL-S  FULL-Q  FULL-ENV  FULL-E
+Y                                     
+2016   0.200   0.018    -0.078   0.015
+2017  -0.178   0.035     0.011   0.030
+2018   0.264   0.057     0.078   0.003
+2019   0.116   0.039     0.109  -0.029
+2020   0.197   0.201     0.124   0.011
+2021   0.056   0.180     0.134   0.020
+2022   0.145   0.154     0.161  -0.002
+2023   0.032   0.161     0.108   0.016
+2024   0.030   0.211    -0.024   0.020
+2025   0.254  -0.119     0.035  -0.006
+   pooled rolling 2016-2025 paired CIs (FULL vs FULL-X):
+     FULL-S    minus FULL: +0.111 [+0.028,+0.196] n=2639
+     FULL-Q    minus FULL: +0.094 [+0.052,+0.136] n=2639
+     FULL-ENV  minus FULL: +0.066 [+0.020,+0.109] n=2639
+     FULL-E    minus FULL: +0.008 [-0.004,+0.019] n=2639
+     L+E       minus FULL: +0.319 [+0.205,+0.439] n=2639
+
+== D. K_team by rolling origin (fit < Y, test Y, 2016-2025), FULL spec ==
+   K_team= 1: rolling MAE 2016-25=10.590  2022-25=10.336
+   K_team= 2: rolling MAE 2016-25=10.585  2022-25=10.322
+   K_team= 3: rolling MAE 2016-25=10.584  2022-25=10.311
+   K_team= 6: rolling MAE 2016-25=10.585  2022-25=10.290
+   K_team=10: rolling MAE 2016-25=10.593  2022-25=10.283
+
+== E. honest ENV value OOS 2022-25 (K_team=1): baseline must be REFIT without ENV terms, not the ENV-fitted constant with ENV zeroed ==
+  refit WITHOUT env terms (baseline)                           MAE=10.403 bias=-0.40  dMAE vs ref=+0.000 [+0.000,+0.000]  O/U 545-534-8 (0.505) n=1087
+  refit WITH fitted dome/wind_c/cold20                         MAE=10.331 bias=-0.21  dMAE vs ref=-0.072 [-0.150,+0.006]  O/U 542-537-8 (0.502) n=1087
+  expert rounded V3 + ENV table (with precip)                  MAE=10.288 bias=-0.74  dMAE vs ref=-0.114 [-0.205,-0.022]  O/U 547-532-8 (0.507) n=1087
+  expert rounded V3 + ENV table (no precip)                    MAE=10.312 bias=-0.68  dMAE vs ref=-0.091 [-0.180,-0.001]  O/U 542-537-8 (0.502) n=1087
+  expert rounded V3, ENV zeroed (expert's 'no ENV' comparator) MAE=10.388 bias=-0.92  dMAE vs ref=-0.015 [-0.049,+0.020]  O/U 541-538-8 (0.501) n=1087
+  refit-no-ENV + ENV table centered on its train mean (shape only) MAE=10.334 bias=-0.16  dMAE vs ref=-0.069 [-0.158,+0.017]  O/U 544-535-8 (0.504) n=1087
+  refit-no-ENV + dome piece only (+2.5 dome vs outdoor, centered) MAE=10.373 bias=-0.24  dMAE vs ref=-0.030 [-0.098,+0.039]  O/U 536-543-8 (0.497) n=1087
+  refit-no-ENV + wind piece only (-0.2/mph centered)           MAE=10.369 bias=-0.36  dMAE vs ref=-0.033 [-0.075,+0.008]  O/U 537-542-8 (0.498) n=1087
+
+== F. per-season: rolling refit of FULL spec vs fixed rounded V3 (no precip) vs market ==
+   2019: rolling-refit MAE=10.863 bias=-0.46 | fixed V3 MAE=10.831 bias=-1.12 | market 10.828 | n=256  <- coefficients in-sample for fixed V3
+   2020: rolling-refit MAE=10.365 bias=-0.91 | fixed V3 MAE=10.261 bias=-1.40 | market 10.146 | n=256  <- coefficients in-sample for fixed V3
+   2021: rolling-refit MAE=10.873 bias=+1.16 | fixed V3 MAE=10.785 bias=+0.54 | market 10.789 | n=272  <- coefficients in-sample for fixed V3
+   2022: rolling-refit MAE=10.492 bias=+0.18 | fixed V3 MAE=10.445 bias=-0.26 | market 10.395 | n=271
+   2023: rolling-refit MAE=10.310 bias=+0.03 | fixed V3 MAE=10.242 bias=-0.46 | market 10.239 | n=272
+   2024: rolling-refit MAE=9.790 bias=-1.04 | fixed V3 MAE=9.835 bias=-1.52 | market 9.730 | n=272
+   2025: rolling-refit MAE=10.754 bias=+0.02 | fixed V3 MAE=10.727 bias=-0.49 | market 10.393 | n=272
+   info beyond market, V3(no precip) 2022-25: slope (total-mkt)~(model-mkt) = +0.225 (se 0.165, p=0.172)

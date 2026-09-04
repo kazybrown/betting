@@ -1,0 +1,62 @@
+(1) BASE window horse race, rolling-origin 2012-2025 (Gaussian log-score of the MARKET error, mean per game; higher = better)
+
+  SPREAD:
+            mean_logscore  mean_abs_dev_of_rmse  logscore_2022_25  gain_vs_trail3_x1000
+spec                                                                                   
+trail1            -3.9852                0.9533           -3.9478               -4.3596
+trail2            -3.9819                0.7132           -3.9416               -0.9803
+trail3            -3.9809                0.5913           -3.9406                0.0000
+trail4            -3.9810                0.5919           -3.9406               -0.1466
+trail5            -3.9811                0.5608           -3.9406               -0.1715
+trail8            -3.9814                0.6310           -3.9408               -0.4757
+all_prior         -3.9818                0.6744           -3.9424               -0.9573
+ewma0.5           -3.9817                0.6803           -3.9418               -0.8409
+ewma0.7           -3.9812                0.6172           -3.9410               -0.3633
+const_13.3        -3.9812                0.6345           -3.9429               -0.3518
+  trail3 - all_prior per-game log-score: +0.00097 95% CI [-0.00061, +0.00247] (n=3625)
+
+  TOTAL:
+            mean_logscore  mean_abs_dev_of_rmse  logscore_2022_25  gain_vs_trail3_x1000
+spec                                                                                   
+trail1            -4.0079                0.7398           -3.9865               -2.7438
+trail2            -4.0056                0.5096           -3.9862               -0.4213
+trail3            -4.0051                0.4449           -3.9862                0.0000
+trail4            -4.0046                0.4336           -3.9861                0.5031
+trail5            -4.0044                0.4168           -3.9863                0.7034
+trail8            -4.0045                0.4135           -3.9863                0.6072
+all_prior         -4.0046                0.4281           -3.9865                0.5422
+ewma0.5           -4.0053                0.4981           -3.9862               -0.1727
+ewma0.7           -4.0048                0.4372           -3.9862                0.2999
+const_13.3        -4.0043                0.3804           -3.9863                0.8284
+  trail3 - all_prior per-game log-score: -0.00055 95% CI [-0.00149, +0.00035] (n=3625)
+
+(2) is season-to-season RMSE drift real? (spread)
+  observed SD of season RMSE 0.778 | sampling SD of a season RMSE (sigma/sqrt(2n)) 0.587 | implied true between-season SD 0.510
+  seasons: {2009: np.float64(14.27), 2010: np.float64(13.73), 2011: np.float64(13.71), 2012: np.float64(14.03), 2013: np.float64(12.5), 2014: np.float64(14.23), 2015: np.float64(13.1), 2016: np.float64(12.01), 2017: np.float64(13.23), 2018: np.float64(13.01), 2019: np.float64(13.14), 2020: np.float64(12.7), 2021: np.float64(13.55), 2022: np.float64(11.49), 2023: np.float64(13.17), 2024: np.float64(12.72), 2025: np.float64(12.24)}
+  lag-1 autocorrelation of season RMSE: -0.047 (persistence is what a trailing window needs)
+
+(3) D term vs the OPEN: decomposition and rolling-origin c
+  vs CLOSE:
+    HIGH: n=616 realized model RMSE 12.47 | expert pred (trailing base 12.75) 12.78 | in-band ref-line RMSE 12.44 -> identity 12.46 | 2cov +0.11 (w_implied -0.08)
+    MED: n=344 realized model RMSE 12.56 | expert pred (trailing base 12.75) 12.93 | in-band ref-line RMSE 12.46 -> identity 12.65 | 2cov -2.13 (w_implied +0.22)
+    LOW: n=179 realized model RMSE 13.57 | expert pred (trailing base 12.76) 13.55 | in-band ref-line RMSE 12.32 -> identity 13.14 | 2cov +11.52 (w_implied -0.28)
+  vs OPEN:
+    HIGH: n=602 realized model RMSE 12.68 | expert pred (trailing base 12.75) 12.78 | in-band ref-line RMSE 12.67 -> identity 12.69 | 2cov -0.48 (w_implied +0.35)
+    MED: n=329 realized model RMSE 12.92 | expert pred (trailing base 12.74) 12.91 | in-band ref-line RMSE 12.92 -> identity 13.09 | 2cov -4.59 (w_implied +0.50)
+    LOW: n=208 realized model RMSE 12.29 | expert pred (trailing base 12.76) 13.54 | in-band ref-line RMSE 11.75 -> identity 12.60 | 2cov -7.69 (w_implied +0.19)
+  rolling-origin c (fit Gaussian c on all prior seasons >= 2012, evaluate season s) for D_open and D_base:
+    D_base: c_hat by year {2016: 0.0, 2017: 0.0, 2018: 0.35, 2019: 0.5, 2020: 0.8, 2021: 0.9, 2022: 0.85, 2023: 0.75, 2024: 0.8, 2025: 0.9} | mean gain c=1 vs 0: +1.213 (x1000), positive in 7/10 | c=0.5 vs 0: +0.610, positive in 7/10
+    D_open: c_hat by year {2016: 0.0, 2017: 0.0, 2018: 0.0, 2019: 0.0, 2020: 0.55, 2021: 0.4, 2022: 0.0, 2023: 0.45, 2024: 0.45, 2025: 0.6} | mean gain c=1 vs 0: -0.312 (x1000), positive in 4/10 | c=0.5 vs 0: +0.194, positive in 5/10
+
+(4) k multipliers: coverage of the sqrt rule (trailing base, D_base, k=0.607/1.253/1.615) by test season, spread; Gaussian k for comparison
+  2022: n=284 empirical-k coverage [0.556 0.863 0.919] | Gaussian-k coverage [0.599 0.866 0.926] (targets .5/.8/.9)
+  2023: n=285 empirical-k coverage [0.509 0.765 0.853] | Gaussian-k coverage [0.547 0.768 0.863] (targets .5/.8/.9)
+  2024: n=285 empirical-k coverage [0.519 0.775 0.87 ] | Gaussian-k coverage [0.554 0.793 0.877] (targets .5/.8/.9)
+  2025: n=285 empirical-k coverage [0.474 0.782 0.888] | Gaussian-k coverage [0.526 0.796 0.891] (targets .5/.8/.9)
+  ALL: empirical [0.514, 0.796, 0.882] | Gaussian [0.557, 0.806, 0.889] | median |e|/sigma = 0.584
+  -> is the p50 multiplier 0.607 vs 0.674 a key-number effect? share of |e_nb| <= 3: 0.227, share of |margin| in {3,7}: 0.234
+
+(5) does the per-game sigma matter at all OOS? PIT-based check: sqrt rule vs base-only, share of games whose interval verdict changes
+  80% interval: base-only coverage 0.789, sqrt-rule 0.796; verdict changes in 8 of 1139 games (0.7%)
+  90% interval: base-only coverage 0.875, sqrt-rule 0.882; verdict changes in 8 of 1139 games (0.7%)
+  sigma_sqrt / base: mean 1.0152, p90 1.0367, max 1.320

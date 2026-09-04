@@ -1,0 +1,26 @@
+(i) nfelo hfa_base_mod: unique values per season (>2 = rolling/dynamic estimate).  W1 uses only prior-season data by construction.
+  seasons with >2 distinct hfa_base_mod values: 10 of 18 (first dynamic season 2015)
+  distinct hfa_base_mod values WITHIN week 1 per season: max 2 -> W1 HFA is a single pre-season value (no in-season leakage)
+
+(ii) 2026 Week-1 rating dispersion (points vs average) — the shrink verdict (k=1) was validated on nfelo's regressed W1 Elo
+  nfelo W1 rating SD by season 2009-2025: mean 3.04 (min 2.68, max 3.48) | 2026 W1 nfelo SD 2.16 (n=32)
+  PFF 2026 'Point Spread Rating Points': SD 3.74 (range -8.2..6.4, n=32) | PFF QB component SD 1.84
+  Cole 2026 power_ranking SD 3.17 | betting_power_ranking SD 3.29 (n=32)
+  outcome-optimal dispersion: W1 margin ~ nfelo gap slope 1.17 (se 0.20) x nfelo SD 3.04 => outcome-supported W1 rating SD ~ 3.6 pts (heuristic, 95% band 2.4-4.7)
+    PFF          SD 3.74 -> implied W1 shrink to reach ~3.6: k = 0.95
+    Cole power   SD 3.17 -> implied W1 shrink to reach ~3.6: k = 1.12
+    Cole betting SD 3.29 -> implied W1 shrink to reach ~3.6: k = 1.08
+    nfelo 2026   SD 2.16 -> implied W1 shrink to reach ~3.6: k = 1.64
+  2026 W1 market |spread| mean 3.91, SD of spread_line 3.84 (historical W1 2009-25 mean |mkt| 4.48)
+
+(iii) consolidated critic numbers
+  1a  W1 MAE elo_line 9.786 vs market 9.818 diff -0.032 [-0.31,+0.23] n=253
+  1a  W10+ elo_line - market +0.420 [+0.29,+0.55] n=2010 (nraw: +0.217)
+  1b  W1 home residual -0.70 (se 0.64, p=0.28, n=428); MZ slope 0.92
+  3   W1 realized - prev-season mean 1999-2025 -1.32 (se 0.75, 26 seasons)
+  3   W1 realized - prev-season mean 2009-2025 -0.67 (se 0.83, 17 seasons)
+  3   W1 realized - prev-season mean 2015-2025 -0.76 (se 0.94, 11 seasons)
+  3   fixed W1 shift -0.50, 2005-25 n=335: MAE diff vs prev-mean prior -0.071 [-0.13,-0.02] p=0.01, bias -0.88
+  3   fixed W1 shift -0.75, 2005-25 n=335: MAE diff vs prev-mean prior -0.100 [-0.18,-0.02] p=0.01, bias -0.63
+  3   fixed W1 shift -1.00, 2005-25 n=335: MAE diff vs prev-mean prior -0.126 [-0.24,-0.02] p=0.02, bias -0.38
+  3   2025 realized mean total 46.03 -> revised 2026 W1 prior = 46.03 - 0.75 = 45.28

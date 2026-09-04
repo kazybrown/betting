@@ -1,0 +1,24 @@
+games with features: 3506 (2009-2019: 2733, 2023-25: 773)
+
+(a) split-half of train: per-SD effect on identity residual (single-factor spec + S + T, HC1)
+  expl_home -> r_home: 2009-14: -0.445/SD (p=0.15, n=1453) | 2015-19: -0.430/SD (p=0.15, n=1280) | 2023-25: +0.163/SD (p=0.65, n=773)
+   epa_home -> r_home: 2009-14: -0.254/SD (p=0.51, n=1453) | 2015-19: -1.116/SD (p=0.00, n=1280) | 2023-25: -0.033/SD (p=0.94, n=773)
+    rz_home -> r_home: 2009-14: -0.054/SD (p=0.85, n=1453) | 2015-19: -0.485/SD (p=0.09, n=1280) | 2023-25: +0.256/SD (p=0.45, n=773)
+  expl_away -> r_away: 2009-14: +0.264/SD (p=0.32, n=1453) | 2015-19: +0.365/SD (p=0.21, n=1280) | 2023-25: -0.010/SD (p=0.98, n=773)
+   epa_away -> r_away: 2009-14: +0.170/SD (p=0.66, n=1453) | 2015-19: +0.079/SD (p=0.84, n=1280) | 2023-25: -0.352/SD (p=0.41, n=773)
+    rz_away -> r_away: 2009-14: -0.226/SD (p=0.40, n=1453) | 2015-19: -0.450/SD (p=0.11, n=1280) | 2023-25: +0.573/SD (p=0.09, n=773)
+
+(b) rolling-origin reallocation (fit r_home/r_away ~ 3 indices on all prior seasons with features), pooled OOS 2013-2019 + 2024-2025
+  d_h: pooled n=2362 dMAE (identity - rule; + = rule better) -0.0188 [-0.0391,+0.0007] | rule better in 3/9 seasons | realloc SD 0.29
+     by season: {2013: 0.009, 2014: -0.08, 2015: -0.047, 2016: -0.022, 2017: -0.012, 2018: -0.021, 2019: -0.033, 2024: 0.015, 2025: 0.014}
+  d_a: pooled n=2362 dMAE (identity - rule; + = rule better) -0.0125 [-0.0292,+0.0038] | rule better in 2/9 seasons | realloc SD 0.29
+     by season: {2013: 0.015, 2014: -0.02, 2015: -0.007, 2016: -0.033, 2017: -0.039, 2018: 0.012, 2019: -0.016, 2024: -0.016, 2025: -0.009}
+
+(c) power of the 2023-25 check for the train epa_home / expl_home effects
+  epa_home: train coef -0.508 (se 0.185) vs test -0.023 (se 0.316); z(test - train) = +1.32 (p=0.186); power to detect train effect at 5% in test = 0.36
+  expl_home: train coef -0.313 (se 0.149) vs test +0.112 (se 0.245); z(test - train) = +1.48 (p=0.139); power to detect train effect at 5% in test = 0.25
+
+(d) PLACEBO / pipeline sanity: features from the team's NEXT 10 games (future info) - must show strong effects if the pipeline works
+  future  epa_home -> r_home: +1.111 pts/SD (p=0.0000, n=2736)  [expected: large positive]
+  future  epa_away -> r_away: +1.338 pts/SD (p=0.0000, n=2736)  [expected: large positive]
+  future expl_home -> r_home: +0.625 pts/SD (p=0.0007, n=2736)  [expected: large positive]

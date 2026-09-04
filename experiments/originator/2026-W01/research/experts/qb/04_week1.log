@@ -1,0 +1,63 @@
+Week 1 games 2009-2025: 253 (with nfelo: 253); team-games with new starter: 165, first-career-start: 34
+sign check corr(mkt_spread, margin) week1: -0.308
+--- Week 1: new starter vs prev-season primary
+  resid vs MARKET close                          n= 253 (events=115) coef=+2.237 se=1.113 95%CI=[+0.06,+4.42] p=0.0445
+  market move vs no-QB nfelo line                n= 253 (events=115) coef=+0.374 se=0.225 95%CI=[-0.07,+0.81] p=0.0966
+  resid vs no-QB nfelo line                      n= 253 (events=115) coef=+1.863 se=1.114 95%CI=[-0.32,+4.05] p=0.0943
+  resid vs nfelo line WITH 538 adj               n= 253 (events=115) coef=+2.066 se=1.117 95%CI=[-0.12,+4.26] p=0.0644
+  538 adj pts assigned                           n= 253 (events=115) coef=-0.203 se=0.067 95%CI=[-0.33,-0.07] p=0.0024
+  fade-new-starter ATS                           fade ATS 48-65-2 = 0.425 95%CI=[0.332,0.521] p=0.132
+    resid vs market, 2009-2015                   n=  97 (events= 40) coef=+2.223 se=1.678 95%CI=[-1.07,+5.51] p=0.1852
+    resid vs market, 2016-2025                   n= 156 (events= 75) coef=+2.305 se=1.461 95%CI=[-0.56,+5.17] p=0.1147
+--- Week 1: first career start (rookie proxy)
+  resid vs MARKET close                          n= 253 (events= 32) coef=+1.219 se=2.012 95%CI=[-2.72,+5.16] p=0.5447
+  market move vs no-QB nfelo line                n= 253 (events= 32) coef=+0.648 se=0.405 95%CI=[-0.15,+1.44] p=0.1101
+  resid vs no-QB nfelo line                      n= 253 (events= 32) coef=+0.571 se=1.889 95%CI=[-3.13,+4.27] p=0.7625
+  resid vs nfelo line WITH 538 adj               n= 253 (events= 32) coef=+0.664 se=1.946 95%CI=[-3.15,+4.48] p=0.7330
+  538 adj pts assigned                           n= 253 (events= 32) coef=-0.093 se=0.162 95%CI=[-0.41,+0.22] p=0.5655
+  fade-new-starter ATS                           fade ATS 16-16-0 = 0.500 95%CI=[0.319,0.681] p=1.000
+    resid vs market, 2009-2015                   n=  97 (events= 13) coef=+2.799 se=3.110 95%CI=[-3.30,+8.89] p=0.3681
+    resid vs market, 2016-2025                   n= 156 (events= 19) coef=+0.439 se=2.735 95%CI=[-4.92,+5.80] p=0.8725
+--- Week 1: new starter, <16 career starts
+  resid vs MARKET close                          n= 253 (events= 60) coef=+2.303 se=1.795 95%CI=[-1.21,+5.82] p=0.1993
+  market move vs no-QB nfelo line                n= 253 (events= 60) coef=+0.501 se=0.295 95%CI=[-0.08,+1.08] p=0.0892
+  resid vs no-QB nfelo line                      n= 253 (events= 60) coef=+1.803 se=1.731 95%CI=[-1.59,+5.20] p=0.2978
+  resid vs nfelo line WITH 538 adj               n= 253 (events= 60) coef=+2.133 se=1.749 95%CI=[-1.29,+5.56] p=0.2226
+  538 adj pts assigned                           n= 253 (events= 60) coef=-0.331 se=0.101 95%CI=[-0.53,-0.13] p=0.0010
+  fade-new-starter ATS                           fade ATS 25-35-0 = 0.417 95%CI=[0.291,0.551] p=0.245
+    resid vs market, 2009-2015                   n=  97 (events= 24) coef=+2.787 se=1.928 95%CI=[-0.99,+6.56] p=0.1483
+    resid vs market, 2016-2025                   n= 156 (events= 36) coef=+1.969 se=2.714 95%CI=[-3.35,+7.29] p=0.4682
+--- Week 1: new starter, >=16 career starts
+  resid vs MARKET close                          n= 253 (events= 73) coef=+1.635 se=1.476 95%CI=[-1.26,+4.53] p=0.2679
+  market move vs no-QB nfelo line                n= 253 (events= 73) coef=+0.178 se=0.296 95%CI=[-0.40,+0.76] p=0.5479
+  resid vs no-QB nfelo line                      n= 253 (events= 73) coef=+1.457 se=1.519 95%CI=[-1.52,+4.44] p=0.3374
+  resid vs nfelo line WITH 538 adj               n= 253 (events= 73) coef=+1.505 se=1.539 95%CI=[-1.51,+4.52] p=0.3280
+  538 adj pts assigned                           n= 253 (events= 73) coef=-0.048 se=0.099 95%CI=[-0.24,+0.15] p=0.6296
+  fade-new-starter ATS                           fade ATS 32-39-2 = 0.451 95%CI=[0.332,0.573] p=0.477
+    resid vs market, 2009-2015                   n=  97 (events= 20) coef=+1.091 se=2.561 95%CI=[-3.93,+6.11] p=0.6702
+    resid vs market, 2016-2025                   n= 156 (events= 53) coef=+1.934 se=1.783 95%CI=[-1.56,+5.43] p=0.2782
+--- Week 1 resid vs market, fit (<=2021) vs test (2022-2025)
+  new: <=2021                                    n= 189 (events= 81) coef=+2.267 se=1.396 95%CI=[-0.47,+5.00] p=0.1043
+  new: 2022-2025                                 n=  64 (events= 34) coef=+2.251 se=1.812 95%CI=[-1.30,+5.80] p=0.2141
+  first: <=2021                                  n= 189 (events= 23) coef=+3.181 se=2.604 95%CI=[-1.92,+8.28] p=0.2218
+  first: 2022-2025                               n=  64 (events=  9) coef=-3.795 se=1.938 95%CI=[-7.59,+0.00] p=0.0502
+--- Extension: weeks 1-4, team's week-1 new starter still starting (<=4th start with team this season)
+  [new starter (wk1-4)]
+  resid vs MARKET close                          n= 997 (events=429) coef=+0.710 se=0.625 95%CI=[-0.51,+1.93] p=0.2558
+  market move vs no-QB line                      n= 997 (events=429) coef=+0.741 se=0.124 95%CI=[+0.50,+0.98] p=0.0000
+  resid vs no-QB line                            n= 997 (events=429) coef=-0.032 se=0.634 95%CI=[-1.27,+1.21] p=0.9602
+  resid vs 538-adj line                          n= 997 (events=429) coef=+0.482 se=0.632 95%CI=[-0.76,+1.72] p=0.4450
+  fade ATS                                       fade ATS 187-233-9 = 0.445 95%CI=[0.397,0.494] p=0.028
+  [rookie-proxy new starter (wk1-4, <4 career starts)]
+  resid vs MARKET close                          n= 997 (events=181) coef=+2.056 se=1.019 95%CI=[+0.06,+4.05] p=0.0437
+  market move vs no-QB line                      n= 997 (events=181) coef=+1.304 se=0.194 95%CI=[+0.92,+1.68] p=0.0000
+  resid vs no-QB line                            n= 997 (events=181) coef=+0.752 se=1.009 95%CI=[-1.23,+2.73] p=0.4561
+  resid vs 538-adj line                          n= 997 (events=181) coef=+1.623 se=1.007 95%CI=[-0.35,+3.60] p=0.1072
+  fade ATS                                       fade ATS 68-109-4 = 0.384 95%CI=[0.312,0.460] p=0.003
+--- Extension: ALL weeks, inexperienced starter (<10 career starts) — does the market misprice inexperience?
+  resid vs MARKET close (all)                    n=4310 (events=1083) coef=-0.706 se=0.389 95%CI=[-1.47,+0.06] p=0.0699
+  resid vs 538-adj line (all)                    n=4310 (events=1083) coef=-0.719 se=0.391 95%CI=[-1.48,+0.05] p=0.0656
+  market move vs no-QB line                      n=4310 (events=1083) coef=+1.533 se=0.101 95%CI=[+1.34,+1.73] p=0.0000
+  fade inexperienced ATS                         fade ATS 537-518-28 = 0.509 95%CI=[0.478,0.540] p=0.579
+  resid vs market <=2021                         n=3171 (events=797) coef=-0.834 se=0.457 95%CI=[-1.73,+0.06] p=0.0680
+  resid vs market 2022-2025                      n=1139 (events=286) coef=-0.373 se=0.741 95%CI=[-1.83,+1.08] p=0.6147

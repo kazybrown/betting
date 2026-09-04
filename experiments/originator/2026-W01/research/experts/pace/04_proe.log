@@ -1,0 +1,120 @@
+
+==============================================================================================================
+FEATURE VERSION: prior-8-game rolling (league-relative)
+==============================================================================================================
+sample: train n=2442 | test n=752  | 1 SD proe_sum (train) = 7.70 pct-pts, pr_sum = 0.079
+descriptive corr with total_pts (train | test), with MARKET total, with realized game plays:
+  proe_sum       total +0.179 | +0.103   market +0.505 | +0.293   plays +0.096 | +0.045
+  proe_neut_sum  total +0.169 | +0.118   market +0.464 | +0.275   plays +0.099 | +0.051
+  pr_sum         total +0.143 | +0.044   market +0.371 | +0.139   plays +0.099 | +0.045
+  pr_all_sum     total +0.108 | -0.063   market +0.271 | -0.085   plays +0.090 | -0.009
+  pr_wp_sum      total +0.149 | +0.045   market +0.379 | +0.121   plays +0.092 | +0.050
+  proe_max       total +0.174 | +0.113   market +0.465 | +0.266   plays +0.091 | +0.035
+  proe_absdiff   total +0.028 | +0.051   market +0.029 | +0.032   plays +0.010 | -0.007
+
+-- (a) MARKET residual: (total - mkt_total) ~ x (HC1); OOS = market + train-fit adj --
+  proe_sum       train  +0.044 (se 0.036) p=0.227 [per SD +0.34] | test  +0.022 (se 0.068) p=0.750 | OOS dMAE +0.001 [-0.032,+0.034] O/U 378-369-5 (0.506)
+  proe_neut_sum  train  +0.043 (se 0.033) p=0.183 [per SD +0.37] | test  +0.055 (se 0.061) p=0.372 | OOS dMAE -0.004 [-0.039,+0.031] O/U 374-373-5 (0.501)
+  pr_sum         train  +5.150 (se 3.443) p=0.135 [per SD +0.41] | test  +0.040 (se 6.467) p=0.995 | OOS dMAE +0.004 [-0.033,+0.040] O/U 377-370-5 (0.505)
+  pr_all_sum     train  +4.648 (se 3.636) p=0.201 [per SD +0.35] | test  -6.757 (se 6.472) p=0.297 | OOS dMAE +0.010 [-0.026,+0.044] O/U 378-369-5 (0.506)
+  pr_wp_sum      train  +5.778 (se 3.473) p=0.096 [per SD +0.46] | test  +1.199 (se 6.557) p=0.855 | OOS dMAE +0.005 [-0.034,+0.042] O/U 381-366-5 (0.510)
+  proe_max       train  +0.102 (se 0.063) p=0.107 [per SD +0.44] | test  +0.099 (se 0.116) p=0.392 | OOS dMAE -0.004 [-0.041,+0.032] O/U 393-354-5 (0.526)
+  proe_absdiff   train  +0.057 (se 0.056) p=0.309 [per SD +0.26] | test  +0.151 (se 0.132) p=0.254 | OOS dMAE -0.011 [-0.041,+0.021] O/U 382-365-5 (0.511)
+  style shift (ytd PROE - prev-season PROE, sum): train n=1699 coef -0.035 (se 0.042) p=0.405 | test n=416 coef +0.064 (se 0.088) p=0.466
+
+-- (b) MARKET-FREE LEAN baseline + PROE / pass-rate (fit train, OOS 2023-25) --
+  BASE: test MAE=10.290; market 10.157
+  + proe_sum               MAE=10.308 dMAE vs BASE +0.018 [-0.063,+0.090] vs mkt +0.152 [-0.032,+0.337] O/U 392-355-5 (0.525) | proe_sum=+0.170(se 0.041,p=0.00; per SD +1.31)
+  + proe_neut_sum          MAE=10.298 dMAE vs BASE +0.007 [-0.068,+0.080] vs mkt +0.141 [-0.035,+0.324] O/U 394-353-5 (0.527) | proe_neut_sum=+0.139(se 0.036,p=0.00; per SD +1.18)
+  + pr_sum (neutral)       MAE=10.328 dMAE vs BASE +0.038 [-0.035,+0.104] vs mkt +0.171 [-0.005,+0.359] O/U 392-355-5 (0.525) | pr_sum=+13.343(se 3.663,p=0.00; per SD +1.05)
+  + pr_all_sum             MAE=10.351 dMAE vs BASE +0.060 [-0.017,+0.134] vs mkt +0.194 [+0.012,+0.385] O/U 389-358-5 (0.521) | pr_all_sum=+14.932(se 3.874,p=0.00; per SD +1.13)
+  + proe_sum + spp_avg     MAE=10.356 dMAE vs BASE +0.066 [-0.024,+0.155] vs mkt +0.199 [+0.013,+0.396] O/U 381-366-5 (0.510) | proe_sum=+0.158(se 0.042,p=0.00; per SD +1.22), spp_avg=-0.419(se 0.216,p=0.05; per SD -0.55)
+  + pr_sum + spp_avg       MAE=10.367 dMAE vs BASE +0.077 [-0.006,+0.153] vs mkt +0.210 [+0.026,+0.406] O/U 378-369-5 (0.506) | pr_sum=+11.770(se 3.754,p=0.00; per SD +0.93), spp_avg=-0.368(se 0.220,p=0.09; per SD -0.48)
+  + proe_sum + epa_sum     MAE=10.260 dMAE vs BASE -0.030 [-0.107,+0.041] vs mkt +0.103 [-0.073,+0.280] O/U 390-357-5 (0.522) | proe_sum=+0.154(se 0.042,p=0.00; per SD +1.19), epa_sum=+2.660(se 1.720,p=0.12; per SD +0.57)
+  + epa_sum only           MAE=10.225 dMAE vs BASE -0.065 [-0.120,-0.014] vs mkt +0.068 [-0.099,+0.247] O/U 399-348-5 (0.534) | epa_sum=+4.051(se 1.689,p=0.02; per SD +0.86)
+  + proe_max               MAE=10.306 dMAE vs BASE +0.015 [-0.074,+0.098] vs mkt +0.149 [-0.037,+0.335] O/U 382-365-5 (0.511) | proe_max=+0.309(se 0.072,p=0.00; per SD +1.34)
+  + h/a proe separately    MAE=10.310 dMAE vs BASE +0.020 [-0.060,+0.093] vs mkt +0.153 [-0.031,+0.336] O/U 395-352-5 (0.529) | h_proe_r8d=+0.188(se 0.055,p=0.00; per SD +1.01), a_proe_r8d=+0.153(se 0.054,p=0.00; per SD +0.82)
+
+-- (b2) rolling-origin (fit < Y, test Y) BASE vs BASE+proe_sum vs BASE+pr_sum --
+   Y   n   BASE  +proe    +pr    mkt  coef_proe  coef_pr
+2013 217 11.196 11.283 11.272 11.258      0.157   11.370
+2014 218 11.575 11.454 11.523 10.596      0.137   10.079
+2015 217 10.891 10.889 10.875 10.664      0.166   11.272
+2016 233 10.392 10.397 10.404  9.863      0.178   13.290
+2017 248 11.302 11.173 11.230 11.165      0.161   11.635
+2018 248 10.807 10.743 10.752 10.409      0.183   14.439
+2019 248 10.836 10.877 10.818 10.871      0.191   15.178
+2023 208 10.319 10.297 10.312 10.406      0.170   13.343
+2024 272  9.862  9.925  9.932  9.730      0.163   13.102
+2025 272 10.728 10.729 10.750 10.393      0.142   10.794
+  mean BASE=10.791 +proe=10.777 +pr=10.787 mkt=10.536
+
+-- (c) TEAM level: team_pts - implied_tt ~ own PROE, opp PROE (cluster SE); and market-free --
+  market residual ~ own_proe           train own_proe=+0.018(p=0.48) | test own_proe=-0.034(p=0.49) | OOS dMAE +0.000 [-0.010,+0.011]
+  market residual ~ opp_proe           train opp_proe=+0.027(p=0.30) | test opp_proe=+0.056(p=0.27) | OOS dMAE -0.003 [-0.015,+0.009]
+  market residual ~ own+opp proe       train own_proe=+0.018(p=0.49), opp_proe=+0.026(p=0.30) | test own_proe=-0.035(p=0.47), opp_proe=+0.056(p=0.26) | OOS dMAE -0.001 [-0.013,+0.011]
+  market residual ~ own+opp pass rate  train own_pr=+0.413(p=0.87), opp_pr=+4.737(p=0.05) | test own_pr=-4.727(p=0.30), opp_pr=+4.767(p=0.32) | OOS dMAE +0.003 [-0.012,+0.019]
+  market-free team pts: BASE MAE=7.269 + own_proe             MAE=7.273 dMAE +0.005 [-0.009,+0.018] | own_proe=+0.060(p=0.04)
+  market-free team pts: BASE MAE=7.269 + own+opp proe         MAE=7.271 dMAE +0.002 [-0.029,+0.033] | own_proe=+0.056(p=0.05), opp_proe=+0.128(p=0.00)
+  market-free team pts: BASE MAE=7.269 + own+opp pr           MAE=7.280 dMAE +0.011 [-0.018,+0.041] | own_pr=+3.099(p=0.23), opp_pr=+11.227(p=0.00)
+  market-free team pts: BASE MAE=7.269 + own+opp proe + spp   MAE=7.274 dMAE +0.005 [-0.029,+0.041] | own_proe=+0.049(p=0.10), opp_proe=+0.122(p=0.00), own_spp=-0.135(p=0.08), opp_spp=-0.091(p=0.24)
+
+==============================================================================================================
+FEATURE VERSION: prior-season/season-to-date blend K=4
+==============================================================================================================
+sample: train n=2499 | test n=816  | 1 SD proe_sum (train) = 6.53 pct-pts, pr_sum = 0.062
+descriptive corr with total_pts (train | test), with MARKET total, with realized game plays:
+  proe_sum       total +0.187 | +0.084   market +0.515 | +0.279   plays +0.101 | +0.011
+  proe_neut_sum  total +0.172 | +0.107   market +0.483 | +0.270   plays +0.101 | +0.025
+  pr_sum         total +0.150 | +0.047   market +0.390 | +0.132   plays +0.097 | +0.017
+  pr_all_sum     total +0.122 | -0.063   market +0.293 | -0.120   plays +0.088 | -0.026
+  pr_wp_sum      total +0.152 | +0.042   market +0.396 | +0.121   plays +0.089 | +0.016
+  proe_max       total +0.178 | +0.095   market +0.481 | +0.268   plays +0.101 | -0.009
+  proe_absdiff   total +0.034 | +0.057   market +0.075 | +0.089   plays +0.028 | -0.037
+
+-- (a) MARKET residual: (total - mkt_total) ~ x (HC1); OOS = market + train-fit adj --
+  proe_sum       train  +0.060 (se 0.042) p=0.157 [per SD +0.39] | test  -0.011 (se 0.087) p=0.900 | OOS dMAE +0.009 [-0.024,+0.039] O/U 409-402-5 (0.504)
+  proe_neut_sum  train  +0.047 (se 0.040) p=0.240 [per SD +0.32] | test  +0.056 (se 0.080) p=0.488 | OOS dMAE +0.000 [-0.031,+0.030] O/U 403-408-5 (0.497)
+  pr_sum         train  +6.784 (se 4.313) p=0.116 [per SD +0.42] | test  +1.589 (se 8.518) p=0.852 | OOS dMAE +0.007 [-0.025,+0.038] O/U 399-412-5 (0.492)
+  pr_all_sum     train  +7.276 (se 4.531) p=0.108 [per SD +0.44] | test  -6.693 (se 8.902) p=0.452 | OOS dMAE +0.013 [-0.020,+0.046] O/U 398-413-5 (0.491)
+  pr_wp_sum      train  +6.713 (se 4.281) p=0.117 [per SD +0.42] | test  +0.908 (se 8.583) p=0.916 | OOS dMAE +0.011 [-0.021,+0.043] O/U 402-409-5 (0.496)
+  proe_max       train  +0.109 (se 0.071) p=0.126 [per SD +0.41] | test  +0.048 (se 0.146) p=0.742 | OOS dMAE +0.003 [-0.027,+0.032] O/U 411-400-5 (0.507)
+  proe_absdiff   train  +0.039 (se 0.067) p=0.559 [per SD +0.15] | test  +0.135 (se 0.169) p=0.423 | OOS dMAE -0.005 [-0.033,+0.021] O/U 411-400-5 (0.507)
+  style shift (ytd PROE - prev-season PROE, sum): train n=1699 coef -0.035 (se 0.042) p=0.405 | test n=416 coef +0.064 (se 0.088) p=0.466
+
+-- (b) MARKET-FREE LEAN baseline + PROE / pass-rate (fit train, OOS 2023-25) --
+  BASE: test MAE=10.250; market 10.121
+  + proe_sum               MAE=10.291 dMAE vs BASE +0.041 [-0.032,+0.114] vs mkt +0.170 [+0.003,+0.352] O/U 407-404-5 (0.502) | proe_sum=+0.223(se 0.049,p=0.00; per SD +1.46)
+  + proe_neut_sum          MAE=10.274 dMAE vs BASE +0.024 [-0.037,+0.086] vs mkt +0.153 [-0.011,+0.330] O/U 416-395-5 (0.513) | proe_neut_sum=+0.171(se 0.045,p=0.00; per SD +1.16)
+  + pr_sum (neutral)       MAE=10.292 dMAE vs BASE +0.042 [-0.019,+0.106] vs mkt +0.172 [+0.002,+0.353] O/U 412-399-5 (0.508) | pr_sum=+17.542(se 4.589,p=0.00; per SD +1.09)
+  + pr_all_sum             MAE=10.304 dMAE vs BASE +0.054 [-0.022,+0.128] vs mkt +0.183 [+0.011,+0.367] O/U 415-396-5 (0.512) | pr_all_sum=+22.480(se 4.874,p=0.00; per SD +1.35)
+  + proe_sum + spp_avg     MAE=10.335 dMAE vs BASE +0.084 [+0.005,+0.164] vs mkt +0.214 [+0.042,+0.396] O/U 407-404-5 (0.502) | proe_sum=+0.214(se 0.049,p=0.00; per SD +1.40), spp_avg=-0.460(se 0.242,p=0.06; per SD -0.52)
+  + pr_sum + spp_avg       MAE=10.325 dMAE vs BASE +0.075 [+0.008,+0.146] vs mkt +0.205 [+0.035,+0.385] O/U 399-412-5 (0.492) | pr_sum=+16.044(se 4.695,p=0.00; per SD +0.99), spp_avg=-0.402(se 0.247,p=0.10; per SD -0.45)
+  + proe_sum + epa_sum     MAE=10.239 dMAE vs BASE -0.012 [-0.084,+0.061] vs mkt +0.118 [-0.047,+0.287] O/U 423-388-5 (0.522) | proe_sum=+0.198(se 0.050,p=0.00; per SD +1.29), epa_sum=+4.639(se 2.269,p=0.04; per SD +0.78)
+  + epa_sum only           MAE=10.191 dMAE vs BASE -0.060 [-0.117,-0.005] vs mkt +0.070 [-0.095,+0.231] O/U 435-376-5 (0.536) | epa_sum=+6.717(se 2.225,p=0.00; per SD +1.13)
+  + proe_max               MAE=10.275 dMAE vs BASE +0.024 [-0.051,+0.099] vs mkt +0.154 [-0.014,+0.333] O/U 411-400-5 (0.507) | proe_max=+0.354(se 0.083,p=0.00; per SD +1.34)
+  + h/a proe separately    MAE=10.290 dMAE vs BASE +0.040 [-0.031,+0.115] vs mkt +0.170 [-0.000,+0.351] O/U 408-403-5 (0.503) | h_proe_bld=+0.250(se 0.065,p=0.00; per SD +1.14), a_proe_bld=+0.198(se 0.064,p=0.00; per SD +0.90)
+
+-- (b2) rolling-origin (fit < Y, test Y) BASE vs BASE+proe_sum vs BASE+pr_sum --
+   Y   n   BASE  +proe    +pr    mkt  coef_proe  coef_pr
+2013 217 11.235 11.302 11.345 11.258      0.254   20.107
+2014 218 11.497 11.331 11.451 10.596      0.223   16.350
+2015 217 10.888 10.825 10.840 10.664      0.256   17.266
+2016 233 10.364 10.388 10.356  9.863      0.269   18.740
+2017 248 11.298 11.151 11.200 11.165      0.242   16.930
+2018 248 10.804 10.758 10.747 10.409      0.255   19.864
+2019 248 10.844 10.955 10.895 10.871      0.260   20.710
+2023 272 10.206 10.184 10.211 10.239      0.223   17.542
+2024 272  9.848  9.927  9.891  9.730      0.216   16.806
+2025 272 10.724 10.780 10.779 10.393      0.190   14.948
+  mean BASE=10.771 +proe=10.760 +pr=10.771 mkt=10.519
+
+-- (c) TEAM level: team_pts - implied_tt ~ own PROE, opp PROE (cluster SE); and market-free --
+  market residual ~ own_proe           train own_proe=+0.034(p=0.26) | test own_proe=-0.049(p=0.42) | OOS dMAE +0.002 [-0.008,+0.013]
+  market residual ~ opp_proe           train opp_proe=+0.028(p=0.35) | test opp_proe=+0.039(p=0.54) | OOS dMAE -0.001 [-0.011,+0.009]
+  market residual ~ own+opp proe       train own_proe=+0.033(p=0.27), opp_proe=+0.027(p=0.37) | test own_proe=-0.049(p=0.42), opp_proe=+0.039(p=0.54) | OOS dMAE +0.003 [-0.008,+0.013]
+  market residual ~ own+opp pass rate  train own_pr=+1.663(p=0.58), opp_pr=+5.121(p=0.09) | test own_pr=-7.155(p=0.24), opp_pr=+8.744(p=0.16) | OOS dMAE +0.001 [-0.012,+0.013]
+  market-free team pts: BASE MAE=7.285 + own_proe             MAE=7.291 dMAE +0.005 [-0.010,+0.020] | own_proe=+0.088(p=0.01)
+  market-free team pts: BASE MAE=7.285 + own+opp proe         MAE=7.294 dMAE +0.008 [-0.021,+0.036] | own_proe=+0.084(p=0.01), opp_proe=+0.156(p=0.00)
+  market-free team pts: BASE MAE=7.285 + own+opp pr           MAE=7.294 dMAE +0.009 [-0.017,+0.036] | own_pr=+4.903(p=0.13), opp_pr=+13.994(p=0.00)
+  market-free team pts: BASE MAE=7.285 + own+opp proe + spp   MAE=7.294 dMAE +0.009 [-0.023,+0.040] | own_proe=+0.077(p=0.02), opp_proe=+0.152(p=0.00), own_spp=-0.164(p=0.05), opp_spp=-0.086(p=0.33)

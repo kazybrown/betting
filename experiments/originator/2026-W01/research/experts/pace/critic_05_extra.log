@@ -1,0 +1,27 @@
+== (A) mean of the expert's league-relative prior-8 team feature by TEST season (should be ~0 if the reference were current) ==
+   feature  SD of r8d  2023 mean (in SD)  2024 mean (in SD)  2025 mean (in SD)
+  spp_neut       1.44               0.25               0.60               0.10
+     plays       3.38              -0.02              -0.26              -0.18
+game_plays       3.40              -0.04              -0.51              -0.34
+   pr_neut       0.05              -0.02              -0.31               0.02
+      proe       4.70              -0.12              -0.20               0.03
+   epa_off       0.11              -0.48               0.25               0.01
+   epa_def       0.10              -0.58               0.36               0.09
+  expl_off       0.02              -0.26               0.20              -0.10
+  expl_def       0.02              -0.30               0.27              -0.09
+       ppd       0.49              -0.11               0.25               0.09
+       pts       4.99              -0.20               0.13               0.04
+  -> offsets of 0.2-0.6 SD in individual seasons; any linear rule inherits a season-level shift that is not matchup information
+
+== (B) prior pace as a dispersion signal: |total - market| ~ pace (HC1), fit 2009-19, check 2023-25 ==
+  spp_avg_s    train -0.071 (se 0.127) p=0.577 [per SD -0.09 pts of MAE] | test -0.027 (se 0.325) p=0.934
+  gplays_avg_s train +0.050 (se 0.059) p=0.393 [per SD +0.14 pts of MAE] | test +0.025 (se 0.119) p=0.836
+  spp_avg      train -0.043 (se 0.126) p=0.731 [per SD -0.06 pts of MAE] | test -0.059 (se 0.314) p=0.851
+  gplays_avg   train +0.028 (se 0.057) p=0.629 [per SD +0.08 pts of MAE] | test +0.090 (se 0.119) p=0.448
+  (for scale) |err| ~ market total: train +0.072 (p=0.077) | test +0.018 (p=0.808)
+  train: SD of (total - market) FF=13.67 (n=152) vs SS=13.75 (n=147); all=13.38; Levene p=0.531
+  test: SD of (total - market) FF=16.82 (n=34) vs SS=13.16 (n=25); all=12.96; Levene p=0.344
+
+== (C) realized plays (not knowable pre-kickoff; upper bound) and the spread error ==
+  train: |total err| ~ realized plays +0.061 (p=0.002) | |spread err| ~ prior spp_avg_s -0.118 (p=0.375)
+  test: |total err| ~ realized plays +0.150 (p=0.000) | |spread err| ~ prior spp_avg_s +0.193 (p=0.536)
