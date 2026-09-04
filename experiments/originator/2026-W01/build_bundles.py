@@ -22,7 +22,7 @@ RULES = """SPEC CONTEXT (ORIGINATOR, NFL 2026 Week 1 — the card is originated,
 - Hard caps on the SUM: spread ±2.5, total ±3.0 vs core. If you want more, the ratings are wrong — flag it instead of piling on.
 - §6 team-total modifiers REALLOCATE points between the two team totals (they hardly change the game total): explosive offense vs weak explosive-play defense +0.5..+1.5 / opponent -0.5..-1.0; elite red-zone defense -0.5..-1.0 opponent; pace-possession mismatch ±0.5. Team totals are derived from the identity first; modifiers are on top.
 - NEVER: anchor toward the market number, invent injuries, double-count what nfelo baked (its QB and HFA mods are in the bundle — e.g. if nfelo already knocked a team for a backup QB, a further qb_change adjustment needs NEW post-8/31 news), or move a number on vibes.
-- PFF is CLEAN (user-pasted point-spread ratings drive spread_pff, §3.1). The TPT panel is now PARTLY LIVE: the user pasted TPT's Week 1 nflpredictions.csv/nfltotals.csv (authoritative, §12). Donchess/DRatings (DONC) and FF-Winners (FFW) are populated for every game; Pi-Rate, Lou St. John, RP Excel, Laffaye RWP and Dokter Entropy are BLANK in TPT's own file (the earlier web-recovered Dokter total is superseded). The sleeve = default weights renormalized over DONC/FFW, weighted median shrunk 40% toward the unweighted median, with the single-computer clamp. Market open/current lines from the TPT file are in the bundle for Appendix B only — never an input.
+- BUILD (user instruction 2026-09-04): THREE ENGINES ONLY — nfelo (site model spread), PFF (point-spread rating) and Kevin Cole (Unexpected Points power rating, as of 9/1/26). Cole occupies the sleeve slot (spread .15 / total .30) with the single-source clamp; nfelo .46 / PFF .39 keep Tier A. The TPT panel (Donchess/FF-Winners) is DIAGNOSTIC ONLY (weight 0): mention where it sits vs the core, never treat it as an input. TOTALS: no engine publishes a total — every total is a §3.2-derived implied total from net ratings (nfelo-, PFF-, Cole-implied, blended .32/.38/.30); say so, and treat total confidence as LOW by policy.
 - A previously AUDITED adjustment set for this game (prior_audited_adjustments_v2) is in the bundle. Keep it as your baseline: reproduce those adjustments unless the new PFF ratings change the evidence picture (e.g. an ol_pass_rush_mismatch magnitude, or a QB-rating-based backup valuation). State explicitly in origin_note whether the baseline was kept or changed and why. Rewrite the brief and origin_note so every Tier-A number cited is the CURRENT one (PFF point-spread ratings, not the old rank model).
 - Voice: cold, precise, audit-ready; numbers first; no hype."""
 
@@ -69,7 +69,7 @@ def main():
         if tm:
             power_by_team[tm] = t
 
-    prior_path = RUN / "adjustments_v2.json"
+    prior_path = RUN / "adjustments_v4.json"
     prior = {}
     if prior_path.exists():
         for pg in json.loads(prior_path.read_text())["games"]:
@@ -129,13 +129,24 @@ def main():
                 "home_qb_rating": g.get("pff_psr", {}).get("home_qb"), "away_qb_rating": g.get("pff_psr", {}).get("away_qb"),
                 "home_proj_wins": g.get("pff_psr", {}).get("home_proj_wins"), "away_proj_wins": g.get("pff_psr", {}).get("away_proj_wins"),
             },
-            "prior_audited_adjustments_v2": prior.get((a, h)),
+            "prior_audited_adjustments_v4": prior.get((a, h)),
             "dvoa_projection_2026": g.get("dvoa_proj"),
             "market_REFERENCE_ONLY_do_not_anchor": {
                 "spread_current": g["market_spread"], "total_current": g["market_total"],
                 "spread_open": g.get("market_open_spread"), "total_open": g.get("market_open_total"),
             },
+            "kevin_cole": {
+                "source": "Unexpected Points Subscriber Data (Kevin Cole) '2026 Power Rankings' tab, as of 9/1/26, read via Google Drive 2026-09-04 — third rating engine (sleeve slot: spread .15 / total .30)",
+                "pr_home": g["cole_meta"].get("pr_home"), "pr_away": g["cole_meta"].get("pr_away"),
+                "betting_pr_home_diag": g["cole_meta"].get("betting_pr_home"), "betting_pr_away_diag": g["cole_meta"].get("betting_pr_away"),
+                "spread_cole": g["spread_cole"], "spread_from_betting_pr_diag": g["cole_meta"].get("spread_betting_pr_diag"),
+                "total_cole_implied": g["total_cole_implied"],
+            },
+            "totals_basis": {"note": g.get("total_basis"), "nfelo_implied": g["total_nfelo"], "pff_implied": g["total_pff_implied"],
+                             "cole_implied": g["total_cole_implied"], "confidence_policy": "forced LOW — no engine publishes a total"},
             "tpt_panel": {
+                "ROLE": "DIAGNOSTIC ONLY in this build (weight 0) per user instruction 2026-09-04; report its gap vs the origin core, never blend it",
+                "gaps_vs_core": g["tpt_diag"],
                 "spread_systems": g["tpt_spread_detail"], "spread_panel_value": g["spread_tpt"],
                 "total_systems": g["tpt_total_detail"], "total_panel_value": g["total_tpt"],
                 "systems_blank_in_tpt_file": {"spreads": ["PIR", "STJ"], "totals": ["RPXL", "RWP", "DOK"]},

@@ -15,6 +15,18 @@ lines are reference only (Appendix B), never an input.
 - `output/week_01_audit.json` — every input, weight, adjustment, clamp, and
   the full recovery sweep with sources
 
+## Build (v5, 2026-09-04)
+
+Per the user's instruction, the card is built from **three engines only**:
+nfelo (site model spreads), PFF (point-spread ratings) and **Kevin Cole**
+(Unexpected Points power rankings as of 9/1/26, read from the subscriber
+workbook via the Google Drive connector; `data/raw/2026-W01/cole_power_rankings.csv`).
+Cole occupies the Tier-B sleeve slot (spread .15 / total .30, single-source
+clamp); nfelo .46 / PFF .39 keep Tier A. The Prediction Tracker panel is
+carried as a **diagnostic only** (weight 0). No engine publishes a game total,
+so every total is a §3.2-derived implied total from net ratings (nfelo-, PFF-
+and Cole-implied, blended .32/.38/.30) and total confidence is forced LOW.
+
 ## Data provenance
 
 - **nfelo** (Tier A2, fully live): `greerreNFL/nfelo` `output_data/` at the

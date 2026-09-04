@@ -87,9 +87,10 @@ srcm = []
 for g in games:
     sd, td = g["tpt_spread_detail"], g["tpt_total_detail"]
     srcm.append(f"""<tr><td class="g">{g['away']}@{g['home']}</td>
-<td class="num">{f1(g['spread_nfelo'], plus=True)}</td><td class="num">{f2(g['spread_pff'], plus=True)}</td>
+<td class="num">{f1(g['spread_nfelo'], plus=True)}</td><td class="num">{f2(g['spread_pff'], plus=True)}</td><td class="num">{f2(g['spread_cole'], plus=True)}</td>
 <td class="num mut">{f2(g['pff_psr']['home'], plus=True)} / {f2(g['pff_psr']['away'], plus=True)}</td>
-<td class="num">{f2(g['total_nfelo'])}</td><td class="num">{f2(g['total_pff'])}</td>
+<td class="num mut">{f1(g['cole_meta'].get('pr_home'), plus=True)} / {f1(g['cole_meta'].get('pr_away'), plus=True)}</td>
+<td class="num">{f1(g['total_nfelo'])} / {f1(g['total_pff_implied'])} / {f1(g['total_cole_implied'])}</td>
 <td class="num">{f1(sd.get('DONC'), plus=True)} / {f1(td.get('DONC'))}</td>
 <td class="num">{f1(sd.get('FFW'), plus=True)} / {f1(td.get('FFW'))}</td>
 <td class="num mut">{f1(g['market_spread'], plus=True)} / {f1(g['market_total'])}</td></tr>""")
@@ -202,7 +203,7 @@ footer .num {{ color:var(--ink); }}
 <h1>NFL Origin Card — 2026 Week&nbsp;1</h1>
 <div class="meta">
 <span class="status">DATA STATUS: DEGRADED</span>
-<span>nfelo: site spreads (09-02) · PFF: point-spread ratings · TPT: Donchess + FF-Winners (5 systems blank) · weather: no forecasts · nfelo totals: derived, not published</span>
+<span>Build: nfelo + PFF + Kevin Cole · TPT panel diagnostic only · totals: implied (derived) — no engine publishes a total · weather: no forecasts</span>
 <span>Generated {GEN}</span>
 <span>Spread wts (modal): nfelo .541 / PFF .459 / TPT 0</span>
 <span>Total wts (modal): nfelo .50 / TPT .50 / PFF 0</span>
@@ -221,9 +222,9 @@ footer .num {{ color:var(--ink); }}
 {''.join(brief_blocks)}
 
 <h2>Appendix A — Source matrix</h2>
-<p class="lede">Per-game engine outputs; PSR = PFF point-spread rating (points vs league average, QB included). nfelo publishes model spreads and win probabilities only — no total or projected score — so the nfelo-implied total is derived per §3.2 from nfelo team ratings and is never an nfelo number. nfelo spreads are the nfeloapp.com site values supplied 2026-09-02. TPT panel systems (Donchess/DRatings, FF-Winners, Pi-Rate, Lou St. John, RP Excel, Laffaye RWP) were unrecoverable — the one recovered number is Dokter Entropy's NE@SEA total, applied under the single-computer clamp.</p>
+<p class="lede">Three-engine build: nfelo (nfeloapp.com site model spreads), PFF point-spread ratings (PSR, points vs average, QB included), and Kevin Cole's Unexpected Points power ratings (PR, as of 9/1/26). No engine publishes a game total, so every total on this card is an implied total derived per §3.2 from net ratings and carries LOW confidence by policy. TPT panel systems (Donchess/DRatings, FF-Winners, Pi-Rate, Lou St. John, RP Excel, Laffaye RWP) were unrecoverable — the one recovered number is Dokter Entropy's NE@SEA total, applied under the single-computer clamp.</p>
 <div class="tblwrap"><table>
-<thead><tr><th>Game</th><th>nfelo S</th><th>PFF S</th><th>PSR H / A</th><th>nfelo-implied T (derived)</th><th>PFF T</th><th>DONC S / T</th><th>FFW S / T</th><th>Market S / T</th></tr></thead>
+<thead><tr><th>Game</th><th>nfelo S</th><th>PFF S</th><th>Cole S</th><th>PSR H / A</th><th>Cole PR H / A</th><th>Implied T nfelo / PFF / Cole</th><th>DONC S / T (diag)</th><th>FFW S / T (diag)</th><th>Market S / T</th></tr></thead>
 <tbody>{''.join(srcm)}</tbody>
 </table></div>
 
@@ -238,9 +239,10 @@ footer .num {{ color:var(--ink); }}
 <ul class="issues">{''.join(issues)}</ul>
 
 <footer>
-<p>Engines: <span class="num">nfelo</span> (nfeloapp.com Week 1 model spreads supplied 2026-09-02; modifiers from the greerreNFL/nfelo 2026-09-01 update; nfelo publishes no total — implied totals derived per §3.2) ·
+<p>Engines: <span class="num">nfelo</span> (nfeloapp.com Week 1 model spreads supplied 2026-09-02; modifiers from the greerreNFL/nfelo 2026-09-01 update) ·
+<span class="num">Kevin Cole</span> (Unexpected Points power rankings as of 9/1/26, via Google Drive 2026-09-04; sleeve slot .15/.30) ·
 <span class="num">PFF</span> (Power Rankings point-spread ratings, pff.com/betting/nfl-power-rankings, table supplied 2026-09-01 — authoritative per §12; spread_pff = −(PSR<sub>home</sub> − PSR<sub>away</sub>) − site HFA) ·
-<span class="num">TPT</span> panel: Donchess/DRatings + FF-Winners from the user-supplied Week 1 files (Pi-Rate, Lou St. John, RP Excel, Laffaye, Dokter blank); Donchess cross-checked against DRatings' current projections.
+<span class="num">TPT</span> panel (Donchess/DRatings + FF-Winners) diagnostic only in this build — weight 0. No engine publishes a total: all totals are §3.2-derived implied totals.
 League total prior <span class="num">46.0</span> (2025 realized mean).
 Full audit trail: <span class="num">betting/experiments/originator/2026-W01/</span> on branch claude/new-session-xoaxrh.</p>
 </footer>

@@ -214,6 +214,20 @@ def load_pff_ratings():
     return out
 
 
+def load_cole_ratings():
+    """Kevin Cole (Unexpected Points) 2026 power rankings — points vs league
+    average, 'as of 9/1/26', read from the subscriber workbook via the Google
+    Drive connector 2026-09-04. power_ranking is the model rating (used);
+    betting_power_ranking is carried as a diagnostic."""
+    p = RAW / "cole_power_rankings.csv"
+    if not p.exists():
+        return {}
+    return {norm_team(r["team"]): {"pr": float(r["power_ranking"]),
+                                   "betting_pr": float(r["betting_power_ranking"]),
+                                   "rank": int(r["rank"])}
+            for r in csv.DictReader(open(p)) if norm_team(r["team"])}
+
+
 def load_dvoa():
     dv = {}
     for r in csv.DictReader(open(RAW / "dvoa_projections_2026.csv")):
@@ -329,7 +343,14 @@ def build_cores():
     nf_spreads, nf_pts, nf_mods = load_nfelo()
     dvoa = load_dvoa()
     pffr = load_pff_ratings()
+    cole = load_cole_ratings()
     sweep = load_sweep()
+    nfelo_mkt = {}
+    mk = RAW / "nfelo_site_week1_pasted_v2.csv"
+    if mk.exists():
+        for r in csv.DictReader(open(mk)):
+            nfelo_mkt[(norm_team(r["away"]), norm_team(r["home"]))] = {
+                "open": float(r["open_market"]), "current": float(r["current_market"])}
     units, power, explicit_pff = pff_tables(sweep)
     tpt_s, tpt_t = tpt_panels(sweep)
     tpt_mkt = {(norm_team(m["away"]), norm_team(m["home"])): m
@@ -432,6 +453,17 @@ def build_cores():
                                    "(structural — usually QB or OL)")
                 spread_pff = clamped
 
+        # ---- Kevin Cole spread (third engine, sleeve slot) — same construction as PFF
+        spread_cole, cole_meta = None, {"basis": "Cole ratings unavailable"}
+        if a in cole and h in cole:
+            hfa_c = hfa_pts if hfa_pts is not None else 1.6
+            spread_cole = -(cole[h]["pr"] - cole[a]["pr"]) - hfa_c
+            cole_meta = {"basis": "Kevin Cole power_ranking (points vs avg, as of 9/1/26) via Google Drive; spread = -(PR_home - PR_away) - site HFA",
+                         "pr_home": cole[h]["pr"], "pr_away": cole[a]["pr"],
+                         "betting_pr_home": cole[h]["betting_pr"], "betting_pr_away": cole[a]["betting_pr"],
+                         "spread_betting_pr_diag": round(-(cole[h]["betting_pr"] - cole[a]["betting_pr"]) - hfa_c, 3),
+                         "hfa_pts": round(hfa_c, 2)}
+
         # ---- totals
         pace_adj = 0.0  # populated in final stage from validated adjustments
         # nfelo-implied total (§3.2 fallback: 0.35 pts of total per combined rating point)
@@ -451,6 +483,12 @@ def build_cores():
             total_pff = (LEAGUE_TOTAL_PRIOR + 2.8 * (ozh + oza) / 2.0
                          - 2.4 * (dzh + dza) / 2.0)
             tot_basis = "PFF off/def grade z (§3.2)"
+        total_pff_implied = None
+        if a in pffr and h in pffr:
+            total_pff_implied = LEAGUE_TOTAL_PRIOR + 0.35 * (pffr[a]["psr"] + pffr[h]["psr"])
+        total_cole_implied = None
+        if a in cole and h in cole:
+            total_cole_implied = LEAGUE_TOTAL_PRIOR + 0.35 * (cole[a]["pr"] + cole[h]["pr"])
         total_dvoa_diag = None
         if dvoa_z.get(a) is not None and dvoa_z.get(h) is not None:
             total_dvoa_diag = round(LEAGUE_TOTAL_PRIOR + 0.4 * (dvoa_z[a] + dvoa_z[h]), 3)
@@ -464,6 +502,11 @@ def build_cores():
             "spread_nfelo": spread_nfelo, "home_wp_nfelo": home_wp, "nfelo_provenance": nfelo_prov,
             "spread_pff": None if spread_pff is None else round(spread_pff, 3),
             "pff_meta": pff_meta,
+            "spread_cole": None if spread_cole is None else round(spread_cole, 3), "cole_meta": cole_meta,
+            "total_pff_implied": None if total_pff_implied is None else round(total_pff_implied, 3),
+            "total_cole_implied": None if total_cole_implied is None else round(total_cole_implied, 3),
+            "market_nfelo_open": nfelo_mkt.get(key, {}).get("open"),
+            "market_nfelo_current": nfelo_mkt.get(key, {}).get("current"),
             "spread_tpt": spread_tpt, "spread_tpt_systems": s_sys,
             "tpt_spread_detail": {s: d["v"] for s, d in tpt_s.get(key, {}).items()},
             "total_nfelo": None if total_nfelo is None else round(total_nfelo, 3),
@@ -490,112 +533,64 @@ def build_cores():
                 else round(mods["nfelo_line_close"] - mods["market_line_close_nfelo"], 2)),
         })
 
-    # ---- blend §4 with per-game missing-source protocol
+    # ---- blend §4 — THREE-ENGINE BUILD (user instruction 2026-09-04): PFF + nfelo +
+    # Kevin Cole. Cole is the documented substitute in the Tier-B sleeve slot
+    # (spread .15 / total .30); PFF + nfelo keep the Tier-A weights. The TPT
+    # panel (Donchess/FF-Winners) is carried as a DIAGNOSTIC only (weight 0).
+    # Totals: no engine publishes a total, so all three are §3.2-style implied
+    # totals from net ratings, blended at the spec total weights.
     for g in games:
-        sn, sp, st = g["spread_nfelo"], g["spread_pff"], g["spread_tpt"]
-        tn, tp, tt = g["total_nfelo"], g["total_pff"], g["total_tpt"]
+        sn, sp, sc = g["spread_nfelo"], g["spread_pff"], g["spread_cole"]
+        tn, tpi, tci = g["total_nfelo"], g["total_pff_implied"], g["total_cole_implied"]
+        g["build"] = "three-engine: nfelo + PFF + Kevin Cole (TPT diagnostic only)"
 
-        if sp is not None and st is not None:
-            g["spread_core"] = 0.46 * sn + 0.39 * sp + 0.15 * st
-            g["spread_weights"] = {"nfelo": 0.46, "pff": 0.39, "tpt": 0.15}
-            n_sys = len(g["spread_tpt_systems"])
-            if n_sys <= 2:  # §1 single-computer clamp, 1.0/system on spreads
-                w1, w2 = 0.46 / 0.85, 0.39 / 0.85
-                tier_a = w1 * sn + w2 * sp
-                limit = 1.0 * n_sys
-                drift = g["spread_core"] - tier_a
-                if abs(drift) > limit:
-                    g["spread_core"] = tier_a + math.copysign(limit, drift)
-                    g["tpt_spread_clamped"] = round(drift, 2)
-        elif sp is not None:  # missing TPT -> renormalize Tier A
-            w1, w2 = 0.46 / 0.85, 0.39 / 0.85
-            g["spread_core"] = w1 * sn + w2 * sp
-            g["spread_weights"] = {"nfelo": round(w1, 3), "pff": round(w2, 3), "tpt": 0.0}
-        elif st is not None:  # missing PFF
-            g["spread_core"] = 0.70 * sn + 0.30 * st
-            g["spread_weights"] = {"nfelo": 0.70, "pff": 0.0, "tpt": 0.30}
-            n_sys = len(g["spread_tpt_systems"])
-            if n_sys <= 2:  # §1 single-computer clamp vs Tier A (nfelo alone)
-                limit = 1.0 * n_sys
-                drift = g["spread_core"] - sn
-                if abs(drift) > limit:
-                    g["spread_core"] = sn + math.copysign(limit, drift)
-                    g["tpt_spread_clamped"] = round(drift, 2)
+        if sp is not None and sc is not None:
+            tier_a = (0.46 * sn + 0.39 * sp) / 0.85
+            core = 0.46 * sn + 0.39 * sp + 0.15 * sc
+            drift = core - tier_a
+            if abs(drift) > 1.0:  # §1 single-computer rule on the sleeve occupant
+                core = tier_a + math.copysign(1.0, drift)
+                g["cole_spread_clamped"] = round(drift, 2)
+            g["spread_core"] = core
+            g["spread_weights"] = {"nfelo": 0.46, "pff": 0.39, "cole": 0.15, "tpt": 0.0}
+        elif sp is not None:
+            g["spread_core"] = (0.46 * sn + 0.39 * sp) / 0.85
+            g["spread_weights"] = {"nfelo": round(0.46 / 0.85, 3), "pff": round(0.39 / 0.85, 3), "cole": 0.0, "tpt": 0.0}
         else:
             g["spread_core"] = sn
-            g["spread_weights"] = {"nfelo": 1.0, "pff": 0.0, "tpt": 0.0}
+            g["spread_weights"] = {"nfelo": 1.0, "pff": 0.0, "cole": 0.0, "tpt": 0.0}
 
-        if tp is not None and tt is not None:
-            g["total_core"] = 0.38 * tp + 0.32 * tn + 0.30 * tt
-            g["total_weights"] = {"pff": 0.38, "nfelo": 0.32, "tpt": 0.30}
-            # §1 single-computer clamp for a degraded sleeve (<=2 systems):
-            # the sleeve may not move the number more than 1.5/system vs Tier A
-            n_sys = len(g["total_tpt_systems"])
-            if n_sys <= 2:
-                w1, w2 = 0.38 / 0.70, 0.32 / 0.70
-                tier_a = w1 * tp + w2 * tn
-                limit = 1.5 * n_sys
-                drift = g["total_core"] - tier_a
-                if abs(drift) > limit:
-                    g["total_core"] = tier_a + math.copysign(limit, drift)
-                    g["tpt_total_clamped"] = round(drift, 2)
-        elif tp is not None:  # missing TPT
-            w1, w2 = 0.38 / 0.70, 0.32 / 0.70
-            g["total_core"] = w1 * tp + w2 * tn
-            g["total_weights"] = {"pff": round(w1, 3), "nfelo": round(w2, 3), "tpt": 0.0}
-        elif tt is not None:  # missing PFF
-            g["total_core"] = 0.50 * tn + 0.50 * tt
-            g["total_weights"] = {"pff": 0.0, "nfelo": 0.50, "tpt": 0.50}
-            n_sys = len(g["total_tpt_systems"])
-            if n_sys <= 2:  # §1 single-computer clamp vs Tier A (nfelo alone)
-                limit = 1.5 * n_sys
-                drift = g["total_core"] - tn
-                if abs(drift) > limit:
-                    g["total_core"] = tn + math.copysign(limit, drift)
-                    g["tpt_total_clamped"] = round(drift, 2)
+        if tpi is not None and tci is not None:
+            tier_a_t = (0.38 * tpi + 0.32 * tn) / 0.70
+            core_t = 0.38 * tpi + 0.32 * tn + 0.30 * tci
+            drift = core_t - tier_a_t
+            if abs(drift) > 1.5:
+                core_t = tier_a_t + math.copysign(1.5, drift)
+                g["cole_total_clamped"] = round(drift, 2)
+            g["total_core"] = core_t
+            g["total_weights"] = {"pff_implied": 0.38, "nfelo_implied": 0.32, "cole_implied": 0.30, "tpt": 0.0}
+        elif tpi is not None:
+            g["total_core"] = (0.38 * tpi + 0.32 * tn) / 0.70
+            g["total_weights"] = {"pff_implied": round(0.38 / 0.70, 3), "nfelo_implied": round(0.32 / 0.70, 3), "cole_implied": 0.0, "tpt": 0.0}
         else:
             g["total_core"] = tn
-            g["total_weights"] = {"pff": 0.0, "nfelo": 1.0, "tpt": 0.0}
-
-        # §1 Tier-B rule: no single TPT computer may move the origin number more
-        # than 1.0 (spread) / 1.5 (total) vs the Tier-A blend. Each system's share
-        # of the sleeve's effect E = core - tierA is E * (its renormalized sleeve
-        # weight); if any share exceeds the limit, E is scaled down so the largest
-        # share equals the limit (order-independent, monotone).
-        for kind, detail_key, wdict, limit, core_key, tier, wkey in (
-                ("spread", "tpt_spread_detail", TPT_SPREAD_W, 1.0, "spread_core", (sn, sp), "spread_weights"),
-                ("total", "tpt_total_detail", TPT_TOTAL_W, 1.5, "total_core", (tn, tp), "total_weights")):
-            detail = g[detail_key]
-            wt = g[wkey]
-            if not detail or wt["tpt"] == 0:
-                continue
-            n1, p1 = tier
-            wa = wt["nfelo"] + wt["pff"]
-            tier_a = (wt["nfelo"] * n1 + wt["pff"] * (p1 if p1 is not None else 0)) / wa
-            E = g[core_key] - tier_a
-            present = {k: wdict[k] for k in detail if k in wdict}
-            tot = sum(present.values())
-            shares = {k: E * v / tot for k, v in present.items()}
-            worst = max(shares, key=lambda k: abs(shares[k]))
-            if abs(shares[worst]) > limit:
-                scale = limit / abs(shares[worst])
-                g[core_key] = tier_a + E * scale
-                g.setdefault("tpt_system_clamps", []).append(
-                    {"kind": kind, "system": worst, "share": round(shares[worst], 2),
-                     "limit": limit, "sleeve_effect_before": round(E, 2), "sleeve_effect_after": round(E * scale, 2)})
+            g["total_weights"] = {"pff_implied": 0.0, "nfelo_implied": 1.0, "cole_implied": 0.0, "tpt": 0.0}
+        g["total_basis"] = "all three totals are §3.2-derived implied totals (league prior 46.0 + 0.35 × combined rating vs avg); no engine publishes a total"
 
         g["spread_core"] = round(g["spread_core"], 3)
         g["total_core"] = round(g["total_core"], 3)
 
-        # §7 uncertainty across available sources
-        s_sources = [x for x in [sn, sp] if x is not None] + list(g["tpt_spread_detail"].values())
-        t_sources = [x for x in [tn, tp] if x is not None] + list(g["tpt_total_detail"].values())
+        s_sources = [x for x in (sn, sp, sc) if x is not None]
+        t_sources = [x for x in (tn, tpi, tci) if x is not None]
         g["spread_range"] = round(max(s_sources) - min(s_sources), 2) if len(s_sources) >= 2 else None
         g["total_range"] = round(max(t_sources) - min(t_sources), 2) if len(t_sources) >= 2 else None
         g["spread_sd"] = round(statistics.stdev(s_sources), 3) if len(s_sources) >= 2 else None
         g["total_sd"] = round(statistics.stdev(t_sources), 3) if len(t_sources) >= 2 else None
         g["n_spread_sources"] = len(s_sources)
         g["n_total_sources"] = len(t_sources)
+        g["tpt_diag"] = {"spread_panel": g["spread_tpt"], "total_panel": g["total_tpt"],
+                         "spread_gap_vs_core": None if g["spread_tpt"] is None else round(g["spread_tpt"] - g["spread_core"], 2),
+                         "total_gap_vs_core": None if g["total_tpt"] is None else round(g["total_tpt"] - g["total_core"], 2)}
 
     (RUN / "cores.json").write_text(json.dumps(games, indent=1))
     print(f"cores.json written: {len(games)} games")
@@ -674,7 +669,10 @@ def finalize():
             "tt_home_raw": round(h1, 3), "tt_away_raw": round(a1, 3),
             "tt_home": h_pub, "tt_away": a_pub,
             "conf_spread": conf_tag(g["spread_sd"], False, g["n_spread_sources"]),
-            "conf_total": conf_tag(g["total_sd"], True, g["n_total_sources"]),
+            "conf_total": ("LOW" if str(g.get("total_basis", "")).startswith("all three totals are") else
+                           conf_tag(g["total_sd"], True, g["n_total_sources"])),
+            "conf_total_policy": ("forced LOW: all totals are derived from net ratings by one formula; their agreement is structural, not evidence"
+                                  if str(g.get("total_basis", "")).startswith("all three totals are") else None),
             "origin_note": A.get("origin_note", ""),
             "tt_split_note": A.get("tt_split_note", ""),
             "flags": A.get("flags", []),
@@ -707,7 +705,7 @@ CSV_COLS = ("season,week,game_id,away,home,kickoff,venue,roof,"
             "total_nfelo,total_pff,total_tpt,total_rpxl,total_ffw,total_rwp,total_donc,total_dok,"
             "spread_core,total_core,adj_spread,adj_total,conf_spread,conf_total,"
             "market_spread,market_total,market_tt_home,market_tt_away,"
-            "data_status,notes").split(",")
+            "data_status,notes,spread_cole,total_pff_implied,total_cole_implied").split(",")
 
 
 def implied_tt(spread, total):
@@ -759,6 +757,8 @@ def publish(generated_iso, data_status):
                 "market_tt_home": implied_tt(g["market_spread"], g["market_total"])[0],
                 "market_tt_away": implied_tt(g["market_spread"], g["market_total"])[1],
                 "data_status": data_status, "notes": note,
+                "spread_cole": fmt(g["spread_cole"], 2), "total_pff_implied": fmt(g["total_pff_implied"], 2),
+                "total_cole_implied": fmt(g["total_cole_implied"], 2),
             })
 
     # ---------- Markdown card
@@ -768,9 +768,10 @@ def publish(generated_iso, data_status):
     L.append(f"Data status: {data_status}")
     wts = games[0]["spread_weights"]
     twts = games[0]["total_weights"]
-    L.append(f"Weights (modal game): spread nfelo {wts['nfelo']} / PFF {wts['pff']} / TPT {wts['tpt']}"
-             f" | total PFF {twts['pff']} / nfelo {twts['nfelo']} / TPT {twts['tpt']}"
-             " (per-game missing-source renormalization applies; see Appendix C)")
+    L.append(f"Build: {games[0]['build']}")
+    L.append(f"Weights: spread nfelo {wts['nfelo']} / PFF {wts['pff']} / Kevin Cole {wts['cole']}"
+             f" | total PFF-implied {twts['pff_implied']} / nfelo-implied {twts['nfelo_implied']} / Cole-implied {twts['cole_implied']}"
+             " — all totals are §3.2-derived implied totals (no engine publishes a total); TPT panel diagnostic only")
     L.append("")
     L.append("## Slate table")
     L.append("")
@@ -798,14 +799,13 @@ def publish(generated_iso, data_status):
              "Every 'nfelo-implied total' on this card is derived per §3.2 from nfelo's team ratings "
              "(league prior + 0.35 × combined points-vs-average) and is labelled as such; nfelo team totals do not exist.")
     L.append("")
-    L.append("| Game | nfelo S | PFF S | DONC | FFW | PIR | STJ | RPXL | RWP | DOK | TPT med (S/T) | Market (S/T) |")
-    L.append("|------|-------|-----|------|-----|-----|-----|------|-----|-----|---------------|--------------|")
+    L.append("| Game | nfelo S | PFF S | Cole S | nfelo-impl T | PFF-impl T | Cole-impl T | DONC S/T (diag) | FFW S/T (diag) | Market (S/T) |")
+    L.append("|------|---------|-------|--------|--------------|------------|-------------|-----------------|----------------|--------------|")
     for g in games:
         sd, td = g["tpt_spread_detail"], g["tpt_total_detail"]
-        L.append(f"| {g['away']}@{g['home']} | {g['spread_nfelo']:+.1f} | {fmt(g['spread_pff'],2) or '—'} "
-                 f"| {fmt(sd.get('DONC')) or '—'} | {fmt(sd.get('FFW')) or '—'} | {fmt(sd.get('PIR')) or '—'} "
-                 f"| {fmt(sd.get('STJ')) or '—'} | {fmt(td.get('RPXL')) or '—'} | {fmt(td.get('RWP')) or '—'} "
-                 f"| {fmt(td.get('DOK')) or '—'} | {fmt(g['spread_tpt'],2) or '—'}/{fmt(g['total_tpt'],2) or '—'} "
+        L.append(f"| {g['away']}@{g['home']} | {g['spread_nfelo']:+.1f} | {fmt(g['spread_pff'],2)} | {fmt(g['spread_cole'],2)} "
+                 f"| {fmt(g['total_nfelo'],2)} | {fmt(g['total_pff_implied'],2)} | {fmt(g['total_cole_implied'],2)} "
+                 f"| {fmt(sd.get('DONC')) or '—'}/{fmt(td.get('DONC')) or '—'} | {fmt(sd.get('FFW')) or '—'}/{fmt(td.get('FFW')) or '—'} "
                  f"| {g['market_spread']:+.1f}/{g['market_total']:.1f} |")
     L.append("")
     L.append("## Appendix B — Market delta (not an input)")
@@ -846,6 +846,8 @@ def publish(generated_iso, data_status):
             "schedule_market": "nflverse/nfldata games.csv (market snapshot for Appendix B only)",
             "pff": "PFF Power Rankings table (pff.com/betting/nfl-power-rankings) pasted by the user 2026-09-01 — authoritative per §12: Point Spread Rating (points vs avg, QB included) used directly per §3.1; earlier web-search rank recovery retained as diagnostic",
             "tpt": "The Prediction Tracker nflpredictions.csv + nfltotals.csv (Week 1) pasted by the user 2026-09-02 — authoritative per §12; Donchess and FF-Winners populated, Pi-Rate/Lou St. John/RP Excel/Laffaye/Dokter blank in TPT's file; opening lines from the same files feed Appendix B",
+            "kevin_cole": "Unexpected Points Subscriber Data workbook (Kevin Cole), '2026 Power Rankings' tab as of 9/1/26, read via the Google Drive connector 2026-09-04: power_ranking used as the third rating engine in the sleeve slot; betting_power_ranking diagnostic",
+            "build_note": "User instruction 2026-09-04: build only with PFF, nfelo and Kevin Cole; TPT panel retained as diagnostic (weight 0). Totals: no engine publishes a total -> all totals are §3.2-derived implied totals from net ratings",
             "dvoa_diag": "greerreNFL/nfelo dvoa_projections.csv 2026 (diagnostic only, not blended)",
         },
         "conventions": {
